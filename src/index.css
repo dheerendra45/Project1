@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom font imports would go here */
+/* Since we don't have the actual font files, this is a placeholder */
+@layer base {
+  @font-face {
+    font-family: 'LEMON MILK';
+    /* src: url('../public/fonts/LEMONMILK-Regular.otf') format('opentype'); */
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Gradient classes */
+.bg-tiger-gradient {
+  background: linear-gradient(90deg, #EE741D 2.45%, #FCB040 100%);
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(90deg, #4951FE 2.45%, #DE3AA8 100%);
+}
