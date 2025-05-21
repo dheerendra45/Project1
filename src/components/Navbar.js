@@ -1,14 +1,11 @@
 // components/Navbar.js
 import React from 'react';
-import TigerLogo from '../assets/image173.png';
-import TigerLogo2 from '../assets/tiger-logo2.png';
 import NavbarBG from '../assets/image146.png';
 
 function Navbar() {
   return (
-    <div className="relative h-[57px] overflow-hidden bg-[#000000C9]
-">
-      {/* Background - Tiger Stripe Pattern (4 specific positions) */}
+    <div className="relative h-[57px] overflow-hidden bg-[#000000C9]">
+      {/* Background - Tiger Stripe Pattern (full navbar width) */}
       <div className="absolute top-0 left-0 w-full h-16 z-0">
         {/* Background Image 1 */}
         <div
@@ -38,7 +35,7 @@ function Navbar() {
         
         {/* Background Image 3 */}
         <div
-          className="absolute top-0 left-[853px]"
+          className="absolute top-0 left-[740px]"
           style={{
             backgroundImage: `url(${NavbarBG})`,
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -51,7 +48,7 @@ function Navbar() {
         
         {/* Background Image 4 */}
         <div
-          className="absolute top-0 left-[1223px]"
+          className="absolute top-0 left-[1110px]"
           style={{
             backgroundImage: `url(${NavbarBG})`,
             backgroundColor: 'rgba(0, 0, 0, 0.4)',
@@ -70,35 +67,8 @@ function Navbar() {
           €208.00 +2.72
         </div>
         
-        {/* Center Orange Section with Tiger Logos and Slogan */}
-        <div className="flex-1 flex justify-center">
-  <div className="bg-orange-500 h-[60px] w-[511px] relative flex items-center overflow-visible">
-    
-    {/* Text Wrapper (now layered properly) */}
-    <div className="absolute left-4 top-1 z-20 overflow-visible">
-      <div className="text-white text-sm font-bold uppercase">
-        IN DEWARON MEIN
-      </div>
-      <div className="text-sm font-bold uppercase flex whitespace-nowrap">
-        <span className="text-black">TIGER</span>
-        <span className="text-white ml-1">REHTA HAI</span>
-      </div>
-    </div>
-
-    {/* Logos remain unaffected */}
-    <img
-      src={TigerLogo}
-      alt="Tiger Logo"
-      className="h-[57px] w-[216px] object-contain z-10 ml-[108px]"
-    />
-    <img
-      src={TigerLogo2}
-      alt="Tiger Brand"
-      className="h-[57px] w-[188.14px] object-contain z-10 ml-[5px]"
-    />
-  </div>
-</div>
-
+        {/* Empty Center Section (just using the background image) */}
+        <div className="flex-1"></div>
         
         {/* Employee Login and Language Switcher */}
         <div className="flex items-center mr-6 text-white">
