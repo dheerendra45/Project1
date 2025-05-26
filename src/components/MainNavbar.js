@@ -14,7 +14,7 @@ function MainNavbar() {
   ];
 
   return (
-    <div className="bg-orange-500 flex items-center justify-between px-8 py-4">
+    <div className="bg-orange-500 flex items-center justify-between h-[71px]" >
       {/* Company Logo */}
       <div>
         <img 

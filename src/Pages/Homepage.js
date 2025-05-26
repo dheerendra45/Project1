@@ -2,7 +2,8 @@
 import React from "react";
 
 import Hero from "../components/Hero";
-
+import Navbar from '../components/Navbar';
+import MainNavbar from '../components/MainNavbar'
 import BrandBanner from "../components/BrandBanner";
 import MissionVisionValues from "../components/MissionVisionValues";
 import AboutUs from "../components/AboutUs";
@@ -16,6 +17,7 @@ import Footer from "../components/Footer";
 const HomePage = () => {
   return (
     <div>
+       
       <Hero />
    
       <BrandBanner />
@@ -26,7 +28,7 @@ const HomePage = () => {
       <CSRPage />
       <NewsPage />
       <ContactPage />
-      <Footer />
+    
       
     </div>
   );
