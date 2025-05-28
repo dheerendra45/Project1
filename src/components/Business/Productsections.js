@@ -1,8 +1,23 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import steel from '../../assets//Business/steel.png'
+import s1 from '../../assets/Business/s1.jpg'
+import s2 from '../../assets/Business/s2.jpg'
+import s3 from '../../assets/Business/s3.jpg'
+import s4 from '../../assets/Business/s4.jpg'
+import aluminium from '../../assets//Business/aluminium.png'
+import a1 from '../../assets/Business/a1.jpg'
+import a2 from '../../assets/Business/a2.jpg'
+import a3 from '../../assets/Business/a3.jpg'
+import a4 from '../../assets/Business/a4.jpg'
 
-// For demo purposes, using a placeholder for steelimg
-const steelimg = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDIwMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIyMDAiIGhlaWdodD0iMTIwIiBmaWxsPSIjRjM3MzE2Ii8+Cjx0ZXh0IHg9IjEwMCIgeT0iNjAiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE2Ij5TdGVlbCBQcm9kdWN0PC90ZXh0Pgo8L3N2Zz4K';
+
+import energy from '../../assets//Business/energy.png'
+import e1 from '../../assets/Business/e1.jpg'
+import e2 from '../../assets/Business/e2.jpg'
+import e3 from '../../assets/Business/e3.jpg'
+import e4 from '../../assets/Business/e4.jpg'
+
 
 const ProductsSection = () => {
   const [activeTabSteel, setActiveTabSteel] = useState('Carbon Steel');
@@ -15,365 +30,332 @@ const ProductsSection = () => {
   
   const steelProducts = [
     {
-      title: 'Carbon Steel Pipes',
-      image: steelimg
+      title: 'Pellentesque',
+      subtitle: 'VIEW PRODUCT',
+      image: s1
     },
     {
-      title: 'Steel Plates',
-      image: steelimg
+      title: 'Vestibulum',
+      subtitle: 'VIEW PRODUCT',
+      image: s2
     },
     {
-      title: 'Steel Rods',
-      image: steelimg
+      title: 'Pellentesque',
+      subtitle: 'VIEW PRODUCT',
+      image: s3
     },
     {
-      title: 'Steel Coils',
-      image: steelimg
+      title: 'Lorem ipsum dolor',
+      subtitle: 'VIEW PRODUCT',
+      image: s4
     }
   ];
 
   const aluminiumProducts = [
     {
-      title: 'Aluminium Sheets',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit amet consectetur.',
+      subtitle: 'VIEW PRODUCT',
+      image: a1
     },
     {
-      title: 'Aluminium Pipes',
-      image: steelimg
+      title: 'Lorem ipsum dolor',
+      subtitle: 'VIEW PRODUCT',
+      image: a2
     },
     {
-      title: 'Aluminium Bars',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit amet',
+      subtitle: 'VIEW PRODUCT',
+      image: a3
     },
     {
-      title: 'Aluminium Coils',
-      image: steelimg
+      title: 'Lorem ipsum dolor',
+      subtitle: 'VIEW PRODUCT',
+      image: a4
     }
   ];
 
   const energyProducts = [
     {
-      title: 'Solar Panels',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit amet consectetur.',
+      subtitle: 'VIEW PRODUCT',
+      image: e1
     },
     {
-      title: 'Wind Turbines',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit',
+      subtitle: 'VIEW PRODUCT',
+      image: e2
     },
     {
-      title: 'Energy Storage',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit amet',
+      subtitle: 'VIEW PRODUCT',
+      image: e3
     },
     {
-      title: 'Power Inverters',
-      image: steelimg
+      title: 'Lorem ipsum dolor sit',
+      subtitle: 'VIEW PRODUCT',
+      image: e4
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <div className="text-center py-12 px-4">
-       <p className="text-orange-500 font-normal text-[15.15px] leading-[21.21px] tracking-[0.08px] text-center font-['Helvetica_Neue'] mb-4">
-  Lorem ipsum dolor sit amet consectetur.
-</p>
-
-       <h1 className="text-[42.08px] leading-[31.98px] tracking-[-1.26px] font-medium text-center text-gray-900 mb-6 font-['Helvetica_Neue']">
-  Shyam Metal Industries
-</h1>
-
-       <p className="text-[13.47px] leading-[21.55px] tracking-[0.08px] font-normal text-center text-gray-600 max-w-4xl mx-auto font-['Helvetica_Neue']">
-  Lorem ipsum dolor sit amet consectetur. Velit suspendisse gravida turpis sodales sollicitudin tellus cursus neque sodales. Molestie netus pretium risus enim.
-</p>
-
+        <p className="text-orange-500 font-normal text-sm mb-4">
+          Lorem ipsum dolor sit amet consectetur.
+        </p>
+        <h1 className="text-4xl font-medium text-gray-900 mb-6">
+          Shyam Metal Industries
+        </h1>
+        <p className="text-sm text-gray-600 max-w-4xl mx-auto">
+          Lorem ipsum dolor sit amet consectetur. Velit suspendisse gravida turpis sodales sollicitudin tellus cursus neque sodales. Molestie netus pretium risus enim.
+        </p>
       </div>
 
       {/* Products Section */}
-      <div className="px-20 py-8" style={{ width: '1200px', margin: '0 auto' }}>
-        <h2 className="text-[22px] leading-[24.2px] font-bold text-center text-gray-800 mb-12 font-['Plus_Jakarta_Sans']">
-  Our Products
-</h2>
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <h2 className="text-2xl font-bold text-center text-gray-800 mb-12">
+          Our Products
+        </h2>
 
         {/* STEELS Section */}
-        <div className="flex gap-0 mb-8">
+        <div className="flex bg-gray-100 mb-8 overflow-hidden">
           {/* Left Side - Steels Info */}
-          <div className="bg-gray-200 flex flex-col justify-center" style={{ width: '300px', height: '374.53px' }}>
-            <div className="px-6 py-8 text-center">
-              <h3 className="text-[42px] leading-[100%] font-medium text-orange-500 mb-6 font-['LEMON_MILK']">
-  STEELS
-</h3>
-
-              
-              <div className="mb-6 flex justify-center">
-                <div className="w-48 h-28 bg-white rounded-lg overflow-hidden shadow-sm">
-                  <img 
-                    src={steelimg} 
-                    alt="Steel Products"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <div className="w-80 bg-gray-100 flex flex-col justify-center p-8">
+            <h3 className="text-4xl font-bold text-orange-500 mb-6">
+              STEELS
+            </h3>
+            
+            {/* Product Image */}
+            <div className="mb-6 flex justify-start">
+              <div className="w-40 h-40 bg-gray-300 overflow-hidden">
+               <img src={steel} alt="Steel products" className="w-full h-full object-cover"/>
               </div>
-              
-              <h4 className="text-[25.25px] leading-[24.41px] font-normal tracking-[-2.02px] text-gray-800 mb-4 text-center font-['Helvetica_Neue']">
-  Wide range of Steel products
-</h4>
-
-              <button className=" text-[#666666] font-medium text-[21.04px] leading-[20.2px] tracking-[-1.05px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto px-4 py-2 rounded hover:bg-[#555555] transition-colors">
-  Discover More <ChevronRight  className=" text-orange-500 w-4 h-4 ml-2" />
-</button>
-
             </div>
+            
+            <h4 className="text-lg font-normal text-gray-800 mb-6">
+              Wide range of Steel products
+            </h4>
+
+            <button className="text-gray-600 font-medium text-sm flex items-center hover:text-gray-800 transition-colors">
+              Discover More <ChevronRight className="text-orange-500 w-4 h-4 ml-2" />
+            </button>
           </div>
 
           {/* Right Side - Product Tabs and Gallery */}
-          <div className="flex-1 bg-gray-200 p-6" style={{ height: '374.53px' }}>
+          <div className="flex-1 bg-gray-100 p-6">
             {/* Tabs */}
-            <div className="flex space-x-6 mb-4 border-b border-gray-300">
+            <div className="flex space-x-8 mb-6 border-b border-gray-300">
               {steelTabs.map((tab) => (
-               <button
-  key={tab}
-  onClick={() => setActiveTabSteel(tab)}
-  className={`pb-2 px-1 border-b-2 transition-colors font-['Helvetica_Neue'] font-bold text-[16px] leading-[27.2px] ${
-    activeTabSteel === tab
-      ? 'text-orange-500 border-orange-500'
-      : 'text-gray-500 border-transparent hover:text-gray-700'
-  }`}
->
-  {tab}
-</button>
-
+                <button
+                  key={tab}
+                  onClick={() => setActiveTabSteel(tab)}
+                  className={`pb-3 text-sm font-medium transition-colors ${
+                    activeTabSteel === tab
+                      ? 'text-orange-500 border-b-2 border-orange-500'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {tab}
+                </button>
               ))}
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-4 gap-3 mb-4">
+            <div className="grid grid-cols-4 gap-4 mb-6">
               {steelProducts.map((product, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-full h-24 bg-white rounded-lg mb-2 overflow-hidden shadow-sm">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="w-full h-30 bg-gray-300 mb-3 overflow-hidden">
+                    <img src={product.image} alt={product.title} className="w-full h-full object-cover"/>
                   </div>
-                 <h5 className="font-bold text-[25.25px] leading-[24.41px] tracking-[-0.76px] text-center text-gray-800 font-['Helvetica_Neue'] mb-1 px-1">
-  {product.title}
-</h5>
-
-                  <button className="text-[#666666] font-bold text-[13.47px] leading-[12.62px] tracking-[-0.4px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto hover:text-[#444444] transition-colors">
-  VIEW PRODUCT <ChevronRight className="w-3 h-3 ml-1 text-orange-500" />
-</button>
-
+                  <h5 className="font-medium text-sm text-gray-800 mb-2 leading-tight">
+                    {product.title}
+                  </h5>
+                  <button className="text-gray-500 text-xs font-medium hover:text-gray-700 transition-colors">
+                    {product.subtitle}
+                  </button>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Controls Container */}
-            <div className="flex justify-between items-center mt-auto">
+            {/* Bottom Controls */}
+            <div className="flex justify-between items-center">
               {/* Navigation Controls */}
               <div className="flex space-x-2">
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronLeft className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronLeft className="w-4 h-4 text-gray-600" />
                 </button>
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronRight className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronRight className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
 
               {/* Pagination Dots */}
               <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+                <div className="w-2 h-2 bg-orange-500"></div>
+                <div className="w-2 h-2 bg-gray-300"></div>
               </div>
             </div>
           </div>
         </div>
 
         {/* ALUMINIUM Section */}
-        <div className="flex gap-0 mb-8">
+        <div className="flex bg-gray-100 mb-8 overflow-hidden">
           {/* Left Side - Aluminium Info */}
-          <div className="bg-gray-200 flex flex-col justify-center" style={{ width: '300px', height: '374.53px' }}>
-            <div className="px-6 py-8 text-center">
-              <h3 className="text-[42px] leading-[100%] font-medium text-orange-500 mb-6 font-['LEMON_MILK']">
-  ALUMINIUM
-</h3>
-
-              
-              <div className="mb-6 flex justify-center">
-                <div className="w-48 h-28 bg-white rounded-lg overflow-hidden shadow-sm">
-                  <img 
-                    src={steelimg} 
-                    alt="Aluminium Products"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <div className="w-80 bg-gray-100 flex flex-col justify-center p-8">
+            <h3 className="text-4xl font-bold text-orange-500 mb-6">
+              ALUMINUM
+            </h3>
+            
+            {/* Product Image */}
+            <div className="mb-6 flex justify-start">
+              <div className="w-40 h-40 bg-gray-300 overflow-hidden">
+                <img src={aluminium} alt="Aluminium products" className="w-full h-full object-cover"/>
               </div>
-              
-              <h4 className="text-[25.25px] leading-[24.41px] font-normal tracking-[-2.02px] text-gray-800 mb-4 text-center font-['Helvetica_Neue']">
-  Wide range of Aluminium products
-</h4>
-
-              <button className=" text-[#666666] font-medium text-[21.04px] leading-[20.2px] tracking-[-1.05px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto px-4 py-2 rounded hover:bg-[#555555] transition-colors">
-  Discover More <ChevronRight  className=" text-orange-500 w-4 h-4 ml-2" />
-</button>
-
             </div>
+            
+            <h4 className="text-lg font-normal text-gray-800 mb-6">
+              Wide range of fitting products
+            </h4>
+
+            <button className="text-gray-600 font-medium text-sm flex items-center hover:text-gray-800 transition-colors">
+              Discover More <ChevronRight className="text-orange-500 w-4 h-4 ml-2" />
+            </button>
           </div>
 
           {/* Right Side - Product Tabs and Gallery */}
-          <div className="flex-1 bg-gray-200 p-6" style={{ height: '374.53px' }}>
+          <div className="flex-1 bg-gray-100 p-6">
             {/* Tabs */}
-            <div className="flex space-x-6 mb-4 border-b border-gray-300">
+            <div className="flex space-x-8 mb-6 border-b border-gray-300">
               {aluminiumTabs.map((tab) => (
-               <button
-  key={tab}
-  onClick={() => setActiveTabAluminium(tab)}
-  className={`pb-2 px-1 border-b-2 transition-colors font-['Helvetica_Neue'] font-bold text-[16px] leading-[27.2px] ${
-    activeTabAluminium === tab
-      ? 'text-orange-500 border-orange-500'
-      : 'text-gray-500 border-transparent hover:text-gray-700'
-  }`}
->
-  {tab}
-</button>
-
+                <button
+                  key={tab}
+                  onClick={() => setActiveTabAluminium(tab)}
+                  className={`pb-3 text-sm font-medium transition-colors ${
+                    activeTabAluminium === tab
+                      ? 'text-orange-500 border-b-2 border-orange-500'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {tab}
+                </button>
               ))}
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-4 gap-3 mb-4">
+            <div className="grid grid-cols-4 gap-4 mb-6">
               {aluminiumProducts.map((product, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-full h-24 bg-white rounded-lg mb-2 overflow-hidden shadow-sm">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="w-full h-30 bg-gray-300 mb-3 overflow-hidden">
+                    <img src={product.image} alt={product.title} className="w-full h-full object-cover"/>
                   </div>
-                 <h5 className="font-bold text-[25.25px] leading-[24.41px] tracking-[-0.76px] text-center text-gray-800 font-['Helvetica_Neue'] mb-1 px-1">
-  {product.title}
-</h5>
-
-                  <button className="text-[#666666] font-bold text-[13.47px] leading-[12.62px] tracking-[-0.4px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto hover:text-[#444444] transition-colors">
-  VIEW PRODUCT <ChevronRight className="w-3 h-3 ml-1 text-orange-500" />
-</button>
-
+                  <h5 className="font-medium text-sm text-gray-800 mb-2 leading-tight">
+                    {product.title}
+                  </h5>
+                  <button className="text-gray-500 text-xs font-medium hover:text-gray-700 transition-colors">
+                    {product.subtitle}
+                  </button>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Controls Container */}
-            <div className="flex justify-between items-center mt-auto">
+            {/* Bottom Controls */}
+            <div className="flex justify-between items-center">
               {/* Navigation Controls */}
               <div className="flex space-x-2">
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronLeft className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronLeft className="w-4 h-4 text-gray-600" />
                 </button>
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronRight className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronRight className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
 
               {/* Pagination Dots */}
               <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+                <div className="w-2 h-2 bg-orange-500"></div>
+                <div className="w-2 h-2 bg-gray-300"></div>
               </div>
             </div>
           </div>
         </div>
 
         {/* ENERGY Section */}
-        <div className="flex gap-0">
+        <div className="flex bg-gray-100 overflow-hidden">
           {/* Left Side - Energy Info */}
-          <div className="bg-gray-200 flex flex-col justify-center" style={{ width: '300px', height: '374.53px' }}>
-            <div className="px-6 py-8 text-center">
-              <h3 className="text-[42px] leading-[100%] font-medium text-orange-500 mb-6 font-['LEMON_MILK']">
-  ENERGY
-</h3>
-
-              
-              <div className="mb-6 flex justify-center">
-                <div className="w-48 h-28 bg-white rounded-lg overflow-hidden shadow-sm">
-                  <img 
-                    src={steelimg} 
-                    alt="Energy Products"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+          <div className="w-80 bg-gray-100 flex flex-col justify-center p-8">
+            <h3 className="text-4xl font-bold text-orange-500 mb-6">
+              ENERGY
+            </h3>
+            
+            {/* Product Image */}
+            <div className="mb-6 flex justify-start">
+              <div className="w-40 h-40 bg-gray-300 overflow-hidden">
+               <img src={energy} alt="Energy products" className="w-full h-full object-cover"/>
               </div>
-              
-              <h4 className="text-[25.25px] leading-[24.41px] font-normal tracking-[-2.02px] text-gray-800 mb-4 text-center font-['Helvetica_Neue']">
-  Wide range of Energy products
-</h4>
-
-              <button className=" text-[#666666] font-medium text-[21.04px] leading-[20.2px] tracking-[-1.05px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto px-4 py-2 rounded hover:bg-[#555555] transition-colors">
-  Discover More <ChevronRight  className=" text-orange-500 w-4 h-4 ml-2" />
-</button>
-
             </div>
+            
+            <h4 className="text-lg font-normal text-gray-800 mb-6">
+              Wide range of Valves products
+            </h4>
+
+            <button className="text-gray-600 font-medium text-sm flex items-center hover:text-gray-800 transition-colors">
+              Discover More <ChevronRight className="text-orange-500 w-4 h-4 ml-2" />
+            </button>
           </div>
 
           {/* Right Side - Product Tabs and Gallery */}
-          <div className="flex-1 bg-gray-200 p-6" style={{ height: '374.53px' }}>
+          <div className="flex-1 bg-gray-100 p-6">
             {/* Tabs */}
-            <div className="flex space-x-6 mb-4 border-b border-gray-300">
+            <div className="flex space-x-8 mb-6 border-b border-gray-300">
               {energyTabs.map((tab) => (
-               <button
-  key={tab}
-  onClick={() => setActiveTabEnergy(tab)}
-  className={`pb-2 px-1 border-b-2 transition-colors font-['Helvetica_Neue'] font-bold text-[16px] leading-[27.2px] ${
-    activeTabEnergy === tab
-      ? 'text-orange-500 border-orange-500'
-      : 'text-gray-500 border-transparent hover:text-gray-700'
-  }`}
->
-  {tab}
-</button>
-
+                <button
+                  key={tab}
+                  onClick={() => setActiveTabEnergy(tab)}
+                  className={`pb-3 text-sm font-medium transition-colors ${
+                    activeTabEnergy === tab
+                      ? 'text-orange-500 border-b-2 border-orange-500'
+                      : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {tab}
+                </button>
               ))}
             </div>
 
             {/* Product Grid */}
-            <div className="grid grid-cols-4 gap-3 mb-4">
+            <div className="grid grid-cols-4 gap-4 mb-6">
               {energyProducts.map((product, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-full h-24 bg-white rounded-lg mb-2 overflow-hidden shadow-sm">
-                    <img 
-                      src={product.image} 
-                      alt={product.title}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="w-full h-30 bg-gray-300 mb-3 overflow-hidden">
+                    <img src={product.image} alt={product.title} className="w-full h-full object-cover"/>
                   </div>
-                 <h5 className="font-bold text-[25.25px] leading-[24.41px] tracking-[-0.76px] text-center text-gray-800 font-['Helvetica_Neue'] mb-1 px-1">
-  {product.title}
-</h5>
-
-                  <button className="text-[#666666] font-bold text-[13.47px] leading-[12.62px] tracking-[-0.4px] font-['Helvetica_Neue'] flex items-center justify-center mx-auto hover:text-[#444444] transition-colors">
-  VIEW PRODUCT <ChevronRight className="w-3 h-3 ml-1 text-orange-500" />
-</button>
-
+                  <h5 className="font-medium text-sm text-gray-800 mb-2 leading-tight">
+                    {product.title}
+                  </h5>
+                  <button className="text-gray-500 text-xs font-medium hover:text-gray-700 transition-colors">
+                    {product.subtitle}
+                  </button>
                 </div>
               ))}
             </div>
 
-            {/* Bottom Controls Container */}
-            <div className="flex justify-between items-center mt-auto">
+            {/* Bottom Controls */}
+            <div className="flex justify-between items-center">
               {/* Navigation Controls */}
               <div className="flex space-x-2">
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronLeft className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronLeft className="w-4 h-4 text-gray-600" />
                 </button>
-                <button className="w-7 h-7 border border-gray-300 rounded flex items-center justify-center hover:bg-gray-50 transition-colors">
-                  <ChevronRight className="w-4 h-4" />
+                <button className="w-8 h-8 border border-gray-400 flex items-center justify-center hover:bg-gray-200 transition-colors">
+                  <ChevronRight className="w-4 h-4 text-gray-600" />
                 </button>
               </div>
 
               {/* Pagination Dots */}
               <div className="flex space-x-2">
-                <div className="w-2 h-2 rounded-full bg-orange-500"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
+                <div className="w-2 h-2 bg-orange-500"></div>
+                <div className="w-2 h-2 bg-gray-300"></div>
               </div>
             </div>
           </div>

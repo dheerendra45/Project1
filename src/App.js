@@ -7,8 +7,7 @@ import Layout from './components/Layout';
 import LeadershipPage from './Pages/leadership'
 import Products from './Pages/products';
 import Business from './Pages/Business';
-
-
+import Sustainability from './Pages/Sustainability'
 
 function App() {
   return (
@@ -22,6 +21,7 @@ function App() {
         </Route>
         <Route path="products" element={<Products />} />
         <Route path="business" element={<Business />} />
+         <Route path="Sustainability" element={<Sustainability />} />
       </Routes>
     </div>
   );
