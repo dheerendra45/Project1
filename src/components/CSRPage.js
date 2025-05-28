@@ -1,15 +1,14 @@
-// CSRPage.jsx
 import React from 'react';
-import csr from "../assets/csr.png"
+import csr from "../assets/csr.png";
+
 const CSRPage = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row w-full border-b-2 border-blue-500">
+      <div className="flex flex-col md:flex-row w-full border-b-2">
         {/* Left side with image */}
         <div className="w-full md:w-1/2 bg-gray-800 relative h-96 md:h-auto">
           <div className="absolute inset-0">
-            {/* Replace with your actual image */}
             <img 
               src={csr} 
               alt="Student in classroom" 
@@ -22,8 +21,8 @@ const CSRPage = () => {
           </div>
         </div>
         
-        {/* Right side with content */}
-        <div className="w-full md:w-1/2 bg-white p-8">
+        {/* Right side with content - Added margin-right here */}
+        <div className="w-full md:w-1/2 bg-white p-8 pr-12"> {/* Added pr-12 for 48px (3rem) right padding */}
           <h3 className="text-2xl font-bold mb-4">Corporate Social Responsibility</h3>
           <h2 className="text-4xl font-bold mb-12">Building Communities, Empowering Lives</h2>
           

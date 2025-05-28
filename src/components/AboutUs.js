@@ -5,6 +5,7 @@ import WorkerImage from '../assets/factory-worker.png';
 
 function AboutUs() {
   const timelineYears = [1848, 1902, 1964, 1998, 2008, 2023]
+
   return (
     <div className="bg-white py-12">
       {/* Main Content Section */}
@@ -20,17 +21,15 @@ function AboutUs() {
   HOW WE STARTED
 </h2>
 
-           <p className="font-[400] text-[24px] leading-[40.01px] tracking-[0%] font-['Manrope'] mb-4">
+            <p className="font-[400] text-[24px] leading-[40.01px] tracking-[0%] font-['Manrope'] mb-4">
   Lorem Ipsum
 </p>
-
-
-           <p className="font-[300] text-[18px] leading-[30.01px] tracking-[0%] font-['Manrope'] text-gray-600 mb-8">
+ 
+            <p className="font-[300] text-[18px] leading-[30.01px] tracking-[0%] font-['Manrope'] text-gray-600 mb-8">
   Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
   totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.
 </p>
-
-
+ 
             {/* Positioned Box */}
             <div className="absolute top-[550px] bg-gray-100 p-4 w-32">
               <p className="text-sm text-gray-800">
@@ -38,7 +37,7 @@ function AboutUs() {
               </p>
             </div>
           </div>
-
+ 
           {/* Center Image */}
           <div className="w-1/3 px-4">
             <img
@@ -47,7 +46,7 @@ function AboutUs() {
               className="w-full h-full object-cover"
             />
           </div>
-
+ 
           {/* Right Image */}
           <div className="w-1/3">
             <img
@@ -62,7 +61,7 @@ function AboutUs() {
         <div className="relative mt-20 px-4">
           {/* Horizontal Line */}
           <div className="h-1 bg-orange-500 w-full absolute top-4 left-0"></div>
-
+ 
           {/* Timeline Points */}
           <div className="flex justify-between relative z-10">
             {timelineYears.map((year, index) => (
