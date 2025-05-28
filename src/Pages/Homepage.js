@@ -20,7 +20,7 @@ const HomePage = () => {
        
       <Hero />
    
-      <BrandBanner />
+      
       <MissionVisionValues />
       <AboutUs />
       <BusinessAreas />
