@@ -19,8 +19,6 @@ const HomePage = () => {
     <div>
        
       <Hero />
-   
-      
       <MissionVisionValues />
       <AboutUs />
       <BusinessAreas />
