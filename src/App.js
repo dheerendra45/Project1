@@ -10,9 +10,10 @@ import Business from './Pages/Business';
 import Sustainability from './Pages/Sustainability';
 import OverviewPage from './Pages/overview'; // Fixed capitalization
 import P1 from './Pages/p1';
-import ContactPage from './Pages/ContactPage'
-import LocationPage from './Pages/location'
-import AwardsAndAchievements from './Pages/awards&achievements'; // Importing the Awards and Achievements page
+import ContactPage from './Pages/ContactPage';
+import LocationPage from './Pages/location';
+import AwardsAndAchievements from './Pages/awards&achievements'; // Keep this line ✅
+
 function App() {
   return (
     <div className="App">
@@ -22,16 +23,15 @@ function App() {
           <Route path="achievement" element={<Awards />} />
           <Route path="LeadershipPage" element={<LeadershipPage />} /> {/* Fixed path name */}
           <Route path="overview" element={<OverviewPage />} /> {/* Fixed component name */}
-          
         </Route>
-        <Route path="products" element={<Products />} /> {/* Moved inside Layout */}
-          <Route path="business" element={<Business />} /> {/* Moved inside Layout */}
-          <Route path="sustainability" element={<Sustainability />} /> {/* Fixed path and moved inside Layout */}
-          <Route path="p1" element={<P1 />} />
-          <Route path="ContactPage" element={<ContactPage />} />
-          <Route path="LocationPage" element={<LocationPage />} />
-          <Route path="awards&achievements" element={<AwardsAndAchievements />} /> {/* Added Awards and Achievements page */}
-
+        
+        <Route path="products" element={<Products />} />
+        <Route path="business" element={<Business />} />
+        <Route path="sustainability" element={<Sustainability />} />
+        <Route path="p1" element={<P1 />} />
+        <Route path="ContactPage" element={<ContactPage />} />
+        <Route path="LocationPage" element={<LocationPage />} />
+        <Route path="awards&achievements" element={<AwardsAndAchievements />} /> {/* Add this route ✅ */}
       </Routes>
     </div>
   );
