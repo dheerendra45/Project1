@@ -74,7 +74,8 @@ const NewsPage = () => {
 
   return (
     <div className="w-full bg-gray-100 py-12">
-      <div className="container mx-auto px-4">
+      <div className="w-full max-w-7xl mx-auto px-1">
+
         {/* Header */}
         <div className="mb-8">
           <p className="text-orange-500 font-medium mb-2">LATEST NEWS</p>

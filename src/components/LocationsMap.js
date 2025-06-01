@@ -31,7 +31,8 @@ function LocationsMap() {
 
   return (
     <div className="py-12 bg-white">
-      <div className="container mx-auto px-4">
+     <div className="w-full max-w-7xl mx-auto px-1">
+
         <h2 className="text-orange-500 text-xl mb-1">Locations</h2>
         
         {/* Centered Statistics Box with exact specifications */}

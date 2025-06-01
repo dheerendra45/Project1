@@ -15,14 +15,15 @@ const CSRPage = () => {
               className="w-full h-full object-cover opacity-80" 
             />
           </div>
-          <div className="absolute bottom-0 left-0 p-8 text-white z-10">
+          <div className="absolute bottom-0 left-0 px-4 pb-4 text-white z-10">
+
             <h2 className="text-4xl font-bold mb-2">Building Communities,</h2>
             <h2 className="text-4xl font-bold">Empowering Lives</h2>
           </div>
         </div>
         
         {/* Right side with content - Added margin-right here */}
-        <div className="w-full md:w-1/2 bg-white p-8 pr-12"> {/* Added pr-12 for 48px (3rem) right padding */}
+        <div className="w-full md:w-1/2 bg-white p-10 pr-12"> {/* Added pr-12 for 48px (3rem) right padding */}
           <h3 className="text-2xl font-bold mb-4">Corporate Social Responsibility</h3>
           <h2 className="text-4xl font-bold mb-12">Building Communities, Empowering Lives</h2>
           
