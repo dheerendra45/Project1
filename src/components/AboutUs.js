@@ -9,7 +9,7 @@ function AboutUs() {
   return (
     <div className="bg-white py-12">
       {/* Main Content Section */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
+<div className="w-full max-w-7xl mx-auto px-1">
 
         <div className="flex">
           {/* Left Content */}
