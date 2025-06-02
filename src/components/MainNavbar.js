@@ -25,6 +25,11 @@ function MainNavbar() {
       hasDropdown: true,
       dropdownItems: [
         {
+          name: 'Business Overview',
+          href: '/business',
+      
+        },
+        {
           name: 'Steel',
           href: '#',
           subItems: [
@@ -256,15 +261,27 @@ function MainNavbar() {
                         className="relative"
                         onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
                       >
-                        <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer">
-                          <span className="font-medium">{business.name}</span>
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
+                        {/* Check if it's Business Overview (which should be directly clickable) */}
+                        {business.name === 'Business Overview' ? (
+                          <a
+                            href={business.href}
+                            className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium"
+                          >
+                            <span>{business.name}</span>
+                          </a>
+                        ) : (
+                          <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer">
+                            <span className="font-medium">{business.name}</span>
+                            {business.subItems && business.subItems.length > 0 && (
+                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                              </svg>
+                            )}
+                          </div>
+                        )}
                         
                         {/* Sub-menu for each business/investor */}
-                        {activeBusinessSub === businessIndex && business.subItems && (
+                        {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                           <div className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px]">
                             {business.subItems.map((subItem, subIndex) => (
                               <div 

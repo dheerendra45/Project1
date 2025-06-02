@@ -14,7 +14,7 @@ function LocationsMap() {
      
   // Global reach data
   const globalData = [
-    { value: '82+', label: 'countries', subLabel: 'Footprint' },
+    { value: '28', label: 'countries', subLabel: 'Footprint' },
     { value: '09', label: 'Manufacturing', subLabel: 'facilities worldwide' },
     { value: '27', label: 'Manufacturing', subLabel: 'units in India' }
   ];
