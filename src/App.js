@@ -9,7 +9,7 @@ import Products from './Pages/carbonsteel';
 import Business from './Pages/Business';
 import Sustainability from './Pages/Environment_Compliance';
 import OverviewPage from './Pages/overview'; // Fixed capitalization
-import P1 from './Pages/p1';
+import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
 import AwardsAndAchievements from './Pages/awards&achievements'; // Keep this line ✅
