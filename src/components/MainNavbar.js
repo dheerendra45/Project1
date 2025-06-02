@@ -142,7 +142,7 @@ function MainNavbar() {
       title: 'COMMUNITY', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'CSR', href: '#' },
+        { name: 'CSR', href: '/environment_compliance' },
         { name: 'Knowledge Hub', href: '#' },
         { name: 'Blogs', href: '#' },
         { name: 'FAQ', href: '#' }
@@ -153,7 +153,7 @@ function MainNavbar() {
       hasDropdown: true,
       dropdownItems: [
         { name: 'ESG Profile', href: '/esg_profile' },
-        { name: 'Environment Compliance', href: '/environment_compliance' }
+        { name: 'Environment Compliance', href: '#' }
       ]
     },
     { 

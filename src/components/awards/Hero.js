@@ -21,7 +21,7 @@ const AwardsHero = () => {
         <div className="max-w-7xl mx-auto px-6">
           <div className="max-w-4xl">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              AWARDS & ACHIEVEMENTS
+              NEWS & ACHIEVEMENTS
             </h1>
             <p className="text-lg text-white mb-8 max-w-3xl leading-relaxed">
               "Recognizing milestones that define our journey — a showcase of excellence. 
