@@ -12,7 +12,7 @@ import OverviewPage from './Pages/overview'; // Fixed capitalization
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
-import AwardsAndAchievements from './Pages/awards&achievements'; // Keep this line ✅
+
 
 function App() {
   return (
@@ -22,15 +22,16 @@ function App() {
     <Route index element={<HomePage />} />
     <Route path="leadership" element={<LeadershipPage />} />
     <Route path="overview" element={<OverviewPage />} />
+     <Route path="achievement" element={<Awards />} />
   </Route>
 
-  <Route path="products" element={<Products />} />
+  <Route path="carbon_steel" element={<Products />} />
   <Route path="business" element={<Business />} />
-  <Route path="sustainability" element={<Sustainability />} />
-  <Route path="p1" element={<P1 />} />
+  <Route path="environment_compliance" element={<Sustainability />} />
+  <Route path="esg_profile" element={<P1 />} />
   <Route path="ContactPage" element={<ContactPage />} />
   <Route path="LocationPage" element={<LocationPage />} />
-  <Route path="awards" element={<AwardsAndAchievements />} />
+ 
 </Routes>
 
     </div>
