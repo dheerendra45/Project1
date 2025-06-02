@@ -9,8 +9,8 @@ import WorkerImage from '../assets/worker.png'; // Placeholder path
 import BackgroundImage from '../assets/mission-vision-bg.png'; // Background image path
 
 function MissionVisionValues() {
-  // Mission, Vision, Values data
-   const sections = [
+  // Mission, Vision, Values data 
+  const sections = [
     {
       icon: VisionIcon,
       title: 'Our Vision',
@@ -30,6 +30,7 @@ function MissionVisionValues() {
       image: WorkerImage
     }
   ];
+
   return (
     <div 
       className="relative py-16 px-4 overflow-hidden"
@@ -54,32 +55,31 @@ function MissionVisionValues() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {sections.map((section, index) => (
             <div 
-              key={index} 
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              style={{ height: '530px' }}
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
-              {/* Text Content Section */}
-              <div className="p-8 pb-6" style={{ height: '240px' }}>
+              {/* Text Content Section - Now flexible height */}
+              <div className="p-8 pb-6 flex-grow flex flex-col">
                 <div className="flex justify-center mb-6">
                   <img 
-                    src={section.icon} 
-                    alt={section.title} 
-                    className="h-12 w-12 object-contain" 
+                    src={section.icon}
+                    alt={section.title}
+                    className="h-12 w-12 object-contain"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-6 text-gray-900">
                   {section.title}
                 </h3>
-                <p className="text-gray-600 text-base text-center leading-relaxed px-2">
+                <p className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow">
                   {section.description}
                 </p>
               </div>
               
-              {/* Image Section */}
-              <div className="relative" style={{ height: '290px' }}>
+              {/* Image Section - Fixed height */}
+              <div className="relative h-72">
                 <img 
-                  src={section.image} 
-                  alt={section.title} 
+                  src={section.image}
+                  alt={section.title}
                   className="w-full h-full object-cover"
                 />
               </div>
