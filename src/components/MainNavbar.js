@@ -12,7 +12,7 @@ function MainNavbar() {
       title: 'ABOUT US', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Company Overview', href: '#' },
+        { name: 'Company Overview', href: '/overview' },
         { name: 'Leadership', href: '/leadership' },
         { name: 'Awards and Achievements', href: '/achievement' },
         { name: 'Manufacturing Unit', href: '#' },

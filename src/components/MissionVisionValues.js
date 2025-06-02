@@ -10,27 +10,26 @@ import BackgroundImage from '../assets/mission-vision-bg.png'; // Background ima
 
 function MissionVisionValues() {
   // Mission, Vision, Values data
-  const sections = [
-    {
-      icon: MissionIcon,
-      title: 'Our Mission',
-      description: 'Lorem ipsum dolor sit amet consectetur. Eu condimentum ut ipsum elementum lectus. In vulputate pulvinar.',
-      image: SteelFactoryImage
-    },
+   const sections = [
     {
       icon: VisionIcon,
       title: 'Our Vision',
-      description: 'Lorem ipsum dolor sit amet consectetur. Velit ut integer et duis erat platea id quis arcu. Mauris sed consectetur iaculis ac orci.',
+      description: 'We\'re engineering the future of steel through smarter processes, stronger partnerships, and seizing every opportunity to raise the bar for quality and sustainability worldwide.',
+      image: SteelFactoryImage
+    },
+    {
+      icon: MissionIcon,
+      title: 'Our Mission',
+      description: 'We bring Shri. M. P. Agarwal\'s values into action—efficiency, sustainability, and dynamic management to deliver world-class steel solutions for a stronger India.',
       image: HardhatImage
     },
     {
       icon: ValuesIcon,
       title: 'Our Values',
-      description: 'Lorem ipsum dolor sit amet consectetur. In eget lacus amet faucibus sagittis in est etiam. Euismod cursus fusce fusce mattis.',
+      description: 'Built on Integrity & Transparency, Collaboration & Synergy, Ownership & Accountability, and Commitment to Excellence—the foundation of our success.',
       image: WorkerImage
     }
   ];
-
   return (
     <div 
       className="relative py-16 px-4 overflow-hidden"
