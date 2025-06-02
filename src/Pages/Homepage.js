@@ -10,7 +10,7 @@ import AboutUs from "../components/AboutUs";
 import BusinessAreas from "../components/BusinessAreas";
 import LocationsMap from "../components/LocationsMap";
 import EnvironmentSection from '../components/EnvironmentSection' // ✅ Correct path
-import AnimatedBoardMembers from "../components/leadership/AnimatedBoardMembers";
+import AnimatedBoardMembers from "../components/Testimonial";
 import CSRPage from "../components/CSRPage";
 import CertificationsSection from "../components/CertificationsSection";
 import NewsPage from "../components/NewsPage";

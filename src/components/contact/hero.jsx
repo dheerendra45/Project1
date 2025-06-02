@@ -13,6 +13,7 @@ export default function Hero() {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const dropdownRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
   const closeSidebar = () => {
     setSidebarOpen(false);
@@ -22,27 +23,49 @@ export default function Hero() {
     setActiveNestedSub(null);
   };
 
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
   const handleMouseEnter = (index) => {
+    clearHoverTimeout();
     setActiveDropdown(index);
     setActiveBusinessSub(null);
     setActiveNestedSub(null);
   };
 
   const handleMouseLeave = () => {
-    // Only close if not clicking inside dropdown
-    if (!dropdownRef.current?.contains(document.activeElement)) {
+    hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
       setActiveBusinessSub(null);
       setActiveNestedSub(null);
-    }
+    }, 150);
   };
 
   const handleBusinessSubEnter = (businessIndex) => {
+    clearHoverTimeout();
     setActiveBusinessSub(businessIndex);
   };
 
+  const handleBusinessSubLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
   const handleNestedSubEnter = (nestedIndex) => {
+    clearHoverTimeout();
     setActiveNestedSub(nestedIndex);
+  };
+
+  const handleNestedSubLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveNestedSub(null);
+    }, 150);
   };
 
   const handleClickOutside = (e) => {
@@ -62,7 +85,10 @@ export default function Hero() {
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      clearHoverTimeout();
+    };
   }, []);
 
   const navItems = [
@@ -243,6 +269,7 @@ export default function Hero() {
         style={{
           background: "#FFFFFF26",
         }}
+        ref={dropdownRef}
       >
         {/* Logo */}
         <div className="flex items-center">
@@ -259,7 +286,6 @@ export default function Hero() {
               className="relative dropdown-container"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-              ref={dropdownRef}
             >
               <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
                 {item.label}
@@ -280,11 +306,9 @@ export default function Hero() {
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-2"
-                  onMouseLeave={() => {
-                    setActiveBusinessSub(null);
-                    setActiveNestedSub(null);
-                  }}
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  onMouseEnter={clearHoverTimeout}
+                  onMouseLeave={handleMouseLeave}
                 >
                   {item.label === "BUSINESS" || item.label === "INVESTORS" ? (
                     // Business dropdown with hover sub-menus
@@ -296,12 +320,13 @@ export default function Hero() {
                           onMouseEnter={() =>
                             handleBusinessSubEnter(businessIndex)
                           }
+                          onMouseLeave={handleBusinessSubLeave}
                         >
                           {/* Check if it's Business Overview (which should be directly clickable) */}
                           {business.name === "Business Overview" ? (
                             <a
                               href={business.href}
-                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium"
+                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleNavigation(business.href);
@@ -310,7 +335,7 @@ export default function Hero() {
                               <span>{business.name}</span>
                             </a>
                           ) : (
-                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer">
+                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200">
                               <span className="font-medium">
                                 {business.name}
                               </span>
@@ -338,8 +363,9 @@ export default function Hero() {
                             business.subItems &&
                             business.subItems.length > 0 && (
                               <div
-                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px]"
-                                onMouseLeave={() => setActiveNestedSub(null)}
+                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                                onMouseEnter={clearHoverTimeout}
+                                onMouseLeave={handleBusinessSubLeave}
                               >
                                 {business.subItems.map((subItem, subIndex) => (
                                   <div
@@ -348,12 +374,13 @@ export default function Hero() {
                                     onMouseEnter={() =>
                                       handleNestedSubEnter(subIndex)
                                     }
+                                    onMouseLeave={handleNestedSubLeave}
                                   >
                                     {/* Make this clickable for items with href */}
                                     {subItem.href && subItem.href !== "#" ? (
                                       <a
                                         href={subItem.href}
-                                        className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100"
+                                        className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
                                         onClick={(e) => {
                                           e.preventDefault();
                                           handleNavigation(subItem.href);
@@ -377,7 +404,7 @@ export default function Hero() {
                                         )}
                                       </a>
                                     ) : (
-                                      <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100">
+                                      <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
                                         <span>{subItem.name}</span>
                                         {subItem.categories && (
                                           <svg
@@ -401,10 +428,9 @@ export default function Hero() {
                                     {activeNestedSub === subIndex &&
                                       subItem.categories && (
                                         <div
-                                          className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px]"
-                                          onMouseLeave={() =>
-                                            setActiveNestedSub(null)
-                                          }
+                                          className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                          onMouseEnter={clearHoverTimeout}
+                                          onMouseLeave={handleNestedSubLeave}
                                         >
                                           {subItem.categories.map(
                                             (category, catIndex) => (
@@ -420,7 +446,7 @@ export default function Hero() {
                                                     <a
                                                       key={prodIndex}
                                                       href="#"
-                                                      className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50"
+                                                      className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
                                                     >
                                                       • {productItem}
                                                     </a>
@@ -445,7 +471,7 @@ export default function Hero() {
                         <a
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm"
+                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
                           onClick={(e) => {
                             e.preventDefault();
                             handleNavigation(dropdownItem.href);

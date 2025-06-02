@@ -1,7 +1,9 @@
 import { useState, useEffect, useRef } from "react";
+import { ChevronDown, Search, Menu, X } from "lucide-react";
+
+// Add your original imports back:
 import a1 from "../../assets/location/logo.png";
 import a2 from "../../assets/location/homelocation.png";
-import { ChevronDown, Search, Menu, X } from "lucide-react";
 
 export default function Hero() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -10,6 +12,11 @@ export default function Hero() {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const dropdownRef = useRef(null);
+  const hoverTimeoutRef = useRef(null); // Added timeout reference
+
+  // Remove these lines and use your original imports
+  // const a1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='116' height='55' viewBox='0 0 116 55'%3E%3Crect width='116' height='55' fill='%23ff6b35'/%3E%3Ctext x='58' y='30' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3ELOGO%3C/text%3E%3C/svg%3E";
+  //const a2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='800' fill='url(%23bg)'/%3E%3C/svg%3E";
 
   const closeSidebar = () => {
     setSidebarOpen(false);
@@ -19,25 +26,50 @@ export default function Hero() {
     setActiveNestedSub(null);
   };
 
+  // Fixed: Added timeout to prevent immediate closing
   const handleMouseEnter = (index) => {
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+
     setActiveDropdown(index);
     setActiveBusinessSub(null);
     setActiveNestedSub(null);
   };
 
+  // Fixed: Added delay before closing dropdown
   const handleMouseLeave = () => {
-    if (!dropdownRef.current?.contains(document.activeElement)) {
+    hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
       setActiveBusinessSub(null);
       setActiveNestedSub(null);
-    }
+    }, 150); // 150ms delay to allow mouse movement
   };
 
+  // Fixed: Added timeout for business submenu
   const handleBusinessSubEnter = (businessIndex) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
     setActiveBusinessSub(businessIndex);
   };
 
+  // Fixed: Added delay for business submenu leave
+  const handleBusinessSubLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
   const handleNestedSubEnter = (nestedIndex) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
     setActiveNestedSub(nestedIndex);
   };
 
@@ -58,7 +90,13 @@ export default function Hero() {
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      // Clean up timeout on unmount
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
   }, []);
 
   const navItems = [
@@ -215,14 +253,16 @@ export default function Hero() {
         </div>
 
         {/* Navigation Menu */}
-        <div className="flex gap-8 text-white text-sm font-medium">
+        <div
+          className="flex gap-8 text-white text-sm font-medium"
+          ref={dropdownRef}
+        >
           {navItems.map((item, index) => (
             <div
               key={index}
               className="relative dropdown-container"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
-              ref={dropdownRef}
             >
               <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
                 {item.label}
@@ -240,15 +280,19 @@ export default function Hero() {
                 )}
               </span>
 
-              {/* Dropdown Menu */}
+              {/* Fixed: Dropdown Menu with proper hover handling */}
               {item.hasDropdown && activeDropdown === index && (
                 <div
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-2"
-                  onMouseEnter={() => setActiveDropdown(index)}
-                  onMouseLeave={() => {
-                    setActiveBusinessSub(null);
-                    setActiveNestedSub(null);
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  onMouseEnter={() => {
+                    // Clear timeout when entering dropdown
+                    if (hoverTimeoutRef.current) {
+                      clearTimeout(hoverTimeoutRef.current);
+                      hoverTimeoutRef.current = null;
+                    }
+                    setActiveDropdown(index);
                   }}
+                  onMouseLeave={handleMouseLeave}
                 >
                   {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
                     <div
@@ -257,6 +301,11 @@ export default function Hero() {
                       onMouseEnter={() => {
                         if (dropdownItem.subItems) {
                           handleBusinessSubEnter(dropdownIndex);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (dropdownItem.subItems) {
+                          handleBusinessSubLeave();
                         }
                       }}
                     >
@@ -288,18 +337,26 @@ export default function Hero() {
                         )}
                       </div>
 
-                      {/* Sub-menu for business items */}
+                      {/* Fixed: Sub-menu with proper hover handling */}
                       {activeBusinessSub === dropdownIndex &&
                         dropdownItem.subItems && (
                           <div
-                            className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[200px]"
-                            onMouseLeave={() => setActiveBusinessSub(null)}
+                            className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[200px] ml-1"
+                            onMouseEnter={() => {
+                              // Clear timeout when entering submenu
+                              if (hoverTimeoutRef.current) {
+                                clearTimeout(hoverTimeoutRef.current);
+                                hoverTimeoutRef.current = null;
+                              }
+                              setActiveBusinessSub(dropdownIndex);
+                            }}
+                            onMouseLeave={handleBusinessSubLeave}
                           >
                             {dropdownItem.subItems.map((subItem, subIndex) => (
                               <a
                                 key={subIndex}
                                 href={subItem.href}
-                                className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100"
+                                className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   handleNavigation(subItem.href);

@@ -7,6 +7,7 @@ const Hero = () => {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const dropdownRef = useRef(null);
+  const hoverTimeoutRef = useRef(null);
 
   const navItems = [
     { 
@@ -175,28 +176,71 @@ const Hero = () => {
     },
   ];
 
-  
+  // Clear any existing timeout
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
+  // Set timeout to close dropdowns
+  const setHoverTimeout = (callback, delay = 150) => {
+    clearHoverTimeout();
+    hoverTimeoutRef.current = setTimeout(callback, delay);
+  };
+
   const handleMouseEnter = (index) => {
+    clearHoverTimeout();
     setActiveDropdown(index);
   };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null);
-    setActiveBusinessSub(null);
-    setActiveNestedSub(null);
+    setHoverTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
+  };
+
+  const handleDropdownEnter = () => {
+    clearHoverTimeout();
+  };
+
+  const handleDropdownLeave = () => {
+    setHoverTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
   };
 
   const handleBusinessSubEnter = (businessIndex) => {
+    clearHoverTimeout();
     setActiveBusinessSub(businessIndex);
     setActiveNestedSub(null);
   };
 
+  const handleBusinessSubLeave = () => {
+    setHoverTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
+  };
+
   const handleNestedSubEnter = (nestedIndex) => {
+    clearHoverTimeout();
     setActiveNestedSub(nestedIndex);
   };
 
+  const handleNestedSubLeave = () => {
+    setHoverTimeout(() => {
+      setActiveNestedSub(null);
+    });
+  };
+
   const handleClickOutside = (e) => {
-    if (!e.target.closest('.dropdown-container')) {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
       setActiveDropdown(null);
       setActiveBusinessSub(null);
       setActiveNestedSub(null);
@@ -212,7 +256,10 @@ const Hero = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      clearHoverTimeout();
+    };
   }, []);
 
   return (
@@ -253,6 +300,7 @@ const Hero = () => {
         style={{
           background: '#FFFFFF26',
         }}
+        ref={dropdownRef}
       >
         {/* Logo */}
         <div className="flex items-center">
@@ -262,142 +310,151 @@ const Hero = () => {
         </div>
         
         {/* Navigation Menu */}
-          <div className="flex gap-8 text-white text-sm font-medium">
-        {navItems.map((item, index) => (
-          <div
-            key={index}
-            className="relative dropdown-container"
-            onMouseEnter={() => handleMouseEnter(index)}
-            onMouseLeave={handleMouseLeave}
-          >
-            <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
-              {item.title}
-              {item.hasDropdown && (
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                  <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              )}
-            </span>
-
-            {/* Dropdown Menu */}
-            {item.hasDropdown && activeDropdown === index && (
-              <div 
-                className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-2"
-              >
-                {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
-                  <div className="space-y-1">
-                    {item.dropdownItems.map((business, businessIndex) => (
-                      <div 
-                        key={businessIndex} 
-                        className="relative"
-                        onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
-                      >
-                        {/* Check if it's Business Overview (which should be directly clickable) */}
-                        {business.name === 'Business Overview' ? (
-                          <a
-                            href={business.href || '#'}
-                            className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium"
-                            onClick={(e) => handleNavigation(business.href, e)}
-                          >
-                            <span>{business.name}</span>
-                          </a>
-                        ) : (
-                          <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer">
-                            <span className="font-medium">{business.name}</span>
-                            {business.subItems && business.subItems.length > 0 && (
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                              </svg>
-                            )}
-                          </div>
-                        )}
-                        
-                        {/* Sub-menu */}
-                        {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
-                          <div 
-                            className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px]"
-                          >
-                            {business.subItems.map((subItem, subIndex) => (
-                              <div 
-                                key={subIndex} 
-                                className="relative"
-                                onMouseEnter={() => handleNestedSubEnter(subIndex)}
-                              >
-                                {/* Make this clickable for items with href */}
-                                {subItem.href && subItem.href !== '#' ? (
-                                  <a
-                                    href={subItem.href}
-                                    className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100"
-                                    onClick={(e) => handleNavigation(subItem.href, e)}
-                                  >
-                                    <span>{subItem.name}</span>
-                                    {subItem.categories && (
-                                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                      </svg>
-                                    )}
-                                  </a>
-                                ) : (
-                                  <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100">
-                                    <span>{subItem.name}</span>
-                                    {subItem.categories && (
-                                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                      </svg>
-                                    )}
-                                  </div>
-                                )}
-                                
-                                {/* Nested sub-menu */}
-                                {activeNestedSub === subIndex && subItem.categories && (
-                                  <div 
-                                    className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px]"
-                                  >
-                                    {subItem.categories.map((category, catIndex) => (
-                                      <div key={catIndex} className="space-y-1">
-                                        <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
-                                          {category.name}
-                                        </div>
-                                        {category.items.map((productItem, prodIndex) => (
-                                          <a 
-                                            key={prodIndex}
-                                            href="#" 
-                                            className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50"
-                                            onClick={(e) => e.preventDefault()}
-                                          >
-                                            • {productItem}
-                                          </a>
-                                        ))}
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                ) : (
-                  <div className="space-y-1">
-                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                      <a
-                        key={dropdownIndex}
-                        href={dropdownItem.href || '#'}
-                        className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm"
-                        onClick={(e) => handleNavigation(dropdownItem.href, e)}
-                      >
-                        {dropdownItem.name}
-                      </a>
-                    ))}
-                  </div>
+        <div className="flex gap-8 text-white text-sm font-medium">
+          {navItems.map((item, index) => (
+            <div
+              key={index}
+              className="relative dropdown-container"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
+                {item.title}
+                {item.hasDropdown && (
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 )}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+              </span>
+
+              {/* Dropdown Menu */}
+              {item.hasDropdown && activeDropdown === index && (
+                <div 
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  onMouseEnter={handleDropdownEnter}
+                  onMouseLeave={handleDropdownLeave}
+                >
+                  {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
+                    <div className="space-y-1">
+                      {item.dropdownItems.map((business, businessIndex) => (
+                        <div 
+                          key={businessIndex} 
+                          className="relative"
+                          onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
+                          onMouseLeave={handleBusinessSubLeave}
+                        >
+                          {/* Check if it's Business Overview (which should be directly clickable) */}
+                          {business.name === 'Business Overview' ? (
+                            <a
+                              href={business.href || '#'}
+                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                              onClick={(e) => handleNavigation(business.href, e)}
+                            >
+                              <span>{business.name}</span>
+                            </a>
+                          ) : (
+                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-150">
+                              <span className="font-medium">{business.name}</span>
+                              {business.subItems && business.subItems.length > 0 && (
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                              )}
+                            </div>
+                          )}
+                          
+                          {/* Sub-menu */}
+                          {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
+                            <div 
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                              onMouseEnter={handleDropdownEnter}
+                              onMouseLeave={handleDropdownLeave}
+                            >
+                              {business.subItems.map((subItem, subIndex) => (
+                                <div 
+                                  key={subIndex} 
+                                  className="relative"
+                                  onMouseEnter={() => handleNestedSubEnter(subIndex)}
+                                  onMouseLeave={handleNestedSubLeave}
+                                >
+                                  {/* Make this clickable for items with href */}
+                                  {subItem.href && subItem.href !== '#' ? (
+                                    <a
+                                      href={subItem.href}
+                                      className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                                      onClick={(e) => handleNavigation(subItem.href, e)}
+                                    >
+                                      <span>{subItem.name}</span>
+                                      {subItem.categories && (
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                      )}
+                                    </a>
+                                  ) : (
+                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150">
+                                      <span>{subItem.name}</span>
+                                      {subItem.categories && (
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                        </svg>
+                                      )}
+                                    </div>
+                                  )}
+                                  
+                                  {/* Nested sub-menu */}
+                                  {activeNestedSub === subIndex && subItem.categories && (
+                                    <div 
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      onMouseEnter={handleDropdownEnter}
+                                      onMouseLeave={handleDropdownLeave}
+                                    >
+                                      {subItem.categories.map((category, catIndex) => (
+                                        <div key={catIndex} className="space-y-1">
+                                          <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
+                                            {category.name}
+                                          </div>
+                                          {category.items.map((productItem, prodIndex) => (
+                                            <a 
+                                              key={prodIndex}
+                                              href="#" 
+                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-150"
+                                              onClick={(e) => e.preventDefault()}
+                                            >
+                                              • {productItem}
+                                            </a>
+                                          ))}
+                                        </div>
+                                      ))}
+                                    </div>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="space-y-1">
+                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                        <a
+                          key={dropdownIndex}
+                          href={dropdownItem.href || '#'}
+                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-150"
+                          onClick={(e) => handleNavigation(dropdownItem.href, e)}
+                        >
+                          {dropdownItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        
         {/* Search Bar */}
         <div className="flex items-center gap-4">
           <div className="relative">

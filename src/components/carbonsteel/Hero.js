@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import herobg from '../../assets/products/herobg.png'
 import companylogo from '../../assets/products/image28.png'
 
@@ -6,6 +6,12 @@ const CarbonSteelPage = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
+  
+  // Timeout refs for delayed closing
+  const hoverTimeoutRef = useRef(null);
+  const businessSubTimeoutRef = useRef(null);
+  const nestedSubTimeoutRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   const navItems = [
     { 
@@ -174,27 +180,77 @@ const CarbonSteelPage = () => {
     },
   ];
 
+  // Clear all timeouts
+  const clearAllTimeouts = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    if (businessSubTimeoutRef.current) {
+      clearTimeout(businessSubTimeoutRef.current);
+      businessSubTimeoutRef.current = null;
+    }
+    if (nestedSubTimeoutRef.current) {
+      clearTimeout(nestedSubTimeoutRef.current);
+      nestedSubTimeoutRef.current = null;
+    }
+  };
+
   const handleMouseEnter = (index) => {
+    clearAllTimeouts();
     setActiveDropdown(index);
   };
 
   const handleMouseLeave = () => {
-    setActiveDropdown(null);
-    setActiveBusinessSub(null);
-    setActiveNestedSub(null);
+    clearAllTimeouts();
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
+  const handleDropdownEnter = () => {
+    clearAllTimeouts();
+  };
+
+  const handleDropdownLeave = () => {
+    clearAllTimeouts();
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
   };
 
   const handleBusinessSubEnter = (businessIndex) => {
+    clearTimeout(businessSubTimeoutRef.current);
+    clearTimeout(nestedSubTimeoutRef.current);
     setActiveBusinessSub(businessIndex);
     setActiveNestedSub(null);
   };
 
+  const handleBusinessSubLeave = () => {
+    businessSubTimeoutRef.current = setTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
   const handleNestedSubEnter = (nestedIndex) => {
+    clearTimeout(nestedSubTimeoutRef.current);
     setActiveNestedSub(nestedIndex);
   };
 
+  const handleNestedSubLeave = () => {
+    nestedSubTimeoutRef.current = setTimeout(() => {
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
   const handleClickOutside = (e) => {
-    if (!e.target.closest('.dropdown-container')) {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      clearAllTimeouts();
       setActiveDropdown(null);
       setActiveBusinessSub(null);
       setActiveNestedSub(null);
@@ -209,7 +265,10 @@ const CarbonSteelPage = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
-    return () => document.removeEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      clearAllTimeouts();
+    };
   }, []);
 
   return (
@@ -244,6 +303,7 @@ const CarbonSteelPage = () => {
 
       {/* Middle Navbar */}
       <div 
+        ref={dropdownRef}
         className="w-full h-[57px] mt-0 flex items-center justify-between px-8 relative z-30"
         style={{
           background: '#FFFFFF26',
@@ -265,7 +325,7 @@ const CarbonSteelPage = () => {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
+              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200">
                 {item.title}
                 {item.hasDropdown && (
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
@@ -276,7 +336,11 @@ const CarbonSteelPage = () => {
 
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
-                <div className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-2">
+                <div 
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  onMouseEnter={handleDropdownEnter}
+                  onMouseLeave={handleDropdownLeave}
+                >
                   {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
                     // Business dropdown with hover sub-menus
                     <div className="space-y-1">
@@ -285,12 +349,13 @@ const CarbonSteelPage = () => {
                           key={businessIndex} 
                           className="relative"
                           onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
+                          onMouseLeave={handleBusinessSubLeave}
                         >
                           {/* Check if it's Business Overview (which should be directly clickable) */}
                           {business.name === 'Business Overview' ? (
                             <a
                               href={business.href}
-                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium"
+                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleNavigation(business.href);
@@ -299,7 +364,7 @@ const CarbonSteelPage = () => {
                               <span>{business.name}</span>
                             </a>
                           ) : (
-                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer">
+                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
                               <span className="font-medium">{business.name}</span>
                               {business.subItems && business.subItems.length > 0 && (
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -311,18 +376,23 @@ const CarbonSteelPage = () => {
                           
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
-                            <div className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px]">
+                            <div 
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                              onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
+                              onMouseLeave={handleBusinessSubLeave}
+                            >
                               {business.subItems.map((subItem, subIndex) => (
                                 <div 
                                   key={subIndex} 
                                   className="relative"
                                   onMouseEnter={() => handleNestedSubEnter(subIndex)}
+                                  onMouseLeave={handleNestedSubLeave}
                                 >
                                   {/* Make this clickable for items with href */}
                                   {subItem.href && subItem.href !== '#' ? (
                                     <a
                                       href={subItem.href}
-                                      className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100"
+                                      className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
                                       onClick={(e) => {
                                         e.preventDefault();
                                         handleNavigation(subItem.href);
@@ -336,7 +406,7 @@ const CarbonSteelPage = () => {
                                       )}
                                     </a>
                                   ) : (
-                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100">
+                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
                                       <span>{subItem.name}</span>
                                       {subItem.categories && (
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -348,7 +418,11 @@ const CarbonSteelPage = () => {
                                   
                                   {/* Nested sub-menu for categories */}
                                   {activeNestedSub === subIndex && subItem.categories && (
-                                    <div className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px]">
+                                    <div 
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
+                                      onMouseLeave={handleNestedSubLeave}
+                                    >
                                       {subItem.categories.map((category, catIndex) => (
                                         <div key={catIndex} className="space-y-1">
                                           <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
@@ -358,7 +432,7 @@ const CarbonSteelPage = () => {
                                             <a 
                                               key={prodIndex}
                                               href="#" 
-                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50"
+                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
                                             >
                                               • {productItem}
                                             </a>
@@ -381,7 +455,7 @@ const CarbonSteelPage = () => {
                         <a
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm"
+                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
                           onClick={(e) => {
                             e.preventDefault();
                             handleNavigation(dropdownItem.href);
