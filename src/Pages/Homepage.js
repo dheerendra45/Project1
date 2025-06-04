@@ -16,6 +16,8 @@ import CertificationsSection from "../components/CertificationsSection";
 import NewsPage from "../components/NewsPage";
 import ContactPage from "../components/ContactPage";
 import Footer from "../components/Footer";
+import TestimonialHomePage from "../components/Testimonial-HomePage";
+import Environment from "../components/environment";
 
 const HomePage = () => {
   return (
@@ -26,16 +28,16 @@ const HomePage = () => {
       <MissionVisionValues />
       <LocationsMap />
       <BusinessAreas />
-      
+
       <EnvironmentSection />
+      <TestimonialHomePage />
        <CSRPage />
-      <AnimatedBoardMembers />
-      <CertificationsSection />
-     
+      {/* <AnimatedBoardMembers /> */}
       <NewsPage />
-      <ContactPage />
-    
+      <Environment/>
       
+      <ContactPage />
+      <CertificationsSection />
     </div>
   );
 };

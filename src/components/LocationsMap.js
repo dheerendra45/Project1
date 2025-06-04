@@ -11,12 +11,6 @@ function LocationsMap() {
     { label: 'Positive ratings', value: '80%' }
   ];
 
-  const globalData = [
-    { value: '28', label: 'countries', subLabel: 'Footprint' },
-    { value: '09', label: 'Manufacturing', subLabel: 'facilities worldwide' },
-    { value: '27', label: 'Manufacturing', subLabel: 'units in India' }
-  ];
-
   const iconPositions = [
     { top: '35%', left: '45%' },
     { top: '42%', left: '48%' },
@@ -40,7 +34,7 @@ function LocationsMap() {
           </div>
           <button className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors">
             View All
-            <span className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center">
+            <span className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-xl font-extrabold">
               →
             </span>
           </button>
@@ -63,22 +57,6 @@ function LocationsMap() {
 
         {/* Maps Section */}
         <div className="flex flex-col lg:flex-row gap-8">
-
-          {/* Global Data */}
-          <div className="lg:w-1/4">
-            {globalData.map((item, index) => (
-              <div key={index} className="flex items-start mb-6">
-                <div className="text-orange-500 font-bold text-lg mr-2">{item.value}</div>
-                <div className="flex flex-col">
-                  <span className="text-gray-800">{item.label}</span>
-                  <span className="text-gray-600 text-xs">{item.subLabel}</span>
-                </div>
-              </div>
-            ))}
-            <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 transition-colors">
-              View Global Presence
-            </button>
-          </div>
 
           {/* World Map */}
           <div className="lg:w-1/2">

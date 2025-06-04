@@ -41,7 +41,7 @@ const ContactPage = () => {
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
               {/* Location */}
               <div className="flex">
                 <div className="bg-orange-500 p-4 h-16 w-16 flex items-center justify-center mr-4">
@@ -150,13 +150,14 @@ const ContactPage = () => {
                 <button 
                   type="button" 
                   onClick={handleSubmit}
-                  className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-800 transition duration-300"
+                  className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-900 transition"
                 >
-                  Send Message
+                  Submit
                 </button>
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>

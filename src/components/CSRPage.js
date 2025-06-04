@@ -15,11 +15,6 @@ const CSRPage = () => {
               className="w-full h-full object-cover opacity-80" 
             />
           </div>
-          <div className="absolute bottom-0 left-0 px-4 pb-4 text-white z-10">
-
-            <h2 className="text-4xl font-bold mb-2">Building Communities,</h2>
-            <h2 className="text-4xl font-bold">Empowering Lives</h2>
-          </div>
         </div>
         
         {/* Right side with content - Added margin-right here */}
