@@ -84,13 +84,13 @@ const BoardOfDirectors = () => {
             <img 
               src={boardMembers[displayedMember].image}
               alt={boardMembers[displayedMember].name}
-              className="w-96 h-[500px] object-cover object-top rounded-lg shadow-lg"
+              className="w-96 h-[580px] object-cover object-top rounded-lg"
             />
           </div>
         </div>
 
         {/* Member Selection Tabs */}
-        <div className="h-[240px] grid grid-cols-2 lg:grid-cols-4 mt-2">
+        <div className="h-[240px] grid grid-cols-2 lg:grid-cols-4">
           {boardMembers.map((member, index) => (
             <div
               key={index}
@@ -123,7 +123,7 @@ const BoardOfDirectors = () => {
               <div className="relative h-full flex items-center justify-center p-3 text-white">
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-full flex-shrink-0 overflow-hidden border-2 border-orange-500">
+                    <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden border-2 border-orange-500">
                       <img 
                         src={member.image}
                         alt={member.name}
@@ -131,8 +131,8 @@ const BoardOfDirectors = () => {
                       />
                     </div>
                     <div>
-                      <h4 className="font-semibold text-sm">{member.name}</h4>
-                      <p className="text-xs text-gray-300">{member.position}</p>
+                      <h4 className="font-semibold text-base">{member.name}</h4>
+                      <p className="text-sm text-gray-300">{member.position}</p>
                     </div>
                   </div>
                   <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">

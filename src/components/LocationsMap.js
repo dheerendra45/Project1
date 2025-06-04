@@ -14,7 +14,7 @@ function LocationsMap() {
      
   // Global reach data
   const globalData = [
-    { value: '82+', label: 'countries', subLabel: 'Footprint' },
+    { value: '28', label: 'countries', subLabel: 'Footprint' },
     { value: '09', label: 'Manufacturing', subLabel: 'facilities worldwide' },
     { value: '27', label: 'Manufacturing', subLabel: 'units in India' }
   ];
@@ -31,7 +31,8 @@ function LocationsMap() {
 
   return (
     <div className="py-12 bg-white">
-      <div className="container mx-auto px-4">
+     <div className="w-full max-w-7xl mx-auto px-1">
+
         <h2 className="text-orange-500 text-xl mb-1">Locations</h2>
         
         {/* Centered Statistics Box with exact specifications */}

@@ -17,15 +17,12 @@ const HowWeStartedSection = () => {
         </div>
         <div className="flex flex-col justify-center text-gray-600 space-y-4">
           <p>
-            Sed ut perspiciatis unde omnis iste natus error sit and an 
-            voluptatem accusantium doloremque laudantium, then 
-            totam rem aperiam, eaque ipsa quae ab illo its meets the.
+           Founded as a visionary enterprise, Shyam Metalics embarked on its journey to establish world-class steel plants in India. Under the leadership of our promoters (the Shyam Metalics owner group), we pioneered an Integrated Steel Plant model that combines efficiency with sustainability. From our early days to becoming a publicly listed company (tracked through Shyam Metalics share price), we've maintained an unwavering focus on quality and innovation. Today, we stand among India's most respected steel producers, delivering excellence from raw material to finished product.
+
+
+
           </p>
-          <p>
-            Sed ut perspiciatis unde omnis iste natus error sit and an 
-            voluptatem accusantium doloremque laudantium, then 
-            totam rem aperiam, eaque ipsa quae ab illo its meets the.
-          </p>
+          
         </div>
         <div className="h-64 rounded overflow-hidden">
           <img src={a2} alt="a2" className="w-full h-full object-cover rounded" />

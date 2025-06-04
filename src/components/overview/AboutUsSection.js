@@ -1,3 +1,6 @@
+import React from 'react';
+import { Factory, Zap, Recycle, Users } from 'lucide-react';
+
 import a1 from "./images/1.png";
 import a2 from "./images/2.png";
 
@@ -18,10 +21,10 @@ const AboutUsSection = () => {
 
           {/* Orange Stat Box (Top-right) */}
           <div className="bg-orange-500 text-white p-6 rounded flex flex-col justify-center">
-            <h3 className="text-3xl font-bold mb-1">50+</h3>
-            <h4 className="text-lg font-semibold mb-2">Years of Trust</h4>
+            <h3 className="text-3xl font-bold mb-1">377 MW</h3>
+            <h4 className="text-lg font-semibold mb-2">Captive Power</h4>
             <p className="text-sm">
-              Lorem ipsum dolor sit amet, consectetur. Eu condimentum ut ipsum elementum lectus. In vulputate pulvinar.
+              In-house power plants including solar capacity ensuring uninterrupted operations and sustainable manufacturing.
             </p>
           </div>
 
@@ -37,31 +40,49 @@ const AboutUsSection = () => {
 
         {/* RIGHT CONTENT */}
         <div>
-          <p className="text-orange-500 font-semibold mb-2">About Us</p>
-          <h2 className="text-3xl font-bold mb-8">HOW WE WORK</h2>
+          <p className="text-orange-500 font-semibold mb-2">About Shyam Metalics</p>
+          <h2 className="text-3xl font-bold mb-8">WORLD-CLASS STEEL SOLUTIONS</h2>
 
           <div className="space-y-6">
             <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <div className="text-white text-xl">👥</div>
+                <Factory className="text-white w-6 h-6" />
               </div>
-              <p className="text-gray-600">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-              </p>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">End-to-End Integrated Manufacturing</h4>
+                <p className="text-gray-600">
+                  Complete in-house control from mines to finished products - Sponge Iron, Billets, TMT & Wire Rods with zero waste through 92% by-product recycling.
+                </p>
+              </div>
             </div>
 
             <div className="flex items-start space-x-4">
               <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
-                <div className="text-white text-xl">👥</div>
+                <Zap className="text-white w-6 h-6" />
               </div>
-              <p className="text-gray-600">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-              </p>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">AI & Innovation-Driven Processes</h4>
+                <p className="text-gray-600">
+                  Predictive maintenance achieving 99% uptime, green steel technology trials, and tailored alloys for construction, automotive, and defense sectors.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-start space-x-4">
+              <div className="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                <Recycle className="text-white w-6 h-6" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">Sustainable & Ethical Operations</h4>
+                <p className="text-gray-600">
+                  4MW solar capacity, 2.5M trees planted, 70% local hiring, and ISO-certified quality with real-time ESG reporting driving India's infrastructure growth.
+                </p>
+              </div>
             </div>
           </div>
 
           <p className="text-gray-600 mt-8 mb-8">
-            Sed ut perspiciatis unde omnis iste natus error sit and an voluptatem accusantium doloremque laudantium, then totam rem aperiam, eaque ipsa quae ab illo its meets the.
+            Our customer-centric approach includes just-in-time delivery through pan-India logistics, on-site metallurgical support, and comprehensive after-sales digital tracking for complete product lifecycle management.
           </p>
 
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded font-semibold w-full">

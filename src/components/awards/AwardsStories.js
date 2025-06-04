@@ -1,34 +1,42 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import real1 from '../../assets/awards/real1.jpg';
+import real2 from '../../assets/awards/real2.jpg';
+import real3 from '../../assets/awards/real3.jpg';
+import real4 from '../../assets/awards/real4.jpg';
 
 const AwardsStories = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  
+
   const stories = [
     {
       id: 1,
-      title: "The news Headline",
-      organization: "By XYZ Organization",
-      description: "Their attention to detail and timely delivery made all the difference in our project. andbf Alrit efmab aNlFBI Truly a partner we can count on.'l jHfC Lzrtn lzem re fg fgas fzxarn frgelgerg"
+      title: "Innovation Award Winner",
+      organization: "By Tech Summit",
+      description: "Recognized for developing cutting-edge tech that transformed logistics across rural India.",
+      image: real1,
     },
     {
       id: 2,
-      title: "The news Headline",
-      organization: "By XYZ Organization", 
-      description: "Their attention to detail and timely delivery made all the difference in our project. andbf Alrit efmab aNlFBI Truly a partner we can count on.'l jHfC Lzrtn lzem re fg fgas fzxarn frgelgerg"
+      title: "Social Impact Leader",
+      organization: "By CSR India",
+      description: "Awarded for impactful initiatives in empowering underprivileged students with digital skills.",
+      image: real2,
     },
     {
       id: 3,
-      title: "The news Headline",
-      organization: "By XYZ Organization",
-      description: "Their attention to detail and timely delivery made all the difference in our project. andbf Alrit efmab aNlFBI Truly a partner we can count on.'l jHfC Lzrtn lzem re fg fgas fzxarn frgelgerg"
+      title: "Excellence in Design",
+      organization: "By UX Global",
+      description: "Praised for creating an intuitive and accessible user experience in health-tech applications.",
+      image: real3,
     },
     {
       id: 4,
-      title: "The news Headline",
-      organization: "By XYZ Organization",
-      description: "Their attention to detail and timely delivery made all the difference in our project. andbf Alrit efmab aNlFBI Truly a partner we can count on.'l jHfC Lzrtn lzem re fg fgas fzxarn frgelgerg"
-    }
+      title: "AI Research Champion",
+      organization: "By AI Forum",
+      description: "Honored for pioneering work in AI ethics and sustainable model deployment.",
+      image: real4,
+    },
   ];
 
   const nextSlide = () => {
@@ -49,48 +57,63 @@ const AwardsStories = () => {
           </h2>
           <p className="text-gray-600 text-lg max-w-4xl mx-auto">
             "Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, a bold step forward. 
-            This is more than a wall of fame —It's a tribute to dedication, belief, and resilience."
+            This is more than a wall of fame — it's a tribute to dedication, belief, and resilience."
           </p>
         </div>
 
-        {/* Carousel */}
+        {/* Carousel Navigation */}
         <div className="relative">
-          {/* Navigation Buttons */}
           <button 
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg transition-colors duration-300"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg"
           >
             <ChevronLeft size={24} />
           </button>
-          
           <button 
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg transition-colors duration-300"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-full shadow-lg"
           >
             <ChevronRight size={24} />
           </button>
 
-          {/* Stories Grid */}
-          <div className="mx-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {stories.map((story, index) => (
-                <div key={story.id} className="bg-white rounded-lg overflow-hidden shadow-lg">
-                  {/* Image Placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-orange-400 to-red-500">
-                    {/* Replace with: <img src={`/assets/awards/story-${story.id}.jpg`} alt={story.title} className="w-full h-full object-cover" /> */}
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">
-                      {story.title}
-                    </h3>
-                    <p className="text-orange-500 font-semibold mb-3">
-                      {story.organization}
-                    </p>
-                    <p className="text-gray-600 text-sm leading-relaxed">
-                      {story.description}
-                    </p>
+          {/* Stories Cards */}
+          <div className="mx-8">
+            <div className="flex flex-wrap justify-center gap-6">
+              {stories.map((story) => (
+                <div
+                  key={story.id}
+                  className="bg-white  overflow-hidden shadow-md"
+                  style={{ width: '255.28px', height: '346.34px' }}
+                >
+                  {/* Image */}
+                  <img
+                    src={story.image}
+                    alt={story.title}
+                    style={{
+                      width: '255.28px',
+                      height: '229.07px',
+                      objectFit: 'cover'
+                    }}
+                  />
+
+                  {/* Text Box */}
+                  <div
+                    style={{
+                      width: '247.67px',
+                      height: '117.27px',
+                      paddingTop: '0px',
+                      paddingBottom: '4.2px',
+                      paddingLeft: '4px',
+                      paddingRight: '4px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      gap: '12.68px'
+                    }}
+                  >
+                    <h3 className="text-[16px] font-bold text-gray-900">{story.title}</h3>
+                    <p className="text-orange-500 font-medium text-sm">{story.organization}</p>
+                    <p className="text-gray-600 text-[12px] leading-snug">{story.description}</p>
                   </div>
                 </div>
               ))}

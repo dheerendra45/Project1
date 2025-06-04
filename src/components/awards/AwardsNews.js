@@ -1,4 +1,5 @@
 import React from 'react';
+import newsbg from '../../assets/awards/newsbg.jpg';
 
 const AwardsNews = () => {
   return (
@@ -11,22 +12,29 @@ const AwardsNews = () => {
           </h2>
           <p className="text-gray-600 text-lg max-w-4xl mx-auto">
             "Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, a bold step forward. 
-            This is more than a wall of fame —It's a tribute to dedication, belief, and resilience."
+            This is more than a wall of fame — It's a tribute to dedication, belief, and resilience."
           </p>
         </div>
 
         {/* Featured News Card */}
-        <div className="max-w-6xl mx-auto">
-          <div className="relative bg-black rounded-lg overflow-hidden shadow-2xl">
-            {/* Background Image Placeholder */}
-            <div className="absolute inset-0">
-              {/* Replace with: <img src="/assets/awards/recent-news-bg.jpg" alt="Industrial scene" className="w-full h-full object-cover" /> */}
-              <div className="w-full h-full bg-gradient-to-r from-orange-600 via-red-500 to-yellow-500"></div>
-            </div>
+        <div className="mx-auto" style={{ width: '1168.2px', height: '484px' }}>
+          <div className="relative w-full h-full rounded-lg overflow-hidden shadow-2xl">
             
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-            
+            {/* Background Image */}
+            <img 
+              src={newsbg} 
+              alt="Recent news"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            {/* Custom Gradient Overlay */}
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'linear-gradient(270.04deg, rgba(0, 0, 0, 0) 0.03%, #000000 99.97%)',
+              }}
+            />
+
             {/* Content */}
             <div className="relative z-10 p-12 md:p-16">
               <div className="max-w-2xl">
@@ -37,7 +45,7 @@ const AwardsNews = () => {
                   "Trophies fade, but the stories behind them stay. 
                   Every recognition marks a breakthrough, a bold step forward. 
                   This is more than a wall of fame 
-                  —It's a tribute to dedication, belief"
+                  — It's a tribute to dedication, belief."
                 </p>
               </div>
             </div>
@@ -45,12 +53,7 @@ const AwardsNews = () => {
         </div>
 
         {/* Pagination */}
-        <div className="flex justify-center mt-12">
-          <div className="flex space-x-2">
-            <span className="bg-blue-500 text-white px-3 py-1 rounded text-sm">1440</span>
-            <span className="bg-gray-300 text-gray-700 px-3 py-1 rounded text-sm">1136</span>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

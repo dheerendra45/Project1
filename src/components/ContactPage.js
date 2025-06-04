@@ -1,7 +1,24 @@
-// ContactPage.jsx
-import React from 'react';
+import React, { useState } from 'react';
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+
+  const handleInputChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = () => {
+    console.log('Form submitted:', formData);
+  };
+
   return (
     <div className="w-full bg-gray-100 py-16">
       <div className="container mx-auto px-4">
@@ -18,9 +35,9 @@ const ContactPage = () => {
             </div>
             
             <div className="mb-8">
+              <h1 className="text-3xl font-bold text-gray-800 mb-4">Drop us a line</h1>
               <p className="text-gray-700 mb-4">
-                There are many variations of passages of Lorem Ipsum available, but the majority have 
-                suffered alteration in some form by injected humour.
+                Get in touch with Shyam Metalics & Energy Limited for all your metallurgical and energy requirements.
               </p>
             </div>
             
@@ -33,9 +50,9 @@ const ContactPage = () => {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl mb-2">New York</h3>
-                  <p>42 Mamnoun Street, Saba</p>
-                  <p>Carpet and Antiques Store, UK</p>
+                  <h3 className="font-bold text-xl mb-2">Address</h3>
+                  <p>Trinity Tower, 83 Topsia Road, 7th floor</p>
+                  <p>Kolkata – 700046, West Bengal, India</p>
                 </div>
               </div>
               
@@ -48,8 +65,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl mb-2">Phone Number</h3>
-                  <p>+971 551 579 261</p>
-                  <p>+97 155 596 1659</p>
+                  <p>+91 33 4016 4001</p>
+                  <p>+91 33 4016 4025</p>
                 </div>
               </div>
               
@@ -63,8 +80,8 @@ const ContactPage = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-xl mb-2">Email Address</h3>
-                  <p>Interested in working with us?</p>
-                  <p>support.industrie@gmail.com</p>
+                  <p>compliance@shyamgroup.com</p>
+                  <p>contact@shyamgroup.com</p>
                 </div>
               </div>
               
@@ -87,44 +104,57 @@ const ContactPage = () => {
           <div className="w-full md:w-2/5">
             <div className="bg-orange-500 p-8 rounded-md text-white">
               <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-              <p className="mb-6">The point of using Lorem Ipsum is that it has more-or-less normal</p>
+              <p className="mb-6">Fill out the form and we'll get back to you soon</p>
               
-              <form>
-                <div className="mb-4">
+              <div className="space-y-4">
+                <div>
                   <input 
                     type="text" 
+                    name="fullName"
                     placeholder="Full Name" 
+                    value={formData.fullName}
+                    onChange={handleInputChange}
                     className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
                   />
                 </div>
-                <div className="mb-4">
+                <div>
                   <input 
                     type="email" 
+                    name="email"
                     placeholder="Email Address" 
+                    value={formData.email}
+                    onChange={handleInputChange}
                     className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
                   />
                 </div>
-                <div className="mb-4">
+                <div>
                   <input 
-                    type="text" 
-                    placeholder="Your Inquiry" 
+                    type="tel" 
+                    name="phone"
+                    placeholder="Phone Number" 
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
                   />
                 </div>
-                <div className="mb-4">
+                <div>
                   <textarea 
+                    name="message"
                     placeholder="Write Your Message" 
                     rows="4"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
                   ></textarea>
                 </div>
                 <button 
-                  type="submit" 
+                  type="button" 
+                  onClick={handleSubmit}
                   className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-800 transition duration-300"
                 >
                   Send Message
                 </button>
-              </form>
+              </div>
             </div>
           </div>
         </div>

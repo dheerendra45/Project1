@@ -1,122 +1,234 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { ChevronDown, Search, Menu, X } from "lucide-react";
+
+// Add your original imports back:
 import a1 from "../../assets/location/logo.png";
 import a2 from "../../assets/location/homelocation.png";
-import img3 from "../../assets/location/pillet.png";
-import img4 from "../../assets/location/billet.png";
-import img5 from "../../assets/location/wirerods.png";
-import { ChevronDown, Search, Menu, X } from "lucide-react";
 
 export default function Hero() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openSubmenuIndex, setOpenSubmenuIndex] = useState(null); // for sidebar/mobile
-  const [openMenuIndex, setOpenMenuIndex] = useState(null); // for desktop navbar
-  const [showBusinessMenu, setShowBusinessMenu] = useState(false);
+  const [openSubmenuIndex, setOpenSubmenuIndex] = useState(null);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [activeBusinessSub, setActiveBusinessSub] = useState(null);
+  const [activeNestedSub, setActiveNestedSub] = useState(null);
+  const dropdownRef = useRef(null);
+  const hoverTimeoutRef = useRef(null); // Added timeout reference
+
+  // Remove these lines and use your original imports
+  // const a1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='116' height='55' viewBox='0 0 116 55'%3E%3Crect width='116' height='55' fill='%23ff6b35'/%3E%3Ctext x='58' y='30' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3ELOGO%3C/text%3E%3C/svg%3E";
+  //const a2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='800' fill='url(%23bg)'/%3E%3C/svg%3E";
 
   const closeSidebar = () => {
     setSidebarOpen(false);
     setOpenSubmenuIndex(null);
-    setShowBusinessMenu(false);
-    setOpenMenuIndex(null);
+    setActiveDropdown(null);
+    setActiveBusinessSub(null);
+    setActiveNestedSub(null);
   };
+
+  // Fixed: Added timeout to prevent immediate closing
+  const handleMouseEnter = (index) => {
+    // Clear any existing timeout
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+
+    setActiveDropdown(index);
+    setActiveBusinessSub(null);
+    setActiveNestedSub(null);
+  };
+
+  // Fixed: Added delay before closing dropdown
+  const handleMouseLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150); // 150ms delay to allow mouse movement
+  };
+
+  // Fixed: Added timeout for business submenu
+  const handleBusinessSubEnter = (businessIndex) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setActiveBusinessSub(businessIndex);
+  };
+
+  // Fixed: Added delay for business submenu leave
+  const handleBusinessSubLeave = () => {
+    hoverTimeoutRef.current = setTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }, 150);
+  };
+
+  const handleNestedSubEnter = (nestedIndex) => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+    setActiveNestedSub(nestedIndex);
+  };
+
+  const handleClickOutside = (e) => {
+    if (!dropdownRef.current?.contains(e.target)) {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }
+  };
+
+  const handleNavigation = (href, e) => {
+    if (e) e.preventDefault();
+    if (href && href !== "#") {
+      window.location.href = href;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      // Clean up timeout on unmount
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
+    };
+  }, []);
 
   const navItems = [
     {
       label: "ABOUT US",
-      submenu: [
-        "Company Overview",
-        "Leaderships",
-        "Awards & Achievements",
-        "Testimonials",
-        "News & Events",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Company Overview", href: "/overview" },
+        { name: "Leadership", href: "/leadership" },
+        { name: "Awards and Achievements", href: "/achievement" },
+        { name: "Testimonials", href: "#" },
+        { name: "News and Events", href: "#" },
       ],
     },
     {
       label: "BUSINESS",
-      submenu: [],
-    },
-    { label: "INVESTORS" },
-    {
-      label: "COMMUNITY",
-      submenu: [
-        "CSR",
-        "Knowledge Hub",
-        "Awards and Achievements",
-        "Blogs",
-        "FAQ",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: "Business Overview",
+          href: "/business",
+        },
+        {
+          name: "Steel",
+          href: "#",
+          subItems: [
+            {
+              name: "Carbon Steel",
+              href: "/carbon_steel",
+            },
+            {
+              name: "Cold Rolled",
+              href: "#",
+            },
+            {
+              name: "Stainless Steel",
+              href: "#",
+            },
+            { name: "Specialty Alloys", href: "#" },
+          ],
+        },
+        {
+          name: "Power",
+          href: "#",
+          subItems: [
+            { name: "Captive Power", href: "#" },
+            { name: "Renewable Power", href: "#" },
+          ],
+        },
+        {
+          name: "Aluminium",
+          href: "#",
+          subItems: [
+            { name: "Flat Rolled Products", href: "#" },
+            { name: "Battery Foil", href: "#" },
+          ],
+        },
+        {
+          name: "SEL Tiger",
+          href: "#",
+        },
+        {
+          name: "View All",
+          href: "#",
+        },
       ],
     },
     {
-      label: "SUSTAINBLITY",
-      submenu: ["ESG @ shyam", "Compliance"],
+      label: "INVESTORS",
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: "Financials & Disclosures",
+          href: "#",
+          subItems: [
+            { name: "Financial Performance", href: "#" },
+            { name: "Financial Statements", href: "#" },
+          ],
+        },
+        {
+          name: "Corporate Governance",
+          href: "#",
+          subItems: [
+            { name: "Policies", href: "#" },
+            { name: "Corporate Governance", href: "#" },
+          ],
+        },
+        {
+          name: "Shareholder Information",
+          href: "#",
+          subItems: [
+            { name: "AGM", href: "#" },
+            { name: "Company Notices", href: "#" },
+          ],
+        },
+      ],
+    },
+    {
+      label: "COMMUNITY",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "CSR", href: "#" },
+        { name: "Knowledge Hub", href: "#" },
+        { name: "Blogs", href: "#" },
+        { name: "FAQ", href: "#" },
+      ],
+    },
+    {
+      label: "SUSTAINABILITY",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "ESG @ shyam", href: "#" },
+        { name: "Compliance", href: "#" },
+      ],
     },
     {
       label: "CAREERS",
-      submenu: ["Life@shyam", "Current Openings"],
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Life@shyam", href: "#" },
+        { name: "Current Openings", href: "#" },
+      ],
     },
-    { label: "CONTACT US" },
+    {
+      label: "CONTACT US",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Contact Form", href: "#" },
+        { name: "Company Location", href: "#" },
+      ],
+    },
   ];
-
-  const BusinessSection = () => (
-    <div className="absolute left-0 mt-2 bg-black/90 backdrop-blur-md text-white rounded-md shadow-lg p-4 w-full sm:w-[700px] md:w-[800px] z-50 border border-orange-500">
-      <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-orange-500 gap-4">
-        <div className="space-y-2 px-2">
-          {["Steel", "Power", "Aluminium", "SEL Tiger", "View All"].map(
-            (item, i) => (
-              <div
-                key={i}
-                className="cursor-pointer hover:text-orange-500 select-text"
-              >
-                {item}
-              </div>
-            )
-          )}
-        </div>
-        <div className="space-y-2 px-2">
-          {[
-            "Carbon Steel",
-            "Cold Rolled",
-            "Stainless Steel",
-            "Special Alloys",
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="cursor-pointer hover:text-orange-500 select-text"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-        <div className="space-y-4 px-2">
-          {[img3, img4, img5].map((img, row) => (
-            <div key={row} className="flex gap-2">
-              {[0, 1, 2].map((col) => {
-                const labels = [
-                  ["Pillet", "Spronge Iron", "Pig Iron"],
-                  ["Billet", "Structural Steel", "TMT Bar"],
-                  ["Wire Rods", "Pipes"],
-                ];
-                return (
-                  <div
-                    key={col}
-                    className="flex flex-col items-center text-center w-20"
-                  >
-                    <img
-                      src={img}
-                      alt="item"
-                      className="w-12 h-12 object-contain"
-                    />
-                    <span className="text-xs mt-1 select-text">
-                      {labels[row][col]}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <div
@@ -126,78 +238,174 @@ export default function Hero() {
         backgroundPosition: "center calc(50% - 50px)",
       }}
     >
-      {/* Navbar for large screens */}
-      <div className="hidden lg:flex px-8 py-4 items-center justify-center gap-6">
-        <div className="backdrop-blur-md bg-white/30 rounded-full px-6 flex flex-wrap items-center justify-center gap-6 text-white h-14 sm:h-16 max-w-full">
-          <ol className="flex flex-wrap items-center justify-center gap-6 text-sm sm:text-base relative z-50">
-            <li>
-              <img src={a1} alt="Logo" className="h-8 w-auto" />
-            </li>
-            {navItems.map((item, index) => (
-              <li
-                key={index}
-                className="relative group"
-                onMouseEnter={() => setOpenMenuIndex(index)}
-                onMouseLeave={() => setOpenMenuIndex(null)}
-              >
+      {/* Middle Navbar */}
+      <div
+        className="w-full h-[57px] mt-0 flex items-center justify-between px-8 relative z-30 hidden lg:flex"
+        style={{
+          background: "#FFFFFF26",
+        }}
+      >
+        {/* Logo */}
+        <div className="flex items-center">
+          <div className="text-white px-3 py-2 rounded text-sm font-bold">
+            <img src={a1} className="h-[54.84px] w-[116.53px]" alt="Logo" />
+          </div>
+        </div>
+
+        {/* Navigation Menu */}
+        <div
+          className="flex gap-8 text-white text-sm font-medium"
+          ref={dropdownRef}
+        >
+          {navItems.map((item, index) => (
+            <div
+              key={index}
+              className="relative dropdown-container"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
+                {item.label}
+                {item.hasDropdown && (
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                    <path
+                      d="M1 1l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
+              </span>
+
+              {/* Fixed: Dropdown Menu with proper hover handling */}
+              {item.hasDropdown && activeDropdown === index && (
                 <div
-                  className="flex items-center gap-1 cursor-pointer whitespace-nowrap select-none"
-                  onClick={() => {
-                    if (openMenuIndex === index) {
-                      setOpenMenuIndex(null);
-                      setShowBusinessMenu(false);
-                    } else {
-                      setOpenMenuIndex(index);
-                      if (item.label === "BUSINESS") {
-                        setShowBusinessMenu(true);
-                      } else {
-                        setShowBusinessMenu(false);
-                      }
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  onMouseEnter={() => {
+                    // Clear timeout when entering dropdown
+                    if (hoverTimeoutRef.current) {
+                      clearTimeout(hoverTimeoutRef.current);
+                      hoverTimeoutRef.current = null;
                     }
+                    setActiveDropdown(index);
                   }}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  {item.label}
-                  {(item.submenu && item.submenu.length > 0) ||
-                  item.label === "BUSINESS" ? (
-                    <ChevronDown className="w-4 h-4" />
-                  ) : null}
+                  {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                    <div
+                      key={dropdownIndex}
+                      className="relative"
+                      onMouseEnter={() => {
+                        if (dropdownItem.subItems) {
+                          handleBusinessSubEnter(dropdownIndex);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (dropdownItem.subItems) {
+                          handleBusinessSubLeave();
+                        }
+                      }}
+                    >
+                      <div
+                        className={`flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer ${
+                          dropdownItem.subItems ? "font-medium" : ""
+                        }`}
+                        onClick={(e) => {
+                          if (!dropdownItem.subItems) {
+                            handleNavigation(dropdownItem.href, e);
+                          }
+                        }}
+                      >
+                        <span>{dropdownItem.name}</span>
+                        {dropdownItem.subItems && (
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        )}
+                      </div>
+
+                      {/* Fixed: Sub-menu with proper hover handling */}
+                      {activeBusinessSub === dropdownIndex &&
+                        dropdownItem.subItems && (
+                          <div
+                            className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[200px] ml-1"
+                            onMouseEnter={() => {
+                              // Clear timeout when entering submenu
+                              if (hoverTimeoutRef.current) {
+                                clearTimeout(hoverTimeoutRef.current);
+                                hoverTimeoutRef.current = null;
+                              }
+                              setActiveBusinessSub(dropdownIndex);
+                            }}
+                            onMouseLeave={handleBusinessSubLeave}
+                          >
+                            {dropdownItem.subItems.map((subItem, subIndex) => (
+                              <a
+                                key={subIndex}
+                                href={subItem.href}
+                                className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleNavigation(subItem.href);
+                                }}
+                              >
+                                {subItem.name}
+                              </a>
+                            ))}
+                          </div>
+                        )}
+                    </div>
+                  ))}
                 </div>
-
-                {item.label === "BUSINESS" &&
-                  showBusinessMenu &&
-                  openMenuIndex === index && <BusinessSection />}
-
-                {item.label !== "BUSINESS" &&
-                  item.submenu &&
-                  item.submenu.length > 0 &&
-                  openMenuIndex === index && (
-                    <ul className="absolute left-0 mt-2 bg-black/80 backdrop-blur-md text-white rounded-md shadow-lg p-2 min-w-max z-50">
-                      {item.submenu.map((subItem, subIndex) => (
-                        <li
-                          key={subIndex}
-                          className="px-4 py-2 hover:text-orange-500 flex items-center gap-2 cursor-pointer"
-                        >
-                          <span className="text-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                            →
-                          </span>
-                          <span>{subItem}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-              </li>
-            ))}
-          </ol>
+              )}
+            </div>
+          ))}
         </div>
 
         {/* Search Bar */}
-        <div className="backdrop-blur-md bg-white/30 rounded-full px-4 py-2 flex items-center gap-2 w-full max-w-xs sm:w-auto justify-center text-black h-14 sm:h-16">
-          <Search className="w-4 h-4" />
-          <input
-            type="text"
-            placeholder="Search here"
-            className="bg-transparent focus:outline-none placeholder:text-black text-black text-sm w-full"
-          />
+        <div className="flex items-center gap-4">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            />
+            <svg
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </div>
+          <div className="bg-orange-500 rounded-full p-2">
+            <svg
+              className="w-4 h-4 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z" />
+            </svg>
+          </div>
         </div>
       </div>
 
@@ -242,34 +450,52 @@ export default function Hero() {
                 className="flex items-center justify-between cursor-pointer"
               >
                 <span>{item.label}</span>
-                {(item.submenu && item.submenu.length > 0) ||
-                item.label === "BUSINESS" ? (
+                {item.hasDropdown && (
                   <ChevronDown
                     className={`w-5 h-5 transition-transform duration-200 ${
                       openSubmenuIndex === idx ? "rotate-180" : ""
                     }`}
                   />
-                ) : null}
+                )}
               </div>
 
-              {item.label === "BUSINESS" && openSubmenuIndex === idx && (
-                <div className="mt-2">{BusinessSection()}</div>
-              )}
-
-              {item.submenu &&
-                item.submenu.length > 0 &&
-                openSubmenuIndex === idx && (
-                  <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-700">
-                    {item.submenu.map((subItem, subIdx) => (
-                      <li
-                        key={subIdx}
-                        className="cursor-pointer hover:text-orange-500 transition-colors duration-200"
+              {item.hasDropdown && openSubmenuIndex === idx && (
+                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-700">
+                  {item.dropdownItems.map((dropdownItem, dropdownIdx) => (
+                    <li key={dropdownIdx} className="flex flex-col">
+                      <div
+                        className="cursor-pointer hover:text-orange-500 transition-colors duration-200 flex items-center justify-between"
+                        onClick={(e) => {
+                          if (!dropdownItem.subItems) {
+                            handleNavigation(dropdownItem.href, e);
+                          }
+                        }}
                       >
-                        {subItem}
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                        <span>{dropdownItem.name}</span>
+                        {dropdownItem.subItems && (
+                          <ChevronDown className="w-4 h-4" />
+                        )}
+                      </div>
+                      {dropdownItem.subItems && (
+                        <ul className="pl-4 mt-1 space-y-1">
+                          {dropdownItem.subItems.map((subItem, subIdx) => (
+                            <li
+                              key={subIdx}
+                              className="cursor-pointer hover:text-orange-500 transition-colors duration-200"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleNavigation(subItem.href);
+                              }}
+                            >
+                              {subItem.name}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           ))}
 

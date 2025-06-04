@@ -16,10 +16,13 @@ const HeroSection = () => {
         />
         <div className="relative z-10 flex flex-col items-center justify-center h-full bg-black bg-opacity-50 px-4 text-center text-white">
           <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-            POWERING PROGRESS<br />
-            WITH EVERY TON.
+          We Dream big, We build big
+
+        
+
           </h1>
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded font-semibold">
+          <p>2Ranked Among India’s Top Steel Plants for Quality, Scale, and Innovation</p>
+          <button className="bg-orange-500 hover:bg-orange-600 text-white  mt-2 px-8 py-3 rounded font-semibold">
             View Our Product
           </button>
         </div>
@@ -35,9 +38,8 @@ const HeroSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Our Mission</h3>
             <p className="text-gray-600">
-              Lorem ipsum dolor sit amet consectetur. 
-              Eu condimentum ut ipsum elementum 
-              lectus. In vulputate pulvinar.
+              We Shri. M. P. Agarwal’s values into action—efficiency, sustainability, and dynamic management to world-class steel solutions for a stronger India.
+
             </p>
           </div>
 
@@ -48,9 +50,8 @@ const HeroSection = () => {
             </div>
             <h3 className="text-xl font-bold mb-4">Our Vision</h3>
             <p className="text-gray-600">
-              Lorem ipsum dolor sit amet consectetur. 
-              Eu condimentum ut ipsum elementum 
-              lectus. In vulputate pulvinar.
+              We’re engineering the future of steel through smarter processes, stronger partnerships, and seizing every opportunity to raise the bar for quality and sustainability worldwide.
+
             </p>
           </div>
 

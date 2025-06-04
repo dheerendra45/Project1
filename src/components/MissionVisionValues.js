@@ -9,24 +9,24 @@ import WorkerImage from '../assets/worker.png'; // Placeholder path
 import BackgroundImage from '../assets/mission-vision-bg.png'; // Background image path
 
 function MissionVisionValues() {
-  // Mission, Vision, Values data
+  // Mission, Vision, Values data 
   const sections = [
-    {
-      icon: MissionIcon,
-      title: 'Our Mission',
-      description: 'Lorem ipsum dolor sit amet consectetur. Eu condimentum ut ipsum elementum lectus. In vulputate pulvinar.',
-      image: SteelFactoryImage
-    },
     {
       icon: VisionIcon,
       title: 'Our Vision',
-      description: 'Lorem ipsum dolor sit amet consectetur. Velit ut integer et duis erat platea id quis arcu. Mauris sed consectetur iaculis ac orci.',
+      description: 'We\'re engineering the future of steel through smarter processes, stronger partnerships, and seizing every opportunity to raise the bar for quality and sustainability worldwide.',
+      image: SteelFactoryImage
+    },
+    {
+      icon: MissionIcon,
+      title: 'Our Mission',
+      description: 'We bring Shri. M. P. Agarwal\'s values into action—efficiency, sustainability, and dynamic management to deliver world-class steel solutions for a stronger India.',
       image: HardhatImage
     },
     {
       icon: ValuesIcon,
       title: 'Our Values',
-      description: 'Lorem ipsum dolor sit amet consectetur. In eget lacus amet faucibus sagittis in est etiam. Euismod cursus fusce fusce mattis.',
+      description: 'Built on Integrity & Transparency, Collaboration & Synergy, Ownership & Accountability, and Commitment to Excellence—the foundation of our success.',
       image: WorkerImage
     }
   ];
@@ -55,32 +55,31 @@ function MissionVisionValues() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {sections.map((section, index) => (
             <div 
-              key={index} 
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              style={{ height: '530px' }}
+              key={index}
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
             >
-              {/* Text Content Section */}
-              <div className="p-8 pb-6" style={{ height: '240px' }}>
+              {/* Text Content Section - Now flexible height */}
+              <div className="p-8 pb-6 flex-grow flex flex-col">
                 <div className="flex justify-center mb-6">
                   <img 
-                    src={section.icon} 
-                    alt={section.title} 
-                    className="h-12 w-12 object-contain" 
+                    src={section.icon}
+                    alt={section.title}
+                    className="h-12 w-12 object-contain"
                   />
                 </div>
                 <h3 className="text-2xl font-bold text-center mb-6 text-gray-900">
                   {section.title}
                 </h3>
-                <p className="text-gray-600 text-base text-center leading-relaxed px-2">
+                <p className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow">
                   {section.description}
                 </p>
               </div>
               
-              {/* Image Section */}
-              <div className="relative" style={{ height: '290px' }}>
+              {/* Image Section - Fixed height */}
+              <div className="relative h-72">
                 <img 
-                  src={section.image} 
-                  alt={section.title} 
+                  src={section.image}
+                  alt={section.title}
                   className="w-full h-full object-cover"
                 />
               </div>
