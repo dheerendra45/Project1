@@ -1,71 +1,71 @@
 import React from 'react';
-import WorldMapImage from '../assets/world-map.png'; // Placeholder path
-import IndiaMapImage from '../assets/india-map.jpg'; // Placeholder path
-import icon from '../assets/industry.png'
+import WorldMapImage from '../assets/world-map.png';
+import IndiaMapImage from '../assets/india-map.jpg';
+import icon from '../assets/industry.png';
 
 function LocationsMap() {
-  // Company statistics
   const stats = [
     { label: 'Clients', value: '12K' },
     { label: 'Annual growth', value: '55%' },
     { label: 'No of projects', value: '5K' },
     { label: 'Positive ratings', value: '80%' }
   ];
-     
-  // Global reach data
+
   const globalData = [
     { value: '28', label: 'countries', subLabel: 'Footprint' },
     { value: '09', label: 'Manufacturing', subLabel: 'facilities worldwide' },
     { value: '27', label: 'Manufacturing', subLabel: 'units in India' }
   ];
 
-  // Icon positions for India map (random positions for MP, MH, and South India)
   const iconPositions = [
-    { top: '35%', left: '45%' }, // MP region
-    { top: '42%', left: '48%' }, // MP region
-    { top: '40%', left: '38%' }, // MH region  
-    { top: '58%', left: '42%' }, // MH region
-    { top: '65%', left: '35%' }, // South India
-    { top: '80%', left: '40%' }  // South India
+    { top: '35%', left: '45%' },
+    { top: '42%', left: '48%' },
+    { top: '40%', left: '38%' },
+    { top: '58%', left: '42%' },
+    { top: '65%', left: '35%' },
+    { top: '80%', left: '40%' }
   ];
 
   return (
     <div className="py-12 bg-white">
-     <div className="w-full max-w-7xl mx-auto px-1">
-
-        <h2 className="text-orange-500 text-xl mb-1">Locations</h2>
+      <div className="w-full max-w-7xl mx-auto px-4">
         
-        {/* Centered Statistics Box with exact specifications */}
+        {/* Title & Description with Button Row */}
+        <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
+          <div>
+            <h2 className="text-3xl font-semibold text-black mb-2">Locations</h2>
+            <p className="text-gray-700 max-w-xl">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </p>
+          </div>
+          <button className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors">
+            View All
+            <span className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center">
+              →
+            </span>
+          </button>
+        </div>
+
+        {/* Statistics Box with Vertical Dividers */}
         <div className="flex justify-center mb-12">
-          <div 
-            className="bg-gray-50 shadow-sm"
-            style={{
-              width: '1160px',
-              height: '149.46px',
-              borderRadius: '10.89px',
-              paddingTop: '21.78px',
-              paddingRight: '43.57px',
-              paddingBottom: '21.78px',
-              paddingLeft: '43.57px',
-              gap: '65.35px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}
-          >
+          <div className="bg-gray-50 shadow-sm rounded-xl flex justify-between items-center px-10 py-6 w-full max-w-[1160px]">
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <p className="text-gray-700 text-base mb-2">{stat.label}</p>
-                <p className="text-orange-500 text-4xl font-bold">{stat.value}</p>
+              <div
+                key={index}
+                className={`text-center px-4 ${index < stats.length - 1 ? 'border-r border-gray-400' : ''}`}
+              >
+                <p className="text-gray-700 text-base mb-1">{stat.label}</p>
+                <p className="text-orange-500 text-3xl font-bold">{stat.value}</p>
               </div>
             ))}
           </div>
         </div>
-                
-        {/* Maps and Global Presence */}
-        <div className="flex">
+
+        {/* Maps Section */}
+        <div className="flex flex-col lg:flex-row gap-8">
+
           {/* Global Data */}
-          <div className="w-1/4">
+          <div className="lg:w-1/4">
             {globalData.map((item, index) => (
               <div key={index} className="flex items-start mb-6">
                 <div className="text-orange-500 font-bold text-lg mr-2">{item.value}</div>
@@ -75,30 +75,28 @@ function LocationsMap() {
                 </div>
               </div>
             ))}
-                        
             <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600 transition-colors">
               View Global Presence
             </button>
           </div>
-                     
+
           {/* World Map */}
-          <div className="w-1/2">
+          <div className="lg:w-1/2">
             <img src={WorldMapImage} alt="World Map" className="w-full" />
           </div>
-                     
+
           {/* India Map with Icons */}
-          <div className="w-1/4 relative">
+          <div className="lg:w-1/4 relative">
             <img src={IndiaMapImage} alt="India Map" className="w-full" />
-            {/* Industry Icons placed randomly across MP, MH, and South India */}
-            {iconPositions.map((position, index) => (
+            {iconPositions.map((pos, idx) => (
               <img
-                key={index}
+                key={idx}
                 src={icon}
                 alt="Industry Icon"
                 className="absolute"
                 style={{
-                  top: position.top,
-                  left: position.left,
+                  top: pos.top,
+                  left: pos.left,
                   width: '22px',
                   height: '22px',
                   transform: 'translate(-50%, -50%)'

@@ -1,4 +1,3 @@
-// components/MissionVisionValues.js - Mission, Vision, and Values Component
 import React from 'react';
 import MissionIcon from '../assets/mission-icon.png'; // Placeholder path
 import VisionIcon from '../assets/vision-icon.png'; // Placeholder path
@@ -6,10 +5,8 @@ import ValuesIcon from '../assets/values-icon.png'; // Placeholder path
 import SteelFactoryImage from '../assets/steel-factory.png'; // Placeholder path
 import HardhatImage from '../assets/hardhat.png'; // Placeholder path
 import WorkerImage from '../assets/worker.png'; // Placeholder path
-import BackgroundImage from '../assets/mission-vision-bg.png'; // Background image path
 
 function MissionVisionValues() {
-  // Mission, Vision, Values data 
   const sections = [
     {
       icon: VisionIcon,
@@ -32,35 +29,29 @@ function MissionVisionValues() {
   ];
 
   return (
-    <div 
-      className="relative py-16 px-4 overflow-hidden"
-      style={{
-        backgroundImage: `url(${BackgroundImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'left center',
-        backgroundRepeat: 'no-repeat'
-      }}
-    >
-      {/* Semi-transparent overlay */}
-      <div 
-        className="absolute inset-0"
-        style={{
-          background: '#D5D5D5A6', // 85% opacity overlay
-          opacity: 0.85
-        }}
-      ></div>
-      
+    <div className="relative py-16 px-4 bg-gray-100 overflow-hidden">
+      {/* Heading Section */}
+      <div className="text-center mb-12">
+        <h1 className="text-orange-500 font-semibold uppercase mb-2">BRAND SLOGAN</h1>
+        <h1 className="text-2xl text-black font-bold">
+          Lorem Ipsum is Simply dummy text of <br /> The Printing
+        </h1>
+      </div>
+
       {/* Content container */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {sections.map((section, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col relative"
             >
-              {/* Text Content Section - Now flexible height */}
-              <div className="p-8 pb-6 flex-grow flex flex-col">
-                <div className="flex justify-center mb-6">
+              {/* Orange horizontal line at the top of the section */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-orange-500 rounded-tr-lg rounded-tl-lg"></div>
+
+              {/* Text Content Section */}
+              <div className="p-8 pt-6 pb-6 flex-grow flex flex-col">
+                <div className="flex justify-center mb-6 mt-2">
                   <img 
                     src={section.icon}
                     alt={section.title}
@@ -75,7 +66,7 @@ function MissionVisionValues() {
                 </p>
               </div>
               
-              {/* Image Section - Fixed height */}
+              {/* Image Section */}
               <div className="relative h-72">
                 <img 
                   src={section.image}

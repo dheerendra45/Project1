@@ -22,10 +22,11 @@ const HomePage = () => {
     <div>
        
       <Hero />
-      <MissionVisionValues />
       <AboutUs />
-      <BusinessAreas />
+      <MissionVisionValues />
       <LocationsMap />
+      <BusinessAreas />
+      
       <EnvironmentSection />
        <CSRPage />
       <AnimatedBoardMembers />

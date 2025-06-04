@@ -1,195 +1,120 @@
 import React, { useState } from 'react';
-import LaserCuttingImage from '../assets/laser-cutting.jpg';
-import WorkerImage from '../assets/factory-worker.png';
+import a1 from '../assets/aboutUs.png';
+import a2 from "../assets/1.png";
+import a3 from "../assets/2.png";
+import a4 from "../assets/3.png";
+import a5 from "../assets/4.png";
+import a6 from "../assets/5.png";
 
-function AboutUs() {
-  const [selectedYear, setSelectedYear] = useState(2013);
+export default function AboutUs() {
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const timelineData = [
-    { 
-      year: 2013, 
-      title: "Lighting the Spark",
-      description: "Igniting India's Steel Revolution - Founded as a visionary enterprise with world-class steel plant ambitions.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2014, 
-      title: "Doubling Down",
-      description: "Strengthened foundation and expanded operational capabilities with strategic investments.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2015, 
-      title: "Powering Progress",
-      description: "Enhanced production capacity and established key partnerships for sustainable growth.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2016, 
-      title: "Precision Scaling",
-      description: "Implemented precision manufacturing processes and scaled operations strategically.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2017, 
-      title: "Breaking Barriers",
-      description: "Overcame industry challenges and set new benchmarks in steel production efficiency.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2019, 
-      title: "Engineering Futures",
-      description: "Invested in cutting-edge technology and sustainable manufacturing practices.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2020, 
-      title: "Pandemic Resilience",
-      description: "Demonstrated exceptional resilience during global challenges while maintaining operations.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2021, 
-      title: "IPO Milestone",
-      description: "Successfully went public, marking a significant milestone in our growth journey.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2022, 
-      title: "Product Innovation",
-      description: "Launched innovative steel products and expanded our market presence significantly.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2023, 
-      title: "13 MTPA Benchmark",
-      description: "Achieved 13 MTPA production capacity, establishing ourselves among India's top steel producers.",
-      image: LaserCuttingImage
-    },
-    { 
-      year: 2024, 
-      title: "Multi-Metal Expansion",
-      description: "Diversified into multi-metal production, expanding beyond traditional steel manufacturing.",
-      image: LaserCuttingImage
-    }
+  const messages = [
+    "Empowering industries with innovation.",
+    "Trusted by thousands across the nation.",
+    "Quality and strength you can count on.",
+    "Engineering the future of steel.",
+    "Sustainable solutions for tomorrow.",
+    "Built on legacy, powered by vision.",
   ];
 
-  const selectedData = timelineData.find(item => item.year === selectedYear);
+  const years = ["1848", "1902", "1964", "1998", "2008", "2023"];
+  const galleryImages = [a2, a3, a4, a5, a6, a6];
 
   return (
-    <div className="bg-white py-12">
-      {/* Main Content Section */}
-      <div className="w-full max-w-7xl mx-auto px-4">
-        <div className="flex gap-8 mb-20">
-          {/* Left Content */}
-          <div className="w-1/3 relative">
-            <p className="text-orange-500 text-xl mb-2 font-bold text-[24px] tracking-[4.3px] leading-[30.01px] font-['Helvetica_Neue']">
-              About Us
-            </p>
-
-            <h2 className="text-[36px] leading-[50.4px] font-bold tracking-[0%] align-middle font-['LEMON_MILK'] mb-6">
-              HOW WE STARTED
-            </h2>
-
-            <p className="font-[400] text-[24px] leading-[40.01px] tracking-[0%] font-['Manrope'] mb-4 text-gray-800">
-              Shyam Metalics Journey
-            </p>
- 
-            <p className="font-[300] text-[18px] leading-[30.01px] tracking-[0%] font-['Manrope'] text-gray-600 mb-8">
-              Founded as a visionary enterprise, Shyam Metalics embarked on its journey to establish world-class steel plants in India. Under the leadership of our promoters, we pioneered an Integrated Steel Plant model that combines efficiency with sustainability. From our early days to becoming a publicly listed company, we've maintained an unwavering focus on quality and innovation.
-            </p>
- 
-            {/* Positioned Info Box */}
-            <div className="absolute top-[450px] bg-orange-50 border-l-4 border-orange-500 p-4 w-80 shadow-sm">
-              <p className="text-sm text-gray-700 font-medium">
-                Today, we stand among India's most respected steel producers, delivering excellence from raw material to finished product.
-              </p>
-            </div>
-          </div>
- 
-          {/* Center Image */}
-          <div className="w-1/3 px-4">
-            <div className="h-[500px] overflow-hidden rounded-lg shadow-lg">
-              <img
-                src={LaserCuttingImage}
-                alt="Laser Cutting Machine"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
- 
-          {/* Right Image */}
-          <div className="w-1/3">
-            <div className="h-[500px] overflow-hidden rounded-lg shadow-lg">
-              <img
-                src={WorkerImage}
-                alt="Factory Worker"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </div>
+    <div className="p-8">
+      {/* ABOUT US Section */}
+      <div className="flex flex-col lg:flex-row items-start gap-8">
+        {/* Left Text Section */}
+        <div className="lg:w-1/2 text-black space-y-4">
+          <h1 className="text-orange-500 text-xl font-semibold">ABOUT US</h1>
+          <h1 className="text-2xl font-bold leading-snug">
+            A Steel Company With Integrated <br /> Operations.
+          </h1>
+          <p>
+            Shyam Metalics is the 6th largest metal producing company based in India providing end-to-end solutions with integrated capabilities (Source: CRISIL Report) with a focus on long steel products and ferro alloys...
+          </p>
+          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+            Read More -&gt;
+          </button>
         </div>
 
-        {/* Timeline Section */}
-        <div className="relative px-4">
-          <h3 className="text-2xl font-bold text-center mb-12 text-gray-800">Our Journey Through The Years</h3>
-          
-          {/* Timeline Container */}
-          <div className="relative">
-            {/* Horizontal Line */}
-            <div className="h-1 bg-orange-500 w-full absolute top-4 left-0"></div>
- 
-            {/* Timeline Points */}
-            <div className="flex justify-between relative z-10 mb-8">
-              {timelineData.map((item, index) => (
-                <div key={index} className="flex flex-col items-center cursor-pointer group" onClick={() => setSelectedYear(item.year)}>
-                  <div className={`w-8 h-8 rounded-full ${selectedYear === item.year ? 'bg-orange-500' : 'bg-gray-300'} flex items-center justify-center transition-all duration-300 hover:scale-110`}>
-                    {selectedYear === item.year && <div className="w-4 h-4 rounded-full bg-white" />}
-                  </div>
-                  <span className={`mt-4 font-semibold transition-colors duration-300 ${selectedYear === item.year ? 'text-orange-500' : 'text-gray-500'} group-hover:text-orange-400`}>
-                    {item.year}
-                  </span>
+        {/* Image and Stats Section */}
+        <div className="lg:w-1/2 flex flex-col items-center">
+          <img src={a1} alt="About Us" className="w-full max-w-md" />
+          <div className="flex gap-6 mt-6">
+            {[
+              { title: '16,660', desc: 'Employee Strength' },
+              { title: 'AA/Stable', desc: 'Credit Rating' },
+              { title: '15.13 MTPA', desc: 'Production Capacity' },
+            ].map((stat, i) => (
+              <div key={i} className="border border-orange-500 p-4 rounded-lg shadow-lg bg-white w-40 text-center">
+                <div className="flex items-center justify-center gap-2 text-xl font-bold text-black mb-1">
+                  <span className="text-orange-500 text-2xl">↑</span>
+                  <h1>{stat.title}</h1>
                 </div>
-              ))}
-            </div>
+                <p>{stat.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-            {/* Selected Year Details Card */}
-            {selectedData && (
-              <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mt-8 max-w-4xl mx-auto">
-                <div className="flex gap-6">
-                  {/* Image */}
-                  <div className="w-1/3">
-                    <div className="h-48 overflow-hidden rounded-lg">
-                      <img
-                        src={selectedData.image}
-                        alt={selectedData.title}
-                        className="w-full h-full object-cover"
-                      />
+      {/* Timeline Gallery with Horizontal Line */}
+      <div className="relative mt-20">
+        {/* Orange Horizontal Line - passes vertically through selected image center */}
+        <div
+          className="absolute left-0 right-0 h-1 bg-orange-500 z-0"
+          style={{ top: 'calc(50% + 12px)' }}
+        />
+
+        {/* Timeline Gallery */}
+        <div className="relative z-10 flex justify-between items-center gap-4 max-w-6xl mx-auto">
+          {galleryImages.map((img, index) => {
+            const isActive = index === activeIndex;
+
+            return (
+              <div
+                key={index}
+                onClick={() => setActiveIndex(index)}
+                className="flex flex-col items-center gap-1 cursor-pointer"
+              >
+                {/* For active: message on top, year below it, both centered above the image */}
+                {isActive && (
+                  <>
+                    <div className="mb-1 bg-orange-500 text-white text-xs font-semibold px-2 py-1 rounded shadow whitespace-nowrap">
+                      {messages[index]}
                     </div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className="w-2/3">
-                    <div className="flex items-center gap-3 mb-4">
-                      <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                        {selectedData.year}
-                      </span>
-                      <h4 className="text-2xl font-bold text-gray-800">
-                        {selectedData.title}
-                      </h4>
+                    <div className="text-orange-600 font-semibold mb-2 whitespace-nowrap">
+                      {years[index]}
                     </div>
-                    <p className="text-gray-600 leading-relaxed text-lg">
-                      {selectedData.description}
-                    </p>
+                  </>
+                )}
+
+                {/* For inactive: only year visible above, with bottom margin */}
+                {!isActive && (
+                  <div className="text-orange-600 font-semibold mb-6 whitespace-nowrap">
+                    {years[index]}
                   </div>
+                )}
+
+                {/* Image container with fixed size and shape */}
+                <div
+                  className={`w-16 h-16 rounded-full p-1 flex items-center justify-center transition-all duration-300
+                    ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
+                >
+                  <img
+                    src={img}
+                    alt={`img-${index}`}
+                    className={`object-contain transition-transform duration-300
+                      ${isActive ? 'translate-y-0' : '-translate-y-3'}`}
+                  />
                 </div>
               </div>
-            )}
-          </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
-
-export default AboutUs;
