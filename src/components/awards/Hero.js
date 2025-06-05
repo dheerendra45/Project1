@@ -1,15 +1,55 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import bg from '../../assets/awards/bg.jpg';
+
+// Animation Variants
+const headingVariant = {
+  hidden: { opacity: 0, x: -100 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const paragraphVariant = {
+  hidden: { opacity: 0, x: -80 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: 0.3,
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+};
+
+const buttonVariant = {
+  hidden: { opacity: 0, y: -50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.6,
+      duration: 0.8,
+      ease: 'easeOut',
+    },
+  },
+};
 
 const AwardsHero = () => {
   return (
-    <div className="relative h-[553px] bg-gray-900 overflow-hidden">
+    <div className="relative h-[553px] sm:h-[600px] md:h-[700px] bg-gray-900 overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={bg} 
-          alt="Industrial sparks" 
-          className="w-full h-full object-cover" 
+        <img
+          src={bg}
+          alt="Industrial sparks"
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -18,19 +58,39 @@ const AwardsHero = () => {
 
       {/* Content Overlay */}
       <div className="relative z-10 h-full flex items-center">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-4xl">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            <motion.h1
+              variants={headingVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}  // <--- Animate every time in view
+              className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 sm:mb-6"
+            >
               NEWS & ACHIEVEMENTS
-            </h1>
-            <p className="text-lg text-white mb-8 max-w-3xl leading-relaxed">
+            </motion.h1>
+
+            <motion.p
+              variants={paragraphVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="text-base sm:text-lg text-white mb-6 sm:mb-8 max-w-3xl leading-relaxed"
+            >
               "Recognizing milestones that define our journey — a showcase of excellence. 
-              Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, a bold step forward. 
-              This is more than a wall of fame — It's a tribute to dedication, belief, and resilience."
-            </p>
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
+              Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, 
+              a bold step forward. This is more than a wall of fame — It's a tribute to dedication, belief, and resilience."
+            </motion.p>
+
+            <motion.button
+              variants={buttonVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors duration-300"
+            >
               Learn More
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
