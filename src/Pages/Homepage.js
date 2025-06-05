@@ -32,7 +32,7 @@ const HomePage = () => {
       <EnvironmentSection />
       <TestimonialHomePage />
        <CSRPage />
-      {/* <AnimatedBoardMembers /> */}
+    
       <NewsPage />
       <Environment/>
       
