@@ -254,14 +254,14 @@ const ProductsSection = () => {
 
         {/* ENERGY Section */}
         {renderProductSection(
-          'ENERGY', 
+          'Others', 
           activeTabEnergy, 
           setActiveTabEnergy, 
           energyTabs, 
           energyProducts, 
           energy,
           energyRef,
-          'energy'
+          'Others'
         )}
       </div>
 
