@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import a1 from "./images-testimonial-homepage/1.png";
 import a2 from "./images-testimonial-homepage/2.png";
 import a3 from "./images-testimonial-homepage/3.png";
@@ -12,14 +14,12 @@ import a11 from "./images-testimonial-homepage/11.png";
 import a12 from "./images-testimonial-homepage/12.png";
 import a13 from "./images-testimonial-homepage/13.png";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-
 const TestimonialHomePage = () => {
   // Images arrays
   const leftMembers = [a1, a2, a3, a4, a5];
   const rightMembers = [a6, a7, a8, a9, a10];
   const topMembers = [a11, a12, a13];
+  const allMembers = [...leftMembers, ...topMembers, ...rightMembers];
 
   // State to track current testimonial
   const [currentTestimonial, setCurrentTestimonial] = useState({
@@ -126,88 +126,160 @@ const TestimonialHomePage = () => {
     );
   };
 
-  return (
-    <div
-      className="bg-gray-50 py-5 overflow-hidden relative"
-      style={{ height: "735px", margin: "0 auto" }}
-    >
-      <div
-        className="relative h-full"
-        style={{ top: "20px", left: "20px", width: "1400px", height: "695px" }}
-      >
-        {/* Left Side Images */}
-        {renderImageSection(
-          leftMembers,
-          [
-            { top: 58, left: 0 },
-            { top: 233, left: 0 },
-            { top: 0, left: 143 },
-            { top: 171, left: 143 },
-            { top: 73, left: 287 },
-          ],
-          {
-            width: "419px",
-            height: "395px",
-            top: "50px",
-            left: "40px",
-          },
-          0
-        )}
-
-        {/* Center Images */}
-        {renderImageSection(
-          topMembers,
-          [
-            { top: 5, left: 0 },
-            { top: 42, left: 142 },
-            { top: 0, left: 285 },
-          ],
-          {
-            width: "418px",
-            height: "204px",
-            top: "50px",
-            left: "480px",
-          },
-          5
-        )}
-
-        {/* Right Side Images */}
-        {renderImageSection(
-          rightMembers,
-          [
-            { top: 73, left: 0 },
-            { top: 0, left: 144 },
-            { top: 192, left: 144 },
-            { top: 59, left: 287 },
-            { top: 235, left: 287 },
-          ],
-          {
-            width: "419px",
-            height: "396px",
-            top: "50px",
-            left: "900px",
-          },
-          8
-        )}
-
-        {/* Center Content */}
-        <div className="flex items-end justify-center min-h-screen pb-[75px]">
-          <div
-            className="text-center space-y-8 relative z-10 max-w-4xl pl-12"
-            style={{ marginLeft: "-100px" }}
+  const renderMobileImageGrid = () => {
+    return (
+      <div className="grid grid-cols-4 gap-3 px-4 mb-8">
+        {allMembers.map((src, index) => (
+          <motion.div
+            key={index}
+            className="overflow-hidden shadow-lg cursor-pointer rounded-lg aspect-[4/5]"
+            onTouchStart={() => handleImageHover(index)}
+            onMouseEnter={() => handleImageHover(index)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 1.05 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            {/* Static Header */}
-            <div className="space-y-4">
-              <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
-                TESTIMONIALS
-              </p>
+            <img
+              src={src}
+              alt={`Team member ${index + 1}`}
+              className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out hover:brightness-110"
+            />
+          </motion.div>
+        ))}
+      </div>
+    );
+  };
 
-              <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900">
-                Voices of Trust in Shyam Metalics
-              </h2>
+  return (
+    <>
+      {/* Desktop Version */}
+      <div
+        className="hidden lg:block bg-gray-50 py-5 overflow-hidden relative"
+        style={{ height: "735px", margin: "0 auto" }}
+      >
+        <div
+          className="relative h-full"
+          style={{
+            top: "20px",
+            left: "20px",
+            width: "1400px",
+            height: "695px",
+          }}
+        >
+          {/* Left Side Images */}
+          {renderImageSection(
+            leftMembers,
+            [
+              { top: 58, left: 0 },
+              { top: 233, left: 0 },
+              { top: 0, left: 143 },
+              { top: 171, left: 143 },
+              { top: 73, left: 287 },
+            ],
+            {
+              width: "419px",
+              height: "395px",
+              top: "50px",
+              left: "40px",
+            },
+            0
+          )}
+
+          {/* Center Images */}
+          {renderImageSection(
+            topMembers,
+            [
+              { top: 5, left: 0 },
+              { top: 42, left: 142 },
+              { top: 0, left: 285 },
+            ],
+            {
+              width: "418px",
+              height: "204px",
+              top: "50px",
+              left: "480px",
+            },
+            5
+          )}
+
+          {/* Right Side Images */}
+          {renderImageSection(
+            rightMembers,
+            [
+              { top: 73, left: 0 },
+              { top: 0, left: 144 },
+              { top: 192, left: 144 },
+              { top: 59, left: 287 },
+              { top: 235, left: 287 },
+            ],
+            {
+              width: "419px",
+              height: "396px",
+              top: "50px",
+              left: "900px",
+            },
+            8
+          )}
+
+          {/* Center Content */}
+          <div className="flex items-end justify-center min-h-screen pb-[75px]">
+            <div
+              className="text-center space-y-8 relative z-10 max-w-4xl pl-12"
+              style={{ marginLeft: "-100px" }}
+            >
+              {/* Static Header */}
+              <div className="space-y-4">
+                <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
+                  TESTIMONIALS
+                </p>
+
+                <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900">
+                  Voices of Trust in Shyam Metalics
+                </h2>
+              </div>
+
+              {/* Dynamic Description with Animation */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTestimonial.author}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="text-gray-600 text-lg max-w-2xl mx-auto"
+                >
+                  <p>
+                    "{currentTestimonial.text}"
+                    <br />
+                    <span className="mt-4 block font-semibold">
+                      {currentTestimonial.author}
+                    </span>
+                  </p>
+                </motion.div>
+              </AnimatePresence>
             </div>
+          </div>
+        </div>
+      </div>
 
-            {/* Dynamic Description with Animation */}
+      {/* Mobile Version */}
+      <div className="lg:hidden bg-gray-50 py-8 px-4 min-h-screen">
+        <div className="max-w-md mx-auto">
+          {/* Header */}
+          <div className="text-center space-y-4 mb-8">
+            <p className="text-orange-500 font-semibold tracking-wide text-sm">
+              TESTIMONIALS
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              Voices of Trust in Shyam Metalics
+            </h2>
+          </div>
+
+          {/* Mobile Image Grid */}
+          {renderMobileImageGrid()}
+
+          {/* Dynamic Testimonial */}
+          <div className="text-center">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial.author}
@@ -215,21 +287,16 @@ const TestimonialHomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="text-gray-600 text-lg max-w-2xl mx-auto"
+                className="text-gray-600 text-base"
               >
-                <p>
-                  "{currentTestimonial.text}"
-                  <br />
-                  <span className="mt-4 block font-semibold">
-                    {currentTestimonial.author}
-                  </span>
-                </p>
+                <p className="mb-4">"{currentTestimonial.text}"</p>
+                <p className="font-semibold">{currentTestimonial.author}</p>
               </motion.div>
             </AnimatePresence>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
