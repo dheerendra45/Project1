@@ -53,32 +53,32 @@ export default function AboutUs() {
   }, [galleryImages.length, isHovering]);
 
   return (
-    <div className="p-8">
+    <div className="p-4 sm:p-6 lg:p-8">
       {/* ABOUT US Section */}
-      <div className="flex flex-col lg:flex-row items-start gap-8">
+      <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
         {/* Left Text Section */}
         <motion.div 
           key={activeIndex}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="lg:w-1/2 text-black space-y-6"
+          className="lg:w-1/2 text-black space-y-4 lg:space-y-6"
         >
-          <h1 className="text-orange-500 text-xl font-semibold">ABOUT US</h1>
-          <h1 className="text-3xl font-bold leading-snug">
-            A Steel Company With Integrated <br /> Operations.
+          <h1 className="text-orange-500 text-lg sm:text-xl font-semibold">ABOUT US</h1>
+          <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-snug">
+            A Steel Company With Integrated <br className="hidden sm:block" /> Operations.
           </h1>
-          <p className="text-lg mb-6">
+          <p className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed">
             {aboutTexts[activeIndex]}
           </p>
-          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition text-sm sm:text-base">
             Read More -&gt;
           </button>
         </motion.div>
 
         {/* Image and Stats Section */}
         <motion.div 
-          className="lg:w-1/2 flex flex-col items-center"
+          className="lg:w-1/2 flex flex-col items-center w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
@@ -88,25 +88,27 @@ export default function AboutUs() {
               key={activeIndex}
               src={aboutImages[activeIndex]}
               alt="About Us"
-              className="w-full max-w-md"
+              className="w-full max-w-sm sm:max-w-md"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.7 }}
             />
           </AnimatePresence>
-          <div className="flex gap-6 mt-6">
+          
+          {/* Stats Cards - Responsive Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-6 w-full max-w-2xl">
             {[
               { title: statsData[activeIndex].employee, desc: 'Employee Strength' },
               { title: statsData[activeIndex].rating, desc: 'Credit Rating' },
               { title: statsData[activeIndex].capacity, desc: 'Production Capacity' },
             ].map((stat, i) => (
-              <div key={i} className="border border-orange-500 p-4 rounded-lg shadow-lg bg-white w-40 text-center">
-                <div className="flex items-center justify-center gap-2 text-xl font-bold text-black mb-1">
-                  <span className="text-orange-500 text-2xl">↑</span>
-                  <h1>{stat.title}</h1>
+              <div key={i} className="border border-orange-500 p-3 sm:p-4 rounded-lg shadow-lg bg-white text-center">
+                <div className="flex items-center justify-center gap-2 text-lg sm:text-xl font-bold text-black mb-1">
+                  <span className="text-orange-500 text-xl sm:text-2xl">↑</span>
+                  <h1 className="text-sm sm:text-base lg:text-lg">{stat.title}</h1>
                 </div>
-                <p>{stat.desc}</p>
+                <p className="text-xs sm:text-sm lg:text-base text-gray-600">{stat.desc}</p>
               </div>
             ))}
           </div>
@@ -114,83 +116,151 @@ export default function AboutUs() {
       </div>
 
       {/* Timeline Gallery with Horizontal Line */}
-      <div className="relative mt-20">
-        {/* Orange Horizontal Line - passes vertically through selected image center */}
+      <div className="relative mt-12 sm:mt-16 lg:mt-20">
+        {/* Orange Horizontal Line - responsive positioning */}
         <div
-          className="absolute left-0 right-0 h-1 bg-orange-500 z-0"
-          style={{ top: 'calc(50% + 12px)' }}
+          className="absolute left-0 right-0 h-0.5 sm:h-1 bg-orange-500 z-0"
+          style={{ 
+            top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
+          }}
         />
 
-        {/* Timeline Gallery */}
-        <div className="relative z-10 flex justify-between items-center gap-4 max-w-6xl mx-auto">
-          {galleryImages.map((img, index) => {
-            const isActive = index === activeIndex;
+        {/* Timeline Gallery - Responsive Layout */}
+        <div className="relative z-10 w-full">
+          {/* Desktop/Tablet Timeline */}
+          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pb-4">
+            {galleryImages.map((img, index) => {
+              const isActive = index === activeIndex;
 
-            return (
-              <motion.div
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-                className="flex flex-col items-center cursor-pointer"
-                whileHover={{ scale: 1.05 }}
-                transition={{ type: 'spring', stiffness: 300 }}
-              >
-                {/* Fixed height container for message/year to prevent layout shift */}
-                <div className="h-[72px] flex flex-col items-center justify-end mb-1">
-                  <AnimatePresence mode="wait">
-                    {isActive ? (
-                      <motion.div
-                        key={`active-${index}`}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center"
-                      >
-                        <div className="mb-1 bg-orange-500 text-white text-sm font-semibold px-3 py-2 rounded-md shadow-lg whitespace-nowrap w-max border-2 border-orange-600">
-                          {messages[index]}
-                        </div>
-                        <div className="text-orange-600 font-semibold whitespace-nowrap text-lg">
-                          {years[index]}
-                        </div>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key={`inactive-${index}`}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-orange-600 font-semibold whitespace-nowrap text-lg h-[36px] flex items-end"
-                      >
-                        {years[index]}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-
-                {/* Image container - will not shift because parent height is fixed */}
+              return (
                 <motion.div
-                  className={`w-16 h-16 rounded-full p-1 flex items-center justify-center transition-colors duration-300
-                    ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
-                  layout
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  onMouseEnter={() => setIsHovering(true)}
+                  onMouseLeave={() => setIsHovering(false)}
+                  className="flex flex-col items-center cursor-pointer flex-shrink-0"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
                 >
-                  <motion.img
-                    src={img}
-                    alt={`img-${index}`}
-                    className="object-contain"
-                    animate={{
-                      y: isActive ? 0 : -12,
-                      scale: isActive ? 1.1 : 0.9
-                    }}
+                  {/* Fixed height container for message/year */}
+                  <div className="h-16 sm:h-20 lg:h-[72px] flex flex-col items-center justify-end mb-1">
+                    <AnimatePresence mode="wait">
+                      {isActive ? (
+                        <motion.div
+                          key={`active-${index}`}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3 }}
+                          className="flex flex-col items-center"
+                        >
+                          <div className="mb-1 bg-orange-500 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 sm:py-2 rounded-md shadow-lg whitespace-nowrap w-max border-2 border-orange-600 max-w-[180px] text-center">
+                            {messages[index]}
+                          </div>
+                          <div className="text-orange-600 font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg">
+                            {years[index]}
+                          </div>
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key={`inactive-${index}`}
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.3 }}
+                          className="text-orange-600 font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg h-6 sm:h-8 lg:h-[36px] flex items-end"
+                        >
+                          {years[index]}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Image container */}
+                  <motion.div
+                    className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full p-1 flex items-center justify-center transition-colors duration-300
+                      ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
+                    layout
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                  />
+                  >
+                    <motion.img
+                      src={img}
+                      alt={`img-${index}`}
+                      className="object-contain w-full h-full"
+                      animate={{
+                        y: isActive ? 0 : -8,
+                        scale: isActive ? 1.1 : 0.9
+                      }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    />
+                  </motion.div>
                 </motion.div>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Mobile Timeline - Vertical Layout */}
+          <div className="sm:hidden">
+            {/* Current Active Item Display */}
+            <div className="text-center mb-6">
+              <div className="bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-md shadow-lg inline-block mb-2">
+                {messages[activeIndex]}
+              </div>
+              <div className="text-orange-600 font-semibold text-lg">
+                {years[activeIndex]}
+              </div>
+            </div>
+
+            {/* Mobile Timeline Navigation */}
+            <div className="flex justify-center items-center gap-3 overflow-x-auto pb-4">
+              {galleryImages.map((img, index) => {
+                const isActive = index === activeIndex;
+
+                return (
+                  <motion.div
+                    key={index}
+                    onClick={() => setActiveIndex(index)}
+                    className="flex flex-col items-center cursor-pointer flex-shrink-0"
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                  >
+                    <motion.div
+                      className={`w-12 h-12 rounded-full p-1 flex items-center justify-center transition-colors duration-300
+                        ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
+                      layout
+                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    >
+                      <motion.img
+                        src={img}
+                        alt={`img-${index}`}
+                        className="object-contain w-full h-full"
+                        animate={{
+                          scale: isActive ? 1.1 : 0.9
+                        }}
+                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                      />
+                    </motion.div>
+                    <div className="text-orange-600 font-medium text-xs mt-1">
+                      {years[index]}
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Mobile Progress Indicators */}
+            <div className="flex justify-center gap-2 mt-4">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveIndex(index)}
+                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                    index === activeIndex ? 'bg-orange-500' : 'bg-gray-300'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
