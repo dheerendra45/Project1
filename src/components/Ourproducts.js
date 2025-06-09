@@ -7,6 +7,9 @@ import a3 from "../assets/product3.png";
 
 const images = [a1, a2, a3];
 
+// Different headings for each image
+const imageHeadings = ["Steel", "Aluminum", "Others"];
+
 export default function EnvironmentSection() {
   const [currentIndex, setCurrentIndex] = useState(1); // default is center
   const [isHovered, setIsHovered] = useState(false);
@@ -34,7 +37,6 @@ export default function EnvironmentSection() {
   };
 
   const imageText = {
-    heading: "Stainless Steeltter",
     subtext:
       "Pellets are a type of agglomerated iron ore fines which has bet tumbler index when compared with that of parent iron ore",
   };
@@ -105,7 +107,7 @@ export default function EnvironmentSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.3 }}
               >
-                <p className="font-semibold truncate">{imageText.heading}</p>
+                <p className="font-semibold truncate">{imageHeadings[(currentIndex - 1 + images.length) % images.length]}</p>
                 <p className="line-clamp-2 text-ellipsis overflow-hidden">{imageText.subtext}</p>
               </motion.div>
             </div>
@@ -146,7 +148,7 @@ export default function EnvironmentSection() {
                 ease: [0.25, 0.46, 0.45, 0.94]
               }}
             >
-              <p className="font-semibold truncate">{imageText.heading}</p>
+              <p className="font-semibold truncate">{imageHeadings[currentIndex]}</p>
               <p className="line-clamp-2 text-ellipsis overflow-hidden">{imageText.subtext}</p>
             </motion.div>
           </motion.div>
@@ -187,7 +189,7 @@ export default function EnvironmentSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2, delay: 0.3 }}
               >
-                <p className="font-semibold truncate">{imageText.heading}</p>
+                <p className="font-semibold truncate">{imageHeadings[(currentIndex + 1) % images.length]}</p>
                 <p className="line-clamp-2 text-ellipsis overflow-hidden">{imageText.subtext}</p>
               </motion.div>
             </div>
