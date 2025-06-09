@@ -30,3 +30,5 @@ body {
 .bg-blue-gradient {
   background: linear-gradient(90deg, #4951FE 2.45%, #DE3AA8 100%);
 }
+
+@import "leaflet/dist/leaflet.css";
