@@ -27,9 +27,11 @@ const HomePage = () => {
       <AboutUs />
       <MissionVisionValues />
       <LocationsMap />
-      <BusinessAreas />
+     
 
       <EnvironmentSection />
+       <BusinessAreas />
+
       <TestimonialHomePage />
        <CSRPage />
     

@@ -35,7 +35,7 @@ export default function Hero() {
           </div>
 
           {/* Stats Box */}
-          <div className="w-full md:w-[60%] bg-black bg-opacity-40 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
+          <div className="w-full md:w-[100%] bg-black bg-opacity-40 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
             {/* Stat 1 */}
             <div className="flex items-center gap-3 w-[45%] md:w-auto">
               <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
