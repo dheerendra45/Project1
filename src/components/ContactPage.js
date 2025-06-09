@@ -101,62 +101,64 @@ const ContactPage = () => {
           </div>
           
           {/* Right Side - Contact Form */}
-          <div className="w-full md:w-2/5">
-            <div className="bg-orange-500 p-8 rounded-md text-white">
-              <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-              <p className="mb-6">Fill out the form and we'll get back to you soon</p>
-              
-              <div className="space-y-4">
-                <div>
-                  <input 
-                    type="text" 
-                    name="fullName"
-                    placeholder="Full Name" 
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
-                  />
-                </div>
-                <div>
-                  <input 
-                    type="email" 
-                    name="email"
-                    placeholder="Email Address" 
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
-                  />
-                </div>
-                <div>
-                  <input 
-                    type="tel" 
-                    name="phone"
-                    placeholder="Phone Number" 
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
-                  />
-                </div>
-                <div>
-                  <textarea 
-                    name="message"
-                    placeholder="Write Your Message" 
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    className="w-full p-3 bg-transparent border border-white/50 rounded-md focus:outline-none placeholder-white/80"
-                  ></textarea>
-                </div>
-                <button 
-                  type="button" 
-                  onClick={handleSubmit}
-                  className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-900 transition"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
-          </div>
+         {/* Right Side - Contact Form */}
+<div className="w-full md:w-2/5">
+  <div className="bg-gray-200 p-8 rounded-md text-black">
+    <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
+    <p className="mb-6">Fill out the form and we'll get back to you soon</p>
+
+    <div className="space-y-4">
+      <div>
+        <input 
+          type="text" 
+          name="fullName"
+          placeholder="Full Name" 
+          value={formData.fullName}
+          onChange={handleInputChange}
+          className="w-full p-3 bg-white border border-gray-400 rounded-md focus:outline-none placeholder-black text-black"
+        />
+      </div>
+      <div>
+        <input 
+          type="email" 
+          name="email"
+          placeholder="Email Address" 
+          value={formData.email}
+          onChange={handleInputChange}
+          className="w-full p-3 bg-white border border-gray-400 rounded-md focus:outline-none placeholder-black text-black"
+        />
+      </div>
+      <div>
+        <input 
+          type="tel" 
+          name="phone"
+          placeholder="Phone Number" 
+          value={formData.phone}
+          onChange={handleInputChange}
+          className="w-full p-3 bg-white border border-gray-400 rounded-md focus:outline-none placeholder-black text-black"
+        />
+      </div>
+      <div>
+        <textarea 
+          name="message"
+          placeholder="Write Your Message" 
+          rows="4"
+          value={formData.message}
+          onChange={handleInputChange}
+          className="w-full p-3 bg-white border border-gray-400 rounded-md focus:outline-none placeholder-black text-black"
+        ></textarea>
+      </div>
+      <button 
+        type="button" 
+        onClick={handleSubmit}
+        className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-900 transition"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</div>
+
           
         </div>
       </div>
