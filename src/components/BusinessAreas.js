@@ -152,7 +152,7 @@ export default function BusinessAreas() {
       }}
     >
       {/* Orange overlay */}
-      <div className="absolute inset-0 bg-orange-600 opacity-60 z-0"></div>
+      <div className="absolute inset-0 bg-grey-600 opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
