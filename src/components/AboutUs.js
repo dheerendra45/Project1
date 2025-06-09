@@ -53,7 +53,7 @@ export default function AboutUs() {
   }, [galleryImages.length, isHovering]);
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8">
+    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-6 lg:py-8">
       {/* ABOUT US Section */}
       <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
         {/* Left Text Section */}
@@ -88,7 +88,7 @@ export default function AboutUs() {
               key={activeIndex}
               src={aboutImages[activeIndex]}
               alt="About Us"
-              className="w-full max-w-sm sm:max-w-md"
+              className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -96,14 +96,16 @@ export default function AboutUs() {
             />
           </AnimatePresence>
           
-          {/* Stats Cards - Responsive Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mt-4 lg:mt-6 w-full max-w-2xl">
+          {/* Stats Cards - ADJUST STATS BOX SIZE HERE */}
+          {/* Change p-3 to p-2 for smaller boxes, p-4 for larger boxes */}
+          {/* Change gap-3 to gap-2 for closer spacing, gap-4 for wider spacing */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mt-4 lg:mt-6 w-full max-w-2xl">
             {[
               { title: statsData[activeIndex].employee, desc: 'Employee Strength' },
               { title: statsData[activeIndex].rating, desc: 'Credit Rating' },
               { title: statsData[activeIndex].capacity, desc: 'Production Capacity' },
             ].map((stat, i) => (
-              <div key={i} className="border border-orange-500 p-3 sm:p-4 rounded-lg shadow-lg bg-white text-center">
+              <div key={i} className="border border-orange-500 p-2 sm:p-3 rounded-lg shadow-lg bg-white text-center">
                 <div className="flex items-center justify-center gap-2 text-lg sm:text-xl font-bold text-black mb-1">
                   <span className="text-orange-500 text-xl sm:text-2xl">↑</span>
                   <h1 className="text-sm sm:text-base lg:text-lg">{stat.title}</h1>
@@ -118,19 +120,33 @@ export default function AboutUs() {
       {/* Timeline Gallery with Horizontal Line */}
       <div className="relative mt-12 sm:mt-16 lg:mt-20">
         {/* Orange Horizontal Line - responsive positioning */}
-        <div
-          className="absolute left-0 right-0 h-0.5 sm:h-1 bg-orange-500 z-0"
-          style={{ 
-            top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
-          }}
-        />
+        <div className="absolute left-0 right-0 h-0.5 sm:h-1 z-0" 
+             style={{ 
+               top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
+             }}>
+          {/* Progressive line animation */}
+          <div className="h-full bg-gray-300 w-full relative z-0">
+            <motion.div
+              className="h-full bg-orange-500 absolute left-0 top-0"
+              initial={{ width: '0%' }}
+              animate={{ 
+                width: `${((activeIndex + 1) / galleryImages.length) * 100}%` 
+              }}
+              transition={{ 
+                duration: 0.8, 
+                ease: "easeInOut" 
+              }}
+            />
+          </div>
+        </div>
 
         {/* Timeline Gallery - Responsive Layout */}
         <div className="relative z-10 w-full">
           {/* Desktop/Tablet Timeline */}
-          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pb-4">
+          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto  pt-[-10px] pb-4">
             {galleryImages.map((img, index) => {
               const isActive = index === activeIndex;
+              const isPassed = index <= activeIndex;
 
               return (
                 <motion.div
@@ -143,7 +159,7 @@ export default function AboutUs() {
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   {/* Fixed height container for message/year */}
-                  <div className="h-16 sm:h-20 lg:h-[72px] flex flex-col items-center justify-end mb-1">
+                  <div className="h-[40 px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
                     <AnimatePresence mode="wait">
                       {isActive ? (
                         <motion.div
@@ -168,7 +184,9 @@ export default function AboutUs() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.3 }}
-                          className="text-orange-600 font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg h-6 sm:h-8 lg:h-[36px] flex items-end"
+                          className={`font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg h-6 sm:h-8 lg:h-[36px] flex items-end ${
+                            isPassed ? 'text-orange-600' : 'text-gray-400'
+                          }`}
                         >
                           {years[index]}
                         </motion.div>
@@ -176,20 +194,22 @@ export default function AboutUs() {
                     </AnimatePresence>
                   </div>
 
-                  {/* Image container */}
+                  {/* Image container - ADJUST CIRCLE SIZE HERE */}
+                  {/* Change w-10 h-10 to w-8 h-8 for smaller, w-14 h-14 for larger circles */}
                   <motion.div
-                    className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full p-1 flex items-center justify-center transition-colors duration-300
-                      ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
+                    className={`w-6 h-6 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-full p-1 flex items-center justify-center transition-colors duration-300
+                      ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}
                     layout
                     transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                   >
                     <motion.img
                       src={img}
                       alt={`img-${index}`}
-                      className="object-contain w-full h-full"
+                      className="object-contain w-full h-full filter-none"
+                      style={{ filter: 'none' }}
                       animate={{
-                        y: isActive ? 0 : -8,
-                        scale: isActive ? 1.1 : 0.9
+                        y: isActive ? 0 : -6,
+                        scale: isActive ? 1.05 : 0.95
                       }}
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     />
@@ -215,6 +235,7 @@ export default function AboutUs() {
             <div className="flex justify-center items-center gap-3 overflow-x-auto pb-4">
               {galleryImages.map((img, index) => {
                 const isActive = index === activeIndex;
+                const isPassed = index <= activeIndex;
 
                 return (
                   <motion.div
@@ -224,23 +245,28 @@ export default function AboutUs() {
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
+                    {/* Mobile Circle Container - ADJUST MOBILE CIRCLE SIZE HERE */}
+                    {/* Change w-10 h-10 to w-8 h-8 for smaller, w-14 h-14 for larger mobile circles */}
                     <motion.div
-                      className={`w-12 h-12 rounded-full p-1 flex items-center justify-center transition-colors duration-300
-                        ${isActive ? 'bg-orange-500' : 'bg-gray-300'}`}
+                      className={`w-10 h-10 rounded-full p-1 flex items-center justify-center transition-colors duration-300
+                        ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}
                       layout
                       transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                     >
                       <motion.img
                         src={img}
                         alt={`img-${index}`}
-                        className="object-contain w-full h-full"
+                        className="object-contain w-full h-full filter-none"
+                        style={{ filter: 'none' }}
                         animate={{
-                          scale: isActive ? 1.1 : 0.9
+                          scale: isActive ? 1.05 : 0.95
                         }}
                         transition={{ type: 'spring', stiffness: 500, damping: 30 }}
                       />
                     </motion.div>
-                    <div className="text-orange-600 font-medium text-xs mt-1">
+                    <div className={`font-medium text-xs mt-1 ${
+                      isPassed ? 'text-orange-600' : 'text-gray-400'
+                    }`}>
                       {years[index]}
                     </div>
                   </motion.div>
@@ -255,7 +281,7 @@ export default function AboutUs() {
                   key={index}
                   onClick={() => setActiveIndex(index)}
                   className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index === activeIndex ? 'bg-orange-500' : 'bg-gray-300'
+                    index <= activeIndex ? 'bg-orange-500' : 'bg-gray-300'
                   }`}
                 />
               ))}
