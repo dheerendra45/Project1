@@ -46,9 +46,7 @@ export default function EnvironmentSection() {
       {/* Left-aligned text */}
       <div className="text-left mb-10 max-w-4xl mx-auto">
         <h2 className="text-orange-500 text-xl font-semibold">OUR PRODUCTS</h2>
-        <h1 className="text-black text-3xl font-bold">
-          Lorem ipsum is simply dummy text of the printing
-        </h1>
+        
       </div>
 
       {/* Carousel container */}
