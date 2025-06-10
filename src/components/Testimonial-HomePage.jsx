@@ -222,18 +222,15 @@ const TestimonialHomePage = () => {
           )}
 
           {/* Center Content */}
-          <div className="flex items-end justify-center min-h-screen pb-[75px]">
-            <div
-              className="text-center space-y-8 relative z-10 max-w-4xl pl-12"
-              style={{ marginLeft: "-100px" }}
-            >
+          <div className="flex items-end justify-center min-h-screen pt-[100px] pb-[75px]">
+            <div className="text-center space-y-8 relative z-10 max-w-4xl px-6 lg:px-12">
               {/* Static Header */}
               <div className="space-y-4">
                 <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
                   TESTIMONIALS
                 </p>
 
-                <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900">
+                <h2 className="text-4xl lg:text-6xl font-bold text-gray-900">
                   Voices of Trust in Shyam Metalics
                 </h2>
               </div>
