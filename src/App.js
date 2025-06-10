@@ -12,6 +12,8 @@ import OverviewPage from './Pages/overview'; // Fixed capitalization
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
+import Faq from './Pages/faq';
+import Testimonial from './Pages/Testimonial';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
   <Route path="esg_profile" element={<P1 />} />
   <Route path="ContactPage" element={<ContactPage />} />
   <Route path="LocationPage" element={<LocationPage />} />
+  <Route path="faq-Page" element={<Faq />} />
+   <Route path="testimonials" element={<Testimonial />} />
  
 </Routes>
 
