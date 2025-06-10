@@ -12,7 +12,7 @@ export default function Manufacturing(){
             <Hero />
             <Customer/>
             <Process/>
-            <Map/>
+            {/* <Map/> */}
             <Unit/>
         </div>
     );

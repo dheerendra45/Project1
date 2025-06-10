@@ -13,7 +13,7 @@ import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
 import Manufacturing from './Pages/Manufacturing';
-
+import Lifeshyam from './Pages/Lifeshyam';
 
 function App() {
   return (
@@ -34,6 +34,7 @@ function App() {
   <Route path="LocationPage" element={<LocationPage />} />
 
     <Route path="manufacturing" element={<Manufacturing />} />
+    <Route path="lifeshyam" element={<Lifeshyam />} />
 </Routes>
 
     </div>

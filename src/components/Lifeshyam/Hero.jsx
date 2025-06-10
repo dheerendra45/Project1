@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import herobg from '../../assets/manufacturing/herobg.png';
-// import herobg2 from '../../assets/manufacturing/herobg2.jpg'; // Add additional images
-// import herobg3 from '../../assets/manufacturing/herobg3.jpg'; // Add additional images
+import herobg from '../../assets/Lifeshyam/Herobg.jpg';
 import companylogo from '../../assets/products/image28.png';
-import { FiMenu, FiX, FiChevronDown, FiChevronRight, FiSearch, FiFilter, FiChevronLeft, FiChevronRight as FiChevronRightSolid } from "react-icons/fi";
+import { FiMenu, FiX, FiChevronDown, FiChevronRight, FiSearch, FiFilter } from "react-icons/fi";
 
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -13,18 +11,8 @@ const Hero = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileSubMenu, setMobileSubMenu] = useState(null);
   const [mobileNestedMenu, setMobileNestedMenu] = useState(null);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const dropdownRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
-  const carouselTimeoutRef = useRef(null);
-
-  // Background images for carousel
-  const backgroundImages = [
-    herobg,
-    // herobg2,
-    // herobg3
-    // Add more images as needed
-  ];
 
   // Animation variants
   const dropdownVariants = {
@@ -205,46 +193,6 @@ const Hero = () => {
       ]
     },
   ];
-
-  // Auto-rotate carousel
-  useEffect(() => {
-    const rotateCarousel = () => {
-      carouselTimeoutRef.current = setTimeout(() => {
-        setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
-      }, 5000); // Change slide every 5 seconds
-    };
-
-    rotateCarousel();
-    return () => {
-      if (carouselTimeoutRef.current) {
-        clearTimeout(carouselTimeoutRef.current);
-      }
-    };
-  }, [currentSlide, backgroundImages.length]);
-
-  const goToNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % backgroundImages.length);
-    // Reset auto-rotate timer
-    if (carouselTimeoutRef.current) {
-      clearTimeout(carouselTimeoutRef.current);
-    }
-  };
-
-  const goToPrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length);
-    // Reset auto-rotate timer
-    if (carouselTimeoutRef.current) {
-      clearTimeout(carouselTimeoutRef.current);
-    }
-  };
-
-  const goToSlide = (index) => {
-    setCurrentSlide(index);
-    // Reset auto-rotate timer
-    if (carouselTimeoutRef.current) {
-      clearTimeout(carouselTimeoutRef.current);
-    }
-  };
 
   // Clear any existing timeout
   const clearHoverTimeout = () => {
@@ -793,56 +741,31 @@ const Hero = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero Section with Carousel */}
+      {/* Hero Section */}
       <div className="relative h-full -mt-[65px]">
-        {/* Background Image Carousel */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.img
-              key={currentSlide}
-              src={backgroundImages[currentSlide]}
-              alt="Hero Background"
-              className="absolute inset-0 w-full h-full object-cover z-0"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-            />
-          </AnimatePresence>
-        </div>
-
-        {/* Carousel Controls */}
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center z-20">
-          <div className="flex space-x-2">
-            {backgroundImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full ${currentSlide === index ? 'bg-white' : 'bg-white/50'}`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Navigation Arrows */}
-        <button 
-          onClick={goToPrevSlide}
-          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20 focus:outline-none"
-          aria-label="Previous slide"
-        >
-          <FiChevronLeft className="w-6 h-6 text-white" />
-        </button>
-        <button 
-          onClick={goToNextSlide}
-          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/30 hover:bg-white/50 rounded-full p-2 z-20 focus:outline-none"
-          aria-label="Next slide"
-        >
-          <FiChevronRightSolid className="w-6 h-6 text-white" />
-        </button>
+        {/* Background Image */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+        />
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
+          src={herobg}
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-black"
+        ></motion.div>
         
         {/* Content */}
         <div className="relative z-20 px-6 md:px-12 lg:px-[114px] pt-[150px] md:pt-[200px] lg:pt-[275px] text-white">
@@ -852,7 +775,7 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
           >
-            Manufacturing <br></br>Unit
+            Life @ Shyam
           </motion.h1>
 
           <motion.div 
@@ -863,7 +786,7 @@ const Hero = () => {
           >
             <span>Home</span>
             <span>&gt;</span>
-            <span>Unit</span>
+            <span>Businesses</span>
           </motion.div>
         </div>
       </div>
