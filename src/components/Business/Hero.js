@@ -353,7 +353,7 @@ const Hero = () => {
           className="flex items-center"
         >
           <div className="text-white px-2 md:px-3 py-2 rounded text-sm font-bold">
-            <img src={companylogo} className="h-[40px] w-[90px] md:h-[54.84px] md:w-[116.53px]"/>
+            <img src={companylogo} className="h-[70px] w-[125px] "/>
           </div>
         </motion.div>
         

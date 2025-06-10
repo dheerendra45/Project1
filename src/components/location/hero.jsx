@@ -248,7 +248,7 @@ export default function Hero() {
         {/* Logo */}
         <div className="flex items-center">
           <div className="text-white px-3 py-2 rounded text-sm font-bold">
-            <img src={a1} className="h-[54.84px] w-[116.53px]" alt="Logo" />
+            <img src={a1} className="h-[70px] w-[125px]" alt="Logo" />
           </div>
         </div>
 

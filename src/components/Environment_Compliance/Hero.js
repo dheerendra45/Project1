@@ -233,8 +233,7 @@ const Hero = () => {
         {/* Logo */}
         <div className="flex items-center">
           <div className=" text-white px-3 py-2 rounded text-sm font-bold">
-           <img src={companylogo}
-           className="h-[54.84px] w-[116.53px]"/>
+           <img src={companylogo} className="h-[70px] w-[125px]"/>
 
           </div>
         </div>
