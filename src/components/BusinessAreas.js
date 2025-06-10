@@ -145,12 +145,7 @@ export default function BusinessAreas() {
   };
 
   return (
-    <div
-      className="relative bg-cover bg-center text-white py-16 px-6"
-      style={{
-        backgroundImage: `url(${a1})`,
-      }}
-    >
+    <div className="relative bg-gray-200 text-white py-16 px-6">
       {/* Orange overlay */}
       <div className="absolute inset-0 bg-grey-600 opacity-60 z-0"></div>
 
@@ -162,7 +157,7 @@ export default function BusinessAreas() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className="text-3xl md:text-4xl font-bold mb-8">
+          <h1 className=" text-black text-3xl md:text-4xl font-bold mb-8">
             Lorem ipsum is simply dummy text of the printing
           </h1>
           
