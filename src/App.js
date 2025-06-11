@@ -14,6 +14,7 @@ import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
 import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
+import Currentopening from './Pages/Currentopening';
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
 
     <Route path="manufacturing" element={<Manufacturing />} />
     <Route path="lifeshyam" element={<Lifeshyam />} />
+    <Route path="currentopening" element={<Currentopening />} />
 </Routes>
 
     </div>
