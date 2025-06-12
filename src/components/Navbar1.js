@@ -20,7 +20,7 @@ const Navbar = () => {
         { name: 'Company Overview', href: '/overview' },
         { name: 'Leadership', href: '/leadership' },
         { name: 'Awards and Achievements', href: '/achievement' },
-        { name: 'Manufacturing Unit', href: '#' },
+        { name: 'Manufacturing Unit', href: '/manufacturing' },
         { name: 'Testimonials', href: '#' },
         { name: 'News and Events', href: '#' }
       ]
