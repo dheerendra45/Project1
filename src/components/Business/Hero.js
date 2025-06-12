@@ -164,7 +164,7 @@ const Hero = () => {
         { name: 'CSR', href: '/environment_compliance' },
         { name: 'Knowledge Hub', href: '#' },
         { name: 'Blogs', href: '#' },
-        { name: 'FAQ', href: '#' }
+        { name: 'FAQ', href: '/faq-Page' }
       ]
     },
     { 

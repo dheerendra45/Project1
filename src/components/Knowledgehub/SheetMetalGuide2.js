@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
-
+import f1 from '../../assets/knowledgehub/f1.jpg'
+import s1 from '../../assets/knowledgehub/s1.jpg'
 export default function SheetMetalGuide2() {
   const [expandedSections, setExpandedSections] = useState({});
 
@@ -27,7 +28,7 @@ export default function SheetMetalGuide2() {
       <div className="mb-12">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           <div className="lg:w-1/2">
-            <div className="border-4 border-blue-400 p-6 bg-blue-50">
+            <div className=" p-6 bg-white">
               <h1 className="text-2xl font-bold text-gray-800 mb-4">Forming sheet metal</h1>
               <p className="text-gray-700 mb-4 leading-relaxed">
                 During the fabrication process, the sheet metal is usually first punched and cut in different ways and then followed by forming processes to make a nearly finished and realized product. Entire product chassis can be made in this way.
@@ -39,7 +40,7 @@ export default function SheetMetalGuide2() {
           </div>
           <div className="lg:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+              src={f1}
               alt="Sheet metal forming process"
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />
@@ -88,7 +89,7 @@ export default function SheetMetalGuide2() {
           </div>
           <div className="lg:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1565198366086-eb0b895d8f76?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+              src={s1} 
               alt="Stamped sheet metal parts"
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />

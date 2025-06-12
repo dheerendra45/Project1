@@ -3,6 +3,7 @@ import { ChevronDown, ChevronUp } from 'lucide-react';
 import aeroimg from '../../assets/knowledgehub/aerospace.jpg'
 import part2img from '../../assets/knowledgehub/part2.jpg'
 import cuttingimg from '../../assets/knowledgehub/cutting.jpg'
+import cutting1 from '../../assets/knowledgehub/cutting1.jpg'
 const SheetMetalGuide1 = () => {
   const [expandedSections, setExpandedSections] = useState({});
 
@@ -232,9 +233,9 @@ const SheetMetalGuide1 = () => {
                 <h4 className="font-semibold mb-4">Shearing Process Diagram</h4>
                 {/* Replace with your shearing diagram image */}
                 <img 
-                  src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=400&h=300&fit=crop" 
+                  src={cutting1}
                   alt="Shearing process diagram - Replace with your diagram"
-                  className="w-full h-48 object-cover rounded"
+                  className="w-full h-full object-cover rounded"
                 />
                 <div className="mt-4 text-sm text-gray-600">
                   <p>Punch, Sheet metal, Die components shown</p>
