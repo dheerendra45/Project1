@@ -14,6 +14,8 @@ import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
 import Faq from './Pages/faq';
 import Testimonial from './Pages/Testimonial';
+import Knowledgehub from './Pages/knowledgehub';
+
 
 
 function App() {
@@ -35,6 +37,8 @@ function App() {
   <Route path="LocationPage" element={<LocationPage />} />
   <Route path="faq-Page" element={<Faq />} />
    <Route path="testimonials" element={<Testimonial />} />
+ <Route path="knowledgehub" element={<Knowledgehub />} />
+
  
 </Routes>
 

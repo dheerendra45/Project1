@@ -102,10 +102,10 @@ const TestimonialCarousel = () => {
   const visibleCards = getVisibleCards();
 
   return (
-    <div className="w-full max-w-7xl mx-auto mt-8 bg-white min-h-screen">
+    <div className="w-full max-w-7xl mx-auto mb-[-40px]  bg-white min-h-screen">
       {/* Header */}
       <div className="text-center mb-12">
-        <div className="w-16 h-1 bg-blue-500 mx-auto mb-8"></div>
+      
         <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
       </div>
 
