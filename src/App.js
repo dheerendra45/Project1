@@ -16,10 +16,11 @@ import Faq from './Pages/faq';
 import Testimonial from './Pages/Testimonial';
 import Knowledgehub from './Pages/knowledgehub';
 
-
+import Companyoverview from './Pages/Companyoverview';
 import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
+import Jobopportunity from './Pages/Jobopportunity';
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
     <Route path="manufacturing" element={<Manufacturing />} />
     <Route path="lifeshyam" element={<Lifeshyam />} />
     <Route path="currentopening" element={<Currentopening />} />
+    <Route path="companyoverview" element={<Companyoverview />} />
+    <Route path="jobopportunity" element={<Jobopportunity />} />
 </Routes>
 
     </div>
