@@ -154,7 +154,7 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'CSR', href: '/environment_compliance' },
-        { name: 'Knowledge Hub', href: '#' },
+        { name: 'Knowledge Hub', href: '/knowledgehub' },
         { name: 'Blogs', href: '#' },
         { name: 'FAQ', href: '/faq-Page' }
       ]
@@ -171,9 +171,9 @@ const Hero = () => {
       title: 'CAREERS', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Life at Shyam', href: '#' },
+        { name: 'Life at Shyam', href: '/lifeshyam' },
         { name: 'Job Opportunity', href: '#' },
-        { name: 'Current Opening', href: '#' }
+        { name: 'Current Opening', href: '/currentopening' }
       ]
     },
     { 

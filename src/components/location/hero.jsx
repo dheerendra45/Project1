@@ -199,9 +199,9 @@ export default function Hero() {
       hasDropdown: true,
       dropdownItems: [
         { name: "CSR", href: "#" },
-        { name: "Knowledge Hub", href: "#" },
+        { name: "Knowledge Hub", href: "/knowledgehub" },
         { name: "Blogs", href: "#" },
-        { name: "FAQ", href: "#" },
+        { name: "FAQ", href: "/faq-Page" },
       ],
     },
     {
@@ -216,8 +216,8 @@ export default function Hero() {
       label: "CAREERS",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Life@shyam", href: "#" },
-        { name: "Current Openings", href: "#" },
+        { name: "Life@shyam", href: "/lifeshyam" },
+        { name: "Current Openings", href: "/currentopening" },
       ],
     },
     {

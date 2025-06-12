@@ -171,9 +171,9 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "CSR", href: "#" },
-        { name: "Knowledge Hub", href: "#" },
+        { name: "Knowledge Hub", href: "/knowledgehub" },
         { name: "Blogs", href: "#" },
-        { name: "FAQ", href: "#" },
+        { name: "FAQ", href: "/faq-Page" },
       ],
     },
     {
