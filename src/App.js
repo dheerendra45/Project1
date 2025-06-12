@@ -12,7 +12,9 @@ import OverviewPage from './Pages/overview'; // Fixed capitalization
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
-import Faq from './Pages/faq';
+import Manufacturing from './Pages/Manufacturing';
+import Lifeshyam from './Pages/Lifeshyam';
+import Currentopening from './Pages/Currentopening';import Faq from './Pages/faq';
 import Testimonial from './Pages/Testimonial';
 import Knowledgehub from './Pages/knowledgehub';
 
@@ -35,10 +37,6 @@ function App() {
   <Route path="esg_profile" element={<P1 />} />
   <Route path="ContactPage" element={<ContactPage />} />
   <Route path="LocationPage" element={<LocationPage />} />
-  <Route path="faq-Page" element={<Faq />} />
-   <Route path="testimonials" element={<Testimonial />} />
- <Route path="knowledgehub" element={<Knowledgehub />} />
-
  
 </Routes>
 
