@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
 import f1 from '../../assets/knowledgehub/f1.jpg'
 import s1 from '../../assets/knowledgehub/s1.jpg'
+import p31 from '../../assets/knowledgehub/p31.jpg'
+import p32 from '../../assets/knowledgehub/p32.jpg'
 export default function SheetMetalGuide2() {
   const [expandedSections, setExpandedSections] = useState({});
 
@@ -23,7 +25,7 @@ export default function SheetMetalGuide2() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white">
+    <div className="max-w-7xl mx-auto p-6 bg-white">
       {/* Section 1: Forming Sheet Metal */}
       <div className="mb-12">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
@@ -115,7 +117,7 @@ export default function SheetMetalGuide2() {
           </div>
           <div className="lg:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+              src={p32}
               alt="CNC machine drilling holes"
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />
@@ -128,7 +130,7 @@ export default function SheetMetalGuide2() {
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           <div className="lg:w-1/2">
             <div className="mb-2">
-              <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">Part 3</span>
+              <h1 className=" font-bold text-black uppercase tracking-wide">Part 3</h1>
             </div>
             <h2 className="text-2xl font-bold text-gray-800 mb-4">Design for sheet metal fabrication</h2>
             <p className="text-gray-700 mb-4 leading-relaxed">
@@ -142,7 +144,7 @@ export default function SheetMetalGuide2() {
           </div>
           <div className="lg:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+              src={p31}
               alt="Sheet metal bending design"
               className="w-full h-64 object-cover rounded-lg shadow-lg"
             />

@@ -11,6 +11,7 @@ import SheetMetalGuide2 from "../components/Knowledgehub/SheetMetalGuide2";
 import SheetMetalGuide3 from "../components/Knowledgehub/SheetMetalGuide3";
 import SheetMetalJoining from "../components/Knowledgehub/SheetMetalJoining";
 import SheetMetalGuide4 from "../components/Knowledgehub/part4";
+import ResourcesComponent from "../components/Knowledgehub/part6";
 const Knowledgehub = () => {
   return (
     <div>
@@ -26,6 +27,7 @@ const Knowledgehub = () => {
         <SheetMetalGuide3 />
         <SheetMetalGuide4 />
         <SheetMetalJoining />
+        <ResourcesComponent />
        <Footer /> 
     </div>
   );

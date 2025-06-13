@@ -1,9 +1,14 @@
 import React from 'react';
 import { ArrowRight, CheckCircle, XCircle } from 'lucide-react';
+import p44 from '../../assets/knowledgehub/p44.jpg'
+import p51 from '../../assets/knowledgehub/p51.jpg'
+import p52 from '../../assets/knowledgehub/p52.jpg'
+import p53 from '../../assets/knowledgehub/p53.jpg'
 
+import p54 from '../../assets/knowledgehub/p54.jpg'
 export default function SheetMetalJoining() {
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white">
+    <div className="max-w-7xl mx-auto p-6 bg-white">
       {/* Header Section */}
       <div className="bg-black text-white p-6 rounded-lg mb-8 flex items-center justify-between">
         <div>
@@ -14,7 +19,7 @@ export default function SheetMetalJoining() {
           </button>
         </div>
         <div className="w-32 h-20 bg-gray-600 rounded flex items-center justify-center">
-          <span className="text-gray-400 text-sm">Image</span>
+              <img src={p44} />
         </div>
       </div>
 
@@ -34,7 +39,7 @@ export default function SheetMetalJoining() {
         </div>
         <div className="flex justify-center">
           <div className="w-full max-w-md h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-            <span className="text-gray-500">Metal Parts Image</span>
+                <img src={p51} />
           </div>
         </div>
       </div>
@@ -60,7 +65,7 @@ export default function SheetMetalJoining() {
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md h-48 bg-gray-800 rounded-lg flex items-center justify-center">
-              <span className="text-gray-300">Fasteners Image</span>
+               <img src={p52} />
             </div>
           </div>
         </div>
@@ -102,13 +107,13 @@ export default function SheetMetalJoining() {
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md h-48 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span className="text-gray-500">Welding Image</span>
+                   <img src={p53} />
             </div>
           </div>
         </div>
 
         {/* Welding Pros and Cons */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-14">
           <div className="space-y-3">
             <div className="flex items-center text-green-600">
               <CheckCircle size={20} className="mr-3" />
@@ -151,13 +156,13 @@ export default function SheetMetalJoining() {
           </div>
           <div className="flex justify-center">
             <div className="w-full max-w-md h-48 bg-gray-300 rounded-lg flex items-center justify-center">
-              <span className="text-gray-600">Soldering Image</span>
+                  <img src={p54} />
             </div>
           </div>
         </div>
 
         {/* Soldering Pros and Cons */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-14">
           <div className="space-y-3">
             <div className="flex items-center text-green-600">
               <CheckCircle size={20} className="mr-3" />

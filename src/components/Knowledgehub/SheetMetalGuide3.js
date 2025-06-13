@@ -1,8 +1,18 @@
 import React from 'react';
-
+import p33 from '../../assets/knowledgehub/p33.jpg'
+import p34 from '../../assets/knowledgehub/p34.jpg'
+import p35 from '../../assets/knowledgehub/p35.jpg'
+import p36 from '../../assets/knowledgehub/p36.jpg'
+import p37 from '../../assets/knowledgehub/p37.jpg'
+import p38 from '../../assets/knowledgehub/p38.jpg'
+import p39 from '../../assets/knowledgehub/p39.jpg'
+import p10 from '../../assets/knowledgehub/p10.jpg'
+import p11 from '../../assets/knowledgehub/p11.jpg'
+import p12 from '../../assets/knowledgehub/p12.jpg'
+import p13 from '../../assets/knowledgehub/p13.jpg'
 const SheetMetalGuide3 = () => {
   return (
-    <div className="max-w-6xl mx-auto p-8 bg-white">
+    <div className="max-w-7xl mx-auto p-8 bg-white">
       {/* Header */}
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-blue-600 mb-4">
@@ -24,11 +34,7 @@ const SheetMetalGuide3 = () => {
           </div>
           <div className="flex justify-center">
             <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center relative">
-              <div className="w-48 h-32 border-2 border-gray-600 rounded-lg relative">
-                <div className="absolute top-2 right-2 text-xs text-gray-600">
-                  Material<br />thickness: 5mm
-                </div>
-              </div>
+              <img src={p33} />
             </div>
           </div>
         </div>
@@ -94,10 +100,7 @@ const SheetMetalGuide3 = () => {
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="w-48 h-32 bg-gray-300 relative">
-                  <div className="absolute top-0 right-0 w-16 h-16 border-2 border-blue-500 border-dashed"></div>
-                  <div className="absolute top-2 right-2 w-12 h-12 bg-blue-200 rounded-br-lg"></div>
-                </div>
+                <img src={p34} />
               </div>
             </div>
           </div>
@@ -116,33 +119,9 @@ const SheetMetalGuide3 = () => {
               </p>
             </div>
             <div className="space-y-4">
-              <div className="flex justify-center space-x-8">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-black rounded flex items-center justify-center mb-2">
-                    <div className="w-12 h-12 bg-white rounded"></div>
-                  </div>
-                  <p className="text-xs text-gray-600">20mm</p>
-                  <p className="text-xs text-gray-600">Incorrect</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-gray-300 rounded flex items-center justify-center mb-2">
-                    <div className="w-12 h-12 bg-white rounded"></div>
-                  </div>
-                  <p className="text-xs text-gray-600">20mm</p>
-                </div>
-              </div>
-              <div className="flex justify-center space-x-8">
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-blue-500 rounded flex items-center justify-center mb-2">
-                    <div className="w-12 h-12 bg-white rounded"></div>
-                  </div>
-                  <p className="text-xs text-gray-600">19.7mm</p>
-                  <p className="text-xs text-gray-600">Correct</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-24 h-24 bg-blue-200 rounded flex items-center justify-center mb-2"></div>
-                  <p className="text-xs text-gray-600">20.3mm</p>
-                </div>
+              <div className=" h-[300px] flex justify-center space-x-8">
+                
+                <img src={p35} />
               </div>
             </div>
           </div>
@@ -160,45 +139,45 @@ const SheetMetalGuide3 = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Space holes at least 2 times the sheet thickness apart</h4>
-            <p className="text-gray-700 mb-4">
-              Holes that are too close to each other can lead to deformation or breakage during forming or bending.
-            </p>
-            <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-              <div className="flex space-x-4">
-                <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
-                <div className="w-6 h-6 bg-blue-500 rounded-full"></div>
+        <div className="space-y-12 mb-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Space holes at least 2 times the sheet thickness apart</h4>
+              <p className="text-gray-700 mb-4">
+                Holes that are too close to each other can lead to deformation or breakage during forming or bending.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
+                <img src={p36} />
               </div>
             </div>
-            <p className="text-xs text-center text-gray-600 mt-2">2T or 3T gap distance</p>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Holes should be at least the sheet's thickness from the edge</h4>
-            <p className="text-gray-700 mb-4">
-              If holes are placed too close to the edge, the possibility of the hole tearing or deforming is higher, especially if the part is to undergo bending operations.
-            </p>
-            <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-              <div className="relative">
-                <div className="w-24 h-16 bg-gray-300 border-2 border-gray-600"></div>
-                <div className="absolute top-4 right-4 w-4 h-4 bg-blue-500 rounded-full"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Holes should be at least the sheet's thickness from the edge</h4>
+              <p className="text-gray-700 mb-4">
+                If holes are placed too close to the edge, the possibility of the hole tearing or deforming is higher, especially if the part is to undergo bending operations.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
+                <img src={p37} />
               </div>
             </div>
-            <p className="text-xs text-center text-gray-600 mt-2">T or greater</p>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Ensure holes are at least 2 times the sheet thickness from the start of the bend radius</h4>
-            <p className="text-gray-700 mb-4">
-              If the hole is placed too close to the bend, the hole may become distorted or may act as an unintended relief cut.
-            </p>
-            <div className="w-full h-32 bg-gray-200 rounded flex items-center justify-center">
-              <div className="relative">
-                <div className="w-16 h-24 bg-gray-300 border-2 border-gray-600 rounded-bl-lg"></div>
-                <div className="absolute top-2 left-2 w-3 h-3 bg-blue-500 rounded-full"></div>
-                <div className="absolute top-2 left-6 w-3 h-3 bg-blue-500 rounded-full"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Ensure holes are at least 2 times the sheet thickness from the start of the bend radius</h4>
+              <p className="text-gray-700 mb-4">
+                If the hole is placed too close to the bend, the hole may become distorted or may act as an unintended relief cut.
+              </p>
+            </div>
+            <div className="flex justify-center">
+              <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
+                <img src={p38} />
               </div>
             </div>
           </div>
@@ -230,14 +209,7 @@ const SheetMetalGuide3 = () => {
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-32 h-20 bg-gray-300 border-2 border-gray-600"></div>
-                  <div className="absolute -bottom-4 left-8 w-16 h-12 bg-blue-200 border-2 border-blue-500 transform rotate-45 origin-top-left"></div>
-                  <div className="absolute top-4 right-4 text-xs">
-                    <div>Material Thickness (Mt)</div>
-                    <div>Neutral Axis Shift (t)</div>
-                  </div>
-                </div>
+                <img src={p39} />
               </div>
             </div>
           </div>
@@ -349,12 +321,7 @@ const SheetMetalGuide3 = () => {
           </div>
           <div className="flex justify-center">
             <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
-              <div className="relative">
-                <div className="w-32 h-24 bg-gray-300 border-2 border-gray-600 rounded-bl-lg"></div>
-                <div className="absolute bottom-4 left-4 text-xs text-blue-600">
-                  Material thickness<br/>or greater
-                </div>
-              </div>
+             <img src={p10} />
             </div>
           </div>
         </div>
@@ -376,16 +343,11 @@ const SheetMetalGuide3 = () => {
             <div className="space-y-6">
               <div className="text-center">
                 <div className="w-48 h-16 bg-gray-200 rounded flex items-center justify-center mb-2">
-                  <div className="w-32 h-8 bg-gray-400 rounded-l-lg"></div>
+                  <img src={p11} />
                 </div>
-                <p className="text-sm text-gray-600">Consistent bend orientations</p>
+                
               </div>
-              <div className="text-center">
-                <div className="w-48 h-16 bg-gray-200 rounded flex items-center justify-center mb-2">
-                  <div className="w-32 h-8 bg-gray-400 transform rotate-180 rounded-l-lg"></div>
-                </div>
-                <p className="text-sm text-gray-600">Inconsistent bend orientations</p>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -406,13 +368,7 @@ const SheetMetalGuide3 = () => {
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-48 h-32 bg-gray-300 border-2 border-gray-600"></div>
-                  <div className="absolute top-4 left-8 w-8 h-4 bg-blue-200 border border-blue-500"></div>
-                  <div className="absolute top-4 right-8 w-8 h-4 bg-blue-200 border border-blue-500"></div>
-                  <div className="absolute bottom-8 left-2 text-xs">Bend 2:<br/>Rectangular reliefs</div>
-                  <div className="absolute bottom-8 right-2 text-xs">Bend 1: Tear<br/>reliefs</div>
-                </div>
+               <img src={p12} />
               </div>
             </div>
           </div>
@@ -431,11 +387,7 @@ const SheetMetalGuide3 = () => {
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-60 bg-gray-200 rounded-lg flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-32 h-24 bg-gray-300 border-2 border-gray-600 rounded-bl-lg"></div>
-                  <div className="absolute top-4 left-4 text-xs">H ≥ 2 Mt. + R</div>
-                  <div className="absolute bottom-2 left-8 text-xs">R</div>
-                </div>
+                    <img src={p13} />
               </div>
             </div>
           </div>

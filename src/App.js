@@ -20,6 +20,7 @@ import Knowledgehub from './Pages/knowledgehub';
 import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
+import Blogs from './Pages/blogs';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
   <Route path="faq-Page" element={<Faq />} />
    <Route path="testimonials" element={<Testimonial />} />
  <Route path="knowledgehub" element={<Knowledgehub />} />
+ <Route path="blogs" element={<Blogs />} />
 
  
 

@@ -3,7 +3,7 @@ import img from '../../assets/knowledgehub/p2.png'
 const PrecisionSheetMetal = () => {
   return (
     <div className="bg-gray-900 h-[490px] py-16 px-4">
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-6xl mx-auto relative">
         {/* Main content container */}
         <div className="flex flex-col lg:flex-row items-start justify-between gap-12">
           {/* Left side text - matches Figma positioning */}

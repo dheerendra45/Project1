@@ -1,4 +1,7 @@
 import React from 'react';
+import p41 from '../../assets/knowledgehub/p41.jpg'
+import p42 from '../../assets/knowledgehub/p42.jpg'
+import p43 from '../../assets/knowledgehub/p43.jpg'
 
 const SheetMetalGuide4 = () => {
   const materials = [
@@ -159,7 +162,7 @@ const SheetMetalGuide4 = () => {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white font-sans">
+    <div className="max-w-7xl mx-auto p-6 bg-white font-sans">
       {/* Header Section */}
       <div className="mb-8">
         <div className="flex items-start justify-between mb-6">
@@ -178,9 +181,9 @@ const SheetMetalGuide4 = () => {
           </div>
           <div className="ml-8">
             <img 
-              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=200&fit=crop" 
+              src={p41}
               alt="Sheet metal fabrication"
-              className="w-80 h-48 object-cover rounded-lg"
+              className="w-200 h-200 object-cover rounded-lg"
             />
           </div>
         </div>
@@ -224,9 +227,9 @@ const SheetMetalGuide4 = () => {
           </div>
           <div className="ml-4">
             <img 
-              src="https://images.unsplash.com/photo-1587289781695-a42d3ae170d9?w=300&h=300&fit=crop" 
+              src={p42} 
               alt="Metal sheets"
-              className="w-64 h-64 object-cover rounded-lg"
+              className="w-200 h-200 object-cover rounded-lg"
             />
           </div>
         </div>
@@ -322,9 +325,9 @@ const SheetMetalGuide4 = () => {
           </div>
           <div className="ml-4">
             <img 
-              src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=300&h=200&fit=crop" 
+              src={p43}
               alt="Sheet metal finishes"
-              className="w-80 h-48 object-cover rounded-lg"
+              className="w-100 h-70 object-cover rounded-lg"
             />
           </div>
         </div>
