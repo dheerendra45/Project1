@@ -518,20 +518,10 @@ const Hero = () => {
            
           </div>
         </div>
-       <div className="absolute bottom-[150px] left-1/2 transform -translate-x-1/2 w-[900px] border-t-4 border-orange-500" />
+      
 
 
-  {/* Location Texts */}
-  <div className="absolute bottom-[100px] left-1/2 transform -translate-x-1/2  flex gap-[49px]">
-    {Array(8).fill("Location 1").map((item, idx) => (
-      <span
-        key={idx}
-        className={`text-white ${idx === 5 ? "text-orange-500" : ""}`} // Highlight one item
-      >
-        {item}
-      </span>
-    ))}
-  </div>
+  
       </div>
     </div>
   );
