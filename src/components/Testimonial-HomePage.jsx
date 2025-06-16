@@ -59,8 +59,7 @@ const TestimonialHomePage = () => {
     },
     {
       text: "Innovative products and sustainable practices. Shyam Metalics leads the way in responsible manufacturing.",
-      author:
-        "– Arjun Malhotra, Environmental Engineer, Green Building Council",
+      author: "– Arjun Malhotra, Environmental Engineer, Green Building Council",
     },
     {
       text: "Reliable partnership for over a decade. Their commitment to excellence is unmatched.",
@@ -86,6 +85,12 @@ const TestimonialHomePage = () => {
 
   const handleImageHover = (index) => {
     setCurrentTestimonial(testimonials[index]);
+  };
+
+  const handleReadAll = () => {
+    // You can implement what happens when "Read All" is clicked
+    console.log("Read All button clicked");
+    // For example, navigate to a testimonials page or show all testimonials
   };
 
   const renderImageSection = (
@@ -254,9 +259,18 @@ const TestimonialHomePage = () => {
                   </p>
                 </motion.div>
               </AnimatePresence>
+
+              {/* Read All Button - Desktop */}
+              <motion.button
+                onClick={handleReadAll}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Read All
+              </motion.button>
             </div>
           </div>
-
         </div>
       </div>
 
@@ -277,7 +291,7 @@ const TestimonialHomePage = () => {
           {renderMobileImageGrid()}
 
           {/* Dynamic Testimonial */}
-          <div className="text-center">
+          <div className="text-center mb-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial.author}
@@ -291,6 +305,18 @@ const TestimonialHomePage = () => {
                 <p className="font-semibold">{currentTestimonial.author}</p>
               </motion.div>
             </AnimatePresence>
+          </div>
+
+          {/* Read All Button - Mobile */}
+          <div className="text-center">
+            <motion.button
+              onClick={handleReadAll}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Read All
+            </motion.button>
           </div>
         </div>
       </div>
