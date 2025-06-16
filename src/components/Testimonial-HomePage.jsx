@@ -222,8 +222,8 @@ const TestimonialHomePage = () => {
           )}
 
           {/* Center Content */}
-          <div className="flex flex-col justify-end items-center min-h-screen py-[75px]">
-            <div className="text-center space-y-8 relative z-10 max-w-4xl pl-12 -ml-[100px]">
+          <div className="flex flex-col justify-center items-center h-[640px] pt-60">
+            <div className="text-center space-y-8 relative z-10 max-w-4xl lg:-ml-[40px]">
               {/* Static Header */}
               <div className="space-y-4">
                 <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
@@ -256,6 +256,7 @@ const TestimonialHomePage = () => {
               </AnimatePresence>
             </div>
           </div>
+
         </div>
       </div>
 
