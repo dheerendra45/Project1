@@ -23,16 +23,17 @@ export default function Projects() {
               alt="Project 1"
               className="w-full h-auto mb-4 rounded"
             />
-            <p className="text-sm font-semibold text-gray-600">COMMODO</p>
-            <p className="text-sm font-semibold text-gray-600 mb-2">
-              VESTIBULUM
+            <p className="text-sm font-semibold text-gray-600">
+              Rainwater Harvesting
             </p>
+
             <h2 className="text-xl font-bold mb-4">
-              Lorem ipsum dolor sit amet
+              Recharge groundwater through rain capture.
             </h2>
             <p className="text-gray-700 text-base">
-              Malesuada gravida mi vulputate dolor dui mkilototor turpis hac
-              turpis pharetra. Pellentesque curabitur elementum elementum
+              Rainwater collected from rooftops and catchments is channeled into
+              recharge pits and storage tanks at our plants and nearby
+              communities to conserve groundwater.
             </p>
           </div>
 
@@ -43,14 +44,14 @@ export default function Projects() {
               alt="Project 2"
               className="w-full h-auto mb-4 rounded"
             />
-            <p className="text-sm font-semibold text-gray-600">MAURIS</p>
+            <p className="text-sm font-semibold text-gray-600">Waste Reuse</p>
             <h2 className="text-xl font-bold mb-4 mt-2">
-              Elementum ullamcorper
+              Transforming byproducts into building material
             </h2>
             <p className="text-gray-700 text-base">
-              Aliquet urna quam sit et sapien at faucibus lacinia. Aliquam
-              sodales consectetur arnare quis frgftgjfjvd netus gyq netus diam
-              tellus imperdiet.
+              We reuse slag and fly ash to manufacture eco-friendly bricks and
+              supply them to nearby construction projects, reducing landfill and
+              raw material consumption.
             </p>
           </div>
 
@@ -61,14 +62,17 @@ export default function Projects() {
               alt="Project 3"
               className="w-full h-auto mb-4 rounded"
             />
-            <p className="text-sm font-semibold text-gray-600">SCELERIS</p>
-            <p className="text-sm font-semibold text-gray-600 mb-2">QUE</p>
+            <p className="text-sm font-semibold text-gray-600">
+              SEnergy Efficiency
+            </p>
+
             <h2 className="text-xl font-bold mb-4">
-              Lorem ipsum dolor sit amet
+              Cutting energy use via Waste Heat Recovery.
             </h2>
             <p className="text-gray-700 text-base">
-              Placerat amet id est cursus nunc vcfdgnklnndfbdf sagittis at
-              volutpat enim nisl ultrices. At nibh eget commando pretium.
+              Heat from industrial processes is captured and reused through
+              Waste Heat Recovery (WHR) systems to generate power internally,
+              reducing energy costs and emissions.
             </p>
           </div>
         </div>
@@ -78,14 +82,35 @@ export default function Projects() {
       <div className="flex flex-col md:flex-row items-center gap-10">
         {/* Left - Text Content */}
         <div className="md:w-1/2 text-left space-y-6">
-          <h1 className="text-3xl font-bold">Sustainable Development Goals</h1>
-          <p className="text-lg max-w-lg">
-            We contribute to the UN Sustainable Development Goals (SDGs) through
-            client work and in our operations. The SDGs serve as our framework
-            to quantify the impact of our projects and to make a tangible link
-            between the activities of our employees and the resulting benefits
-            to society and the environment.
-          </p>
+          <h1>Environmental Stewardship</h1>
+          <ul>
+            <li>
+              <strong>Green Manufacturing</strong> – We prioritize clean and
+              efficient production across our integrated steel plants and ferro
+              alloy units. Our facilities are designed with advanced pollution
+              control systems, energy recovery technologies, and waste recycling
+              units to ensure low-impact operations. Ongoing investments in
+              automation and emission control ensure strong compliance.
+            </li>
+
+            <li>
+              <strong>Carbon Reduction</strong> – As part of our long-term
+              climate strategy, Shyam Metalics is actively working toward a
+              net-zero emissions roadmap. A key part of this journey is
+              increasing the use of renewable energy, particularly through solar
+              power installations and Waste Heat Recovery Boilers (WHRB) that
+              harness energy from industrial processes.
+            </li>
+
+            <li>
+              <strong>Resource Efficiency</strong> – We follow a circular
+              approach to manufacturing by maximizing the use of every resource.
+              Our operations have adopted closed-loop water recycling systems,
+              ensuring minimal freshwater withdrawal. Solid waste is reused to
+              the greatest extent, particularly blast furnace slag, repurposed
+              into cement-grade material or road aggregates.
+            </li>
+          </ul>
         </div>
 
         {/* Right - Image */}

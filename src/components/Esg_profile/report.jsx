@@ -19,9 +19,12 @@ export default function Report() {
             Climate Action Report
           </h1>
           <p className="text-lg">
-            Lorem Ipsum dolor sit amet consectetur, Metus nunc posuere libero
-            integer morbi mattis feugiat fringilla. Aliquet dui diam cursus
-            mauris.
+            Driving Sustainable Growth with Responsibility At Shyam Metalics, we
+            are deeply committed to sustainable development by integrating
+            responsible practices across all facets of our operations. Our ESG
+            framework is centered on environmental preservation, social
+            development, and strong corporate governance — forming the bedrock
+            of our long-term vision.
           </p>
           <button className="border border-orange-500 text-white px-6 py-2 rounded hover:bg-orange-500 transition">
             Read The Full Report here →

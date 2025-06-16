@@ -213,9 +213,9 @@ export default function Hero() {
       label: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: "CSR", href: "/environment_compliance" },
+        { name: "CSR", href: "/csr" },
         { name: "Knowledge Hub", href: "/knowledgehub" },
-        { name: "Blogs", href: "" },
+        { name: "Blogs", href: "/blogs" },
         { name: "FAQ", href: "/faq-Page" },
       ],
     },
@@ -603,12 +603,16 @@ export default function Hero() {
       </aside>
 
       {/* Content Section */}
-      <div className="px-9 pt-[275px] max-w-2xl w-full ml-auto lg:ml-12 lg:w-1/2 text-left">
+      <div className="px-9 pt-[275px] max-w-6xl w-full ml-auto lg:ml-12 text-left">
         <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">
-          Sustainability as an
+          Building a Sustainable
           <br />
-          integral component
+          Future – Responsibly
         </h1>
+        <p>
+          Committed to Environmental Stewardship, Social Impact, and Ethical
+          Governance
+        </p>
         <hr
           className="my-6 h-1 border-0 rounded"
           style={{ background: "linear-gradient(to right, orange, white)" }}

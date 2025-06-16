@@ -220,9 +220,9 @@ export default function Hero() {
       label: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: "CSR", href: "#" },
+        { name: "CSR", href: "/csr" },
         { name: "Knowledge Hub", href: "/knowledgehub" },
-        { name: "Blogs", href: "#" },
+        { name: "Blogs", href: "/blogs" },
         { name: "FAQ", href: "/faq-Page" },
       ],
     },

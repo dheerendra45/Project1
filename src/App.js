@@ -7,7 +7,7 @@ import Layout from './components/Layout';
 import LeadershipPage from './Pages/leadership';
 import Products from './Pages/carbonsteel';
 import Business from './Pages/Business';
-import Sustainability from './Pages/Environment_Compliance';
+import Sustainability from './Pages/CSR';
 import OverviewPage from './Pages/overview'; // Fixed capitalization
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
@@ -35,7 +35,7 @@ function App() {
 
   <Route path="carbon_steel" element={<Products />} />
   <Route path="business" element={<Business />} />
-  <Route path="environment_compliance" element={<Sustainability />} />
+  <Route path="csr" element={<Sustainability />} />
   <Route path="esg_profile" element={<P1 />} />
   <Route path="ContactPage" element={<ContactPage />} />
   <Route path="LocationPage" element={<LocationPage />} />

@@ -153,9 +153,9 @@ const Hero = () => {
       title: 'COMMUNITY', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'CSR', href: '/environment_compliance' },
+        { name: 'CSR', href: '/csr' },
         { name: 'Knowledge Hub', href: '/knowledgehub' },
-        { name: 'Blogs', href: '#' },
+       { name: 'Blogs', href: '/blogs' },
         { name: 'FAQ', href: '/faq-Page' }
       ]
     },
