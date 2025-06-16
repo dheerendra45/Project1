@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../assets/Sustainability/commitment.png';
+import img from '../../assets/Sustainability/Plant11.jpg';
 
 const EnvironmentalCommitment = () => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react';
-import box1bg from '../../assets/Sustainability/b1.png';
-import box2bg from '../../assets/Sustainability/b2.png';
-import box3bg from '../../assets/Sustainability/b3.png';
-import box4bg from '../../assets/Sustainability/b4.png';
+import box1bg from '../../assets/Sustainability/Football4.jpg';
+import box2bg from '../../assets/Sustainability/Football5.jpg';
+import box3bg from '../../assets/Sustainability/Football6.jpg';
+import box4bg from '../../assets/Sustainability/Tution6.jpg';
 
 const SustainabilityTransparency = () => {
   return (
@@ -57,7 +57,7 @@ const SustainabilityTransparency = () => {
           {/* Strategy & Values Card */}
           <div className="bg-gray-800 rounded-lg p-6 text-white relative overflow-hidden" style={{ backgroundColor: '#000000' }}>
             <div className="absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${box3bg})` }}></div>
-            <div className="absolute inset-0 bg-black opacity-50"></div>
+            <div className="absolute inset-0 bg-gray opacity-50"></div>
 
             <div className="relative z-10 h-full flex flex-col justify-between">
               <div>

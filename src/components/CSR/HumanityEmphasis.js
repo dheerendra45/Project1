@@ -1,12 +1,12 @@
 import React from 'react';
-import img from '../../assets/Sustainability/teamwork.jpg';
+import img from '../../assets/Sustainability/Sewing7.jpg';
 
 const HumanityEmphasis = () => {
   return (
     <div 
       className="relative h-[886px] bg-cover bg-center flex items-center"
       style={{ 
-        backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${img})`
+        backgroundImage: ` url(${img})`
       }}
     >
       <div className="max-w-7xl mx-auto px-4 w-full text-center">

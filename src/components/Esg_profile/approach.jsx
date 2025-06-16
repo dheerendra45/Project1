@@ -1,6 +1,5 @@
-import a3 from "../../assets/p1/Plant 11.jpg"; // Ensure the image path is correct
-import a4 from "../../assets/p1/Sewing 7.jpg";
-import a5 from "../../assets/p1/Tution 5.jpg";
+import a3 from "../../assets/p1/girltree.png"; // Ensure the image path is correct
+
 export default function Approach() {
   return (
     <div className="text-black px-6 py-8 space-y-12">
@@ -37,8 +36,6 @@ export default function Approach() {
         {/* Left Image */}
         <div className="w-full md:w-1/2">
           <img src={a3} alt="ESG" className="w-full h-auto rounded-md" />
-          <img src={a4} alt="ESG" className="w-full  pt-12 h-auto rounded-md" />
-          <img src={a5} alt="ESG" className="w-full  pt-12 h-auto rounded-md" />
         </div>
 
         {/* Right Content */}

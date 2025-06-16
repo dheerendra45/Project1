@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../../assets/Sustainability/supply.jpg';
+import img from '../../assets/Sustainability/Plant10.jpg';
 
 const SupplyChainSustainability = () => {
   return (

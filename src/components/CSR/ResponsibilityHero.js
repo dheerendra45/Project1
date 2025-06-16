@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from '../../assets/Sustainability/quotebg.png';
+import bg from '../../assets/Sustainability/Tution5.jpg';
 
 const ResponsibilityHero = () => {
   return (

@@ -1,5 +1,5 @@
 import React from 'react';
-import  img from '../../assets/Sustainability/trustsustainability.png'
+import  img from '../../assets/Sustainability/Drawing .jpg'
 const TrustSustainability = () => {
   return (
     <div className="bg-white py-16">
