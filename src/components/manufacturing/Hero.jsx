@@ -53,7 +53,7 @@ const Hero = () => {
       title: "ABOUT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Company Overview", href: "/overview" },
+        { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
         { name: "Awards and Achievements", href: "/achievement" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
@@ -212,7 +212,7 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "ESG Profile", href: "/esg_profile" },
-        { name: "Environment Compliance", href: "#" },
+        { name: "Environment Compliance", href: "/environmentcompliance" },
       ],
     },
     {
@@ -220,7 +220,7 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "Life at Shyam", href: "/lifeshyam" },
-        { name: "Job Opportunity", href: "#" },
+        { name: "Job Opportunity", href: "/jobopportunity" },
         { name: "Current Opening", href: "/currentopening" },
       ],
     },

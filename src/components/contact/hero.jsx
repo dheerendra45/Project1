@@ -93,10 +93,10 @@ export default function Hero() {
 
   const navItems = [
     {
-      label: "ABOUT US",
+      title: "ABOUT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Company Overview", href: "/overview" },
+        { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
         { name: "Awards and Achievements", href: "/achievement" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
@@ -105,7 +105,7 @@ export default function Hero() {
       ],
     },
     {
-      label: "BUSINESS",
+      title: "BUSINESSES",
       hasDropdown: true,
       dropdownItems: [
         {
@@ -132,6 +132,7 @@ export default function Hero() {
                   name: "Finished Products",
                   items: ["Stainless Steel Billets"],
                 },
+                { name: "Intermediate Products", items: ["SS Wire Rod"] },
               ],
             },
             {
@@ -177,7 +178,7 @@ export default function Hero() {
       ],
     },
     {
-      label: "INVESTORS",
+      title: "INVESTORS",
       hasDropdown: true,
       dropdownItems: [
         {
@@ -214,10 +215,33 @@ export default function Hero() {
             { name: "Shareholder Information", href: "#" },
           ],
         },
+        {
+          name: "Investor Communication",
+          href: "#",
+          subItems: [
+            {
+              name: "Investor Presentations (Quarterly & Corporate)",
+              href: "#",
+            },
+            {
+              name: "Press Releases & Announcements (Quarterly + Other Key Updates)",
+              href: "#",
+            },
+            {
+              name: "Investor Contact (Only email ID, no phone number)",
+              href: "#",
+            },
+          ],
+        },
+        {
+          name: "Investor Helpdesk",
+          href: "#",
+          subItems: [],
+        },
       ],
     },
     {
-      label: "COMMUNITY",
+      title: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
         { name: "CSR", href: "/csr" },
@@ -227,24 +251,24 @@ export default function Hero() {
       ],
     },
     {
-      label: "SUSTAINABILITY",
+      title: "SUSTAINABILITY",
       hasDropdown: true,
       dropdownItems: [
         { name: "ESG Profile", href: "/esg_profile" },
-        { name: "Environment Compliance", href: "/environment_compliance" },
+        { name: "Environment Compliance", href: "/environmentcompliance" },
       ],
     },
     {
-      label: "CAREERS",
+      title: "CAREERS",
       hasDropdown: true,
       dropdownItems: [
         { name: "Life at Shyam", href: "/lifeshyam" },
-        { name: "Job Opportunity", href: "#" },
+        { name: "Job Opportunity", href: "/jobopportunity" },
         { name: "Current Opening", href: "/currentopening" },
       ],
     },
     {
-      label: "CONTACT US",
+      title: "CONTACT US",
       hasDropdown: true,
       dropdownItems: [
         { name: "Contact Form", href: "/ContactPage" },

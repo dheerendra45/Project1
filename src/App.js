@@ -22,6 +22,7 @@ import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
 import Environmentcompliance from'./Pages/Environmentcompliance';
+import Blogs from './Pages/blogs';
 
 
 function App() {

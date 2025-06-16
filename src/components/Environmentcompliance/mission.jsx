@@ -1,21 +1,29 @@
-import { motion } from 'framer-motion';
-import a1 from '../../assets/Environmentcompliance/mission1.png';
-import a2 from '../../assets/Environmentcompliance/mission2.png';
-import a3 from '../../assets/Environmentcompliance/mission3.png';
-import a4 from '../../assets/Environmentcompliance/mission4.png';
-import a5 from '../../assets/Environmentcompliance/mission5.png';
-import a6 from '../../assets/Environmentcompliance/mission6.png';
-import a7 from '../../assets/Environmentcompliance/mission7.png';
+import { motion } from "framer-motion";
+import a1 from "../../assets/Environmentcompliance/mission1.png";
+import a2 from "../../assets/Environmentcompliance/mission2.png";
+import a3 from "../../assets/Environmentcompliance/mission3.png";
+import a4 from "../../assets/Environmentcompliance/mission4.png";
+import a5 from "../../assets/Environmentcompliance/mission5.png";
+import a6 from "../../assets/Environmentcompliance/mission6.png";
+import a7 from "../../assets/Environmentcompliance/mission7.png";
 
 const getVariants = (reverse) => ({
   hidden: { opacity: 0, x: reverse ? 100 : -100 },
   visible: { opacity: 1, x: 0 },
 });
 
-const Section = ({ img, heading, para, bg, text, reverse = false, linkText }) => (
+const Section = ({
+  img,
+  heading,
+  para,
+  bg,
+  text,
+  reverse = false,
+  linkText,
+}) => (
   <motion.div
     className={`flex flex-col lg:flex-row ${
-      reverse ? 'lg:flex-row-reverse' : ''
+      reverse ? "lg:flex-row-reverse" : ""
     } items-stretch w-full ${bg} ${text}`}
     initial="hidden"
     whileInView="visible"
@@ -44,8 +52,9 @@ export default function Mission() {
     <div className="w-full overflow-x-hidden">
       <Section
         img={a1}
-        heading="Living Our Mission"
-        para="Through our high-quality solutions, technologies and services we are making our customers more productive and helping to sustain and protect our planet."
+        heading="🌿 From Waste to Wealth: How We Recycle 100% of Our Slag"
+        para="Discover how Shyam Metalics turns steel by-products into road construction materials, reducing landfill dependency.
+"
         bg="bg-orange-500"
         text="text-white"
         reverse={false}
@@ -53,8 +62,8 @@ export default function Mission() {
       />
       <Section
         img={a2}
-        heading="Policies & Position Statements"
-        para="Every day, Linde team members around the world are helping to make a positive social and environmental impact."
+        heading="🏥Healing Hands: Bringing Healthcare to Remote Villages"
+        para="Explore how our mobile medical units provide free check-ups to underserved communities near our plants."
         bg="bg-white"
         text="text-orange-500"
         reverse={true}
@@ -62,8 +71,9 @@ export default function Mission() {
       />
       <Section
         img={a3}
-        heading="Selecting Priorities"
-        para="We are managing to make an impact selecting priorities."
+        heading="⚡ The Green Steel Revolution: Our Hydrogen Pilot Project"
+        para="Steel production is among the world’s largest sources of carbon emissions, but what if we could change that? Explore our journey toward hydrogen-powered steelmaking.
+"
         bg="bg-orange-500"
         text="text-white"
         reverse={false}

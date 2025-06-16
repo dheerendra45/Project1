@@ -101,10 +101,10 @@ export default function Hero() {
 
   const navItems = [
     {
-      label: "ABOUT US",
+      title: "ABOUT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Company Overview", href: "/overview" },
+        { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
         { name: "Awards and Achievements", href: "/achievement" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
@@ -113,7 +113,7 @@ export default function Hero() {
       ],
     },
     {
-      label: "BUSINESS",
+      title: "BUSINESSES",
       hasDropdown: true,
       dropdownItems: [
         {
@@ -131,10 +131,28 @@ export default function Hero() {
             {
               name: "Cold Rolled",
               href: "#",
+              categories: [
+                {
+                  name: "Intermediate Products",
+                  items: ["Color Coated Sheets"],
+                },
+                {
+                  name: "Finished Products",
+                  items: ["Stainless Steel Billets"],
+                },
+                { name: "Intermediate Products", items: ["SS Wire Rod"] },
+              ],
             },
             {
               name: "Stainless Steel",
               href: "#",
+              categories: [
+                { name: "Intermediate Products", items: ["SS Wire Rod"] },
+                {
+                  name: "Finished Products",
+                  items: ["Black Round Bar", "Bright Bar", "Flats/Patta"],
+                },
+              ],
             },
             { name: "Specialty Alloys", href: "#" },
           ],
@@ -151,22 +169,24 @@ export default function Hero() {
           name: "Aluminium",
           href: "#",
           subItems: [
-            { name: "Flat Rolled Products", href: "#" },
-            { name: "Battery Foil", href: "#" },
+            {
+              name: "Intermediate Products",
+              href: "#",
+              categories: [
+                { name: "Flat Rolled Products", items: ["Aluminium Foil"] },
+              ],
+            },
+            {
+              name: "Finished Products",
+              href: "#",
+              categories: [{ name: "Battery Foil", items: [] }],
+            },
           ],
-        },
-        {
-          name: "SEL Tiger",
-          href: "#",
-        },
-        {
-          name: "View All",
-          href: "#",
         },
       ],
     },
     {
-      label: "INVESTORS",
+      title: "INVESTORS",
       hasDropdown: true,
       dropdownItems: [
         {
@@ -175,6 +195,10 @@ export default function Hero() {
           subItems: [
             { name: "Financial Performance", href: "#" },
             { name: "Financial Statements", href: "#" },
+            { name: "Stock Performance Data", href: "#" },
+            { name: "Regulatory Disclosures", href: "#" },
+            { name: "Company Disclosures (SEBI LODR)", href: "#" },
+            { name: "Credit Rating", href: "#" },
           ],
         },
         {
@@ -183,6 +207,10 @@ export default function Hero() {
           subItems: [
             { name: "Policies", href: "#" },
             { name: "Corporate Governance", href: "#" },
+            {
+              name: "Familiarization Program for Independent Directors",
+              href: "#",
+            },
           ],
         },
         {
@@ -191,12 +219,37 @@ export default function Hero() {
           subItems: [
             { name: "AGM", href: "#" },
             { name: "Company Notices", href: "#" },
+            { name: "Stock Exchange Intimations", href: "#" },
+            { name: "Shareholder Information", href: "#" },
           ],
+        },
+        {
+          name: "Investor Communication",
+          href: "#",
+          subItems: [
+            {
+              name: "Investor Presentations (Quarterly & Corporate)",
+              href: "#",
+            },
+            {
+              name: "Press Releases & Announcements (Quarterly + Other Key Updates)",
+              href: "#",
+            },
+            {
+              name: "Investor Contact (Only email ID, no phone number)",
+              href: "#",
+            },
+          ],
+        },
+        {
+          name: "Investor Helpdesk",
+          href: "#",
+          subItems: [],
         },
       ],
     },
     {
-      label: "COMMUNITY",
+      title: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
         { name: "CSR", href: "/csr" },
@@ -206,31 +259,31 @@ export default function Hero() {
       ],
     },
     {
-      label: "SUSTAINABILITY",
+      title: "SUSTAINABILITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: "ESG @ shyam", href: "#" },
-        { name: "Compliance", href: "#" },
+        { name: "ESG Profile", href: "/esg_profile" },
+        { name: "Environment Compliance", href: "/environmentcompliance" },
       ],
     },
     {
-      label: "CAREERS",
+      title: "CAREERS",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Life@shyam", href: "/lifeshyam" },
-        { name: "Current Openings", href: "/currentopening" },
+        { name: "Life at Shyam", href: "/lifeshyam" },
+        { name: "Job Opportunity", href: "/jobopportunity" },
+        { name: "Current Opening", href: "/currentopening" },
       ],
     },
     {
-      label: "CONTACT US",
+      title: "CONTACT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Contact Form", href: "#" },
-        { name: "Company Location", href: "#" },
+        { name: "Contact Form", href: "/ContactPage" },
+        { name: "Company Location", href: "/LocationPage" },
       ],
     },
   ];
-
   return (
     <div
       className="min-h-screen bg-cover bg-center text-white relative"

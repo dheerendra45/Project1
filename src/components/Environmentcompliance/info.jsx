@@ -12,8 +12,10 @@ export default function Info() {
         viewport={{ once: false, amount: 0.3 }}
         transition={{ duration: 0.6 }}
       >
-        Lorem ipsum dolor sit amet consectetur. <br />
-        Non a massa dolor ullamcorper lectus erat.
+        We prioritize the preservation of natural capital and the minimization
+        of our ecological
+        <br />
+        footprint, both within our operations and in the communities around us.
       </motion.h1>
 
       {/* Centered Content Area */}
@@ -29,16 +31,16 @@ export default function Info() {
           <div className="p-4 flex items-center">
             <p className="text-black text-lg leading-relaxed">
               For more than two decades, Linde's pragmatic ESG approach has
-              resulted in efficiency gains throughout our operations, as well
-              as the businesses of customers all over the world. In fact,
-              Linde helps our clients avoid more than double the emissions
-              that we generate across our entire global footprint. We are
-              enhancing the communities where Linde operates and the
-              neighborhoods where our more than 65,000 employees live. Moving
-              forward, we will continue to leverage sustainability to advance
-              our mission of making our world more productive so that Linde
-              can consistently deliver the results and exceptional
-              performance that shareholders have come to expect from us.
+              resulted in efficiency gains throughout our operations, as well as
+              the businesses of customers all over the world. In fact, Linde
+              helps our clients avoid more than double the emissions that we
+              generate across our entire global footprint. We are enhancing the
+              communities where Linde operates and the neighborhoods where our
+              more than 65,000 employees live. Moving forward, we will continue
+              to leverage sustainability to advance our mission of making our
+              world more productive so that Linde can consistently deliver the
+              results and exceptional performance that shareholders have come to
+              expect from us.
             </p>
           </div>
         </motion.div>

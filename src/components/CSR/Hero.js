@@ -82,7 +82,7 @@ const Hero = () => {
       label: "ABOUT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: "Company Overview", href: "/overview" },
+        { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
         { name: "Awards and Achievements", href: "/achievement" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
@@ -91,7 +91,7 @@ const Hero = () => {
       ],
     },
     {
-      label: "BUSINESSES",
+      label: "BUSINESS",
       hasDropdown: true,
       dropdownItems: [
         {
@@ -164,7 +164,43 @@ const Hero = () => {
     },
     {
       label: "INVESTORS",
-      hasDropdown: false,
+      hasDropdown: true,
+      dropdownItems: [
+        {
+          name: "Financials & Disclosures",
+          href: "#",
+          subItems: [
+            { name: "Financial Performance", href: "#" },
+            { name: "Financial Statements", href: "#" },
+            { name: "Stock Performance Data", href: "#" },
+            { name: "Regulatory Disclosures", href: "#" },
+            { name: "Company Disclosures (SEBI LODR)", href: "#" },
+            { name: "Credit Rating", href: "#" },
+          ],
+        },
+        {
+          name: "Corporate Governance",
+          href: "#",
+          subItems: [
+            { name: "Policies", href: "#" },
+            { name: "Corporate Governance", href: "#" },
+            {
+              name: "Familiarization Program for Independent Directors",
+              href: "#",
+            },
+          ],
+        },
+        {
+          name: "Shareholder Information",
+          href: "#",
+          subItems: [
+            { name: "AGM", href: "#" },
+            { name: "Company Notices", href: "#" },
+            { name: "Stock Exchange Intimations", href: "#" },
+            { name: "Shareholder Information", href: "#" },
+          ],
+        },
+      ],
     },
     {
       label: "COMMUNITY",
@@ -172,7 +208,7 @@ const Hero = () => {
       dropdownItems: [
         { name: "CSR", href: "/csr" },
         { name: "Knowledge Hub", href: "/knowledgehub" },
-{ name: 'Blogs', href: '/blogs' },
+        { name: "Blogs", href: "/blogs" },
         { name: "FAQ", href: "/faq-Page" },
       ],
     },
@@ -181,14 +217,28 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "ESG Profile", href: "/esg_profile" },
-        { name: "Environment Compliance", href: "/environment_compliance" },
+        { name: "Environment Compliance", href: "/environmentcompliance" },
+      ],
+    },
+    {
+      label: "CAREERS",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Life at Shyam", href: "/lifeshyam" },
+        { name: "Job Opportunity", href: "/jobopportunity" },
+        { name: "Current Opening", href: "/currentopening" },
       ],
     },
     {
       label: "CONTACT US",
-      hasDropdown: false,
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "Contact Form", href: "/ContactPage" },
+        { name: "Company Location", href: "/LocationPage" },
+      ],
     },
   ];
+
 
   return (
     <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden">

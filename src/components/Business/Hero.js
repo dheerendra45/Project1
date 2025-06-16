@@ -27,173 +27,191 @@ const Hero = () => {
     exit: { x: '100%' }
   };
 
-  const navItems = [
-    { 
-      title: 'ABOUT US', 
+   const navItems = [
+    {
+      title: "ABOUT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Company Overview', href: '/overview' },
-        { name: 'Leadership', href: '/leadership' },
-        { name: 'Awards and Achievements', href: '/achievement' },
-        { name: 'Manufacturing Unit', href: '/manufacturing' },
-        { name: 'Testimonials', href: '/testimonials' },
-        { name: 'News and Events', href: '#' }
-      ]
+        { name: "Company Overview", href: "/companyoverview" },
+        { name: "Leadership", href: "/leadership" },
+        { name: "Awards and Achievements", href: "/achievement" },
+        { name: "Manufacturing Unit", href: "/manufacturing" },
+        { name: "Testimonials", href: "/testimonials" },
+        { name: "News and Events", href: "#" },
+      ],
     },
-    { 
-      title: 'BUSINESSES', 
+    {
+      title: "BUSINESSES",
       hasDropdown: true,
       dropdownItems: [
         {
-          name: 'Business Overview',
-          href: '/business',
+          name: "Business Overview",
+          href: "/business",
         },
         {
-          name: 'Steel',
-          href: '#',
+          name: "Steel",
+          href: "#",
           subItems: [
             {
-              name: 'Carbon Steel',
-              href: '/carbon_steel',
+              name: "Carbon Steel",
+              href: "/carbon_steel",
             },
             {
-              name: 'Cold Rolled',
-              href: '#',
+              name: "Cold Rolled",
+              href: "#",
               categories: [
-                { name: 'Intermediate Products', items: ['Color Coated Sheets'] },
-                { name: 'Finished Products', items: ['Stainless Steel Billets'] },
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] }
-              ]
+                {
+                  name: "Intermediate Products",
+                  items: ["Color Coated Sheets"],
+                },
+                {
+                  name: "Finished Products",
+                  items: ["Stainless Steel Billets"],
+                },
+                { name: "Intermediate Products", items: ["SS Wire Rod"] },
+              ],
             },
             {
-              name: 'Stainless Steel',
-              href: '#',
+              name: "Stainless Steel",
+              href: "#",
               categories: [
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] },
-                { name: 'Finished Products', items: ['Black Round Bar', 'Bright Bar', 'Flats/Patta'] }
-              ]
+                { name: "Intermediate Products", items: ["SS Wire Rod"] },
+                {
+                  name: "Finished Products",
+                  items: ["Black Round Bar", "Bright Bar", "Flats/Patta"],
+                },
+              ],
             },
-            { name: 'Specialty Alloys', href: '#' }
-          ]
+            { name: "Specialty Alloys", href: "#" },
+          ],
         },
         {
-          name: 'Power',
-          href: '#',
+          name: "Power",
+          href: "#",
           subItems: [
-            { name: 'Captive Power', href: '#' },
-            { name: 'Renewable Power', href: '#' }
-          ]
+            { name: "Captive Power", href: "#" },
+            { name: "Renewable Power", href: "#" },
+          ],
         },
         {
-          name: 'Aluminium',
-          href: '#',
+          name: "Aluminium",
+          href: "#",
           subItems: [
             {
-              name: 'Intermediate Products',
-              href: '#',
+              name: "Intermediate Products",
+              href: "#",
               categories: [
-                { name: 'Flat Rolled Products', items: ['Aluminium Foil'] }
-              ]
+                { name: "Flat Rolled Products", items: ["Aluminium Foil"] },
+              ],
             },
             {
-              name: 'Finished Products',
-              href: '#',
-              categories: [
-                { name: 'Battery Foil', items: [] }
-              ]
-            }
-          ]
-        }
-      ]
+              name: "Finished Products",
+              href: "#",
+              categories: [{ name: "Battery Foil", items: [] }],
+            },
+          ],
+        },
+      ],
     },
-    { 
-      title: 'INVESTORS', 
+    {
+      title: "INVESTORS",
       hasDropdown: true,
       dropdownItems: [
         {
-          name: 'Financials & Disclosures',
-          href: '#',
+          name: "Financials & Disclosures",
+          href: "#",
           subItems: [
-            { name: 'Financial Performance', href: '#' },
-            { name: 'Financial Statements', href: '#' },
-            { name: 'Stock Performance Data', href: '#' },
-            { name: 'Regulatory Disclosures', href: '#' },
-            { name: 'Company Disclosures (SEBI LODR)', href: '#' },
-            { name: 'Credit Rating', href: '#' }
-          ]
+            { name: "Financial Performance", href: "#" },
+            { name: "Financial Statements", href: "#" },
+            { name: "Stock Performance Data", href: "#" },
+            { name: "Regulatory Disclosures", href: "#" },
+            { name: "Company Disclosures (SEBI LODR)", href: "#" },
+            { name: "Credit Rating", href: "#" },
+          ],
         },
         {
-          name: 'Corporate Governance',
-          href: '#',
+          name: "Corporate Governance",
+          href: "#",
           subItems: [
-            { name: 'Policies', href: '#' },
-            { name: 'Corporate Governance', href: '#' },
-            { name: 'Familiarization Program for Independent Directors', href: '#' }
-          ]
+            { name: "Policies", href: "#" },
+            { name: "Corporate Governance", href: "#" },
+            {
+              name: "Familiarization Program for Independent Directors",
+              href: "#",
+            },
+          ],
         },
         {
-          name: 'Shareholder Information',
-          href: '#',
+          name: "Shareholder Information",
+          href: "#",
           subItems: [
-            { name: 'AGM', href: '#' },
-            { name: 'Company Notices', href: '#' },
-            { name: 'Stock Exchange Intimations', href: '#' },
-            { name: 'Shareholder Information', href: '#' }
-          ]
+            { name: "AGM", href: "#" },
+            { name: "Company Notices", href: "#" },
+            { name: "Stock Exchange Intimations", href: "#" },
+            { name: "Shareholder Information", href: "#" },
+          ],
         },
         {
-          name: 'Investor Communication',
-          href: '#',
+          name: "Investor Communication",
+          href: "#",
           subItems: [
-            { name: 'Investor Presentations (Quarterly & Corporate)', href: '#' },
-            { name: 'Press Releases & Announcements (Quarterly + Other Key Updates)', href: '#' },
-            { name: 'Investor Contact (Only email ID, no phone number)', href: '#' }
-          ]
+            {
+              name: "Investor Presentations (Quarterly & Corporate)",
+              href: "#",
+            },
+            {
+              name: "Press Releases & Announcements (Quarterly + Other Key Updates)",
+              href: "#",
+            },
+            {
+              name: "Investor Contact (Only email ID, no phone number)",
+              href: "#",
+            },
+          ],
         },
         {
-          name: 'Investor Helpdesk',
-          href: '#',
-          subItems: []
-        }
-      ]
+          name: "Investor Helpdesk",
+          href: "#",
+          subItems: [],
+        },
+      ],
     },
-    { 
-      title: 'COMMUNITY', 
+    {
+      title: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: 'CSR', href: '/csr' },
-        { name: 'Knowledge Hub', href: '/knowledgehub' },
-       { name: 'Blogs', href: '/blogs' },
-        { name: 'FAQ', href: '/faq-Page' }
-      ]
+        { name: "CSR", href: "/csr" },
+        { name: "Knowledge Hub", href: "/knowledgehub" },
+        { name: "Blogs", href: "/blogs" },
+        { name: "FAQ", href: "/faq-Page" },
+      ],
     },
-    { 
-      title: 'SUSTAINABILITY', 
+    {
+      title: "SUSTAINABILITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: 'ESG Profile', href: '/esg_profile' },
-        { name: 'Environment Compliance', href: '#' }
-      ]
+        { name: "ESG Profile", href: "/esg_profile" },
+        { name: "Environment Compliance", href: "/environmentcompliance" },
+      ],
     },
-    { 
-      title: 'CAREERS', 
+    {
+      title: "CAREERS",
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Life at Shyam', href: '/lifeshyam' },
-        { name: 'Job Opportunity', href: '#' },
-        { name: 'Current Opening', href: '/currentopening' }
-      ]
+        { name: "Life at Shyam", href: "/lifeshyam" },
+        { name: "Job Opportunity", href: "/jobopportunity" },
+        { name: "Current Opening", href: "/currentopening" },
+      ],
     },
-    { 
-      title: 'CONTACT US', 
+    {
+      title: "CONTACT US",
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Contact Form', href: '/ContactPage' },
-        { name: 'Company Location', href: '/LocationPage' }
-      ]
+        { name: "Contact Form", href: "/ContactPage" },
+        { name: "Company Location", href: "/LocationPage" },
+      ],
     },
   ];
-
   // Clear any existing timeout
   const clearHoverTimeout = () => {
     if (hoverTimeoutRef.current) {
