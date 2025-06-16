@@ -352,6 +352,18 @@ const TestimonialHomePage = () => {
               Read All
             </motion.button>
           </div>
+
+          {/* Read All Button - Mobile */}
+          <div className="text-center">
+            <motion.button
+              onClick={handleReadAll}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Read All
+            </motion.button>
+          </div>
         </div>
       </div>
     </>
