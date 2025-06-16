@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import a1 from "../../assets/Environmentcompliance/mission1.png";
-import a2 from "../../assets/Environmentcompliance/mission2.png";
-import a3 from "../../assets/Environmentcompliance/mission3.png";
-import a4 from "../../assets/Environmentcompliance/mission4.png";
-import a5 from "../../assets/Environmentcompliance/mission5.png";
-import a6 from "../../assets/Environmentcompliance/mission6.png";
-import a7 from "../../assets/Environmentcompliance/mission7.png";
+import a1 from "../../assets/Environmentcompliance/Drawing .jpg";
+import a2 from "../../assets/Environmentcompliance/Football 4.jpg";
+import a3 from "../../assets/Environmentcompliance/Football 5.jpg";
+import a4 from "../../assets/Environmentcompliance/Football 6.jpg";
+import a5 from "../../assets/Environmentcompliance/Tution 6.jpg";
+import a6 from "../../assets/Environmentcompliance/Plant 10.jpg";
+import a7 from "../../assets/Environmentcompliance/Plant 11.jpg";
 
 const getVariants = (reverse) => ({
   hidden: { opacity: 0, x: reverse ? 100 : -100 },
