@@ -113,6 +113,12 @@ const TestimonialHomePage = () => {
     setIsAutoPlaying(!isAutoPlaying);
   };
 
+  const handleReadAll = () => {
+    // You can implement what happens when "Read All" is clicked
+    console.log("Read All button clicked");
+    // For example, navigate to a testimonials page or show all testimonials
+  };
+
   const renderImageSection = (
     members,
     sectionPositions,
@@ -247,8 +253,8 @@ const TestimonialHomePage = () => {
           )}
 
           {/* Center Content */}
-          <div className="flex flex-col justify-end items-center min-h-screen py-[75px]">
-            <div className="text-center space-y-8 relative z-10 max-w-4xl pl-12 -ml-[100px]">
+          <div className="flex flex-col justify-center items-center h-[640px] pt-60">
+            <div className="text-center space-y-8 relative z-10 max-w-4xl lg:-ml-[40px]">
               {/* Static Header */}
               <div className="space-y-4">
                 <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
@@ -280,15 +286,15 @@ const TestimonialHomePage = () => {
                 </motion.div>
               </AnimatePresence>
 
-              {/* Read All Button */}
-              <div className="mt-8">
-                <button
-                  onClick={handleReadAllToggle}
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl"
-                >
-                  {isAutoPlaying ? "Stop Reading" : "Read All"}
-                </button>
-              </div>
+              {/* Read All Button - Desktop */}
+              <motion.button
+                onClick={handleReadAll}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Read All
+              </motion.button>
             </div>
           </div>
         </div>
@@ -311,7 +317,7 @@ const TestimonialHomePage = () => {
           {renderMobileImageGrid()}
 
           {/* Dynamic Testimonial */}
-          <div className="text-center">
+          <div className="text-center mb-6">
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentTestimonial.author}
@@ -333,6 +339,18 @@ const TestimonialHomePage = () => {
             >
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>
+          </div>
+
+          {/* Read All Button - Mobile */}
+          <div className="text-center">
+            <motion.button
+              onClick={handleReadAll}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Read All
+            </motion.button>
           </div>
         </div>
       </div>
