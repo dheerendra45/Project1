@@ -15,7 +15,7 @@ const Footer = () => {
               <img 
                 src={companylogo} 
                 alt="Shyam Metalics Logo" 
-                className="h-10 sm:h-12"
+                className="h-40 sm:h-35"
               />
             </div>
             <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6">

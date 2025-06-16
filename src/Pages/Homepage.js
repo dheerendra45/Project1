@@ -38,12 +38,13 @@ const HomePage = () => {
  <CSRPage />
     
       <TestimonialHomePage />
+      <CertificationsSection />
       
       <NewsPage />
    
       
       <ContactPage />
-      <CertificationsSection />
+      
     </div>
   );
 };

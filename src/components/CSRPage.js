@@ -1,39 +1,44 @@
 import React from 'react';
-import csr from "../assets/csr.png";
+import csr from "../assets/csr.png"; // your image path
 
 const CSRPage = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row w-full border-b-2">
-        {/* Left side with image */}
+        {/* Left side with image and overlay text */}
         <div className="w-full md:w-1/2 bg-gray-800 relative h-96 md:h-auto">
-          <div className="absolute inset-0">
-            <img 
-              src={csr} 
-              alt="Student in classroom" 
-              className="w-full h-full object-cover opacity-80" 
-            />
+          <img 
+            src={csr} 
+            alt="Student in classroom" 
+            className="w-full h-full object-cover opacity-80" 
+          />
+          <div className="absolute inset-0 flex items-center justify-center px-4 text-center">
+            <h2 className="text-white text-3xl md:text-5xl font-bold leading-tight">
+              Building <br className="block md:hidden" />
+              Communities,<br />
+              Empowering Lives
+            </h2>
           </div>
         </div>
-        
-        {/* Right side with content - Added margin-right here */}
-        <div className="w-full md:w-1/2 bg-white p-10 pr-12"> {/* Added pr-12 for 48px (3rem) right padding */}
+
+        {/* Right side with content */}
+        <div className="w-full md:w-1/2 bg-white p-10 pr-12">
           <h3 className="text-2xl font-bold mb-4">Corporate Social Responsibility</h3>
           <h2 className="text-4xl font-bold mb-12">Building Communities, Empowering Lives</h2>
           
           <div className="flex flex-wrap justify-between mb-16">
             <div className="mb-8 md:mb-0">
               <h2 className="text-4xl font-bold text-orange-500">100+</h2>
-              <p className="text-xl font-semibold">Schools Supported</p>
+              <p className="text-xl font-semibold">Schools<br />Supported</p>
             </div>
             <div className="mb-8 md:mb-0">
               <h2 className="text-4xl font-bold text-orange-500">20+</h2>
-              <p className="text-xl font-semibold">Schools Supported</p>
+              <p className="text-xl font-semibold">Schools<br />Supported</p>
             </div>
             <div>
               <h2 className="text-4xl font-bold text-orange-500">10,000+</h2>
-              <p className="text-xl font-semibold">Schools Supported</p>
+              <p className="text-xl font-semibold">Schools<br />Supported</p>
             </div>
           </div>
           
@@ -42,8 +47,6 @@ const CSRPage = () => {
           </button>
         </div>
       </div>
-
-      {/* Additional content sections can be added below */}
     </div>
   );
 };

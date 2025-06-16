@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import contactbg from '../assets/image.png';
 const ContactPage = () => {
   const [formData, setFormData] = useState({
     fullName: '',
@@ -19,8 +19,17 @@ const ContactPage = () => {
     console.log('Form submitted:', formData);
   };
 
+  // Debug: Check if image is loading
+  console.log('contactbg value:', contactbg);
+  
   return (
-    <div className="w-full bg-gray-100 py-16 px-4">
+    <div  style={{
+  backgroundImage: `linear-gradient(rgba(128, 128, 128, 0.7), rgba(128, 128, 128, 0.7)), url(${contactbg})`, 
+  backgroundColor: '#f0f0f0', // fallback color
+  backgroundSize: 'cover', 
+  backgroundPosition: 'center', 
+  backgroundRepeat: 'no-repeat'
+}} className="w-full bg-gray-100 py-16 px-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row">
           {/* Left Side - Contact Information */}
@@ -146,7 +155,7 @@ const ContactPage = () => {
           value={formData.message}
           onChange={handleInputChange}
           className="w-full p-3 bg-white border border-gray-400 rounded-md focus:outline-none placeholder-black text-black"
-        ></textarea>
+        />
       </div>
       <button 
         type="button" 

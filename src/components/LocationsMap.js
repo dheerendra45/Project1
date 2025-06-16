@@ -23,7 +23,7 @@ function LocationsMap() {
   return (
     <div className="py-6 md:py-12 bg-white">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
-        
+       
         {/* Title & Description with Button Row */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="mb-4 sm:mb-0">
@@ -33,7 +33,7 @@ function LocationsMap() {
             </p>
           </div>
           <button className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors self-start sm:self-auto">
-            View All
+            View Global Presence
             <span className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-xl font-extrabold">
               →
             </span>
@@ -56,13 +56,28 @@ function LocationsMap() {
         </div>
 
         {/* Maps Section */}
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
-
-          {/* World Map */}
-          <div className="lg:w-1/2">
-            <img src={WorldMapImage} alt="World Map" className="w-full" />
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start">
+          {/* Global Presence Numbers */}
+          <div className="lg:w-1/4 space-y-3">
+            <div className="flex items-center text-orange-500">
+              <span className="text-2xl font-bold mr-2">82+</span>
+              <span className="text-sm text-gray-700">countries<br />Footprint</span>
+            </div>
+            <div className="flex items-center text-orange-500">
+              <span className="text-2xl font-bold mr-2">09</span>
+              <span className="text-sm text-gray-700">Manufacturing<br />facilities worldwide</span>
+            </div>
+            <div className="flex items-center text-orange-500">
+              <span className="text-2xl font-bold mr-2">27</span>
+              <span className="text-sm text-gray-700">Manufacturing<br />units in India</span>
+            </div>
           </div>
-
+          
+          {/* World Map */}
+          <div className="lg:w-1/2 relative">
+            <img src={WorldMapImage} alt="World Map" className="w-full max-w-[769px] h-auto" />
+          </div>
+          
           {/* India Map with Icons */}
           <div className="lg:w-1/4 relative">
             <img src={IndiaMapImage} alt="India Map" className="w-full" />
