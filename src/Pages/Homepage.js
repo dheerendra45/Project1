@@ -18,17 +18,19 @@ import Footer from "../components/Footer";
 import TestimonialHomePage from "../components/Testimonial-HomePage";
 import Environment from "../components/environment";
 import EnvironmentSection1 from "../components/EnvironmentSection1";
+import Start from "../components/start";
+import BusinessHomepage from "../components/BusinessHomepage";
 
 const HomePage = () => {
   return (
     <div>
-       
+       <Start/>
       <Hero />
      
       <MissionVisionValues />
        <AboutUs />
-       
-      <EnvironmentSection />
+      <BusinessHomepage/>
+      {/* <EnvironmentSection /> */}
        <BusinessAreas />
       <LocationsMap />
      
