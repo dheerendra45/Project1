@@ -24,7 +24,7 @@ import BusinessHomepage from "../components/BusinessHomepage";
 const HomePage = () => {
   return (
     <div>
-       <Start/>
+    
       <Hero />
      
       <MissionVisionValues />

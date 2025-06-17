@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+
 import herobg from '../assets/hero-background.png';
 import companylogo from '../assets/products/image28.png'
 // Import the new hero icons
@@ -8,19 +9,17 @@ import TruckIcon from '../assets/truck-icon.png';
 import IndiaMapIcon from '../assets/india-map-icon.png';
 import Start from "../components/start.jsx";
 
+
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
   
   // Timeout refs for delayed closing
   const hoverTimeoutRef = useRef(null);
   const businessSubTimeoutRef = useRef(null);
   const nestedSubTimeoutRef = useRef(null);
   const dropdownRef = useRef(null);
-  const heroRef = useRef(null);
-  const animationRef = useRef(null);
 
   const navItems = [
     { 
@@ -272,82 +271,44 @@ const Hero = () => {
     }
   };
 
-  // Animation effects
-  const animateElements = () => {
-    if (!heroRef.current) return;
-
-    const elements = heroRef.current.querySelectorAll('.animate-on-scroll');
-    const windowHeight = window.innerHeight;
-    const scrollY = window.scrollY || window.pageYOffset;
-    
-    setScrollPosition(scrollY);
-
-    elements.forEach(element => {
-      const elementTop = element.getBoundingClientRect().top;
-      const elementVisible = 150;
-
-      if (elementTop < windowHeight - elementVisible) {
-        element.classList.add('active');
-      } else {
-        element.classList.remove('active');
-      }
-    });
-
-    animationRef.current = requestAnimationFrame(animateElements);
-  };
-
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
-    document.addEventListener('scroll', animateElements);
-    animateElements(); // Initial call
-
     return () => {
       document.removeEventListener('click', handleClickOutside);
-      document.removeEventListener('scroll', animateElements);
       clearAllTimeouts();
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
     };
   }, []);
 
-  // Parallax effect for background
-  const parallaxStyle = {
-    transform: `translateY(${scrollPosition * 0.5}px)`
-  };
-
   return (
-    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden relative" ref={heroRef}>
-      {/* Background with parallax effect */}
-      <div className="absolute inset-0 overflow-hidden">
-        <img
-          src={herobg}
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          style={parallaxStyle}
-        />
-        {/* Animated floating elements */}
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-          {/* Floating particles animation */}
-          {[...Array(15)].map((_, i) => (
-            <div 
-              key={i}
-              className="absolute bg-white rounded-full animate-float"
-              style={{
-                width: `${Math.random() * 5 + 2}px`,
-                height: `${Math.random() * 5 + 2}px`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.1,
-                animationDuration: `${Math.random() * 20 + 10}s`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            />
-          ))}
+    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden">
+      {/* <Start/> */}
+      <div className="w-full h-[57px] bg-black flex items-center justify-between px-6 text-white text-sm">
+        <div className="flex items-center ml-7">
+          <span className="font-inter font-normal text-[12px] leading-[18px]">
+            €208.00 +2.72
+          </span>
         </div>
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="flex items-center">
+          <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
+            Lorem Ipsum Dollar Site ent
+          </span>
+        </div>
+        <div className="flex items-center gap-6">
+          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+            Employee Login 
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+            🌐 Global(English) 
+            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+        </div>
       </div>
+
 
       {/* Middle Navbar */}
       <div 
@@ -385,7 +346,7 @@ const Hero = () => {
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div 
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1 animate-fadeIn"
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
@@ -425,7 +386,7 @@ const Hero = () => {
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                             <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1 animate-fadeIn"
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
                               onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                               onMouseLeave={handleBusinessSubLeave}
                             >
@@ -467,7 +428,7 @@ const Hero = () => {
                                   {/* Nested sub-menu for categories */}
                                   {activeNestedSub === subIndex && subItem.categories && (
                                     <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1 animate-fadeIn"
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >
@@ -542,126 +503,98 @@ const Hero = () => {
 
       {/* Updated Hero Section */}
       <div className="relative h-full -mt-[65px]">
-        {/* Content with animations */}
-        <div className="relative z-20 px-4 py-8 flex items-center justify-center min-h-screen text-white">
-          {/* Semi-transparent black content area with animation */}
-          <div className="bg-black bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-8 flex flex-col gap-6 animate-on-scroll">
-            
-            {/* Heading and paragraph with animation */}
-            <div className="w-full md:w-[70%] animate-on-scroll">
-              <h1 className="text-[60px] md:text-[52px] leading-tight font-space-grotesk font-bold text mb-4 transform transition-all duration-1000 translate-y-10 opacity-0 animate-on-scroll active:translate-y-0 active:opacity-100">
-                A Steel Company With  <br />Integrated Operations.
-              </h1>
-              <p className="text-lg mb-6 transform transition-all duration-1000 delay-200 translate-y-10 opacity-0 animate-on-scroll active:translate-y-0 active:opacity-100">
-                Shyam Metalics is the 6th largest metal producing company <br />
-                based in India providing end-to-end solutions with
-              </p>
-            </div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
+        />
+        <img
+          src={herobg}
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
 
-            {/* Button + Stats in same row with animation */}
-            <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-6 animate-on-scroll">
-              {/* Button with animation */}
-              <div className="w-full md:w-[30%] transform transition-all duration-1000 delay-300 translate-y-10 opacity-0 animate-on-scroll active:translate-y-0 active:opacity-100">
-                <button className="bg-orange-500 text-white px-6 py-3 rounded border border-white hover:bg-orange-600 transition w-full md:w-auto hover:scale-105 transform transition-transform duration-300">
-                  Explore More
-                </button>
-              </div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/40"></div>
+        
+        {/* Updated Content */}
+     <div className="relative z-20 px-4 py-8 flex items-center justify-center min-h-screen text-white">
+  {/* Semi-transparent black content area */}
+  <div className="bg-black bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-8 flex flex-col gap-6">
+    
+    {/* Heading and paragraph */}
+    <div className="w-full md:w-[70%]">
+      <h1 className="text-[60px] md:text-[52px] leading-tight font-space-grotesk font-bold text mb-4">
+        A Steel Company With  <br />Integrated Operations.
+      </h1>
+      <p className="text-lg mb-6">
+        Shyam Metalics is the 6th largest metal producing company <br />
+        based in India providing end-to-end solutions with
+      </p>
+    </div>
 
-              {/* Stats Box with animation */}
-              <div className="w-full md:w-[100%] bg-black bg-opacity-50 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6 transform transition-all duration-1000 delay-400 translate-y-10 opacity-0 animate-on-scroll active:translate-y-0 active:opacity-100">
-                {/* Stat 1 */}
-                <div className="flex items-center gap-3 w-[45%] md:w-auto hover:scale-105 transform transition-transform duration-300">
-                  <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
-                  <div>
-                    <h2 className="text-xl font-bold">15.15 MTPA</h2>
-                    <p className="text-sm">Installed Capacity</p>
-                  </div>
-                </div>
-                {/* Stat 2 */}
-                <div className="flex items-center gap-3 w-[45%] md:w-auto hover:scale-105 transform transition-transform duration-300">
-                  <img src={RevenueIcon} alt="Revenue Icon" className="w-10 h-10" />
-                  <div>
-                    <h2 className="text-xl font-bold">₹ 15,680 Cr</h2>
-                    <p className="text-sm">Revenue '24</p>
-                  </div>
-                </div>
-                {/* Stat 3 */}
-                <div className="flex items-center gap-3 w-[45%] md:w-auto hover:scale-105 transform transition-transform duration-300">
-                  <img src={TruckIcon} alt="Truck Icon" className="w-10 h-10" />
-                  <div>
-                    <h2 className="text-xl font-bold">2,500+</h2>
-                    <p className="text-sm">Delivered Nationwide</p>
-                  </div>
-                </div>
-                {/* Stat 4 */}
-                <div className="flex items-center gap-3 w-[45%] md:w-auto hover:scale-105 transform transition-transform duration-300">
-                  <img src={IndiaMapIcon} alt="India Map Icon" className="w-10 h-10" />
-                  <div>
-                    <h2 className="text-xl font-bold">8</h2>
-                    <p className="text-sm">Pan-India Presence</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+    {/* Button + Stats in same row */}
+    <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-6">
+      {/* Button */}
+      <div className="w-full md:w-[30%]">
+        <button className="bg-orange-500 text-white px-6 py-3 rounded border border-white hover:bg-orange-600 transition w-full md:w-auto">
+          Explore More
+        </button>
+      </div>
 
-            {/* Breadcrumb with animation */}
-            <div className="text-sm flex items-center gap-4 text-white/80 mt-4 transform transition-all duration-1000 delay-500 translate-y-10 opacity-0 animate-on-scroll active:translate-y-0 active:opacity-100">
-              <span>Home</span>
-              <span>&gt;</span>
-              <span>Businesses</span>
-              <span>&gt;</span>
-              <span>Steel</span>
-              <span>&gt;</span>
-              <span>Carbon Steel</span>
-              <span>&gt;</span>
-              <span>Pellets</span>
-            </div>
+      {/* Stats Box */}
+      <div className="w-full md:w-[100%] bg-black bg-opacity-50 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
+        {/* Stat 1 */}
+        <div className="flex items-center gap-3 w-[45%] md:w-auto">
+          <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
+          <div>
+            <h2 className="text-xl font-bold">15.15 MTPA</h2>
+            <p className="text-sm">Installed Capacity</p>
+          </div>
+        </div>
+        {/* Stat 2 */}
+        <div className="flex items-center gap-3 w-[45%] md:w-auto">
+          <img src={RevenueIcon} alt="Revenue Icon" className="w-10 h-10" />
+          <div>
+            <h2 className="text-xl font-bold">₹ 15,680 Cr</h2>
+            <p className="text-sm">Revenue '24</p>
+          </div>
+        </div>
+        {/* Stat 3 */}
+        <div className="flex items-center gap-3 w-[45%] md:w-auto">
+          <img src={TruckIcon} alt="Truck Icon" className="w-10 h-10" />
+          <div>
+            <h2 className="text-xl font-bold">2,500+</h2>
+            <p className="text-sm">Delivered Nationwide</p>
+          </div>
+        </div>
+        {/* Stat 4 */}
+        <div className="flex items-center gap-3 w-[45%] md:w-auto">
+          <img src={IndiaMapIcon} alt="India Map Icon" className="w-10 h-10" />
+          <div>
+            <h2 className="text-xl font-bold">8</h2>
+            <p className="text-sm">Pan-India Presence</p>
           </div>
         </div>
       </div>
+    </div>
 
-      {/* CSS for animations (can be moved to a separate CSS file) */}
-      <style jsx>{`
-        @keyframes float {
-          0% {
-            transform: translateY(0) translateX(0);
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-          }
-          100% {
-            transform: translateY(0) translateX(0);
-          }
-        }
-        
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-float {
-          animation: float 10s infinite ease-in-out;
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-        
-        .animate-on-scroll {
-          transition: all 0.6s ease-out;
-        }
-        
-        .animate-on-scroll.active {
-          transform: translateY(0) !important;
-          opacity: 1 !important;
-        }
-      `}</style>
+    {/* Breadcrumb */}
+    <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
+      <span>Home</span>
+      <span>&gt;</span>
+      <span>Businesses</span>
+      <span>&gt;</span>
+      <span>Steel</span>
+      <span>&gt;</span>
+      <span>Carbon Steel</span>
+      <span>&gt;</span>
+      <span>Pellets</span>
+    </div>
+
+  </div>
+</div>
+
+      </div>
     </div>
   );
 };
