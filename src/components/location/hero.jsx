@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
-import { Link } from "react-router-dom";
 
 // Add your original imports back:
 import a1 from "../../assets/location/logo.png";
@@ -13,11 +12,7 @@ export default function Hero() {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const dropdownRef = useRef(null);
-  const hoverTimeoutRef = useRef(null); // Added timeout reference
-
-  // Remove these lines and use your original imports
-  // const a1 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='116' height='55' viewBox='0 0 116 55'%3E%3Crect width='116' height='55' fill='%23ff6b35'/%3E%3Ctext x='58' y='30' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3ELOGO%3C/text%3E%3C/svg%3E";
-  //const a2 = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Cdefs%3E%3ClinearGradient id='bg' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%23667eea;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%23764ba2;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1200' height='800' fill='url(%23bg)'/%3E%3C/svg%3E";
+  const hoverTimeoutRef = useRef(null);
 
   const closeSidebar = () => {
     setSidebarOpen(false);
@@ -27,38 +22,34 @@ export default function Hero() {
     setActiveNestedSub(null);
   };
 
-  // Fixed: Added timeout to prevent immediate closing
-  const handleMouseEnter = (index) => {
-    // Clear any existing timeout
+  const clearHoverTimeout = () => {
     if (hoverTimeoutRef.current) {
       clearTimeout(hoverTimeoutRef.current);
       hoverTimeoutRef.current = null;
     }
+  };
 
+  const handleMouseEnter = (index) => {
+    clearHoverTimeout();
     setActiveDropdown(index);
     setActiveBusinessSub(null);
     setActiveNestedSub(null);
   };
 
-  // Fixed: Added delay before closing dropdown
   const handleMouseLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
       setActiveBusinessSub(null);
       setActiveNestedSub(null);
-    }, 150); // 150ms delay to allow mouse movement
+    }, 150);
   };
 
-  // Fixed: Added timeout for business submenu
   const handleBusinessSubEnter = (businessIndex) => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
+    clearHoverTimeout();
     setActiveBusinessSub(businessIndex);
+    setActiveNestedSub(null);
   };
 
-  // Fixed: Added delay for business submenu leave
   const handleBusinessSubLeave = () => {
     hoverTimeoutRef.current = setTimeout(() => {
       setActiveBusinessSub(null);
@@ -67,10 +58,7 @@ export default function Hero() {
   };
 
   const handleNestedSubEnter = (nestedIndex) => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
+    clearHoverTimeout();
     setActiveNestedSub(nestedIndex);
   };
 
@@ -87,16 +75,14 @@ export default function Hero() {
     if (href && href !== "#") {
       window.location.href = href;
     }
+    closeSidebar(); // Close sidebar after navigation
   };
 
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
-      // Clean up timeout on unmount
-      if (hoverTimeoutRef.current) {
-        clearTimeout(hoverTimeoutRef.current);
-      }
+      clearHoverTimeout();
     };
   }, []);
 
@@ -285,6 +271,7 @@ export default function Hero() {
       ],
     },
   ];
+
   return (
     <div
       className="min-h-screen bg-cover bg-center text-white relative"
@@ -302,11 +289,9 @@ export default function Hero() {
       >
         {/* Logo */}
         <div className="flex items-center">
-          <Link to="/">
-            <div className="text-white px-3 py-2 rounded text-sm font-bold">
-              <img src={a1} className="h-[70px] w-[125px]" alt="Company Logo" />
-            </div>
-          </Link>
+          <div className="text-white px-3 py-2 rounded text-sm font-bold">
+            <img src={a1} className="h-[70px] w-[125px]" alt="Logo" />
+          </div>
         </div>
 
         {/* Navigation Menu */}
@@ -322,7 +307,7 @@ export default function Hero() {
               onMouseLeave={handleMouseLeave}
             >
               <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
-                {item.label}
+                {item.title}
                 {item.hasDropdown && (
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
                     <path
@@ -337,16 +322,12 @@ export default function Hero() {
                 )}
               </span>
 
-              {/* Fixed: Dropdown Menu with proper hover handling */}
+              {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div
                   className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
                   onMouseEnter={() => {
-                    // Clear timeout when entering dropdown
-                    if (hoverTimeoutRef.current) {
-                      clearTimeout(hoverTimeoutRef.current);
-                      hoverTimeoutRef.current = null;
-                    }
+                    clearHoverTimeout();
                     setActiveDropdown(index);
                   }}
                   onMouseLeave={handleMouseLeave}
@@ -394,17 +375,13 @@ export default function Hero() {
                         )}
                       </div>
 
-                      {/* Fixed: Sub-menu with proper hover handling */}
+                      {/* Sub-menu */}
                       {activeBusinessSub === dropdownIndex &&
                         dropdownItem.subItems && (
                           <div
                             className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[200px] ml-1"
                             onMouseEnter={() => {
-                              // Clear timeout when entering submenu
-                              if (hoverTimeoutRef.current) {
-                                clearTimeout(hoverTimeoutRef.current);
-                                hoverTimeoutRef.current = null;
-                              }
+                              clearHoverTimeout();
                               setActiveBusinessSub(dropdownIndex);
                             }}
                             onMouseLeave={handleBusinessSubLeave}
@@ -478,6 +455,7 @@ export default function Hero() {
         </button>
       </div>
 
+      {/* Sidebar Overlay */}
       {sidebarOpen && (
         <div
           onClick={closeSidebar}
@@ -485,6 +463,7 @@ export default function Hero() {
         />
       )}
 
+      {/* Sidebar */}
       <aside
         className={`fixed top-0 left-0 h-full w-64 bg-white/90 backdrop-blur-md text-black z-50 transform transition-transform duration-300 ease-in-out ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
@@ -506,7 +485,7 @@ export default function Hero() {
                 }
                 className="flex items-center justify-between cursor-pointer"
               >
-                <span>{item.label}</span>
+                <span>{item.title}</span>
                 {item.hasDropdown && (
                   <ChevronDown
                     className={`w-5 h-5 transition-transform duration-200 ${
@@ -568,12 +547,12 @@ export default function Hero() {
       </aside>
 
       {/* Hero Text Content */}
-      <div className="px-9 mt-30 max-w-2xl w-full ml-auto lg:ml-12 lg:w-1/2 text-left">
+      <div className="px-9 pt-20 max-w-2xl w-full ml-auto lg:ml-12 lg:w-1/2 text-left">
         <h1 className="text-4xl sm:text-6xl font-bold text-white leading-snug">
           Locations
         </h1>
         <br />
-        <h3>
+        <h3 className="text-white">
           Fusce et diam nisl. Curabitur est orci, tempus nec iaculis non,
           hendrerit eget est. Fusce nisi lorem, scelerisque vitae tempus eget,
           consequat ultracies nulls
