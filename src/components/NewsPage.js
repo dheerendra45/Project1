@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const NewsCard = ({
   date,
@@ -12,8 +13,13 @@ const NewsCard = ({
   const [showSubtext, setShowSubtext] = useState(false);
 
   return (
-    <div className="w-full md:w-1/4 px-2 mb-8 flex">
-      {/* Card container stretches full height */}
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="w-full md:w-1/4 px-2 mb-8 flex"
+    >
       <div className="bg-white rounded-md overflow-hidden shadow-md relative flex flex-col h-full w-full">
         {/* Image section */}
         <div className="h-48 bg-gray-300 relative flex-shrink-0">
@@ -48,7 +54,7 @@ const NewsCard = ({
         {/* Toggle button */}
         <button
           onClick={() => setShowSubtext(!showSubtext)}
-          className="absolute bottom-4 right-4 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition flex items-center justify-center"
+          className="absolute bottom-4 right-4 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition"
           aria-label="Toggle details"
           type="button"
         >
@@ -65,7 +71,7 @@ const NewsCard = ({
           </svg>
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -81,7 +87,7 @@ const NewsPage = () => {
       excerpt:
         "Tanishi Agarwal is celebrated for advancing inclusive nation-building through Shyam Metalics Cares. Her leadership inspires sustainable social impact across communities.",
       subtext:
-        "Further details: Tanishi has led various initiatives in education, health, and environmental sustainability, making a notable impact across multiple regions."
+        "Further details: Tanishi has led various initiatives in education, health, and environmental sustainability, making a notable impact across multiple regions.",
     },
     {
       id: 2,
@@ -93,7 +99,7 @@ const NewsPage = () => {
       excerpt:
         "50,000 MT shipment of TMT bars and wire rods to Vietnam & Indonesia boosts India’s steel export status and adds $25M in revenue.",
       subtext:
-        "Additional info: This shipment marks the company's entry into new markets, solidifying its position as a leading exporter in the steel industry."
+        "Additional info: This shipment marks the company's entry into new markets, solidifying its position as a leading exporter in the steel industry.",
     },
     {
       id: 3,
@@ -105,7 +111,7 @@ const NewsPage = () => {
       excerpt:
         "Shyam Metalics partners with IIT Bombay to explore hydrogen-based steel production and carbon capture with a ₹100Cr R&D investment.",
       subtext:
-        "Details: The collaboration aims to develop cutting-edge technology to reduce carbon footprint and promote sustainable manufacturing processes."
+        "Details: The collaboration aims to develop cutting-edge technology to reduce carbon footprint and promote sustainable manufacturing processes.",
     },
     {
       id: 4,
@@ -117,8 +123,8 @@ const NewsPage = () => {
       excerpt:
         "New 40,000 TPA unit enters FMCG & pharma sectors with India’s first 100% recyclable packaging certification for food-grade foil.",
       subtext:
-        "More info: The FDA approval enables expansion into high-growth sectors, emphasizing eco-friendly and recyclable packaging solutions."
-    }
+        "More info: The FDA approval enables expansion into high-growth sectors, emphasizing eco-friendly and recyclable packaging solutions.",
+    },
   ];
 
   return (

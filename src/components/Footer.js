@@ -1,10 +1,20 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, useInView } from 'framer-motion';
 import companylogo from "../assets/company-logo.png";
 import footer24 from '../assets/footer24.png';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  // Refs to detect view
+  const companyRef = useRef(null);
+  const linksRef = useRef(null);
+  const newsletterRef = useRef(null);
+
+  const isCompanyInView = useInView(companyRef, { triggerOnce: false });
+  const isLinksInView = useInView(linksRef, { triggerOnce: false });
+  const isNewsletterInView = useInView(newsletterRef, { triggerOnce: false });
 
   return (
     <footer
@@ -17,14 +27,17 @@ const Footer = () => {
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row justify-between gap-8">
+
           {/* Company Info */}
-          <div className="w-full lg:w-1/4">
+          <motion.div
+            ref={companyRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isCompanyInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="w-full lg:w-1/4"
+          >
             <div className="mb-4 sm:mb-6">
-              <img
-                src={companylogo}
-                alt="Shyam Metalics Logo"
-                className="h-30 sm:h-35"
-              />
+              <img src={companylogo} alt="Shyam Metalics Logo" className="h-10 sm:h-12" />
             </div>
             <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6">
               It was popularised in the 1960s with the release of Letraset sheets
@@ -34,10 +47,16 @@ const Footer = () => {
             <p className="text-xs sm:text-sm mt-4 sm:mt-6">
               © {currentYear} Industrie. Designed by <a href="#" className="text-orange-500">Webisdom</a>
             </p>
-          </div>
+          </motion.div>
 
           {/* Useful Links */}
-          <div className="w-full lg:w-1/4">
+          <motion.div
+            ref={linksRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isLinksInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
+            className="w-full lg:w-1/4"
+          >
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Useful Links</h3>
             <div className="grid grid-cols-2 gap-4">
               <div>
@@ -61,10 +80,16 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Newsletter */}
-          <div className="w-full lg:w-1/3">
+          <motion.div
+            ref={newsletterRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isNewsletterInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
+            className="w-full lg:w-1/3"
+          >
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Newsletter</h3>
             <p className="text-black text-sm sm:text-base mb-4 sm:mb-6">
               Subscribe for the latest news. Stay updated on the latest trends industrie.
@@ -82,7 +107,7 @@ const Footer = () => {
                 </svg>
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </footer>
