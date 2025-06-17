@@ -23,11 +23,10 @@ function LocationsMap() {
   return (
     <div className="py-6 md:py-12 bg-white">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
-        
         {/* Title & Description with Button Row */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="mb-4 sm:mb-0">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-black mb-2">Locations</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">Locations</h2>
             <p className="text-gray-700 max-w-xl text-sm sm:text-base">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </p>
@@ -40,32 +39,31 @@ function LocationsMap() {
           </button>
         </div>
 
-        {/* Statistics Box with Vertical Dividers */}
-        <div className="flex justify-center mb-8 sm:mb-12">
-          <div className="bg-gray-50 shadow-sm rounded-xl grid grid-cols-2 sm:flex sm:justify-between items-center px-4 sm:px-10 py-4 sm:py-6 w-full max-w-[1160px]">
+        {/* Stats Row */}
+        <div className="flex justify-center mb-10">
+          <div className="bg-gray-50 shadow-md rounded-xl grid grid-cols-2 sm:flex sm:justify-between items-center px-4 sm:px-10 py-5 w-full max-w-[1160px]">
             {stats.map((stat, index) => (
               <div
                 key={index}
-                className={`text-center px-2 sm:px-4 py-2 sm:py-0 ${index < stats.length - 1 ? 'sm:border-r border-gray-400' : ''} ${index % 2 === 0 ? 'border-r border-gray-400 sm:border-r-0' : ''}`}
+                className={`text-center px-3 sm:px-6 py-3 ${index < stats.length - 1 ? 'sm:border-r border-gray-400' : ''}`}
               >
-                <p className="text-gray-700 text-xs sm:text-base mb-1">{stat.label}</p>
-                <p className="text-orange-500 text-xl sm:text-3xl font-bold">{stat.value}</p>
+                <p className="text-gray-700 text-xs sm:text-base font-semibold mb-1">{stat.label}</p>
+                <p className="text-orange-600 text-xl sm:text-3xl font-extrabold">{stat.value}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Maps Section */}
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8">
-
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-10">
           {/* World Map */}
-          <div className="lg:w-1/2">
-            <img src={WorldMapImage} alt="World Map" className="w-full" />
+          <div className="lg:w-3/5 shadow-md rounded-xl overflow-hidden border border-gray-300">
+            <img src={WorldMapImage} alt="World Map" className="w-full object-cover" />
           </div>
 
           {/* India Map with Icons */}
-          <div className="lg:w-1/4 relative">
-            <img src={IndiaMapImage} alt="India Map" className="w-full" />
+          <div className="lg:w-2/5 relative shadow-md rounded-xl overflow-hidden border border-gray-300">
+            <img src={IndiaMapImage} alt="India Map" className="w-full object-cover" />
             {iconPositions.map((pos, idx) => (
               <img
                 key={idx}

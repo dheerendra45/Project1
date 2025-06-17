@@ -496,7 +496,7 @@ const Hero = () => {
     
     {/* Heading and paragraph */}
     <div className="w-full md:w-[70%]">
-      <h1 className="text-[42px] md:text-[52px] leading-tight font-space-grotesk font-bold mb-4">
+      <h1 className="text-[60px] md:text-[52px] leading-tight font-space-grotesk font-bold text mb-4">
         A Steel Company With  <br />Integrated Operations.
       </h1>
       <p className="text-lg mb-6">
@@ -515,7 +515,7 @@ const Hero = () => {
       </div>
 
       {/* Stats Box */}
-      <div className="w-full md:w-[100%] bg-black bg-opacity-40 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
+      <div className="w-full md:w-[100%] bg-black bg-opacity-50 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
         {/* Stat 1 */}
         <div className="flex items-center gap-3 w-[45%] md:w-auto">
           <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
