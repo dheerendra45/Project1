@@ -21,7 +21,7 @@ export default function Companybenifits() {
   return (
     <motion.div
       ref={sectionRef}
-      className="p-6 bg-white text-black"
+      className="px-4 sm:px-6 py-6 lg:py-8 bg-white text-black max-w-6xl mx-auto"
       variants={fadeInUp}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -36,13 +36,13 @@ export default function Companybenifits() {
 
       {/* Tracking Form */}
       <motion.form
-        className="bg-gray-100 p-6 rounded-lg mb-8 space-y-6"
+        className="bg-gray-100 p-4 sm:p-6 rounded-lg mb-6 lg:mb-8 space-y-6"
         variants={fadeInUp}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
         {/* First Row */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
           <div className="flex flex-col">
             <label>Full Name</label>
             <input
@@ -70,7 +70,7 @@ export default function Companybenifits() {
         </div>
 
         {/* Second Row */}
-        <div className="grid md:grid-cols-5 gap-6 items-end">
+        <div className="grid md:grid-cols-5 gap-4 sm:gap-6 items-end">
           <div className="md:col-span-4 flex flex-col">
             <label>Job Type</label>
             <select className="p-2 border rounded">
@@ -89,7 +89,7 @@ export default function Companybenifits() {
 
       {/* Company Benefits Section */}
       <motion.h1
-        className="text-2xl font-bold mb-6"
+        className="text-2xl font-bold mb-4 sm:mb-6"
         variants={fadeInUp}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -98,7 +98,7 @@ export default function Companybenifits() {
       </motion.h1>
 
       <motion.div
-        className="grid md:grid-cols-2 gap-6 text-gray-700"
+        className="grid md:grid-cols-2 gap-4 sm:gap-6 text-gray-700"
         variants={fadeInUp}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
@@ -134,7 +134,7 @@ export default function Companybenifits() {
               </div>
               <div>
                 <h2 className="font-semibold">{content[i].title}</h2>
-                <p>{content[i].desc}</p>
+                <p className="text-sm sm:text-base">{content[i].desc}</p>
               </div>
             </motion.div>
           );

@@ -44,7 +44,7 @@ export default function Testimonials() {
   return (
     <motion.div
       ref={sectionRef}
-      className="py-16 px-6 md:px-20 bg-white"
+      className="px-4 sm:px-6 py-8 lg:py-12 bg-white max-w-6xl mx-auto"
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
       variants={{
@@ -52,10 +52,10 @@ export default function Testimonials() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
       }}
     >
-      <h3 className="text-orange-500 font-semibold text-sm mb-2">// CLIENTS FEEDBACK</h3>
-      <h1 className="text-3xl font-bold text-black mb-10">Our clients testimonials</h1>
+      <h3 className="text-orange-500 font-semibold text-xs sm:text-sm mb-2">// CLIENTS FEEDBACK</h3>
+      <h1 className="text-2xl sm:text-3xl font-bold text-black mb-6 lg:mb-10">Our clients testimonials</h1>
 
-      <div className="flex flex-col md:flex-row gap-10">
+      <div className="flex flex-col md:flex-row gap-6 lg:gap-10">
         {/* Left image block */}
         <div className="w-full md:w-1/2 relative flex justify-center">
           <div className="relative w-full max-w-md">
@@ -65,9 +65,9 @@ export default function Testimonials() {
               className="rounded-xl w-full md:max-h-[450px] object-cover block"
             />
             {/* Opacity content inside image */}
-            <div className="absolute bottom-4 left-4 bg-black bg-opacity-60 text-white p-4 rounded-md max-w-[80%]">
-              <h1 className="text-2xl font-bold">38K+</h1>
-              <p className="text-sm">Happy clients all over the world now.</p>
+            <div className="absolute bottom-4 left-4 bg-black bg-opacity-60 text-white p-3 sm:p-4 rounded-md max-w-[80%]">
+              <h1 className="text-xl sm:text-2xl font-bold">38K+</h1>
+              <p className="text-xs sm:text-sm">Happy clients all over the world now.</p>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function Testimonials() {
             {testimonials.map((item, index) => (
               <motion.div
                 key={index}
-                className="keen-slider__slide bg-gray-100 p-6 rounded-lg shadow-md"
+                className="keen-slider__slide bg-gray-100 p-4 sm:p-6 rounded-lg shadow-md"
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: {
@@ -90,21 +90,21 @@ export default function Testimonials() {
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
               >
-                <img src={a2} alt="" className="mb-4 w-8 h-8" />
-                <p className="text-gray-700 mb-6 text-sm">{item.text}</p>
-                <div className="flex items-center gap-4">
+                <img src={a2} alt="" className="mb-3 sm:mb-4 w-7 sm:w-8 h-7 sm:h-8" />
+                <p className="text-gray-700 mb-4 sm:mb-6 text-xs sm:text-sm">{item.text}</p>
+                <div className="flex items-center gap-3 sm:gap-4">
                   <img
                     src={item.avatar}
                     alt={item.name}
-                    className="w-10 h-10 rounded-full"
+                    className="w-9 sm:w-10 h-9 sm:h-10 rounded-full"
                   />
                   <div>
                     <div className="flex gap-1 mb-1">
                       {[...Array(5)].map((_, i) => (
-                        <div key={i} className="w-3 h-3 bg-gray-300 rounded-full" />
+                        <div key={i} className="w-2 sm:w-3 h-2 sm:h-3 bg-gray-300 rounded-full" />
                       ))}
                     </div>
-                    <h2 className="font-semibold">{item.name}</h2>
+                    <h2 className="font-semibold text-sm sm:text-base">{item.name}</h2>
                   </div>
                 </div>
               </motion.div>
@@ -115,13 +115,13 @@ export default function Testimonials() {
           <div className="absolute top-1/2 -translate-y-1/2 w-full flex justify-between px-2">
             <button
               onClick={() => instanceRef.current?.prev()}
-              className="bg-orange-500 text-white p-2 rounded-full shadow-md hover:bg-orange-600"
+              className="bg-orange-500 text-white p-1 sm:p-2 rounded-full shadow-md hover:bg-orange-600 text-sm sm:text-base"
             >
               &#8592;
             </button>
             <button
               onClick={() => instanceRef.current?.next()}
-              className="bg-orange-500 text-white p-2 rounded-full shadow-md hover:bg-orange-600"
+              className="bg-orange-500 text-white p-1 sm:p-2 rounded-full shadow-md hover:bg-orange-600 text-sm sm:text-base"
             >
               &#8594;
             </button>
@@ -133,7 +133,7 @@ export default function Testimonials() {
               <button
                 key={idx}
                 onClick={() => instanceRef.current?.moveToIdx(idx)}
-                className={`w-3 h-3 rounded-full ${
+                className={`w-2 sm:w-3 h-2 sm:h-3 rounded-full ${
                   currentSlide === idx ? "bg-orange-500" : "bg-gray-300"
                 }`}
               ></button>
