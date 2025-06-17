@@ -1,97 +1,38 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import herobg from "../../assets/contact/contact.png";
+import companylogo from "../../assets/products/image28.png";
+import {
+  FiMenu,
+  FiX,
+  FiChevronDown,
+  FiChevronRight,
+  FiSearch,
+  FiFilter,
+} from "react-icons/fi";
 
-import a1 from "../../assets/contact/logo.png";
-import a2 from "../../assets/contact/contact.png";
-import img3 from "../../assets/contact/pillet.png";
-import img4 from "../../assets/contact/billet.png";
-import img5 from "../../assets/contact/wirerods.png";
-import { ChevronDown, Search, Menu, X } from "lucide-react";
-
-export default function Hero() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [openSubmenuIndex, setOpenSubmenuIndex] = useState(null);
+const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubMenu, setMobileSubMenu] = useState(null);
+  const [mobileNestedMenu, setMobileNestedMenu] = useState(null);
   const dropdownRef = useRef(null);
   const hoverTimeoutRef = useRef(null);
 
-  const closeSidebar = () => {
-    setSidebarOpen(false);
-    setOpenSubmenuIndex(null);
-    setActiveDropdown(null);
-    setActiveBusinessSub(null);
-    setActiveNestedSub(null);
+  // Animation variants
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -10 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -10 },
   };
 
-  const clearHoverTimeout = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
+  const mobileMenuVariants = {
+    hidden: { x: "100%" },
+    visible: { x: 0 },
+    exit: { x: "100%" },
   };
-
-  const handleMouseEnter = (index) => {
-    clearHoverTimeout();
-    setActiveDropdown(index);
-    setActiveBusinessSub(null);
-    setActiveNestedSub(null);
-  };
-
-  const handleMouseLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleBusinessSubEnter = (businessIndex) => {
-    clearHoverTimeout();
-    setActiveBusinessSub(businessIndex);
-  };
-
-  const handleBusinessSubLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleNestedSubEnter = (nestedIndex) => {
-    clearHoverTimeout();
-    setActiveNestedSub(nestedIndex);
-  };
-
-  const handleNestedSubLeave = () => {
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleClickOutside = (e) => {
-    if (!dropdownRef.current?.contains(e.target)) {
-      setActiveDropdown(null);
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }
-  };
-
-  const handleNavigation = (href, e) => {
-    if (e) e.preventDefault();
-    if (href && href !== "#") {
-      window.location.href = href;
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("click", handleClickOutside);
-    return () => {
-      document.removeEventListener("click", handleClickOutside);
-      clearHoverTimeout();
-    };
-  }, []);
 
   const navItems = [
     {
@@ -246,7 +187,7 @@ export default function Hero() {
       title: "COMMUNITY",
       hasDropdown: true,
       dropdownItems: [
-        { name: "CSR", href: "/csr" },
+        { name: "CSR", href: "/environment_compliance" },
         { name: "Knowledge Hub", href: "/knowledgehub" },
         { name: "Blogs", href: "/blogs" },
         { name: "FAQ", href: "/faq-Page" },
@@ -257,7 +198,7 @@ export default function Hero() {
       hasDropdown: true,
       dropdownItems: [
         { name: "ESG Profile", href: "/esg_profile" },
-        { name: "Environment Compliance", href: "/environmentcompliance" },
+        { name: "Environment Compliance", href: "#" },
       ],
     },
     {
@@ -279,35 +220,173 @@ export default function Hero() {
     },
   ];
 
+  // Clear any existing timeout
+  const clearHoverTimeout = () => {
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+      hoverTimeoutRef.current = null;
+    }
+  };
+
+  // Set timeout to close dropdowns
+  const setHoverTimeout = (callback, delay = 150) => {
+    clearHoverTimeout();
+    hoverTimeoutRef.current = setTimeout(callback, delay);
+  };
+
+  const handleMouseEnter = (index) => {
+    clearHoverTimeout();
+    setActiveDropdown(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoverTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
+  };
+
+  const handleDropdownEnter = () => {
+    clearHoverTimeout();
+  };
+
+  const handleDropdownLeave = () => {
+    setHoverTimeout(() => {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
+  };
+
+  const handleBusinessSubEnter = (businessIndex) => {
+    clearHoverTimeout();
+    setActiveBusinessSub(businessIndex);
+    setActiveNestedSub(null);
+  };
+
+  const handleBusinessSubLeave = () => {
+    setHoverTimeout(() => {
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    });
+  };
+
+  const handleNestedSubEnter = (nestedIndex) => {
+    clearHoverTimeout();
+    setActiveNestedSub(nestedIndex);
+  };
+
+  const handleNestedSubLeave = () => {
+    setHoverTimeout(() => {
+      setActiveNestedSub(null);
+    });
+  };
+
+  const handleClickOutside = (e) => {
+    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+      setActiveDropdown(null);
+      setActiveBusinessSub(null);
+      setActiveNestedSub(null);
+    }
+  };
+
+  const handleNavigation = (href, e) => {
+    e.preventDefault();
+    if (href && href !== "#") {
+      window.location.href = href;
+    }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    setMobileSubMenu(null);
+    setMobileNestedMenu(null);
+  };
+
+  const toggleMobileSubMenu = (index) => {
+    if (mobileSubMenu === index) {
+      setMobileSubMenu(null);
+    } else {
+      setMobileSubMenu(index);
+    }
+    setMobileNestedMenu(null);
+  };
+
+  const toggleMobileNestedMenu = (index) => {
+    if (mobileNestedMenu === index) {
+      setMobileNestedMenu(null);
+    } else {
+      setMobileNestedMenu(index);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+      clearHoverTimeout();
+    };
+  }, []);
+
   return (
-    <div
-      className="min-h-screen bg-cover bg-center text-white relative"
-      style={{
-        backgroundImage: `url(${a2})`,
-        backgroundPosition: "center calc(50% - 50px)",
-      }}
-    >
+    <div className="h-screen md:h-[815px] bg-gray-100 mx-auto overflow-hidden relative">
       {/* Top Navbar */}
+      <motion.div
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="w-full h-[57px] bg-black flex items-center justify-between px-4 md:px-6 text-white text-sm"
+      >
+        <div className="flex items-center ml-2 md:ml-7">
+          <span className="font-inter font-normal text-[10px] md:text-[12px] leading-[18px]">
+            €208.00 +2.72
+          </span>
+        </div>
+
+        <div className="flex items-center">
+          <span className="font-roboto font-extrabold text-[12px] md:text-[14px] leading-[21px]">
+            Lorem Ipsum Dollar Site ent
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 md:gap-6">
+          <span className="hidden sm:flex items-center gap-1 font-sans font-medium text-[12px] md:text-[14px] leading-[19px] tracking-normal">
+            Employee Login
+            <FiChevronDown className="w-3 h-3" />
+          </span>
+          <span className="hidden sm:flex items-center gap-1 font-sans font-medium text-[12px] md:text-[14px] leading-[19px] tracking-normal">
+            🌐 Global(English)
+            <FiChevronDown className="w-3 h-3" />
+          </span>
+        </div>
+      </motion.div>
 
       {/* Middle Navbar */}
-      <div
-        className="w-full h-[57px] mt-0 flex items-center justify-between px-8 relative z-30"
+      <motion.div
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="w-full h-[57px] mt-0 flex items-center justify-between px-4 md:px-8 relative z-30"
         style={{
-          background: "#FFFFFF26",
+          background: "rgba(255, 255, 255, 0.15)",
+          backdropFilter: "blur(10px)",
         }}
         ref={dropdownRef}
       >
         {/* Logo */}
-        <div className="flex items-center">
-          <Link to="/">
-            <div className="text-white px-3 py-2 rounded text-sm font-bold">
-              <img src={a1} className="h-[70px] w-[125px]" alt="Company Logo" />
-            </div>
-          </Link>
-        </div>
+        <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
+          <div className="text-white px-2 md:px-3 py-2 rounded text-sm font-bold">
+            <img
+              src={companylogo}
+              className="h-[40px] w-[90px] md:h-[54.84px] md:w-[116.53px]"
+              alt="Company Logo"
+            />
+          </div>
+        </motion.div>
 
-        {/* Navigation Menu */}
-        <div className="flex gap-8 text-white text-sm font-medium">
+        {/* Desktop Navigation Menu - Hidden on mobile */}
+        <div className="hidden lg:flex gap-4 xl:gap-8 text-white text-sm font-medium">
           {navItems.map((item, index) => (
             <div
               key={index}
@@ -315,336 +394,542 @@ export default function Hero() {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase">
-                {item.label}
+              <motion.span
+                whileHover={{ color: "#f97316" }}
+                className="cursor-pointer flex items-center gap-1 font-roboto font-medium text-[11px] xl:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase"
+              >
+                {item.title}
                 {item.hasDropdown && (
-                  <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                    <path
-                      d="M1 1l4 4 4-4"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  <motion.div
+                    animate={{ rotate: activeDropdown === index ? 180 : 0 }}
+                    className="w-3 h-3"
+                  >
+                    <FiChevronDown className="w-full h-full" />
+                  </motion.div>
                 )}
-              </span>
+              </motion.span>
 
               {/* Dropdown Menu */}
-              {item.hasDropdown && activeDropdown === index && (
-                <div
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
-                  onMouseEnter={clearHoverTimeout}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  {item.label === "BUSINESS" || item.label === "INVESTORS" ? (
-                    // Business dropdown with hover sub-menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((business, businessIndex) => (
-                        <div
-                          key={businessIndex}
-                          className="relative"
-                          onMouseEnter={() =>
-                            handleBusinessSubEnter(businessIndex)
-                          }
-                          onMouseLeave={handleBusinessSubLeave}
-                        >
-                          {/* Check if it's Business Overview (which should be directly clickable) */}
-                          {business.name === "Business Overview" ? (
-                            <a
-                              href={business.href}
-                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavigation(business.href);
-                              }}
-                            >
-                              <span>{business.name}</span>
-                            </a>
-                          ) : (
-                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-                              <span className="font-medium">
-                                {business.name}
-                              </span>
-                              {business.subItems &&
-                                business.subItems.length > 0 && (
-                                  <svg
-                                    className="w-4 h-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      strokeWidth={2}
-                                      d="M9 5l7 7-7 7"
-                                    />
-                                  </svg>
-                                )}
-                            </div>
-                          )}
-
-                          {/* Sub-menu for each business/investor */}
-                          {activeBusinessSub === businessIndex &&
-                            business.subItems &&
-                            business.subItems.length > 0 && (
-                              <div
-                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
-                                onMouseEnter={clearHoverTimeout}
-                                onMouseLeave={handleBusinessSubLeave}
+              <AnimatePresence>
+                {item.hasDropdown && activeDropdown === index && (
+                  <motion.div
+                    variants={dropdownVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    transition={{ duration: 0.2 }}
+                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[200px] xl:min-w-[250px] mt-1"
+                    onMouseEnter={handleDropdownEnter}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    {item.title === "BUSINESSES" ||
+                    item.title === "INVESTORS" ? (
+                      <div className="space-y-1">
+                        {item.dropdownItems.map((business, businessIndex) => (
+                          <div
+                            key={businessIndex}
+                            className="relative"
+                            onMouseEnter={() =>
+                              handleBusinessSubEnter(businessIndex)
+                            }
+                            onMouseLeave={handleBusinessSubLeave}
+                          >
+                            {/* Check if it's Business Overview (which should be directly clickable) */}
+                            {business.name === "Business Overview" ? (
+                              <motion.a
+                                whileHover={{ x: 5 }}
+                                href={business.href || "#"}
+                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                                onClick={(e) =>
+                                  handleNavigation(business.href, e)
+                                }
                               >
-                                {business.subItems.map((subItem, subIndex) => (
-                                  <div
-                                    key={subIndex}
-                                    className="relative"
-                                    onMouseEnter={() =>
-                                      handleNestedSubEnter(subIndex)
-                                    }
-                                    onMouseLeave={handleNestedSubLeave}
-                                  >
-                                    {/* Make this clickable for items with href */}
-                                    {subItem.href && subItem.href !== "#" ? (
-                                      <a
-                                        href={subItem.href}
-                                        className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
-                                        onClick={(e) => {
-                                          e.preventDefault();
-                                          handleNavigation(subItem.href);
-                                        }}
-                                      >
-                                        <span>{subItem.name}</span>
-                                        {subItem.categories && (
-                                          <svg
-                                            className="w-4 h-4"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              strokeLinecap="round"
-                                              strokeLinejoin="round"
-                                              strokeWidth={2}
-                                              d="M9 5l7 7-7 7"
-                                            />
-                                          </svg>
-                                        )}
-                                      </a>
-                                    ) : (
-                                      <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-                                        <span>{subItem.name}</span>
-                                        {subItem.categories && (
-                                          <svg
-                                            className="w-4 h-4"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                          >
-                                            <path
-                                              strokeLinecap="round"
-                                              strokeLinejoin="round"
-                                              strokeWidth={2}
-                                              d="M9 5l7 7-7 7"
-                                            />
-                                          </svg>
-                                        )}
-                                      </div>
-                                    )}
+                                <span>{business.name}</span>
+                              </motion.a>
+                            ) : (
+                              <motion.div
+                                whileHover={{ x: 5 }}
+                                className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                              >
+                                <span className="font-medium">
+                                  {business.name}
+                                </span>
+                                {business.subItems &&
+                                  business.subItems.length > 0 && (
+                                    <FiChevronRight className="w-4 h-4" />
+                                  )}
+                              </motion.div>
+                            )}
 
-                                    {/* Nested sub-menu for categories */}
-                                    {activeNestedSub === subIndex &&
-                                      subItem.categories && (
+                            {/* Sub-menu */}
+                            <AnimatePresence>
+                              {activeBusinessSub === businessIndex &&
+                                business.subItems &&
+                                business.subItems.length > 0 && (
+                                  <motion.div
+                                    variants={dropdownVariants}
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                    transition={{ duration: 0.2 }}
+                                    className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[250px] xl:min-w-[300px] max-w-[500px] ml-1"
+                                    onMouseEnter={handleDropdownEnter}
+                                    onMouseLeave={handleDropdownLeave}
+                                  >
+                                    {business.subItems.map(
+                                      (subItem, subIndex) => (
                                         <div
-                                          className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
-                                          onMouseEnter={clearHoverTimeout}
+                                          key={subIndex}
+                                          className="relative"
+                                          onMouseEnter={() =>
+                                            handleNestedSubEnter(subIndex)
+                                          }
                                           onMouseLeave={handleNestedSubLeave}
                                         >
-                                          {subItem.categories.map(
-                                            (category, catIndex) => (
-                                              <div
-                                                key={catIndex}
-                                                className="space-y-1"
-                                              >
-                                                <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
-                                                  {category.name}
-                                                </div>
-                                                {category.items.map(
-                                                  (productItem, prodIndex) => (
-                                                    <a
-                                                      key={prodIndex}
-                                                      href="#"
-                                                      className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                                    >
-                                                      • {productItem}
-                                                    </a>
-                                                  )
-                                                )}
-                                              </div>
-                                            )
+                                          {/* Make this clickable for items with href */}
+                                          {subItem.href &&
+                                          subItem.href !== "#" ? (
+                                            <motion.a
+                                              whileHover={{ x: 5 }}
+                                              href={subItem.href}
+                                              className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                                              onClick={(e) =>
+                                                handleNavigation(
+                                                  subItem.href,
+                                                  e
+                                                )
+                                              }
+                                            >
+                                              <span>{subItem.name}</span>
+                                              {subItem.categories && (
+                                                <FiChevronRight className="w-4 h-4" />
+                                              )}
+                                            </motion.a>
+                                          ) : (
+                                            <motion.div
+                                              whileHover={{ x: 5 }}
+                                              className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-150"
+                                            >
+                                              <span>{subItem.name}</span>
+                                              {subItem.categories && (
+                                                <FiChevronRight className="w-4 h-4" />
+                                              )}
+                                            </motion.div>
                                           )}
+
+                                          {/* Nested sub-menu */}
+                                          <AnimatePresence>
+                                            {activeNestedSub === subIndex &&
+                                              subItem.categories && (
+                                                <motion.div
+                                                  variants={dropdownVariants}
+                                                  initial="hidden"
+                                                  animate="visible"
+                                                  exit="exit"
+                                                  transition={{ duration: 0.2 }}
+                                                  className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[200px] xl:min-w-[250px] ml-1"
+                                                  onMouseEnter={
+                                                    handleDropdownEnter
+                                                  }
+                                                  onMouseLeave={
+                                                    handleDropdownLeave
+                                                  }
+                                                >
+                                                  {subItem.categories.map(
+                                                    (category, catIndex) => (
+                                                      <div
+                                                        key={catIndex}
+                                                        className="space-y-1"
+                                                      >
+                                                        <motion.div
+                                                          initial={{
+                                                            opacity: 0,
+                                                          }}
+                                                          animate={{
+                                                            opacity: 1,
+                                                          }}
+                                                          transition={{
+                                                            delay:
+                                                              catIndex * 0.05,
+                                                          }}
+                                                          className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100"
+                                                        >
+                                                          {category.name}
+                                                        </motion.div>
+                                                        {category.items.map(
+                                                          (
+                                                            productItem,
+                                                            prodIndex
+                                                          ) => (
+                                                            <motion.a
+                                                              key={prodIndex}
+                                                              whileHover={{
+                                                                x: 5,
+                                                              }}
+                                                              href="#"
+                                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-150"
+                                                              onClick={(e) =>
+                                                                e.preventDefault()
+                                                              }
+                                                            >
+                                                              • {productItem}
+                                                            </motion.a>
+                                                          )
+                                                        )}
+                                                      </div>
+                                                    )
+                                                  )}
+                                                </motion.div>
+                                              )}
+                                          </AnimatePresence>
                                         </div>
-                                      )}
-                                  </div>
-                                ))}
-                              </div>
-                            )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    // Regular dropdown layout for other menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                        <a
-                          key={dropdownIndex}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigation(dropdownItem.href);
-                          }}
-                        >
-                          {dropdownItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+                                      )
+                                    )}
+                                  </motion.div>
+                                )}
+                            </AnimatePresence>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="space-y-1">
+                        {item.dropdownItems.map(
+                          (dropdownItem, dropdownIndex) => (
+                            <motion.a
+                              key={dropdownIndex}
+                              whileHover={{ x: 5 }}
+                              href={dropdownItem.href || "#"}
+                              className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-150"
+                              onClick={(e) =>
+                                handleNavigation(dropdownItem.href, e)
+                              }
+                            >
+                              {dropdownItem.name}
+                            </motion.a>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           ))}
         </div>
 
-        {/* Search Bar */}
-        <div className="flex items-center gap-4">
+        {/* Mobile Menu Button - Visible only on mobile */}
+        <div className="lg:hidden flex items-center gap-4">
           <div className="relative">
-            <input
-              type="text"
-              placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-            <svg
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-              />
-            </svg>
+            <FiSearch className="w-5 h-5 text-white" />
           </div>
-          <div className="bg-orange-500 rounded-full p-2">
-            <svg
-              className="w-4 h-4 text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z" />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu Button */}
-      <div className="lg:hidden flex items-center justify-between px-6 py-4 absolute top-[57px] right-0">
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setSidebarOpen(true)}
-          className="text-white"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
-      </div>
-
-      {/* Mobile Sidebar */}
-      {sidebarOpen && (
-        <div
-          onClick={closeSidebar}
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-        />
-      )}
-
-      <aside
-        className={`fixed top-0 left-0 h-full w-64 bg-white/90 backdrop-blur-md text-black z-50 transform transition-transform duration-300 ease-in-out lg:hidden ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-300">
-          <img src={a1} alt="Logo" className="h-8 w-auto" />
-          <button aria-label="Close menu" onClick={closeSidebar}>
-            <X className="w-6 h-6" />
+          <button
+            onClick={toggleMobileMenu}
+            className="text-white focus:outline-none"
+          >
+            {mobileMenuOpen ? (
+              <FiX className="w-6 h-6" />
+            ) : (
+              <FiMenu className="w-6 h-6" />
+            )}
           </button>
         </div>
 
-        <nav className="flex flex-col p-6 space-y-4 text-lg font-semibold select-none">
-          {navItems.map((item, idx) => (
-            <div key={idx} className="flex flex-col">
-              <div
-                onClick={() =>
-                  setOpenSubmenuIndex(openSubmenuIndex === idx ? null : idx)
-                }
-                className="flex items-center justify-between cursor-pointer"
-              >
-                <span>{item.label}</span>
-                {item.hasDropdown && (
-                  <ChevronDown
-                    className={`w-5 h-5 transition-transform duration-200 ${
-                      openSubmenuIndex === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                )}
-              </div>
-
-              {item.hasDropdown && openSubmenuIndex === idx && (
-                <ul className="pl-4 mt-2 space-y-1 text-sm text-gray-700">
-                  {item.dropdownItems.map((dropdownItem, dropdownIdx) => (
-                    <li
-                      key={dropdownIdx}
-                      className="cursor-pointer hover:text-orange-500 transition-colors duration-200"
-                      onClick={() => handleNavigation(dropdownItem.href)}
-                    >
-                      {dropdownItem.name}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-
-          <div className="mt-6 backdrop-blur-md bg-white/50 rounded-full px-4 py-2 flex items-center gap-2 text-black">
-            <Search className="w-5 h-5" />
+        {/* Desktop Search Bar - Hidden on mobile */}
+        <div className="hidden lg:flex items-center gap-4">
+          <motion.div whileHover={{ scale: 1.05 }} className="relative">
             <input
               type="text"
-              placeholder="Search here"
-              className="bg-transparent focus:outline-none placeholder:text-black text-black text-base w-full"
+              placeholder="Search here..."
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-36 xl:w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
-          </div>
-        </nav>
-      </aside>
+            <FiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70" />
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="bg-orange-500 rounded-full p-2 cursor-pointer"
+          >
+            <FiFilter className="w-4 h-4 text-white" />
+          </motion.div>
+        </div>
+      </motion.div>
 
-      {/* Hero Text Content */}
-      <div className="px-9 pt-[275px] max-w-2xl w-full ml-auto lg:ml-12 lg:w-1/2 text-left">
-        <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">
-          Get In Touch
-        </h1>
-        <h3 className="text-white text-lg mb-6">
-          Fusce et diam nisl. Curabitur est orci, tempus nec iaculis non,
-          hendrerit eget est. Fusce nisi lorem, scelerisque vitae tempus eget,
-          consequat ultracies nulls
-        </h3>
-        <hr
-          className="my-6 h-1 border-0 rounded"
-          style={{ background: "linear-gradient(to right, orange, white)" }}
+      {/* Mobile Menu - Only visible when mobileMenuOpen is true */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            variants={mobileMenuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            transition={{ type: "tween", ease: "easeInOut" }}
+            className="fixed inset-y-0 right-0 w-4/5 max-w-md bg-white shadow-lg z-50 overflow-y-auto"
+          >
+            <div className="p-4">
+              <div className="flex justify-between items-center border-b pb-4">
+                <img src={companylogo} className="h-[40px] w-[90px]" alt="Company Logo" />
+                <button onClick={toggleMobileMenu} className="text-gray-500">
+                  <FiX className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="mt-4">
+                {navItems.map((item, index) => (
+                  <div key={index} className="mb-2">
+                    <div
+                      className="flex justify-between items-center p-3 text-gray-700 font-medium cursor-pointer hover:bg-gray-100 rounded"
+                      onClick={() => toggleMobileSubMenu(index)}
+                    >
+                      <span>{item.title}</span>
+                      {item.hasDropdown && (
+                        <motion.div
+                          animate={{ rotate: mobileSubMenu === index ? 90 : 0 }}
+                        >
+                          <FiChevronRight className="w-4 h-4" />
+                        </motion.div>
+                      )}
+                    </div>
+
+                    {/* Mobile Submenu */}
+                    {mobileSubMenu === index && item.hasDropdown && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 overflow-hidden"
+                      >
+                        {item.dropdownItems.map(
+                          (dropdownItem, dropdownIndex) => (
+                            <div key={dropdownIndex} className="mb-1">
+                              {(item.title === "BUSINESSES" ||
+                                item.title === "INVESTORS") &&
+                              dropdownItem.subItems ? (
+                                <>
+                                  <div
+                                    className="flex justify-between items-center p-2 text-gray-600 text-sm cursor-pointer hover:bg-gray-50 rounded"
+                                    onClick={() =>
+                                      toggleMobileNestedMenu(dropdownIndex)
+                                    }
+                                  >
+                                    <span>{dropdownItem.name}</span>
+                                    {dropdownItem.subItems &&
+                                      dropdownItem.subItems.length > 0 && (
+                                        <motion.div
+                                          animate={{
+                                            rotate:
+                                              mobileNestedMenu === dropdownIndex
+                                                ? 90
+                                                : 0,
+                                          }}
+                                        >
+                                          <FiChevronRight className="w-4 h-4" />
+                                        </motion.div>
+                                      )}
+                                  </div>
+
+                                  {/* Mobile Nested Submenu */}
+                                  {mobileNestedMenu === dropdownIndex &&
+                                    dropdownItem.subItems && (
+                                      <motion.div
+                                        initial={{ opacity: 0, height: 0 }}
+                                        animate={{ opacity: 1, height: "auto" }}
+                                        exit={{ opacity: 0, height: 0 }}
+                                        className="pl-4 overflow-hidden"
+                                      >
+                                        {dropdownItem.subItems.map(
+                                          (subItem, subIndex) => (
+                                            <div
+                                              key={subIndex}
+                                              className="mb-1"
+                                            >
+                                              {subItem.categories ? (
+                                                <>
+                                                  <div
+                                                    className="flex justify-between items-center p-2 text-gray-500 text-sm cursor-pointer hover:bg-gray-50 rounded"
+                                                    onClick={() => {}}
+                                                  >
+                                                    <span>{subItem.name}</span>
+                                                    <FiChevronRight className="w-4 h-4" />
+                                                  </div>
+
+                                                  {/* Mobile Categories */}
+                                                  <div className="pl-4">
+                                                    {subItem.categories.map(
+                                                      (category, catIndex) => (
+                                                        <div
+                                                          key={catIndex}
+                                                          className="mb-1"
+                                                        >
+                                                          <div className="p-2 text-xs font-medium text-orange-600 bg-orange-50 rounded">
+                                                            {category.name}
+                                                          </div>
+                                                          {category.items.map(
+                                                            (
+                                                              item,
+                                                              itemIndex
+                                                            ) => (
+                                                              <a
+                                                                key={itemIndex}
+                                                                href="#"
+                                                                className="block p-2 text-xs text-gray-500 hover:text-orange-500"
+                                                                onClick={(e) =>
+                                                                  e.preventDefault()
+                                                                }
+                                                              >
+                                                                • {item}
+                                                              </a>
+                                                            )
+                                                          )}
+                                                        </div>
+                                                      )
+                                                    )}
+                                                  </div>
+                                                </>
+                                              ) : (
+                                                <a
+                                                  href={subItem.href || "#"}
+                                                  className="block p-2 text-gray-500 text-sm hover:bg-gray-50 rounded"
+                                                  onClick={(e) => {
+                                                    e.preventDefault();
+                                                    if (
+                                                      subItem.href &&
+                                                      subItem.href !== "#"
+                                                    ) {
+                                                      window.location.href =
+                                                        subItem.href;
+                                                    }
+                                                  }}
+                                                >
+                                                  {subItem.name}
+                                                </a>
+                                              )}
+                                            </div>
+                                          )
+                                        )}
+                                      </motion.div>
+                                    )}
+                                </>
+                              ) : (
+                                <a
+                                  href={dropdownItem.href || "#"}
+                                  className="block p-2 text-gray-600 text-sm hover:bg-gray-50 rounded"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    if (
+                                      dropdownItem.href &&
+                                      dropdownItem.href !== "#"
+                                    ) {
+                                      window.location.href = dropdownItem.href;
+                                    }
+                                  }}
+                                >
+                                  {dropdownItem.name}
+                                </a>
+                              )}
+                            </div>
+                          )
+                        )}
+                      </motion.div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 p-4 bg-gray-50 rounded-lg">
+                <div className="flex items-center gap-2 mb-4">
+                  <FiSearch className="text-gray-400" />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="flex-1 bg-transparent border-none focus:outline-none text-sm"
+                  />
+                </div>
+                <button className="w-full bg-orange-500 text-white py-2 rounded-lg text-sm font-medium">
+                  Filter
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Hero Section */}
+      <div className="relative h-full -mt-[65px]">
+        {/* Background Image */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 w-full h-full bg-cover bg-center"
         />
-        <a href="#" className="text-base sm:text-lg text-white">
-          Home &gt; Contact Us
-        </a>
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
+          src={herobg}
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        />
+
+        {/* Overlay */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0 bg-black"
+        ></motion.div>
+
+        {/* Content */}
+        <div className="relative z-20 px-6 md:px-12 lg:px-[114px] pt-[150px] md:pt-[200px] lg:pt-[275px] text-white">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="max-w-3xl"
+          >
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
+            >
+              Get In Touch
+            </motion.h1>
+            
+            
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
+            >
+              Fusce et diam nisl. Curabitur est orci, tempus nec iaculis non,
+              hendrerit eget est. Fusce nisi lorem, scelerisque vitae tempus eget,
+              consequat ultrices nulla.
+            </motion.p>
+            {/* Animated Horizontal Line */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "100%" }}
+              transition={{ duration: 1, delay: 0.7 }}
+              className="h-[2px] mb-6 bg-gradient-to-r from-orange-500 to-white/0"
+            />
+            
+            <motion.div
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+              className="flex space-x-1 font-space-grotesk font-medium text-sm md:text-[16px] leading-[1.7]"
+            >
+              <span className="hover:text-orange-400 transition-colors">Home</span>
+              <span>&gt;</span>
+              <span >Contact Us</span>
+            </motion.div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Hero;

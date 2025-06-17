@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 
 const TestimonialsComponent = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.4 });
 
   const testimonials = [
     {
       id: 1,
       name: "Sarah Johnson",
       title: "Marketing Director",
-        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
+      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face",
       text: "Working with this team has been an absolute game-changer for our business. Their attention to detail and innovative approach exceeded all our expectations. The results speak for themselves."
     },
     {
@@ -55,68 +58,99 @@ const TestimonialsComponent = () => {
   };
 
   return (
-    <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+    <div ref={ref} className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <p className="text-orange-500 font-semibold text-sm uppercase tracking-wider mb-3">
             TESTIMONIALS
           </p>
           <h2 className="text-orange-500 text-4xl md:text-5xl font-bold mb-4">
             Feedback from clients
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Main Testimonial Card */}
-        <div className="relative bg-white  p-8 md:p-12 max-w-4xl mx-auto mb-8 transform transition-all duration-500 hover:shadow-3xl">
-          {/* Navigation Arrows */}
-          <button
+        {/* Testimonial Card with AnimatePresence */}
+        <div className="relative bg-white p-8 md:p-12 max-w-4xl mx-auto mb-8 shadow-xl rounded-xl min-h-[400px]">
+          <motion.button
             onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+            whileTap={{ scale: 0.9 }}
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 shadow-lg"
           >
             <ChevronLeft className="w-6 h-6 text-gray-600" />
-          </button>
-          
-          <button
+          </motion.button>
+
+          <motion.button
             onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 hover:scale-110 shadow-lg"
+            whileTap={{ scale: 0.9 }}
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 shadow-lg"
           >
             <ChevronRight className="w-6 h-6 text-gray-600" />
-          </button>
+          </motion.button>
 
-          {/* Content */}
-          <div className="text-center px-8 md:px-16">
-            {/* Profile Image */}
-            <div className="mb-8">
-              <img
-                src={testimonials[currentTestimonial].image}
-                alt={testimonials[currentTestimonial].name}
-                className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto border-4 border-orange-100 shadow-lg transition-all duration-500"
-              />
-            </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={testimonials[currentTestimonial].id}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -40 }}
+              transition={{ duration: 0.5 }}
+              className="text-center px-8 md:px-16"
+            >
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.1 }}
+                className="mb-8"
+              >
+                <img
+                  src={testimonials[currentTestimonial].image}
+                  alt={testimonials[currentTestimonial].name}
+                  className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto border-4 border-orange-100 shadow-lg"
+                />
+              </motion.div>
 
-            {/* Testimonial Text */}
-            <div className="mb-8">
-              <Quote className="w-8 h-8 text-[#0868D7] mx-auto mb-6" />
-              <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium max-w-3xl mx-auto">
-                {testimonials[currentTestimonial].text}
-              </p>
-            </div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-8"
+              >
+                <Quote className="w-8 h-8 text-[#0868D7] mx-auto mb-6" />
+                <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium max-w-3xl mx-auto">
+                  {testimonials[currentTestimonial].text}
+                </p>
+              </motion.div>
 
-            {/* Client Info */}
-            <div className="mb-2">
-              <h3 className="text-orange-500 font-bold text-xl md:text-2xl">
-                {testimonials[currentTestimonial].name}
-              </h3>
-              <p className="text-gray-600 text-sm md:text-base font-medium">
-                {testimonials[currentTestimonial].title}
-              </p>
-            </div>
-          </div>
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="mb-2"
+              >
+                <h3 className="text-orange-500 font-bold text-xl md:text-2xl">
+                  {testimonials[currentTestimonial].name}
+                </h3>
+                <p className="text-gray-600 text-sm md:text-base font-medium">
+                  {testimonials[currentTestimonial].title}
+                </p>
+              </motion.div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center space-x-3">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.7 }}
+          className="flex justify-center space-x-3"
+        >
           {testimonials.map((_, index) => (
             <button
               key={index}
@@ -128,24 +162,8 @@ const TestimonialsComponent = () => {
               }`}
             />
           ))}
-        </div>
-
-        {/* Background Decorative Elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-orange-200 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-amber-200 rounded-full opacity-20 animate-pulse"></div>
-        <div className="absolute top-1/2 left-0 w-16 h-16 bg-orange-300 rounded-full opacity-10 animate-bounce"></div>
+        </motion.div>
       </div>
-
-      {/* Additional Styling */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-      `}</style>
     </div>
   );
 };

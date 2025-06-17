@@ -58,13 +58,13 @@ export default function Jobopportunity() {
   return (
     <motion.div
       ref={sectionRef}
-      className="p-6 bg-white text-black"
+      className="px-4 sm:px-6 py-6 lg:py-8 bg-white text-black max-w-6xl mx-auto"
       variants={sectionFade}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
     >
       <motion.h1
-        className="text-3xl font-bold text-center mb-10"
+        className="text-2xl sm:text-3xl font-bold text-center mb-6 lg:mb-10"
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
         variants={sectionFade}
@@ -72,28 +72,28 @@ export default function Jobopportunity() {
         Job Opportunities
       </motion.h1>
 
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {[...jobs, ...jobs].map((job, index) => (
           <motion.div
             key={index}
-            className="bg-gray-100 p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="bg-gray-100 p-4 sm:p-5 rounded-lg shadow-md hover:shadow-lg transition-shadow"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ delay: index * 0.1, duration: 0.6 }}
           >
             <motion.div
-              className="flex items-center space-x-4 mb-4"
+              className="flex items-center space-x-3 sm:space-x-4 mb-3 sm:mb-4"
               {...floatAnimation}
             >
-              <img src={job.img} alt={job.title} className="w-12 h-12" />
-              <h2 className="text-xl font-semibold">{job.title}</h2>
+              <img src={job.img} alt={job.title} className="w-10 sm:w-12 h-10 sm:h-12" />
+              <h2 className="text-lg sm:text-xl font-semibold">{job.title}</h2>
             </motion.div>
-            <p className="text-gray-700 text-sm mb-2">{job.description}</p>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-gray-700 text-xs sm:text-sm mb-2">{job.description}</p>
+            <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
               <strong>Location:</strong> {job.location}
             </p>
             <motion.button
-              className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition-colors"
+              className="bg-orange-500 text-white px-3 sm:px-4 py-1 sm:py-2 rounded hover:bg-orange-600 transition-colors text-sm sm:text-base"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               {...floatAnimation}

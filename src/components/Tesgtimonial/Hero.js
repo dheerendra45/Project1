@@ -8,12 +8,15 @@ const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
   
   // Timeout refs for delayed closing
   const hoverTimeoutRef = useRef(null);
   const businessSubTimeoutRef = useRef(null);
   const nestedSubTimeoutRef = useRef(null);
   const dropdownRef = useRef(null);
+  const heroRef = useRef(null);
+  const animationRef = useRef(null);
 
   const navItems = [
     { 
@@ -265,18 +268,90 @@ const Hero = () => {
     }
   };
 
+  // Animation handler
+  const animateOnScroll = () => {
+    if (!heroRef.current) return;
+    
+    const heroElement = heroRef.current;
+    const rect = heroElement.getBoundingClientRect();
+    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
+    
+    if (isVisible) {
+      const scrollPercent = (window.scrollY - rect.top) / window.innerHeight;
+      setScrollPosition(scrollPercent);
+      
+      // Reset animation when scrolled out of view
+      if (scrollPercent > 1.5) {
+        setScrollPosition(0);
+      }
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
+    window.addEventListener('scroll', animateOnScroll);
+    
     return () => {
       document.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('scroll', animateOnScroll);
       clearAllTimeouts();
+      cancelAnimationFrame(animationRef.current);
     };
   }, []);
 
+  // Floating particles animation
+  const renderFloatingParticles = () => {
+    const particles = [];
+    const particleCount = 30;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const size = Math.random() * 5 + 2;
+      const posX = Math.random() * 100;
+      const posY = Math.random() * 100;
+      const delay = Math.random() * 5;
+      const duration = 10 + Math.random() * 20;
+      
+      particles.push(
+        <div
+          key={i}
+          className="absolute rounded-full bg-white/20"
+          style={{
+            width: `${size}px`,
+            height: `${size}px`,
+            left: `${posX}%`,
+            top: `${posY}%`,
+            animation: `float ${duration}s ease-in-out ${delay}s infinite`,
+            opacity: 0.7,
+            transform: `translateY(${Math.sin(scrollPosition * Math.PI * 2) * 20}px)`
+          }}
+        />
+      );
+    }
+    
+    return particles;
+  };
+
+  // Animated underline effect for navigation
+  const renderAnimatedUnderline = () => {
+    return (
+      <div className="absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all duration-300 ease-out"
+        style={{
+          width: `${Math.abs(Math.sin(scrollPosition * Math.PI)) * 100}%`,
+          left: `${Math.abs(Math.cos(scrollPosition * Math.PI)) * 50}%`
+        }}
+      />
+    );
+  };
+
   return (
-    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden">
+    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden relative" ref={heroRef}>
+      {/* Floating particles background */}
+      <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
+        {renderFloatingParticles()}
+      </div>
+      
       {/* Top Navbar */}
-      <div className="w-full h-[57px] bg-black flex items-center justify-between px-6 text-white text-sm">
+      <div className="w-full h-[57px] bg-black flex items-center justify-between px-6 text-white text-sm relative z-20">
         <div className="flex items-center ml-7">
           <span className="font-inter font-normal text-[12px] leading-[18px]">
             €208.00 +2.72
@@ -288,13 +363,13 @@ const Hero = () => {
           </span>
         </div>
         <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal hover:text-orange-400 transition-colors duration-300">
             Employee Login 
             <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
               <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </span>
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal hover:text-orange-400 transition-colors duration-300">
             🌐 Global(English) 
             <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
               <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
@@ -313,6 +388,11 @@ const Hero = () => {
       >
         {/* Logo */}
         <div className="flex items-center">
+          <div className=" text-white px-3 py-2 rounded text-sm font-bold hover:scale-105 transition-transform duration-300">
+            <img src={companylogo} className="h-[54.84px] w-[116.53px]"/>
+          </div>
+        </div>
+        
   <Link to="/">
     <div className="text-white px-3 py-2 rounded text-sm font-bold">
       <img src={companylogo} className="h-[70px] w-[125px]" alt="Company Logo" />
@@ -329,19 +409,20 @@ const Hero = () => {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200">
+              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 relative">
                 {item.title}
                 {item.hasDropdown && (
-                  <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                  <svg className="w-3 h-3 fill-current transition-transform duration-200 transform group-hover:rotate-180" viewBox="0 0 10 6">
                     <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 )}
+                {renderAnimatedUnderline()}
               </span>
 
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div 
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1 animate-fadeIn"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
@@ -381,7 +462,7 @@ const Hero = () => {
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                             <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1 animate-slideIn"
                               onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                               onMouseLeave={handleBusinessSubLeave}
                             >
@@ -423,7 +504,7 @@ const Hero = () => {
                                   {/* Nested sub-menu for categories */}
                                   {activeNestedSub === subIndex && subItem.categories && (
                                     <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1 animate-slideIn"
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >
@@ -459,7 +540,7 @@ const Hero = () => {
                         <a
                           key={dropdownIndex}
                           href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
+                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200 transform hover:translate-x-1"
                           onClick={(e) => {
                             e.preventDefault();
                             handleNavigation(dropdownItem.href);
@@ -482,13 +563,13 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300 hover:w-52 focus:w-52"
             />
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 hover:text-orange-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
-          <div className="bg-orange-500 rounded-full p-2">
+          <div className="bg-orange-500 rounded-full p-2 hover:bg-orange-600 transition-colors duration-300 hover:rotate-12 transform">
             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z"/>
             </svg>
@@ -513,20 +594,87 @@ const Hero = () => {
         
         {/* Content */}
         <div className="relative z-20 px-[114px] pt-[275px] text-white">
-          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Testimonials</h1>
+          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6 animate-float">
+            Testimonials
+          </h1>
           <div className="text-sm flex items-center gap-4 text-white/80">
-            <span>Home</span>
+            <span className="hover:text-orange-400 transition-colors duration-300">Home</span>
             <span>&gt;</span>
-            <span>Testimonials</span>
-           
-           
+            <span className="hover:text-orange-400 transition-colors duration-300">Testimonials</span>
           </div>
         </div>
-      
+        
+        {/* Animated divider */}
+        <div 
+          className="absolute bottom-[150px] left-1/2 transform -translate-x-1/2 w-[900px] border-t-4 border-orange-500"
+          style={{
+            transform: `translateX(-50%) scaleX(${1 + Math.sin(scrollPosition * Math.PI * 2) * 0.2})`,
+            transition: 'transform 0.3s ease-out'
+          }}
+        />
 
-
-  
+        {/* Location Texts */}
+        <div className="absolute bottom-[100px] left-1/2 transform -translate-x-1/2 flex gap-[49px]">
+          {Array(8).fill("Location 1").map((item, idx) => (
+            <span
+              key={idx}
+              className={`text-white ${idx === 5 ? "text-orange-500" : ""} hover:text-orange-400 transition-colors duration-300`}
+              style={{
+                transform: `translateY(${Math.sin(scrollPosition * Math.PI * 2 + idx * 0.5) * 10}px)`,
+                transition: 'transform 0.3s ease-out'
+              }}
+            >
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
+      
+      {/* CSS for animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0) translateX(0);
+          }
+          50% {
+            transform: translateY(-20px) translateX(10px);
+          }
+        }
+        
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateX(10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        .animate-float {
+          animation: float 6s ease-in-out infinite;
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+        
+        .animate-slideIn {
+          animation: slideIn 0.2s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };
