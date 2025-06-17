@@ -3,7 +3,6 @@ import herobg from '../../assets/Testimonials/herobg.jpg'
 import companylogo from '../../assets/products/image28.png'
 import { Link } from "react-router-dom";
 
-
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
@@ -295,7 +294,9 @@ const Hero = () => {
       document.removeEventListener('click', handleClickOutside);
       window.removeEventListener('scroll', animateOnScroll);
       clearAllTimeouts();
-      cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
 
@@ -387,18 +388,11 @@ const Hero = () => {
         }}
       >
         {/* Logo */}
-        <div className="flex items-center">
-          <div className=" text-white px-3 py-2 rounded text-sm font-bold hover:scale-105 transition-transform duration-300">
-            <img src={companylogo} className="h-[54.84px] w-[116.53px]"/>
+        <Link to="/">
+          <div className="text-white px-3 py-2 rounded text-sm font-bold hover:scale-105 transition-transform duration-300">
+            <img src={companylogo} className="h-[54.84px] w-[116.53px]" alt="Company Logo" />
           </div>
-        </div>
-        
-  <Link to="/">
-    <div className="text-white px-3 py-2 rounded text-sm font-bold">
-      <img src={companylogo} className="h-[70px] w-[125px]" alt="Company Logo" />
-    </div>
-  </Link>
-</div>
+        </Link>
 
         {/* Navigation Menu */}
         <div className="flex gap-8 text-white text-sm font-medium">
@@ -580,9 +574,6 @@ const Hero = () => {
       {/* Hero Section */}
       <div className="relative h-full -mt-[65px]">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-        />
         <img
           src={herobg}
           alt="Hero Background"
