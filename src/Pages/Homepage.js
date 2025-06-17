@@ -18,11 +18,12 @@ import Footer from "../components/Footer";
 import TestimonialHomePage from "../components/Testimonial-HomePage";
 import Environment from "../components/environment";
 import EnvironmentSection1 from "../components/EnvironmentSection1";
+import Start from "../components/start";
 
 const HomePage = () => {
   return (
     <div>
-       
+       <Start/>
       <Hero />
      
       <MissionVisionValues />
