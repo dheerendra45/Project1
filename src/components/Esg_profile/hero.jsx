@@ -1,4 +1,6 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 import a1 from "../../assets/p1/logo.png";
 import a2 from "../../assets/p1/sustainability.png";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
@@ -91,10 +93,9 @@ export default function Hero() {
       dropdownItems: [
         { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
-        { name: "Awards and Achievements", href: "/achievement" },
-        { name: "Manufacturing Unit", href: "/manufacturing" },
+        { name: "Awards and Achievements", href: "/awardsAndachievements" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: "News and Events", href: "#" },
+        { name: "News and Events", href: "/newsandevents" },
       ],
     },
     {
@@ -266,9 +267,11 @@ export default function Hero() {
       >
         {/* Logo */}
         <div className="flex items-center">
-          <div className="text-white px-3 py-2 rounded text-sm font-bold">
-            <img src={a1} className="h-[70] w-[125px]" />
-          </div>
+          <Link to="/">
+            <div className="text-white px-3 py-2 rounded text-sm font-bold">
+              <img src={a1} className="h-[70px] w-[125px]" alt="Company Logo" />
+            </div>
+          </Link>
         </div>
 
         {/* Navigation Menu */}

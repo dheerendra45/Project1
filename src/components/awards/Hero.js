@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+
 import { motion } from 'framer-motion';
 import bg from '../../assets/awards/bg.jpg';
 import companylogo from '../../assets/products/image28.png'
@@ -60,10 +62,10 @@ const AwardsHero = () => {
       dropdownItems: [
         { name: 'Company Overview', href: '/overview' },
         { name: 'Leadership', href: '/leadership' },
-        { name: 'Awards and Achievements', href: '/achievement' },
+          { name: 'Awards and Achievements', href: '/awardsAndachievements' },
         { name: 'Manufacturing Unit', href: '/manufacturing' },
         { name: 'Testimonials', href: '/testimonials' },
-        { name: 'News and Events', href: '#' }
+                { name: 'News and Events', href: '/newsandevents' }
       ]
     },
     { 
@@ -351,10 +353,13 @@ const AwardsHero = () => {
       >
         {/* Logo */}
         <div className="flex items-center">
-          <div className=" text-white px-3 py-2 rounded text-sm font-bold">
-           <img src={companylogo} className="h-[70px] w-[125px]"/>
-          </div>
-        </div>
+  <Link to="/">
+    <div className="text-white px-3 py-2 rounded text-sm font-bold">
+      <img src={companylogo} className="h-[70px] w-[125px]" alt="Company Logo" />
+    </div>
+  </Link>
+</div>
+
         
         {/* Navigation Menu */}
         <div className="flex gap-8 text-white text-sm font-medium">

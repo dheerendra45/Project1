@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import herobg from "../../assets/Companyoverview/Herobg.mp4";
+import { Link } from "react-router-dom";
+
 import companylogo from "../../assets/products/image28.png";
 import {
   FiMenu,
@@ -42,10 +44,10 @@ const Hero = () => {
       dropdownItems: [
         { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
-        { name: "Awards and Achievements", href: "/achievement" },
+        { name: "Awards and Achievements", href: "/awardsAndachievements" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: "News and Events", href: "#" },
+        { name: "News and Events", href: "/newsandevents" },
       ],
     },
     {
@@ -677,7 +679,15 @@ const Hero = () => {
           >
             <div className="p-4">
               <div className="flex justify-between items-center border-b pb-4">
-                <img src={companylogo} className="h-[40px] w-[90px]" />
+                <Link to="/">
+                  <div className="text-white px-3 py-2 rounded text-sm font-bold">
+                    <img
+                      src={companylogo}
+                      className="h-[70px] w-[125px]"
+                      alt="Company Logo"
+                    />
+                  </div>
+                </Link>
                 <button onClick={toggleMobileMenu} className="text-gray-500">
                   <FiX className="w-6 h-6" />
                 </button>

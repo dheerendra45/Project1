@@ -2,6 +2,7 @@ import Hero from "../components/Environmentcompliance/Hero.jsx";
 import Info from "../components/Environmentcompliance/info.jsx";
 import Mission from "../components/Environmentcompliance/mission.jsx";
 import Priority from "../components/Environmentcompliance/priority.jsx";
+import Footer from "../components/Footer.js";
 
 
 const Environmentcompliance = () => {
@@ -11,6 +12,7 @@ const Environmentcompliance = () => {
       <Info/>
       <Mission/>
       <Priority/>
+      <Footer />
     </div>
   );
 };

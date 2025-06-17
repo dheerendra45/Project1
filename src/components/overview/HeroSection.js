@@ -23,10 +23,10 @@ const HeroSection = () => {
       dropdownItems: [
         { name: 'Company Overview', href: '/overview' },
         { name: 'Leadership', href: '/leadership' },
-        { name: 'Awards and Achievements', href: '/achievement' },
+         { name: 'Awards and Achievements', href: '/awardsAndachievements' },
         { name: "Manufacturing Unit", href: "/manufacturing" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: 'News and Events', href: '#' }
+               { name: 'News and Events', href: '/newsandevents' }
       ]
     },
     { 

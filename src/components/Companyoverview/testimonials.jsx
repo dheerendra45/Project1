@@ -50,7 +50,8 @@ export default function Testimonials() {
   };
 
   const next = () => setIndex((prev) => (prev + 1) % testimonials.length);
-  const prev = () => setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  const prev = () =>
+    setIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
 
   return (
     <div ref={ref} className="px-6 py-16 bg-white text-center">
@@ -85,9 +86,7 @@ export default function Testimonials() {
         </div>
 
         <div className="relative mb-6">
-          <p className="text-gray-700 text-left">
-            {testimonials[index].quote}
-          </p>
+          <p className="text-gray-700 text-left">{testimonials[index].quote}</p>
           <img
             src={a1}
             alt=""

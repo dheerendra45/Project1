@@ -32,7 +32,7 @@ const ProductsSection = () => {
   const aluminiumRef = useRef(null);
   const energyRef = useRef(null);
 
-  const steelTabs = ['Carbon Steel', 'Stainless Steel', 'Cold Rolled'];
+  const steelTabs = ['Carbon Steel', 'Stainless Steel', 'Cold Rolled','Ferro alloy'];
   const aluminiumTabs = ['Aluminium Sheets', 'Aluminium Pipes', 'Aluminium Bars'];
   const energyTabs = ['Solar Panels', 'Wind Turbines', 'Energy Storage'];
 
@@ -254,7 +254,7 @@ const ProductsSection = () => {
 
         {/* ENERGY Section */}
         {renderProductSection(
-          'Others', 
+          ' Energy & Others', 
           activeTabEnergy, 
           setActiveTabEnergy, 
           energyTabs, 

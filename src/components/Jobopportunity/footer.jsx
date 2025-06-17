@@ -1,6 +1,6 @@
 import a1 from "../../assets/Jobopportunity/footer.png";
 
-export default function Footer() {
+export default function Footer1() {
   return (
     <a href="/careers-faqs" className="block">
       <div

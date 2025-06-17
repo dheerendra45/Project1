@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import herobg from "../../assets/Environmentcompliance/Herobg.jpg";
 import companylogo from "../../assets/products/image28.png";
 import {
@@ -41,10 +43,10 @@ const Hero = () => {
       dropdownItems: [
         { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
-        { name: "Awards and Achievements", href: "/achievement" },
+        { name: "Awards and Achievements", href: "/awardsAndachievements" },
         { name: "Manufacturing Unit", href: "/manufacturing" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: "News and Events", href: "#" },
+        { name: "News and Events", href: "/newsandevents" },
       ],
     },
     {
@@ -375,8 +377,16 @@ const Hero = () => {
       >
         {/* Logo */}
         <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-          <div className="text-white px-2 md:px-3 py-2 rounded text-sm font-bold">
-            <img src={companylogo} className="h-[70px] w-[125px] " />
+          <div className="flex items-center">
+            <Link to="/">
+              <div className="text-white px-3 py-2 rounded text-sm font-bold">
+                <img
+                  src={companylogo}
+                  className="h-[70px] w-[125px]"
+                  alt="Company Logo"
+                />
+              </div>
+            </Link>
           </div>
         </motion.div>
 

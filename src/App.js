@@ -23,6 +23,7 @@ import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
 import Environmentcompliance from'./Pages/Environmentcompliance';
 import Blogs from './Pages/blogs';
+import AwardsAndAchievements from './Pages/awards&achievements';
 
 
 function App() {
@@ -33,9 +34,9 @@ function App() {
     <Route index element={<HomePage />} />
     <Route path="leadership" element={<LeadershipPage />} />
     <Route path="overview" element={<OverviewPage />} />
-     <Route path="achievement" element={<Awards />} />
+   
   </Route>
-
+  <Route path="newsandevents" element={<Awards />} />
   <Route path="carbon_steel" element={<Products />} />
   <Route path="business" element={<Business />} />
   <Route path="csr" element={<Sustainability />} />
@@ -46,7 +47,7 @@ function App() {
    <Route path="testimonials" element={<Testimonial />} />
  <Route path="knowledgehub" element={<Knowledgehub />} />
  <Route path="blogs" element={<Blogs />} />
-
+ <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
  
 
     <Route path="manufacturing" element={<Manufacturing />} />

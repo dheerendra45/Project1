@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import herobg from '../../assets/Sustainability/bg.jpg'
 import companylogo from '../../assets/products/image28.png'
+import { Link } from "react-router-dom";
+
 
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -84,10 +86,10 @@ const Hero = () => {
       dropdownItems: [
         { name: "Company Overview", href: "/companyoverview" },
         { name: "Leadership", href: "/leadership" },
-        { name: "Awards and Achievements", href: "/achievement" },
+         { name: 'Awards and Achievements', href: '/awardsAndachievements' },
         { name: "Manufacturing Unit", href: "/manufacturing" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: "News and Events", href: "#" },
+               { name: 'News and Events', href: '/newsandevents' }
       ],
     },
     {
@@ -282,11 +284,14 @@ const Hero = () => {
       >
         {/* Logo */}
         <div className="flex items-center">
-          <div className=" text-white px-3 py-2 rounded text-sm font-bold">
-           <img src={companylogo} className="h-[70px] w-[125px]"/>
+  <Link to="/">
+    <div className="text-white px-3 py-2 rounded text-sm font-bold">
+      <img src={companylogo} className="h-[70px] w-[125px]" alt="Company Logo" />
+    </div>
+  </Link>
+</div>
 
-          </div>
-        </div>
+       
         
         {/* Navigation Menu */}
         <div className="flex gap-8 text-white text-sm font-medium">

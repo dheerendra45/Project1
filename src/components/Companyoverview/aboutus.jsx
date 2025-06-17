@@ -7,7 +7,12 @@ import a4 from "../../assets/Companyoverview/aboutus4.png";
 import a5 from "../../assets/Companyoverview/aboutus5.png";
 import a6 from "../../assets/Companyoverview/aboutus6.png";
 
-const tabOptions = ["Mission & Vision", "History", "Our Growth", "Why Choose Us"];
+const tabOptions = [
+  "Mission & Vision",
+  "History",
+  "Our Growth",
+  "Why Choose Us",
+];
 
 export default function Aboutus() {
   const ref = useRef(null);
@@ -15,17 +20,20 @@ export default function Aboutus() {
   const [selectedTab, setSelectedTab] = useState("Why Choose Us");
 
   return (
-    <div className="px-4 py-10 space-y-10" ref={ref}>
+    <div className="px-8 py-10 space-y-10" ref={ref}>
       {/* Heading Section */}
       <motion.div
         className="text-center space-y-2"
         initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0, transition: { duration: 0.6 } } : {}}
+        animate={
+          isInView ? { opacity: 1, y: 0, transition: { duration: 0.6 } } : {}
+        }
         whileInView={{ repeat: Infinity, repeatType: "loop", repeatDelay: 4 }}
       >
         <h1 className="text-4xl font-bold">Find Out More About Us</h1>
         <p className="text-gray-600">
-          Lorem ipsum dolor sit amet consectetur. Vitae feugiat pellentesque purus vitae leo.
+          Lorem ipsum dolor sit amet consectetur. Vitae feugiat pellentesque
+          purus vitae leo.
         </p>
         <div className="w-24 h-1 bg-orange-500 mx-auto mt-2"></div>
       </motion.div>
@@ -38,7 +46,11 @@ export default function Aboutus() {
             className="relative cursor-pointer"
             onClick={() => setSelectedTab(tab)}
           >
-            <p className={`text-lg font-medium ${selectedTab === tab ? "text-black" : "text-gray-500"}`}>
+            <p
+              className={`text-lg font-medium ${
+                selectedTab === tab ? "text-black" : "text-gray-500"
+              }`}
+            >
               {tab}
             </p>
             {selectedTab === tab && (
@@ -54,7 +66,9 @@ export default function Aboutus() {
         <motion.div
           className="lg:w-[30%] w-full"
           initial={{ opacity: 0, x: -50 }}
-          animate={isInView ? { opacity: 1, x: 0, transition: { duration: 0.6 } } : {}}
+          animate={
+            isInView ? { opacity: 1, x: 0, transition: { duration: 0.6 } } : {}
+          }
           whileInView={{ repeat: Infinity, repeatType: "loop", repeatDelay: 6 }}
         >
           <img src={a1} alt="About" className="rounded shadow" />
@@ -64,12 +78,19 @@ export default function Aboutus() {
         <motion.div
           className="flex-1 space-y-4"
           initial={{ opacity: 0, x: 50 }}
-          animate={isInView ? { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.2 } } : {}}
+          animate={
+            isInView
+              ? { opacity: 1, x: 0, transition: { duration: 0.6, delay: 0.2 } }
+              : {}
+          }
           whileInView={{ repeat: Infinity, repeatType: "loop", repeatDelay: 6 }}
         >
           <h1 className="text-3xl font-semibold">{selectedTab}</h1>
           <p className="text-gray-700">
-            Lorem ipsum dolor sit amet consectetur. Sit facilisis nascetur iaculis volutpat. Lectus cursus bibendum elementum nunc. Suspendisse nisl semper ultricies pretium tempus varius convallis dapibus. Vel gravida.
+            Lorem ipsum dolor sit amet consectetur. Sit facilisis nascetur
+            iaculis volutpat. Lectus cursus bibendum elementum nunc. Suspendisse
+            nisl semper ultricies pretium tempus varius convallis dapibus. Vel
+            gravida.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -78,8 +99,20 @@ export default function Aboutus() {
                 key={idx}
                 className="flex items-start gap-4"
                 initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.2 * idx } } : {}}
-                whileInView={{ repeat: Infinity, repeatType: "loop", repeatDelay: 5 }}
+                animate={
+                  isInView
+                    ? {
+                        opacity: 1,
+                        y: 0,
+                        transition: { duration: 0.4, delay: 0.2 * idx },
+                      }
+                    : {}
+                }
+                whileInView={{
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  repeatDelay: 5,
+                }}
               >
                 <img src={img} alt="" className="w-16 h-16 rounded shadow" />
                 <div>
@@ -109,8 +142,20 @@ export default function Aboutus() {
               key={index}
               className="bg-gray-500 text-white p-6 rounded shadow"
               initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 * index } } : {}}
-              whileInView={{ repeat: Infinity, repeatType: "loop", repeatDelay: 5 }}
+              animate={
+                isInView
+                  ? {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.5, delay: 0.2 * index },
+                    }
+                  : {}
+              }
+              whileInView={{
+                repeat: Infinity,
+                repeatType: "loop",
+                repeatDelay: 5,
+              }}
             >
               <h1 className="text-xl font-semibold">{text}</h1>
             </motion.div>
