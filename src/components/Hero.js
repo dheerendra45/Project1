@@ -292,7 +292,7 @@ const Hero = () => {
   }}
 >
   {/* Black overlay */}
-  <div className="absolute inset-0 bg-black opacity-80 z-0" />
+  <div className="absolute inset-0 bg-gray-300 opacity-80 z-0" />
 
   {/* Content on top */}
   <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
