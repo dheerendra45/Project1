@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 import herobg from '../assets/hero-background.png';
 import companylogo from '../assets/products/image28.png'
-// Import the new hero icons
+// Import the new hero 
+import bgImg from '../assets/image146.png'
 import FactoryIcon from '../assets/factory-icon.png';
 import RevenueIcon from '../assets/revenue-icon.png';
 import TruckIcon from '../assets/truck-icon.png';
@@ -280,34 +281,48 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden">
+    <div className="h-[815px] bg-gray-300 mx-auto overflow-hidden">
       {/* <Start/> */}
-      <div className="w-full h-[57px] bg-black flex items-center justify-between px-6 text-white text-sm">
-        <div className="flex items-center ml-7">
-          <span className="font-inter font-normal text-[12px] leading-[18px]">
-            €208.00 +2.72
-          </span>
-        </div>
-        <div className="flex items-center">
-          <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-            Lorem Ipsum Dollar Site ent
-          </span>
-        </div>
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-            Employee Login 
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-            🌐 Global(English) 
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-        </div>
-      </div>
+     <div
+  className="relative w-full h-[57px] bg-black text-white text-sm overflow-hidden"
+  style={{
+    backgroundImage: `url(${bgImg})`,
+    backgroundRepeat: 'repeat-x',
+    backgroundSize: 'auto 100%', // Keep image height 100% and auto width
+  }}
+>
+  {/* Black overlay */}
+  <div className="absolute inset-0 bg-black opacity-80 z-0" />
+
+  {/* Content on top */}
+  <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
+    <div className="flex items-center ml-7">
+      <span className="font-inter font-normal text-[12px] leading-[18px]">
+        €208.00 +2.72
+      </span>
+    </div>
+    <div className="flex items-center">
+      <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
+        Lorem Ipsum Dollar Site ent
+      </span>
+    </div>
+    <div className="flex items-center gap-6">
+      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+        Employee Login 
+        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </span>
+      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+        🌐 Global(English) 
+        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>
+
 
 
       {/* Middle Navbar */}
