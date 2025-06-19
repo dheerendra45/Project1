@@ -22,7 +22,7 @@ import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
 import Environmentcompliance from'./Pages/Environmentcompliance';
-
+import Seltiger from './Pages/Seltiger';
 
 function App() {
   return (
@@ -53,6 +53,7 @@ function App() {
     <Route path="companyoverview" element={<Companyoverview />} />
     <Route path="jobopportunity" element={<Jobopportunity />} />
     <Route path="environmentcompliance" element={<Environmentcompliance />} />
+    <Route path="seltiger" element={<Seltiger />} />
 </Routes>
 
     </div>
