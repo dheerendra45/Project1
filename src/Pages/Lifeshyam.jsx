@@ -11,7 +11,6 @@ export default function Lifeshyam() {
       <Joinus />
       <Ourvalues />
       <Employee />
-      <Footer />
     </div>
   );
 }

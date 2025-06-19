@@ -13,7 +13,7 @@ const Business = () => {
       <CertificationsSection />
       <AcrossBordersSection />
       <ContactFormSection />
-      <Footer />
+
     </div>
   );
 };

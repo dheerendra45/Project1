@@ -7,7 +7,7 @@ const Blogs = () => {
     <div>
       <Hero />
       <BlogPage />
-      <Footer />
+     
     </div>
   );
 };

@@ -28,7 +28,7 @@ const Knowledgehub = () => {
         <SheetMetalGuide4 />
         <SheetMetalJoining />
         <ResourcesComponent />
-       <Footer /> 
+      
     </div>
   );
 };

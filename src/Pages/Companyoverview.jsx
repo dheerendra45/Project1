@@ -19,7 +19,6 @@ export default function Companyoverview() {
       <Teams />
       <Testimonials />
       <Map />
-      <Footer />
     </>
   );
 }

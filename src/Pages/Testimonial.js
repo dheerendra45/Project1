@@ -14,7 +14,7 @@ const Testimonial = () => {
       <Banner />
       <PortfolioComponent />
       <TestimonialCarousel />
-      <Footer />
+     
     </div>
   );
 };

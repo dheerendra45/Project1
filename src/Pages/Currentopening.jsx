@@ -14,7 +14,6 @@ export default function Currentopening() {
       <Jobopportunity />
       <Testimonials />
       <Joinus />
-      <Footer />
     </div>
   );
 }

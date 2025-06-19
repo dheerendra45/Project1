@@ -15,8 +15,7 @@ function P1() {
       <Report />
       <ClientServices />
       <Projects />
-      <Footer />
-
+      
     </>
   );
 }

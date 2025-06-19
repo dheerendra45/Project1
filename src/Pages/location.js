@@ -10,7 +10,7 @@ function LocationPage() {
       <Hero />
       <WorldLocations />
       <Locations />
-      <Footer />
+    
     </>
   );
 }

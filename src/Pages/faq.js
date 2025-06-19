@@ -7,7 +7,7 @@ const Faq = () => {
     <div>
       <Hero />
      <FAQAccordion />
-      <Footer />
+    
     </div>
   );
 };

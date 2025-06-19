@@ -13,7 +13,6 @@ export default function Jobopportunity() {
       <Work />
       <Consultant />
       <Footer1 />
-      <Footer />
     </>
   );
 }

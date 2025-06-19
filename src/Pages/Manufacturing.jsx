@@ -14,7 +14,6 @@ export default function Manufacturing() {
       <Process />
       {/* <Map/> */}
       <Unit />
-      <Footer />
     </div>
   );
 }

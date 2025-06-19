@@ -17,7 +17,7 @@ const Sustainability = () => {
       <HumanityEmphasis />
       <SupplyChainSustainability />
       <SustainabilityTransparency />
-      <Footer />
+      
     </div>
   );
 };

@@ -12,7 +12,6 @@ export default function AwardsAndAchievements() {
       <Excellence />
       <Specialities />
       <Excellence />
-      <Footer />
     </>
   );
 }
