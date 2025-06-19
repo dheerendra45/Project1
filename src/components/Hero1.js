@@ -16,11 +16,51 @@ const Hero = () => {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   
+  // Stock price state
+  const [stockData, setStockData] = useState({
+    symbol: "SHYAMMETL.NS",
+    shortName: "SHYAM METALICS AND ENGY L",
+    currentPrice: 0,
+    high: 0,
+    low: 0,
+    prevClose: 0
+  });
+  const [stockLoading, setStockLoading] = useState(true);
+  const [stockError, setStockError] = useState(null);
+  
   // Timeout refs for delayed closing
   const hoverTimeoutRef = useRef(null);
   const businessSubTimeoutRef = useRef(null);
   const nestedSubTimeoutRef = useRef(null);
   const dropdownRef = useRef(null);
+
+  // Function to fetch stock data
+  const fetchStockData = async () => {
+    try {
+      setStockLoading(true);
+      setStockError(null);
+      
+      // Replace with your actual backend API endpoint
+      const response = await fetch('https://project1-backend-rose.vercel.app/api/stock/price/SHYAMMETL.NS'); // Update this URL to your backend endpoint
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      setStockData(data);
+    } catch (error) {
+      console.error('Error fetching stock data:', error);
+      setStockError(error.message);
+    } finally {
+      setStockLoading(false);
+    }
+  };
+
+  // Calculate price change and percentage
+  const priceChange = stockData.currentPrice - stockData.prevClose;
+  const priceChangePercent = stockData.prevClose > 0 ? ((priceChange / stockData.prevClose) * 100) : 0;
+  const isPositive = priceChange >= 0;
 
   const navItems = [
     { 
@@ -274,65 +314,94 @@ const Hero = () => {
 
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
+    
+    // Fetch stock data on component mount
+    fetchStockData();
+    
+    // Set up interval to fetch stock data every 30 seconds (adjust as needed)
+    const stockInterval = setInterval(fetchStockData, 5000);
+    
     return () => {
       document.removeEventListener('click', handleClickOutside);
       clearAllTimeouts();
+      clearInterval(stockInterval);
     };
   }, []);
 
   return (
     <div className="h-[815px] bg-gray-300 mx-auto overflow-hidden">
       {/* <Start/> */}
-    <div
-  className="relative w-full h-[57px] text-white text-sm overflow-hidden"
-  style={{
-    backgroundImage: `url(${bgImg})`,
-    backgroundRepeat: 'repeat-x',
-    backgroundSize: '25% 100%', // force 4 images across full width
-    backgroundPosition: 'center',
-  }}
->
-  {/* Black semi-transparent overlay */}
-  <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+      
+      {/* Top Navbar */}
+      <div
+        className="relative w-full h-[47px] text-white text-sm overflow-hidden"
+        style={{
+          backgroundImage: `url(${bgImg})`,
+          backgroundRepeat: 'repeat-x',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* Black semi-transparent overlay */}
+        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
-  {/* Content on top */}
-  <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
-    <div className="flex items-center ml-7">
-      <span className="font-inter font-normal text-[12px] leading-[18px]">
-        €208.00 +2.72
-      </span>
-    </div>
-    <div className="flex items-center">
-      <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-        Lorem Ipsum Dollar Site ent
-      </span>
-    </div>
-    <div className="flex items-center gap-6">
-      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-        Employee Login 
-        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </span>
-      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-        🌐 Global(English) 
-        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </span>
-    </div>
-  </div>
-</div>
-
-
-
+        {/* Content on top */}
+        <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
+          {/* Stock Price Display */}
+          <div className="flex items-center ml-7">
+            {stockLoading ? (
+              <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+                Loading...
+              </span>
+            ) : stockError ? (
+              <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+                Error loading price
+              </span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="font-inter font-normal text-[12px] leading-[18px]">
+                 current price
+                </span>
+                <span className="font-inter font-semibold text-[12px] leading-[18px]">
+                  ₹{stockData.currentPrice.toFixed(2)}
+                </span>
+                <span className={`font-inter font-normal text-[12px] leading-[18px] ${
+                  isPositive ? 'text-green-400' : 'text-red-400'
+                }`}>
+                  {isPositive ? '+' : ''}{priceChange.toFixed(2)} ({isPositive ? '+' : ''}{priceChangePercent.toFixed(2)}%)
+                </span>
+              </div>
+            )}
+          </div>
+          
+          <div className="flex items-center">
+            <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
+              Lorem Ipsum Dollar Site ent
+            </span>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+              Employee Login 
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+              🌐 Global(English) 
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
 
       {/* Middle Navbar */}
       <div 
         ref={dropdownRef}
-        className="w-full h-[57px] mt-0 flex items-center justify-between px-8 relative z-30"
+        className="w-full h-[57px] flex items-center justify-between px-8 relative z-30 mt-0"
         style={{
-          background: '#FFFFFF26',
+          background: '#C0C0C0',
         }}
       >
         {/* Logo */}
@@ -343,7 +412,7 @@ const Hero = () => {
         </div>
         
         {/* Navigation Menu */}
-        <div className="flex gap-8 text-white text-sm font-medium">
+        <div className="flex gap-8 text-black text-sm font-medium">
           {navItems.map((item, index) => (
             <div
               key={index}
@@ -351,7 +420,7 @@ const Hero = () => {
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200">
+              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black">
                 {item.title}
                 {item.hasDropdown && (
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
@@ -504,22 +573,22 @@ const Hero = () => {
             <input
               type="text"
               placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
           <div className="bg-orange-500 rounded-full p-2">
-            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+            <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 20 20">
               <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z"/>
             </svg>
           </div>
         </div>
       </div>
 
-      {/* Updated Hero Section */}
-      <div className="relative h-full -mt-[65px]">
+      {/* Hero Section */}
+      <div className="relative h-full mt-0">
         {/* Background Image */}
         <div 
           className="absolute inset-0 w-full h-full bg-cover bg-center"
@@ -578,7 +647,6 @@ const Hero = () => {
         </div>
         {/* Stat 3 */}
         <div className="flex items-center gap-3 w-[45%] md:w-auto">
-          <img src={TruckIcon} alt="Truck Icon" className="w-10 h-10" />
           <div>
             <h2 className="text-xl font-bold">2,500+</h2>
             <p className="text-sm">Delivered Nationwide</p>

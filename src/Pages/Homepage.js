@@ -20,12 +20,13 @@ import Environment from "../components/environment";
 import EnvironmentSection1 from "../components/EnvironmentSection1";
 import Start from "../components/start";
 import BusinessHomepage from "../components/BusinessHomepage";
+import Hero1 from "../components/Hero1";
 
 const HomePage = () => {
   return (
     <div>
      
-      <Hero />
+      <Hero1 />
      
       <MissionVisionValues />
        <AboutUs />
