@@ -667,7 +667,11 @@ const Hero = () => {
           >
             <div className="p-4">
               <div className="flex justify-between items-center border-b pb-4">
-                <img src={companylogo} className="h-[40px] w-[90px]" alt="Company Logo" />
+                <img
+                  src={companylogo}
+                  className="h-[40px] w-[90px]"
+                  alt="Company Logo"
+                />
                 <button onClick={toggleMobileMenu} className="text-gray-500">
                   <FiX className="w-6 h-6" />
                 </button>
@@ -844,9 +848,6 @@ const Hero = () => {
                     className="flex-1 bg-transparent border-none focus:outline-none text-sm"
                   />
                 </div>
-                <button className="w-full bg-orange-500 text-white py-2 rounded-lg text-sm font-medium">
-                  Filter
-                </button>
               </div>
             </div>
           </motion.div>
@@ -895,8 +896,7 @@ const Hero = () => {
             >
               Get In Touch
             </motion.h1>
-            
-            
+
             <motion.p
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -904,8 +904,8 @@ const Hero = () => {
               className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl"
             >
               Fusce et diam nisl. Curabitur est orci, tempus nec iaculis non,
-              hendrerit eget est. Fusce nisi lorem, scelerisque vitae tempus eget,
-              consequat ultrices nulla.
+              hendrerit eget est. Fusce nisi lorem, scelerisque vitae tempus
+              eget, consequat ultrices nulla.
             </motion.p>
             {/* Animated Horizontal Line */}
             <motion.div
@@ -914,16 +914,18 @@ const Hero = () => {
               transition={{ duration: 1, delay: 0.7 }}
               className="h-[2px] mb-6 bg-gradient-to-r from-orange-500 to-white/0"
             />
-            
+
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.1 }}
               className="flex space-x-1 font-space-grotesk font-medium text-sm md:text-[16px] leading-[1.7]"
             >
-              <span className="hover:text-orange-400 transition-colors">Home</span>
+              <span className="hover:text-orange-400 transition-colors">
+                Home
+              </span>
               <span>&gt;</span>
-              <span >Contact Us</span>
+              <span>Contact Us</span>
             </motion.div>
           </motion.div>
         </div>

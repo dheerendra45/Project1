@@ -1,8 +1,8 @@
 // pages/HomePage.js
 import React from "react";
 
-import Hero from "../components/Hero";
-import Navbar from '../components/Navbar';
+
+import Navbar from '../components/start1';
 import MainNavbar from '../components/MainNavbar'
 import BrandBanner from "../components/BrandBanner";
 import MissionVisionValues from "../components/MissionVisionValues";
@@ -18,15 +18,15 @@ import Footer from "../components/Footer";
 import TestimonialHomePage from "../components/Testimonial-HomePage";
 import Environment from "../components/environment";
 import EnvironmentSection1 from "../components/EnvironmentSection1";
-import Start from "../components/start";
+
 import BusinessHomepage from "../components/BusinessHomepage";
-import Hero1 from "../components/Hero1";
+import Hero from "../components/hero2";
 
 const HomePage = () => {
   return (
     <div>
-     
-      <Hero1 />
+<Navbar />
+      <Hero />
      
       <MissionVisionValues />
        <AboutUs />

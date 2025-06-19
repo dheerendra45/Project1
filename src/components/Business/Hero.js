@@ -757,9 +757,7 @@ const Hero = () => {
                     className="flex-1 bg-transparent border-none focus:outline-none text-sm"
                   />
                 </div>
-                <button className="w-full bg-orange-500 text-white py-2 rounded-lg text-sm font-medium">
-                  Filter
-                </button>
+              
               </div>
             </div>
           </motion.div>

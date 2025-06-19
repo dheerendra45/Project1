@@ -30,12 +30,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-  <Route path="/" element={<Layout />}>
+  
     <Route index element={<HomePage />} />
     <Route path="leadership" element={<LeadershipPage />} />
     <Route path="overview" element={<OverviewPage />} />
    
-  </Route>
   <Route path="newsandevents" element={<Awards />} />
   <Route path="carbon_steel" element={<Products />} />
   <Route path="business" element={<Business />} />

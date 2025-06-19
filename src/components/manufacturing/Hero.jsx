@@ -703,13 +703,6 @@ const Hero = () => {
             />
             <FiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70" />
           </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-orange-500 rounded-full p-2 cursor-pointer"
-          >
-            <FiFilter className="w-4 h-4 text-white" />
-          </motion.div>
         </div>
       </motion.div>
 
@@ -903,9 +896,6 @@ const Hero = () => {
                     className="flex-1 bg-transparent border-none focus:outline-none text-sm"
                   />
                 </div>
-                <button className="w-full bg-orange-500 text-white py-2 rounded-lg text-sm font-medium">
-                  Filter
-                </button>
               </div>
             </div>
           </motion.div>
