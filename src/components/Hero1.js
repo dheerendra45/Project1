@@ -41,7 +41,7 @@ const Hero = () => {
       setStockError(null);
       
       // Replace with your actual backend API endpoint
-      const response = await fetch('https://project1-backend-rose.vercel.app/api/stock/price/SHYAMMETL.NS'); // Update this URL to your backend endpoint
+      const response = await fetch('https://project1-backend-1hja.onrender.com/api/stock/price/SHYAMMETL.NS'); // Update this URL to your backend endpoint
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
