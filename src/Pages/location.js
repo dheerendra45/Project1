@@ -6,7 +6,7 @@ import Footer from "../components/Footer";
 function LocationPage() {
   return (
     <>
-      <Start />
+    
       <Hero />
       <WorldLocations />
       <Locations />

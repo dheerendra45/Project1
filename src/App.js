@@ -30,31 +30,43 @@ function App() {
   return (
     <div className="App">
       <Routes>
-  
-    <Route index element={<HomePage />} />
-    <Route path="leadership" element={<LeadershipPage />} />
-    <Route path="overview" element={<OverviewPage />} />
+  <Route path="/" element={<Layout />}>
    
-  <Route path="newsandevents" element={<Awards />} />
-  <Route path="carbon_steel" element={<Products />} />
-  <Route path="business" element={<Business />} />
-  <Route path="csr" element={<Sustainability />} />
-  <Route path="esg_profile" element={<P1 />} />
-  <Route path="ContactPage" element={<ContactPage />} />
-  <Route path="LocationPage" element={<LocationPage />} />
+    <Route path="newsandevents" element={<Awards />} />
+     <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
+      <Route path="blogs" element={<Blogs />} />
+       <Route path="business" element={<Business />} />
+        <Route path="carbon_steel" element={<Products />} />
+        <Route path="overview" element={<OverviewPage />} />
+         <Route path="companyoverview" element={<Companyoverview />} />
+          <Route path="ContactPage" element={<ContactPage />} />
+          <Route path="csr" element={<Sustainability />} />
+          
+ <Route path="currentopening" element={<Currentopening />} /> 
+ <Route path="environmentcompliance" element={<Environmentcompliance />} />
+ <Route path="esg_profile" element={<P1 />} />
   <Route path="faq-Page" element={<Faq />} />
+
+  <Route path="jobopportunity" element={<Jobopportunity />} />
+   <Route path="leadership" element={<LeadershipPage />} />
+  <Route path="LocationPage" element={<LocationPage />} />
    <Route path="testimonials" element={<Testimonial />} />
  <Route path="knowledgehub" element={<Knowledgehub />} />
- <Route path="blogs" element={<Blogs />} />
- <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
- 
 
-    <Route path="manufacturing" element={<Manufacturing />} />
-    <Route path="lifeshyam" element={<Lifeshyam />} />
-    <Route path="currentopening" element={<Currentopening />} />
-    <Route path="companyoverview" element={<Companyoverview />} />
-    <Route path="jobopportunity" element={<Jobopportunity />} />
-    <Route path="environmentcompliance" element={<Environmentcompliance />} />
+   <Route path="manufacturing" element={<Manufacturing />} />
+  <Route path="lifeshyam" element={<Lifeshyam />} />
+   
+   
+  </Route>
+
+
+
+   <Route index element={<HomePage />} />
+   
+ 
+  
+    
+    
 </Routes>
 
     </div>
