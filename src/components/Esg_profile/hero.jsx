@@ -143,7 +143,7 @@ export default function Hero() {
           ],
         },
         {
-          name: "Power",
+          name: "Energy & Others",
           href: "#",
           subItems: [
             { name: "Captive Power", href: "#" },

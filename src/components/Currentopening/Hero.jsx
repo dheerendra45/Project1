@@ -95,7 +95,7 @@ const Hero = () => {
           ],
         },
         {
-          name: "Power",
+          name: "Energy & Others",
           href: "#",
           subItems: [
             { name: "Captive Power", href: "#" },
@@ -648,13 +648,6 @@ const Hero = () => {
               className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-36 xl:w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
             <FiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70" />
-          </motion.div>
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="bg-orange-500 rounded-full p-2 cursor-pointer"
-          >
-            <FiFilter className="w-4 h-4 text-white" />
           </motion.div>
         </div>
       </motion.div>

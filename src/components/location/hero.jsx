@@ -145,7 +145,7 @@ export default function Hero() {
           ],
         },
         {
-          name: "Power",
+          name: "Energy & Others",
           href: "#",
           subItems: [
             { name: "Captive Power", href: "#" },
@@ -429,15 +429,6 @@ export default function Hero() {
                 strokeWidth={2}
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
-            </svg>
-          </div>
-          <div className="bg-orange-500 rounded-full p-2">
-            <svg
-              className="w-4 h-4 text-white"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z" />
             </svg>
           </div>
         </div>
