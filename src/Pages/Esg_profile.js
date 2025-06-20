@@ -9,14 +9,13 @@ import Footer from "../components/Footer";
 function P1() {
   return (
     <>
-      <Start />
+      
       <Hero />
       <Approach />
       <Report />
       <ClientServices />
       <Projects />
-      <Footer />
-
+      
     </>
   );
 }

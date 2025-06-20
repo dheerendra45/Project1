@@ -42,7 +42,7 @@ const Best = () => {
   };
 
   return (
-    <div className="w-full p-4 flex flex-col gap-10" ref={ref}>
+    <div className=" px-12  p-4 flex flex-col gap-10" ref={ref}>
       {/* Top Section */}
       <motion.div
         className="flex flex-col lg:flex-row items-start gap-10"
@@ -106,7 +106,9 @@ const Best = () => {
                   {carouselData[carouselIndex].heading}
                 </h1>
               </div>
-              <p className="text-gray-700">{carouselData[carouselIndex].text}</p>
+              <p className="text-gray-700">
+                {carouselData[carouselIndex].text}
+              </p>
             </motion.div>
           </AnimatePresence>
         </motion.div>
@@ -116,7 +118,9 @@ const Best = () => {
       <motion.div
         className="relative w-full"
         initial={{ scale: 0.9, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0.3 }}
+        animate={
+          isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0.3 }
+        }
         transition={{ duration: 0.5 }}
       >
         <img

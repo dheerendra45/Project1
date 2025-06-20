@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import herobg from '../../assets/Testimonials/herobg.jpg'
 import companylogo from '../../assets/products/image28.png'
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -21,12 +22,12 @@ const Hero = () => {
       title: 'ABOUT US', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'Company Overview', href: '/overview' },
+         { name: 'Company Overview', href: '/companyoverview' },
         { name: 'Leadership', href: '/leadership' },
-        { name: 'Awards and Achievements', href: '/achievement' },
+         { name: 'Awards and Achievements', href: '/awardsAndachievements' },
          { name: "Manufacturing Unit", href: "/manufacturing" },
         { name: "Testimonials", href: "/testimonials" },
-        { name: 'News and Events', href: '#' }
+              { name: 'News and Events', href: '/newsandevents' }
       ]
     },
     { 
@@ -66,7 +67,7 @@ const Hero = () => {
           ]
         },
         {
-          name: 'Power',
+         name: 'Energy & Others',
           href: '#',
           subItems: [
             { name: 'Captive Power', href: '#' },
@@ -150,9 +151,9 @@ const Hero = () => {
       title: 'COMMUNITY', 
       hasDropdown: true,
       dropdownItems: [
-        { name: 'CSR', href: '/environment_compliance' },
+        { name: 'CSR', href: '/csr' },
         { name: 'Knowledge Hub', href: '/knowledgehub' },
-        { name: 'Blogs', href: '#' },
+       { name: 'Blogs', href: '/blogs' },
         { name: 'FAQ', href: '/faq-Page' }
       ]
     },
@@ -161,7 +162,7 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'ESG Profile', href: '/esg_profile' },
-        { name: 'Environment Compliance', href: '#' }
+      { name: 'Environment Compliance', href: '/environmentcompliance' }
       ]
     },
     { 
@@ -169,7 +170,7 @@ const Hero = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'Life at Shyam', href: '/lifeshyam' },
-        { name: 'Job Opportunity', href: '#' },
+         { name: 'Job Opportunity', href: '/jobopportunity' },
         { name: 'Current Opening', href: '/currentopening' }
       ]
     },
@@ -293,7 +294,9 @@ const Hero = () => {
       document.removeEventListener('click', handleClickOutside);
       window.removeEventListener('scroll', animateOnScroll);
       clearAllTimeouts();
-      cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
 
@@ -348,232 +351,13 @@ const Hero = () => {
         {renderFloatingParticles()}
       </div>
       
-      {/* Top Navbar */}
-      <div className="w-full h-[57px] bg-black flex items-center justify-between px-6 text-white text-sm relative z-20">
-        <div className="flex items-center ml-7">
-          <span className="font-inter font-normal text-[12px] leading-[18px]">
-            €208.00 +2.72
-          </span>
-        </div>
-        <div className="flex items-center">
-          <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-            Lorem Ipsum Dollar Site ent
-          </span>
-        </div>
-        <div className="flex items-center gap-6">
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal hover:text-orange-400 transition-colors duration-300">
-            Employee Login 
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-          <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal hover:text-orange-400 transition-colors duration-300">
-            🌐 Global(English) 
-            <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-              <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </span>
-        </div>
-      </div>
+      
 
-      {/* Middle Navbar */}
-      <div 
-        ref={dropdownRef}
-        className="w-full h-[57px] mt-0 flex items-center justify-between px-8 relative z-30"
-        style={{
-          background: '#FFFFFF26',
-        }}
-      >
-        {/* Logo */}
-        <div className="flex items-center">
-          <div className=" text-white px-3 py-2 rounded text-sm font-bold hover:scale-105 transition-transform duration-300">
-            <img src={companylogo} className="h-[54.84px] w-[116.53px]"/>
-          </div>
-        </div>
-        
-        {/* Navigation Menu */}
-        <div className="flex gap-8 text-white text-sm font-medium">
-          {navItems.map((item, index) => (
-            <div
-              key={index}
-              className="relative dropdown-container"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 relative">
-                {item.title}
-                {item.hasDropdown && (
-                  <svg className="w-3 h-3 fill-current transition-transform duration-200 transform group-hover:rotate-180" viewBox="0 0 10 6">
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
-                {renderAnimatedUnderline()}
-              </span>
-
-              {/* Dropdown Menu */}
-              {item.hasDropdown && activeDropdown === index && (
-                <div 
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1 animate-fadeIn"
-                  onMouseEnter={handleDropdownEnter}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
-                    // Business dropdown with hover sub-menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((business, businessIndex) => (
-                        <div 
-                          key={businessIndex} 
-                          className="relative"
-                          onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
-                          onMouseLeave={handleBusinessSubLeave}
-                        >
-                          {/* Check if it's Business Overview (which should be directly clickable) */}
-                          {business.name === 'Business Overview' ? (
-                            <a
-                              href={business.href}
-                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavigation(business.href);
-                              }}
-                            >
-                              <span>{business.name}</span>
-                            </a>
-                          ) : (
-                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
-                              <span className="font-medium">{business.name}</span>
-                              {business.subItems && business.subItems.length > 0 && (
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                              )}
-                            </div>
-                          )}
-                          
-                          {/* Sub-menu for each business/investor */}
-                          {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
-                            <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1 animate-slideIn"
-                              onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
-                              onMouseLeave={handleBusinessSubLeave}
-                            >
-                              {business.subItems.map((subItem, subIndex) => (
-                                <div 
-                                  key={subIndex} 
-                                  className="relative"
-                                  onMouseEnter={() => handleNestedSubEnter(subIndex)}
-                                  onMouseLeave={handleNestedSubLeave}
-                                >
-                                  {/* Make this clickable for items with href */}
-                                  {subItem.href && subItem.href !== '#' ? (
-                                    <a
-                                      href={subItem.href}
-                                      className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        handleNavigation(subItem.href);
-                                      }}
-                                    >
-                                      <span>{subItem.name}</span>
-                                      {subItem.categories && (
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                      )}
-                                    </a>
-                                  ) : (
-                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-                                      <span>{subItem.name}</span>
-                                      {subItem.categories && (
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                      )}
-                                    </div>
-                                  )}
-                                  
-                                  {/* Nested sub-menu for categories */}
-                                  {activeNestedSub === subIndex && subItem.categories && (
-                                    <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1 animate-slideIn"
-                                      onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
-                                      onMouseLeave={handleNestedSubLeave}
-                                    >
-                                      {subItem.categories.map((category, catIndex) => (
-                                        <div key={catIndex} className="space-y-1">
-                                          <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
-                                            {category.name}
-                                          </div>
-                                          {category.items.map((productItem, prodIndex) => (
-                                            <a 
-                                              key={prodIndex}
-                                              href="#" 
-                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                            >
-                                              • {productItem}
-                                            </a>
-                                          ))}
-                                        </div>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    // Regular dropdown layout for other menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                        <a
-                          key={dropdownIndex}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200 transform hover:translate-x-1"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigation(dropdownItem.href);
-                          }}
-                        >
-                          {dropdownItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Search Bar */}
-        <div className="flex items-center gap-4">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-white placeholder-white/70 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300 hover:w-52 focus:w-52"
-            />
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-white/70 hover:text-orange-400 transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-          </div>
-          <div className="bg-orange-500 rounded-full p-2 hover:bg-orange-600 transition-colors duration-300 hover:rotate-12 transform">
-            <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V4z"/>
-            </svg>
-          </div>
-        </div>
-      </div>
+    
 
       {/* Hero Section */}
       <div className="relative h-full -mt-[65px]">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-        />
         <img
           src={herobg}
           alt="Hero Background"

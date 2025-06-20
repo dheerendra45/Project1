@@ -17,7 +17,7 @@ const Products = () => {
       <WhyChooseUs />
       <Certificates />
       <RelatedProducts />
-      <Footer />
+      
     </div>
   );
 };

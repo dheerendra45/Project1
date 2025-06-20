@@ -20,7 +20,9 @@ export default function Start() {
         >
           ✕
         </button>
-        <button className="hover:underline text-left">Employee Login &gt;</button>
+        <button className="hover:underline text-left">
+          Employee Login &gt;
+        </button>
         <button className="flex items-center gap-2 hover:underline text-left">
           <Globe size={18} /> Global (English) &gt;
         </button>

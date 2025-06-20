@@ -4,17 +4,16 @@ import Companybenifits from "../components/Currentopening/companybenefits";
 import Jobopportunity from "../components/Currentopening/joboppurtunities";
 import Testimonials from "../components/Currentopening/testimonials";
 import Joinus from "../components/Currentopening/joinus";
+import Footer from "../components/Footer";
 
-
-
-export default function Currentopening(){
-    return (
-        <div>
-            <Hero/>
-            <Companybenifits/>
-            <Jobopportunity/>
-            <Testimonials/>
-            <Joinus/>
-        </div>
-    );
+export default function Currentopening() {
+  return (
+    <div>
+      <Hero />
+      <Companybenifits />
+      <Jobopportunity />
+      <Testimonials />
+      <Joinus />
+    </div>
+  );
 }

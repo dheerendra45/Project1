@@ -26,7 +26,7 @@ export default function Achievement() {
   return (
     <div
       ref={ref}
-      className="relative bg-cover bg-center py-16 px-6"
+      className="relative bg-cover bg-center py-16 px-12"
       style={{ backgroundImage: `url(${a1})` }}
     >
       {/* Block 1: Heading */}
@@ -36,7 +36,9 @@ export default function Achievement() {
         animate={animateItem(0)}
       >
         <h1 className="text-white text-sm uppercase">Company Statistics</h1>
-        <h2 className="text-2xl font-bold text-white">Achievement in Lorem ipsum</h2>
+        <h2 className="text-2xl font-bold text-white">
+          Achievement in Lorem ipsum
+        </h2>
       </motion.div>
 
       {/* Grid Layout */}
@@ -60,7 +62,11 @@ export default function Achievement() {
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.3)}
         >
-          <img src={a2} alt="Achievement" className="w-full h-auto rounded shadow" />
+          <img
+            src={a2}
+            alt="Achievement"
+            className="w-full h-auto rounded shadow"
+          />
         </motion.div>
 
         {/* Spacer to move Block 4 to next row */}
@@ -72,7 +78,11 @@ export default function Achievement() {
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.4)}
         >
-          <img src={a3} alt="Achievement" className="w-full h-auto rounded shadow" />
+          <img
+            src={a3}
+            alt="Achievement"
+            className="w-full h-auto rounded shadow"
+          />
         </motion.div>
 
         {/* Block 5: Success Rate */}

@@ -1,6 +1,6 @@
 // components/Layout.js
 import React from 'react';
-import Navbar from './Navbar1';
+import Navbar from './start1';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ const Layout = () => {
     <div className="min-h-screen flex flex-col">
       {/* Header Section */}
       <header>
-    
+      <Navbar />
       </header>
 
       {/* Main Content */}

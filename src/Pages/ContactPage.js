@@ -11,7 +11,7 @@ function ContactPage() {
       <Connect />
       <Contact />
       <OfficeLocation />
-      <Footer />
+     
     </>
   );
 }

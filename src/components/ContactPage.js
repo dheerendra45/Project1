@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { motion, useInView } from 'framer-motion';
+import contactbg from '../assets/image.png';import { motion, useInView } from 'framer-motion';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -25,13 +25,22 @@ const ContactPage = () => {
     console.log('Form submitted:', formData);
   };
 
+  // Debug: Check if image is loading
+  console.log('contactbg value:', contactbg);
+  
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const isLeftInView = useInView(leftRef, { once: false, margin: '-50px' });
   const isRightInView = useInView(rightRef, { once: false, margin: '-50px' });
 
   return (
-    <div className="w-full bg-gray-100 py-16 px-4">
+    <div  style={{
+  backgroundImage: `linear-gradient(rgba(128, 128, 128, 0.7), rgba(128, 128, 128, 0.7)), url(${contactbg})`, 
+  backgroundColor: '#f0f0f0', // fallback color
+  backgroundSize: 'cover', 
+  backgroundPosition: 'center', 
+  backgroundRepeat: 'no-repeat'
+}} className="w-full bg-gray-100 py-16 px-4">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row">
 
@@ -158,7 +167,7 @@ const ContactPage = () => {
                   value={formData.message}
                   onChange={handleInputChange}
                   className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black"
-                ></textarea>
+                />
                 <button
                   type="button"
                   onClick={handleSubmit}

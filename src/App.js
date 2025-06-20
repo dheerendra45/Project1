@@ -7,8 +7,8 @@ import Layout from './components/Layout';
 import LeadershipPage from './Pages/leadership';
 import Products from './Pages/carbonsteel';
 import Business from './Pages/Business';
-import Sustainability from './Pages/Environment_Compliance';
-import OverviewPage from './Pages/overview'; // Fixed capitalization
+import Sustainability from './Pages/CSR';
+import OverviewPage from './Pages/overview';
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
@@ -21,41 +21,40 @@ import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
-import Environmentcompliance from'./Pages/Environmentcompliance';
+import Environmentcompliance from './Pages/Environmentcompliance';
 import Seltiger from './Pages/Seltiger';
+import Blogs from './Pages/blogs';
+import AwardsAndAchievements from './Pages/awards&achievements';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-  <Route path="/" element={<Layout />}>
-    <Route index element={<HomePage />} />
-    <Route path="leadership" element={<LeadershipPage />} />
-    <Route path="overview" element={<OverviewPage />} />
-     <Route path="achievement" element={<Awards />} />
-  </Route>
-
-  <Route path="carbon_steel" element={<Products />} />
-  <Route path="business" element={<Business />} />
-  <Route path="environment_compliance" element={<Sustainability />} />
-  <Route path="esg_profile" element={<P1 />} />
-  <Route path="ContactPage" element={<ContactPage />} />
-  <Route path="LocationPage" element={<LocationPage />} />
-  <Route path="faq-Page" element={<Faq />} />
-   <Route path="testimonials" element={<Testimonial />} />
- <Route path="knowledgehub" element={<Knowledgehub />} />
-
- 
-
-    <Route path="manufacturing" element={<Manufacturing />} />
-    <Route path="lifeshyam" element={<Lifeshyam />} />
-    <Route path="currentopening" element={<Currentopening />} />
-    <Route path="companyoverview" element={<Companyoverview />} />
-    <Route path="jobopportunity" element={<Jobopportunity />} />
-    <Route path="environmentcompliance" element={<Environmentcompliance />} />
-    <Route path="seltiger" element={<Seltiger />} />
-</Routes>
-
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="newsandevents" element={<Awards />} />
+          <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="business" element={<Business />} />
+          <Route path="carbon_steel" element={<Products />} />
+          <Route path="overview" element={<OverviewPage />} />
+          <Route path="companyoverview" element={<Companyoverview />} />
+          <Route path="ContactPage" element={<ContactPage />} />
+          <Route path="csr" element={<Sustainability />} />
+          <Route path="currentopening" element={<Currentopening />} />
+          <Route path="environmentcompliance" element={<Environmentcompliance />} />
+          <Route path="esg_profile" element={<P1 />} />
+          <Route path="faq-Page" element={<Faq />} />
+          <Route path="jobopportunity" element={<Jobopportunity />} />
+          <Route path="leadership" element={<LeadershipPage />} />
+          <Route path="LocationPage" element={<LocationPage />} />
+          <Route path="testimonials" element={<Testimonial />} />
+          <Route path="knowledgehub" element={<Knowledgehub />} />
+          <Route path="manufacturing" element={<Manufacturing />} />
+          <Route path="lifeshyam" element={<Lifeshyam />} />
+          <Route path="seltiger" element={<Seltiger />} />
+        </Route>
+      </Routes>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import a1 from "./images-testimonial-homepage/1.png";
 import a2 from "./images-testimonial-homepage/2.png";
@@ -27,8 +27,16 @@ const TestimonialHomePage = () => {
     author: "– Rajiv Mehta, Project Head, National Highway Authority",
   });
 
+  // New state for Read All functionality
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+
   // Random testimonials for each user
   const testimonials = [
+    {
+      text: "Shyam Metalics' TMT bars have been the backbone of our infrastructure projects— their strength and reliability ensure long-lasting quality.",
+      author: "– Rajiv Mehta, Project Head, National Highway Authority",
+    },
     {
       text: "Outstanding quality and timely delivery. Shyam Metalics has been our trusted partner for over 5 years.",
       author: "– Amit Sharma, Construction Manager, Metro Projects",
@@ -59,7 +67,8 @@ const TestimonialHomePage = () => {
     },
     {
       text: "Innovative products and sustainable practices. Shyam Metalics leads the way in responsible manufacturing.",
-      author: "– Arjun Malhotra, Environmental Engineer, Green Building Council",
+      author:
+        "– Arjun Malhotra, Environmental Engineer, Green Building Council",
     },
     {
       text: "Reliable partnership for over a decade. Their commitment to excellence is unmatched.",
@@ -77,14 +86,31 @@ const TestimonialHomePage = () => {
       text: "World-class manufacturing standards and prompt customer service. Highly satisfied with their products.",
       author: "– Sunita Rao, Technical Advisor, Government Projects",
     },
-    {
-      text: "Their TMT bars exceed all safety standards. We trust Shyam Metalics for critical infrastructure.",
-      author: "– Manoj Verma, Safety Engineer, Highway Construction",
-    },
   ];
+
+  // Auto-play functionality
+  useEffect(() => {
+    let interval;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setCurrentTestimonialIndex((prevIndex) => {
+          const nextIndex = (prevIndex + 1) % testimonials.length;
+          setCurrentTestimonial(testimonials[nextIndex]);
+          return nextIndex;
+        });
+      }, 3000); // Change testimonial every 3 seconds
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, testimonials]);
 
   const handleImageHover = (index) => {
     setCurrentTestimonial(testimonials[index]);
+    setCurrentTestimonialIndex(index);
+    setIsAutoPlaying(false); // Stop auto-play when user hovers
+  };
+
+  const handleReadAllToggle = () => {
+    setIsAutoPlaying(!isAutoPlaying);
   };
 
   const handleReadAll = () => {
@@ -299,12 +325,32 @@ const TestimonialHomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="text-gray-600 text-base"
+                className="text-gray-600 text-base mb-6"
               >
                 <p className="mb-4">"{currentTestimonial.text}"</p>
                 <p className="font-semibold">{currentTestimonial.author}</p>
               </motion.div>
             </AnimatePresence>
+
+            {/* Read All Button for Mobile */}
+            <button
+              onClick={handleReadAllToggle}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl"
+            >
+              {isAutoPlaying ? "Stop Reading" : "Read All"}
+            </button>
+          </div>
+
+          {/* Read All Button - Mobile */}
+          <div className="text-center">
+            <motion.button
+              onClick={handleReadAll}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Read All
+            </motion.button>
           </div>
 
           {/* Read All Button - Mobile */}

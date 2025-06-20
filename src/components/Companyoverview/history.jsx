@@ -11,11 +11,22 @@ export default function History() {
 
   const repeatingAnim = {
     initial: { opacity: 0, y: 20 },
-    animate: isInView ? { opacity: 1, y: 0, transition: { duration: 0.6, repeat: Infinity, repeatType: "loop", repeatDelay: 4 } } : {},
+    animate: isInView
+      ? {
+          opacity: 1,
+          y: 0,
+          transition: {
+            duration: 0.6,
+            repeat: Infinity,
+            repeatType: "loop",
+            repeatDelay: 4,
+          },
+        }
+      : {},
   };
 
   return (
-    <div className="px-6 py-12 space-y-8" ref={ref}>
+    <div className="px-12 py-12 space-y-8" ref={ref}>
       <motion.h3 className="text-gray-500 text-lg" {...repeatingAnim}>
         Our History
       </motion.h3>
@@ -30,7 +41,9 @@ export default function History() {
             key={year}
             onClick={() => setSelectedYear(year)}
             className={`text-lg font-semibold border-b-2 pb-1 ${
-              selectedYear === year ? "text-orange-500 border-orange-500" : "text-gray-500 border-transparent"
+              selectedYear === year
+                ? "text-orange-500 border-orange-500"
+                : "text-gray-500 border-transparent"
             } transition duration-300`}
           >
             {year}
@@ -42,16 +55,22 @@ export default function History() {
       <motion.div
         className="flex flex-col md:flex-row gap-8 items-center"
         initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0, transition: { duration: 0.6 } } : {}}
+        animate={
+          isInView ? { opacity: 1, y: 0, transition: { duration: 0.6 } } : {}
+        }
       >
         {/* Left Text Content */}
         <div className="md:w-1/2 space-y-4">
           <h1 className="text-2xl font-bold">Humble beginnings</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur. Nullam in felis posuere pretium. Et donec tempor pharetra turpis risus tincidunt in. Mi volutpat eu porttitor.
+            Lorem ipsum dolor sit amet consectetur. Nullam in felis posuere
+            pretium. Et donec tempor pharetra turpis risus tincidunt in. Mi
+            volutpat eu porttitor.
           </p>
           <p className="text-gray-600">
-            Lorem ipsum dolor sit amet consectetur. Facilisis volutpat porttitor ut sed risus blandit egestas. Turpis nunc sit nunc pretium. Faucibus malesuada praesent non magna.
+            Lorem ipsum dolor sit amet consectetur. Facilisis volutpat porttitor
+            ut sed risus blandit egestas. Turpis nunc sit nunc pretium. Faucibus
+            malesuada praesent non magna.
           </p>
 
           {[
