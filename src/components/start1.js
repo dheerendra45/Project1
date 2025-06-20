@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import companylogo from '../assets/products/image28.png'
 import bgImg from '../assets/image146.png'
+import { href } from "react-router-dom";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -66,6 +67,7 @@ const Navbar = () => {
         { name: 'News and Events', href: '/newsandevents' }
       ]
     },
+    
     { 
       title: 'BUSINESSES', 
       hasDropdown: true,
@@ -182,6 +184,12 @@ const Navbar = () => {
           subItems: []
         }
       ]
+    },
+     { 
+      title: '🐅seltiger', 
+      hasDropdown: false,
+      href:'/seltiger'
+     
     },
     { 
       title: 'COMMUNITY', 
@@ -310,7 +318,7 @@ const Navbar = () => {
     fetchStockData();
     
     // Set up interval to fetch stock data every 30 seconds (adjust as needed)
-    const stockInterval = setInterval(fetchStockData, 5000);
+    const stockInterval = setInterval(fetchStockData, 40000);
     
     return () => {
       document.removeEventListener('click', handleClickOutside);
@@ -557,12 +565,12 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <div className="relative">
             <input
               type="text"
               placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-48 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
             />
             <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />

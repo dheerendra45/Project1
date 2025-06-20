@@ -56,6 +56,7 @@ function App() {
 
    <Route path="manufacturing" element={<Manufacturing />} />
   <Route path="lifeshyam" element={<Lifeshyam />} />
+  <Route path="seltiger" element={<Seltiger />} />
    
    
   </Route>
