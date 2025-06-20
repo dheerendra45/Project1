@@ -31,7 +31,7 @@ const PriorityCard = ({ img, title, desc }) => (
 
 export default function Priority() {
   return (
-    <div className="w-full bg-white py-10 px-6 text-orange-600">
+    <div className="w-full bg-white py-10 px-2 text-orange-600">
       {/* Heading */}
       <motion.h1
         className="text-3xl font-bold text-center mb-10"
