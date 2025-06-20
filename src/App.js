@@ -25,6 +25,7 @@ import Environmentcompliance from'./Pages/Environmentcompliance';
 import Blogs from './Pages/blogs';
 import AwardsAndAchievements from './Pages/awards&achievements';
 
+import Seltiger from './Pages/Seltiger';
 
 function App() {
   return (
