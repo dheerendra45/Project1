@@ -45,8 +45,9 @@ const Hero = () => {
         {/* Content */}
         <div className="relative h-[193px] w-[750px] z-20 pl-[144px] pt-[275px] text-white">
          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">
-  Sustainability as an
-integral component
+  Forging Stronger Steel, Empowering Stronger    
+                           Communities
+
 </h1>
 
          <div className="flex space-x-1 font-space-grotesk font-medium text-[16px] leading-[27.2px]">

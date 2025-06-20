@@ -12,14 +12,12 @@ const SupplyChainSustainability = () => {
             <div className="flex-1 flex items-center justify-center p-8 lg:p-12 bg-white border-r-0 lg:border-r-2 border-dotted">
               <div>
                 <h2 className="text-4xl font-light text-gray-800 mb-8">
-                  Sustainability in the supply chain
+                  CSR Focus Areas
                 </h2>
                 <div className="w-16 h-1 bg-orange-500 mb-8"></div>
                 <p className="text-gray-600 text-lg leading-relaxed mb-8 border-l-4 border-blue-400 pl-4">
-                  All procurement processes at Shyam Metalic Group adhere to our principles of conduct, respecting applicable laws and our 
-                  corporate values. Respecting human dignity, health and safety at the workplace, responsibility and integrity in 
-                  business dealings, and responsible, careful handling of limited resources are key elements. We practice responsible 
-                  sourcing and place great emphasis on transparency in our supply chain.
+                  At Shyam Metalics, our corporate social responsibility initiatives are intentionally concentrated on four vital domains that foster significant and sustainable impact. Through Education & Digital Empowerment efforts, we lay  the groundwork for future achievements by upgrading schools, setting up digital learning hubs, and offering scholarships to nurture young talent, especially in STEM disciplines. Our Healthcare Initiatives deliver essential medical services to underprivileged communities through mobile clinics, permanent healthcare facilities, and specialized camps that address critical needs such as cataract surgeries, maternal healthcare, and child nutritio
+
                 </p>
                 <button className="bg-orange-500 text-white px-6 py-3 rounded hover:bg-orange-600 transition-colors flex items-center gap-2">
                   Discover more

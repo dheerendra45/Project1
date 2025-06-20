@@ -11,7 +11,7 @@ const HumanityEmphasis = () => {
     >
       <div className="max-w-7xl mx-auto px-4 w-full text-center">
         <h2 className="text-5xl font-light text-white mb-6">
-          We emphasize humanity
+           Empowering Lives Beyond Business
         </h2>
         <p className="text-white text-xl mb-8 opacity-90">
           tolerated by us.

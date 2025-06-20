@@ -10,11 +10,12 @@ const SustainabilityTransparency = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-12">
           <h2 className="text-4xl font-light text-gray-800 mb-6">
-            Communicating sustainability transparently
+             Expanded CSR Initiatives
           </h2>
           <p className="text-gray-600 text-lg leading-relaxed max-w-3xl">
-            Our accreditations and certificates represent the highest quality and reliability. By strictly adhering 
-            to regulations and providing transparent reporting, we put our vision and values into action.
+            At Shyam Metalics, we are committed to Corporate Social Responsibility programs that go beyond compliance programs that create real, lasting change. Our CSR initiatives span across education, healthcare, livelihoods, and sustainable infrastructure, designed to empower communities at the grassroots. 
+In the education sector, we are establishing Digital Education Hubs in underserved rural areas. These include setting up smart classrooms in government schools, offering coding and digital literacy classes to school children, and providing free community internet zones in remote locations. These initiatives aim to close the digital divide and equip the next generation with future-ready skills.
+
           </p>
         </div>
 

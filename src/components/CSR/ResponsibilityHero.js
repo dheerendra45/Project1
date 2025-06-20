@@ -14,10 +14,8 @@ const ResponsibilityHero = () => {
           </div>
           <div className="w-[870px] ml-60">
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
-              Our policies highlight our commitment to sustainability and guide our actions. They emphasize our 
-              responsibility to minimize environmental impact, promote health and safety, respect human rights, 
-              support local communities, and maintain high ethical standards in our operational processes and 
-              supply chains.
+              At Shyam Metalics, Corporate Social Responsibility (CSR) transcends a mere legal obligation it is an essential aspect of our identity. We hold the conviction that genuine business success is intertwined with the welfare of the communities we serve. Driven by this conviction, we integrate social and environmental responsibility into the core of our operations. Our CSR initiatives aim to promote sustainable growth, uplift underprivileged communities, and generate enduring positive impact.
+
             </p>
             <div className="flex gap-4">
               <button className="bg-orange-500 text-white px-6 py-3 rounded hover:bg-orange-600 transition-colors flex items-center gap-2">
@@ -47,12 +45,11 @@ const ResponsibilityHero = () => {
           <div className="flex justify-center">
             <div className="max-w-4xl text-center">
               <h2 className="text-4xl font-light text-white mb-8 leading-tight">
-               <span className='text-orange-500'>"</span>As an internationally operating steel company, we are aware of our extensive 
-                economic, ecological, and social responsibilities.<span className='text-orange-500'>"</span>
+               <span className='text-orange-500'>"</span>At Shyam Metalics, we measure our success not just in tonnes of steel, but in lives transformed, communities empowered, and futures built. This is the true temper of our responsibility.<span className='text-orange-500'>"</span>
               </h2>
               <div className="w-16 h-1 bg-orange-500 mb-4 mx-auto"></div>
               <p className="text-white text-lg">
-                Frank Koch, CEO Lorem Ipsum
+                {/* Frank Koch, CEO Lorem Ipsum */}
               </p>
             </div>
           </div>
