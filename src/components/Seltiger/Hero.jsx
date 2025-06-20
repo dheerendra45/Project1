@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FiMenu, FiX, FiChevronDown, FiChevronRight, FiSearch, FiFilter } from 'react-icons/fi';
+import { FiMenu, FiX, FiChevronDown, FiChevronRight, FiSearch, FiFilter, FiChevronLeft, FiChevronRight as FiChevronRightIcon } from 'react-icons/fi';
 import herobg from '../../assets/Seltiger/Hero.png';
 import companylogo from '../../assets/Seltiger/logo.png';
 import Start from "../start";
@@ -12,6 +12,7 @@ export default function Hero() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [mobileSubmenu, setMobileSubmenu] = useState(null);
     const [mobileNestedSubmenu, setMobileNestedSubmenu] = useState(null);
+    const [currentBgIndex, setCurrentBgIndex] = useState(0);
     
     // Refs
     const hoverTimeoutRef = useRef(null);
@@ -21,6 +22,14 @@ export default function Hero() {
     const heroRef = useRef(null);
     const animationRef = useRef(null);
     const mobileMenuRef = useRef(null);
+    const carouselIntervalRef = useRef(null);
+
+    // Background images for carousel
+    const bgImages = [
+        herobg,
+        herobg, // You can replace this with another image path
+        herobg  // And this one too
+    ];
 
     // Nav items data
     const navItems = [
@@ -331,10 +340,39 @@ export default function Hero() {
         animationRef.current = requestAnimationFrame(animateElements);
     };
 
+    // Carousel navigation
+    const nextBg = () => {
+        setCurrentBgIndex((prevIndex) => 
+            prevIndex === bgImages.length - 1 ? 0 : prevIndex + 1
+        );
+        resetCarouselTimer();
+    };
+
+    const prevBg = () => {
+        setCurrentBgIndex((prevIndex) => 
+            prevIndex === 0 ? bgImages.length - 1 : prevIndex - 1
+        );
+        resetCarouselTimer();
+    };
+
+    const resetCarouselTimer = () => {
+        if (carouselIntervalRef.current) {
+            clearInterval(carouselIntervalRef.current);
+        }
+        startCarousel();
+    };
+
+    const startCarousel = () => {
+        carouselIntervalRef.current = setInterval(() => {
+            nextBg();
+        }, 5000); // Change image every 5 seconds
+    };
+
     useEffect(() => {
         document.addEventListener('click', handleClickOutside);
         document.addEventListener('scroll', animateElements);
         animateElements();
+        startCarousel();
 
         return () => {
             document.removeEventListener('click', handleClickOutside);
@@ -342,6 +380,9 @@ export default function Hero() {
             clearAllTimeouts();
             if (animationRef.current) {
                 cancelAnimationFrame(animationRef.current);
+            }
+            if (carouselIntervalRef.current) {
+                clearInterval(carouselIntervalRef.current);
             }
         };
     }, []);
@@ -355,14 +396,48 @@ export default function Hero() {
         <>
         <Start/>
         <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden relative" ref={heroRef}>
-            {/* Background with parallax */}
+            {/* Background with parallax and carousel */}
             <div className="absolute inset-0 overflow-hidden">
-                <img
-                    src={herobg}
-                    alt="Hero Background"
-                    className="absolute inset-0 w-full h-full object-cover z-0"
-                    style={parallaxStyle}
-                />
+                {/* Carousel container */}
+                <div className="relative w-full h-full">
+                    {bgImages.map((bg, index) => (
+                        <img
+                            key={index}
+                            src={bg}
+                            alt="Hero Background"
+                            className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${index === currentBgIndex ? 'opacity-100' : 'opacity-0'}`}
+                            style={parallaxStyle}
+                        />
+                    ))}
+                    
+                    {/* Carousel controls */}
+                    <button 
+                        onClick={prevBg}
+                        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 rounded-full p-2 transition-all duration-300 hover:scale-110"
+                    >
+                        <FiChevronLeft className="w-6 h-6 text-white" />
+                    </button>
+                    <button 
+                        onClick={nextBg}
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-white/30 hover:bg-white/50 rounded-full p-2 transition-all duration-300 hover:scale-110"
+                    >
+                        <FiChevronRightIcon className="w-6 h-6 text-white" />
+                    </button>
+                    
+                    {/* Carousel indicators */}
+                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+                        {bgImages.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => {
+                                    setCurrentBgIndex(index);
+                                    resetCarouselTimer();
+                                }}
+                                className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentBgIndex ? 'bg-white w-6' : 'bg-white/50'}`}
+                            />
+                        ))}
+                    </div>
+                </div>
                 
                 {/* Floating elements */}
                 <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
