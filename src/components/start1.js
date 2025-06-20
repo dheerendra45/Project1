@@ -188,8 +188,7 @@ const Navbar = () => {
      { 
       title: '🐅seltiger', 
       hasDropdown: false,
-      href:'/seltiger'
-     
+      href: '/seltiger'
     },
     { 
       title: 'COMMUNITY', 
@@ -311,6 +310,18 @@ const Navbar = () => {
     }
   };
 
+  // Handle logo click to navigate to home
+  const handleLogoClick = () => {
+    window.location.href = '/';
+  };
+
+  // Handle direct navigation items (like seltiger)
+  const handleDirectNavClick = (item) => {
+    if (item.href && item.href !== '#') {
+      handleNavigation(item.href);
+    }
+  };
+
   useEffect(() => {
     document.addEventListener('click', handleClickOutside);
     
@@ -401,10 +412,17 @@ const Navbar = () => {
           background: '#C0C0C0',
         }}
       >
-        {/* Logo */}
+        {/* Logo - Now clickable */}
         <div className="flex items-center">
-          <div className=" text-white px-3 py-2 rounded text-sm font-bold">
-            <img src={companylogo} className="h-[70px] w-[125px]"/>
+          <div 
+            className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
+            onClick={handleLogoClick}
+          >
+            <img 
+              src={companylogo} 
+              className="h-[70px] w-[125px] hover:opacity-80 transition-opacity duration-200"
+              alt="Company Logo"
+            />
           </div>
         </div>
         
@@ -414,10 +432,11 @@ const Navbar = () => {
             <div
               key={index}
               className="relative dropdown-container"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
+              onMouseEnter={() => item.hasDropdown ? handleMouseEnter(index) : null}
+              onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
+              onClick={() => !item.hasDropdown ? handleDirectNavClick(item) : null}
             >
-              <span className="cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black">
+              <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
                 {item.title}
                 {item.hasDropdown && (
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
