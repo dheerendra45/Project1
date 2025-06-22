@@ -8,7 +8,7 @@ import LeadershipPage from './Pages/leadership';
 import Products from './Pages/carbonsteel';
 import Business from './Pages/Business';
 import Sustainability from './Pages/CSR';
-import OverviewPage from './Pages/overview'; // Fixed capitalization
+import OverviewPage from './Pages/overview';
 import P1 from './Pages/Esg_profile';
 import ContactPage from './Pages/ContactPage';
 import LocationPage from './Pages/location';
@@ -21,27 +21,36 @@ import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
+<<<<<<< HEAD
 import Environmentcompliance from'./Pages/Environmentcompliance';
 import Blogs from './Pages/blogs';
 import AwardsAndAchievements from './Pages/awards&achievements';
 
 import Seltiger from './Pages/Seltiger';
 
+=======
+import Environmentcompliance from './Pages/Environmentcompliance';
+import Seltiger from './Pages/Seltiger';
+import Blogs from './Pages/blogs';
+import AwardsAndAchievements from './Pages/awards&achievements';
+
+>>>>>>> origin/my-feature-branch
 function App() {
   return (
     <div className="App">
       <Routes>
-  <Route path="/" element={<Layout />}>
-   
-    <Route path="newsandevents" element={<Awards />} />
-     <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
-      <Route path="blogs" element={<Blogs />} />
-       <Route path="business" element={<Business />} />
-        <Route path="carbon_steel" element={<Products />} />
-        <Route path="overview" element={<OverviewPage />} />
-         <Route path="companyoverview" element={<Companyoverview />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="newsandevents" element={<Awards />} />
+          <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
+          <Route path="blogs" element={<Blogs />} />
+          <Route path="business" element={<Business />} />
+          <Route path="carbon_steel" element={<Products />} />
+          <Route path="overview" element={<OverviewPage />} />
+          <Route path="companyoverview" element={<Companyoverview />} />
           <Route path="ContactPage" element={<ContactPage />} />
           <Route path="csr" element={<Sustainability />} />
+<<<<<<< HEAD
           
  <Route path="currentopening" element={<Currentopening />} /> 
  <Route path="environmentcompliance" element={<Environmentcompliance />} />
@@ -71,6 +80,22 @@ function App() {
     
 </Routes>
 
+=======
+          <Route path="currentopening" element={<Currentopening />} />
+          <Route path="environmentcompliance" element={<Environmentcompliance />} />
+          <Route path="esg_profile" element={<P1 />} />
+          <Route path="faq-Page" element={<Faq />} />
+          <Route path="jobopportunity" element={<Jobopportunity />} />
+          <Route path="leadership" element={<LeadershipPage />} />
+          <Route path="LocationPage" element={<LocationPage />} />
+          <Route path="testimonials" element={<Testimonial />} />
+          <Route path="knowledgehub" element={<Knowledgehub />} />
+          <Route path="manufacturing" element={<Manufacturing />} />
+          <Route path="lifeshyam" element={<Lifeshyam />} />
+          <Route path="seltiger" element={<Seltiger />} />
+        </Route>
+      </Routes>
+>>>>>>> origin/my-feature-branch
     </div>
   );
 }
