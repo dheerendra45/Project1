@@ -1,151 +1,123 @@
-import React, { useState } from 'react';
-import { ChevronRight } from 'lucide-react';
+import { motion, useInView } from "framer-motion";
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { useRef, useState } from "react";
+import a1 from "../../assets/leadership/a.png"; // replace with your image path
 
-import member1 from '../../assets/leadership/member1.jpg';
-import member2 from '../../assets/leadership/member2.jpg';
-import member3 from '../../assets/leadership/member3.jpg';
-import member4 from '../../assets/leadership/member4.jpg';
-import cardBg from '../../assets/leadership/cardbg.jpg';
+export default function BoardOfDirectors() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
+  const [selected, setSelected] = useState(null);
 
-const BoardOfDirectors = () => {
-  const [selectedMember, setSelectedMember] = useState(0);
-  const [hoveredMember, setHoveredMember] = useState(null);
-  
-  const boardMembers = [
-    {
-      name: "Jackson Helmon",
-      position: "Managing Director",
-      image: member1,
-      description: "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-    },
-    {
-      name: "Sarah Johnson",
-      position: "Chief Executive Officer", 
-      image: member2,
-      description: "Sarah brings over 15 years of experience in industrial management and strategic planning. Her leadership has been instrumental in driving company growth and operational excellence."
-    },
-    {
-      name: "Michael Chen",
-      position: "Chief Technology Officer",
-      image: member3,
-      description: "Michael leads our technology initiatives and innovation strategies. His expertise in industrial automation and digital transformation drives our competitive advantage."
-    },
-    {
-      name: "Emma Wilson",
-      position: "Chief Financial Officer",
-      image: member4,
-      description: "Emma oversees all financial operations and strategic planning. Her analytical expertise and financial acumen ensure sustainable growth and profitability."
-    }
+  const socialIcons = [
+    { icon: <FaFacebookF />, id: "fb" },
+    { icon: <FaTwitter />, id: "tw" },
+    { icon: <FaLinkedinIn />, id: "ln" },
   ];
 
-  const handleMemberClick = (index) => {
-    if (hoveredMember === null) {
-      setSelectedMember(index);
-    }
-  };
-
-  const handleMouseEnter = (index) => {
-    setHoveredMember(index);
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredMember(null);
-  };
-
-  const displayedMember = hoveredMember !== null ? hoveredMember : selectedMember;
+  const experiences = [
+    "Over 15 years of experience in the technology industry",
+    "Before founding the company, Founder A served as a Manager",
+    "Holds patents for technological innovations that led the industry",
+  ];
 
   return (
-    <div className="bg-white py-20">
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl lg:text-5xl font-bold text-orange-500 mb-8">
-            MEET OUR BOARD OF DIRECTORS
-          </h2>
-        </div>
+    <div ref={ref} className="px-6 md:px-12 py-16 max-w-7xl mx-auto text-gray-800">
+      {/* Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.8 }}
+        className="text-center mb-12"
+      >
+        <h1 className="text-4xl font-bold">
+          Meet Our <span className="relative inline-block">
+            Team
+            <motion.div
+              initial={{ width: 0 }}
+              animate={isInView ? { width: "100%" } : { width: 0 }}
+              transition={{ duration: 1 }}
+              className="absolute bottom-0 left-0 h-1 bg-orange-500 rounded-full"
+            ></motion.div>
+          </span>
+        </h1>
+        <p className="mt-4 text-gray-600">
+          Lorem ipsum dolor sit amet, consectetur adipiscing vipu elit. Ut<br />
+          spelataras tellus luctus neullamcorper mattis, lerom pibus leo dotu.
+        </p>
+      </motion.div>
 
-        {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left - Member Details */}
-          <div className="space-y-6">
-            <h3 className="text-3xl lg:text-4xl font-bold text-orange-500">
-              {boardMembers[displayedMember].name.toUpperCase()}
-            </h3>
-            <p className="text-xl text-gray-600 font-semibold">
-              {boardMembers[displayedMember].position.toUpperCase()}
-            </p>
-            <p className="text-gray-700 leading-relaxed text-justify">
-              {boardMembers[displayedMember].description}
+      {/* Image and Text Section */}
+      <div className="flex flex-col lg:flex-row gap-10 items-start">
+        {/* Left - Image */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1 }}
+          className="flex-1"
+        >
+          <img src={a1} alt="Director" className="rounded-2xl shadow-lg w-full" />
+        </motion.div>
+
+        {/* Right - Content */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={isInView ? { opacity: 1, x: 0 } : {}}
+          transition={{ duration: 1 }}
+          className="flex-1 space-y-6"
+        >
+          <div>
+            <h1 className="text-3xl font-bold">Darwin Luiz</h1>
+            <p className="mt-2 text-gray-700">
+              Lorem ipsum dolor sit amet, consectetur adipis cingsi lan vipural elit.
+              In ut elit taras tellus luctus neul lam corper imat tis pulvinar pibus leo
+              dota un le tas luco lamco vinup riato, lemor supim lor dosit amet taren.
             </p>
           </div>
 
-          {/* Right - Member Image */}
-          <div className="flex justify-center">
-            <img 
-              src={boardMembers[displayedMember].image}
-              alt={boardMembers[displayedMember].name}
-              className="w-96 h-[580px] object-cover object-top rounded-lg"
-            />
+          {/* Social Icons */}
+          <div className="flex gap-4">
+            {socialIcons.map(({ icon, id }) => (
+              <button
+                key={id}
+                onClick={() => setSelected(id)}
+                className={`w-10 h-10 rounded-full text-white flex items-center justify-center transition-colors ${
+                  selected === id ? "bg-orange-500" : "bg-black"
+                }`}
+              >
+                {icon}
+              </button>
+            ))}
           </div>
-        </div>
 
-        {/* Member Selection Tabs */}
-        <div className="h-[240px] grid grid-cols-2 lg:grid-cols-4">
-          {boardMembers.map((member, index) => (
-            <div
-              key={index}
-              onClick={() => handleMemberClick(index)}
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
-              className="cursor-pointer overflow-hidden transition-all duration-500 relative"
-            >
-              {/* Background Logic */}
-              {(hoveredMember === index || (hoveredMember === null && selectedMember === index)) ? (
-                <>
-                  <img 
-                    src={cardBg}
-                    alt="Card Background"
-                    className="absolute inset-0 w-full h-full object-cover transition-all duration-500"
-                  />
-                  <div 
-                    className="absolute inset-0 transition-all duration-500"
-                    style={{
-                      backgroundColor: '#6C3714',
-                      opacity: 0.8
-                    }}
-                  ></div>
-                </>
-              ) : (
-                <div className="absolute inset-0 w-full h-full bg-gray-600 transition-all duration-500"></div>
-              )}
-              
-              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-              <div className="relative h-full flex items-center justify-center p-3 text-white">
-                <div className="flex items-center justify-between w-full">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-16 h-16 rounded-full flex-shrink-0 overflow-hidden border-2 border-orange-500">
-                      <img 
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover object-top"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-base">{member.name}</h4>
-                      <p className="text-sm text-gray-300">{member.position}</p>
-                    </div>
+          {/* Gray Divider */}
+          <hr className="border-t border-gray-300" />
+
+          {/* Experience Section */}
+          <div>
+            <h1 className="text-2xl font-bold mb-4">Darwin Luiz Experience</h1>
+            <p className="text-gray-700 mb-4">
+              Lorem ipsum dolor sit amet, consectetur adipis cingsi lan vipural elit. In ut
+              elit taras tellus luctus neul lam corper imat tis pulvinar pibus leo.
+            </p>
+            <ul className="space-y-3">
+              {experiences.map((text, index) => (
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  className="flex items-start gap-3"
+                >
+                  <div className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center mt-1">
+                    ✓
                   </div>
-                  <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                    <ChevronRight className="w-4 h-4 text-white" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+                  <span className="text-gray-800">{text}</span>
+                </motion.li>
+              ))}
+            </ul>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
-};
-
-export default BoardOfDirectors;
+}
