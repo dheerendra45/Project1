@@ -50,7 +50,6 @@ function App() {
           <Route path="companyoverview" element={<Companyoverview />} />
           <Route path="ContactPage" element={<ContactPage />} />
           <Route path="csr" element={<Sustainability />} />
-<<<<<<< HEAD
           
  <Route path="currentopening" element={<Currentopening />} /> 
  <Route path="environmentcompliance" element={<Environmentcompliance />} />
@@ -80,22 +79,6 @@ function App() {
     
 </Routes>
 
-=======
-          <Route path="currentopening" element={<Currentopening />} />
-          <Route path="environmentcompliance" element={<Environmentcompliance />} />
-          <Route path="esg_profile" element={<P1 />} />
-          <Route path="faq-Page" element={<Faq />} />
-          <Route path="jobopportunity" element={<Jobopportunity />} />
-          <Route path="leadership" element={<LeadershipPage />} />
-          <Route path="LocationPage" element={<LocationPage />} />
-          <Route path="testimonials" element={<Testimonial />} />
-          <Route path="knowledgehub" element={<Knowledgehub />} />
-          <Route path="manufacturing" element={<Manufacturing />} />
-          <Route path="lifeshyam" element={<Lifeshyam />} />
-          <Route path="seltiger" element={<Seltiger />} />
-        </Route>
-      </Routes>
->>>>>>> origin/my-feature-branch
     </div>
   );
 }
