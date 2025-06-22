@@ -21,20 +21,12 @@ import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
-<<<<<<< HEAD
 import Environmentcompliance from'./Pages/Environmentcompliance';
 import Blogs from './Pages/blogs';
 import AwardsAndAchievements from './Pages/awards&achievements';
 
 import Seltiger from './Pages/Seltiger';
 
-=======
-import Environmentcompliance from './Pages/Environmentcompliance';
-import Seltiger from './Pages/Seltiger';
-import Blogs from './Pages/blogs';
-import AwardsAndAchievements from './Pages/awards&achievements';
-
->>>>>>> origin/my-feature-branch
 function App() {
   return (
     <div className="App">

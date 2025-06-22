@@ -25,7 +25,7 @@ import Hero from "../components/hero2";
 const HomePage = () => {
   return (
     <div>
-<Navbar />
+
       <Hero />
      
       <MissionVisionValues />
