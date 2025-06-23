@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import a1 from "../../assets/Companyoverview/history1.jpg";
 
-const years = ["1989", "2000", "2008", "2018", "2024"];
+const years = ["1975", "1992", "2008", "2020"];
 
 export default function History() {
   const [selectedYear, setSelectedYear] = useState("1989");
@@ -31,7 +31,7 @@ export default function History() {
         Our History
       </motion.h3>
       <motion.h1 className="text-3xl font-bold text-black" {...repeatingAnim}>
-        Lorem ipsum dolor sit amet consectetur.
+        Founded in 1975 as a small local business, we've grown into an international corporation with facilities across three continents. Our history is marked by milestones of innovation and expansion.
       </motion.h1>
 
       {/* Timeline Navigation */}

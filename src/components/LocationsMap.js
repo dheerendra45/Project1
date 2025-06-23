@@ -5,10 +5,10 @@ import icon from '../assets/industry.png';
 
 function LocationsMap() {
   const stats = [
-    { label: 'Clients', value: '12K' },
-    { label: 'Annual growth', value: '55%' },
-    { label: 'No of projects', value: '5K' },
-    { label: 'Positive ratings', value: '80%' }
+    { label: 'Clients Served', value: '25,000+ (Domestic & Global)' },
+    { label: 'Annual growth', value: '32% (Revenue: 12,500 Cr)' },
+    { label: 'Active projects', value: '1200+ (Incl. Govt. Infrastructure)' },
+    { label: 'Customer Satisfaction', value: '92% (Third-Party Survey)' }
   ];
 
   const iconPositions = [

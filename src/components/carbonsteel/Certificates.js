@@ -1,35 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const Certificates = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3;
+  const slideRef = useRef(null);
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
 
   const certificates = [
-    { id: 1, title: "Certificate 1" },
-    { id: 2, title: "Certificate 2" },
-    { id: 3, title: "Certificate 3" }
+    { id: 1, title: "ISO 9001:2015 Certified" },
+    { id: 2, title: "ISO 14001:2015 (Environmental Management)" },
+    { id: 3, title: "ISO 45001:2018 (Occupational Health & Safety)" },
+    { id: 4, title: "BIS (Bureau of Indian Standards) Certified" },
+    { id: 5, title: "ASTM E382-20 (International Standard)" },
+    { id: 6, title: "GreenPro Certification (CII)" },
+    { id: 7, title: "Customer-Specific Certifications" },
   ];
+
+  const cardsPerSlide = 3;
+  const totalSlides = Math.ceil(certificates.length / cardsPerSlide);
+
+  useEffect(() => {
+    if (inView) controls.start('visible');
+    else controls.start('hidden');
+  }, [inView, controls]);
+
+  const scrollToSlide = (index) => {
+    const container = slideRef.current;
+    if (container) {
+      const cardWidth = container.offsetWidth / cardsPerSlide;
+      container.scrollTo({
+        left: index * cardWidth * cardsPerSlide,
+        behavior: 'smooth',
+      });
+    }
+    setCurrentSlide(index);
+  };
 
   const fadeUp = {
     hidden: { opacity: 0, y: 40 },
     visible: (i = 1) => ({
       opacity: 1,
       y: 0,
-      transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' }
-    })
+      transition: { delay: i * 0.2, duration: 0.6, ease: 'easeOut' },
+    }),
   };
-
-  useEffect(() => {
-    if (inView) {
-      controls.start('visible');
-    } else {
-      controls.start('hidden');
-    }
-  }, [inView, controls]);
 
   return (
     <div ref={ref} className="py-16 bg-gray-50">
@@ -42,7 +59,7 @@ const Certificates = () => {
           custom={0}
         >
           <motion.h2
-            className="text-4xl font-bold text-gray-900 mb-8"
+            className="text-4xl font-bold text-gray-900 mb-8 text-center"
             initial="hidden"
             animate={controls}
             variants={fadeUp}
@@ -51,25 +68,55 @@ const Certificates = () => {
             Certificates
           </motion.h2>
 
-          {/* Certificates Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                className="bg-gray-300 h-48 rounded-lg flex items-center justify-center hover:scale-105 transition-transform duration-300"
-                initial="hidden"
-                animate={controls}
-                variants={fadeUp}
-                custom={index + 1}
-              >
-                <div className="text-gray-600 text-lg font-semibold">{cert.title}</div>
-              </motion.div>
-            ))}
+          {/* Carousel Container */}
+          <div className="relative">
+            {/* Left Button */}
+            <button
+              onClick={() =>
+                scrollToSlide(Math.max(currentSlide - 1, 0))
+              }
+              className="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-orange-500 hover:text-white transition"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            {/* Scrollable Certificate Cards */}
+            <div
+              ref={slideRef}
+              className="overflow-x-auto scrollbar-hide scroll-smooth"
+            >
+              <div className="flex gap-6 min-w-[100%] transition-transform duration-500">
+                {certificates.map((cert, index) => (
+                  <motion.div
+                    key={cert.id}
+                    className="min-w-[300px] h-48 bg-gray-300 rounded-lg flex items-center justify-center text-center hover:scale-105 transition-transform duration-300 flex-shrink-0"
+                    initial="hidden"
+                    animate={controls}
+                    variants={fadeUp}
+                    custom={index + 1}
+                  >
+                    <div className="text-gray-700 text-lg font-semibold px-4">
+                      {cert.title}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Button */}
+            <button
+              onClick={() =>
+                scrollToSlide(Math.min(currentSlide + 1, totalSlides - 1))
+              }
+              className="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white shadow-md rounded-full p-2 z-10 hover:bg-orange-500 hover:text-white transition"
+            >
+              <ChevronRight size={20} />
+            </button>
           </div>
 
           {/* Pagination Dots */}
           <motion.div
-            className="flex justify-center space-x-2"
+            className="flex justify-center space-x-2 mt-6"
             initial="hidden"
             animate={controls}
             variants={fadeUp}
@@ -78,9 +125,11 @@ const Certificates = () => {
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-sm transition-colors duration-300 ${
-                  index === currentSlide ? 'bg-orange-500' : 'bg-gray-300'
+                onClick={() => scrollToSlide(index)}
+                className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+                  index === currentSlide
+                    ? 'bg-orange-500'
+                    : 'bg-gray-300'
                 }`}
               />
             ))}

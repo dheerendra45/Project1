@@ -19,14 +19,14 @@ function MissionVisionValues() {
     {
       icon: MissionIcon,
       title: 'Our Mission',
-      description: 'We bring Shri. M. P. Agarwal\'s values into action—efficiency, sustainability, and dynamic management to deliver world-class steel solutions for a stronger India.',
+      description: 'We Shri. M. P. Agarwal’s values into action—efficiency, sustainability, and dynamic management to world-class steel solutions for a stronger India.',
       image: HardhatImage,
       direction: 'up'
     },
     {
       icon: ValuesIcon,
       title: 'Our Values',
-      description: 'Built on Integrity & Transparency, Collaboration & Synergy, Ownership & Accountability, and Commitment to Excellence—the foundation of our success.',
+      description: 'Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence',
       image: WorkerImage,
       direction: 'right'
     }
@@ -145,10 +145,10 @@ function MissionVisionValues() {
           }}
         >
           <h1 className="text-orange-500 font-semibold uppercase mb-2 tracking-wider">
-            BRAND SLOGAN
+            "BRAND SLOGAN"
           </h1>
           <h1 className="text-3xl md:text-4xl text-black font-bold leading-tight">
-            Lorem Ipsum is Simply dummy text of <br /> The Printing
+            Transparent Trust, Unyielding Strength – For Quality That Never Bends
           </h1>
         </motion.div>
       </motion.div>
@@ -221,6 +221,7 @@ function MissionVisionValues() {
                   {section.title}
                 </motion.h3>
 
+                {/* FIXED DESCRIPTION */}
                 <motion.p
                   className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"
                   initial={{ opacity: 0, y: 10 }}
@@ -232,9 +233,8 @@ function MissionVisionValues() {
                     damping: 10,
                     delay: 0.6 + (index * 0.15)
                   }}
-                >
-                  {section.description}
-                </motion.p>
+                  dangerouslySetInnerHTML={{ __html: section.description }}
+                />
               </div>
 
               <motion.div

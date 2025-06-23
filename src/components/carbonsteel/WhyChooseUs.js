@@ -9,17 +9,20 @@ const WhyChooseUs = () => {
 
   const reasons = [
     {
-      title: "Clean & Homogeneous Steel Quality",
-      description: "Best in class raw materials used during the extensive process of production to manufacture the cleanest steel."
+      title: "Strength",
+      tag: "Exceptional Quality & Consistency",
+      description: `High Iron Content (65-72%): Increases yield and minimizes slag in blast furnaces and DRI facilities. <br>Uniform Dimensions (8-16mm): Promotes smooth operation in furnaces with optimal gas flow. <br>Low Contaminants (&lt;2% Al₂O₃/SiO₂): Reduces energy consumption and enhances the purity of steel.`
     },
     {
-      title: "Excellent Weldability",
-      description: "Smooth surface and minimal to no porosity in the steel products increases weldability outruling any breakages."
+      title: "Technique",
+      tag: "Outstanding Strength & Durability",
+      description: `Cold Crushing Strength (250-350 kg/pellet): Can endure handling and charging without breaking. <br>Minimized Dust Production: Limits material loss and improves safety in the workplace.`
     },
     {
-      title: "Consistent Supply",
-      description: "State-of-the-art integrated steel plants to increase production capacity in line with the government's target to reach 300 MTPA by 2030."
-    }
+      title: "Supply Chain",
+      tag: "Improved Metallurgical Efficiency",
+      description: `With manufacturing facilities strategically located near raw material sources, we ensure faster production and timely delivery.`
+    },
   ];
 
   useEffect(() => {
@@ -85,8 +88,12 @@ const WhyChooseUs = () => {
                 >
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{reason.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{reason.description}</p>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-1">{reason.title}</h3>
+                    <p className="text-sm text-orange-500 italic mb-1">{reason.tag}</p>
+                    <p
+                      className="text-gray-600 leading-relaxed text-sm"
+                      dangerouslySetInnerHTML={{ __html: reason.description }}
+                    ></p>
                   </div>
                 </motion.div>
               ))}

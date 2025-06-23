@@ -38,53 +38,24 @@ const TestimonialHomePage = () => {
       author: "– Rajiv Mehta, Project Head, National Highway Authority",
     },
     {
-      text: "Outstanding quality and timely delivery. Shyam Metalics has been our trusted partner for over 5 years.",
-      author: "– Amit Sharma, Construction Manager, Metro Projects",
+      text: "Consistent quality in billets for 8 years. A partner who understands automotive steel needs.",
+      author: "– Priya Sharma, Purchase Head (Tata Autocomp)",
     },
     {
-      text: "The structural integrity of our buildings is uncompromised thanks to Shyam Metalics' superior TMT bars.",
-      author: "– Dr. Priya Singh, Structural Engineer, Urban Development",
+      text: "From Vietnam to Qatar, SMEL pellets meet our blast furnace specs every time.",
+      author: "– David Müller, Procurement Director (Global Steel Corp)",
     },
     {
-      text: "Exceptional customer service and product reliability. Highly recommend for large-scale projects.",
-      author: "– Vikram Patel, Site Supervisor, Housing Corporation",
+      text: "Their high-carbon ferro manganese improved our steel alloy efficiency by 15%.",
+      author: "– Arjun Reddy, Chief Metallurgist (JSW Steel)",
     },
     {
-      text: "Cost-effective solutions without compromising on quality. Shyam Metalics delivers excellence every time.",
-      author: "– Neha Gupta, Project Coordinator, Smart City Initiative",
+      text: "First Indian supplier whose ESG commitments match ours. Carbon-neutral pellets are revolutionary!",
+      author: "– Elena K., Sustainability Officer (European Steel Consortium)",
     },
     {
-      text: "Their technical support team is outstanding. Always available for consultation and problem-solving.",
-      author: "– Ravi Kumar, Chief Engineer, Bridge Construction Ltd",
-    },
-    {
-      text: "Consistent quality across all product lines. Shyam Metalics sets the industry standard.",
-      author: "– Sanjay Joshi, Quality Control Manager, Infrastructure Pvt Ltd",
-    },
-    {
-      text: "Fast delivery and excellent material quality. Our go-to supplier for all steel requirements.",
-      author: "– Meera Reddy, Procurement Head, Real Estate Group",
-    },
-    {
-      text: "Innovative products and sustainable practices. Shyam Metalics leads the way in responsible manufacturing.",
-      author:
-        "– Arjun Malhotra, Environmental Engineer, Green Building Council",
-    },
-    {
-      text: "Reliable partnership for over a decade. Their commitment to excellence is unmatched.",
-      author: "– Kavita Nair, Director, Construction Solutions",
-    },
-    {
-      text: "Superior tensile strength and durability. Perfect for our high-rise construction projects.",
-      author: "– Rohit Agarwal, Senior Architect, Skyline Developers",
-    },
-    {
-      text: "Excellent value for money and consistent performance. Shyam Metalics never disappoints.",
-      author: "– Deepak Chopra, Project Manager, Industrial Construction",
-    },
-    {
-      text: "World-class manufacturing standards and prompt customer service. Highly satisfied with their products.",
-      author: "– Sunita Rao, Technical Advisor, Government Projects",
+      text: "Local availability + global quality. Our small fabrication unit thrives with their wire rods.",
+      author: "– Sunil Agarwal, Owner (Agarwal Engineering Works)",
     },
   ];
 

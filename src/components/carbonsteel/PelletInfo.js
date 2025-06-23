@@ -5,7 +5,11 @@ import { useInView } from 'react-intersection-observer';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6 },
+  },
 };
 
 const PelletInfo = () => {
@@ -32,17 +36,30 @@ const PelletInfo = () => {
             variants={fadeInUp}
           >
             <div className="flex items-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-900">Pellet</h2>
+              <h2 className="text-4xl font-bold text-gray-900">
+                Pellets: Precision in Every Sphere
+              </h2>
               <div className="w-3 h-3 bg-orange-500 ml-2"></div>
             </div>
 
-            <div className="space-y-6 text-gray-700 leading-relaxed">
-              <motion.p variants={fadeInUp}>The company specializes in the production of iron pellets...</motion.p>
-              <motion.p variants={fadeInUp}>One important characteristic of the iron pellets is their cold crushing strength (CCS)...</motion.p>
-              <motion.p variants={fadeInUp}>Additionally, the iron pellets have a porosity of 24+ units...</motion.p>
-              <motion.p variants={fadeInUp}>Moreover, the iron pellets have a mean particle size (MPS) of approximately 9.5-10 units...</motion.p>
-              <motion.p variants={fadeInUp}>These high-quality iron pellets manufactured by the company offer several advantages...</motion.p>
-            </div>
+            <motion.p
+              className="text-gray-700 leading-relaxed space-y-6"
+              variants={fadeInUp}
+            >
+              <strong>What are Pellets?</strong> Pellets, also known as iron ore pellets,
+              are small, spherical balls of iron ore fines that have been processed
+              to improve efficiency and consistency in steelmaking.
+              <br /><br />
+              These high-grade pellets are formed by agglomerating iron ore concentrate
+              and heating them in rotary kilns or straight grate furnaces. This process
+              enhances their metallurgical properties, making them ideal for use in
+              DRI (Direct Reduced Iron) kilns and blast furnaces.
+              <br /><br />
+              At Shyam Metalics, we manufacture steel pellets that deliver superior strength,
+              reducibility, and thermal resistance. Whether utilized in-house or supplied
+              to our partners, our pellets support our vision of environmentally responsible,
+              high-performance steel production.
+            </motion.p>
 
             <motion.button
               variants={fadeInUp}

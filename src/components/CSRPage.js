@@ -34,16 +34,19 @@ const CSRPage = () => {
           
           <div className="flex flex-wrap justify-between mb-16">
             <div className="mb-8 md:mb-0">
-              <h2 className="text-4xl font-bold text-orange-500">100+</h2>
+              <h2 className="text-4xl font-bold text-orange-500">112 schools</h2>
               <p className="text-xl font-semibold">Schools<br />Supported</p>
+              <p className="text-lg ">85% improved pass rates</p>
             </div>
             <div className="mb-8 md:mb-0">
-              <h2 className="text-4xl font-bold text-orange-500">20+</h2>
-              <p className="text-xl font-semibold">Schools<br />Supported</p>
+              <h2 className="text-4xl font-bold text-orange-500">23 institutions</h2>
+              <p className="text-xl font-semibold">Adopted<br />Schools</p>
+              <p className="text-lg ">100% electrification</p>
             </div>
             <div>
-              <h2 className="text-4xl font-bold text-orange-500">10,000+</h2>
-              <p className="text-xl font-semibold">Schools<br />Supported</p>
+              <h2 className="text-4xl font-bold text-orange-500">12,500+ beneficiaries</h2>
+              <p className="text-xl font-semibold">Student<br />Upliftment</p>
+              <p className="text-lg ">2,000+ girls enrolled in STEM</p>
             </div>
           </div>
           
