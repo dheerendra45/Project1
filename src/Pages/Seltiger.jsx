@@ -8,18 +8,17 @@ import Joinourcommunity from "../components/Seltiger/Joinourcommunity";
 import Footer from "../components/Footer";
 import ContactPage from "../components/ContactPage";
 
-export default function Seltiger(){
-    return (
-        <>
-        <Hero/>
-        <Pillar/>
-        <Products/>
-        <Tmtbars/>
-        <Applications/>
-        <WhyChooseUs/>
-        <Joinourcommunity/>
-        <ContactPage/>
-        <Footer/>
-        </>
-    );
+export default function Seltiger() {
+  return (
+    <>
+      <Hero />
+      <Pillar />
+      <Products />
+      <Tmtbars />
+      <Applications />
+      <WhyChooseUs />
+      <Joinourcommunity />
+      <ContactPage />
+    </>
+  );
 }

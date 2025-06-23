@@ -380,29 +380,9 @@ const Hero = () => {
         </div>
         
         {/* Animated divider */}
-        <div 
-          className="absolute bottom-[150px] left-1/2 transform -translate-x-1/2 w-[900px] border-t-4 border-orange-500"
-          style={{
-            transform: `translateX(-50%) scaleX(${1 + Math.sin(scrollPosition * Math.PI * 2) * 0.2})`,
-            transition: 'transform 0.3s ease-out'
-          }}
-        />
+       
 
-        {/* Location Texts */}
-        <div className="absolute bottom-[100px] left-1/2 transform -translate-x-1/2 flex gap-[49px]">
-          {Array(8).fill("Location 1").map((item, idx) => (
-            <span
-              key={idx}
-              className={`text-white ${idx === 5 ? "text-orange-500" : ""} hover:text-orange-400 transition-colors duration-300`}
-              style={{
-                transform: `translateY(${Math.sin(scrollPosition * Math.PI * 2 + idx * 0.5) * 10}px)`,
-                transition: 'transform 0.3s ease-out'
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
+      
       </div>
       
       {/* CSS for animations */}

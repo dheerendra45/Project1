@@ -29,36 +29,36 @@ export default function Achievement() {
       className="relative bg-cover bg-center py-16 px-12"
       style={{ backgroundImage: `url(${a1})` }}
     >
+      {/* Silver overlay */}
+      <div className="absolute inset-0 bg-gray-300 opacity-50 z-0"></div>
+
       {/* Block 1: Heading */}
       <motion.div
-        className="absolute top-10 left-10 text-left"
+        className="absolute top-10 left-10 text-left z-10"
         initial={{ opacity: 0, y: 30 }}
         animate={animateItem(0)}
       >
-        <h1 className="text-white text-sm uppercase">Company Statistics</h1>
-        <h2 className="text-2xl font-bold text-white">
+        <h1 className="text-black text-base uppercase">Company Statistics</h1>
+        <h2 className="text-4xl font-bold text-black">
           Achievement in Lorem ipsum
         </h2>
       </motion.div>
 
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 mt-32">
-        {/* Spacer to push Block 2 and 3 to the right */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-0 mt-32 relative z-10">
         <div className="hidden md:block"></div>
 
-        {/* Block 2: Project Count */}
         <motion.div
-          className="bg-transparent text-center p-4 border border-white text-sm"
+          className="bg-transparent text-center p-4 border border-black text-base"
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.2)}
         >
-          <h1 className="text-orange-500 text-3xl font-bold">956+</h1>
-          <p className="text-white">Project Complete</p>
+          <h1 className="text-black text-4xl font-bold">956+</h1>
+          <p className="text-black text-2xl">Project Complete</p>
         </motion.div>
 
-        {/* Block 3: Image 1 */}
         <motion.div
-          className="bg-transparent p-4 border border-white text-sm"
+          className="bg-transparent p-4 border border-black text-base"
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.3)}
         >
@@ -69,12 +69,10 @@ export default function Achievement() {
           />
         </motion.div>
 
-        {/* Spacer to move Block 4 to next row */}
         <div className="hidden md:block"></div>
 
-        {/* Block 4: Image 2 */}
         <motion.div
-          className="bg-transparent p-4 border border-white text-sm"
+          className="bg-transparent p-4 border border-black text-base"
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.4)}
         >
@@ -85,24 +83,22 @@ export default function Achievement() {
           />
         </motion.div>
 
-        {/* Block 5: Success Rate */}
         <motion.div
-          className="bg-transparent text-center p-4 border border-white text-sm"
+          className="bg-transparent text-center p-4 border border-black text-base"
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.5)}
         >
-          <h1 className="text-orange-500 text-3xl font-bold">68%</h1>
-          <p className="text-white">Success Rate</p>
+          <h1 className="text-black text-4xl font-bold">68%</h1>
+          <p className="text-black text-2xl">Success Rate</p>
         </motion.div>
 
-        {/* Block 6: Experience */}
         <motion.div
-          className="bg-transparent text-center p-4 border border-white text-sm"
+          className="bg-transparent text-center p-4 border border-black text-base"
           initial={{ opacity: 0, y: 30 }}
           animate={animateItem(0.6)}
         >
-          <h1 className="text-orange-500 text-3xl font-bold">98+</h1>
-          <p className="text-white">Years Of Experience</p>
+          <h1 className="text-black text-4xl font-bold">98+</h1>
+          <p className="text-black text-2xl">Years Of Experience</p>
         </motion.div>
       </div>
     </div>

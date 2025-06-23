@@ -42,7 +42,7 @@ const Best = () => {
   };
 
   return (
-    <div className=" px-12  p-4 flex flex-col gap-10" ref={ref}>
+    <div className="pt-20 px-20 pb-4 flex flex-col gap-10" ref={ref}>
       {/* Top Section */}
       <motion.div
         className="flex flex-col lg:flex-row items-start gap-10"
@@ -112,34 +112,6 @@ const Best = () => {
             </motion.div>
           </AnimatePresence>
         </motion.div>
-      </motion.div>
-
-      {/* Full Width Image Carousel */}
-      <motion.div
-        className="relative w-full"
-        initial={{ scale: 0.9, opacity: 0 }}
-        animate={
-          isInView ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0.3 }
-        }
-        transition={{ duration: 0.5 }}
-      >
-        <img
-          src={images[imageIndex]}
-          alt=""
-          className="w-full h-96 object-cover rounded"
-        />
-        <button
-          onClick={handleImagePrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-orange-500 text-white p-2 rounded-full"
-        >
-          <ArrowLeft />
-        </button>
-        <button
-          onClick={handleImageNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-orange-500 text-white p-2 rounded-full"
-        >
-          <ArrowRight />
-        </button>
       </motion.div>
     </div>
   );
