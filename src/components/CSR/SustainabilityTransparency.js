@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
-import { motion, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import box1bg from '../../assets/Sustainability/Football4.jpg';
 import box2bg from '../../assets/Sustainability/Football5.jpg';
-import box3bg from '../../assets/Sustainability/Football6.jpg';
+import box3bg from '../../assets/Sustainability/football.mp4'; // Video
 import box4bg from '../../assets/Sustainability/Tution6.jpg';
 
 const cardVariants = {
@@ -35,10 +35,11 @@ const SustainabilityTransparency = () => {
     },
     {
       id: 3,
-      bg: box3bg,
+      bg: box3bg, // video
       title: 'Strategy & values',
       label: 'Group',
       desc: 'A Strategy that Connects - Values That Inspire',
+      isVideo: true,
     },
     {
       id: 4,
@@ -71,16 +72,31 @@ const SustainabilityTransparency = () => {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? 'visible' : 'hidden'}
-              className={`bg-gray-800 text-white relative overflow-hidden rounded-lg p-6 ${
+              className={`relative overflow-hidden rounded-lg p-6 text-white ${
                 card.tall ? 'row-span-2 h-[600px]' : 'h-96'
               }`}
             >
-              <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: `url(${card.bg})` }}
-              ></div>
-              <div className="absolute inset-0 bg-black opacity-50"></div>
+              {/* Background media: image or video */}
+              {card.isVideo ? (
+                <video
+                  className="absolute inset-0 w-full h-full object-cover z-0"
+                  src={card.bg}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <div
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+                  style={{ backgroundImage: `url(${card.bg})` }}
+                />
+              )}
 
+              {/* Overlay */}
+              <div className="absolute inset-0 bg-black opacity-50 z-0" />
+
+              {/* Content */}
               <div className="relative z-10 h-full flex flex-col justify-between">
                 <div>
                   <p className="text-sm text-gray-300 mb-2">{card.label}</p>

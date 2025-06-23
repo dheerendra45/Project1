@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import herobg from "../../assets/manufacturing/herobg.png";
+import unit1 from '../../assets/manufacturing/unit-1.png';
+import unit2 from '../../assets/manufacturing/unit-2.jpg';
+import unit3 from '../../assets/manufacturing/unit-3.jpg';
+import unit4 from '../../assets/manufacturing/unit-4.jpg';
 import { Link } from "react-router-dom";
 
 // import herobg2 from '../../assets/manufacturing/herobg2.jpg'; // Add additional images
@@ -32,9 +36,10 @@ const Hero = () => {
   // Background images for carousel
   const backgroundImages = [
     herobg,
-    // herobg2,
-    // herobg3
-    // Add more images as needed
+    unit1,
+    unit2,
+    unit3,
+    unit4,
   ];
 
   // Animation variants

@@ -1,11 +1,13 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom'; // <-- Import navigate hook
 import a1 from '../../assets/Seltiger/joinourcommunity1.jpg';
 import a2 from '../../assets/Seltiger/joinourcommunity2.png';
 
 export default function Joinourcommunity() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { triggerOnce: false, amount: 0.2 });
+  const navigate = useNavigate(); // <-- Initialize hook
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
@@ -23,9 +25,7 @@ export default function Joinourcommunity() {
     <div
       ref={sectionRef}
       className="relative bg-cover bg-center py-20 px-6 md:px-20 text-white"
-      style={{
-        backgroundImage: `url(${a1})`,
-      }}
+      style={{ backgroundImage: `url(${a1})` }}
     >
       {/* White fade overlay */}
       <div className="absolute inset-0 bg-white bg-opacity-80 z-0" />
@@ -39,15 +39,17 @@ export default function Joinourcommunity() {
           animate={isInView ? 'visible' : 'hidden'}
           className="md:w-1/2 text-left"
         >
-          <h3 className="text-orange-500 font-semibold text-lg mb-2">COMMUNITY</h3>
+          <h3 className="text-orange-500 font-semibold text-lg mb-2">Community Impact</h3>
           <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
-            Join Our <br /> Community
+            Every Rod, Every Roof, Every Rebar: A Step Toward a Stronger, More Inclusive India.
           </h1>
           <p className="text-gray-700 mb-6">
-            Lorem ipsum dolor sit amet consectetur. Ipsum ultrices interdum facilisis nibh vel
-            pretium sit feugiat non. Nisi diam urna vehicula lacus.
+            At SEL Tiger, we believe that true strength comes not only in the materials we manufacture but from the lives we touch. Our commitment to nation-building begins at the grassroots by uplifting communities, empowering youth, and driving sustainable progress in every region we serve.
           </p>
-          <button className="border border-black text-black px-5 py-2 rounded hover:bg-black hover:text-white transition duration-300">
+          <button
+            onClick={() => navigate('/csr')} // <-- Navigate on click
+            className="border border-black text-black px-5 py-2 rounded hover:bg-black hover:text-white transition duration-300"
+          >
             Join Us
           </button>
         </motion.div>
