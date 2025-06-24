@@ -48,9 +48,9 @@ const Hero = () => {
                 </button>
               </div>
 
-              {/* Stats Box */}
+              {/* Stats Box (currently commented out correctly) */}
+              {/* 
               <div className="w-full md:w-[100%] bg-black bg-opacity-50 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
-                {/* Stat 1 */}
                 <div className="flex items-center gap-3 w-[45%] md:w-auto">
                   <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
                   <div>
@@ -58,7 +58,7 @@ const Hero = () => {
                     <p className="text-sm">Installed Capacity</p>
                   </div>
                 </div>
-                {/* Stat 2 */}
+
                 <div className="flex items-center gap-3 w-[45%] md:w-auto">
                   <img src={RevenueIcon} alt="Revenue Icon" className="w-10 h-10" />
                   <div>
@@ -66,14 +66,14 @@ const Hero = () => {
                     <p className="text-sm">Revenue '24</p>
                   </div>
                 </div>
-                {/* Stat 3 */}
+
                 <div className="flex items-center gap-3 w-[45%] md:w-auto">
                   <div>
                     <h2 className="text-xl font-bold">2,500+</h2>
                     <p className="text-sm">Delivered Nationwide</p>
                   </div>
                 </div>
-                {/* Stat 4 */}
+
                 <div className="flex items-center gap-3 w-[45%] md:w-auto">
                   <img src={IndiaMapIcon} alt="India Map Icon" className="w-10 h-10" />
                   <div>
@@ -82,19 +82,20 @@ const Hero = () => {
                   </div>
                 </div>
               </div>
-            </div>
+              */}
 
-            {/* Breadcrumb */}
-            <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
-              <span>Home</span>
-              <span>&gt;</span>
-              <span>Businesses</span>
-              <span>&gt;</span>
-              <span>Steel</span>
-              <span>&gt;</span>
-              <span>Carbon Steel</span>
-              <span>&gt;</span>
-              <span>Pellets</span>
+              {/* Breadcrumb */}
+              <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
+                <span>Home</span>
+                <span>&gt;</span>
+                <span>Businesses</span>
+                <span>&gt;</span>
+                <span>Steel</span>
+                <span>&gt;</span>
+                <span>Carbon Steel</span>
+                <span>&gt;</span>
+                <span>Pellets</span>
+              </div>
             </div>
 
           </div>
