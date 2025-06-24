@@ -66,32 +66,24 @@ const EnvironmentSection1 = () => {
               </div>
 
               {/* Orbiting Lightbulb Icon - follows the white dotted border path exactly */}
-              <motion.div 
-                className="absolute bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                style={{
-                  width: '60px',
-                  height: '60px',
-                  // Position at top of the dotted circle
-                  top: '0px',
-                  left: '50%',
-                  marginLeft: '-30px',
-                  // Transform origin to center of the dotted circle
-                  transformOrigin: '30px calc(min(45vw, 200px))',
-                }}
-                animate={{ 
-                  rotate: 360 
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: false, amount: 0.3 }}
-              >
-                <Lightbulb className="w-6 h-6 text-white" />
-              </motion.div>
+              <div className="absolute inset-0 animate-spin" style={{ animation: 'orbit 8s linear infinite' }}>
+                <motion.div 
+                  className="absolute bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+                  style={{
+                    width: '60px',
+                    height: '60px',
+                    top: '0px',
+                    left: '50%',
+                    marginLeft: '-30px',
+                  }}
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <Lightbulb className="w-6 h-6 text-white" />
+                </motion.div>
+              </div>
             </div>
           </motion.div>
 
@@ -155,6 +147,17 @@ const EnvironmentSection1 = () => {
           </motion.div>
         </div>
       </motion.div>
+
+      <style jsx>{`
+        @keyframes orbit {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </div>
   );
 };
