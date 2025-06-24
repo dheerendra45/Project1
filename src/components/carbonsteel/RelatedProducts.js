@@ -10,10 +10,15 @@ const RelatedProducts = () => {
 
   const products = [
     { id: 1, name: "Billets", image: billet, isImported: true },
-    { id: 2, name: "Stirrups Iron", image: "stirrups-image", isImported: false },
-    { id: 3, name: "Fly Ash Bricks", image: "flyash-image", isImported: false },
-    { id: 4, name: "Steel Bars", image: "steel-bars-image", isImported: false },
-    { id: 5, name: "Wire Rods", image: "wire-rods-image", isImported: false }
+    { id: 2, name: "Sponge Iron", image: "Sponge-image", isImported: false },
+    { id: 3, name: "Ferro Alloy", image: "ferro-alloy", isImported: false },
+    { id: 4, name: "Wire Rod", image: "wirerod", isImported: false },
+    { id: 5, name: "Stainless Steel", image: "stainless steel-image", isImported: false },
+    { id: 6, name: "Aluminium foil", image:"aluminum foil", isImported: false},
+    { id: 7, name: "Structural Rods", image:"structural rods", isImported: false},
+    { id: 8, name: "Color coated sheet", image:"colorcoatedsheet", isImported: false},
+    { id: 9, name: "Pig Iron", image:"pigiron", isImported: false},
+    { id: 10, name: "TMT Bars", image:"tmtbars", isImported: false},
   ];
 
   const maxSlide = Math.max(0, products.length - visibleProducts);

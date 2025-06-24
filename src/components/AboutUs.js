@@ -12,17 +12,22 @@ export default function AboutUs() {
   const [isHovering, setIsHovering] = useState(false);
 
   const messages = [
-    "Empowering industries with innovation.",
-    "Trusted by thousands across the nation.",
-    "Quality and strength you can count on.",
-    "Engineering the future of steel.",
-    "Sustainable solutions for tomorrow.",
-    "Built on legacy, powered by vision.",
+    "Lighting the Spark",
+    "Doubling Down",
+    "Powering Progress",
+    "Precision Scaling",
+    "Breaking Barriers",
+    "Engineering Futures",
+    "Pandemic Resilience",
+    "IPO Milestone",
+    "Product Innovation",
+    "13 MTPA Benchmark",
+    "Multi-Metal Expansion"
   ];
 
-  const years = ["1848", "1902", "1964", "1998", "2008", "2023"];
-  const galleryImages = [a2, a3, a4, a5, a6, a6];
-  const aboutImages = [a1, a1, a1, a1, a1, a1];
+  const years = ["2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024"];
+  const galleryImages = [a2, a3, a4, a5, a6, a6,a1,a2,a3,a4,a5,a6];
+  const aboutImages = [a1, a1, a1, a1, a1, a1,a1,a1,a1,a1,a1,a1];
   const aboutTexts = [
     "Shyam Metalics is the 6th largest metal producing company based in India providing end-to-end solutions with integrated capabilities (Source: CRISIL Report) with a focus on long steel products and ferro alloys. Our state-of-the-art facilities and commitment to quality have made us a leader in the industry.",
     "Founded in 1848, we've grown to become a leader in steel production with state-of-the-art facilities across multiple locations in India. Our early adoption of innovative production techniques set us apart from competitors.",
@@ -32,14 +37,188 @@ export default function AboutUs() {
     "Our 2023 vision focuses on digital transformation and AI-powered manufacturing processes. We're investing heavily in Industry 4.0 technologies to maintain our competitive edge."
   ];
 
-  // Stats data for each year
-  const statsData = [
-    { employee: '120', rating: 'B', capacity: '0.05 MTPA' },
-    { employee: '1,250', rating: 'BB', capacity: '0.5 MTPA' },
-    { employee: '3,450', rating: 'BBB', capacity: '1.2 MTPA' },
-    { employee: '8,760', rating: 'A', capacity: '4.5 MTPA' },
-    { employee: '12,340', rating: 'AA-', capacity: '9.8 MTPA' },
-    { employee: '16,660', rating: 'AA/Stable', capacity: '15.13 MTPA' }
+  // Year-wise content data
+  const yearContent = [
+    {
+      year: "2013",
+      title: "Igniting India's Steel Revolution",
+      content: [
+        "At Our Sambalpur Plant:",
+        "• Commissioned our first Integrated Steel company unit",
+        "• Achieved commercial production of 0.3 MTPA sponge iron",
+        "• Implemented eco-conscious manufacturing processes",
+        "Simultaneously at Jamuria:",
+        "• Strengthened auxiliary production capabilities",
+        "• Established efficient raw material supply chains",
+        "• Created 500+ skilled jobs in West Bengal"
+      ]
+    },
+    {
+      year: "2014",
+      title: "Multiplying Excellence, Maximizing Impact",
+      content: [
+        "Sambalpur Plant Achievements:",
+        "• Scaled up sponge iron production capacity to 0.3 MTPA",
+        "• Enhanced Integrated Steel Plant capabilities",
+        "• Implemented advanced quality control systems",
+        "Jamuria Plant Progress:",
+        "• Optimized power generation for smoother operations",
+        "• Expanded raw material procurement networks",
+        "• Achieved 92% workforce localization"
+      ]
+    },
+    {
+      year: "2015",
+      title: "Powering Progress Through Innovation",
+      content: [
+        "Sambalpur Plant Breakthroughs:",
+        "🚂 Commissioned a captive railway siding - boosting logistics efficiency by 40%",
+        "⚡ Enhanced power reliability across our Integrated Steel Plant operations",
+        "📈 Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
+        "Jamuria Plant Advancements:",
+        "🔋 Added a new 25MW Captive Power Plant - reducing energy costs by 30%",
+        "🔥 Expanded Ferro Alloys production by 9 MTPA - diversifying our product portfolio",
+        "🌱 Implemented waste-heat recovery systems - cutting carbon emissions"
+      ]
+    },
+    {
+      year: "2016",
+      title: "Precision Growth & Strategic Scaling",
+      content: [
+        "At Sambalpur Plant:",
+        "• Boosted billets capacity by 0.27 MTPA - equivalent to steel needed for 135 km of highways",
+        "• Optimized Integrated Steel Plant workflows for maximum efficiency",
+        "At Jamuria Facility:",
+        "• Upgraded quality control labs for premium-grade output",
+        "• Implemented an AI-powered predictive maintenance system for enhanced reliability"
+      ]
+    },
+    {
+      year: "2017",
+      title: "Breaking Capacity Barriers",
+      content: [
+        "Sambalpur Milestones:",
+        "• Added 0.96 MTPA across sponge iron and billets - enough to build 3 Howrah Bridges",
+        "• Achieved 2.90 MTPA total capacity - a 3x growth since 2013",
+        "Industry Impact:",
+        "• Became Eastern India's largest sponge iron producer",
+        "• Supplied critical materials for 12+ infrastructure projects"
+      ]
+    },
+    {
+      year: "2019",
+      title: "Engineering India's Steel Future",
+      content: [
+        "Sambalpur Plant Transformation:",
+        "• Increased capacity by 1.81 MTPA across critical products",
+        "Sponge Iron (core raw material)",
+        "TMT/Wire Rods (construction essentials)",
+        "• Became Odisha's most advanced Integrated Steel Plant",
+        "Jamuria Plant Advancements:",
+        "• Expanded capacity by 1.09 MTPA, including specialty products",
+        "Long products (for infrastructure)",
+        "Ferro Alloys (for value-added steel)",
+        "• 94 MW power addition - equivalent to electrifying 45,000 homes"
+      ]
+    },
+    {
+      year: "2020",
+      title: "Powering Through Challenges",
+      content: [
+        "Sambalpur Plant Achievements:",
+        "• 1.2 MTPA pellet capacity addition - raw material for 600,000 electric vehicles",
+        "• 118 MW power expansion (now totaling 212 MW captive capacity)",
+        "• Pandemic-proof operations with zero production downtime",
+        "Jamuria Plant Growth:",
+        "• 2.64 MTPA capacity boost across critical product lines",
+        "• Achieved 5.71 MTPA combined capacity - enough steel to build:",
+        "✓ 2 Howrah Bridges every month",
+        "✓ 50,000 km of rural roads annually"
+      ]
+    },
+    {
+      year: "2021",
+      title: "From Foundry to Fortune 500",
+      content: [
+        "Operational Excellence:",
+        "• Scaled premium TMT/Wire Rod production by 1.8 MTPA",
+        "• Maintained 5.71 MTPA capacity despite market volatility",
+        "Market Milestone:",
+        "• Historic IPO launch on NSE/BSE (June 2021)",
+        "• Share price reflected investor confidence in:",
+        "Vertical integration across steel plants in India",
+        "Visionary Shyam Metalics owner leadership",
+        "Strong fundamentals in India's steel sector"
+      ]
+    },
+    {
+      year: "2022",
+      title: "Scaling New Heights in Steel Innovation",
+      content: [
+        "Record-Breaking Growth:",
+        "• Achieved an 8.12 MTPA capacity post-IPO - making a 42% increase in just 1 year",
+        "• Equivalent to producing steel for:",
+        "✓ 4 Mumbai Coastal Roads annually",
+        "✓ 80,000 metro rail coaches",
+        "Product Breakthroughs:",
+        "🔶 S-E-L Tiger TMT Re-Bars:",
+        "Earthquake-resistant reinforcement bars",
+        "IS 1786 certified, 15% stronger than industry standards",
+        "🔶 Tiger Grills N Steels:",
+        "Lightweight structural solutions for modern architecture",
+        "30% faster installation than conventional materials"
+      ]
+    },
+    {
+      year: "2023",
+      title: "Redefining Excellence in Steel Manufacturing",
+      content: [
+        "Unprecedented Growth:",
+        "• Surpassed 13 MTPA metal capacity - now producing:",
+        "✓ Steel for 6 Bandra-Worli Sea Links annually",
+        "✓ Enough reinforcement bars for 25 smart cities",
+        "Sustainable Power Solutions:",
+        "⚡ 377 MW captive power capacity achieved",
+        "☀️ integrated 4 MW solar energy - reducing carbon footprint by 15,000 tons annually",
+        "Innovation Milestones:",
+        "🌀 Coil TMT Technology:",
+        "Revolutionizing construction with zero wastage solutions",
+        "20% cost savings for infrastructure developers",
+        "✨ Stainless Steel Re-Bars:",
+        "Corrosion-resistant reinforcement designed for coastal projects",
+        "First in Eastern India to introduce this premium product",
+        "Industry Recognition:",
+        "🏆Awarded Most Sustainable Steel Plant",
+        "📜 Certified for 7 new quality benchmarks"
+      ]
+    },
+    {
+      year: "2024",
+      title: "Forging New Frontiers in Metal Manufacturing",
+      content: [
+        "Diversification Breakthroughs:",
+        "🍱 Food-Grade Aluminium Foils (40,000 TPA):",
+        "Compliant with FDA & FSSAI standards",
+        "Serving FMCG and pharmaceutical giants",
+        "30% more hygienic than imported alternatives",
+        "🏗️ Cold Rolling Mill Expansion:",
+        "Producing premium color-coated/galvanized sheets",
+        "Applications:",
+        "✓ Architectural cladding",
+        "✓ Automotive components",
+        "✓ Solar panel backing",
+        "🔩 Stainless Steel Wire Rods & Bright Bars:",
+        "Precision-engineered for aerospace and defense",
+        "0.01mm tolerance - among India's finest",
+        "Sustainable Growth:",
+        "• New DRI Plant (1.5 Lakh TPA):",
+        "Direct Reduced Iron technology",
+        "35% lower emissions than traditional methods",
+        "• 20MW Captive Power Addition:",
+        "Solar-biomass hybrid system",
+        "Powers 8,000+ homes equivalent"
+      ]
+    }
   ];
 
   // Auto-cycle through timeline items every 10 seconds when not hovering
@@ -76,44 +255,56 @@ export default function AboutUs() {
           </button>
         </motion.div>
 
-        {/* Image and Stats Section */}
+        {/* Year-wise Content and Gallery Section */}
         <motion.div 
           className="lg:w-1/2 flex flex-col items-center w-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
         >
+          {/* Gallery Image Block */}
           <AnimatePresence mode="wait">
-            <motion.img
-              key={activeIndex}
-              src={aboutImages[activeIndex]}
-              alt="About Us"
-              className="w-full max-w-lg sm:max-w-xl lg:max-w-2xl"
+            <motion.div
+              key={`gallery-${activeIndex}`}
+              className="w-full mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.7 }}
-            />
+              transition={{ duration: 0.5 }}
+            >
+              <motion.img
+                src={galleryImages[activeIndex]}
+                alt={`Gallery ${years[activeIndex]}`}
+                className="w-full h-auto max-h-64 sm:max-h-80 object-cover rounded-lg shadow-lg border border-orange-100"
+                initial={{ scale: 0.95 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5 }}
+              />
+            </motion.div>
           </AnimatePresence>
-          
-          {/* Stats Cards - ADJUST STATS BOX SIZE HERE */}
-          {/* Change p-3 to p-2 for smaller boxes, p-4 for larger boxes */}
-          {/* Change gap-3 to gap-2 for closer spacing, gap-4 for wider spacing */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 lg:gap-4 mt-4 lg:mt-6 w-full max-w-2xl">
-            {[
-              { title: statsData[activeIndex].employee, desc: 'Employee Strength' },
-              { title: statsData[activeIndex].rating, desc: 'Credit Rating' },
-              { title: statsData[activeIndex].capacity, desc: 'Production Capacity' },
-            ].map((stat, i) => (
-              <div key={i} className="border border-orange-500 p-2 sm:p-3 rounded-lg shadow-lg bg-white text-center">
-                <div className="flex items-center justify-center gap-2 text-lg sm:text-xl font-bold text-black mb-1">
-                  <span className="text-orange-500 text-xl sm:text-2xl">↑</span>
-                  <h1 className="text-sm sm:text-base lg:text-lg">{stat.title}</h1>
-                </div>
-                <p className="text-xs sm:text-sm lg:text-base text-gray-600">{stat.desc}</p>
+
+          {/* Year Content Block */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`content-${activeIndex}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.5 }}
+              className="w-full bg-white p-4 sm:p-6 rounded-lg shadow-lg border border-orange-100"
+            >
+              <h2 className="text-orange-500 text-xl sm:text-2xl font-bold mb-2">
+                {yearContent[activeIndex]?.year || years[activeIndex]}: {yearContent[activeIndex]?.title}
+              </h2>
+              <div className="space-y-2 text-sm sm:text-base max-h-64 overflow-y-auto pr-2">
+                {yearContent[activeIndex]?.content.map((item, i) => (
+                  <p key={i} className={item.startsWith('•') || item.startsWith('✓') ? 'pl-4' : ''}>
+                    {item}
+                  </p>
+                ))}
               </div>
-            ))}
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
       </div>
 
@@ -143,7 +334,7 @@ export default function AboutUs() {
         {/* Timeline Gallery - Responsive Layout */}
         <div className="relative z-10 w-full">
           {/* Desktop/Tablet Timeline */}
-          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto  pt-[-10px] pb-4">
+          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pt-[-10px] pb-4">
             {galleryImages.map((img, index) => {
               const isActive = index === activeIndex;
               const isPassed = index <= activeIndex;
@@ -194,8 +385,7 @@ export default function AboutUs() {
                     </AnimatePresence>
                   </div>
 
-                  {/* Image container - ADJUST CIRCLE SIZE HERE */}
-                  {/* Change w-10 h-10 to w-8 h-8 for smaller, w-14 h-14 for larger circles */}
+                  {/* Image container */}
                   <motion.div
                     className={`w-6 h-6 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-full p-1 flex items-center justify-center transition-colors duration-300
                       ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}
@@ -245,8 +435,7 @@ export default function AboutUs() {
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: 'spring', stiffness: 300 }}
                   >
-                    {/* Mobile Circle Container - ADJUST MOBILE CIRCLE SIZE HERE */}
-                    {/* Change w-10 h-10 to w-8 h-8 for smaller, w-14 h-14 for larger mobile circles */}
+                    {/* Mobile Circle Container */}
                     <motion.div
                       className={`w-10 h-10 rounded-full p-1 flex items-center justify-center transition-colors duration-300
                         ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}

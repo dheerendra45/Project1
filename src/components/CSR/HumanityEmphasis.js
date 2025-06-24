@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import img from '../../assets/Sustainability/Sewing7.jpg';
+import bgVideo from '../../assets/Sustainability/sewing.mp4';
 
 const HumanityEmphasis = () => {
   const sectionRef = useRef(null);
@@ -8,22 +8,25 @@ const HumanityEmphasis = () => {
 
   return (
     <div 
-      className="relative h-[886px] bg-cover bg-center flex items-center overflow-hidden"
+      className="relative h-[886px] bg-black flex items-center overflow-hidden"
       ref={sectionRef}
     >
-      {/* Background Image Animation Layer */}
-      <motion.div
-        className="absolute inset-0 bg-cover bg-center z-0"
-        style={{ backgroundImage: `url(${img})` }}
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-        transition={{ duration: 1.4, ease: 'easeOut' }}
-      />
+      {/* Background Video Layer */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source src={bgVideo} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      {/* Overlay for text visibility */}
+      {/* Dark overlay for better text contrast */}
       <div className="absolute inset-0 bg-black/40 z-10" />
 
-      {/* Content */}
+      {/* Foreground Content */}
       <motion.div
         className="relative z-20 max-w-7xl mx-auto px-4 w-full text-center"
         initial={{ opacity: 0, y: 50 }}
@@ -34,7 +37,7 @@ const HumanityEmphasis = () => {
           Empowering Lives Beyond Business
         </h2>
         <p className="text-white text-lg sm:text-xl mb-8 opacity-90">
-          tolerated by us.
+          We believe in uplifting communities through education, healthcare, and skill development—because humanity is our greatest responsibility.
         </p>
         <motion.button
           className="bg-orange-500 text-white px-8 py-3 rounded hover:bg-orange-600 transition-colors flex items-center gap-2 mx-auto"

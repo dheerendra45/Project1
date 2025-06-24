@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import bg from '../../assets/Sustainability/Tution5.jpg';
+import bg from '../../assets/Sustainability/school.mp4';
 
 const ResponsibilityHero = () => {
   const topRef = useRef(null);
@@ -69,23 +69,26 @@ const ResponsibilityHero = () => {
       {/* Quote Section */}
       <div
         ref={quoteRef}
-        className="relative h-[500px] sm:h-[600px] bg-cover bg-center flex items-center mt-10"
+        className="relative h-[500px] sm:h-[600px] flex items-center mt-10 overflow-hidden"
       >
-        {/* Animated Background */}
-        <motion.div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bg})` }}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={isQuoteInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 1.1 }}
-          transition={{ duration: 1.2, ease: 'easeOut' }}
-        />
+        {/* Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+        >
+          <source src={bg} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="absolute inset-0 bg-black/50 z-10" />
 
         {/* Text Content */}
         <motion.div
-          className="relative z-10 w-full max-w-5xl mx-auto px-4 text-center"
+          className="relative z-20 w-full max-w-5xl mx-auto px-4 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={isQuoteInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
           transition={{ duration: 0.8 }}

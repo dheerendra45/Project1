@@ -10,39 +10,63 @@ const Features = () => {
   const features = [
     {
       icon: <FaBolt className="text-orange-500 w-8 h-8" />,
-      title: "Energy Conserving",
+      title: "High Iron Content (65–72%)",
       description:
-        "Pellets are energy efficient due to great heat recuperation and lower drop in gas pressure.",
+        " Ensures maximum output and reduces slag generation",
     },
     {
       icon: <FaCubes className="text-orange-500 w-8 h-8" />,
-      title: "Excellent Raw Material",
+      title: "Uniform Size (8–16mm)",
       description:
-        "Better tumbler index of pellets allows it to be used as a substitute of lump ore in the production of sponge iron and in blast furnaces.",
+        " Offers optimized gas flow and uniform smelting",
     },
     {
       icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
-      title: "Optimum Ore Use",
+      title: "Low Impurity (<2%)",
       description:
-        "We use multiple ores simultaneously to produce pellets through the art of raw material blending.",
+        "Alumina, silica, and phosphorus kept to a minimum",
     },
     {
       icon: <FaBolt className="text-orange-500 w-8 h-8" />,
-      title: "Energy Conserving",
+      title: "Cold Crushing Strength (250–350 kg/pellet)",
       description:
-        "Pellets are energy efficient due to great heat recuperation and lower drop in gas pressure.",
+        "Withstands handling and furnace loads",
     },
     {
       icon: <FaCubes className="text-orange-500 w-8 h-8" />,
-      title: "Excellent Raw Material",
+      title: "High Porosity (>25%)",
       description:
-        "Better tumbler index of pellets allows it to be used as a substitute of lump ore in the production of sponge iron and in blast furnaces.",
+        "Supports efficient fuel usage and faster reduction",
     },
     {
       icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
-      title: "Optimum Ore Use",
+      title: "Thermal Stability",
       description:
-        "We use multiple ores simultaneously to produce pellets through the art of raw material blending.",
+        "Resistant to sudden temperature shifts in furnaces",
+    },
+    {
+      icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
+      title: "Eco-Friendly Pellet Plant",
+      description:
+        "Green manufacturing practices with emission control",
+    },
+    {
+      icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
+      title: "Custom Chemistry",
+      description:
+        "Basic and acidic pellet options tailored to client needs",
+    },
+    {
+      icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
+      title: "Minimal Dust Generation",
+      description:
+        "Safe, clean handling and logistics",
+    },
+    {
+      icon: <FaLayerGroup className="text-orange-500 w-8 h-8" />,
+      title: "Verified Quality",
+      description:
+        "Meets ISO 9001, BIS, ASTM, and other international standards",
     },
   ];
 

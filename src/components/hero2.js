@@ -31,11 +31,10 @@ const Hero = () => {
             {/* Heading and paragraph */}
             <div className="w-full md:w-[70%]">
               <h1 className="text-[60px] md:text-[52px] leading-tight font-space-grotesk font-bold text mb-4">
-                A Steel Company With  <br />Integrated Operations.
+                Shyam Metalics - Pioneering Steel Excellence Since 1991
               </h1>
               <p className="text-lg mb-6">
-                Shyam Metalics is the 6th largest metal producing company <br />
-                based in India providing end-to-end solutions with
+                Recognized among India's top steel manufacturers for quality and innovation
               </p>
             </div>
 

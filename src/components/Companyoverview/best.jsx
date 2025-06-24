@@ -58,20 +58,10 @@ const Best = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           <h1 className="text-4xl font-bold">
-            #1 Best Industrial Company, <br /> Is Your Choice
+            "Building Bharat’s Tomorrow, One Metal at a Time"
           </h1>
           <p>
-            Shyam Amet ut integer leo nulla fringilla odio leo quis sapien
-            lobortis orci vitae faucibus laoreet.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Massa rhoncus sed mauris
-            nisl nunc sed. At egestas ipsum diam augue aliquam venenatis ut mi
-            mi. Placerat praesent fermentum accumsan tristique odio non. Sit.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur. Ut massa nam venenatis vel
-            cursus in. Ac tristique diam cursus.
+            Cultural roots + Progressive vision
           </p>
           <button className="bg-orange-500 text-white px-6 py-2 rounded flex items-center gap-2">
             SHYAM SUSTAINABILITY <ArrowRight size={16} />

@@ -7,11 +7,13 @@ import WhyChooseUs from "../components/carbonsteel/WhyChooseUs";
 import Certificates from "../components/carbonsteel/Certificates";
 import RelatedProducts from "../components/carbonsteel/RelatedProducts";
 import Footer from "../components/Footer";
+import Specification from "../components/carbonsteel/Specification";
 const Products = () => {
   return (
     <div>
       <CarbonSteelLayout />
       <PelletInfo />
+      <Specification/>
       <Process />
       <Features />
       <WhyChooseUs />

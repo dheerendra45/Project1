@@ -78,7 +78,7 @@ const ContactPage = () => {
                   title: 'Address',
                   lines: [
                     'Trinity Tower, 83 Topsia Road, 7th floor',
-                    'Kolkata – 700046, West Bengal, India'
+                    'Kolkata – 700046, West Bengal, India CIN: L40101WB2002PLC095491'
                   ]
                 },
                 {
