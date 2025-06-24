@@ -275,6 +275,7 @@ export default function AboutUs() {
             >
               <motion.img
                 src={aboutImages[activeIndex]}
+              
                 alt={`Gallery ${years[activeIndex]}`}
                 className="w-full h-auto max-h-64 sm:max-h-80 object-cover rounded-lg shadow-lg border border-orange-100"
                 initial={{ scale: 0.95 }}

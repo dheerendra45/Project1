@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import bgVideo from '../../assets/Sustainability/sewing.mp4';
+import bgVideo from '../../assets/Sustainability/football.mp4';
 
 const HumanityEmphasis = () => {
   const sectionRef = useRef(null);

@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import box1bg from '../../assets/Sustainability/Football4.jpg';
 import box2bg from '../../assets/Sustainability/Football5.jpg';
-import box3bg from '../../assets/Sustainability/football.mp4'; // Video
+import box3bg from '../../assets/Sustainability/Football6.jpg'; // Now treated as image
 import box4bg from '../../assets/Sustainability/Tution6.jpg';
 
 const cardVariants = {
@@ -35,11 +35,10 @@ const SustainabilityTransparency = () => {
     },
     {
       id: 3,
-      bg: box3bg, // video
+      bg: box3bg, // previously video, now image
       title: 'Strategy & values',
       label: 'Group',
       desc: 'A Strategy that Connects - Values That Inspire',
-      isVideo: true,
     },
     {
       id: 4,
@@ -76,22 +75,11 @@ const SustainabilityTransparency = () => {
                 card.tall ? 'row-span-2 h-[600px]' : 'h-96'
               }`}
             >
-              {/* Background media: image or video */}
-              {card.isVideo ? (
-                <video
-                  className="absolute inset-0 w-full h-full object-cover z-0"
-                  src={card.bg}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                />
-              ) : (
-                <div
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
-                  style={{ backgroundImage: `url(${card.bg})` }}
-                />
-              )}
+              {/* Background Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+                style={{ backgroundImage: `url(${card.bg})` }}
+              />
 
               {/* Overlay */}
               <div className="absolute inset-0 bg-black opacity-50 z-0" />
