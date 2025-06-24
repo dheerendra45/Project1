@@ -82,40 +82,11 @@ const Hero = () => {
               </button>
             </div>
 
-            {/* Stats */}
-            <div className="w-full md:w-[100%] bg-black bg-opacity-50 rounded-xl p-6 flex flex-wrap justify-between items-center gap-6">
-              <div className="flex items-center gap-3 w-[45%] md:w-auto">
-                <img src={FactoryIcon} alt="Factory Icon" className="w-10 h-10" />
-                <div>
-                  <h2 className="text-xl font-bold">15.15 MTPA</h2>
-                  <p className="text-sm">Installed Capacity</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 w-[45%] md:w-auto">
-                <img src={RevenueIcon} alt="Revenue Icon" className="w-10 h-10" />
-                <div>
-                  <h2 className="text-xl font-bold">₹ 15,680 Cr</h2>
-                  <p className="text-sm">Revenue '24</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 w-[45%] md:w-auto">
-                <div>
-                  <h2 className="text-xl font-bold">2,500+</h2>
-                  <p className="text-sm">Delivered Nationwide</p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 w-[45%] md:w-auto">
-                <img src={IndiaMapIcon} alt="India Map Icon" className="w-10 h-10" />
-                <div>
-                  <h2 className="text-xl font-bold">8</h2>
-                  <p className="text-sm">Pan-India Presence</p>
-                </div>
-              </div>
+              {/* Stats Box   */}
+             
             </div>
-          </div>
 
-          {/* Breadcrumb */}
-          <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
+          {/* Breadcrumb           <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
             <span>Home</span>
             <span>&gt;</span>
             <span>Businesses</span>
@@ -125,7 +96,8 @@ const Hero = () => {
             <span>Carbon Steel</span>
             <span>&gt;</span>
             <span>Pellets</span>
-          </div>
+          </div> */}
+
         </div>
       </div>
 
