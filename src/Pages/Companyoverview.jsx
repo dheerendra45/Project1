@@ -14,10 +14,10 @@ export default function Companyoverview() {
       <Hero />
       <Best />
       <Aboutus />
-      <History />
+      {/* <History /> */}
       <Achievement />
-      <Teams />
-      <Testimonials />
+      {/* <Teams />
+      <Testimonials /> */}
       <Map />
     </>
   );

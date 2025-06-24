@@ -1,32 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import a1 from "../assets/businessareasbg.png";
-import a2 from "../assets/business1.png";
+import a2 from "../assets/products/herobg.png";
 import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
 import a5 from "../assets/business4.png";
 
 export default function BusinessAreas() {
-  // Original images (your 4 images)
   const originalImages = [a2, a3, a4, a5];
-  
-  // Function to create random combinations of 16 images using only your 4 images
-  const createRandomImageSet = () => {
-    const imageSet = [];
+  const productNames = [
+    "Pellet", "Sponge Iron", "Pig Iron", "Billet",
+    "Structural Steel", "TMT Bars", "Wire Rods", "Pipes & Hollow Sections",
+    "Color Coated Sheets", "Stainless Steel Billets", "SS Wire Rod", "SS Wire",
+    "Black Round Bar", "Bright Bar", "Flats/Patta", "Flat Rolled Products"
+  ];
+
+  // Repeat product data to always have 16 items
+  const generateImageSet = () => {
+    const items = [];
     for (let i = 0; i < 16; i++) {
-      const randomIndex = Math.floor(Math.random() * originalImages.length);
-      imageSet.push(originalImages[randomIndex]);
+      const image = originalImages[i % originalImages.length];
+      const name = productNames[i % productNames.length];
+      items.push({ image, name });
     }
-    return imageSet;
+    return items;
   };
 
-  // All image sets - first set is original pattern, then random combinations
   const allImageSets = [
-    [...originalImages, ...originalImages, ...originalImages, ...originalImages], // First set repeats your 4 images 4 times
-    createRandomImageSet(),
-    createRandomImageSet(),
-    createRandomImageSet(),
-    createRandomImageSet()
+    generateImageSet(),
+    generateImageSet(),
+    generateImageSet(),
+    generateImageSet()
   ];
 
   const [currentSetIndex, setCurrentSetIndex] = useState(0);
@@ -34,39 +37,31 @@ export default function BusinessAreas() {
   const [hoveredImageIndex, setHoveredImageIndex] = useState(null);
   const intervalRef = useRef(null);
 
-  const SLIDE_DURATION = 10000; // 10 seconds
+  const SLIDE_DURATION = 10000;
 
-  // Start auto-slide timer
   const startTimer = () => {
-    // Clear existing timer
     if (intervalRef.current) clearInterval(intervalRef.current);
-
-    // Main slide timer
     intervalRef.current = setInterval(() => {
-      setCurrentSetIndex((prevIndex) => (prevIndex + 1) % allImageSets.length);
+      setCurrentSetIndex((prev) => (prev + 1) % allImageSets.length);
     }, SLIDE_DURATION);
   };
 
-  // Stop timer
   const stopTimer = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
   };
 
-  // Handle next slide
   const nextSlide = () => {
-    setCurrentSetIndex((prevIndex) => (prevIndex + 1) % allImageSets.length);
-    startTimer(); // Restart timer after manual navigation
+    setCurrentSetIndex((prev) => (prev + 1) % allImageSets.length);
+    startTimer();
   };
 
-  // Handle previous slide
   const prevSlide = () => {
-    setCurrentSetIndex((prevIndex) => 
-      prevIndex === 0 ? allImageSets.length - 1 : prevIndex - 1
+    setCurrentSetIndex((prev) =>
+      prev === 0 ? allImageSets.length - 1 : prev - 1
     );
-    startTimer(); // Restart timer after manual navigation
+    startTimer();
   };
 
-  // Handle mouse enter/leave for individual images
   const handleMouseEnter = (index) => {
     setIsHovered(true);
     setHoveredImageIndex(index);
@@ -76,20 +71,14 @@ export default function BusinessAreas() {
   const handleMouseLeave = () => {
     setIsHovered(false);
     setHoveredImageIndex(null);
-    if (!isHovered) {
-      startTimer();
-    }
+    if (!isHovered) startTimer();
   };
 
-  // Initialize timer on component mount
   useEffect(() => {
     startTimer();
-    return () => {
-      stopTimer();
-    };
+    return stopTimer;
   }, []);
 
-  // Restart timer when hover state changes
   useEffect(() => {
     if (!isHovered && hoveredImageIndex === null) {
       startTimer();
@@ -98,56 +87,37 @@ export default function BusinessAreas() {
 
   const currentImages = allImageSets[currentSetIndex];
 
-  // Animation variants for image transitions (smoother)
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        duration: 1.2,
-        staggerChildren: 0.1,
-        ease: "easeInOut",
-      },
+      transition: { duration: 1.2, staggerChildren: 0.1, ease: "easeInOut" },
     },
     exit: {
       opacity: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeInOut",
-      },
+      transition: { duration: 0.8, ease: "easeInOut" },
     },
   };
 
   const imageVariants = {
-    hidden: { 
-      opacity: 0, 
-      scale: 0.9,
-      y: 30
-    },
+    hidden: { opacity: 0, scale: 0.9, y: 30 },
     visible: {
       opacity: 1,
       scale: 1,
       y: 0,
-      transition: {
-        duration: 1.2,
-        ease: "easeOut",
-      },
+      transition: { duration: 1.2, ease: "easeOut" },
     },
     exit: {
       opacity: 0,
       scale: 0.9,
       y: -30,
-      transition: {
-        duration: 0.8,
-        ease: "easeIn",
-      },
+      transition: { duration: 0.8, ease: "easeIn" },
     },
   };
 
   return (
     <div className="relative bg-gray-200 text-white py-16 px-6">
-      {/* Orange overlay */}
-      <div className="absolute inset-0 bg-grey-600 opacity-60 z-0"></div>
+      <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
@@ -157,11 +127,10 @@ export default function BusinessAreas() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className=" text-black text-3xl md:text-4xl font-bold mb-8">
-            Lorem ipsum is simply dummy text of the printing
+          <h1 className="text-black text-3xl md:text-4xl font-bold mb-8">
+            Our Products
           </h1>
-          
-          {/* Set Indicators */}
+
           <div className="flex justify-center space-x-3">
             {allImageSets.map((_, index) => (
               <button
@@ -171,8 +140,8 @@ export default function BusinessAreas() {
                   startTimer();
                 }}
                 className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                  index === currentSetIndex 
-                    ? 'bg-white scale-125 shadow-lg' 
+                  index === currentSetIndex
+                    ? 'bg-white scale-125 shadow-lg'
                     : 'bg-white/50 hover:bg-white/70 hover:scale-110'
                 }`}
               />
@@ -180,7 +149,7 @@ export default function BusinessAreas() {
           </div>
         </motion.div>
 
-        {/* 4x4 Grid Container with AnimatePresence for smooth transitions */}
+        {/* Grid */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSetIndex}
@@ -190,7 +159,7 @@ export default function BusinessAreas() {
             exit="exit"
             className="grid grid-cols-2 md:grid-cols-4 gap-4"
           >
-            {currentImages.map((image, index) => (
+            {currentImages.map((item, index) => (
               <motion.div
                 key={`image-${index}-${currentSetIndex}`}
                 variants={imageVariants}
@@ -201,15 +170,17 @@ export default function BusinessAreas() {
                 transition={{ duration: 0.4 }}
               >
                 <img
-                  src={image}
-                  alt={`Business ${index + 1}`}
+                  src={item.image}
+                  alt={item.name}
                   className="rounded-xl shadow-lg w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                
-                <div className="absolute bottom-3 left-3 text-sm font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm">
-                  Lorem Ipsum is simply dummy
+
+                {/* Product name */}
+                <div className="absolute bottom-3 left-3 text-xs font-semibold bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm">
+                  {item.name}
                 </div>
-                
+
+                {/* Next Button */}
                 <motion.button
                   className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-orange-500 text-white text-lg flex items-center justify-center shadow-lg hover:bg-orange-600 transition-all duration-300"
                   onClick={nextSlide}
@@ -236,7 +207,7 @@ export default function BusinessAreas() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Controls */}
+        {/* Navigation */}
         <motion.div
           className="flex justify-center mt-10 space-x-4"
           initial={{ opacity: 0, y: 30 }}
