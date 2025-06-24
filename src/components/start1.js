@@ -395,7 +395,7 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-              welcome to seltiger
+
             </span>
           </div>
           <div className="flex items-center gap-6">

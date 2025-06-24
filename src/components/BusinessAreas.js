@@ -145,7 +145,7 @@ export default function BusinessAreas() {
   };
 
   return (
-    <div className="relative bg-gray-200 text-white py-16 px-6">
+    <div className="relative bg-gray-200 text-white py-16 px-6 font-inter">
       {/* Orange overlay */}
       <div className="absolute inset-0 bg-grey-600 opacity-60 z-0"></div>
 
@@ -157,7 +157,7 @@ export default function BusinessAreas() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h1 className=" text-black text-3xl md:text-4xl font-bold mb-8">
+          <h1 className="text-black text-3xl md:text-4xl font-semibold mb-8">
             Lorem ipsum is simply dummy text of the printing
           </h1>
           
@@ -206,7 +206,7 @@ export default function BusinessAreas() {
                   className="rounded-xl shadow-lg w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 
-                <div className="absolute bottom-3 left-3 text-sm font-medium bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm">
+                <div className="absolute bottom-3 left-3 text-sm font-semibold bg-black/60 px-3 py-2 rounded-lg backdrop-blur-sm">
                   Lorem Ipsum is simply dummy
                 </div>
                 
@@ -245,7 +245,7 @@ export default function BusinessAreas() {
         >
           <motion.button
             onClick={prevSlide}
-            className="px-8 py-3 bg-white/20 hover:bg-white/30 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-medium"
+            className="px-8 py-3 bg-white/20 hover:bg-white/30 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -253,7 +253,7 @@ export default function BusinessAreas() {
           </motion.button>
           <motion.button
             onClick={nextSlide}
-            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg font-medium"
+            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg font-semibold"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -35,7 +35,7 @@ const IndustrialCards = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-300 py-10 px-5">
+    <div className="min-h-screen bg-gray-300 py-10 px-5 font-inter">
       <span className="text-white text-4xl ml-7">Business </span>
       {/* Container - Adjust max-width to control overall layout width */}
       <div className="max-w-6xl mx-auto pt-9">
@@ -87,7 +87,7 @@ const IndustrialCards = () => {
                 }
               `}
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-3 uppercase tracking-wide">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
                   {card.title}
                 </h3>
 
@@ -105,7 +105,7 @@ const IndustrialCards = () => {
             className="
             w-58 py-4 px-8
             bg-gray-700 hover:bg-gray-900 
-            text-white font-bold text-base
+            text-white font-semibold text-base
             rounded-lg uppercase tracking-widest
             transition-all duration-300 ease-in-out
             hover:transform hover:-translate-y-1 hover:shadow-lg
