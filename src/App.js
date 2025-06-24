@@ -26,6 +26,7 @@ import Blogs from './Pages/blogs';
 import AwardsAndAchievements from './Pages/awards&achievements';
 
 import Seltiger from './Pages/Seltiger';
+import SpongeIron from './Pages/Spongeiron';
 
 function App() {
   return (
@@ -57,6 +58,8 @@ function App() {
    <Route path="manufacturing" element={<Manufacturing />} />
   <Route path="lifeshyam" element={<Lifeshyam />} />
   <Route path="seltiger" element={<Seltiger />} />
+  <Route path="sponge_iron" element={<SpongeIron />} />
+
    
    
   </Route>
