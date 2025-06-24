@@ -63,27 +63,34 @@ const EnvironmentSection1 = () => {
                   alt="Environment" 
                   className="w-full h-full object-cover"
                 />
-              </div>
+                </div>
+            </div>
 
-              {/* Orbiting Lightbulb Icon - follows the white dotted border path exactly */}
-              <div className="absolute inset-0 animate-spin" style={{ animation: 'orbit 8s linear infinite' }}>
-                <motion.div 
-                  className="absolute bg-green-500 rounded-full flex items-center justify-center shadow-lg"
-                  style={{
-                    width: '60px',
-                    height: '60px',
-                    top: '0px',
-                    left: '50%',
-                    marginLeft: '-30px',
-                  }}
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
-                >
-                  <Lightbulb className="w-6 h-6 text-white" />
-                </motion.div>
-              </div>
+            {/* Orbiting Lightbulb Icon - orbits on the white dotted border circle */}
+            <div 
+              className="absolute inset-0" 
+              style={{ 
+                animation: 'orbit 8s linear infinite',
+                width: 'min(90vw, 400px)',
+                height: 'min(90vw, 400px)',
+              }}
+            >
+              <motion.div 
+                className="absolute bg-green-500 rounded-full flex items-center justify-center shadow-lg"
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  top: '-30px',
+                  left: '50%',
+                  marginLeft: '-30px',
+                }}
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: false, amount: 0.3 }}
+                transition={{ type: 'spring', stiffness: 300 }}
+              >
+                <Lightbulb className="w-6 h-6 text-white" />
+              </motion.div>
             </div>
           </motion.div>
 
