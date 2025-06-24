@@ -137,25 +137,25 @@ const Navbar = () => {
           ]
         },
         {
-          name: 'Aluminium',
-          href: '#',
-          subItems: [
-            {
-              name: 'Intermediate Products',
-              href: '#',
-              categories: [
-                { name: 'Flat Rolled Products', items: [{ name: 'Aluminium Foil', href: '#' }] }
-              ]
-            },
-            {
-              name: 'Finished Products',
-              href: '#',
-              categories: [
-                { name: 'Battery Foil', items: [] }
-              ]
-            }
-          ]
-        }
+  name: 'Aluminium',
+  href: '#',
+  subItems: [
+    {
+      name: 'Flat Rolled Products',
+      items: [
+        { name: 'Aluminium Foil', href: '#' }
+      ]
+    },
+    {
+      name: 'Battery Foil',
+      items: [
+        // Add items here, example:
+        { name: 'Lithium-ion Foil', href: '#' }
+      ]
+    }
+  ]
+}
+
       ]
     },
     { 
@@ -176,7 +176,7 @@ const Navbar = () => {
             { name: 'Stock Performance Data', href: '#' },
             { name: 'Regulatory Disclosures', href: '#' },
             { name: 'Company Disclosures (SEBI LODR)', href: '#' },
-            { name: 'Credit Rating', href: '#' }
+            { name: 'Credit Ratin g', href: '#' }
           ]
         },
         {
