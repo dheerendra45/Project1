@@ -46,7 +46,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="h-screen md:h-[815px] bg-gray-100 mx-auto overflow-hidden relative">
+    <div className="h-screen md:h-[815px] bg-white mx-auto overflow-hidden relative">
       {/* Top Navbar */}
 
       {/* Middle Navbar */}

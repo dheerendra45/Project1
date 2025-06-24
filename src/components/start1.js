@@ -135,6 +135,11 @@ const Navbar = () => {
       ]
     },
     { 
+      title: '🐅seltiger', 
+      hasDropdown: false,
+      href: '/seltiger'
+    },
+    { 
       title: 'INVESTORS', 
       hasDropdown: true,
       dropdownItems: [
@@ -185,11 +190,7 @@ const Navbar = () => {
         }
       ]
     },
-     { 
-      title: '🐅seltiger', 
-      hasDropdown: false,
-      href: '/seltiger'
-    },
+     
     { 
       title: 'COMMUNITY', 
       hasDropdown: true,
@@ -213,7 +214,6 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: 'Life at Shyam', href: '/lifeshyam' },
-        { name: 'Job Opportunity', href: '/jobopportunity' },
         { name: 'Current Opening', href: '/currentopening' }
       ]
     },
@@ -426,7 +426,7 @@ const Navbar = () => {
               onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
               onClick={() => !item.hasDropdown ? handleDirectNavClick(item) : null}
             >
-              <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-roboto font-medium text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
+              <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
                 {item.title}
                 {item.hasDropdown && (
                   <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">

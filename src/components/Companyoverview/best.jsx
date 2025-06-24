@@ -42,7 +42,7 @@ const Best = () => {
   };
 
   return (
-    <div className="pt-20 px-20 pb-4 flex flex-col gap-10" ref={ref}>
+    <div className="px-20 pb-4 flex flex-col gap-10" ref={ref}>
       {/* Top Section */}
       <motion.div
         className="flex flex-col lg:flex-row items-start gap-10"

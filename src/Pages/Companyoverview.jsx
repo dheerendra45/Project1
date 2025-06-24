@@ -16,8 +16,7 @@ export default function Companyoverview() {
       <Aboutus />
       <History />
       <Achievement />
-      <Teams />
-      <Testimonials />
+
       <Map />
     </>
   );
