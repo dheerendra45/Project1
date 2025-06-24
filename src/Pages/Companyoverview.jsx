@@ -14,7 +14,7 @@ export default function Companyoverview() {
       <Hero />
       <Best />
       <Aboutus />
-      <History />
+      {/* <History /> */}
       <Achievement />
 
       <Map />

@@ -1,5 +1,7 @@
 import { useState } from "react";
-
+import steel from "../assets/steel.jpg";
+import aluminium from "../assets/aluminium.jpg";
+import power from "../assets/power.jpeg";
 const IndustrialCards = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -45,22 +47,14 @@ const IndustrialCards = () => {
             <div
               key={card.id}
               className={`
-                /* Card Size Control - Adjust w-[] and h-[] to change card dimensions */
-                w-80 h-96 
-                /* Card Styling */
-                relative rounded-2xl overflow-hidden cursor-pointer
-                shadow-lg hover:shadow-2xl
-                transition-all duration-300 ease-in-out
-                ${
-                  hoveredCard === card.id
-                    ? "transform -translate-y-2"
-                    : "transform translate-y-0"
-                }
+                w-80 h-96 relative rounded-2xl overflow-hidden cursor-pointer
+                shadow-lg hover:shadow-2xl transition-transform duration-300 ease-in-out
+                ${hoveredCard === card.id ? "transform -translate-y-2" : ""}
               `}
               onMouseEnter={() => setHoveredCard(card.id)}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              {/* Background Image - Covers entire card */}
+              {/* Background Image */}
               <div
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: `url(${card.image})` }}
@@ -71,27 +65,26 @@ const IndustrialCards = () => {
                 className={`absolute inset-0 bg-gradient-to-b ${card.bgGradient}`}
               />
 
-              {/* Content Overlay - Positioned at bottom of card */}
+              {/* Content */}
               <div
                 className={`
-                absolute bottom-0 left-0 right-0 z-10
-                /* Content Padding Control - Adjust p-[] to change content spacing */
-                p-6
-                /* Background Styling */
-                bg-white/95 backdrop-blur-sm rounded-t-2xl
-                transition-all duration-300 ease-in-out
-                ${
-                  hoveredCard === card.id
-                    ? "bg-white/98 transform -translate-y-1"
-                    : "transform translate-y-0"
-                }
-              `}
+                  absolute bottom-0 left-0 right-0 z-10 p-5
+                  bg-white/95 backdrop-blur-sm rounded-t-2xl
+                  transition-all duration-300 ease-in-out
+                  ${hoveredCard === card.id ? "bg-white/98" : ""}
+                `}
               >
                 <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
                   {card.title}
                 </h3>
-
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p
+                  className="text-gray-700 text-sm leading-relaxed overflow-hidden text-ellipsis"
+                  style={{
+                    display: "-webkit-box",
+                    WebkitLineClamp: hoveredCard === card.id ? 6 : 4,
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
                   {card.description}
                 </p>
               </div>
@@ -99,8 +92,8 @@ const IndustrialCards = () => {
           ))}
         </div>
 
-        {/* Explore All Button - Adjust w-[], py-[], px-[] to control button size */}
-        <div className="flex justify-center">
+        {/* Explore All Button */}
+        <div className="flex justify-center mt-12">
           <button
             className="
             w-58 py-4 px-8
@@ -120,45 +113,3 @@ const IndustrialCards = () => {
 };
 
 export default IndustrialCards;
-
-/*
-SIZE CUSTOMIZATION GUIDE:
-
-1. CARD DIMENSIONS:
-   - w-80 h-96 (current: 320px x 384px)
-   - Change to w-72 h-80 for smaller cards
-   - Change to w-96 h-[28rem] for larger cards
-
-2. CONTENT PADDING:
-   - p-6 (current: 24px padding)
-   - Change to p-4 for less padding
-   - Change to p-8 for more padding
-
-3. TITLE SIZE:
-   - text-xl (current: 20px)
-   - Change to text-lg for smaller
-   - Change to text-2xl for larger
-
-4. DESCRIPTION SIZE:
-   - text-sm (current: 14px)
-   - Change to text-xs for smaller
-   - Change to text-base for larger
-
-5. BUTTON SIZE:
-   - w-48 py-4 px-8 (current: 192px width, 16px vertical, 32px horizontal padding)
-   - Adjust as needed
-
-6. CARD SPACING:
-   - gap-8 (current: 32px between cards)
-   - Change to gap-4 for closer spacing
-   - Change to gap-12 for wider spacing
-
-7. RESPONSIVE BREAKPOINTS:
-   - Cards automatically stack on mobile
-   - Adjust with md:, lg:, xl: prefixes if needed
-
-ALTERNATIVE LAYOUTS:
-- For full overlay text, move content div to cover entire card
-- For different positioning, adjust bottom-0 to top-0 or remove for center
-- For different background opacity, adjust bg-white/95 percentage
-*/

@@ -28,7 +28,7 @@ function LocationsMap() {
           <div className="mb-4 sm:mb-0">
             <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">Locations</h2>
             <p className="text-gray-700 max-w-xl text-sm sm:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              Metric Verified Data (2023-24)
             </p>
           </div>
           <button className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors self-start sm:self-auto">
