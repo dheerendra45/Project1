@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import herobg from '../../assets/Sustainability/bg.jpg';
+import herobg from '../../assets/Sustainability/school.mp4';
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -15,14 +15,14 @@ const Hero = () => {
       {/* Hero Section */}
       <div className="relative h-full -mt-[65px]">
 
-        {/* Animated Background Image */}
-        <motion.img
-          src={herobg}
-          alt="Hero Background"
+        {/* Background Video */}
+        <video
           className="absolute inset-0 w-full h-full object-cover z-0"
-          initial={{ scale: 1.2, opacity: 0 }}
-          animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.2, opacity: 0 }}
-          transition={{ duration: 1.6, ease: "easeOut" }}
+          src={herobg}
+          autoPlay
+          loop
+          muted
+          playsInline
         />
 
         {/* Overlay */}

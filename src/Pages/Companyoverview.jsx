@@ -1,3 +1,4 @@
+import AboutUs from "../components/AboutUs.js";
 import Aboutus from "../components/Companyoverview/aboutus.jsx";
 import Achievement from "../components/Companyoverview/achievement.jsx";
 import Best from "../components/Companyoverview/best.jsx";
@@ -15,6 +16,7 @@ export default function Companyoverview() {
       <Best />
       <Aboutus />
       {/* <History /> */}
+      <AboutUs/>
       <Achievement />
       {/* <Teams />
       <Testimonials /> */}

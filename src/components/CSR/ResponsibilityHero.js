@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import bg from '../../assets/Sustainability/school.mp4';
+import bg from '../../assets/Sustainability/sewing.mp4';
 
 const ResponsibilityHero = () => {
   const topRef = useRef(null);
