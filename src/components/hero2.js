@@ -84,18 +84,7 @@ const Hero = () => {
               </div>
               */}
 
-              {/* Breadcrumb */}
-              <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
-                <span>Home</span>
-                <span>&gt;</span>
-                <span>Businesses</span>
-                <span>&gt;</span>
-                <span>Steel</span>
-                <span>&gt;</span>
-                <span>Carbon Steel</span>
-                <span>&gt;</span>
-                <span>Pellets</span>
-              </div>
+             
             </div>
 
           </div>

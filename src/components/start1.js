@@ -83,22 +83,46 @@ const Navbar = () => {
             {
               name: 'Carbon Steel',
               href: '/carbon_steel',
+              categories: [
+                { 
+                  name: 'Intermediate Products', 
+                  items: [
+                    { name: 'Pellet', href: '/pellet' },
+                    { name: 'Sponge Iron', href: '#' },
+                    { name: 'Pig Iron', href: '#' },
+                    { name: 'Billet', href: '#' }
+                  ]
+                },
+                { 
+                  name: 'Finished Products', 
+                  items: [
+                    { name: 'Structural Steel', href: '#' },
+                    { name: 'TMT Bar', href: '#' },
+                    { name: 'Wire Rod', href: '#' },
+                    { name: 'Pipes & Hollow Sections', href: '#' }
+                  ]
+                }
+              ]
             },
             {
               name: 'Cold Rolled',
               href: '#',
               categories: [
-                { name: 'Intermediate Products', items: ['Color Coated Sheets'] },
-                { name: 'Finished Products', items: ['Stainless Steel Billets'] },
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] }
+                { name: 'Intermediate Products', items: [{ name: 'Color Coated Sheets', href: '#' }] },
+                { name: 'Finished Products', items: [{ name: 'Stainless Steel Billets', href: '#' }] },
+                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] }
               ]
             },
             {
               name: 'Stainless Steel',
               href: '#',
               categories: [
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] },
-                { name: 'Finished Products', items: ['Black Round Bar', 'Bright Bar', 'Flats/Patta'] }
+                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] },
+                { name: 'Finished Products', items: [
+                  { name: 'Black Round Bar', href: '#' },
+                  { name: 'Bright Bar', href: '#' },
+                  { name: 'Flats/Patta', href: '#' }
+                ]}
               ]
             },
             { name: 'Specialty Alloys', href: '#' }
@@ -120,7 +144,7 @@ const Navbar = () => {
               name: 'Intermediate Products',
               href: '#',
               categories: [
-                { name: 'Flat Rolled Products', items: ['Aluminium Foil'] }
+                { name: 'Flat Rolled Products', items: [{ name: 'Aluminium Foil', href: '#' }] }
               ]
             },
             {
@@ -532,10 +556,16 @@ const Navbar = () => {
                                           {category.items.map((productItem, prodIndex) => (
                                             <a 
                                               key={prodIndex}
-                                              href="#" 
+                                              href={productItem.href || "#"}
                                               className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
+                                              onClick={(e) => {
+                                                if (productItem.href && productItem.href !== '#') {
+                                                  e.preventDefault();
+                                                  handleNavigation(productItem.href);
+                                                }
+                                              }}
                                             >
-                                              • {productItem}
+                                              • {productItem.name || productItem}
                                             </a>
                                           ))}
                                         </div>
