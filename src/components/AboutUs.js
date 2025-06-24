@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import abt1img from '../assets/abt1.jpg'
 import a1 from '../assets/aboutUs.png';
 import a2 from "../assets/1.png";
 import a3 from "../assets/2.png";
@@ -27,7 +28,7 @@ export default function AboutUs() {
 
   const years = ["2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024"];
   const galleryImages = [a2, a3, a4, a5, a6, a6,a1,a2,a3,a4,a5,a6];
-  const aboutImages = [a1, a1, a1, a1, a1, a1,a1,a1,a1,a1,a1,a1];
+ const aboutImages = [abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
   const aboutTexts = [
     "Shyam Metalics is the 6th largest metal producing company based in India providing end-to-end solutions with integrated capabilities (Source: CRISIL Report) with a focus on long steel products and ferro alloys. Our state-of-the-art facilities and commitment to quality have made us a leader in the industry.",
     "Founded in 1848, we've grown to become a leader in steel production with state-of-the-art facilities across multiple locations in India. Our early adoption of innovative production techniques set us apart from competitors.",
@@ -273,7 +274,7 @@ export default function AboutUs() {
               transition={{ duration: 0.5 }}
             >
               <motion.img
-                src={galleryImages[activeIndex]}
+                src={aboutImages[activeIndex]}
                 alt={`Gallery ${years[activeIndex]}`}
                 className="w-full h-auto max-h-64 sm:max-h-80 object-cover rounded-lg shadow-lg border border-orange-100"
                 initial={{ scale: 0.95 }}

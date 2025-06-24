@@ -384,7 +384,7 @@ const Navbar = () => {
             ) : (
               <div className="flex items-center gap-2">
                 <span className="font-inter font-normal text-[12px] leading-[18px]">
-                  current price
+                  Current Price
                 </span>
                 <span className="font-inter font-semibold text-[12px] leading-[18px]">
                   ₹{stockData.currentPrice.toFixed(2)}
