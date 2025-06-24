@@ -52,7 +52,7 @@ const Hero = () => {
           >
             <span>Home</span>
             <span>&gt;</span>
-            <span>Sustainability</span>
+            <span>CSR</span>
           </motion.div>
         </motion.div>
       </div>
