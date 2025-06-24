@@ -88,18 +88,18 @@ const Navbar = () => {
                   name: 'Intermediate Products', 
                   items: [
                     { name: 'Pellet', href: '/pellet' },
-                    { name: 'Sponge Iron', href: '#' },
-                    { name: 'Pig Iron', href: '#' },
-                    { name: 'Billet', href: '#' }
+                    { name: 'Sponge Iron', href: '/sponge_iron' },
+                    { name: 'Pig Iron', href: '/pig_iron' },
+                    { name: 'Billet', href: '/billet' }
                   ]
                 },
                 { 
                   name: 'Finished Products', 
                   items: [
-                    { name: 'Structural Steel', href: '#' },
-                    { name: 'TMT Bar', href: '#' },
-                    { name: 'Wire Rod', href: '#' },
-                    { name: 'Pipes & Hollow Sections', href: '#' }
+                    { name: 'Structural Steel', href: '/structural_steel' },
+                    { name: 'TMT Bar', href: '/tmt_bar' },
+                    { name: 'Wire Rod', href: '/wire_rod' },
+                    { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
                   ]
                 }
               ]
@@ -365,58 +365,55 @@ const Navbar = () => {
   return (
     <div className="w-full">
       {/* Top Navbar */}
-     <div
-  className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-[#f3f3f3]"
->
-  {/* Black semi-transparent overlay */}
-  <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-[#f3f3f3]">
+        {/* Black semi-transparent overlay */}
+        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
-  {/* Content on top */}
-  <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
-    {/* Stock Price Display */}
-    <div className="flex items-center ml-7">
-      {stockLoading ? (
-        <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
-          Loading...
-        </span>
-      ) : stockError ? (
-        <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
-          Error loading price
-        </span>
-      ) : (
-        <div className="flex items-center gap-2">
-          <span className="font-inter font-normal text-[12px] leading-[18px]">
-            current price
-          </span>
-          <span className="font-inter font-semibold text-[12px] leading-[18px]">
-            ₹{stockData.currentPrice.toFixed(2)}
-          </span>
+        {/* Content on top */}
+        <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
+          {/* Stock Price Display */}
+          <div className="flex items-center ml-7">
+            {stockLoading ? (
+              <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+                Loading...
+              </span>
+            ) : stockError ? (
+              <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+                Error loading price
+              </span>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span className="font-inter font-normal text-[12px] leading-[18px]">
+                  current price
+                </span>
+                <span className="font-inter font-semibold text-[12px] leading-[18px]">
+                  ₹{stockData.currentPrice.toFixed(2)}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <div className="flex items-center">
+            <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
+              welcome to seltiger
+            </span>
+          </div>
+          <div className="flex items-center gap-6">
+            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+              Employee Login 
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+              🌐 Global(English) 
+              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
+          </div>
         </div>
-      )}
-    </div>
-
-    <div className="flex items-center">
-      <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-        welcome to seltiger
-      </span>
-    </div>
-    <div className="flex items-center gap-6">
-      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-        Employee Login 
-        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </span>
-      <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-        🌐 Global(English) 
-        <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-          <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      </span>
-    </div>
-  </div>
-</div>
-
+      </div>
 
       {/* Middle Navbar */}
       <div 
