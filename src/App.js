@@ -37,7 +37,7 @@ function App() {
           <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
           <Route path="blogs" element={<Blogs />} />
           <Route path="business" element={<Business />} />
-          <Route path="carbon_steel" element={<Products />} />
+          <Route path="pellet" element={<Products />} />
           <Route path="overview" element={<OverviewPage />} />
           <Route path="companyoverview" element={<Companyoverview />} />
           <Route path="ContactPage" element={<ContactPage />} />
