@@ -1,7 +1,8 @@
 import { useState } from "react";
-import steel from "../assets/steel.jpg";
-import aluminium from "../assets/aluminium.jpg";
-import power from "../assets/power.jpeg";
+import steel from "../assets/b1.jpg";
+import aluminium from "../assets/b2.jpg";
+import power from "../assets/b3.jpg";
+
 const IndustrialCards = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
 
@@ -10,39 +11,36 @@ const IndustrialCards = () => {
       id: 1,
       title: "Steel",
       description:
-        "High-quality steel manufacturing and processing solutions for construction, automotive, and industrial applications with superior strength and durability.",
-      image:
-        "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=500&h=400&fit=crop",
-
+        "We possess a well-diversified product portfolio comprising Ferro Alloys, Sponge Iron, Billet, TMT, Structural, Pipes, and Pellets.",
+      image: steel,
       bgGradient: "from-gray-900/10 via-gray-900/30 to-gray-900/60",
     },
     {
       id: 2,
       title: "Aluminium",
       description:
-        "Lightweight aluminium solutions for aerospace, transportation, and architectural projects with excellent thermal conductivity and environmental resistance.",
-      image:
-        "https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?w=500&h=400&fit=crop",
+        "Aluminium foil for packaging has economic, environmental and social benefits. We are setting up a foil rolling mill in West Bengal with 0.04MTPA capacity.",
+      image: aluminium,
       bgGradient: "from-gray-900/10 via-gray-900/30 to-gray-900/60",
     },
     {
       id: 3,
       title: "Energy",
       description:
-        "Sustainable energy solutions and renewable power systems including solar, wind, and hybrid technologies for reliable and eco-friendly power generation.",
-      image:
-        "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=500&h=400&fit=crop",
+        "Our plants generate over 200MW of captive power using waste heat and eco-friendly sources like char gas and pollution dust from sponge iron units.",
+      image: power,
       bgGradient: "from-gray-900/10 via-gray-900/30 to-gray-900/60",
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-300 py-10 px-5 font-inter">
-      <span className="text-white text-4xl ml-7">Business </span>
-      {/* Container - Adjust max-width to control overall layout width */}
-      <div className="max-w-6xl mx-auto pt-9">
-        {/* Cards Wrapper - Adjust gap to control spacing between cards */}
-        <div className="flex flex-wrap justify-center gap-8 mb-10">
+    <div className="min-h-screen bg-gray-300 py-12 px-5 font-inter">
+      <h2 className="text-gray-800 text-4xl font-semibold ml-7 mb-8">
+        Business Areas
+      </h2>
+
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-wrap justify-center gap-8">
           {cardsData.map((card) => (
             <div
               key={card.id}
@@ -55,15 +53,16 @@ const IndustrialCards = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Background Image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${card.image})` }}
+              <img
+                src={card.image}
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover"
               />
 
-              {/* Gradient Overlay for better text readability */}
+              {/* Overlay Gradient */}
               <div
-                className={`absolute inset-0 bg-gradient-to-b ${card.bgGradient}`}
-              />
+                className={`absolute inset-0 bg-gradient-to-t ${card.bgGradient} z-0`}
+              ></div>
 
               {/* Content */}
               <div
@@ -74,7 +73,7 @@ const IndustrialCards = () => {
                   ${hoveredCard === card.id ? "bg-white/98" : ""}
                 `}
               >
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 uppercase tracking-wide">
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 uppercase">
                   {card.title}
                 </h3>
                 <p
@@ -94,16 +93,7 @@ const IndustrialCards = () => {
 
         {/* Explore All Button */}
         <div className="flex justify-center mt-12">
-          <button
-            className="
-            w-58 py-4 px-8
-            bg-gray-700 hover:bg-gray-900 
-            text-white font-semibold text-base
-            rounded-lg uppercase tracking-widest
-            transition-all duration-300 ease-in-out
-            hover:transform hover:-translate-y-1 hover:shadow-lg
-          "
-          >
+          <button className="py-3 px-10 bg-gray-800 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300">
             Explore All
           </button>
         </div>

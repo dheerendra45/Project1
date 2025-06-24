@@ -7,7 +7,6 @@ import footer24 from '../assets/footer24.png';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  // Refs to detect view
   const companyRef = useRef(null);
   const linksRef = useRef(null);
   const newsletterRef = useRef(null);
@@ -18,7 +17,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="w-full py-8 sm:py-12 bg-[#CCCCCC] bg-no-repeat bg-bottom bg-cover"
+      className="w-full py-8 sm:py-12 bg-[#CCCCCC] bg-no-repeat bg-bottom bg-cover font-inter font-semibold"
       style={{
         backgroundImage: `url(${footer24})`,
         backgroundBlendMode: 'multiply',
@@ -40,8 +39,7 @@ const Footer = () => {
               <img src={companylogo} alt="Shyam Metalics Logo" className="h-10 sm:h-12" />
             </div>
             <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6">
-              It was popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently works.
+              We are committed to delivering top-quality products and services to our customers, ensuring reliability and excellence.
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-900">Since 2007</h3>
             <p className="text-xs sm:text-sm mt-4 sm:mt-6">
@@ -92,7 +90,7 @@ const Footer = () => {
           >
             <h3 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Newsletter</h3>
             <p className="text-black text-sm sm:text-base mb-4 sm:mb-6">
-              Subscribe for the latest news. Stay updated on the latest trends industrie.
+              Subscribe to receive updates, special offers, and insights directly to your inbox.
             </p>
             <div className="flex flex-wrap sm:flex-nowrap gap-2 sm:gap-0">
               <input
