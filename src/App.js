@@ -27,6 +27,9 @@ import AwardsAndAchievements from './Pages/awards&achievements';
 
 import Seltiger from './Pages/Seltiger';
 import SpongeIron from './Pages/Spongeiron';
+import StructuralSteel from './Pages/StructuralSteel.jsx';
+import TMTBars from './Pages/TMT_Bars.jsx';
+import WireRods from './Pages/WireRods.jsx';
 
 function App() {
   return (
@@ -59,7 +62,9 @@ function App() {
   <Route path="lifeshyam" element={<Lifeshyam />} />
   <Route path="seltiger" element={<Seltiger />} />
   <Route path="sponge_iron" element={<SpongeIron />} />
-
+  <Route path="structural_steel" element={<StructuralSteel />} />
+  <Route path="tmt_bars" element={<TMTBars />} />
+  <Route path="wire_rods" element={<WireRods />} />
    
    
   </Route>
