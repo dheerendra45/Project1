@@ -90,7 +90,7 @@ const Navbar = () => {
                     { name: 'Pellet', href: '/pellet' },
                     { name: 'Sponge Iron', href: '/sponge_iron' },
                     { name: 'Pig Iron', href: '/pig_iron' },
-                    { name: 'Billet', href: '/billet' }
+                    { name: 'Billet', href: '/billets' }
                   ]
                 },
                 { 
