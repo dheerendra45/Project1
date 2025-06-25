@@ -13,21 +13,21 @@ function MissionVisionValues() {
       icon: VisionIcon,
       title: 'Our Vision',
       description: 'We\'re engineering the future of steel through smarter processes, stronger partnerships, and seizing every opportunity to raise the bar for quality and sustainability worldwide.',
-      image: SteelFactoryImage,
+      // image: SteelFactoryImage,
       direction: 'left'
     },
     {
       icon: MissionIcon,
       title: 'Our Mission',
       description: 'We Shri. M. P. Agarwal’s values into action—efficiency, sustainability, and dynamic management to world-class steel solutions for a stronger India.',
-      image: HardhatImage,
+      // image: HardhatImage,
       direction: 'up'
     },
     {
       icon: ValuesIcon,
       title: 'Our Values',
       description: 'Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence',
-      image: WorkerImage,
+      // image: WorkerImage,
       direction: 'right'
     }
   ];
@@ -237,7 +237,7 @@ function MissionVisionValues() {
                 />
               </div>
 
-              <motion.div
+              {/* <motion.div
                 className="relative h-72 overflow-hidden"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -260,8 +260,8 @@ function MissionVisionValues() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                   whileHover={imageHover}
-                />
-              </motion.div>
+                /> */}
+              {/* </motion.div> */}
             </motion.div>
           ))}
         </motion.div>

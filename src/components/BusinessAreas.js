@@ -14,13 +14,33 @@ export default function BusinessAreas() {
     "Black Round Bar", "Bright Bar", "Flats/Patta", "Flat Rolled Products"
   ];
 
+  const productDescriptions = [
+    "High-quality iron ore pellets for steel production",
+    "Direct reduced iron used as raw material in steelmaking",
+    "Crude iron obtained from smelting iron ore",
+    "Semi-finished casting product for rolling mills",
+    "Versatile steel sections for construction projects",
+    "Thermo-mechanically treated bars for reinforced concrete",
+    "Long steel product used for wire drawing",
+    "Steel tubes for structural and mechanical applications",
+    "Pre-painted steel sheets with decorative finishes",
+    "High-quality stainless steel intermediate product",
+    "Stainless steel rods for wire production",
+    "Fine stainless steel wires for various applications",
+    "Unpolished steel bars for machining purposes",
+    "Precision-ground steel bars with smooth finish",
+    "Flat steel products for fabrication and construction",
+    "Rolled steel sheets and plates for industrial use"
+  ];
+
   // Repeat product data to always have 16 items
   const generateImageSet = () => {
     const items = [];
     for (let i = 0; i < 16; i++) {
       const image = originalImages[i % originalImages.length];
       const name = productNames[i % productNames.length];
-      items.push({ image, name });
+      const description = productDescriptions[i % productDescriptions.length];
+      items.push({ image, name, description });
     }
     return items;
   };
@@ -163,7 +183,7 @@ export default function BusinessAreas() {
               <motion.div
                 key={`image-${index}-${currentSetIndex}`}
                 variants={imageVariants}
-                className="relative overflow-hidden rounded-xl group cursor-pointer"
+                className="relative overflow-hidden rounded-xl group cursor-pointer h-full"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
                 whileHover={{ scale: 1.02 }}
@@ -175,14 +195,28 @@ export default function BusinessAreas() {
                   className="rounded-xl shadow-lg w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Product name */}
-                <div className="absolute bottom-3 left-3 text-xs font-semibold bg-black/60 px-3 py-1 rounded-md backdrop-blur-sm">
-                  {item.name}
+                {/* Full-height orange gradient overlay */}
+                <div className="absolute inset-0">
+                  <div 
+                    className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-orange-500 to-orange-500/0 opacity-80"
+                  />
+                </div>
+
+                {/* Product name and description - always visible */}
+                <div className="absolute inset-0 flex flex-col justify-end p-4">
+                  <div className="z-10">
+                    <h3 className="text-white font-bold text-lg mb-1">
+                      {item.name}
+                    </h3>
+                    <p className="text-white/90 text-sm">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Next Button */}
                 <motion.button
-                  className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-orange-500 text-white text-lg flex items-center justify-center shadow-lg hover:bg-orange-600 transition-all duration-300"
+                  className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-orange-500 text-white text-lg flex items-center justify-center shadow-lg hover:bg-orange-600 transition-all duration-300 z-20"
                   onClick={nextSlide}
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
@@ -194,7 +228,7 @@ export default function BusinessAreas() {
                 <AnimatePresence>
                   {hoveredImageIndex === index && (
                     <motion.div
-                      className="absolute inset-0 bg-orange-500/20 rounded-xl"
+                      className="absolute inset-0 bg-black/20 rounded-xl"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -216,7 +250,7 @@ export default function BusinessAreas() {
         >
           <motion.button
             onClick={prevSlide}
-            className="px-8 py-3 bg-white/20 hover:bg-white/30 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold"
+            className="px-8 py-3 bg-gray-700 hover:bg-gray-700 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
