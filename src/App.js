@@ -33,6 +33,7 @@ import WireRods from './Pages/WireRods.jsx';
 import StainlessSteelBillets from './Pages/StainlessSteelBillets.jsx';
 import SSWireRod from './Pages/SSWireRod.jsx';
 import ColorCoatedSheets from './Pages/ColorCoatedSheets.jsx';
+import Billets from './Pages/billets.js';
 
 function App() {
   return (
@@ -71,6 +72,8 @@ function App() {
    <Route path="stainless_steel_billets" element={<StainlessSteelBillets />} />
    <Route path="SS_Wire_Rod" element={<SSWireRod />} />
    <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
+
+      <Route path="billets" element={<Billets />} />
    
   </Route>
 

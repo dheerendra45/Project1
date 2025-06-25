@@ -97,8 +97,8 @@ const Navbar = () => {
                   name: 'Finished Products', 
                   items: [
                     { name: 'Structural Steel', href: '/structural_steel' },
-                    { name: 'TMT Bar', href: '/tmt_bar' },
-                    { name: 'Wire Rod', href: '/wire_rod' },
+                    { name: 'TMT Bar', href: '/tmt_bars' },
+                    { name: 'Wire Rod', href: '/wire_rods' },
                     { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
                   ]
                 }
@@ -108,9 +108,9 @@ const Navbar = () => {
               name: 'Cold Rolled',
               href: '#',
               categories: [
-                { name: 'Intermediate Products', items: [{ name: 'Color Coated Sheets', href: '#' }] },
-                { name: 'Finished Products', items: [{ name: 'Stainless Steel Billets', href: '#' }] },
-                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] }
+                { name: 'Intermediate Products', items: [{ name: 'Color Coated Sheets', href: '/color_coated_sheets' }] },
+                { name: 'Finished Products', items: [{ name: 'Stainless Steel Billets', href: '/stainless_steel_billets' }] },
+                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '/SS_Wire_Rod' }] }
               ]
             },
             {
