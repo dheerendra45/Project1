@@ -1,435 +1,158 @@
 import React, { useState, useEffect, useRef } from "react";
-import herobg from '../../assets/Testimonials/herobg.jpg'
-import companylogo from '../../assets/products/image28.png'
-import { Link } from "react-router-dom";
+import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import herobg from '../../assets/Testimonials/herobg.jpg';
+import { FiChevronDown } from "react-icons/fi";
 
 const Hero = () => {
-  const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeBusinessSub, setActiveBusinessSub] = useState(null);
-  const [activeNestedSub, setActiveNestedSub] = useState(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
-  
-  // Timeout refs for delayed closing
-  const hoverTimeoutRef = useRef(null);
-  const businessSubTimeoutRef = useRef(null);
-  const nestedSubTimeoutRef = useRef(null);
-  const dropdownRef = useRef(null);
-  const heroRef = useRef(null);
-  const animationRef = useRef(null);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    threshold: 0.1,
+    triggerOnce: false
+  });
 
-  const navItems = [
-    { 
-      title: 'ABOUT US', 
-      hasDropdown: true,
-      dropdownItems: [
-         { name: 'Company Overview', href: '/companyoverview' },
-        { name: 'Leadership', href: '/leadership' },
-         { name: 'Awards and Achievements', href: '/awardsAndachievements' },
-         { name: "Manufacturing Unit", href: "/manufacturing" },
-        { name: "Testimonials", href: "/testimonials" },
-              { name: 'News and Events', href: '/newsandevents' }
-      ]
-    },
-    { 
-      title: 'BUSINESSES', 
-      hasDropdown: true,
-      dropdownItems: [
-        {
-          name: 'Business Overview',
-          href: '/business',
-        },
-        {
-          name: 'Steel',
-          href: '#',
-          subItems: [
-            {
-              name: 'Carbon Steel',
-              href: '/carbon_steel',
-            },
-            {
-              name: 'Cold Rolled',
-              href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: ['Color Coated Sheets'] },
-                { name: 'Finished Products', items: ['Stainless Steel Billets'] },
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] }
-              ]
-            },
-            {
-              name: 'Stainless Steel',
-              href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: ['SS Wire Rod'] },
-                { name: 'Finished Products', items: ['Black Round Bar', 'Bright Bar', 'Flats/Patta'] }
-              ]
-            },
-            { name: 'Specialty Alloys', href: '#' }
-          ]
-        },
-        {
-         name: 'Energy & Others',
-          href: '#',
-          subItems: [
-            { name: 'Captive Power', href: '#' },
-            { name: 'Renewable Power', href: '#' }
-          ]
-        },
-        {
-          name: 'Aluminium',
-          href: '#',
-          subItems: [
-            {
-              name: 'Intermediate Products',
-              href: '#',
-              categories: [
-                { name: 'Flat Rolled Products', items: ['Aluminium Foil'] }
-              ]
-            },
-            {
-              name: 'Finished Products',
-              href: '#',
-              categories: [
-                { name: 'Battery Foil', items: [] }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    { 
-      title: 'INVESTORS', 
-      hasDropdown: true,
-      dropdownItems: [
-        {
-          name: 'Financials & Disclosures',
-          href: '#',
-          subItems: [
-            { name: 'Financial Performance', href: '#' },
-            { name: 'Financial Statements', href: '#' },
-            { name: 'Stock Performance Data', href: '#' },
-            { name: 'Regulatory Disclosures', href: '#' },
-            { name: 'Company Disclosures (SEBI LODR)', href: '#' },
-            { name: 'Credit Rating', href: '#' }
-          ]
-        },
-        {
-          name: 'Corporate Governance',
-          href: '#',
-          subItems: [
-            { name: 'Policies', href: '#' },
-            { name: 'Corporate Governance', href: '#' },
-            { name: 'Familiarization Program for Independent Directors', href: '#' }
-          ]
-        },
-        {
-          name: 'Shareholder Information',
-          href: '#',
-          subItems: [
-            { name: 'AGM', href: '#' },
-            { name: 'Company Notices', href: '#' },
-            { name: 'Stock Exchange Intimations', href: '#' },
-            { name: 'Shareholder Information', href: '#' }
-          ]
-        },
-        {
-          name: 'Investor Communication',
-          href: '#',
-          subItems: [
-            { name: 'Investor Presentations (Quarterly & Corporate)', href: '#' },
-            { name: 'Press Releases & Announcements (Quarterly + Other Key Updates)', href: '#' },
-            { name: 'Investor Contact (Only email ID, no phone number)', href: '#' }
-          ]
-        },
-        {
-          name: 'Investor Helpdesk',
-          href: '#',
-          subItems: []
-        }
-      ]
-    },
-    { 
-      title: 'COMMUNITY', 
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'CSR', href: '/csr' },
-        { name: 'Knowledge Hub', href: '/knowledgehub' },
-       { name: 'Blogs', href: '/blogs' },
-        { name: 'FAQ', href: '/faq-Page' }
-      ]
-    },
-    { 
-      title: 'SUSTAINABILITY', 
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'ESG Profile', href: '/esg_profile' },
-      { name: 'Environment Compliance', href: '/environmentcompliance' }
-      ]
-    },
-    { 
-      title: 'CAREERS', 
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'Life at Shyam', href: '/lifeshyam' },
-         { name: 'Job Opportunity', href: '/jobopportunity' },
-        { name: 'Current Opening', href: '/currentopening' }
-      ]
-    },
-    { 
-      title: 'CONTACT US', 
-      hasDropdown: true,
-      dropdownItems: [
-        { name: 'Contact Form', href: '/ContactPage' },
-        { name: 'Company Location', href: '/LocationPage' }
-      ]
-    },
-  ];
-
-  // Clear all timeouts
-  const clearAllTimeouts = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
-    }
-    if (businessSubTimeoutRef.current) {
-      clearTimeout(businessSubTimeoutRef.current);
-      businessSubTimeoutRef.current = null;
-    }
-    if (nestedSubTimeoutRef.current) {
-      clearTimeout(nestedSubTimeoutRef.current);
-      nestedSubTimeoutRef.current = null;
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
     }
   };
 
-  const handleMouseEnter = (index) => {
-    clearAllTimeouts();
-    setActiveDropdown(index);
-  };
-
-  const handleMouseLeave = () => {
-    clearAllTimeouts();
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleDropdownEnter = () => {
-    clearAllTimeouts();
-  };
-
-  const handleDropdownLeave = () => {
-    clearAllTimeouts();
-    hoverTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleBusinessSubEnter = (businessIndex) => {
-    clearTimeout(businessSubTimeoutRef.current);
-    clearTimeout(nestedSubTimeoutRef.current);
-    setActiveBusinessSub(businessIndex);
-    setActiveNestedSub(null);
-  };
-
-  const handleBusinessSubLeave = () => {
-    businessSubTimeoutRef.current = setTimeout(() => {
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleNestedSubEnter = (nestedIndex) => {
-    clearTimeout(nestedSubTimeoutRef.current);
-    setActiveNestedSub(nestedIndex);
-  };
-
-  const handleNestedSubLeave = () => {
-    nestedSubTimeoutRef.current = setTimeout(() => {
-      setActiveNestedSub(null);
-    }, 150);
-  };
-
-  const handleClickOutside = (e) => {
-    if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-      clearAllTimeouts();
-      setActiveDropdown(null);
-      setActiveBusinessSub(null);
-      setActiveNestedSub(null);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
     }
   };
 
-  const handleNavigation = (href) => {
-    if (href && href !== '#') {
-      window.location.href = href;
-    }
-  };
-
-  // Animation handler
-  const animateOnScroll = () => {
-    if (!heroRef.current) return;
-    
-    const heroElement = heroRef.current;
-    const rect = heroElement.getBoundingClientRect();
-    const isVisible = rect.top <= window.innerHeight && rect.bottom >= 0;
-    
-    if (isVisible) {
-      const scrollPercent = (window.scrollY - rect.top) / window.innerHeight;
-      setScrollPosition(scrollPercent);
-      
-      // Reset animation when scrolled out of view
-      if (scrollPercent > 1.5) {
-        setScrollPosition(0);
+  const gradientVariants = {
+    hidden: { width: 0 },
+    visible: {
+      width: "100%",
+      transition: {
+        duration: 1,
+        ease: "easeInOut"
       }
     }
   };
 
   useEffect(() => {
-    document.addEventListener('click', handleClickOutside);
-    window.addEventListener('scroll', animateOnScroll);
-    
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-      window.removeEventListener('scroll', animateOnScroll);
-      clearAllTimeouts();
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
-    };
-  }, []);
-
-  // Floating particles animation
-  const renderFloatingParticles = () => {
-    const particles = [];
-    const particleCount = 30;
-    
-    for (let i = 0; i < particleCount; i++) {
-      const size = Math.random() * 5 + 2;
-      const posX = Math.random() * 100;
-      const posY = Math.random() * 100;
-      const delay = Math.random() * 5;
-      const duration = 10 + Math.random() * 20;
-      
-      particles.push(
-        <div
-          key={i}
-          className="absolute rounded-full bg-white/20"
-          style={{
-            width: `${size}px`,
-            height: `${size}px`,
-            left: `${posX}%`,
-            top: `${posY}%`,
-            animation: `float ${duration}s ease-in-out ${delay}s infinite`,
-            opacity: 0.7,
-            transform: `translateY(${Math.sin(scrollPosition * Math.PI * 2) * 20}px)`
-          }}
-        />
-      );
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
-    
-    return particles;
-  };
-
-  // Animated underline effect for navigation
-  const renderAnimatedUnderline = () => {
-    return (
-      <div className="absolute bottom-0 left-0 h-0.5 bg-orange-500 transition-all duration-300 ease-out"
-        style={{
-          width: `${Math.abs(Math.sin(scrollPosition * Math.PI)) * 100}%`,
-          left: `${Math.abs(Math.cos(scrollPosition * Math.PI)) * 50}%`
-        }}
-      />
-    );
-  };
+  }, [controls, inView]);
 
   return (
-    <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden relative" ref={heroRef}>
-      {/* Floating particles background */}
-      <div className="absolute inset-0 overflow-hidden z-10 pointer-events-none">
-        {renderFloatingParticles()}
-      </div>
-      
-      
-
-    
-
-      {/* Hero Section */}
-      <div className="relative h-full -mt-[65px]">
-        {/* Background Image */}
-        <img
+    <div
+      ref={ref}
+      className="h-screen md:h-[815px] bg-gray-100 mx-auto overflow-hidden relative -mt-[65px]"
+    >
+      {/* Background Image */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="absolute inset-0 w-full h-full overflow-hidden"
+      >
+        <motion.img
           src={herobg}
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          alt="Testimonials Background"
+          className="absolute inset-0 w-full h-full object-cover"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
         />
+      </motion.div>
 
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
-        
-        {/* Content */}
-        <div className="relative z-20 px-[114px] pt-[275px] text-white">
-          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6 animate-float">
-            Testimonials
-          </h1>
-          <div className="text-sm flex items-center gap-4 text-white/80">
-            <span className="hover:text-orange-400 transition-colors duration-300">Home</span>
-            <span>&gt;</span>
-            <span className="hover:text-orange-400 transition-colors duration-300">Testimonials</span>
-          </div>
-        </div>
-        
-        {/* Animated divider */}
-       
+      {/* Overlay */}
+      <motion.div 
+        className="absolute inset-0 bg-black/40"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.4 }}
+        transition={{ duration: 1 }}
+      />
+      
+      {/* Floating particles animation */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full bg-white/10"
+          style={{
+            width: Math.random() * 10 + 5 + 'px',
+            height: Math.random() * 10 + 5 + 'px',
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, (Math.random() - 0.5) * 100],
+            x: [0, (Math.random() - 0.5) * 50],
+            opacity: [0.5, 0.8, 0.5],
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
+        />
+      ))}
 
-      
-      </div>
-      
-      {/* CSS for animations */}
-      <style jsx>{`
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0) translateX(0);
-          }
-          50% {
-            transform: translateY(-20px) translateX(10px);
-          }
-        }
+      {/* Content */}
+      <motion.div
+        className="px-6 md:px-12 lg:px-[114px] pt-[150px] md:pt-[200px] lg:pt-[275px] text-white relative z-20"
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <motion.h1 
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
+          variants={itemVariants}
+        >
+          Testimonials
+        </motion.h1>
         
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+        <motion.div
+          variants={gradientVariants}
+          className="h-1 rounded mb-6 sm:mb-8"
+          style={{ background: "linear-gradient(to right, #FF6B00, white)" }}
+        />
         
-        @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateX(10px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-        
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-        
-        .animate-fadeIn {
-          animation: fadeIn 0.3s ease-out forwards;
-        }
-        
-        .animate-slideIn {
-          animation: slideIn 0.2s ease-out forwards;
-        }
-      `}</style>
+        <motion.div 
+          className="flex space-x-1 font-space-grotesk font-medium text-sm md:text-[16px] leading-[1.7]"
+          variants={itemVariants}
+        >
+          <span className="hover:text-orange-400 transition-colors duration-300">Home</span>
+          <span>&gt;</span>
+          <span className="hover:text-orange-400 transition-colors duration-300">Testimonials</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Scroll indicator for mobile */}
+      <motion.div
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden"
+        animate={{
+          y: [0, 10, 0],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "loop",
+        }}
+      >
+        <FiChevronDown size={32} />
+      </motion.div>
     </div>
   );
 };

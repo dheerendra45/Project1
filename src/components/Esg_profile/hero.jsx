@@ -127,7 +127,7 @@ export default function Hero() {
         <motion.div
           variants={gradientVariants}
           className="h-1 rounded mb-6 sm:mb-8"
-          style={{ background: "linear-gradient(to right, orange, white)" }}
+          style={{ background: "linear-gradient(to right, #FF6B00, white)" }}
         />
         
         <motion.a 

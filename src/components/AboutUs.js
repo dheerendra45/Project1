@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import abt1img from '../assets/abt1.jpg'
+import abt1img from '../assets/abt1.jpg';
 import a1 from '../assets/aboutUs.png';
 import a2 from "../assets/1.png";
 import a3 from "../assets/2.png";
@@ -234,19 +234,19 @@ export default function AboutUs() {
       clearTimeout(pauseTimeoutRef.current);
     }
     
-    // Set a new timeout to resume auto-scrolling after 5 seconds
+    // Set a new timeout to resume auto-scrolling after 10 seconds
     pauseTimeoutRef.current = setTimeout(() => {
       setIsPaused(false);
-    }, 5000);
+    }, 10000);
   };
 
-  // Auto-cycle through timeline items every 10 seconds when not hovering or paused
+  // Auto-cycle through timeline items every 3 seconds when not hovering or paused
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isHovering && !isPaused) {
         setActiveIndex((prev) => (prev + 1) % galleryImages.length);
       }
-    }, 10000);
+    }, 3000);
     
     return () => {
       clearInterval(interval);

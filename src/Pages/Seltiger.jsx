@@ -14,7 +14,7 @@ export default function Seltiger() {
       <Hero />
       <Pillar />
       <Products />
-      <Tmtbars />
+      {/* <Tmtbars /> */}
       <Applications />
       <WhyChooseUs />
       <Joinourcommunity />
