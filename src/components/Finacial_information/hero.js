@@ -4,7 +4,7 @@ import { motion, useAnimation, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import a1 from "../../assets/p1/logo.png";
-import a2 from "../../assets/p1/sustainability.png";
+import a2 from "../../assets/f1.png";
 import { ChevronDown, Search, Menu, X } from "lucide-react";
 
 export default function Hero() {
