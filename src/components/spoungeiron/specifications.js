@@ -40,7 +40,7 @@ export default function Specification() {
         <div className="overflow-x-auto mb-10">
           <table className="min-w-full border border-gray-300 text-left text-sm">
             <thead>
-              <tr className="bg-gray-100">
+              <tr className="bg-orange-500 text-white">
                 <th className="border border-gray-300 px-4 py-2">Constituent</th>
                 <th className="border border-gray-300 px-4 py-2">Grade 1</th>
               </tr>
@@ -79,16 +79,29 @@ export default function Specification() {
         </div>
 
         <h3 className="text-2xl font-semibold mb-4">Features</h3>
-        <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
-          <li>Very good reducibility because of high porosity (25–30%)</li>
-          <li>Spherical shape and uniform size give very good bed permeability</li>
+        <ul className="list-disc list-inside space-y-2 text-sm sm:text-base mb-10">
+          <li>Exceptional reducibility due to its high porosity (25–30%)</li>
+          <li>Spherical shape and consistent size ensure excellent bed permeability</li>
           <li>High strength (150–200 kg) or more for acid pellets</li>
-          <li>Heat consumption is much less than that of sintering</li>
-          <li>High iron content and uniform chemical composition, hence lower flux and fuel requirement in the furnace</li>
-          <li>Low FeO</li>
-          <li>Easy handling</li>
-          <li>Its Carbon & FeO is very excellent. Steel mills who are using DRI for reducing the carbon will benefit from our pellet sponge's low FeO, which helps in better carbon control</li>
-          <li>Wearing of inner lining will not take place, as in the pellet making we are not using lime</li>
+          <li>Heat consumption is significantly lower compared to sintering</li>
+          <li>Elevated iron content and consistent chemical composition lead to reduced flux and fuel needs in the furnace</li>
+          <li>Low FeO levels</li>
+          <li>Simple to handle</li>
+          <li>Outstanding carbon and FeO levels benefit carbon control in DRI-based steel mills</li>
+          <li>Minimized inner lining wear due to lime-free pellet production</li>
+        </ul>
+
+        <h3 className="text-2xl font-semibold mb-4">Why Choose Us</h3>
+        <ul className="list-disc list-inside space-y-2 text-sm sm:text-base">
+          <li>
+            <span className="font-medium">High-Quality & Consistency:</span> Premium-grade sponge iron with 82–86% metallization and low impurity levels, ensuring efficient steel production.
+          </li>
+          <li>
+            <span className="font-medium">Cost-Efficient Alternative:</span> Reduces reliance on costly scrap metal, delivering better yield and lower melting costs in EAF/IF (Electric Arc Furnace / Induction Furnace) steelmaking.
+          </li>
+          <li>
+            <span className="font-medium">Sustainable & Reliable Supply:</span> Eco-friendly production with energy-efficient processes, backed by Shyam Metalics’ strong logistics network for timely deliveries.
+          </li>
         </ul>
       </motion.div>
     </div>

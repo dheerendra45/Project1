@@ -5,6 +5,7 @@ const Specifications = () => {
     <div className="py-10 px-4 sm:px-8 lg:px-10">
       <h1 className="text-3xl font-bold text-center mb-6">Product Specification</h1>
 
+      {/* Chemical Composition Table */}
       <div className="overflow-x-auto mb-10">
         <table className="min-w-full border border-gray-300 text-left text-sm">
           <thead>
@@ -44,6 +45,61 @@ const Specifications = () => {
             </tr>
           </tbody>
         </table>
+      </div>
+
+      {/* Features Section */}
+      <div className="space-y-6 px-2 sm:px-6 lg:px-12">
+        <h2 className="text-2xl font-semibold mb-2">Features</h2>
+        
+        <div>
+          <h3 className="font-semibold text-lg mb-1">1. High-Quality Steel Composition</h3>
+          <p className="text-sm text-gray-700">
+            Manufactured from primary steel (utilizing EAF/IF methods) with top-grade sponge iron/scrap.<br />
+            Low impurity levels (S, P ≤ 0.045%) ensuring outstanding weldability and ductility.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-1">2. Precise Dimensional Accuracy</h3>
+          <p className="text-sm text-gray-700">
+            Available in standard sizes ranging from 100x100mm to 130x130mm with length adjustments (6-12m).<br />
+            Tight dimensional tolerance (±0.5mm) supports seamless rolling mill operations.
+          </p>
+        </div>
+
+        <div>
+          <h3 className="font-semibold text-lg mb-1">3. Superior Surface Finish</h3>
+          <p className="text-sm text-gray-700">
+            Free of scale, with minimal surface defects (no cracks or laps).<br />
+            Consistent cross-section maintained throughout entire length.
+          </p>
+        </div>
+
+        {/* Why Choose Section */}
+        <h2 className="text-2xl font-semibold mt-8 mb-2">Why Choose Shyam Metalics Billets?</h2>
+
+        <div className="space-y-4">
+          <div>
+            <span className="font-bold text-green-600">✅ Consistent Quality – Supported by ISO 9001 Certification</span>
+            <p className="text-sm text-gray-700">
+              Our billets are produced using state-of-the-art continuous casting technology and go through thorough quality control assessments at every stage. With ISO 9001 certification, we guarantee uniform chemical composition, surface finish, and mechanical properties, making them suitable for essential structural and industrial uses.
+            </p>
+          </div>
+
+          <div>
+            <span className="font-bold text-green-600">✅ Wide Range of Sizes for Diverse Applications</span>
+            <p className="text-sm text-gray-700">
+              Shyam Metalics provides an extensive selection of billet sizes and grades to meet various industry requirements — from construction and automotive to engineering and manufacturing. This versatility enables clients to find the ideal match for downstream processes like rolling, forging, and extrusion.
+            </p>
+          </div>
+
+          <div>
+            <span className="font-bold text-green-600">✅ Dependable Supply Chain with Nationwide Logistics</span>
+            <p className="text-sm text-gray-700">
+              With strategically positioned integrated steel plants and a strong logistics network throughout India, we guarantee prompt and efficient delivery of billets, no matter the order size or location. Our reliable supply chain ensures uninterrupted operations for our partners and clients across the country.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

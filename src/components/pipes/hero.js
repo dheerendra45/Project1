@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import herobg from '../../assets/products/herobg.png'
+import herobg from '../../assets/Business/s3.jpg'
 import companylogo from '../../assets/products/image28.png'
 
 
@@ -58,7 +58,7 @@ const Hero = () => {
         
         {/* Content */}
         <div className="relative z-20 px-[114px] pt-[275px] text-white">
-          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Carbon Steel</h1>
+          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Pipes and  Hollow Sections</h1>
           <div className="text-sm flex items-center gap-4 text-white/80">
             <span>Home</span>
             <span>&gt;</span>

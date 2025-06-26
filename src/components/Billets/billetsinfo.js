@@ -36,24 +36,32 @@ const BilletsInfo = () => {
             variants={fadeInUp}
           >
             <div className="flex items-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-900">Billets Info</h2>
+              <h2 className="text-4xl font-bold text-gray-900">Billets: The Backbone of Steel</h2>
               <div className="w-3 h-3 bg-orange-500 ml-2"></div>
             </div>
 
-            <motion.p
+            <motion.div
               className="text-gray-700 leading-relaxed space-y-6"
               variants={fadeInUp}
             >
-              A billet is typically cast to a rectangular or square cross section compatible with secondary processing.
-              <br /><br />
-              Billets are created directly through continuous casting, extrusion or indirectly through hot rolling an ingot or bloom.
-              <br /><br />
-              Billets are used as raw material for the manufacture of TMT Bars and structural products. Apart from using Billets as input for our finished products, we also sell them as intermediate product, primarily in the states of Chhattisgarh, Uttar Pradesh, Punjab, Rajasthan and Maharashtra.
-              <br /><br />
-              We also export billets to Nepal and Bangladesh.
-              <br /><br />
-              <strong>Sizes:</strong> 100 x 100, 125 x 125, 150 x 150, 160 x 160.
-            </motion.p>
+              <p>
+              
+                <br />
+                Produced at the forefront of innovation, the steel billets from Shyam Metalics mark the initial phase of converting raw power into engineered superiority. These semi-finished steel products are meticulously manufactured in our advanced facilities, providing essential support for high-performance TMT bars, wire rods, and structural uses.
+              </p>
+              <p>
+                A billet is usually formed with a rectangular or square cross-section that is suitable for subsequent processing. Steel billets are produced either directly through methods like continuous casting or extrusion, or indirectly by hot rolling an ingot or bloom.
+              </p>
+              <p>
+                They serve as raw materials for manufacturing TMT Bars and structural products. In addition to using billets as input for our final products, we also market them as an intermediate goods, mainly in the states of Chhattisgarh, Uttar Pradesh, Punjab, Rajasthan, and Maharashtra. We also export billets to Nepal and Bangladesh.
+              </p>
+              <p>
+                Our product line also includes stainless steel billet options to cater to specific industrial requirements, and we ensure competitive steel billet price structures across domestic and international markets.
+              </p>
+              <p>
+                <strong>Sizes:</strong> 100 x 100, 125 x 125, 150 x 150, 160 x 160.
+              </p>
+            </motion.div>
 
             <motion.button
               variants={fadeInUp}

@@ -1,22 +1,19 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import herobg from '../../assets/products/herobg.png'
-import companylogo from '../../assets/products/image28.png'
-
+import herobg from "../../assets/products/herobg.png";
+import companylogo from "../../assets/products/image28.png";
 
 const Hero = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
-  
+
   // Timeout refs for delayed closing
   const hoverTimeoutRef = useRef(null);
   const businessSubTimeoutRef = useRef(null);
   const nestedSubTimeoutRef = useRef(null);
   const dropdownRef = useRef(null);
-
- 
 
   // Clear all timeouts
   const clearAllTimeouts = () => {
@@ -37,16 +34,13 @@ const Hero = () => {
   return (
     <div className="h-[815px] bg-gray-100 mx-auto overflow-hidden">
       {/* Top Navbar */}
-      
+
       {/* Middle Navbar */}
-    
 
       {/* Hero Section */}
       <div className="relative h-full -mt-[65px]">
         {/* Background Image */}
-        <div 
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
-        />
+        <div className="absolute inset-0 w-full h-full bg-cover bg-center" />
         <img
           src={herobg}
           alt="Hero Background"
@@ -55,10 +49,12 @@ const Hero = () => {
 
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/40"></div>
-        
+
         {/* Content */}
         <div className="relative z-20 px-[114px] pt-[275px] text-white">
-          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Carbon Steel</h1>
+          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">
+            Color Coated Sheets
+          </h1>
           <div className="text-sm flex items-center gap-4 text-white/80">
             <span>Home</span>
             <span>&gt;</span>

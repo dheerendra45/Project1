@@ -58,7 +58,7 @@ const Hero = () => {
         
         {/* Content */}
         <div className="relative z-20 px-[114px] pt-[275px] text-white">
-          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Carbon Steel</h1>
+          <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">Billets</h1>
           <div className="text-sm flex items-center gap-4 text-white/80">
             <span>Home</span>
             <span>&gt;</span>

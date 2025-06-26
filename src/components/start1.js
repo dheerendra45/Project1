@@ -136,25 +136,17 @@ const Navbar = () => {
             { name: 'Renewable Power', href: '#' }
           ]
         },
-        {
-  name: 'Aluminium',
+      {
+  name: 'Aluminium Foil',
   href: '#',
   subItems: [
-    {
-      name: 'Flat Rolled Products',
-      items: [
-        { name: 'Aluminium Foil', href: '#' }
-      ]
-    },
-    {
-      name: 'Battery Foil',
-      items: [
-        // Add items here, example:
-        { name: 'Lithium-ion Foil', href: '#' }
-      ]
-    }
+    { name: 'Bare Aluminium Foil', href: '#' },
+    { name: 'SEL Tiger Foil', href: '#' },
+    { name: 'Battery Foil', href: '#' },
+    { name: 'FinStocks', href: '#' }
   ]
 }
+
 
       ]
     },
@@ -398,19 +390,19 @@ const Navbar = () => {
 
             </span>
           </div>
-          <div className="flex items-center gap-6">
+          <div className="flex items-center mr-7">
             <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
               Employee Login 
               <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
-            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
+            {/* <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
               🌐 Global(English) 
               <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </span>
+            </span> */}
           </div>
         </div>
       </div>

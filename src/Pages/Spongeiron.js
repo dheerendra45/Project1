@@ -1,4 +1,5 @@
 
+import RelatedProducts from "../components/pigiron/Related";
 import Certificates from "../components/spoungeiron/certificates";
 import Hero from "../components/spoungeiron/hero";
 import Specification from "../components/spoungeiron/specifications";
@@ -11,6 +12,7 @@ export default function SpongeIron() {
       <SpoungeInfo />
       <Specification />
       <Certificates />
+      <RelatedProducts />
      
     </>
   );
