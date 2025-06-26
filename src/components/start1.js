@@ -68,8 +68,8 @@ const Navbar = () => {
       ]
     },
     
-    { 
-      title: 'BUSINESSES', 
+    {
+      title: 'BUSINESSES',
       hasDropdown: true,
       dropdownItems: [
         {
@@ -83,49 +83,40 @@ const Navbar = () => {
             {
               name: 'Carbon Steel',
               href: '/carbon_steel',
-              categories: [
-                { 
-                  name: 'Intermediate Products', 
-                  items: [
-                    { name: 'Pellet', href: '/pellet' },
-                    { name: 'Sponge Iron', href: '/sponge_iron' },
-                    { name: 'Pig Iron', href: '/pig_iron' },
-                    { name: 'Billet', href: '/billets' }
-                  ]
-                },
-                { 
-                  name: 'Finished Products', 
-                  items: [
-                    { name: 'Structural Steel', href: '/structural_steel' },
-                    { name: 'TMT Bar', href: '/tmt_bars' },
-                    { name: 'Wire Rod', href: '/wire_rods' },
-                    { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
-                  ]
-                }
+              items: [
+                { name: 'Pellet', href: '/pellet' },
+                { name: 'Sponge Iron', href: '/sponge_iron' },
+                { name: 'Pig Iron', href: '/pig_iron' },
+                { name: 'Billet', href: '/billets' },
+                { name: 'Structural Steel', href: '/structural_steel' },
+                { name: 'TMT Bar', href: '/tmt_bars' },
+                { name: 'Wire Rod', href: '/wire_rods' },
+                { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
               ]
             },
             {
               name: 'Cold Rolled',
               href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: [{ name: 'Color Coated Sheets', href: '/color_coated_sheets' }] },
-                { name: 'Finished Products', items: [{ name: 'Stainless Steel Billets', href: '/stainless_steel_billets' }] },
-                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '/SS_Wire_Rod' }] }
+              items: [
+                { name: 'Color Coated Sheets', href: '/color_coated_sheets' },
+                { name: 'Stainless Steel Billets', href: '/stainless_steel_billets' },
+                { name: 'SS Wire Rod', href: '/SS_Wire_Rod' }
               ]
             },
             {
               name: 'Stainless Steel',
               href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] },
-                { name: 'Finished Products', items: [
-                  { name: 'Black Round Bar', href: '#' },
-                  { name: 'Bright Bar', href: '#' },
-                  { name: 'Flats/Patta', href: '#' }
-                ]}
+              items: [
+                { name: 'SS Wire Rod', href: '#' },
+                { name: 'Black Round Bar', href: '#' },
+                { name: 'Bright Bar', href: '#' },
+                { name: 'Flats/Patta', href: '#' }
               ]
             },
-            { name: 'Specialty Alloys', href: '#' }
+            {
+              name: 'Specialty Alloys',
+              href: '#'
+            }
           ]
         },
         {
@@ -136,20 +127,19 @@ const Navbar = () => {
             { name: 'Renewable Power', href: '#' }
           ]
         },
-      {
-  name: 'Aluminium Foil',
-  href: '#',
-  subItems: [
-    { name: 'Bare Aluminium Foil', href: '#' },
-    { name: 'SEL Tiger Foil', href: '#' },
-    { name: 'Battery Foil', href: '#' },
-    { name: 'FinStocks', href: '#' }
-  ]
-}
-
-
+        {
+          name: 'Aluminium Foil',
+          href: '#',
+          subItems: [
+            { name: 'Bare Aluminium Foil', href: '#' },
+            { name: 'SEL Tiger Foil', href: '#' },
+            { name: 'Battery Foil', href: '#' },
+            { name: 'FinStocks', href: '#' }
+          ]
+        }
       ]
     },
+
     { 
       title: '🐅seltiger', 
       hasDropdown: false,
@@ -168,7 +158,7 @@ const Navbar = () => {
             { name: 'Stock Performance Data', href: '#' },
             { name: 'Regulatory Disclosures', href: '#' },
             { name: 'Company Disclosures (SEBI LODR)', href: '#' },
-            { name: 'Credit Ratin g', href: '#' }
+            { name: 'Credit Rating', href: '#' }
           ]
         },
         {
@@ -213,7 +203,7 @@ const Navbar = () => {
       dropdownItems: [
         { name: 'CSR', href: '/csr' },
         { name: 'Knowledge Hub', href: '/knowledgehub' },
-       { name: 'Blogs', href: '/blogs' },
+        { name: 'Blogs', href: '/blogs' },
         { name: 'FAQ', href: '/faq-Page' }
       ]
     },
@@ -397,12 +387,6 @@ const Navbar = () => {
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
-            {/* <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-              🌐 Global(English) 
-              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span> */}
           </div>
         </div>
       </div>
@@ -513,7 +497,7 @@ const Navbar = () => {
                                       }}
                                     >
                                       <span>{subItem.name}</span>
-                                      {subItem.categories && (
+                                      {subItem.items && (
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
@@ -522,7 +506,7 @@ const Navbar = () => {
                                   ) : (
                                     <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
                                       <span>{subItem.name}</span>
-                                      {subItem.categories && (
+                                      {subItem.items && (
                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                         </svg>
@@ -530,34 +514,27 @@ const Navbar = () => {
                                     </div>
                                   )}
                                   
-                                  {/* Nested sub-menu for categories */}
-                                  {activeNestedSub === subIndex && subItem.categories && (
+                                  {/* Nested sub-menu for items */}
+                                  {activeNestedSub === subIndex && subItem.items && (
                                     <div 
                                       className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0"
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >
-                                      {subItem.categories.map((category, catIndex) => (
-                                        <div key={catIndex} className="space-y-1">
-                                          <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
-                                            {category.name}
-                                          </div>
-                                          {category.items.map((productItem, prodIndex) => (
-                                            <a 
-                                              key={prodIndex}
-                                              href={productItem.href || "#"}
-                                              className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                              onClick={(e) => {
-                                                if (productItem.href && productItem.href !== '#') {
-                                                  e.preventDefault();
-                                                  handleNavigation(productItem.href);
-                                                }
-                                              }}
-                                            >
-                                              • {productItem.name || productItem}
-                                            </a>
-                                          ))}
-                                        </div>
+                                      {subItem.items.map((productItem, prodIndex) => (
+                                        <a 
+                                          key={prodIndex}
+                                          href={productItem.href || "#"}
+                                          className="block px-4 py-2 text-sm text-gray-700 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
+                                          onClick={(e) => {
+                                            if (productItem.href && productItem.href !== '#') {
+                                              e.preventDefault();
+                                              handleNavigation(productItem.href);
+                                            }
+                                          }}
+                                        >
+                                          • {productItem.name || productItem}
+                                        </a>
                                       ))}
                                     </div>
                                   )}
