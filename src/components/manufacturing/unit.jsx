@@ -22,15 +22,13 @@ L.Icon.Default.mergeOptions({
 });
 
 const images = [
-  { src: a1, title: "JACKIE A. MECK WATER CAMPUS", desc: "Buckeye, Arizona", lat: 33.3701, lng: -112.5838 },
-  { src: a2, title: "TACOMA NARROWS BRIDGE", desc: "Tacoma, Washington", lat: 47.269, lng: -122.5517 },
-  { src: a3, title: "EL SEGUNDO REFINERY", desc: "El Segundo, California", lat: 33.9192, lng: -118.4165 },
-  { src: a4, title: "KAY BAILEY HUTCHISON DESALINATION PLANT", desc: "El Paso, Texas", lat: 31.7619, lng: -106.485 },
-  { src: a5, title: "SOUTH FORK SUBSTATION", desc: "East Hampton, New York", lat: 40.9634, lng: -72.1848 },
-  { src: a6, title: "SAFECO FIELD", desc: "Seattle, Washington", lat: 47.5914, lng: -122.3325 },
-  { src: a7, title: "SOUTH PASS 89E EXPANSION", desc: "Ingleside, Texas", lat: 27.877, lng: -97.2116 },
-  { src: a8, title: "MVC 4100 SOUTH TO SR-201", desc: "Salt Lake City, Utah", lat: 40.7608, lng: -111.891 },
-  { src: a9, title: "RODEO RENEWABLE FUELS FACILITY", desc: "San Francisco, California", lat: 37.7749, lng: -122.4194 },
+  { src: a1, title: "SAMBALPUR PLANT", desc: "Ore to Metal Integrated Plant Capacity: 6.25 MTPA ", lat: 33.3701, lng: -112.5838 },
+  { src: a2, title: "JAMURIA PLANT", desc: "Ore to Metal Integrated Plant Capacity: 6.83 MTPA", lat: 47.269, lng: -122.5517 },
+  { src: a3, title: "MANGALPUR PLANT", desc: "Plant Capacity: 0.10 MTPA", lat: 33.9192, lng: -118.4165 },
+  { src: a4, title: "PAKURIA PLANT", desc: "Plant Capacity: 0.40 MTPA", lat: 31.7619, lng: -106.485 },
+  { src: a5, title: "INDORE PLANT", desc: "Plant Capacity: 0.27 MTPA", lat: 40.9634, lng: -72.1848 },
+  { src: a6, title: "KHARAGPUR PLANT", desc: "Plant Capacity: 0.15 MTPA", lat: 47.5914, lng: -122.3325 },
+  { src: a7, title: "GIRIDIH PLANT", desc: "Plant Capacity: 3600 TPA", lat: 27.877, lng: -97.2116 },
 ];
 
 export default function Unit() {
