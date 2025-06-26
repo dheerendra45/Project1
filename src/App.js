@@ -34,6 +34,8 @@ import StainlessSteelBillets from './Pages/StainlessSteelBillets.jsx';
 import SSWireRod from './Pages/SSWireRod.jsx';
 import ColorCoatedSheets from './Pages/ColorCoatedSheets.jsx';
 import Billets from './Pages/billets.js';
+import PigIron from './Pages/pigiron.js';
+import Pipes from './Pages/pipes.js';
 
 function App() {
   return (
@@ -74,6 +76,9 @@ function App() {
    <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
 
       <Route path="billets" element={<Billets />} />
+      <Route path="pig_iron" element={<PigIron />} />
+      <Route path="pipes_hollow_sections" element={<Pipes />} />
+
    
   </Route>
 

@@ -499,7 +499,7 @@ const Navbar = () => {
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                             <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0"
                               onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                               onMouseLeave={handleBusinessSubLeave}
                             >
@@ -541,7 +541,7 @@ const Navbar = () => {
                                   {/* Nested sub-menu for categories */}
                                   {activeNestedSub === subIndex && subItem.categories && (
                                     <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0"
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >

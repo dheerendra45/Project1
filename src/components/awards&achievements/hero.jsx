@@ -1,8 +1,18 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-
+import React from "react";
+import { motion } from "framer-motion";
 import herobg from "../../assets/Testimonials/herobg.jpg";
-import companylogo from "../../assets/products/image28.png";
+
+const paragraphVariant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      delay: 0.2,
+    },
+  },
+};
 
 const Hero = () => {
   return (
@@ -37,6 +47,17 @@ const Hero = () => {
               This is more than a wall of fame - It's a tribute to dedication,
               belief, and resilience.
             </h2>
+
+            {/* Animated Orange Line */}
+            <motion.div
+              variants={paragraphVariant}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+              className="h-1 w-32 bg-orange-600 rounded mb-6 sm:mb-8 mx-auto"
+            />
+
+            {/* CTA Button */}
             <button className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-4 border-none rounded-lg text-lg font-medium cursor-pointer transition-colors duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
               Explore Our Journey
             </button>

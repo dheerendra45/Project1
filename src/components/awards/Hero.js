@@ -80,37 +80,37 @@ const AwardsHero = () => {
                   NEWS & ACHIEVEMENTS
               </motion.h1>
 
-              <motion.p
-                variants={paragraphVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                className="text-base sm:text-lg text-white mb-6 sm:mb-8 max-w-3xl leading-relaxed"
-              >
-                 "Recognizing milestones that define our journey — a showcase of excellence. 
-              Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, 
-              a bold step forward. This is more than a wall of fame — It's a tribute to dedication, belief, and resilience."
-              </motion.p>
+             <motion.p
+  variants={paragraphVariant}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+  className="text-base sm:text-lg text-white mb-6 sm:mb-8 max-w-3xl leading-relaxed"
+>
+  "Recognizing milestones that define our journey — a showcase of excellence. 
+  Trophies fade, but the stories behind them stay. Every recognition marks a breakthrough, 
+  a bold step forward. This is more than a wall of fame — It's a tribute to dedication, belief, and resilience."
+</motion.p>
 
-              <motion.div
-                variants={paragraphVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                className="text-sm flex items-center gap-4 text-white/80 mb-6"
-              >
-                
-              </motion.div>
+{/* Orange line */}
+<motion.div
+  variants={paragraphVariant}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+  className="h-1 w-full bg-orange-600 rounded mb-6 sm:mb-8"
+/>
 
-              <motion.button
-                variants={buttonVariant}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors duration-300"
-              >
-                Learn More
-              </motion.button>
+<motion.button
+  variants={buttonVariant}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 sm:px-8 rounded-lg transition-colors duration-300"
+>
+  Learn More
+</motion.button>
+
             </div>
           </div>
         </div>
