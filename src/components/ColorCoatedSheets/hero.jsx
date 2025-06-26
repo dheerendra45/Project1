@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import herobg from "../../assets/products/herobg.png";
+import herobg from "../../assets/Business/a4.jpg";
 import companylogo from "../../assets/products/image28.png";
 
 const Hero = () => {

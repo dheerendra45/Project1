@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
-import herobg from "../../assets/Business/e3.jpg";
+import herobg from "../../assets/Business/a3.jpg";
 import companylogo from "../../assets/products/image28.png";
 
 const Hero = () => {
@@ -53,7 +53,7 @@ const Hero = () => {
         {/* Content */}
         <div className="relative z-20 px-[114px] pt-[275px] text-white">
           <h1 className="text-[62px] leading-[62px] font-space-grotesk font-bold mb-6">
-            Stainless Steel Billets
+         Flats/Patta
           </h1>
           <div className="text-sm flex items-center gap-4 text-white/80">
             <span>Home</span>
@@ -64,7 +64,7 @@ const Hero = () => {
             <span>&gt;</span>
             <span>Carbon Steel</span>
             <span>&gt;</span>
-            <span>Stainless Steel Billets</span>
+            <span> Flats/Patta</span>
           </div>
         </div>
       </div>

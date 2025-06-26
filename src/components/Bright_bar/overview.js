@@ -12,7 +12,7 @@ const fadeInUp = {
   },
 };
 
-const PelletInfo = () => {
+const HollowInfo = () => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
 
@@ -37,33 +37,19 @@ const PelletInfo = () => {
           >
             <div className="flex items-center mb-8">
               <h2 className="text-4xl font-bold text-gray-900">
-                Pellets: Precision in Every Sphere
+                Polished for Precision. Trusted for Performance.
               </h2>
               <div className="w-3 h-3 bg-orange-500 ml-2"></div>
             </div>
 
-          <motion.p
-  className="text-gray-700 leading-relaxed space-y-6"
-  variants={fadeInUp}
->
-  <strong>From Ore to Opportunity:</strong> In today’s sustainability-driven steel industry,
-  enhancing steelmaking with smarter and more durable raw materials has become the need of the hour.
-  Traditional iron ore forms often fall short in providing the uniform quality and metallurgical performance
-  required for modern applications. That’s where <strong>pellets</strong> emerge as a game-changing innovation.
-
-  <br /><br />
-
-  <strong>What are Pellets?</strong> Pellets are small, spherical balls made by agglomerating iron ore
-  fines and heating them in rotary kilns or straight grate furnaces. This thermal treatment improves their
-  strength, reducibility, and consistency — making them ideal for Direct Reduced Iron (DRI) kilns and blast furnaces.
-
-  <br /><br />
-
-  At <strong>Shyam Metalics</strong>, we leave no stone unturned in producing high-grade steel pellets engineered for
-  maximum performance. Whether used internally or by our trusted partners, our pellets reflect our commitment to
-  reliable, efficient, and environmentally responsible steel production — forging a stronger future, one sphere at a time.
-</motion.p>
-
+            <motion.p
+              className="text-gray-700 leading-relaxed space-y-6"
+              variants={fadeInUp}
+            >
+              Shyam Metalics Bright Bars are manufactured through a rigorous process of cold drawing, polishing, and buffing, ensuring a mirror-like surface finish, tight dimensional tolerances, and enhanced mechanical properties.
+              <br /><br />
+              These attributes make them ideal for high-end industrial applications where accuracy, surface integrity, and corrosion resistance are critical.
+            </motion.p>
 
             <motion.button
               variants={fadeInUp}
@@ -87,7 +73,7 @@ const PelletInfo = () => {
 
               <button className="bg-white text-gray-800 px-6 py-3 rounded font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2 mb-8">
                 <Download className="w-4 h-4" />
-                <span>Download Boucher</span>
+                <span>Download Brochure</span>
               </button>
 
               <div className="space-y-4 text-white text-sm">
@@ -116,4 +102,4 @@ const PelletInfo = () => {
   );
 };
 
-export default PelletInfo;
+export default HollowInfo;

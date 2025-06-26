@@ -107,16 +107,13 @@ const Navbar = () => {
               name: 'Stainless Steel',
               href: '#',
               items: [
-                { name: 'SS Wire Rod', href: '#' },
-                { name: 'Black Round Bar', href: '#' },
-                { name: 'Bright Bar', href: '#' },
-                { name: 'Flats/Patta', href: '#' }
+             
+                { name: 'Black Round Bar', href: '/blackround_bar' },
+                { name: 'Bright Bar', href: '/bright_bar' },
+                { name: 'Flats/Patta', href: '/flats' }
               ]
             },
-            {
-              name: 'Specialty Alloys',
-              href: '#'
-            }
+           
           ]
         },
         {
