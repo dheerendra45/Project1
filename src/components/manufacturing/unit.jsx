@@ -46,18 +46,28 @@ export default function Unit() {
 
   return (
     <div className="bg-white px-6 py-16">
-      {/* Left Wipe Animation for Heading */}
-      <div className="overflow-hidden max-w-7xl mx-auto px-4 md:px-0">
+      {/* Heading and underline inside max-w wrapper for alignment */}
+      <div className="max-w-7xl mx-auto">
         <motion.h1
-          className="text-2xl md:text-6xl font-bold mb-12 select-none"
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="text-3xl md:text-5xl font-bold text-black font-space-grotesk"
         >
-          OUR UNITS
+          Our Units
         </motion.h1>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="h-1 origin-left bg-orange-500 my-4"
+        />
       </div>
 
+      {/* Card Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {images.map((item, idx) => (
           <motion.div
@@ -66,7 +76,7 @@ export default function Unit() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(255, 165, 0, 0.5)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(147, 146, 145, 0.5)" }}
             className="relative rounded-lg overflow-hidden cursor-pointer"
             onClick={() => handleSelect(item)}
           >
@@ -79,18 +89,27 @@ export default function Unit() {
         ))}
       </div>
 
+      {/* Selected Unit Detail Section */}
       {selected && (
         <div
           ref={detailsRef}
           className="max-w-7xl mx-auto mt-16 grid md:grid-cols-2 gap-8 items-start scroll-mt-20"
         >
           <div className="space-y-4">
-            <img src={selected.src} alt={selected.title} className="rounded-lg w-full h-64 object-cover" />
+            <img
+              src={selected.src}
+              alt={selected.title}
+              className="rounded-lg w-full object-cover"
+              style={{ height: "32rem" }} // Custom height
+            />
             <h2 className="text-2xl font-bold">{selected.title}</h2>
             <p className="text-gray-600">{selected.desc}</p>
           </div>
 
-          <div className="h-64 w-full rounded-lg overflow-hidden shadow-lg">
+          <div
+            className="w-full rounded-lg overflow-hidden shadow-lg"
+            style={{ height: "32rem" }} // Custom height
+          >
             <MapContainer
               center={[selected.lat, selected.lng]}
               zoom={13}

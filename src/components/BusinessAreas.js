@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { HiArrowRight } from 'react-icons/hi';
+
 import a2 from "../assets/products/herobg.png";
 import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
@@ -33,7 +35,6 @@ export default function BusinessAreas() {
     "Rolled steel sheets and plates for industrial use"
   ];
 
-  // Repeat product data to always have 16 items
   const generateImageSet = () => {
     const items = [];
     for (let i = 0; i < 16; i++) {
@@ -183,7 +184,7 @@ export default function BusinessAreas() {
               <motion.div
                 key={`image-${index}-${currentSetIndex}`}
                 variants={imageVariants}
-                className="relative overflow-hidden rounded-xl group cursor-pointer h-full"
+                className="relative overflow-hidden group cursor-pointer h-full shadow-lg"
                 onMouseEnter={() => handleMouseEnter(index)}
                 onMouseLeave={handleMouseLeave}
                 whileHover={{ scale: 1.02 }}
@@ -192,56 +193,49 @@ export default function BusinessAreas() {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="rounded-xl shadow-lg w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
                 />
 
-                {/* Full-height orange gradient overlay */}
-                <div className="absolute inset-0">
-                  <div 
-                    className="absolute left-0 top-0 h-full w-1/2 bg-gradient-to-r from-orange-500 to-orange-500/0 opacity-80"
-                  />
-                </div>
+                {/* Orange overlay on hover */}
+                <AnimatePresence>
+                  {hoveredImageIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, x: -50 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 50 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-60 z-10"
+                    />
+                  )}
+                </AnimatePresence>
 
-                {/* Product name and description - always visible */}
-                <div className="absolute inset-0 flex flex-col justify-end p-4">
-                  <div className="z-10">
-                    <h3 className="text-white font-bold text-lg mb-1">
-                      {item.name}
-                    </h3>
-                    <p className="text-white/90 text-sm">
-                      {item.description}
-                    </p>
-                  </div>
+                {/* Product Info */}
+                <div className="absolute inset-0 flex flex-col justify-end p-4 z-20">
+                  <h3 className="text-white font-bold text-lg mb-1">
+                    {item.name}
+                  </h3>
+                  <p className="text-white/90 text-sm">
+                    {item.description}
+                  </p>
                 </div>
 
                 {/* Next Button */}
                 <motion.button
-                  className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-orange-500 text-white text-lg flex items-center justify-center shadow-lg hover:bg-orange-600 transition-all duration-300 z-20"
-                  onClick={nextSlide}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  →
-                </motion.button>
+  className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300 z-30"
+  onClick={nextSlide}
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.95 }}
+>
+  &gt;
+</motion.button>
 
-                {/* Hover overlay */}
-                <AnimatePresence>
-                  {hoveredImageIndex === index && (
-                    <motion.div
-                      className="absolute inset-0 bg-black/20 rounded-xl"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  )}
-                </AnimatePresence>
+
               </motion.div>
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation */}
+        {/* Navigation Buttons */}
         <motion.div
           className="flex justify-center mt-10 space-x-4"
           initial={{ opacity: 0, y: 30 }}
@@ -250,7 +244,7 @@ export default function BusinessAreas() {
         >
           <motion.button
             onClick={prevSlide}
-            className="px-8 py-3 bg-gray-700 hover:bg-gray-700 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold"
+            className="px-8 py-3 bg-gray-700 hover:bg-gray-800 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold text-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -258,7 +252,7 @@ export default function BusinessAreas() {
           </motion.button>
           <motion.button
             onClick={nextSlide}
-            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg font-semibold"
+            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg font-semibold text-white"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

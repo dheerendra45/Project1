@@ -8,7 +8,7 @@ export default function Customer() {
   ];
 
   return (
-    <div className="w-full px-6 py-16 md:px-16 bg-white">
+    <div className="w-full px-6 py-16 md:px-20 bg-white">
       <div className="flex flex-col md:flex-row gap-10 md:gap-8">
         {/* Left: 70% width */}
         <div className="md:w-[70%]">
@@ -37,15 +37,8 @@ export default function Customer() {
             viewport={{ once: false, amount: 0.3 }}
             className="text-sm md:text-base text-gray-700 leading-relaxed"
           >
-            Lorem ipsum dolor sit amet consectetur. Egestas morbi nunc ut dignissim ut.
-            Scelerisque facilisis eu lectus scelerisque. Amet eget tincidunt at at neque sed
-            arcu tempor nulla. Scelerisque quis in mattis nec pharetra sit odio platea
-            fringilla. Vitae consectetur venenatis varius aenean purus et lacinia nibh
-            aliquam. Eget massa sit praesent gravida eget. Gravida purus nisl sed in magna
-            enim. In sed ut mauris tortor posuere turpis duis scelerisque. Cursus et dictum
-            erat metus massa hendrerit elementum at mauris. Tellus vel gravida nibh quam
-            pulvinar. Lorem et gravida morbi nunc faucibus arcu eget. Pretium porttitor morbi
-            leo habitasse mauris. Feugiat lacinia cras in duis. Nam etiam diam risus diam.
+            At Shyam Metallics, we believe  that delivering excellence  requires being close to our clients. By strategically locating our manufacturing plants in key industrial hubs, we ensure timely delivery, reduce logistics costs, and maintain a seamless supply chain. Our robust regional presence enables us to comprehend the needs of the local market and deliver customised solutions with unparalleled effectiveness. As a leader in the iron and steel industry in India, our Integrated Steel Plant facilities set industry benchmarks for quality and innovation.<br></br>
+Whether you require premium ferroalloys, steel, or other metallurgical goods, our customer-focused approach ensures that you always receive the best on schedule. Investors can track our growth through Shyam Metallics share price performance.
           </motion.p>
         </div>
 
