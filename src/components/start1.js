@@ -150,7 +150,7 @@ const Navbar = () => {
           name: 'Financials & Disclosures',
           href: '#',
           subItems: [
-            { name: 'Financial Performance', href: '#' },
+            { name: 'Financial information', href: '/finacial_informations' },
             { name: 'Financial Statements', href: '#' },
             { name: 'Stock Performance Data', href: '#' },
             { name: 'Regulatory Disclosures', href: '#' },
