@@ -22,15 +22,13 @@ L.Icon.Default.mergeOptions({
 });
 
 const images = [
-  { src: a1, title: "JACKIE A. MECK WATER CAMPUS", desc: "Buckeye, Arizona", lat: 33.3701, lng: -112.5838 },
-  { src: a2, title: "TACOMA NARROWS BRIDGE", desc: "Tacoma, Washington", lat: 47.269, lng: -122.5517 },
-  { src: a3, title: "EL SEGUNDO REFINERY", desc: "El Segundo, California", lat: 33.9192, lng: -118.4165 },
-  { src: a4, title: "KAY BAILEY HUTCHISON DESALINATION PLANT", desc: "El Paso, Texas", lat: 31.7619, lng: -106.485 },
-  { src: a5, title: "SOUTH FORK SUBSTATION", desc: "East Hampton, New York", lat: 40.9634, lng: -72.1848 },
-  { src: a6, title: "SAFECO FIELD", desc: "Seattle, Washington", lat: 47.5914, lng: -122.3325 },
-  { src: a7, title: "SOUTH PASS 89E EXPANSION", desc: "Ingleside, Texas", lat: 27.877, lng: -97.2116 },
-  { src: a8, title: "MVC 4100 SOUTH TO SR-201", desc: "Salt Lake City, Utah", lat: 40.7608, lng: -111.891 },
-  { src: a9, title: "RODEO RENEWABLE FUELS FACILITY", desc: "San Francisco, California", lat: 37.7749, lng: -122.4194 },
+  { src: a1, title: "SAMBALPUR PLANT", desc: "Ore to Metal Integrated Plant Capacity: 6.25 MTPA ", lat: 33.3701, lng: -112.5838 },
+  { src: a2, title: "JAMURIA PLANT", desc: "Ore to Metal Integrated Plant Capacity: 6.83 MTPA", lat: 47.269, lng: -122.5517 },
+  { src: a3, title: "MANGALPUR PLANT", desc: "Plant Capacity: 0.10 MTPA", lat: 33.9192, lng: -118.4165 },
+  { src: a4, title: "PAKURIA PLANT", desc: "Plant Capacity: 0.40 MTPA", lat: 31.7619, lng: -106.485 },
+  { src: a5, title: "INDORE PLANT", desc: "Plant Capacity: 0.27 MTPA", lat: 40.9634, lng: -72.1848 },
+  { src: a6, title: "KHARAGPUR PLANT", desc: "Plant Capacity: 0.15 MTPA", lat: 47.5914, lng: -122.3325 },
+  { src: a7, title: "GIRIDIH PLANT", desc: "Plant Capacity: 3600 TPA", lat: 27.877, lng: -97.2116 },
 ];
 
 export default function Unit() {
@@ -46,18 +44,28 @@ export default function Unit() {
 
   return (
     <div className="bg-white px-6 py-16">
-      {/* Left Wipe Animation for Heading */}
-      <div className="overflow-hidden max-w-7xl mx-auto px-4 md:px-0">
+      {/* Heading and underline inside max-w wrapper for alignment */}
+      <div className="max-w-7xl mx-auto">
         <motion.h1
-          className="text-2xl md:text-6xl font-bold mb-12 select-none"
-          initial={{ x: "-100%" }}
-          animate={{ x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="text-3xl md:text-5xl font-bold text-black font-space-grotesk"
         >
-          OUR UNITS
+          Our Units
         </motion.h1>
+
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          viewport={{ once: false, amount: 0.3 }}
+          className="h-1 origin-left bg-orange-500 my-4"
+        />
       </div>
 
+      {/* Card Grid */}
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {images.map((item, idx) => (
           <motion.div
@@ -66,7 +74,7 @@ export default function Unit() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.3 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(255, 165, 0, 0.5)" }}
+            whileHover={{ scale: 1.05, boxShadow: "0 15px 30px rgba(147, 146, 145, 0.5)" }}
             className="relative rounded-lg overflow-hidden cursor-pointer"
             onClick={() => handleSelect(item)}
           >
@@ -79,18 +87,27 @@ export default function Unit() {
         ))}
       </div>
 
+      {/* Selected Unit Detail Section */}
       {selected && (
         <div
           ref={detailsRef}
           className="max-w-7xl mx-auto mt-16 grid md:grid-cols-2 gap-8 items-start scroll-mt-20"
         >
           <div className="space-y-4">
-            <img src={selected.src} alt={selected.title} className="rounded-lg w-full h-64 object-cover" />
+            <img
+              src={selected.src}
+              alt={selected.title}
+              className="rounded-lg w-full object-cover"
+              style={{ height: "32rem" }} // Custom height
+            />
             <h2 className="text-2xl font-bold">{selected.title}</h2>
             <p className="text-gray-600">{selected.desc}</p>
           </div>
 
-          <div className="h-64 w-full rounded-lg overflow-hidden shadow-lg">
+          <div
+            className="w-full rounded-lg overflow-hidden shadow-lg"
+            style={{ height: "32rem" }} // Custom height
+          >
             <MapContainer
               center={[selected.lat, selected.lng]}
               zoom={13}

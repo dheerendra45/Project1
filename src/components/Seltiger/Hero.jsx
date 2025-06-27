@@ -7,7 +7,7 @@ import {
   FiSearch,
   FiFilter,
 } from "react-icons/fi";
-import herobg from "../../assets/Seltiger/Hero.png";
+import herobg from "../../assets/Seltiger/herobanner.mp4";
 import companylogo from "../../assets/Seltiger/logo.png";
 import Start from "../start";
 
@@ -389,12 +389,16 @@ export default function Hero() {
       >
         {/* Background with parallax */}
         <div className="absolute inset-0 overflow-hidden">
-          <img
-            src={herobg}
-            alt="Hero Background"
-            className="absolute inset-0 w-full h-full object-cover z-0"
-            style={parallaxStyle}
-          />
+          <video
+  src={herobg}
+  autoPlay
+  muted
+  loop
+  playsInline
+  className="absolute inset-0 w-full h-full object-cover z-0"
+  style={parallaxStyle}
+/>
+
 
           {/* Floating elements */}
           <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
