@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import abt1img from '../assets/abt1.jpg';
-import a1 from '../assets/aboutUs.png';
-import a2 from "../assets/1.png";
-import a3 from "../assets/2.png";
-import a4 from "../assets/3.png";
-import a5 from "../assets/4.png";
-import a6 from "../assets/5.png";
+import abt1img from '../../assets/Companyoverview/abt1.jpg';
+import a2 from "../../assets/Companyoverview/1.png";
+import a3 from "../../assets/Companyoverview/2.png";
+import a4 from "../../assets/Companyoverview/3.png";
+import a5 from "../../assets/Companyoverview/4.png";
+import a6 from "../../assets/Companyoverview/5.png";
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -270,7 +269,8 @@ export default function AboutUs() {
         >
           <h1 className="text-orange-500 text-lg sm:text-xl font-semibold">ABOUT US</h1>
           <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-snug">
-            A Steel Company With Integrated <br className="hidden sm:block" /> Operations.
+            Shyam Metalics and Energy Limited is an Indian integrated metal producing Company with a presence across the metal value chain. The Company is one of the largest integrated steel producers in India, ranked 6th largest and is also among the leading ferro alloy manufacturers in the country. SMEL operates an "ore to metal" integrated business model with steel manufacturing facilities located strategically near mineral reserves in West Bengal, Odisha, Chhattisgarh and Madhya Pradesh. The Company has a combined installed production capacity of 13.2 million metric tonnes per annum (MTPA) as of January 2024 across various product lines. Demonstrating consistent operational profitability since fiscal year 2005, SMEL has sustained a record of positive EBITDA annually. The company's distribution network spans domestically and internationally, with a presence in over 28 countries. The Company's credit facilities have received affirmation with an AA/ Stable rating for long-term banking facilities and an A1+ rating for short-term banking facilities by Crisil. The outlook for the long-term rating remains stable
+
           </h1>
           <p className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed">
             {aboutTexts[activeIndex]}

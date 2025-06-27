@@ -126,7 +126,7 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
           variants={itemVariants}
         >
-          We Live for a Challenge
+          Forging India’s Future, Today – Shyam Metalics
         </motion.h1>
         
         <motion.div
@@ -141,7 +141,7 @@ const Hero = () => {
         >
           <span>Home</span>
           <span>&gt;</span>
-          <span>Unit</span>
+          <span>Company Overview</span>
         </motion.div>
       </motion.div>
 

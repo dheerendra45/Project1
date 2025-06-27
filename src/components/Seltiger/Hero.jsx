@@ -428,18 +428,17 @@ export default function Hero() {
           <div className="max-w-2xl space-y-4 md:space-y-6">
             <h1 className="text-4xl md:text-5xl font-bold animate-on-scroll [animation-delay:0.1s] translate-y-10 opacity-0 [animation-fill-mode:forwards]">
               <span className="inline-block transition-all duration-500 hover:scale-105 hover:text-orange-300">
-                India's Strongest TMT Bars
+                SEL Tiger TMT Bars
               </span>
             </h1>
             <h1 className="text-4xl md:text-5xl font-bold animate-on-scroll [animation-delay:0.3s] translate-y-10 opacity-0 [animation-fill-mode:forwards]">
               <span className="inline-block transition-all duration-500 hover:scale-105 hover:text-orange-300">
-                Bend, But Never Break!
+                 Strength That Stands the Test of Time – Bend, but Never Break!
               </span>
             </h1>
             <p className="text-lg md:text-xl animate-on-scroll [animation-delay:0.5s] translate-y-10 opacity-0 [animation-fill-mode:forwards]">
               <span className="inline-block transition-all duration-500 hover:scale-105">
-                Earthquake-Resistant | Fireproof | Corrosion-Free – Engineered
-                for Lifelong Safety.
+                S-E-L Tiger is a symbol of Strength, Elasticity, and Longevity
               </span>
             </p>
             <p className="text-sm animate-on-scroll [animation-delay:0.9s] translate-y-10 opacity-0 [animation-fill-mode:forwards]">

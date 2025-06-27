@@ -12,27 +12,23 @@ function FlyToLocation({ position }) {
 export default function Map() {
   const locations = [
     {
-      name: "New York Office",
-      address: "2307 Beverley Rd Brooklyn, New York 11226 United States.",
-      email: "Newyorksteeler@gmail.com",
-      phone: "617-330-6445",
-      hours: "Mon-Sat: 7:00am - 6:00pm",
+      name: "Odisha",
+      address: "Sambalpur",
       position: [40.645, -73.944],
     },
     {
-      name: "Los Angeles Office",
-      address: "100 Main Street, Los Angeles, CA 90012",
-      email: "laoffice@steeler.com",
-      phone: "213-555-7890",
-      hours: "Mon-Fri: 8:00am - 5:00pm",
+      name: "West Bengal",
+      address: "Jamuria, Mangalpur, Kharagpur, Pakuria",
       position: [34.0522, -118.2437],
     },
     {
-      name: "Chicago Office",
-      address: "123 Wacker Dr, Chicago, IL 60601",
-      email: "chicago@steeler.com",
-      phone: "312-555-1234",
-      hours: "Mon-Sat: 7:00am - 6:00pm",
+      name: "Jharkhand",
+      address: "Giridih",
+      position: [41.8781, -87.6298],
+    },
+    {
+      name: "Madhya Pradesh",
+      address: "Pithampur",
       position: [41.8781, -87.6298],
     },
   ];
@@ -61,15 +57,11 @@ export default function Map() {
 
       {/* Place the info box to bottom-left corner to avoid overlap with marker */}
       <div className="absolute bottom-6 left-6 z-10">
-        <div className="relative bg-orange-500 text-white p-6 rounded shadow-lg w-[350px]">
+        <div className="relative bg-orange-500 text-white p-6 rounded shadow-lg w-[350px] text-center">
           <h2 className="text-xl font-semibold">Our Locations</h2>
           <h1 className="text-2xl font-bold mt-1">{location.name}</h1>
           <p className="mt-2">{location.address}</p>
-          <p className="mt-2">Email: {location.email}</p>
-          <p className="mt-1">
-            Phone: <span className="underline">{location.phone}</span>
-          </p>
-          <p className="mt-1">{location.hours}</p>
+          
 
           <div className="absolute left-3 bottom-3">
             <button
