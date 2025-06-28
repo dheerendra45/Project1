@@ -324,24 +324,19 @@ const TestimonialHomePage = () => {
 
             {/* Auto Play Toggle Button */}
             <button
-              onClick={handleReadAllToggle}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl mb-4"
+              onClick={() => {
+                handleReadAllToggle();
+                if (!isAutoPlaying) {
+                  handleReadAll(); // Call this when starting auto-play
+                }
+              }}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
             >
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>
           </div>
 
           {/* Read All Button - Mobile */}
-          <div className="text-center">
-            <motion.button
-              onClick={handleReadAll}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Read All
-            </motion.button>
-          </div>
         </div>
       </div>
     </div>
