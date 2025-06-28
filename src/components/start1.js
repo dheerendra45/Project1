@@ -7,6 +7,8 @@ const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
   // Stock price state
   const [stockData, setStockData] = useState({
@@ -162,7 +164,7 @@ const Navbar = () => {
           name: 'Corporate Governance',
           href: '#',
           subItems: [
-            { name: 'Policies', href: '#' },
+            { name: 'Policies', href: '/policies' },
             { name: 'Corporate Governance', href: '#' },
             { name: 'Familiarization Program for Independent Directors', href: '#' }
           ]
@@ -229,6 +231,16 @@ const Navbar = () => {
       ]
     },
   ];
+
+  // Track window width for responsive adjustments
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Clear all timeouts
   const clearAllTimeouts = () => {
@@ -310,6 +322,7 @@ const Navbar = () => {
   const handleNavigation = (href) => {
     if (href && href !== '#') {
       window.location.href = href;
+      setMobileMenuOpen(false); // Close mobile menu on navigation
     }
   };
 
@@ -323,6 +336,11 @@ const Navbar = () => {
     if (item.href && item.href !== '#') {
       handleNavigation(item.href);
     }
+  };
+
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   useEffect(() => {
@@ -341,6 +359,179 @@ const Navbar = () => {
     };
   }, []);
 
+  // Calculate responsive gap between menu items
+  const getMenuGap = () => {
+    if (windowWidth < 768) return 'gap-2';
+    if (windowWidth < 1024) return 'gap-3';
+    if (windowWidth < 1280) return 'gap-4';
+    return 'gap-6';
+  };
+
+  // Calculate responsive dropdown positioning
+  const getDropdownPosition = () => {
+    if (windowWidth < 1024) return 'left-0';
+    return 'left-0';
+  };
+
+  // Calculate responsive submenu positioning
+  const getSubmenuPosition = () => {
+    if (windowWidth < 1024) return 'left-full';
+    return 'left-full';
+  };
+
+  // Render mobile menu
+  const renderMobileMenu = () => {
+    return (
+      <div className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <div 
+          className={`fixed top-0 left-0 h-full w-4/5 max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          ref={dropdownRef}
+        >
+          <div className="flex justify-between items-center p-4 border-b">
+            <div onClick={handleLogoClick} className="cursor-pointer">
+              <img 
+                src={companylogo} 
+                className="h-[50px] w-[100px] hover:opacity-80 transition-opacity duration-200"
+                alt="Company Logo"
+              />
+            </div>
+            <button 
+              onClick={toggleMobileMenu}
+              className="text-gray-600 hover:text-gray-900 focus:outline-none"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <div className="overflow-y-auto h-[calc(100%-60px)] p-4">
+            {navItems.map((item, index) => (
+              <div key={index} className="mb-2">
+                <div 
+                  className="flex justify-between items-center p-3 text-gray-700 hover:bg-orange-50 rounded cursor-pointer"
+                  onClick={() => {
+                    if (!item.hasDropdown) {
+                      handleDirectNavClick(item);
+                    } else {
+                      setActiveDropdown(activeDropdown === index ? null : index);
+                    }
+                  }}
+                >
+                  <span className="font-medium">{item.title}</span>
+                  {item.hasDropdown && (
+                    <svg 
+                      className={`w-4 h-4 transform transition-transform ${activeDropdown === index ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </div>
+                
+                {item.hasDropdown && activeDropdown === index && (
+                  <div className="ml-4 mt-1 space-y-1">
+                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                      <div key={dropdownIndex} className="mb-2">
+                        <div 
+                          className="flex justify-between items-center p-2 pl-4 text-gray-600 hover:bg-orange-50 rounded cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (dropdownItem.href && (!dropdownItem.subItems || dropdownItem.subItems.length === 0)) {
+                              handleNavigation(dropdownItem.href);
+                            } else if (dropdownItem.subItems) {
+                              setActiveBusinessSub(activeBusinessSub === dropdownIndex ? null : dropdownIndex);
+                            }
+                          }}
+                        >
+                          <span>{dropdownItem.name}</span>
+                          {dropdownItem.subItems && dropdownItem.subItems.length > 0 && (
+                            <svg 
+                              className={`w-4 h-4 transform transition-transform ${activeBusinessSub === dropdownIndex ? 'rotate-90' : ''}`} 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          )}
+                        </div>
+                        
+                        {dropdownItem.subItems && activeBusinessSub === dropdownIndex && (
+                          <div className="ml-4 mt-1 space-y-1">
+                            {dropdownItem.subItems.map((subItem, subIndex) => (
+                              <div key={subIndex} className="mb-1">
+                                <div 
+                                  className="flex justify-between items-center p-2 pl-4 text-gray-500 hover:bg-orange-50 rounded cursor-pointer"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (subItem.href && (!subItem.items || subItem.items.length === 0)) {
+                                      handleNavigation(subItem.href);
+                                    } else if (subItem.items) {
+                                      setActiveNestedSub(activeNestedSub === subIndex ? null : subIndex);
+                                    }
+                                  }}
+                                >
+                                  <span>{subItem.name}</span>
+                                  {subItem.items && subItem.items.length > 0 && (
+                                    <svg 
+                                      className={`w-4 h-4 transform transition-transform ${activeNestedSub === subIndex ? 'rotate-90' : ''}`} 
+                                      fill="none" 
+                                      stroke="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  )}
+                                </div>
+                                
+                                {subItem.items && activeNestedSub === subIndex && (
+                                  <div className="ml-4 mt-1 space-y-1">
+                                    {subItem.items.map((nestedItem, nestedIndex) => (
+                                      <div 
+                                        key={nestedIndex}
+                                        className="p-2 pl-6 text-gray-500 hover:bg-orange-50 rounded cursor-pointer"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleNavigation(nestedItem.href);
+                                        }}
+                                      >
+                                        {nestedItem.name}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            <div className="mt-4 p-3">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search here..."
+                  className="w-full bg-gray-100 border border-gray-300 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                />
+                <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="w-full">
       {/* Top Navbar */}
@@ -349,9 +540,9 @@ const Navbar = () => {
         <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
 
         {/* Content on top */}
-        <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
+        <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
           {/* Stock Price Display */}
-          <div className="flex items-center ml-7">
+          <div className="flex items-center ml-2 sm:ml-7">
             {stockLoading ? (
               <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
                 Loading...
@@ -374,15 +565,11 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-
             </span>
           </div>
-          <div className="flex items-center mr-7">
+          <div className="flex items-center mr-2 sm:mr-7">
             <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
               Employee Login 
-              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
             </span>
           </div>
         </div>
@@ -391,27 +578,39 @@ const Navbar = () => {
       {/* Middle Navbar */}
       <div 
         ref={dropdownRef}
-        className="w-full h-[57px] flex items-center justify-between px-8 relative z-30 mt-0"
+        className="w-full h-[57px] flex items-center justify-between px-4 sm:px-8 relative z-30 mt-0"
         style={{
           background: '#C0C0C0',
         }}
       >
-        {/* Logo - Now clickable */}
-        <div className="flex items-center">
-          <div 
-            className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
-            onClick={handleLogoClick}
+        {/* Mobile menu button */}
+        <div className="sm:hidden">
+          <button 
+            onClick={toggleMobileMenu}
+            className="text-black focus:outline-none"
           >
-            <img 
-              src={companylogo} 
-              className="h-[70px] w-[125px] hover:opacity-80 transition-opacity duration-200"
-              alt="Company Logo"
-            />
-          </div>
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
         
-        {/* Navigation Menu */}
-        <div className="flex gap-8 text-black text-sm font-medium">
+        {/* Logo - Now clickable */}
+         <div className="flex items-center flex-shrink-0">
+    <div 
+      className="text-white px-2 py-2 rounded text-sm font-bold cursor-pointer"
+      onClick={handleLogoClick}
+    >
+      <img 
+        src={companylogo} 
+        className="h-[40px] w-[90px] sm:h-[50px] sm:w-[110px] md:h-[70px] md:w-[125px] hover:opacity-80 transition-opacity duration-200"
+        alt="Company Logo"
+      />
+    </div>
+  </div>
+        {/* Navigation Menu - Hidden on mobile */}
+         <div className="hidden sm:flex items-center overflow-x-auto whitespace-nowrap scrollbar-hide">
+    <div className={`flex ${getMenuGap()} text-black text-sm font-medium`}>
           {navItems.map((item, index) => (
             <div
               key={index}
@@ -432,7 +631,7 @@ const Navbar = () => {
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div 
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                  className={`absolute top-full ${getDropdownPosition()} bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1`}
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
@@ -472,7 +671,7 @@ const Navbar = () => {
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                             <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0"
+                              className={`absolute ${getSubmenuPosition()} top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0`}
                               onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                               onMouseLeave={handleBusinessSubLeave}
                             >
@@ -514,7 +713,7 @@ const Navbar = () => {
                                   {/* Nested sub-menu for items */}
                                   {activeNestedSub === subIndex && subItem.items && (
                                     <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0"
+                                      className={`absolute ${getSubmenuPosition()} top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0`}
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >
@@ -566,20 +765,24 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Search Bar */}
-        <div className="flex items-center gap-6">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+        {/* Search Bar - Hidden on mobile */}
+        <div className="hidden sm:flex items-center ml-2">
+    <div className="relative">
+      <input
+        type="text"
+        placeholder="Search..."
+        className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 md:px-4 md:py-2 text-black placeholder-black text-xs md:text-sm w-24 md:w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+      />
+      <svg className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+      </div>
           </div>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {renderMobileMenu()}
     </div>
   );
 };

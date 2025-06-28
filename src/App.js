@@ -40,6 +40,7 @@ import Blackround_bar from './Pages/blackround_bar.js';
 import Bright_bar from './Pages/Bright_bar.js';
 import Flats from './Pages/flats.js';
 import Financial_information from './Pages/finacial_information.js';
+import Policies from './Pages/policies.js';
 
 function App() {
   return (
@@ -87,6 +88,7 @@ function App() {
 
   <Route path="flats" element={<Flats />} />
 <Route path="finacial_informations" element={<Financial_information />} />
+<Route path="policies" element={<Policies />} />
 
    
   </Route>

@@ -137,7 +137,7 @@ export default function BusinessAreas() {
   };
 
   return (
-    <div className="relative bg-gray-200 text-white py-16 px-6">
+    <div className="relative bg-gray-200 text-white py-12 px-8">
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -147,10 +147,12 @@ export default function BusinessAreas() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
-        >
-          <h1 className="text-black text-3xl md:text-4xl font-bold mb-8">
+        > 
+        <div className='pt-0 mb-6'>
+          <h1 className="text-black text-3xl md:text-4xl font-bold ">
             Our Products
           </h1>
+          </div>
 
           <div className="flex justify-center space-x-3">
             {allImageSets.map((_, index) => (
@@ -162,8 +164,8 @@ export default function BusinessAreas() {
                 }}
                 className={`w-3 h-3 rounded-full transition-all duration-500 ${
                   index === currentSetIndex
-                    ? 'bg-white scale-125 shadow-lg'
-                    : 'bg-white/50 hover:bg-white/70 hover:scale-110'
+                    ? 'bg-orange-600 scale-125 shadow-lg'
+                    : 'bg-gray-300 hover:bg-white/70 hover:scale-110'
                 }`}
               />
             ))}

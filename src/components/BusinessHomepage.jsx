@@ -33,14 +33,15 @@ const IndustrialCards = () => {
   ];
 
   return (
-    <div className="bg-gray-400 py-12 px-5 font-inter"> {/* Removed min-h-screen */}
-      <h2 className="text-gray-800 text-4xl font-semibold ml-7 mb-8">
+    <div className="bg-gray-400 py-16 px-8 font-inter">
+      {" "}
+      {/* Removed min-h-screen */}
+      <h2 className="text-gray-800 text-4xl font-semibold ml-12 mb-8">
         Business Areas
       </h2>
-
       <div className="max-w-7xl mx-auto">
         {/* Changed to horizontal layout for desktop */}
-        <div className="flex flex-col md:flex-row items-center gap-8 overflow-x-auto pb-4">
+        <div className="flex flex-col md:flex-row items-center overflow-x-auto mt-10 pb-3 px-4 md:px-8 gap-x-8">
           {cardsData.map((card) => (
             <div
               key={card.id}
@@ -70,7 +71,7 @@ const IndustrialCards = () => {
                     {card.description}
                   </p>
                 </div>
-                
+
                 {/* Bottom section with + button */}
                 <div className="flex justify-between items-center">
                   <button className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center hover:bg-orange-600 transition-colors duration-300">
@@ -94,7 +95,9 @@ const IndustrialCards = () => {
         </div>
 
         {/* Explore All Button */}
-        <div className="flex justify-center mt-12 mb-4"> {/* Added mb-4 for bottom margin */}
+        <div className="flex justify-center mt-16 mb-[-10px]">
+          {" "}
+          {/* Added mb-4 for bottom margin */}
           <button className="py-3 px-10 bg-gray-800 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 flex items-center">
             Explore All
             <FiArrowRight className="ml-2" />
