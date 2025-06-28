@@ -3,7 +3,7 @@ import a1 from "../assets/environment.png";
 
 export default function Environment() {
   return (
-    <div className="relative w-full min-h-[400px]">
+    <div className="relative w-full min-h-[400px] font-inter">
       {/* Background image */}
       <div
         className="w-full h-80 bg-cover bg-center"
@@ -30,7 +30,11 @@ export default function Environment() {
               strokeWidth="2"
               viewBox="0 0 24 24"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 5l7 7-7 7"
+              />
             </svg>
           </span>
         </button>

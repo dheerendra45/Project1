@@ -44,7 +44,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative">
+    <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative font-inter">
       {/* Slides */}
       {banners.map((banner, index) => (
         <div

@@ -14,7 +14,7 @@ const fadeUp = {
 
 const EnvironmentSection1 = () => {
   return (
-    <div className="relative w-full min-h-screen bg-gray-700 overflow-hidden py-16 px-4 sm:px-8 lg:px-16">
+    <div className="relative w-full min-h-screen bg-gray-700 overflow-hidden py-16 px-4 sm:px-8 lg:px-16 font-inter">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 bg-gray-600 opacity-50"

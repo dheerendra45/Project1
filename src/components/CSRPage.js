@@ -10,7 +10,7 @@ const CSRPage = () => {
   return (
     <div className="w-full">
       {/* Hero Section */}
-      <div className="flex flex-col md:flex-row w-full border-b-2">
+      <div className="flex flex-col md:flex-row w-full border-b-2 font-inter">
         {/* Left side with image and overlay text */}
         <div className="w-full md:w-1/2 bg-gray-800 relative h-96 md:h-auto">
           <img 

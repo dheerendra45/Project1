@@ -40,7 +40,7 @@ const ContactPage = () => {
   backgroundSize: 'cover', 
   backgroundPosition: 'center', 
   backgroundRepeat: 'no-repeat'
-}} className="w-full bg-gray-100 py-16 px-4">
+}} className="w-full bg-gray-100 py-16 px-4 font-inter">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row">
 
