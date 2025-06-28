@@ -8,7 +8,6 @@ const Navbar = () => {
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   
   // Stock price state
   const [stockData, setStockData] = useState({
@@ -232,16 +231,6 @@ const Navbar = () => {
     },
   ];
 
-  // Track window width for responsive adjustments
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   // Clear all timeouts
   const clearAllTimeouts = () => {
     if (hoverTimeoutRef.current) {
@@ -358,26 +347,6 @@ const Navbar = () => {
       clearInterval(stockInterval);
     };
   }, []);
-
-  // Calculate responsive gap between menu items
-  const getMenuGap = () => {
-    if (windowWidth < 768) return 'gap-2';
-    if (windowWidth < 1024) return 'gap-3';
-    if (windowWidth < 1280) return 'gap-4';
-    return 'gap-6';
-  };
-
-  // Calculate responsive dropdown positioning
-  const getDropdownPosition = () => {
-    if (windowWidth < 1024) return 'left-0';
-    return 'left-0';
-  };
-
-  // Calculate responsive submenu positioning
-  const getSubmenuPosition = () => {
-    if (windowWidth < 1024) return 'left-full';
-    return 'left-full';
-  };
 
   // Render mobile menu
   const renderMobileMenu = () => {
@@ -596,21 +565,21 @@ const Navbar = () => {
         </div>
         
         {/* Logo - Now clickable */}
-         <div className="flex items-center flex-shrink-0">
-    <div 
-      className="text-white px-2 py-2 rounded text-sm font-bold cursor-pointer"
-      onClick={handleLogoClick}
-    >
-      <img 
-        src={companylogo} 
-        className="h-[40px] w-[90px] sm:h-[50px] sm:w-[110px] md:h-[70px] md:w-[125px] hover:opacity-80 transition-opacity duration-200"
-        alt="Company Logo"
-      />
-    </div>
-  </div>
+        <div className="flex items-center">
+          <div 
+            className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
+            onClick={handleLogoClick}
+          >
+            <img 
+              src={companylogo} 
+              className="h-[50px] w-[110px] sm:h-[70px] sm:w-[125px] hover:opacity-80 transition-opacity duration-200"
+              alt="Company Logo"
+            />
+          </div>
+        </div>
+        
         {/* Navigation Menu - Hidden on mobile */}
-         <div className="hidden sm:flex items-center overflow-x-auto whitespace-nowrap scrollbar-hide">
-    <div className={`flex ${getMenuGap()} text-black text-sm font-medium`}>
+        <div className="hidden sm:flex gap-4 md:gap-8 text-black text-sm font-medium">
           {navItems.map((item, index) => (
             <div
               key={index}
@@ -631,7 +600,7 @@ const Navbar = () => {
               {/* Dropdown Menu */}
               {item.hasDropdown && activeDropdown === index && (
                 <div 
-                  className={`absolute top-full ${getDropdownPosition()} bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1`}
+                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
                   onMouseEnter={handleDropdownEnter}
                   onMouseLeave={handleDropdownLeave}
                 >
@@ -671,7 +640,7 @@ const Navbar = () => {
                           {/* Sub-menu for each business/investor */}
                           {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                             <div 
-                              className={`absolute ${getSubmenuPosition()} top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0`}
+                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0"
                               onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                               onMouseLeave={handleBusinessSubLeave}
                             >
@@ -713,7 +682,7 @@ const Navbar = () => {
                                   {/* Nested sub-menu for items */}
                                   {activeNestedSub === subIndex && subItem.items && (
                                     <div 
-                                      className={`absolute ${getSubmenuPosition()} top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0`}
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0"
                                       onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                       onMouseLeave={handleNestedSubLeave}
                                     >
@@ -766,17 +735,16 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar - Hidden on mobile */}
-        <div className="hidden sm:flex items-center ml-2">
-    <div className="relative">
-      <input
-        type="text"
-        placeholder="Search..."
-        className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-3 py-1 md:px-4 md:py-2 text-black placeholder-black text-xs md:text-sm w-24 md:w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-      />
-      <svg className="absolute right-2 top-1/2 transform -translate-y-1/2 w-3 h-3 md:w-4 md:h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-      </svg>
-      </div>
+        <div className="hidden sm:flex items-center gap-4 md:gap-6">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search here..."
+              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-32 md:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+            />
+            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
           </div>
         </div>
       </div>
