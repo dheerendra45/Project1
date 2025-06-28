@@ -31,27 +31,27 @@ export default function Whychoose() {
     {
       icon: a2,
       title: 'Industry Leadership',
-      desc: 'One of India’s fastest-growing names in construction-grade steel and aluminium materials',
+      desc: 'One of India’s fastest-growing names in construction-grade steel and aluminium solutions',
     },
     {
       icon: a3,
-      title: 'Engineering Expertise',
-      desc: 'Custom solutions tailored for homes, infrastructure, and industry',
+      title: 'Value for Money',
+      desc: ' Best-in-class quality at highly competitive prices',
     },
     {
       icon: a4,
-      title: 'SEL-Certified Durability',
-      desc: 'Every product meets our highest standards of Safety, Efficiency, and Longevity',
+      title: 'Reliable Supply Chain',
+      desc: 'Seamless logistics ensure on-time delivery across the country',
     },
     {
       icon: a5,
-      title: 'Value For Money',
-      desc: 'Best-in-class quality at highly competitive prices',
+      title: 'Engineering Expertise:',
+      desc: 'Customised solutions for homes, infrastructure, and industry',
     },
     {
       icon: a6,
-      title: 'Reliable Supply Chain',
-      desc: 'Seamless logistics ensure timely delivery across the country',
+      title: 'SEL-Certified Durability',
+      desc: ' Every product meets our highest benchmarks of Safety, Efficiency,and Longevity',
     },
   ];
 

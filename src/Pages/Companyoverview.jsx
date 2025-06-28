@@ -1,4 +1,4 @@
-import AboutUs from "../components/AboutUs.js";
+import AboutUs from "../components/Companyoverview/Timeline.jsx";
 import Aboutus from "../components/Companyoverview/aboutus.jsx";
 import Achievement from "../components/Companyoverview/achievement.jsx";
 import Best from "../components/Companyoverview/best.jsx";

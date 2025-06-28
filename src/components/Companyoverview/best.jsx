@@ -14,13 +14,13 @@ const Best = () => {
   const carouselData = [
     {
       icon: a1,
-      heading: "30% Growth",
-      text: "Growth in revenue year over year by businesses using Steeler to unify their in-store and online sales.",
+      heading: "Countries Exported To",
+      text: " 28 (including USA, Japan, Korea, Italy, Nepal, Bangladesh)",
     },
     {
       icon: a1,
-      heading: "50% Efficiency",
-      text: "Improved production efficiency with integrated automation and real-time analytics.",
+      heading: "Revenue from Exports (FY24)",
+      text: "10%",
     },
   ];
 
@@ -61,7 +61,7 @@ const Best = () => {
             "Building Bharat’s Tomorrow, One Metal at a Time"
           </h1>
           <p>
-            Cultural roots + Progressive vision
+            Shyam Metalics and Energy Limited (SMEL) stands as one of India's foremost integrated metal manufacturing firms, focusing on steel, ferro alloys, and energy production. The company plays a significant role in the long steel products and ferro alloys sectors, serving industries including infrastructure, construction, automotive, and rail.
           </p>
           <button className="bg-orange-500 text-white px-6 py-2 rounded flex items-center gap-2">
             SHYAM SUSTAINABILITY <ArrowRight size={16} />

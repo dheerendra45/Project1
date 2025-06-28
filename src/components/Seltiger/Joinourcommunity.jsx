@@ -44,7 +44,9 @@ export default function Joinourcommunity() {
             Every Rod, Every Roof, Every Rebar: A Step Toward a Stronger, More Inclusive India.
           </h1>
           <p className="text-gray-700 mb-6">
-            At SEL Tiger, we believe that true strength comes not only in the materials we manufacture but from the lives we touch. Our commitment to nation-building begins at the grassroots by uplifting communities, empowering youth, and driving sustainable progress in every region we serve.
+            At SEL Tiger, we believe that true strength comes not only in the materials we manufacture but
+from the lives we touch. Our commitment to nation-building begins at the grassroots by uplifting
+communities, empowering youth, and driving sustainable progress in every region we serve.
           </p>
           <button
             onClick={() => navigate('/csr')} // <-- Navigate on click

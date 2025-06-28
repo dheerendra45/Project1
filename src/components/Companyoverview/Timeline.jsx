@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import abt1img from '../assets/abt1.jpg';
-import a1 from '../assets/aboutUs.png';
-import a2 from "../assets/1.png";
-import a3 from "../assets/2.png";
-import a4 from "../assets/3.png";
-import a5 from "../assets/4.png";
-import a6 from "../assets/5.png";
+import abt1img from '../../assets/Companyoverview/abt1.jpg';
+import a2 from "../../assets/Companyoverview/1.png";
+import a3 from "../../assets/Companyoverview/2.png";
+import a4 from "../../assets/Companyoverview/3.png";
+import a5 from "../../assets/Companyoverview/4.png";
+import a6 from "../../assets/Companyoverview/5.png";
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -31,6 +30,14 @@ export default function AboutUs() {
   const years = ["2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024"];
   const galleryImages = [a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5];
   const aboutImages = [abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
+  const aboutTexts = [
+    "Shyam Metalics is the 6th largest metal producing company based in India providing end-to-end solutions with integrated capabilities (Source: CRISIL Report) with a focus on long steel products and ferro alloys. Our state-of-the-art facilities and commitment to quality have made us a leader in the industry.",
+    "Founded in 1848, we've grown to become a leader in steel production with state-of-the-art facilities across multiple locations in India. Our early adoption of innovative production techniques set us apart from competitors.",
+    "Our 1902 expansion marked the beginning of our journey towards becoming an integrated steel producer with mining capabilities. This vertical integration allowed us to control quality from raw materials to finished products.",
+    "The 1964 revolution in our production techniques set new benchmarks for quality in the steel industry. We introduced advanced quality control measures that became industry standards.",
+    "In 1998, we pioneered several sustainable steel production methods that reduced our carbon footprint by 40%. Our environmental initiatives have been recognized with multiple awards.",
+    "Our 2023 vision focuses on digital transformation and AI-powered manufacturing processes. We're investing heavily in Industry 4.0 technologies to maintain our competitive edge."
+  ];
 
   // Year-wise content data
   const yearContent = [
@@ -249,30 +256,29 @@ export default function AboutUs() {
   }, [galleryImages.length, isHovering, isPaused]);
 
   return (
-    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-16 lg:py-8 font-['Inter',sans-serif]">
+    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-6 lg:py-8">
       {/* ABOUT US Section */}
       <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
-        {/* Left Text Section - Now Static */}
-        <div className="lg:w-1/2 text-black space-y-4 lg:space-y-6">
+        {/* Left Text Section */}
+        <motion.div 
+          key={activeIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="lg:w-1/2 text-black space-y-4 lg:space-y-6"
+        >
           <h1 className="text-orange-500 text-lg sm:text-xl font-semibold">ABOUT US</h1>
           <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-snug">
-            A Steel Company With Integrated <br className="hidden sm:block" /> Operations.
+            Shyam Metalics and Energy Limited is an Indian integrated metal producing Company with a presence across the metal value chain. The Company is one of the largest integrated steel producers in India, ranked 6th largest and is also among the leading ferro alloy manufacturers in the country. SMEL operates an "ore to metal" integrated business model with steel manufacturing facilities located strategically near mineral reserves in West Bengal, Odisha, Chhattisgarh and Madhya Pradesh. The Company has a combined installed production capacity of 13.2 million metric tonnes per annum (MTPA) as of January 2024 across various product lines. Demonstrating consistent operational profitability since fiscal year 2005, SMEL has sustained a record of positive EBITDA annually. The company's distribution network spans domestically and internationally, with a presence in over 28 countries. The Company's credit facilities have received affirmation with an AA/ Stable rating for long-term banking facilities and an A1+ rating for short-term banking facilities by Crisil. The outlook for the long-term rating remains stable
+
           </h1>
-          <div className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed space-y-4">
-            <p>
-              Shyam Metalics and Energy Limited is an Indian integrated metal producing Company with a strong presence across the metal value chain. The Company is one of the largest integrated steel producers in India, currently ranked 6th, and is also among the country's leading ferro alloy manufacturers.
-            </p>
-            <p>
-              Shyam Metalics and Energy Limited operates an "ore-to-metal" integrated business model, with steel manufacturing facilities located strategically near mineral reserves in West Bengal, Odisha, Chhattisgarh and Madhya Pradesh. The Company has a combined installed production capacity of 13.2 million metric tonnes per annum (MTPA) as of March 2025 across various product lines.
-            </p>
-            <p>
-              Since FY2005, the company has demonstrated consistent operational profitability and has maintained a track record of positive EBITDA every year. Its distribution network spans both domestic and international markets, with a presence in over 28 countries.
-            </p>
-            <p>
-              Shyam Metalics and Energy credit facilities have been rated AA/Stable for long-term banking facilities and A1+ for short-term banking facilities by Crisil. The outlook for the long-term rating remains stable.
-            </p>
-          </div>
-        </div>
+          <p className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed">
+            {aboutTexts[activeIndex]}
+          </p>
+          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition text-sm sm:text-base">
+            Read More -&gt;
+          </button>
+        </motion.div>
 
         {/* Year-wise Content and Gallery Section */}
         <motion.div 

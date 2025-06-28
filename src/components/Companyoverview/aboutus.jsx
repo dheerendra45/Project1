@@ -18,13 +18,13 @@ const tabContents = {
   "Our Vision": {
     title: "Our Vision",
     description:
-      "We are engineering the future of steel through smarter processes, stronger partnerships, and seizing every opportunity to raise the bar for quality and sustainability worldwide.",
+      "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel, Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth, empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
     features: [],
   },
   "Our Mission": {
     title: "Our Mission",
     description:
-      "Inspired by Shri M. P. Agarwal’s vision, we turn values into action, building a stronger India with world-class steel solutions.",
+      "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence, leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity, strengthen India’s industrial backbone, and create enduring value for all stakeholders.",
     features: [],
   },
   "Our Values": {
@@ -32,8 +32,8 @@ const tabContents = {
     description: "",
     features: [
       { title: "Integrity", description: "Transparency builds trust" },
-      { title: "Collaboration", description: "Dedication powers excellence" },
-      { title: "Commitment", description: "From 200 to 5,000+ team members" },
+      { title: "Collaboration", description: "Success thrives on synergy" },
+      { title: "Commitment", description: " Dedication powers excellence" },
       { title: "Ownership", description: "Accountability drives results" },
     ],
   },
