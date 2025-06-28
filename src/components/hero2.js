@@ -44,7 +44,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-[815px] bg-gray-300 mx-auto overflow-hidden relative">
+    <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative">
       {/* Slides */}
       {banners.map((banner, index) => (
         <div
@@ -63,69 +63,55 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 px-4 py-8 flex items-center justify-center min-h-screen text-white">
-        <div className="bg-black bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-8 flex flex-col gap-6">
+      <div className="relative z-20 px-4 sm:px-6 md:px-8 py-8 flex items-center justify-center h-full text-white">
+        <div className="bg-black bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 flex flex-col gap-4 sm:gap-6">
           {/* Heading and paragraph */}
-          <div className="w-full md:w-[70%]">
-            <h1 className="text-[60px] md:text-[52px] leading-tight font-space-grotesk font-bold mb-4">
+          <div className="w-full lg:w-[70%]">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight font-space-grotesk font-bold mb-2 sm:mb-4">
               {banners[currentSlide].heading}
             </h1>
-            <p className="text-lg mb-6">{banners[currentSlide].subline}</p>
+            <p className="text-base sm:text-lg mb-4 sm:mb-6">{banners[currentSlide].subline}</p>
           </div>
 
           {/* Button + Stats in same row */}
-          <div className="w-full flex flex-col md:flex-row items-start md:items-center gap-6">
+          <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             {/* Button */}
-            <div className="w-full md:w-[30%]">
-              <button className="bg-orange-500 text-white px-6 py-3 rounded border border-white hover:bg-orange-600 transition w-full md:w-auto">
+            <div className="w-full sm:w-auto">
+              <button className="bg-orange-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
                 Explore More
               </button>
             </div>
 
-              {/* Stats Box   */}
-             
-            </div>
+            {/* Stats Box - Add your stats content here */}
+          </div>
 
-          {/* Breadcrumb           <div className="text-sm flex items-center gap-4 text-white/80 mt-4">
-            <span>Home</span>
-            <span>&gt;</span>
-            <span>Businesses</span>
-            <span>&gt;</span>
-            <span>Steel</span>
-            <span>&gt;</span>
-            <span>Carbon Steel</span>
-            <span>&gt;</span>
-            <span>Pellets</span>
-          </div> */}
-
+          {/* Navigation Buttons */}
+          <div className="absolute top-1/2 left-2 sm:left-4 md:left-6 transform -translate-y-1/2 z-30">
+            <button
+              onClick={prevSlide}
+              className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2"
+            >
+              &#8592;
+            </button>
+          </div>
+          <div className="absolute top-1/2 right-2 sm:right-4 md:right-6 transform -translate-y-1/2 z-30">
+            <button
+              onClick={nextSlide}
+              className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2"
+            >
+              &#8594;
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="absolute top-1/2 left-6 transform -translate-y-1/2 z-30">
-        <button
-          onClick={prevSlide}
-          className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2"
-        >
-          &#8592;
-        </button>
-      </div>
-      <div className="absolute top-1/2 right-6 transform -translate-y-1/2 z-30">
-        <button
-          onClick={nextSlide}
-          className="bg-black/50 hover:bg-black/70 text-white rounded-full p-2"
-        >
-          &#8594;
-        </button>
-      </div>
-
       {/* Dot Indicators */}
-      <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
+      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
         {banners.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
               index === currentSlide
                 ? "bg-white scale-125"
                 : "bg-white/40 hover:bg-white"
