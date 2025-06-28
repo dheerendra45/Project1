@@ -21,73 +21,72 @@ export default function Applications() {
   return (
     <div
       ref={sectionRef}
-      className="bg-white text-black py-16 px-6 md:px-20"
+      className="bg-white text-black py-16 px-4 sm:px-6 md:px-12 lg:px-20 font-inter"
     >
       {/* Heading */}
       <motion.h1
         variants={fadeUp}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="text-3xl font-bold mb-10 text-left"
+        className="text-3xl sm:text-4xl font-bold mb-10 text-left"
       >
         Applications:
       </motion.h1>
 
-      {/* Application Cards in same row on large screens */}
-<div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-  {[
-    {
-      title: "For Homebuilders:",
-      img: a1,
-      points: [
-        "Earthquake-resistant columns and beams",
-        "Crack-free slabs in humid climates",
-      ],
-    },
-    {
-      title: "For Infrastructure:",
-      img: a2,
-      points: [
-        "Bridges with 100-year lifespans",
-        "Metro rails in coastal cities",
-      ],
-    },
-    {
-      title: "For Industry:",
-      img: a3,
-      points: [
-        "High-vibration machinery bases",
-        "Power plant foundations",
-      ],
-    },
-  ].map((item, i) => (
-    <motion.div
-      key={i}
-      custom={i}
-      variants={fadeUp}
-      initial="hidden"
-      animate={isInView ? "visible" : "hidden"}
-      className="bg-white rounded-xl p-6 flex flex-row items-center gap-4 h-full"
-    >
-      <img
-        src={item.img}
-        alt=""
-        className="w-28 h-28 object-contain flex-shrink-0"
-      />
-      <div className="text-left">
-        <h2 className="text-orange-500 font-semibold text-lg mb-2">
-          {item.title}
-        </h2>
-        {item.points.map((point, j) => (
-          <p key={j} className="text-sm mb-1">
-            • {point}
-          </p>
+      {/* Application Cards */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+        {[
+          {
+            title: "For Homebuilders:",
+            img: a1,
+            points: [
+              "Earthquake-resistant columns and beams",
+              "Crack-free slabs in humid climates",
+            ],
+          },
+          {
+            title: "For Infrastructure:",
+            img: a2,
+            points: [
+              "Bridges with 100-year lifespans",
+              "Metro rails in coastal cities",
+            ],
+          },
+          {
+            title: "For Industry:",
+            img: a3,
+            points: [
+              "High-vibration machinery bases",
+              "Power plant foundations",
+            ],
+          },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            custom={i}
+            variants={fadeUp}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="bg-white rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 h-full shadow-md"
+          >
+            <img
+              src={item.img}
+              alt={item.title}
+              className="w-24 h-24 sm:w-28 sm:h-28 object-contain flex-shrink-0"
+            />
+            <div className="text-left">
+              <h2 className="text-orange-500 font-semibold text-lg mb-2">
+                {item.title}
+              </h2>
+              {item.points.map((point, j) => (
+                <p key={j} className="text-sm mb-1 leading-relaxed">
+                  • {point}
+                </p>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
-    </motion.div>
-  ))}
-</div>
-
 
       {/* TMT Bar Calculator Section */}
       <motion.div
@@ -96,28 +95,28 @@ export default function Applications() {
         animate={isInView ? "visible" : "hidden"}
         className="bg-[#FF6A0012] rounded-xl p-6 flex flex-col gap-6"
       >
-        {/* First Row - Image and Title */}
+        {/* Image and Title */}
         <div className="flex items-center gap-4">
           <img
             src={a4}
             alt="Calculator"
-            className="w-20 h-20 object-contain"
+            className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
           />
-          <h1 className="text-xl font-bold">TMT Bar Calculator</h1>
+          <h1 className="text-xl sm:text-2xl font-bold">TMT Bar Calculator</h1>
         </div>
 
-        {/* Second Row - Text + Button side by side */}
+        {/* Text and Button */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div className="text-left">
             <h3 className="text-lg font-semibold mb-1">
               How much steel does your 2BHK need?
             </h3>
-            <p className="text-sm">
+            <p className="text-sm text-gray-700">
               Example: Plot Area – 1000 sq. ft → Recommended: 1.5 tons of Tiger Fe-500.
             </p>
           </div>
 
-          <button className="border border-orange-500 text-orange-500 bg-white px-4 py-2 rounded hover:bg-orange-500 hover:text-white transition duration-300 whitespace-nowrap">
+          <button className="border border-orange-500 text-orange-500 bg-white px-5 py-2 rounded hover:bg-orange-500 hover:text-white transition duration-300 whitespace-nowrap">
             Calculate Your Requirement
           </button>
         </div>
