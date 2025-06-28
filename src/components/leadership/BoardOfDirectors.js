@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useRef, useState } from "react";
-import a1 from "../../assets/leadership/a.png"; // replace with your image path
+import a1 from "../../assets/leadership/a.png";
 
 export default function BoardOfDirectors() {
   const ref = useRef(null);
@@ -21,56 +21,65 @@ export default function BoardOfDirectors() {
   ];
 
   return (
-    <div ref={ref} className="px-6 md:px-12 py-16 max-w-7xl mx-auto text-gray-800">
+    <div
+      ref={ref}
+      className="font-inter px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 py-14 max-w-7xl mx-auto text-gray-800"
+    >
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="text-center mb-12"
+        className="text-center mb-10"
       >
-        <h1 className="text-4xl font-bold">
-          Meet Our <span className="relative inline-block">
+        <h1 className="text-3xl sm:text-5xl font-bold leading-tight">
+          Meet Our{" "}
+          <span className="relative inline-block">
             Team
             <motion.div
               initial={{ width: 0 }}
               animate={isInView ? { width: "100%" } : { width: 0 }}
               transition={{ duration: 1 }}
               className="absolute bottom-0 left-0 h-1 bg-orange-500 rounded-full"
-            ></motion.div>
+            />
           </span>
         </h1>
-        <p className="mt-4 text-gray-600">
-          Lorem ipsum dolor sit amet, consectetur adipiscing vipu elit. Ut<br />
-          spelataras tellus luctus neullamcorper mattis, lerom pibus leo dotu.
+        <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br className="hidden sm:block" />
+          Ut tellus luctus neullamcorper mattis, lorem pibus leo dotu.
         </p>
       </motion.div>
 
-      {/* Image and Text Section */}
+      {/* Content */}
       <div className="flex flex-col lg:flex-row gap-10 items-start">
-        {/* Left - Image */}
+        {/* Image */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1 }}
-          className="flex-1"
+          className="w-full lg:w-1/2"
         >
-          <img src={a1} alt="Director" className="rounded-2xl shadow-lg w-full" />
+          <img
+            src={a1}
+            alt="Director"
+            className="w-full rounded-2xl shadow-lg object-cover"
+          />
         </motion.div>
 
-        {/* Right - Content */}
+        {/* Text */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 1 }}
-          className="flex-1 space-y-6"
+          className="w-full lg:w-1/2 space-y-6"
         >
           <div>
-            <h1 className="text-3xl font-bold">Darwin Luiz</h1>
-            <p className="mt-2 text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipis cingsi lan vipural elit.
-              In ut elit taras tellus luctus neul lam corper imat tis pulvinar pibus leo
-              dota un le tas luco lamco vinup riato, lemor supim lor dosit amet taren.
+            <h2 className="text-2xl sm:text-3xl font-bold">Darwin Luiz</h2>
+            <p className="mt-3 text-gray-700 text-sm sm:text-base leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut elit tellus
+              luctus neullamcorper mattis, pulvinar pibus leo. Donec vitae lorem sit amet
+              magna bibendum lobortis at nec tortor.
             </p>
           </div>
 
@@ -89,15 +98,15 @@ export default function BoardOfDirectors() {
             ))}
           </div>
 
-          {/* Gray Divider */}
+          {/* Divider */}
           <hr className="border-t border-gray-300" />
 
-          {/* Experience Section */}
+          {/* Experience */}
           <div>
-            <h1 className="text-2xl font-bold mb-4">Darwin Luiz Experience</h1>
-            <p className="text-gray-700 mb-4">
-              Lorem ipsum dolor sit amet, consectetur adipis cingsi lan vipural elit. In ut
-              elit taras tellus luctus neul lam corper imat tis pulvinar pibus leo.
+            <h3 className="text-xl sm:text-2xl font-bold mb-4">Experience</h3>
+            <p className="text-gray-700 mb-4 text-sm sm:text-base">
+              Darwin Luiz brings strategic insights from decades of leadership. His
+              commitment to innovation drives success.
             </p>
             <ul className="space-y-3">
               {experiences.map((text, index) => (
@@ -108,10 +117,12 @@ export default function BoardOfDirectors() {
                   transition={{ duration: 0.5, delay: index * 0.2 }}
                   className="flex items-start gap-3"
                 >
-                  <div className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center mt-1">
+                  <div className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center mt-1 text-sm">
                     ✓
                   </div>
-                  <span className="text-gray-800">{text}</span>
+                  <span className="text-gray-800 text-sm sm:text-base">
+                    {text}
+                  </span>
                 </motion.li>
               ))}
             </ul>

@@ -26,7 +26,7 @@ export default function Pillar() {
   return (
     <div
       ref={sectionRef}
-      className="text-center px-4 sm:px-8 py-20"
+      className="text-center px-4 sm:px-8 py-20 font-inter"
       style={{ backgroundColor: '#F5F5F5' }}
     >
       {/* Intro Text */}
@@ -113,8 +113,8 @@ export default function Pillar() {
             <div className="w-full mt-6">
               <img
                 src={pillar.bottomImg}
-                alt={`${pillar.title} visual`}
-                className="w-full h-40 object-cover rounded-lg"
+                alt=""
+                className="w-full h-40 object-cover"
               />
             </div>
           </motion.div>

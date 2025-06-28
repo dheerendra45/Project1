@@ -1,27 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import herobg from "../../assets/leadership/herobg.jpg";
 import { FiChevronDown } from "react-icons/fi";
 
 const Hero = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: false
-  });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const itemVariants = {
@@ -32,9 +27,9 @@ const Hero = () => {
       transition: {
         type: "spring",
         stiffness: 100,
-        damping: 10
-      }
-    }
+        damping: 10,
+      },
+    },
   };
 
   const gradientVariants = {
@@ -43,23 +38,19 @@ const Hero = () => {
       width: "100%",
       transition: {
         duration: 1,
-        ease: "easeInOut"
-      }
-    }
+        ease: "easeInOut",
+      },
+    },
   };
 
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
+    controls.start(inView ? "visible" : "hidden");
   }, [controls, inView]);
 
   return (
     <div
       ref={ref}
-      className="h-screen md:h-[815px] bg-gray-100 mx-auto overflow-hidden relative -mt-[65px]"
+      className="h-screen md:h-[815px] font-inter bg-gray-100 overflow-hidden relative -mt-[65px]"
     >
       {/* Background Image */}
       <motion.div
@@ -79,21 +70,21 @@ const Hero = () => {
       </motion.div>
 
       {/* Overlay */}
-      <motion.div 
+      <motion.div
         className="absolute inset-0 bg-black/40"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.4 }}
         transition={{ duration: 1 }}
       />
-      
-      {/* Floating particles animation */}
+
+      {/* Floating Particles */}
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
           className="absolute rounded-full bg-white/10"
           style={{
-            width: Math.random() * 10 + 5 + 'px',
-            height: Math.random() * 10 + 5 + 'px',
+            width: Math.random() * 10 + 5 + "px",
+            height: Math.random() * 10 + 5 + "px",
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
           }}
@@ -110,28 +101,28 @@ const Hero = () => {
         />
       ))}
 
-      {/* Content */}
+      {/* Hero Content */}
       <motion.div
-        className="px-6 md:px-12 lg:px-[114px] pt-[150px] md:pt-[200px] lg:pt-[275px] text-white relative z-20"
+        className="px-4 sm:px-6 md:px-10 lg:px-20 xl:px-32 pt-[150px] md:pt-[200px] lg:pt-[275px] text-white relative z-20"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
       >
-        <motion.h1 
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] font-bold leading-[1.1] mb-4 md:mb-6"
           variants={itemVariants}
         >
           Leadership
         </motion.h1>
-        
+
         <motion.div
           variants={gradientVariants}
           className="h-1 rounded mb-6 sm:mb-8"
           style={{ background: "linear-gradient(to right, #FF6B00, white)" }}
         />
-        
-        <motion.div 
-          className="flex space-x-1 font-space-grotesk font-medium text-sm md:text-[16px] leading-[1.7]"
+
+        <motion.div
+          className="flex space-x-1 text-sm md:text-base font-medium"
           variants={itemVariants}
         >
           <span>Home</span>
@@ -140,12 +131,10 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll indicator for mobile */}
+      {/* Scroll Indicator (Mobile) */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden"
-        animate={{
-          y: [0, 10, 0],
-        }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden text-white"
+        animate={{ y: [0, 10, 0] }}
         transition={{
           duration: 2,
           repeat: Infinity,

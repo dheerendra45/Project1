@@ -14,8 +14,9 @@ module.exports = {
         'blue-gradient-end': '#DE3AA8',
       },
       fontFamily: {
-        'lemon-milk': ['LEMON MILK', 'sans-serif'],
-        'helvetica': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        // 'lemon-milk': ['LEMON MILK', 'sans-serif'],
+        // 'helvetica': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         'tiger-gradient': 'linear-gradient(90deg, #EE741D 2.45%, #FCB040 100%)',

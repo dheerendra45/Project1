@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import a1 from "../../assets/Environmentcompliance/info1.png";
 
-// Animation variants for cleaner code
+// Animation variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.3,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
   },
 };
 
@@ -18,32 +15,20 @@ const itemVariants = {
   visible: {
     y: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-    },
+    transition: { type: "spring", stiffness: 100, damping: 10 },
   },
 };
 
 const imageVariants = {
-  hidden: { scale: 0.9, opacity: 0 },
+  hidden: { scale: 0.95, opacity: 0 },
   visible: {
     scale: 1,
     opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 50,
-      damping: 10,
-      duration: 0.8,
-    },
+    transition: { type: "spring", stiffness: 50, damping: 10, duration: 0.8 },
   },
   hover: {
     scale: 1.03,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-    },
+    transition: { type: "spring", stiffness: 100 },
   },
 };
 
@@ -52,42 +37,29 @@ const textVariants = {
   visible: {
     x: 0,
     opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 10,
-      duration: 0.8,
-    },
+    transition: { type: "spring", stiffness: 100, damping: 10, duration: 0.8 },
   },
 };
 
 export default function Info() {
   return (
     <motion.div
-      className="w-full bg-white py-12 px-8" // Added px-8 for overall component padding
+      className="w-full bg-white py-12 px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 font-inter"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: false, amount: 0.3 }}
       variants={containerVariants}
     >
-      {/* Separate Header Container */}
-      <motion.div
-        className="px-8 mb-12" // Added px-8 for 2rem padding on both sides
-        variants={containerVariants}
-      >
+      {/* Heading */}
+      <motion.div className="mb-12 text-center max-w-5xl mx-auto" variants={containerVariants}>
         <motion.h1
-          className="text-center text-orange-500 text-2xl md:text-4xl font-bold max-w-6xl mx-auto"
+          className="text-orange-500 text-2xl sm:text-3xl md:text-4xl font-bold leading-snug"
           variants={{
             hidden: { opacity: 0, y: -30 },
             visible: {
               opacity: 1,
               y: 0,
-              transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 10,
-                duration: 0.8,
-              },
+              transition: { type: "spring", stiffness: 100, damping: 10 },
             },
           }}
         >
@@ -96,8 +68,8 @@ export default function Info() {
           </motion.span>{" "}
           <motion.span className="inline-block" variants={itemVariants}>
             of natural capital and the minimization
-          </motion.span>{" "}
-          <motion.br variants={itemVariants} />
+          </motion.span>
+          <br className="hidden sm:block" />
           <motion.span className="inline-block" variants={itemVariants}>
             of our ecological footprint,
           </motion.span>{" "}
@@ -107,27 +79,18 @@ export default function Info() {
         </motion.h1>
       </motion.div>
 
-      {/* Separate Content Container for Image and Text */}
-      <motion.div
-        className="px-4" // Added px-8 for 2rem padding on both sides
-        variants={containerVariants}
-      >
-        <div className="max-w-7xl mx-auto lg:min-h-screen flex flex-col lg:flex-row gap-16 lg:gap-20 items-center">
-          {/* Text Section with enhanced padding */}
-          <motion.div
-            className="lg:w-1/2 flex items-stretch" // Added px-4 for additional text padding
-            variants={textVariants}
-          >
+      {/* Content Section */}
+      <motion.div variants={containerVariants}>
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+          {/* Text Section */}
+          <motion.div className="lg:w-1/2 w-full" variants={textVariants}>
             <motion.div
-              className="p-8 flex items-center bg-white rounded-xl shadow-md w-full" // Increased padding to p-8
-              whileHover={{
-                boxShadow: "0px 10px 20px rgba(0,0,0,0.1)",
-                y: -5,
-              }}
+              className="p-6 sm:p-8 bg-white rounded-xl shadow-md"
+              whileHover={{ boxShadow: "0 10px 20px rgba(0,0,0,0.1)", y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
               <motion.p
-                className="text-black text-lg leading-relaxed"
+                className="text-black text-base sm:text-lg leading-relaxed"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -147,17 +110,15 @@ export default function Info() {
             </motion.div>
           </motion.div>
 
-          {/* Image Section with enhanced spacing */}
+          {/* Image Section */}
           <motion.div
-            className="lg:w-1/2 flex items-stretch px-4" // Added px-4 for additional image padding
+            className="lg:w-1/2 w-full"
             variants={imageVariants}
             whileHover="hover"
           >
             <motion.div
               className="w-full h-full flex items-center justify-center"
-              whileInView={{
-                rotate: [0, 1, -1, 0], // subtle wobble effect
-              }}
+              whileInView={{ rotate: [0, 1, -1, 0] }}
               transition={{
                 rotate: {
                   repeat: Infinity,
@@ -165,17 +126,14 @@ export default function Info() {
                   duration: 5,
                   ease: "linear",
                 },
-                duration: 0.8,
               }}
             >
               <motion.img
                 src={a1}
                 alt="Environment Info"
-                className="w-full h-full object-contain max-h-[600px] rounded-lg shadow-xl"
+                className="w-full max-h-[600px] object-contain rounded-lg shadow-xl"
                 initial={{ borderRadius: "8px" }}
-                whileInView={{
-                  borderRadius: ["8px", "16px", "8px"],
-                }}
+                whileInView={{ borderRadius: ["8px", "16px", "8px"] }}
                 transition={{
                   borderRadius: {
                     duration: 4,
