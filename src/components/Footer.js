@@ -42,9 +42,7 @@ const Footer = () => {
               We are committed to delivering top-quality products and services to our customers, ensuring reliability and excellence.
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold text-orange-900">Since 2007</h3>
-            <p className="text-xs sm:text-sm mt-4 sm:mt-6">
-              © {currentYear} Industrie. Designed by <a href="#" className="text-orange-500">Webisdom</a>
-            </p>
+           
           </motion.div>
 
           {/* Useful Links */}
