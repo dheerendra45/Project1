@@ -534,9 +534,9 @@ const Navbar = () => {
             </span>
           </div>
           <div className="flex items-center mr-2 sm:mr-7">
-            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-              Employee Login 
-            </span>
+                          <button className="bg-orange-500 text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
+                Empolyee Login
+              </button>
           </div>
         </div>
       </div>
