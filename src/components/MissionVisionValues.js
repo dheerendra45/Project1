@@ -126,32 +126,7 @@ function MissionVisionValues() {
   return (
     <div className="relative py-16 px-4 bg-gray-50 overflow-hidden">
       {/* Heading */}
-      <motion.div
-        className="text-center mb-16"
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
-            mass: 0.5
-          }}
-        >
-          <h1 className="text-orange-500 font-semibold uppercase mb-2 tracking-wider">
-            "BRAND SLOGAN"
-          </h1>
-          <h1 className="text-3xl md:text-4xl text-black font-bold leading-tight">
-            Transparent Trust, Unyielding Strength – For Quality That Never Bends
-          </h1>
-        </motion.div>
-      </motion.div>
+      
 
       {/* Cards Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
