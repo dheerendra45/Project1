@@ -95,10 +95,11 @@ const IndustrialCards = () => {
 
         {/* Explore All Button */}
         <div className="flex justify-center mt-12 mb-4">
-          <button className="py-3 px-10 bg-gray-800 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 flex items-center">
-            Explore All
-            <FiArrowRight className="ml-2" />
-          </button>
+          <button className="py-3 px-10 bg-orange-500 text-white font-semibold rounded-lg border border-white transition-all duration-300 flex items-center hover:bg-orange-200 hover:text-orange-500">
+  Explore All
+  <FiArrowRight className="ml-2 transition-colors duration-300" />
+</button>
+
         </div>
       </div>
     </div>
