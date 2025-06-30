@@ -12,7 +12,7 @@ const LeadershipPage = () => {
       <Herosecttion />
       <BoardOfDirectors />
       {/* <AnimatedBoardMembers /> */}
-      <Leadership/>
+      {/* <Leadership/> */}
       <BoardCommitteeCarousel />
     </div>
   );
