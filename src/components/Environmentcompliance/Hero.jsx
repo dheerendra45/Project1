@@ -1,98 +1,142 @@
-import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
-
+import { useEffect, useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { ChevronDown } from "lucide-react";
 import herobg from "../../assets/Environmentcompliance/Herobg.jpg";
-import companylogo from "../../assets/products/image28.png";
-import {
-  FiMenu,
-  FiX,
-  FiChevronDown,
-  FiChevronRight,
-  FiSearch,
-  FiFilter,
-} from "react-icons/fi";
 
-const Hero = () => {
-  const dropdownRef = useRef(null);
-  const hoverTimeoutRef = useRef(null);
+export default function Hero() {
+  const controls = useAnimation();
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
 
-  // Animation variants
-  const dropdownVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -10 },
-  };
-
-  // Clear any existing timeout
-  const clearHoverTimeout = () => {
-    if (hoverTimeoutRef.current) {
-      clearTimeout(hoverTimeoutRef.current);
-      hoverTimeoutRef.current = null;
+  useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
     }
+  }, [controls, inView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2, delayChildren: 0.3 },
+    },
   };
 
-  // Set timeout to close dropdowns
-  const setHoverTimeout = (callback, delay = 150) => {
-    clearHoverTimeout();
-    hoverTimeoutRef.current = setTimeout(callback, delay);
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10,
+      },
+    },
+  };
+
+  const gradientVariants = {
+    hidden: { width: 0 },
+    visible: {
+      width: "100%",
+      transition: { duration: 1, ease: "easeInOut" },
+    },
   };
 
   return (
-    <div className="h-screen md:h-[815px] bg-gray-100 mx-auto overflow-hidden relative">
-      {/* Top Navbar */}
+    <div
+      ref={ref}
+      className="min-h-screen bg-cover bg-center text-white relative overflow-hidden font-inter font-semibold"
+      style={{
+        backgroundImage: `url(${herobg})`,
+        backgroundPosition: "center calc(50% - 50px)",
+      }}
+    >
+      {/* Overlay */}
+      <motion.div
+        className="absolute inset-0 bg-black/30 z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.3 }}
+        transition={{ duration: 1 }}
+      />
 
-      {/* Hero Section */}
-      <div className="relative h-full -mt-[65px]">
-        {/* Background Image */}
+      {/* Floating particles */}
+      {[...Array(12)].map((_, i) => (
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 w-full h-full bg-cover bg-center"
+          key={i}
+          className="absolute rounded-full bg-white/10 z-0"
+          style={{
+            width: Math.random() * 10 + 5 + "px",
+            height: Math.random() * 10 + 5 + "px",
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+          }}
+          animate={{
+            y: [0, (Math.random() - 0.5) * 100],
+            x: [0, (Math.random() - 0.5) * 50],
+            opacity: [0.5, 0.8, 0.5],
+          }}
+          transition={{
+            duration: Math.random() * 10 + 10,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
         />
-        <motion.img
-          initial={{ scale: 1.1 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 1.5 }}
-          src={herobg}
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover z-0"
-        />
+      ))}
 
-        {/* Overlay */}
+      {/* Content */}
+      <motion.div
+        className="relative z-10 px-4 sm:px-6 lg:px-20 pt-[150px] md:pt-[200px] lg:pt-[275px] max-w-7xl mx-auto text-left"
+        variants={containerVariants}
+        initial="hidden"
+        animate={controls}
+      >
+        <motion.h1
+          className="text-3xl sm:text-5xl md:text-6xl lg:text-[62px] leading-tight sm:leading-snug font-semibold mb-4 sm:mb-6"
+          variants={itemVariants}
+        >
+          Beyond Compliance: <br className="hidden sm:block" />
+          Committed to a Sustainable Legacy
+        </motion.h1>
+
+        <motion.p
+          className="text-base sm:text-lg md:text-xl max-w-2xl mb-6 sm:mb-8 text-white/90"
+          variants={itemVariants}
+        >
+          Driving Sustainability through Environmental Responsibility,
+          Social Impact, and Ethical Governance.
+        </motion.p>
+
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0 bg-black"
-        ></motion.div>
+          variants={gradientVariants}
+          className="h-1 rounded mb-6 sm:mb-8"
+          style={{ background: "linear-gradient(to right, #FF6B00, white)" }}
+        />
 
-        {/* Content */}
-        <div className="relative z-20 px-6 md:px-12 lg:px-[114px] pt-[150px] md:pt-[200px] lg:pt-[275px] text-white">
-          <motion.h1
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6"
-          >
-            Beyond Compliance: Committed to a Sustainable Legacy
-          </motion.h1>
+        <motion.a
+          href="#"
+          className="text-sm sm:text-base text-white hover:text-orange-300 transition-colors duration-300 inline-block"
+          variants={itemVariants}
+          whileHover={{ x: 5 }}
+        >
+          Home &gt; Sustainability
+        </motion.a>
+      </motion.div>
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex space-x-1 font-space-grotesk font-medium text-sm md:text-[16px] leading-[1.7]"
-          >
-            <span>Home</span>
-            <span>&gt;</span>
-            <span>Sustainability</span>
-          </motion.div>
-        </div>
-      </div>
+      {/* Mobile Scroll Indicator */}
+      <motion.div
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 md:hidden z-10"
+        animate={{ y: [0, 10, 0] }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatType: "loop",
+        }}
+      >
+        <ChevronDown size={32} />
+      </motion.div>
     </div>
   );
-};
-
-export default Hero;
+}

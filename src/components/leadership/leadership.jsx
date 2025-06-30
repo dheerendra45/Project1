@@ -8,24 +8,26 @@ export default function Leadership() {
   return (
     <div
       ref={sectionRef}
-      className="max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col lg:flex-row items-start gap-10"
+      className="font-inter max-w-7xl mx-auto px-4 sm:px-6 md:px-10 lg:px-20 py-14 flex flex-col lg:flex-row items-start gap-10 overflow-x-hidden"
     >
       {/* Left Half - Heading */}
       <motion.div
-        initial={{ x: -50, opacity: 0 }}
-        animate={isInView ? { x: 0, opacity: 1 } : {}}
-        transition={{ duration: 1 }}
         className="w-full lg:w-1/2"
+        initial={{ opacity: 0, x: -30 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">Our Leadership</h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 text-center lg:text-left leading-tight">
+          Our Leadership
+        </h1>
       </motion.div>
 
       {/* Right Half - Description */}
       <motion.div
-        initial={{ x: 50, opacity: 0 }}
-        animate={isInView ? { x: 0, opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="w-full lg:w-1/2 text-gray-700 space-y-6"
+        className="w-full lg:w-1/2 text-gray-700 space-y-6 text-sm sm:text-base leading-relaxed"
+        initial={{ opacity: 0, x: 30 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
       >
         <p>
           Lorem ipsum dolor sit amet consectetur. Hac dictum bibendum varius

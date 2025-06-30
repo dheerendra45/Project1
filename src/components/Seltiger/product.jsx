@@ -451,10 +451,66 @@ export default function Products() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const renderApplications = (applications) => {
+    if (!applications) return null;
+    
+    // Check if it's an array of strings (simple list)
+    if (applications.every(item => typeof item === 'string')) {
+      return (
+        <ul className="space-y-2">
+          {applications.map((app, i) => (
+            <li key={i} className="text-gray-700">{app}</li>
+          ))}
+        </ul>
+      );
+    }
+    
+    // Handle array of objects with sector and areas (for wire rod card)
+    return (
+      <div className="mt-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {applications.map((sector, i) => (
+            <motion.div 
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 + 0.4 }}
+              className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
+            >
+              <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                <h4 className="font-bold text-lg text-gray-800 flex items-center gap-2">
+                  <span className="text-xl">{sector.sector.substring(0, 2)}</span>
+                  {sector.sector.substring(2)}
+                </h4>
+              </div>
+              <div className="p-4">
+                <ul className="space-y-4">
+                  {sector.areas.map((area, j) => (
+                    <li key={j} className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
+                      <h5 className="font-semibold text-gray-800 flex items-start gap-2">
+                        <span className="inline-block bg-orange-100 text-orange-600 rounded-full p-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                          </svg>
+                        </span>
+                        {area.name}
+                      </h5>
+                      <p className="text-gray-600 text-sm mt-1 pl-6">{area.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="bg-white">
+    <div className="bg-white font-inter">
       {/* Products Grid Section */}
-      <div ref={sectionRef} className="py-20 px-4 sm:px-8">
+      <div ref={sectionRef} className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.p
           className="text-orange-500 text-lg font-semibold text-center"
           initial={{ opacity: 0, y: -20 }}
@@ -473,8 +529,8 @@ export default function Products() {
           Explore Our Products
         </motion.h1>
 
-        {/* Grid for first 3 cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+        {/* Grid for first 3 cards with horizontal scroll on medium screens */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {products.slice(0, 3).map((product, i) => (
             <motion.div
               key={i}
@@ -482,7 +538,7 @@ export default function Products() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full w-full max-w-md cursor-pointer hover:shadow-lg transition-shadow"
+              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => handleProductClick(product)}
               whileHover={{ y: -5 }}
             >
@@ -512,7 +568,7 @@ export default function Products() {
         </div>
 
         {/* Last 2 cards: centered with reduced gap */}
-        <div className="lg:col-span-3 flex flex-col md:flex-row justify-center gap-8 mt-8 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 justify-center max-w-4xl mx-auto">
           {products.slice(3).map((product, i) => (
             <motion.div
               key={i + 3}
@@ -520,7 +576,7 @@ export default function Products() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full w-full max-w-md cursor-pointer hover:shadow-lg transition-shadow"
+              className="bbg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => handleProductClick(product)}
               whileHover={{ y: -5 }}
             >
@@ -552,22 +608,22 @@ export default function Products() {
 
       {/* Product Detail Section */}
       {selectedProduct && (
-        <div ref={detailRef} className="bg-white border-t border-gray-200">
+        <div ref={detailRef} className="bg-white border-t border-gray-200 font-inter">
           {/* Close button */}
-          <div className="flex justify-end p-4">
+          <div className="flex justify-end p-4 sticky top-0 z-10 bg-white">
             <button 
               onClick={closeDetails}
               className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors"
             >
               <X size={20} />
-              <span>Close</span>
+              <span className="text-sm md:text-base">Close</span>
             </button>
           </div>
           
           {/* Hero Section */}
           <div className="flex flex-col md:flex-row items-stretch">
             {/* Left Half - Image with Centered Text */}
-            <div className="relative w-full md:w-1/2 h-[400px] md:h-auto">
+            <div className="relative w-full lg:w-1/2 h-64 sm:h-80 md:h-[400px] lg:h-auto">
               <img
                 src={selectedProduct.img}
                 alt={selectedProduct.title}
@@ -579,7 +635,7 @@ export default function Products() {
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: 0.2, duration: 0.6 }}
-                  className="text-3xl sm:text-4xl font-bold"
+                  className="text-2xl sm:text-3xl md:text-4xl font-bold"
                 >
                   {selectedProduct.title}
                 </motion.h1>
@@ -588,7 +644,7 @@ export default function Products() {
                   initial="hidden"
                   animate="visible"
                   transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-lg mt-2"
+                  className="text-sm sm:text-base md:text-lg mt-2"
                 >
                   {selectedProduct.details.subtitle}
                 </motion.p>
@@ -596,7 +652,7 @@ export default function Products() {
             </div>
 
             {/* Right Half - Text and Table */}
-            <div className="w-full md:w-1/2 p-8 text-left">
+            <div className="w-full lg:w-1/2 p-4 sm:p-6 md:p-8 text-left">
               <motion.h1
                 variants={fadeInUp}
                 initial="hidden"
@@ -661,39 +717,17 @@ export default function Products() {
           </div>
 
           {/* Additional Details Section */}
-          <div className="p-8 bg-gray-50">
+          <div className="p-4 sm:p-6 md:p-8 bg-gray-50">
             {/* Applications */}
             {selectedProduct.details.applications && (
               <motion.div 
-                className="mb-8"
+                className="mb-6 sm:mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-xl font-bold text-black mb-4">Applications</h3>
-                {Array.isArray(selectedProduct.details.applications) ? (
-                  <ul className="space-y-2">
-                    {selectedProduct.details.applications.map((app, i) => (
-                      <li key={i} className="text-gray-700">{app}</li>
-                    ))}
-                  </ul>
-                ) : (
-                  <div className="space-y-6">
-                    {selectedProduct.details.applications.map((sector, i) => (
-                      <div key={i}>
-                        <h4 className="font-semibold text-lg">{sector.sector}</h4>
-                        <div className="mt-2 space-y-4">
-                          {sector.areas.map((area, j) => (
-                            <div key={j} className="pl-4">
-                              <p className="font-medium">{area.name}</p>
-                              <p className="text-gray-600">{area.description}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
+                <h3 className="text-xl font-bold text-black mb-3 sm:mb-4">Applications</h3>
+                {renderApplications(selectedProduct.details.applications)}
               </motion.div>
             )}
 
@@ -709,35 +743,101 @@ export default function Products() {
                   {selectedProduct.details.variants ? 'Variants' : 
                    selectedProduct.details.grades ? 'Grades' : 'Available SKUs'}
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                   {(selectedProduct.details.variants || selectedProduct.details.grades || selectedProduct.details.skus).map((item, i) => (
-                    <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      {item.variant && <h4 className="font-bold text-orange-600">{item.variant}</h4>}
-                      {item.grade && <h4 className="font-bold text-orange-600">{item.grade}</h4>}
-                      {item.diameter && <h4 className="font-bold text-orange-600">{item.diameter}</h4>}
+                    <motion.div 
+                      key={i}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.1 * i }}
+                      className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-shadow"
+                    >
+                      {item.variant && (
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-bold text-orange-600 text-lg">{item.variant}</h4>
+                          {item.sku && <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">{item.sku}</span>}
+                        </div>
+                      )}
+                      {item.grade && (
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-bold text-orange-600 text-lg">{item.grade}</h4>
+                          {item.sku && <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">{item.sku}</span>}
+                        </div>
+                      )}
+                      {item.diameter && (
+                        <div className="flex justify-between items-start">
+                          <h4 className="font-bold text-orange-600 text-lg">{item.diameter}</h4>
+                          <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+                            {item.grade}
+                          </span>
+                        </div>
+                      )}
                       
-                      {item.bestFor && <p className="mt-1"><span className="font-semibold">Best for:</span> {item.bestFor}</p>}
-                      {item.yieldStrength && <p className="mt-1"><span className="font-semibold">Yield Strength:</span> {item.yieldStrength}</p>}
-                      {item.grade && <p className="mt-1"><span className="font-semibold">Grade:</span> {item.grade}</p>}
+                      {item.bestFor && (
+                        <div className="mt-3 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          <span>{item.bestFor}</span>
+                        </div>
+                      )}
                       
-                      {item.benefit && <p className="mt-1"><span className="font-semibold">Benefit:</span> {item.benefit}</p>}
-                      {item.coilWeight && <p className="mt-1"><span className="font-semibold">Coil Weight:</span> {item.coilWeight}</p>}
-                      {item.thickness && <p className="mt-1"><span className="font-semibold">Thickness:</span> {item.thickness}</p>}
-                      {item.width && <p className="mt-1"><span className="font-semibold">Width:</span> {item.width}</p>}
-                      {item.sku && <p className="mt-1"><span className="font-semibold">SKU:</span> {item.sku}</p>}
-                      {item.application && <p className="mt-1"><span className="font-semibold">Application:</span> {item.application}</p>}
+                      {item.yieldStrength && (
+                        <div className="mt-2 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                          </svg>
+                          <span>Yield: {item.yieldStrength}</span>
+                        </div>
+                      )}
+                      
+                      {item.thickness && (
+                        <div className="mt-2 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                          </svg>
+                          <span>Thickness: {item.thickness}</span>
+                        </div>
+                      )}
+                      
+                      {item.width && (
+                        <div className="mt-2 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                          </svg>
+                          <span>Width: {item.width}</span>
+                        </div>
+                      )}
+                      
+                      {item.coilWeight && (
+                        <div className="mt-2 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                          </svg>
+                          <span>Coil: {item.coilWeight}</span>
+                        </div>
+                      )}
+                      
+                      {item.application && (
+                        <div className="mt-2 flex items-start text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          </svg>
+                          <span>Use: {item.application}</span>
+                        </div>
+                      )}
                       
                       {item.applications && (
-                        <div className="mt-2">
-                          <p className="font-semibold">Applications:</p>
-                          <ul className="list-disc list-inside">
+                        <div className="mt-3">
+                          <p className="font-semibold text-sm mb-1">Applications:</p>
+                          <ul className="list-disc list-inside text-xs space-y-1">
                             {item.applications.map((app, j) => (
-                              <li key={j} className="text-sm">{app}</li>
+                              <li key={j} className="text-gray-600">{app}</li>
                             ))}
                           </ul>
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>

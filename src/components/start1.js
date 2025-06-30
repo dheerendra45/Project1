@@ -108,13 +108,11 @@ const Navbar = () => {
               name: 'Stainless Steel',
               href: '#',
               items: [
-             
                 { name: 'Black Round Bar', href: '/blackround_bar' },
                 { name: 'Bright Bar', href: '/bright_bar' },
                 { name: 'Flats/Patta', href: '/flats' }
               ]
             },
-           
           ]
         },
         {
@@ -126,7 +124,7 @@ const Navbar = () => {
           ]
         },
         {
-          name: 'Aluminium Foil',
+          name: 'Aluminium',
           href: '#',
           subItems: [
             { name: 'Bare Aluminium Foil', href: '#' },
@@ -194,7 +192,6 @@ const Navbar = () => {
         }
       ]
     },
-     
     { 
       title: 'COMMUNITY', 
       hasDropdown: true,
@@ -544,207 +541,236 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Middle Navbar */}
-      <div 
-        ref={dropdownRef}
-        className="w-full h-[57px] flex items-center justify-between px-4 sm:px-8 relative z-30 mt-0"
-        style={{
-          background: '#C0C0C0',
-        }}
-      >
-        {/* Mobile menu button */}
-        <div className="sm:hidden">
-          <button 
-            onClick={toggleMobileMenu}
-            className="text-black focus:outline-none"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-        
-        {/* Logo - Now clickable */}
-        <div className="flex items-center">
-          <div 
-            className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
-            onClick={handleLogoClick}
-          >
-            <img 
-              src={companylogo} 
-              className="h-[50px] w-[110px] sm:h-[70px] sm:w-[125px] hover:opacity-80 transition-opacity duration-200"
-              alt="Company Logo"
-            />
-          </div>
-        </div>
-        
-        {/* Navigation Menu - Hidden on mobile */}
-        <div className="hidden sm:flex gap-4 md:gap-8 text-black text-sm font-medium">
-          {navItems.map((item, index) => (
-            <div
-              key={index}
-              className="relative dropdown-container"
-              onMouseEnter={() => item.hasDropdown ? handleMouseEnter(index) : null}
-              onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
-              onClick={() => !item.hasDropdown ? handleDirectNavClick(item) : null}
+      {/* Main Navbar with Reflection */}
+      <div className="relative">
+        {/* Middle Navbar */}
+        <div 
+          ref={dropdownRef}
+          className="w-full h-[90px] flex items-center justify-between px-8 relative z-30"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(230,230,230,0.9))',
+            backdropFilter: 'blur(5px)',
+            borderBottom: '1px solid rgba(255,255,255,0.2)'
+          }}
+        >
+          {/* Logo - Now clickable */}
+          <div className="flex items-center relative">
+            <div 
+              className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
+              onClick={handleLogoClick}
             >
-              <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
-                {item.title}
-                {item.hasDropdown && (
-                  <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                    <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                )}
-              </span>
-
-              {/* Dropdown Menu */}
-              {item.hasDropdown && activeDropdown === index && (
-                <div 
-                  className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
-                  onMouseEnter={handleDropdownEnter}
-                  onMouseLeave={handleDropdownLeave}
-                >
-                  {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
-                    // Business dropdown with hover sub-menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((business, businessIndex) => (
-                        <div 
-                          key={businessIndex} 
-                          className="relative"
-                          onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
-                          onMouseLeave={handleBusinessSubLeave}
-                        >
-                          {/* Check if it's Business Overview (which should be directly clickable) */}
-                          {business.name === 'Business Overview' ? (
-                            <a
-                              href={business.href}
-                              className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavigation(business.href);
-                              }}
-                            >
-                              <span>{business.name}</span>
-                            </a>
-                          ) : (
-                            <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
-                              <span className="font-medium">{business.name}</span>
-                              {business.subItems && business.subItems.length > 0 && (
-                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                </svg>
-                              )}
-                            </div>
-                          )}
-                          
-                          {/* Sub-menu for each business/investor */}
-                          {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
-                            <div 
-                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-0"
-                              onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
-                              onMouseLeave={handleBusinessSubLeave}
-                            >
-                              {business.subItems.map((subItem, subIndex) => (
-                                <div 
-                                  key={subIndex} 
-                                  className="relative"
-                                  onMouseEnter={() => handleNestedSubEnter(subIndex)}
-                                  onMouseLeave={handleNestedSubLeave}
-                                >
-                                  {/* Make this clickable for items with href */}
-                                  {subItem.href && subItem.href !== '#' ? (
-                                    <a
-                                      href={subItem.href}
-                                      className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
-                                      onClick={(e) => {
-                                        e.preventDefault();
-                                        handleNavigation(subItem.href);
-                                      }}
-                                    >
-                                      <span>{subItem.name}</span>
-                                      {subItem.items && (
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                      )}
-                                    </a>
-                                  ) : (
-                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-                                      <span>{subItem.name}</span>
-                                      {subItem.items && (
-                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                                        </svg>
-                                      )}
-                                    </div>
-                                  )}
-                                  
-                                  {/* Nested sub-menu for items */}
-                                  {activeNestedSub === subIndex && subItem.items && (
-                                    <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-0"
-                                      onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
-                                      onMouseLeave={handleNestedSubLeave}
-                                    >
-                                      {subItem.items.map((productItem, prodIndex) => (
-                                        <a 
-                                          key={prodIndex}
-                                          href={productItem.href || "#"}
-                                          className="block px-4 py-2 text-sm text-gray-700 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                          onClick={(e) => {
-                                            if (productItem.href && productItem.href !== '#') {
-                                              e.preventDefault();
-                                              handleNavigation(productItem.href);
-                                            }
-                                          }}
-                                        >
-                                          • {productItem.name || productItem}
-                                        </a>
-                                      ))}
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      ))}
-                    </div>
-                  ) : (
-                    // Regular dropdown layout for other menus
-                    <div className="space-y-1">
-                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
-                        <a
-                          key={dropdownIndex}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNavigation(dropdownItem.href);
-                          }}
-                        >
-                          {dropdownItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )}
+              <img 
+                src={companylogo} 
+                className="h-[80px] w-[145px] hover:opacity-80 transition-opacity duration-200"
+                alt="Company Logo"
+              />
             </div>
-          ))}
-        </div>
+            {/* Logo Reflection */}
+            <div className="absolute bottom-[-20px] left-3 w-[145px] h-[20px] overflow-hidden">
+              <img 
+                src={companylogo} 
+                className="h-[20px] w-[145px] opacity-30"
+                alt="Company Logo Reflection"
+                style={{
+                  transform: 'scaleY(-1)',
+                  filter: 'blur(1px)'
+                }}
+              />
+            </div>
+          </div>
+          
+          {/* Navigation Menu */}
+          <div className="flex gap-8 text-black text-sm font-medium">
+            {navItems.map((item, index) => (
+              <div
+                key={index}
+                className="relative dropdown-container"
+                onMouseEnter={() => item.hasDropdown ? handleMouseEnter(index) : null}
+                onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
+                onClick={() => !item.hasDropdown ? handleDirectNavClick(item) : null}
+              >
+                <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
+                  {item.title}
+                  {item.hasDropdown && (
+                    <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
+                      <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  )}
+                </span>
+                {/* Nav Item Reflection */}
+                <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden flex justify-center">
+                  <span 
+                    className={`font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal uppercase text-black opacity-30`}
+                    style={{
+                      transform: 'scaleY(-0.5)',
+                      filter: 'blur(0.5px)'
+                    }}
+                  >
+                    {item.title}
+                  </span>
+                </div>
 
-        {/* Search Bar - Hidden on mobile */}
-        <div className="hidden sm:flex items-center gap-4 md:gap-6">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search here..."
-              className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-32 md:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-            <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+                {/* Dropdown Menu */}
+                {item.hasDropdown && activeDropdown === index && (
+                  <div 
+                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                    onMouseEnter={handleDropdownEnter}
+                    onMouseLeave={handleDropdownLeave}
+                  >
+                    {item.title === 'BUSINESSES' || item.title === 'INVESTORS' ? (
+                      // Business dropdown with hover sub-menus
+                      <div className="space-y-1">
+                        {item.dropdownItems.map((business, businessIndex) => (
+                          <div 
+                            key={businessIndex} 
+                            className="relative"
+                            onMouseEnter={() => handleBusinessSubEnter(businessIndex)}
+                            onMouseLeave={handleBusinessSubLeave}
+                          >
+                            {/* Check if it's Business Overview (which should be directly clickable) */}
+                            {business.name === 'Business Overview' ? (
+                              <a
+                                href={business.href}
+                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleNavigation(business.href);
+                                }}
+                              >
+                                <span>{business.name}</span>
+                              </a>
+                            ) : (
+                              <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
+                                <span className="font-medium">{business.name}</span>
+                                {business.subItems && business.subItems.length > 0 && (
+                                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                  </svg>
+                                )}
+                              </div>
+                            )}
+                            
+                            {/* Sub-menu for each business/investor */}
+                            {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
+                              <div 
+                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                                onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
+                                onMouseLeave={handleBusinessSubLeave}
+                              >
+                                {business.subItems.map((subItem, subIndex) => (
+                                  <div 
+                                    key={subIndex} 
+                                    className="relative"
+                                    onMouseEnter={() => handleNestedSubEnter(subIndex)}
+                                    onMouseLeave={handleNestedSubLeave}
+                                  >
+                                    {/* Make this clickable for items with href */}
+                                    {subItem.href && subItem.href !== '#' ? (
+                                      <a
+                                        href={subItem.href}
+                                        className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
+                                        onClick={(e) => {
+                                          e.preventDefault();
+                                          handleNavigation(subItem.href);
+                                        }}
+                                      >
+                                        <span>{subItem.name}</span>
+                                        {subItem.items && subItem.items.length > 0 && (
+                                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                          </svg>
+                                        )}
+                                      </a>
+                                    ) : (
+                                      <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
+                                        <span>{subItem.name}</span>
+                                        {subItem.items && subItem.items.length > 0 && (
+                                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                          </svg>
+                                        )}
+                                      </div>
+                                    )}
+                                    
+                                    {/* Nested sub-menu for items */}
+                                    {activeNestedSub === subIndex && subItem.items && subItem.items.length > 0 && (
+                                      <div 
+                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                        onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
+                                        onMouseLeave={handleNestedSubLeave}
+                                      >
+                                        {subItem.items.map((productItem, prodIndex) => (
+                                          <a 
+                                            key={prodIndex}
+                                            href={productItem.href || "#"}
+                                            className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
+                                            onClick={(e) => {
+                                              if (productItem.href && productItem.href !== '#') {
+                                                e.preventDefault();
+                                                handleNavigation(productItem.href);
+                                              }
+                                            }}
+                                          >
+                                            {productItem.name || productItem}
+                                          </a>
+                                        ))}
+                                      </div>
+                                    )}
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      // Regular dropdown layout for other menus
+                      <div className="space-y-1">
+                        {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                          <a
+                            key={dropdownIndex}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              handleNavigation(dropdownItem.href);
+                            }}
+                          >
+                            {dropdownItem.name}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Search Bar */}
+          <div className="flex items-center gap-6 relative">
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search here..."
+                className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              />
+              <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            {/* Search Bar Reflection */}
+            <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden">
+              <div className="relative h-full w-[160px] mx-auto">
+                <div 
+                  className="bg-white/20 border border-white/30 rounded-full h-[6px] w-[160px] opacity-30"
+                  style={{
+                    transform: 'scaleY(-0.5)',
+                    filter: 'blur(0.5px)'
+                  }}
+                ></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

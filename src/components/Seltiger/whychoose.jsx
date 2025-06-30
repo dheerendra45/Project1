@@ -36,7 +36,7 @@ export default function Whychoose() {
     {
       icon: a3,
       title: 'Value for Money',
-      desc: ' Best-in-class quality at highly competitive prices',
+      desc: 'Best-in-class quality at highly competitive prices',
     },
     {
       icon: a4,
@@ -45,20 +45,20 @@ export default function Whychoose() {
     },
     {
       icon: a5,
-      title: 'Engineering Expertise:',
+      title: 'Engineering Expertise',
       desc: 'Customised solutions for homes, infrastructure, and industry',
     },
     {
       icon: a6,
       title: 'SEL-Certified Durability',
-      desc: ' Every product meets our highest benchmarks of Safety, Efficiency,and Longevity',
+      desc: 'Every product meets our highest benchmarks of Safety, Efficiency, and Longevity',
     },
   ];
 
   return (
     <div
       ref={sectionRef}
-      className="relative py-20 px-6 md:px-20 bg-cover bg-center text-white"
+      className="relative py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-cover bg-center text-white font-inter"
       style={{
         backgroundImage: `url(${a1})`,
         backgroundSize: 'cover',
@@ -66,7 +66,7 @@ export default function Whychoose() {
       }}
     >
       <motion.h1
-        className="text-3xl md:text-4xl font-bold text-center mb-16"
+        className="text-3xl sm:text-4xl font-bold text-center mb-16"
         variants={fadeUp}
         initial="hidden"
         animate={isInView ? 'visible' : 'hidden'}
@@ -74,7 +74,7 @@ export default function Whychoose() {
         Why Choose SEL Tiger?
       </motion.h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
         {features.map((feature, i) => (
           <motion.div
             key={i}
@@ -84,12 +84,16 @@ export default function Whychoose() {
             animate={isInView ? 'visible' : 'hidden'}
             className="flex items-start gap-4"
           >
-            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-black flex items-center justify-center">
+            <div className="w-14 h-14 rounded-full bg-gradient-to-br from-orange-500 to-black flex items-center justify-center flex-shrink-0">
               <img src={feature.icon} alt="" className="w-8 h-8 object-contain" />
             </div>
-            <div>
-              <h2 className="text-orange-400 font-semibold text-lg">{feature.title}</h2>
-              <p className="text-sm text-white">{feature.desc}</p>
+            <div className="text-left">
+              <h2 className="text-orange-400 font-semibold text-lg mb-1">
+                {feature.title}
+              </h2>
+              <p className="text-sm sm:text-base text-white leading-relaxed">
+                {feature.desc}
+              </p>
             </div>
           </motion.div>
         ))}

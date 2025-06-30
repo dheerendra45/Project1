@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react';
-import contactbg from '../assets/image.png';import { motion, useInView } from 'framer-motion';
+import contactbg from '../assets/image.png';
+import { motion, useInView } from 'framer-motion';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
@@ -15,61 +16,52 @@ const ContactPage = () => {
   });
 
   const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = () => {
     console.log('Form submitted:', formData);
   };
 
-  // Debug: Check if image is loading
-  console.log('contactbg value:', contactbg);
-  
   const leftRef = useRef(null);
   const rightRef = useRef(null);
   const isLeftInView = useInView(leftRef, { once: false, margin: '-50px' });
   const isRightInView = useInView(rightRef, { once: false, margin: '-50px' });
 
   return (
-    <div  style={{
-  backgroundImage: `linear-gradient(rgba(128, 128, 128, 0.7), rgba(128, 128, 128, 0.7)), url(${contactbg})`, 
-  backgroundColor: '#f0f0f0', // fallback color
-  backgroundSize: 'cover', 
-  backgroundPosition: 'center', 
-  backgroundRepeat: 'no-repeat'
-}} className="w-full bg-gray-100 py-16 px-4 font-inter">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row">
-
-          {/* Left Side - Contact Information */}
+    <div
+      style={{
+        backgroundImage: `linear-gradient(rgba(128, 128, 128, 0.7), rgba(128, 128, 128, 0.7)), url(${contactbg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+      className="w-full font-inter py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-gray-100"
+    >
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-12">
+          
+          {/* Left Section - Contact Info */}
           <motion.div
             ref={leftRef}
             variants={fadeInUp}
             initial="hidden"
             animate={isLeftInView ? "visible" : "hidden"}
-            className="w-full md:w-3/5 pr-0 md:pr-12 mb-12 md:mb-0"
+            className="md:w-3/5"
           >
-            <div className="flex items-center mb-4">
-              <div className="text-orange-500 mr-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <span className="text-orange-500 font-medium">CONTACT</span>
+            <div className="flex items-center mb-4 text-orange-500 font-medium">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              CONTACT
             </div>
 
-            <div className="mb-8">
-              <h1 className="text-3xl font-bold text-gray-800 mb-4">Drop us a line</h1>
-              <p className="text-gray-700 mb-4">
-                Get in touch with Shyam Metalics & Energy Limited for all your metallurgical and energy requirements.
-              </p>
-            </div>
+            <h1 className="text-3xl font-bold text-gray-800 mb-4">Drop us a line</h1>
+            <p className="text-gray-700 mb-8">
+              Get in touch with Shyam Metalics & Energy Limited for all your metallurgical and energy requirements.
+            </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Contact Info Items */}
+            <div className="grid gap-8 md:grid-cols-2">
               {[
                 {
                   icon: (
@@ -115,7 +107,7 @@ const ContactPage = () => {
                   <div>
                     <h3 className="font-bold text-xl mb-2">{info.title}</h3>
                     {info.lines.map((line, i) => (
-                      <p key={i}>{line}</p>
+                      <p key={i} className="text-sm text-gray-800">{line}</p>
                     ))}
                   </div>
                 </div>
@@ -123,55 +115,50 @@ const ContactPage = () => {
             </div>
           </motion.div>
 
-          {/* Right Side - Contact Form */}
+          {/* Right Section - Form */}
           <motion.div
             ref={rightRef}
             variants={fadeInUp}
             initial="hidden"
             animate={isRightInView ? "visible" : "hidden"}
-            className="w-full md:w-2/5"
+            className="md:w-2/5 w-full"
           >
-            <div className="bg-gray-200 p-8 rounded-md text-black">
+            <div className="bg-gray-200 p-8 rounded-md shadow-md text-black">
               <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-              <p className="mb-6">Fill out the form and we'll get back to you soon</p>
+              <p className="mb-6 text-sm text-gray-700">
+                Fill out the form and we'll get back to you soon
+              </p>
 
               <div className="space-y-4">
-                <input
-                  type="text"
-                  name="fullName"
-                  placeholder="Full Name"
-                  value={formData.fullName}
-                  onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black"
-                />
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black"
-                />
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black"
-                />
+                {['fullName', 'email', 'phone'].map((field, idx) => (
+                  <input
+                    key={idx}
+                    type={field === 'email' ? 'email' : field === 'phone' ? 'tel' : 'text'}
+                    name={field}
+                    placeholder={
+                      field === 'fullName' ? 'Full Name' :
+                      field === 'email' ? 'Email Address' :
+                      'Phone Number'
+                    }
+                    value={formData[field]}
+                    onChange={handleInputChange}
+                    className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black text-sm"
+                  />
+                ))}
+
                 <textarea
                   name="message"
                   placeholder="Write Your Message"
                   rows="4"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black"
+                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black text-sm"
                 />
+
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="bg-black text-white py-3 px-8 rounded-md hover:bg-gray-900 transition"
+                  className="bg-black text-white py-3 px-6 rounded-md hover:bg-gray-900 transition text-sm"
                 >
                   Submit
                 </button>

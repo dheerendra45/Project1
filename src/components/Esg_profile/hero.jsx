@@ -1,15 +1,11 @@
 import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { ChevronDown } from "lucide-react";
 
-import a1 from "../../assets/p1/logo.png";
 import a2 from "../../assets/p1/sustainability.png";
-import { ChevronDown, Search, Menu, X } from "lucide-react";
 
 export default function Hero() {
-  const dropdownRef = useRef(null);
-  const hoverTimeoutRef = useRef(null);
   const controls = useAnimation();
   const [ref, inView] = useInView({
     threshold: 0.1,
@@ -52,17 +48,21 @@ export default function Hero() {
     hidden: { width: 0 },
     visible: {
       width: "100%",
+<<<<<<< HEAD
       transition: {
         duration: 1,
         ease: "easeInOut",
       },
+=======
+      transition: { duration: 1, ease: "easeInOut" },
+>>>>>>> origin/my-feature-branch
     },
   };
 
   return (
     <div
       ref={ref}
-      className="min-h-screen bg-cover bg-center text-white relative overflow-hidden"
+      className="min-h-screen bg-cover bg-center text-white relative overflow-hidden font-inter font-semibold"
       style={{
         backgroundImage: `url(${a2})`,
         backgroundPosition: "center calc(50% - 50px)",
@@ -76,7 +76,11 @@ export default function Hero() {
         transition={{ duration: 1 }}
       />
 
+<<<<<<< HEAD
       {/* Floating particles animation */}
+=======
+      {/* Floating particles */}
+>>>>>>> origin/my-feature-branch
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
@@ -100,19 +104,22 @@ export default function Hero() {
         />
       ))}
 
-      {/* Content */}
+      {/* Hero Content */}
       <motion.div
-        className="px-4 sm:px-6 lg:px-9 pt-[150px] md:pt-[200px] lg:pt-[275px] max-w-6xl w-full mx-auto lg:ml-12 text-left"
+        className="relative z-10 px-4 sm:px-6 lg:px-20 pt-[150px] md:pt-[200px] lg:pt-[275px] max-w-7xl mx-auto text-left"
         variants={containerVariants}
         initial="hidden"
         animate={controls}
       >
         <motion.h1
+<<<<<<< HEAD
           className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] sm:leading-[1.2] md:leading-[1.3] font-space-grotesk font-bold mb-4 sm:mb-6"
+=======
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.2] font-bold mb-4 sm:mb-6"
+>>>>>>> origin/my-feature-branch
           variants={itemVariants}
         >
-          Building a Sustainable
-          <br />
+          Building a Sustainable <br />
           Future – Responsibly
         </motion.h1>
 
@@ -123,6 +130,10 @@ export default function Hero() {
           Committed to Environmental Stewardship, Social Impact, and Ethical
           Governance
         </motion.p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/my-feature-branch
         <motion.div
           variants={gradientVariants}
           className="h-1 rounded mb-6 sm:mb-8"
@@ -141,10 +152,8 @@ export default function Hero() {
 
       {/* Scroll indicator for mobile */}
       <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 md:hidden"
-        animate={{
-          y: [0, 10, 0],
-        }}
+        className="absolute bottom-6 left-1/2 transform -translate-x-1/2 md:hidden z-10"
+        animate={{ y: [0, 10, 0] }}
         transition={{
           duration: 2,
           repeat: Infinity,
