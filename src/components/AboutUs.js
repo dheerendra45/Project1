@@ -8,6 +8,7 @@ import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
 
+
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);

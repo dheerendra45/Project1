@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { HiArrowRight } from 'react-icons/hi';
 
 import a2 from "../assets/products/herobg.png";
@@ -108,159 +107,65 @@ export default function BusinessAreas() {
 
   const currentImages = allImageSets[currentSetIndex];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 1.2, staggerChildren: 0.1, ease: "easeInOut" },
-    },
-    exit: {
-      opacity: 0,
-      transition: { duration: 0.8, ease: "easeInOut" },
-    },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 30 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 1.2, ease: "easeOut" },
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.9,
-      y: -30,
-      transition: { duration: 0.8, ease: "easeIn" },
-    },
-  };
-
   return (
     <div className="relative bg-gray-200 text-white py-12 px-8 font-inter">
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12"
-        > 
-        <div className='pt-0 mb-6'>
-          <h1 className="text-black text-3xl md:text-4xl font-bold ">
-            Our Products
-          </h1>
+        <div className="text-center mb-12"> 
+          <div className='pt-0 mb-12'>
+            <h1 className="text-black text-4xl md:text-5xl font-bold">
+              Our Products
+            </h1>
           </div>
-
-          <div className="flex justify-center space-x-3">
-            {allImageSets.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentSetIndex(index);
-                  startTimer();
-                }}
-                className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                  index === currentSetIndex
-                    ? 'bg-orange-600 scale-125 shadow-lg'
-                    : 'bg-gray-300 hover:bg-white/70 hover:scale-110'
-                }`}
-              />
-            ))}
-          </div>
-        </motion.div>
+        </div>
 
         {/* Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSetIndex}
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-          >
-            {currentImages.map((item, index) => (
-              <motion.div
-                key={`image-${index}-${currentSetIndex}`}
-                variants={imageVariants}
-                className="relative overflow-hidden group cursor-pointer h-full shadow-lg"
-                onMouseEnter={() => handleMouseEnter(index)}
-                onMouseLeave={handleMouseLeave}
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.4 }}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {currentImages.map((item, index) => (
+            <div
+              key={`image-${index}-${currentSetIndex}`}
+              className="relative overflow-hidden group cursor-pointer h-full shadow-lg"
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
+            >
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+
+              {/* Orange overlay on hover */}
+              {hoveredImageIndex === index && (
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-60 z-10"/>
+              )}
+
+              {/* Product Info */}
+              <div className="absolute bottom-10 inset-0 flex flex-col justify-end p-4 z-20">
+                <h3 className="text-white font-bold text-2xl mb-1">
+                  {item.name}
+                </h3>
+                <p className="text-white/90 text-sm">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Next Button */}
+              <button
+                className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300"
+                onClick={nextSlide}
               >
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-
-                {/* Orange overlay on hover */}
-                <AnimatePresence>
-                  {hoveredImageIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: 50 }}
-                      transition={{ duration: 0.4 }}
-                      className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-60 z-10"
-                    />
-                  )}
-                </AnimatePresence>
-
-                {/* Product Info */}
-                <div className="absolute inset-0 flex flex-col justify-end p-4 z-20">
-                  <h3 className="text-white font-bold text-lg mb-1">
-                    {item.name}
-                  </h3>
-                  <p className="text-white/90 text-sm">
-                    {item.description}
-                  </p>
-                </div>
-
-                {/* Next Button */}
-                <motion.button
-  className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300 z-30"
-  onClick={nextSlide}
-  whileHover={{ scale: 1.1 }}
-  whileTap={{ scale: 0.95 }}
->
-  &gt;
-</motion.button>
-
-
-              </motion.div>
-            ))}
-          </motion.div>
-        </AnimatePresence>
+                &gt;
+              </button>
+            </div>
+          ))}
+        </div>
+        
+        
 
         {/* Navigation Buttons */}
-        <motion.div
-          className="flex justify-center mt-10 space-x-4"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.6 }}
-        >
-          <motion.button
-            onClick={prevSlide}
-            className="px-8 py-3 bg-gray-700 hover:bg-gray-800 rounded-full transition-all duration-300 backdrop-blur-sm border border-white/20 font-semibold text-white"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            ← Previous
-          </motion.button>
-          <motion.button
-            onClick={nextSlide}
-            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-full transition-all duration-300 shadow-lg font-semibold text-white"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Next →
-          </motion.button>
-        </motion.div>
+       
       </div>
     </div>
   );

@@ -55,7 +55,7 @@ const IndustrialCards = () => {
               onMouseLeave={() => setHoveredCard(null)}
             >
               {/* Left Side - Text & + Button */}
-              <div className="w-1/2 h-full flex flex-col justify-between pl-4 pt-4">
+              <div className="w-1/2 h-full flex flex-col justify-between pl-8 pt-4">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-1 uppercase">
                     {card.title}

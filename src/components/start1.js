@@ -544,15 +544,17 @@ const Navbar = () => {
       {/* Main Navbar with Reflection */}
       <div className="relative">
         {/* Middle Navbar */}
-        <div 
-          ref={dropdownRef}
-          className="w-full h-[90px] flex items-center justify-between px-8 relative z-30"
-          style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(230,230,230,0.9))',
-            backdropFilter: 'blur(5px)',
-            borderBottom: '1px solid rgba(255,255,255,0.2)'
-          }}
-        >
+        <div
+ ref={dropdownRef}
+ className="relative z-10 w-full h-[80px] px-8 flex items-center justify-between
+            rounded-b-2xl border border-white/10"
+ style={{
+   background: 'linear-gradient(135deg, rgba(156, 163, 175, 0.15) 0%, rgba(107, 114, 128, 0.08) 100%)',
+   backdropFilter: 'blur(25px) saturate(180%)',
+   WebkitBackdropFilter: 'blur(25px) saturate(180%)',
+   boxShadow: '0 8px 32px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15)'
+ }}
+>
           {/* Logo - Now clickable */}
           <div className="flex items-center relative">
             <div 
@@ -598,7 +600,7 @@ const Navbar = () => {
                   )}
                 </span>
                 {/* Nav Item Reflection */}
-                <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden flex justify-center">
+                {/* <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden flex justify-center">
                   <span 
                     className={`font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal uppercase text-black opacity-30`}
                     style={{
@@ -608,7 +610,7 @@ const Navbar = () => {
                   >
                     {item.title}
                   </span>
-                </div>
+                </div> */}
 
                 {/* Dropdown Menu */}
                 {item.hasDropdown && activeDropdown === index && (
