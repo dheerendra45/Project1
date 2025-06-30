@@ -48,14 +48,7 @@ export default function Hero() {
     hidden: { width: 0 },
     visible: {
       width: "100%",
-<<<<<<< HEAD
-      transition: {
-        duration: 1,
-        ease: "easeInOut",
-      },
-=======
       transition: { duration: 1, ease: "easeInOut" },
->>>>>>> origin/my-feature-branch
     },
   };
 
@@ -76,11 +69,7 @@ export default function Hero() {
         transition={{ duration: 1 }}
       />
 
-<<<<<<< HEAD
-      {/* Floating particles animation */}
-=======
       {/* Floating particles */}
->>>>>>> origin/my-feature-branch
       {[...Array(10)].map((_, i) => (
         <motion.div
           key={i}
@@ -112,11 +101,7 @@ export default function Hero() {
         animate={controls}
       >
         <motion.h1
-<<<<<<< HEAD
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.1] sm:leading-[1.2] md:leading-[1.3] font-space-grotesk font-bold mb-4 sm:mb-6"
-=======
           className="text-4xl sm:text-5xl md:text-6xl lg:text-[62px] leading-[1.2] font-bold mb-4 sm:mb-6"
->>>>>>> origin/my-feature-branch
           variants={itemVariants}
         >
           Building a Sustainable <br />
@@ -130,10 +115,6 @@ export default function Hero() {
           Committed to Environmental Stewardship, Social Impact, and Ethical
           Governance
         </motion.p>
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/my-feature-branch
         <motion.div
           variants={gradientVariants}
           className="h-1 rounded mb-6 sm:mb-8"
