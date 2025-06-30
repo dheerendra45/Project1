@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useRef, useState } from "react";
-import a1 from "../../assets/leadership/a.png";
+import a1 from "../../assets/leadership/a.png"; // replace with Mahabir's updated image if needed
 
 export default function BoardOfDirectors() {
   const ref = useRef(null);
@@ -15,9 +15,19 @@ export default function BoardOfDirectors() {
   ];
 
   const experiences = [
-    "Over 15 years of experience in the technology industry",
-    "Before founding the company, Founder A served as a Manager",
-    "Holds patents for technological innovations that led the industry",
+    "Over 50 years of experience in steel & ferro alloys industries",
+    "Instrumental in the growth journey of the company",
+    "Conferred title of Chairman Emeritus on 9th May 2025",
+  ];
+
+  const directorships = [
+    { company: "Shyam Metalics and Energy Ltd.", position: "Director" },
+    { company: "Narantak Dealcomm Ltd.", position: "Managing Director" },
+    { company: "Suhag Overseas Trading Pvt. Ltd.", position: "Director" },
+    { company: "Britasia Hydro Power Pvt. Ltd.", position: "Director" },
+    { company: "Kalinga Energy & Power Limited", position: "Director" },
+    { company: "Shyam Century Multi Projects Pvt. Ltd.", position: "Director" },
+    { company: "Whispering Developers Pvt. Ltd.", position: "Director" },
   ];
 
   return (
@@ -44,11 +54,7 @@ export default function BoardOfDirectors() {
             />
           </span>
         </h1>
-        <p className="mt-4 text-gray-600 text-sm sm:text-base leading-relaxed">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          <br className="hidden sm:block" />
-          Ut tellus luctus neullamcorper mattis, lorem pibus leo dotu.
-        </p>
+        
       </motion.div>
 
       {/* Content */}
@@ -62,7 +68,7 @@ export default function BoardOfDirectors() {
         >
           <img
             src={a1}
-            alt="Director"
+            alt="Mahabir Prasad Agarwal"
             className="w-full rounded-2xl shadow-lg object-cover"
           />
         </motion.div>
@@ -75,11 +81,11 @@ export default function BoardOfDirectors() {
           className="w-full lg:w-1/2 space-y-6"
         >
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold">Darwin Luiz</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold">Mahabir Prasad Agarwal</h2>
+            <p className="text-orange-600 font-semibold mt-1">Chairman Emeritus</p>
             <p className="mt-3 text-gray-700 text-sm sm:text-base leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ut elit tellus
-              luctus neullamcorper mattis, pulvinar pibus leo. Donec vitae lorem sit amet
-              magna bibendum lobortis at nec tortor.
+               Mahabir Prasad Agarwal is an accomplished business leader and a first generation entrepreneur having more than 50 Years of experience in steel & ferro alloys industries. He has the foresight to lead the company on a transformational journey and contributing significantly in growth path of the company. Mahabir Prasad Agarwal  stepped down from the position of Chairman during Board Meeting held on 9th May 2025 and was simultaneously conferred the title of Chairman Emeritus.
+
             </p>
           </div>
 
@@ -101,29 +107,15 @@ export default function BoardOfDirectors() {
           {/* Divider */}
           <hr className="border-t border-gray-300" />
 
-          {/* Experience */}
-          <div>
-            <h3 className="text-xl sm:text-2xl font-bold mb-4">Experience</h3>
-            <p className="text-gray-700 mb-4 text-sm sm:text-base">
-              Darwin Luiz brings strategic insights from decades of leadership. His
-              commitment to innovation drives success.
-            </p>
-            <ul className="space-y-3">
-              {experiences.map((text, index) => (
-                <motion.li
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                  className="flex items-start gap-3"
-                >
-                  <div className="w-6 h-6 rounded-full bg-orange-500 text-white flex items-center justify-center mt-1 text-sm">
-                    ✓
-                  </div>
-                  <span className="text-gray-800 text-sm sm:text-base">
-                    {text}
-                  </span>
-                </motion.li>
+          {/* Directorships */}
+          <div className="mt-6">
+            <h3 className="text-xl sm:text-2xl font-bold mb-4">List of Directorship</h3>
+            <ul className="space-y-2 text-sm sm:text-base text-gray-700">
+              {directorships.map((d, i) => (
+                <li key={i} className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b py-2">
+                  <span>{i + 1}. {d.company}</span>
+                  <span className="text-orange-600 font-medium">{d.position}</span>
+                </li>
               ))}
             </ul>
           </div>

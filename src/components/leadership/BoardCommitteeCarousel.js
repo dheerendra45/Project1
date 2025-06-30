@@ -5,64 +5,289 @@ import a1 from "../../assets/leadership/a.png";
 const sidebarOptions = [
   "BOARD OF DIRECTORS",
   "BOARD COMMITTEES",
-  "CORPORATE",
-  "EXECUTIVE DIRECTORS",
-  "NON-EXECUTIVE DIRECTORS",
 ];
 
 const directors = [
-  { name: "Faucibus commodo", role: "CHAIRMAN & CHIEF EXECUTIVE OFFICER" },
-  { name: "Pellentesque", role: "PRESIDENT & CHIEF OPERATING OFFICER" },
-  { name: "Quisque congue", role: "PRESIDENT MINING & METALS" },
-  { name: "Pellentesque", role: "PRESIDENT ENERGY" },
-  { name: "Pellentesque", role: "PRESIDENT, NUCLEAR, SECURITY & ENVIRONMENTAL" },
-  { name: "Scelerisque", role: "PRESIDENT, INFRASTRUCTURE" },
-  { name: "Sit id in vestibulum", role: "PRESIDENT, MANUFACTURING & TECHNOLOGY" },
+  {
+    name: "Mahabir Prasad Agarwal",
+    role: "Chairman Emeritus",
+    description: `Mahabir Prasad Agarwal is an accomplished business leader and a first generation entrepreneur having more than 50 Years of experience in steel & ferro alloys industries. He has the foresight to lead the company on a transformational journey and contributing significantly in growth path of the company. Mahabir Prasad Agarwal  stepped down from the position of Chairman during Board Meeting held on 9th May 2025 and was simultaneously conferred the title of Chairman Emeritus.\n
+
+
+List of Directorship:\n
+1. Shyam Metalics and Energy Ltd. – Director\n
+2. Narantak Dealcomm Ltd. – Managing Director\n
+3. Suhag Overseas Trading Pvt. Ltd. – Director\n
+4. Britasia Hydro Power Pvt. Ltd. – Director\n
+5. Kalinga Energy & Power Limited – Director\n
+6. Shyam Century Multi Projects Pvt. Ltd. – Director\n
+7. Whispering Developers Pvt. Ltd. – Director`,
+  },
+  {
+    name: "Brij Bhushan Agarwal",
+    role: "Chairman & Managing Director",
+    description: `Mr. Brij Bhushan Agarwal is a visionary leader and an industry stalwart in the metal and mining sector. As the Chairman & Managing Director of Shyam Metalics and Energy Ltd., he has been instrumental in driving the company’s strategic growth and establishing it as one of India’s foremost integrated metal producers.\n
+
+With over two decades of leadership excellence, Mr. Agarwal has successfully expanded the company’s footprint both domestically and globally. Under his stewardship, Shyam Metalics has become India’s largest producer of Ferro Alloys and a key player in the steel value chain. The company’s diverse product portfolio including  sponge iron, billets, TMT bars, structural steel, wire rods, stainless steel, aluminum foil, pipes, and color-coated sheets  serves over 25,000 customers worldwide, contributing to an annual turnover of ₹30,000 crore.\n
+
+Mr. Agarwal holds a commerce degree from the University of Calcutta and has completed executive programs at Harvard University and Singularity University, Silicon Valley. His sharp business acumen and -forward thinking approach have consistently driven robust EBITDA growth and maintained a resilient balance sheet since 2005.\n
+
+Recognized for his impactful leadership, Mr. Agarwal has received numerous awards, including:\n
+Business Leader of the Year – Samragg Business Honors\n
+Inspirational Leader of the Year – Zee Business Awards\n
+Pride of India Award 2022\n
+Best Employer Award 2023\n
+People Workplace Award\n
+GreenPro Certification for sustainable business practices\n
+
+He is also featured in the prestigious 360 WEALTH X HURUN List and is actively involved in shaping industry policy. Mr. Agarwal holds key positions in leading trade and industry associations, such as:\n
+
+Senior Vice President, Indian Chamber of Commerce (ICC), Kolkata\n
+Member, ICC National Expert Committee on Minerals & Metals\n
+Member, CII, FICCI, Merchant Chamber of Commerce, Bengal Chamber, and Bharat Chamber of Commerce\n
+
+A firm believer in innovation, sustainability, and inclusive development, Mr. Brij Bhushan Agarwal continues to lead Shyam Metalics with unwavering purpose, passion, and a commitment to excellence.\n
+
+List of Directorship:\n
+1. Shyam Metalics and Energy Ltd. – Chairman & Managing Director\n
+2. Shyam Sel and Power Ltd. – Managing Director\n
+3. Shyam Century Cement Industries Ltd. – Director\n
+4. Star Cement Ltd. – Director\n
+5. Indian Chamber of Commerce Calcutta – Director`,
+  },
+  {
+    name: "Sanjay Kumar Agarwal",
+    role: "Joint Managing Director",
+    description: `Sanjay Kumar Agarwal is the Joint Managing Director of our Company. He has been a Director of our Company since its inception in December 2002. He holds a bachelor’s degree in commerce with honours from the University of Calcutta and brings over 25 years of experience in the steel and ferro alloys industry. He is primarily responsible for the operations at our manufacturing plants in Sambalpur, Jamuria and Mangalpur, with focus on cost control, production efficiency and the competitive procurement of raw materials.\n
+
+
+List of Directorship:\n
+1. Shyam Metalics And Energy Limited – Managing Director\n
+2. Shyam SEL and Power Limited – Managing Director\n
+3. SMEL Specialty Alloys Private Limited – Director\n
+4. Shyam Century Metallic Limited – Director\n
+5. Shyam Metalics Flat Product Private Limited – Director\n
+6. Shyam Energy Limited – Director\n
+7. Kalpataru Housefin & Trading Private Limited – Director`,
+  },
+  {
+    name: "Deepak Agarwal",
+    role: "Whole-time Director",
+    description: `Deepak Agarwal is a Whole-Time Director and the Chief Financial Officer of our company. He has a Director  since July 14, 2014. He holds a bachelor’s degree in commerce with honours from the University of Calcutta and is an associate member of the Institute of Company Secretaries of India. He has previously been associated with Shyam SEL and Power Limited since 2000 and has two decades of experience in the steel and ferro alloys industry. He is responsible for overseeing finance, risk management, and corporate affairs for our company and its subsidiaries.\n
+
+
+List of Directorship:\n
+1. Shyam Metalics and Energy Ltd. – Director\n
+2. Improved Realtors Pvt. Ltd. – Director\n
+3. Shyam Energy Ltd. – Director`,
+  },
+  {
+    name: "Sheetij Agarwal",
+    role: "Whole-time Director",
+    description: `Mr. Sheetij Agarwal is a  Director of our company. He has pursued a Bachelor of Science in Business Administration from the D'Amore Mckim School of Business at  Northeastern University. He is also a key person in developing a strategic roadmap to strengthen Shyam Metalics's position as a global trailblazer in the steel industry. He also offers his expertise on market intelligence, evaluative growth opportunities, capital investments, and brand alliances for Shyam Metalics. He is primarily responsible for the establishment of the company's footprint in the domestic market and over 40 international markets.\n
+
+
+List of Directorship:\n
+1. Shyam Metalics And Energy Ltd. – Whole-time Director\n
+2. Subham Capital Private Ltd. – Director\n
+3. SMEL Industrial Park Pvt. Ltd. – Director\n
+4. Dorite Tracon Pvt. Ltd. – Director\n
+5. Subham Buildwell Pvt. Ltd. – Director\n
+6. All India Foil Manufacturers Association – Director\n
+7. Glowing Realty Pvt Ltd. – Director\n
+8. Shyam Metalics Flat Product Pvt. Ltd. – Director\n
+9. SS Alufoils Pvt. Ltd. – Director\n
+10. Damodar Aluminium Pvt. Ltd. – Director\n
+11. SMEL Steel Structural Private Ltd. – Director`,
+  },
+  {
+    name: "Dev Kumar Tiwari",
+    role: "Whole-time Director",
+    description: `Dev Kumar Tiwari is a Whole-Time Director of our Company. He has been a Director of our Company since April 10, 2009. He holds a bachelor’s degree in arts (honours) from Bihar University, Muzaffarpur. Prior to his appointment as Director, he was a mechanical engineer in our Subsidiary, SSPL for 7 years. He has over 23 years of experience in the steel and ferro alloys industry. He is responsible for project implementation and operations of our Sambalpur manufacturing plant.\n
+
+List of Directorship:\n
+1. Shyam Greenfield Developer Private Limited – Director\n
+2. Sygma Tubes & Pipes Private Limited – Director\n
+3. Ramsarup Industries Limited – Director\n
+4. Shyam Metalics and Energy Limited – Director\n
+5. SMEL Steel Structural Private Limited – Director\n
+6. Star Metalworks Private Limited – Director\n
+7. Natural Resources Energy Private Limited – Additional Director`,
+  },
+  {
+    name: "Kishan Gopal Baldwa",
+    role: "Independent Director",
+    description: `Kishan Gopal Baldwa is an Independent Director of our company  and has served in this role since May 15, 2018.. He holds a bachelor’s degree in commerce from the University of Rajasthan. He has been a fellow member of the Institute of Chartered Accountants of India for 38 years. and has obtained a certificate of practice from the Institute of Chartered Accountants of India.\n
+
+List of Directorship:\n
+1. Meshal Metal Trading Private Limited – Director\n
+2. Seatco Mercantile Private Limited – Director\n
+3. Pradeep Realmart Private Limited – Director\n
+4. Web Exposition Pvt Ltd – Director\n
+5. Serampore Belting Works Private Limited – Director\n
+6. Narantak Dealcomm Limited – Independent Director\n
+7. Shyam Metalics And Energy Limited – Independent Director\n
+8. Turtle Limited – Independent Director\n
+9. Subham Capital Private Limited – Independent Director`,
+  },
+  {
+    name: "Rajni Mishra",
+    role: "Independent Woman Director",
+    description: `Rajni Mishra is an Independent Director of our company. and has served in this role since February 12, 2021.She holds a bachelor's degree in Botany from Calcutta University and a master's degree in Business Administration from the West Bengal University of Technology.University of Technology. She is also an associate member of the Institute of Company Secretaries of India.\n
+
+List of Directorship:\n
+1. Shyam Metalics And Energy Limited – Independent Director\n
+2. Alpine Commercial Co. Ltd. – Independent Director\n
+3. Western Carriers (India) Ltd. – Independent Director`,
+  },
+  {
+    name: "Nand Gopal Khaitan",
+    role: "Independent Director",
+    description: `Nand Gopal Khaitan is an Independent Director of our Company. He has been a Director of our Company since February 14, 2023. He has been registered as an advocate with the bar council of West Bengal since June 20 1974. He is currently a partner at Khaitan & Co.\n
+
+List of Directorship:\n
+1. AGI Greenpac Limited – Director\n
+2. Mangalam Cement Limited – Director\n
+3. Reliance Chemotex Industries Limited – Director\n
+4. Hindware Home Innovation Limited – Independent Director\n
+5. Shyam Metalics and Energy Limited – Independent Director\n
+6. HEG Limited – Independent Director\n
+7. Rowdon Business Pvt Ltd – Director\n
+8. Xenix Servis Pvt Ltd – Director\n
+9. Ushodaya Marketing Pvt Ltd – Director\n
+10. Srijan Vinimay Pvt Ltd – Director\n
+11. Bharat Chamber of Commerce – Director`,
+  },
+  {
+    name: "Malay Kumar De",
+    role: "Independent Director",
+    description: `Malay Kumar De is an Independent Director of our company. He has been a Director of our Company since July 27, 2023. He holds a masters’ in science degree in organic chemistry from the University of North Bengal, Siliguri. A retired IAS officer, he served as Chief Secretary of West Bengal until his retirement on September 30, 2019.\n
+
+List of Directorship:\n
+1. Shyam Metalics And Energy Limited – Independent Director\n
+2. Shyam Sel And Power Limited – Independent Director\n
+3. Ramsarup Industries Limited – Independent Director`,
+  },
+  {
+    name: "Shashi Kumar",
+    role: "Independent Director",
+    description: `Shashi Kumar is an Independent Director of our company. He has been a Director of our Company since September 21, 2023. He holds a bachelor’s degree in Science from Patna University and also holds a bachelor’s degree in science (Honours) in Mining Engineering from the Indian School of Mines, Dhanbad, Ranchi University. Prior to joining our company, he was associated with Coal India Limited as chairman.\n
+
+List of Directorship:\n
+1. Shyam Metalics And Energy Limited – Independent Director\n
+2. Indian Mining Consultancy Private Limited – Director\n
+3. Ordnc 2024 000040 U14100GJ2005PTC045857 Private Limited – Director\n
+4. Shyam SEL and Power Limited – Additional Director`,
+  },
+  {
+    name: "Chandra Shekhar Verma",
+    role: "Independent Director",
+    description: `Mr. Chandra Shekhar Verma was appointed as an Independent Director of our company on July 4, 2024. He is a Fellow Member of the Institute of Company Secretaries of India, a of the Institute of Cost & Works Accountants of India. Additionally, he holds a Bachelor's degree in Law and Legislature as well as a master's degree in Commerce and Business Administration.\n
+
+List of Directorship:\n
+1. Welspun Corp Limited – Independent Director\n
+2. SML Isuzu Limited – Independent Director\n
+3. Shyam Metalics And Energy Limited – Independent Director\n
+4. Multi Commodity Exchange of India Limited – Independent Director\n
+5. Royalux Lighting Private Limited – Director\n
+6. IKIO Technologies Limited – Independent Director\n
+7. Firstadvantage Consulting Group Limited – Director`,
+  },
+  {
+    name: "Birendra Kumar Jain",
+    role: "Company Secretary",
+    description: "Birendra Kumar Jain is the Company Secretary and Compliance Officer of our Company and has been associated with  since April 6, 2018. He holds a bachelor’s degree in commerce from the University of Calcutta. He is also a member of the Institute of Company Secretaries of India. With over two decades of experience as a company secretary, he brings extensive expertise to the role.",
+  },
 ];
 
-const corporate = [
-  { name: "Consectetur", role: "CHIEF SUPPLY CHAIN OFFICER" },
-  { name: "Non ullamcorper", role: "Chief Diversity & Inclusion Officer" },
-  { name: "Tempor viverra", role: "President, Bechtel Enterprises" },
-  { name: "Commodo hendrerit", role: "Manager, Corporate Affairs" },
-  { name: "Vestibulum", role: "Manager, Corporate Business Development" },
-  { name: "Vel pellentesque", role: "Chief Financial Officer" },
-  { name: "Ullamcorper", role: "Manager, EPC Functions" },
-  { name: "Suspendisse", role: "Managing Director, Australia" },
-  { name: "Vestibulum", role: "Commercial Manager" },
-  { name: "Pellentesque", role: "General Counsel" },
-  { name: "Tempus habitasse", role: "President for Regions and Corporate Relations" },
-  { name: "Ac nunc dictumst", role: "Chief Human Resources Officer" },
+const boardCommittees = [
+  {
+    name: "Audit Committee",
+    members: [
+      "Kishan Gopal Baldwa, Chairman, Non Executive Independent",
+      "Sanjay Kumar Agarwal, Member, Executive",
+      "Rajni Mishra, Member, Non Executive Independent",
+    ],
+  },
+  {
+    name: "Nomination and Remuneration Committee",
+    members: [
+      "Kishan Gopal Baldwa, Chairman, Non Executive Independent",
+      "Shashi Kumar, Member, Non Executive Independent",
+      "Mahabir Prasad Agarwal, Member, Non Executive",
+    ],
+  },
+  {
+    name: "Stakeholder Relationship Committee",
+    members: [
+      "Chandra Shekhar Verma, Chairman, Non Executive Independent",
+      "Sanjay Kumar Agarwal, Member, Executive",
+      "Rajni Mishra, Member, Non Executive Independent",
+    ],
+  },
+  {
+    name: "CSR Committee",
+    members: [
+      "Mahabir Prasad Agarwal, Chairman, Non Executive",
+      "Brij Bhushan Agarwal, Member, Executive",
+      "Rajni Mishra, Member, Non Executive Independent",
+    ],
+  },
+  {
+    name: "Risk Management Committee",
+    members: [
+      "Kishan Gopal Baldwa, Chairman, Non Executive Independent",
+      "Brij Bhushan Agarwal, Member, Executive",
+      "Deepak Agarwal, Member, Executive",
+    ],
+  },
+  {
+    name: "Executive Committee",
+    members: [
+      "Mahabir Prasad Agarwal, Chairman, Non Executive",
+      "Brij Bhushan Agarwal, Member, Executive",
+      "Sanjay Kumar Agarwal, Member, Executive",
+      "Deepak Agarwal, Member, Executive",
+    ],
+  },
 ];
 
 export default function LeadershipTeam() {
   const [selected, setSelected] = useState("BOARD OF DIRECTORS");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const [expandedIndex, setExpandedIndex] = useState(null);
 
-  const renderCard = (person, index, isLarge = false) => (
+  const renderCard = (person, index) => (
     <motion.div
       key={index}
       initial={{ opacity: 0, y: 40 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`flex items-start gap-4 bg-white rounded-xl p-4 shadow-md ${
-        isLarge ? "md:col-span-1" : ""
-      } w-full`}
+      className="flex flex-col bg-white rounded-xl p-4 shadow-md w-full"
     >
-      <img
-        src={a1}
-        alt={person.name}
-        className={`${
-          isLarge ? "w-20 h-20 md:w-24 md:h-24" : "w-16 h-16 md:w-20 md:h-20"
-        } object-cover flex-shrink-0`}
-      />
-      <div className="flex-1 min-w-0">
-        <h2 className="text-base md:text-lg font-semibold text-gray-800 truncate">{person.name}</h2>
-        <h4 className="text-orange-500 text-xs md:text-sm font-medium mt-1 leading-tight">
-          {person.role}
-        </h4>
+      <div className="flex items-center gap-4">
+        <img
+          src={a1}
+          alt={person.name}
+          className="w-16 h-16 md:w-20 md:h-20 object-cover flex-shrink-0"
+        />
+        <div className="flex-1 min-w-0">
+          <h2 className="text-base md:text-lg font-semibold text-gray-800 truncate">{person.name}</h2>
+          <h4 className="text-orange-500 text-xs md:text-sm font-medium mt-1 leading-tight">{person.role}</h4>
+        </div>
       </div>
+      <p className="text-sm text-gray-600 mt-2 whitespace-pre-line">
+        {expandedIndex === index
+          ? person.description
+          : `${person.description.substring(0, 80)}...`}
+      </p>
+      <button
+        onClick={() => setExpandedIndex(expandedIndex === index ? null : index)}
+        className="mt-2 text-sm text-orange-600 hover:underline"
+      >
+        {expandedIndex === index ? "Read Less" : "Read More"}
+      </button>
     </motion.div>
   );
 
@@ -75,11 +300,10 @@ export default function LeadershipTeam() {
             <button
               key={item}
               onClick={() => setSelected(item)}
-              className={`px-4 py-2 md:px-0.5 md:py-3 rounded-full border transition-all font-medium text-xs md:text-sm whitespace-nowrap ${
-                selected === item
+              className={`px-4 py-2 md:px-0.5 md:py-3 rounded-full border transition-all font-medium text-xs md:text-sm whitespace-nowrap ${selected === item
                   ? "bg-orange-500 text-white border-orange-500"
                   : "bg-white text-black border-gray-300 hover:bg-gray-50"
-              }`}
+                }`}
             >
               {item}
             </button>
@@ -87,37 +311,32 @@ export default function LeadershipTeam() {
         </div>
       </div>
 
-      {/* Right Content */}
+      {/* Content */}
       <div className="w-full md:w-3/4 space-y-6 md:space-y-10" ref={sectionRef}>
         {selected === "BOARD OF DIRECTORS" && (
-          <>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800">Board of DIRECTORS</h1>
-
-            {/* Top 2 roles in same row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {renderCard(directors[0], 0, true)}
-              {renderCard(directors[1], 1, true)}
-            </div>
-
-            {/* Remaining roles */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
-              {directors.slice(2).map((person, index) =>
-                renderCard(person, index + 2)
-              )}
-            </div>
-          </>
-        )}
-
-        {selected === "CORPORATE" && (
-          <>
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800">Corporate</h1>
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">Board of Directors</h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {corporate.map((person, index) => renderCard(person, index))}
+              {directors.map((person, index) => renderCard(person, index))}
             </div>
-          </>
+          </div>
         )}
 
-        {/* Add other sections similarly */}
+        {selected === "BOARD COMMITTEES" && (
+          <div>
+            <h1 className="text-xl md:text-2xl font-bold text-gray-800 mb-6">Board Committees</h1>
+            {boardCommittees.map((committee, index) => (
+              <div key={index} className="bg-white p-4 rounded-lg shadow-md mb-6">
+                <h2 className="text-lg font-semibold text-orange-600 mb-3">{committee.name}</h2>
+                <ul className="list-disc pl-6 space-y-1 text-gray-700 text-sm md:text-base">
+                  {committee.members.map((member, idx) => (
+                    <li key={idx}>{member}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
