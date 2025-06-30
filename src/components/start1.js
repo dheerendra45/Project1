@@ -83,49 +83,35 @@ const Navbar = () => {
             {
               name: 'Carbon Steel',
               href: '/carbon_steel',
-              categories: [
-                { 
-                  name: 'Intermediate Products', 
-                  items: [
-                    { name: 'Pellet', href: '/pellet' },
-                    { name: 'Sponge Iron', href: '/sponge_iron' },
-                    { name: 'Pig Iron', href: '/pig_iron' },
-                    { name: 'Billet', href: '/billet' }
-                  ]
-                },
-                { 
-                  name: 'Finished Products', 
-                  items: [
-                    { name: 'Structural Steel', href: '/structural_steel' },
-                    { name: 'TMT Bar', href: '/tmt_bar' },
-                    { name: 'Wire Rod', href: '/wire_rod' },
-                    { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
-                  ]
-                }
+              items: [
+                { name: 'Pellet', href: '/pellet' },
+                { name: 'Sponge Iron', href: '/sponge_iron' },
+                { name: 'Pig Iron', href: '/pig_iron' },
+                { name: 'Billet', href: '/billets' },
+                { name: 'Structural Steel', href: '/structural_steel' },
+                { name: 'TMT Bar', href: '/tmt_bars' },
+                { name: 'Wire Rod', href: '/wire_rods' },
+                { name: 'Pipes & Hollow Sections', href: '/pipes_hollow_sections' }
               ]
             },
             {
               name: 'Cold Rolled',
               href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: [{ name: 'Color Coated Sheets', href: '#' }] },
-                { name: 'Finished Products', items: [{ name: 'Stainless Steel Billets', href: '#' }] },
-                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] }
+              items: [
+                { name: 'Color Coated Sheets', href: '/color_coated_sheets' },
+                { name: 'Stainless Steel Billets', href: '/stainless_steel_billets' },
+                { name: 'SS Wire Rod', href: '/SS_Wire_Rod' }
               ]
             },
             {
               name: 'Stainless Steel',
               href: '#',
-              categories: [
-                { name: 'Intermediate Products', items: [{ name: 'SS Wire Rod', href: '#' }] },
-                { name: 'Finished Products', items: [
-                  { name: 'Black Round Bar', href: '#' },
-                  { name: 'Bright Bar', href: '#' },
-                  { name: 'Flats/Patta', href: '#' }
-                ]}
+              items: [
+                { name: 'Black Round Bar', href: '/blackround_bar' },
+                { name: 'Bright Bar', href: '/bright_bar' },
+                { name: 'Flats/Patta', href: '/flats' }
               ]
             },
-            { name: 'Specialty Alloys', href: '#' }
           ]
         },
         {
@@ -140,18 +126,10 @@ const Navbar = () => {
           name: 'Aluminium',
           href: '#',
           subItems: [
-            {
-              name: 'Flat Rolled Products',
-              items: [
-                { name: 'Aluminium Foil', href: '#' }
-              ]
-            },
-            {
-              name: 'Battery Foil',
-              items: [
-                { name: 'Lithium-ion Foil', href: '#' }
-              ]
-            }
+            { name: 'Bare Aluminium Foil', href: '#' },
+            { name: 'SEL Tiger Foil', href: '#' },
+            { name: 'Battery Foil', href: '#' },
+            { name: 'FinStocks', href: '#' }
           ]
         }
       ]
@@ -545,7 +523,7 @@ const Navbar = () => {
                                         }}
                                       >
                                         <span>{subItem.name}</span>
-                                        {subItem.categories && (
+                                        {subItem.items && subItem.items.length > 0 && (
                                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                           </svg>
@@ -554,7 +532,7 @@ const Navbar = () => {
                                     ) : (
                                       <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
                                         <span>{subItem.name}</span>
-                                        {subItem.categories && (
+                                        {subItem.items && subItem.items.length > 0 && (
                                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                                           </svg>
@@ -562,34 +540,27 @@ const Navbar = () => {
                                       </div>
                                     )}
                                     
-                                    {/* Nested sub-menu for categories */}
-                                    {activeNestedSub === subIndex && subItem.categories && (
+                                    {/* Nested sub-menu for items */}
+                                    {activeNestedSub === subIndex && subItem.items && subItem.items.length > 0 && (
                                       <div 
                                         className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
                                         onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                         onMouseLeave={handleNestedSubLeave}
                                       >
-                                        {subItem.categories.map((category, catIndex) => (
-                                          <div key={catIndex} className="space-y-1">
-                                            <div className="px-4 py-2 text-sm font-medium text-orange-600 bg-orange-50 border-b border-gray-100">
-                                              {category.name}
-                                            </div>
-                                            {category.items.map((productItem, prodIndex) => (
-                                              <a 
-                                                key={prodIndex}
-                                                href={productItem.href || "#"}
-                                                className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                                onClick={(e) => {
-                                                  if (productItem.href && productItem.href !== '#') {
-                                                    e.preventDefault();
-                                                    handleNavigation(productItem.href);
-                                                  }
-                                                }}
-                                              >
-                                                • {productItem.name || productItem}
-                                              </a>
-                                            ))}
-                                          </div>
+                                        {subItem.items.map((productItem, prodIndex) => (
+                                          <a 
+                                            key={prodIndex}
+                                            href={productItem.href || "#"}
+                                            className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
+                                            onClick={(e) => {
+                                              if (productItem.href && productItem.href !== '#') {
+                                                e.preventDefault();
+                                                handleNavigation(productItem.href);
+                                              }
+                                            }}
+                                          >
+                                            {productItem.name || productItem}
+                                          </a>
                                         ))}
                                       </div>
                                     )}
