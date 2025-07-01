@@ -24,7 +24,7 @@ const IndustrialCards = () => {
     },
     {
       id: 3,
-      title: "Energy",
+      title: "Energy & Others",
       description:
         "Our plants generate over 200MW of captive power using waste heat and eco-friendly sources like char gas and pollution dust from sponge iron units.",
       image: power,
