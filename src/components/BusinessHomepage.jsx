@@ -10,7 +10,7 @@ const IndustrialCards = () => {
   const cardsData = [
     {
       id: 1,
-      title: "Steel",
+      title: " Iron and Steel",
       description:
         "We possess a well-diversified product portfolio comprising Ferro Alloys, Sponge Iron, Billet, TMT, Structural, Pipes, and Pellets.",
       image: steel,

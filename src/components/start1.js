@@ -508,9 +508,9 @@ const Navbar = () => {
   return (
     <div className="w-full fixed top-0 left-0 z-50">
       {/* Top Navbar */}
-      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-[#f3f3f3]">
+      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
         {/* Black semi-transparent overlay */}
-        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+       
 
         {/* Content on top */}
         <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
