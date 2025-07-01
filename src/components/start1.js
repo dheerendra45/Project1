@@ -537,7 +537,7 @@ const Navbar = () => {
           </div>
           <div className="flex items-center mr-2 sm:mr-7">
             <button className=" text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
-              Empolyee Login
+              Employee Login
             </button>
           </div>
         </div>
