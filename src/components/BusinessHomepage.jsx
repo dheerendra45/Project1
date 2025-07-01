@@ -121,7 +121,7 @@ const IndustrialCards = () => {
 
         {/* Explore All Button */}
         <div className="flex justify-center mt-8 sm:mt-12 mb-4">
-          <button className="py-2 sm:py-3 px-6 sm:px-10 bg-orange-600 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 flex items-center text-sm sm:text-base">
+          <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg flex items-center justify-center">
             Explore All
             <FiArrowRight className="ml-2" />
           </button>

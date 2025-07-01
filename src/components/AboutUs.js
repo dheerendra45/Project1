@@ -68,15 +68,16 @@ export default function AboutUs() {
       year: "2015",
       title: "Powering Progress Through Innovation",
       content: [
-        "Sambalpur Plant Breakthroughs:",
-        "🚂 Commissioned a captive railway siding - boosting logistics efficiency by 40%",
-        "⚡ Enhanced power reliability across our Integrated Steel Plant operations",
-        "📈 Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
-        "Jamuria Plant Advancements:",
-        "🔋 Added a new 25MW Captive Power Plant - reducing energy costs by 30%",
-        "🔥 Expanded Ferro Alloys production by 9 MTPA - diversifying our product portfolio",
-        "🌱 Implemented waste-heat recovery systems - cutting carbon emissions"
-      ]
+  "• Sambalpur Plant Breakthroughs:",
+  "  • Commissioned a captive railway siding – boosting logistics efficiency by 40%",
+  "  • Enhanced power reliability across our Integrated Steel Plant operations",
+  "  • Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
+  "• Jamuria Plant Advancements:",
+  "  • Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
+  "  • Expanded Ferro Alloys production by 9 MTPA – diversifying our product portfolio",
+  "  • Implemented waste-heat recovery systems – cutting carbon emissions"
+]
+
     },
     {
       year: "2016",
