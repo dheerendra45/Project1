@@ -525,7 +525,7 @@ const Navbar = () => {
                 Error loading price
               </span>
             ) : (
-              <div className="flex items-center gap-2 bg-orange-500 font-inter font-bold text-white h-7">
+              <div className="flex items-center gap-2 text-orange-500 font-inter font-bold h-7">
                    Current Price ₹{stockData.currentPrice.toFixed(2)}
               </div>
             )}

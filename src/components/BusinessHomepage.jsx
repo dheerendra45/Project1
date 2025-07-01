@@ -55,12 +55,12 @@ const IndustrialCards = () => {
             >
               {/* Mobile Layout (stacked) */}
               <div className="flex flex-col h-full md:hidden">
-                {/* Image Section */}
-                <div className="h-[40%] relative">
+                {/* Image Section - Changed to object-contain */}
+                <div className="h-[40%] relative flex items-center justify-center bg-white">
                   <img
                     src={card.image}
                     alt={card.title}
-                    className="w-full h-full object-cover"
+                    className="max-h-full max-w-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900/30 to-transparent"></div>
                 </div>
@@ -81,7 +81,7 @@ const IndustrialCards = () => {
                 </div>
               </div>
 
-              {/* Tablet & Desktop Layout (side by side) */}
+              {/* Tablet & Desktop Layout (side by side) - unchanged */}
               <div className="hidden md:flex h-full">
                 {/* Left Side - Text & Button */}
                 <div className="w-1/2 h-full flex flex-col justify-between p-4 lg:p-6">
