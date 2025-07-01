@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import envimg from '../assets/env.jpg';
+import envimg from '../assets/env1.jpg';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
