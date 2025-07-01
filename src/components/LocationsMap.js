@@ -40,19 +40,24 @@ function LocationsMap() {
         </div>
 
         {/* Stats Row */}
-        <div className="flex justify-center mb-10">
-          <div className="bg-gray-50 shadow-md rounded-xl grid grid-cols-2 sm:flex sm:justify-between items-center px-4 sm:px-10 py-5 w-full max-w-[1160px]">
-            {stats.map((stat, index) => (
-              <div
-                key={index}
-                className={`text-center px-3 sm:px-6 py-3 ${index < stats.length - 1 ? 'sm:border-r border-gray-400' : ''}`}
-              >
-                <p className="text-gray-700 text-xs sm:text-base font-semibold mb-1">{stat.label}</p>
-                <p className="text-orange-600 text-xl sm:text-3xl font-extrabold">{stat.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+<div className="flex justify-center mb-10">
+  <div className="bg-gray-50 shadow-md rounded-xl grid grid-cols-2 sm:grid-cols-4 gap-y-4 px-4 sm:px-10 py-5 w-full max-w-[1160px]">
+    {stats.map((stat, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center text-center px-2 sm:px-4"
+      >
+        <p className="text-gray-700 text-xs sm:text-sm font-semibold mb-1">
+          {stat.label}
+        </p>
+        <p className="text-orange-600 text-sm sm:text-base font-extrabold">
+          {stat.value}
+        </p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
         {/* Maps Section */}
         <div className="flex flex-col lg:flex-row gap-6 sm:gap-10">

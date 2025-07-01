@@ -100,7 +100,7 @@ export default function Hero() {
             variants={itemVariants}
           >
             <span className="inline-block hover:scale-105 hover:text-orange-300 transition-all duration-500">
-              SEL Tiger TMT Bars
+              {/* SEL Tiger TMT Bars */}
             </span>
           </motion.h1>
           <motion.h1
@@ -108,7 +108,7 @@ export default function Hero() {
             variants={itemVariants}
           >
             <span className="inline-block hover:scale-105 hover:text-orange-300 transition-all duration-500">
-              Strength That Stands the Test of Time – Bend, but Never Break!
+              {/* Strength That Stands the Test of Time – Bend, but Never Break! */}
             </span>
           </motion.h1>
           <motion.p
@@ -116,18 +116,18 @@ export default function Hero() {
             variants={itemVariants}
           >
             <span className="inline-block hover:scale-105 transition-all duration-500">
-              S-E-L Tiger is a symbol of Strength, Elasticity, and Longevity
+              {/* S-E-L Tiger is a symbol of Strength, Elasticity, and Longevity */}
             </span>
           </motion.p>
-          <motion.div
+          {/* <motion.div
             variants={gradientVariants}
             className="h-1 rounded mb-4 sm:mb-6 bg-gradient-to-r from-orange-500 to-white"
-          />
+          /> */}
           <motion.p
             className="text-sm"
             variants={itemVariants}
           >
-            Home &gt; SEL
+            {/* Home &gt; SEL */}
           </motion.p>
         </motion.div>
       </motion.div>
