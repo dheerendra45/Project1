@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import herobg from '../assets/hero-background.png';
+import herobg from '../assets/1.jpg';
 import FactoryIcon from '../assets/factory-icon.png';
 import RevenueIcon from '../assets/revenue-icon.png';
 import IndiaMapIcon from '../assets/india-map-icon.png';
