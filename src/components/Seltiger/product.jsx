@@ -33,12 +33,11 @@ export default function Products() {
       img: a11,
       title: "TMT BARS",
       tagline: "Flexible in Form, Unbreakable in Strength",
-      desc: "Whether it's a skyscraper, bridge, or home, S-E-L Tiger TMT Bars are strong under strain, adaptable in use, and engineered to last.",
+      desc: "Whether it's a massive skyscraper, a sturdy bridge, or the base of a house, S-E-L Tiger provides steel that is strong under strain, adaptable in its uses, and lasting over time. TMT: Crafted with precision and supported by state-of-the-art technology, S-E-L Tiger TMT Bars are relied upon throughout India for constructing everything from residences to roadways, tall buildings to substantial infrastructure. Designed for superiority, S-E-L Tiger serves as the steel foundation for India's advancement.",
       details: {
-        subtitle: "Crafted with Precision, Supported by State-of-the-Art Technology",
-        highlights: "STEEL THAT BENDS, BUT NEVER BREAKS",
+        subtitle: "Flexible in Form, Unbreakable in Strength",
         description:
-          "S-E-L Tiger TMT Bars are relied upon throughout India for constructing everything from residences to roadways, tall buildings to major infrastructure. Made from Fe-550D grade, these bars offer unmatched strength, earthquake resistance, corrosion resistance for over 50 years, and endurance under high temperatures up to 600°C.",
+          "Whether it's a massive skyscraper, a sturdy bridge, or the base of a house, S-E-L Tiger provides steel that is strong under strain, adaptable in its uses, and lasting over time. TMT: Crafted with precision and supported by state-of-the-art technology, S-E-L Tiger TMT Bars are relied upon throughout India for constructing everything from residences to roadways, tall buildings to substantial infrastructure. Designed for superiority, S-E-L Tiger serves as the steel foundation for India's advancement.",
         features: [
           {
             name: "Earthquake Safety",
@@ -132,27 +131,9 @@ export default function Products() {
       tagline: "The Backbone of India's Skyline",
       desc: "From stadiums to skyscrapers, Tiger Structural Steel is the unseen force behind India's most ambitious projects.",
       details: {
-        subtitle: "From stadiums to skyscrapers",
-        highlights: "HIGH STRENGTH STRUCTURAL GRADES",
+        subtitle: "The Backbone of India's Skyline",
         description:
-          "Available in grades from TIG-SS-450L to TIG-SS-600, SEL Tiger Structural Steel covers a wide variety of structural needs — from low-rise buildings to offshore oil rigs. These grades are engineered for different environments, including seismic zones, industrial applications, and cost-efficient constructions.",
-        features: [
-          {
-            name: "Yield Strength (TIG-SS-500)",
-            conventional: "< 500 MPa",
-            tiger: "500 MPa — for high-rise frames"
-          },
-          {
-            name: "Yield Strength (TIG-SS-600)",
-            conventional: "< 600 MPa",
-            tiger: "600 MPa — for bridges and gantries"
-          },
-          {
-            name: "Yield Strength (TIG-SS-450L)",
-            conventional: "< 450 MPa",
-            tiger: "450 MPa — for budget-friendly projects"
-          }
-        ],
+          "From stadiums to skyscrapers, Tiger Structural Steel is the unseen force behind India's most ambitious projects.",
         grades: [
           {
             grade: "TIG-SS-500",
@@ -205,29 +186,11 @@ export default function Products() {
       img: a3,
       title: "SEL Tiger Wire Rod",
       tagline: "Strength Woven into Every Strand",
-      desc: "Trusted across sectors from power grids to agriculture. Zero-defect reliability and high tensile strength.",
+      desc: "When a single wire determines the safety of a suspension bridge or the durability of a pre-stressed concrete slab, only Tiger Wire Rod delivers zero-defect reliability. Engineered for high tensile strength, exceptional ductility, and flawless surface finish, our wire rods are trusted across sectors from power grids to precision agriculture where quality cannot be compromised.",
       details: {
-        subtitle: "Used from pre-stressed concrete to electrical wiring",
-        highlights: "SEAMLESS IN EVERY STRAND",
+        subtitle: "Strength Woven into Every Strand",
         description:
           "When a single wire determines the safety of a suspension bridge or the durability of a pre-stressed concrete slab, only Tiger Wire Rod delivers zero-defect reliability. Engineered for high tensile strength, exceptional ductility, and flawless surface finish, our wire rods are trusted across sectors from power grids to precision agriculture where quality cannot be compromised.",
-        features: [
-          {
-            name: "Tensile Strength",
-            conventional: "Standard ratings",
-            tiger: "High tensile strength across all diameters"
-          },
-          {
-            name: "Surface Quality",
-            conventional: "Inconsistent",
-            tiger: "Flawless finish, zero-defect standards"
-          },
-          {
-            name: "Applications",
-            conventional: "Basic use in binding",
-            tiger: "Construction, agriculture, utilities"
-          }
-        ],
         applications: [
           {
             sector: "🏗 Construction",
@@ -331,29 +294,11 @@ export default function Products() {
       img: a4,
       title: "SEL Tiger Roofing Sheets",
       tagline: "Lightweight Armor for Your Shelter",
-      desc: "Engineered to resist wind, corrosion, and heat. Trusted in harsh environments.",
+      desc: "When Cyclone Fani ravaged Odisha, rooftops were torn apart — except one. Tata Hospital remained unharmed, shielded by the enduring strength of Tiger Roofing Sheets. Engineered to resist wind, corrosion, and heat, SEL Tiger Roofing Sheets are trusted wherever weatherproofing meets performance",
       details: {
-        subtitle: "Protecting homes to hospitals",
-        highlights: "WIND, RAIN & HEAT RESISTANT",
+        subtitle: "Lightweight Armor for Your Shelter",
         description:
           "When Cyclone Fani ravaged Odisha, rooftops were torn apart — except one. Tata Hospital remained unharmed, shielded by the enduring strength of Tiger Roofing Sheets. Engineered to resist wind, corrosion, and heat, SEL Tiger Roofing Sheets are trusted wherever weatherproofing meets performance.",
-        features: [
-          {
-            name: "Variants",
-            conventional: "Basic metal sheets",
-            tiger: "ALU-70, ALU-100, SOLAR-READY"
-          },
-          {
-            name: "Durability",
-            conventional: "Moderate resistance",
-            tiger: "Tested during Cyclone Fani — survived harshest storms"
-          },
-          {
-            name: "Use Cases",
-            conventional: "Limited to sheds",
-            tiger: "Homes, hospitals, solar installations"
-          }
-        ],
         variants: [
           {
             variant: "ALU-70",
@@ -388,27 +333,9 @@ export default function Products() {
       tagline: "Built to Guard. Designed to Last",
       desc: "From preserving hot meals to insulating megastructures, Tiger Foil is the silent guardian in every layer. Designed for zero contamination and maximum durability, it's trusted across industries where hygiene and protection are non-negotiable.",
       details: {
-        subtitle: "Purity and protection for industry leaders",
-        highlights: "GUARDING FROM KITCHEN TO CONSTRUCTION",
+        subtitle: "Built to Guard. Designed to Last",
         description:
-          "Available in food-grade, construction barrier, and logistics packaging variants. Certified non-toxic and corrosion resistant. From preserving hot meals to insulating megastructures, Tiger Foil is the silent guardian in every layer. Designed for zero contamination and maximum durability, it's trusted across industries where hygiene and protection are non-negotiable.",
-        features: [
-          {
-            name: "Thickness Range",
-            conventional: "Standard foil grades",
-            tiger: "9–25 microns across sectors"
-          },
-          {
-            name: "Applications",
-            conventional: "Limited food usage",
-            tiger: "Food, vapor barrier, packaging"
-          },
-          {
-            name: "Certifications",
-            conventional: "Uncertified",
-            tiger: "GreenPro, NABL, ISO-compliant"
-          }
-        ],
+          "From preserving hot meals to insulating megastructures, Tiger Foil is the silent guardian in every layer. Designed for zero contamination and maximum durability, it's trusted across industries where hygiene and protection are non-negotiable.",
         specifications: [
           {
             sector: "🍱 Food Industry",
@@ -576,7 +503,7 @@ export default function Products() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="bbg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
+              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
               onClick={() => handleProductClick(product)}
               whileHover={{ y: -5 }}
             >
@@ -670,7 +597,7 @@ export default function Products() {
                 transition={{ delay: 0.4, duration: 0.6 }}
                 className="text-orange-500 text-xl font-semibold mt-2"
               >
-                {selectedProduct.details.highlights}
+                {selectedProduct.details.subtitle}
               </motion.h3>
 
               <motion.p
@@ -683,36 +610,38 @@ export default function Products() {
                 {selectedProduct.details.description}
               </motion.p>
 
-              {/* Gray Horizontal Line */}
-              <hr className="my-6 border-gray-300" />
-
-              {/* Comparison Table */}
-              <div className="overflow-x-auto">
-                <motion.table
-                  variants={fadeInUp}
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ delay: 0.8, duration: 0.6 }}
-                  className="min-w-full text-left border-collapse"
-                >
-                  <thead>
-                    <tr className="bg-gray-100 text-gray-800">
-                      <th className="px-4 py-3 border-b border-gray-300">FEATURE</th>
-                      <th className="px-4 py-3 border-b border-gray-300">CONVENTIONAL</th>
-                      <th className="px-4 py-3 border-b border-gray-300">TIGER {selectedProduct.title.split(' ').pop()}</th>
-                    </tr>
-                  </thead>
-                  <tbody className="text-sm text-gray-700">
-                    {selectedProduct.details.features.map((feature, i) => (
-                      <tr key={i} className="border-b border-gray-200">
-                        <td className="px-4 py-3">{feature.name}</td>
-                        <td className="px-4 py-3">{feature.conventional}</td>
-                        <td className="px-4 py-3 font-semibold text-orange-600">{feature.tiger}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </motion.table>
-              </div>
+              {/* Only show comparison table if features exist */}
+              {selectedProduct.details.features && (
+                <>
+                  <hr className="my-6 border-gray-300" />
+                  <div className="overflow-x-auto">
+                    <motion.table
+                      variants={fadeInUp}
+                      initial="hidden"
+                      animate="visible"
+                      transition={{ delay: 0.8, duration: 0.6 }}
+                      className="min-w-full text-left border-collapse"
+                    >
+                      <thead>
+                        <tr className="bg-gray-100 text-gray-800">
+                          <th className="px-4 py-3 border-b border-gray-300">FEATURE</th>
+                          <th className="px-4 py-3 border-b border-gray-300">CONVENTIONAL</th>
+                          <th className="px-4 py-3 border-b border-gray-300">TIGER {selectedProduct.title.split(' ').pop()}</th>
+                        </tr>
+                      </thead>
+                      <tbody className="text-sm text-gray-700">
+                        {selectedProduct.details.features.map((feature, i) => (
+                          <tr key={i} className="border-b border-gray-200">
+                            <td className="px-4 py-3">{feature.name}</td>
+                            <td className="px-4 py-3">{feature.conventional}</td>
+                            <td className="px-4 py-3 font-semibold text-orange-600">{feature.tiger}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </motion.table>
+                  </div>
+                </>
+              )}
             </div>
           </div>
 

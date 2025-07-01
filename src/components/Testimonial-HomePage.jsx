@@ -13,9 +13,24 @@ import a10 from "./images-testimonial-homepage/10.png";
 import a11 from "./images-testimonial-homepage/11.png";
 import a12 from "./images-testimonial-homepage/12.png";
 import a13 from "./images-testimonial-homepage/13.png";
+import t1 from "../assets/t1.jpg";
 
 const TestimonialHomePage = () => {
   // Images arrays
+  const a1 = t1;
+  const a2 = t1;
+  const a3 = t1;
+  const a4 = t1;
+  const a5 = t1;
+  const a6 = t1;
+  const a7 = t1;
+  const a8 = t1;
+  const a9 = t1;
+  const a10 = t1;
+  const a11 = t1;
+  const a12 = t1;
+  const a13 = t1;
+
   const leftMembers = [a1, a2, a3, a4, a5];
   const rightMembers = [a6, a7, a8, a9, a10];
   const topMembers = [a11, a12, a13];

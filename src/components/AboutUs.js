@@ -36,190 +36,130 @@ export default function AboutUs() {
 
   // Year-wise content data (keeping your existing data)
   const yearContent = [
-    {
-      year: "2013",
-      title: "Igniting India's Steel Revolution",
-      content: [
-        "At Our Sambalpur Plant:",
-        "• Commissioned our first Integrated Steel company unit",
-        "• Achieved commercial production of 0.3 MTPA sponge iron",
-        "• Implemented eco-conscious manufacturing processes",
-        "Simultaneously at Jamuria:",
-        "• Strengthened auxiliary production capabilities",
-        "• Established efficient raw material supply chains",
-        "• Created 500+ skilled jobs in West Bengal"
-      ]
-    },
-    {
-      year: "2014",
-      title: "Multiplying Excellence, Maximizing Impact",
-      content: [
-        "Sambalpur Plant Achievements:",
-        "• Scaled up sponge iron production capacity to 0.3 MTPA",
-        "• Enhanced Integrated Steel Plant capabilities",
-        "• Implemented advanced quality control systems",
-        "Jamuria Plant Progress:",
-        "• Optimized power generation for smoother operations",
-        "• Expanded raw material procurement networks",
-        "• Achieved 92% workforce localization"
-      ]
-    },
-    {
-      year: "2015",
-      title: "Powering Progress Through Innovation",
-      content: [
-  "• Sambalpur Plant Breakthroughs:",
-  "  • Commissioned a captive railway siding – boosting logistics efficiency by 40%",
-  "  • Enhanced power reliability across our Integrated Steel Plant operations",
-  "  • Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
-  "• Jamuria Plant Advancements:",
-  "  • Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
-  "  • Expanded Ferro Alloys production by 9 MTPA – diversifying our product portfolio",
-  "  • Implemented waste-heat recovery systems – cutting carbon emissions"
-]
-
-    },
-    {
-      year: "2016",
-      title: "Precision Growth & Strategic Scaling",
-      content: [
-        "At Sambalpur Plant:",
-        "• Boosted billets capacity by 0.27 MTPA - equivalent to steel needed for 135 km of highways",
-        "• Optimized Integrated Steel Plant workflows for maximum efficiency",
-        "At Jamuria Facility:",
-        "• Upgraded quality control labs for premium-grade output",
-        "• Implemented an AI-powered predictive maintenance system for enhanced reliability"
-      ]
-    },
-    {
-      year: "2017",
-      title: "Breaking Capacity Barriers",
-      content: [
-        "Sambalpur Milestones:",
-        "• Added 0.96 MTPA across sponge iron and billets - enough to build 3 Howrah Bridges",
-        "• Achieved 2.90 MTPA total capacity - a 3x growth since 2013",
-        "Industry Impact:",
-        "• Became Eastern India's largest sponge iron producer",
-        "• Supplied critical materials for 12+ infrastructure projects"
-      ]
-    },
-    {
-      year: "2019",
-      title: "Engineering India's Steel Future",  
-      content: [
-        "Sambalpur Plant Transformation:",
-        "• Increased capacity by 1.81 MTPA across critical products",
-        "Sponge Iron (core raw material)",
-        "TMT/Wire Rods (construction essentials)",
-        "• Became Odisha's most advanced Integrated Steel Plant",
-        "Jamuria Plant Advancements:",
-        "• Expanded capacity by 1.09 MTPA, including specialty products",
-        "Long products (for infrastructure)",
-        "Ferro Alloys (for value-added steel)",
-        "• 94 MW power addition - equivalent to electrifying 45,000 homes"
-      ]
-    },
-    {
-      year: "2020",
-      title: "Powering Through Challenges",
-      content: [
-        "Sambalpur Plant Achievements:",
-        "• 1.2 MTPA pellet capacity addition - raw material for 600,000 electric vehicles",
-        "• 118 MW power expansion (now totaling 212 MW captive capacity)",
-        "• Pandemic-proof operations with zero production downtime",
-        "Jamuria Plant Growth:",
-        "• 2.64 MTPA capacity boost across critical product lines",
-        "• Achieved 5.71 MTPA combined capacity - enough steel to build:",
-        "✓ 2 Howrah Bridges every month",
-        "✓ 50,000 km of rural roads annually"
-      ]
-    },
-    {
-      year: "2021",
-      title: "From Foundry to Fortune 500",
-      content: [
-        "Operational Excellence:",
-        "• Scaled premium TMT/Wire Rod production by 1.8 MTPA",
-        "• Maintained 5.71 MTPA capacity despite market volatility",
-        "Market Milestone:",
-        "• Historic IPO launch on NSE/BSE (June 2021)",
-        "• Share price reflected investor confidence in:",
-        "Vertical integration across steel plants in India",
-        "Visionary Shyam Metalics owner leadership",
-        "Strong fundamentals in India's steel sector"
-      ]
-    },
-    {
-      year: "2022",
-      title: "Scaling New Heights in Steel Innovation",
-      content: [
-        "Record-Breaking Growth:",
-        "• Achieved an 8.12 MTPA capacity post-IPO - making a 42% increase in just 1 year",
-        "• Equivalent to producing steel for:",
-        "• 4 Mumbai Coastal Roads annually",
-        "• 80,000 metro rail coaches",
-        "• Product Breakthroughs:",
-        "• S-E-L Tiger TMT Re-Bars:",
-        "• Earthquake-resistant reinforcement bars",
-        "• IS 1786 certified, 15% stronger than industry standards",
-        "• Tiger Grills N Steels:",
-        "• Lightweight structural solutions for modern architecture",
-        "• 30% faster installation than conventional materials"
-      ]
-    },
-    {
-      year: "2023",
-      title: "Redefining Excellence in Steel Manufacturing",
-      content: [
-  "• Unprecedented Growth:",
-  "  • Surpassed 13 MTPA metal capacity – now producing:",
-  "    • Steel for 6 Bandra-Worli Sea Links annually",
-  "    • Enough reinforcement bars for 25 smart cities",
-  "• Sustainable Power Solutions:",
-  "  • 377 MW captive power capacity achieved",
-  "  • Integrated 4 MW solar energy – reducing carbon footprint by 15,000 tons annually",
-  "• Innovation Milestones:",
-  "  • Coil TMT Technology:",
-  "    • Revolutionizing construction with zero wastage solutions",
-  "    • 20% cost savings for infrastructure developers",
-  "  • Stainless Steel Re-Bars:",
-  "    • Corrosion-resistant reinforcement designed for coastal projects",
-  "    • First in Eastern India to introduce this premium product",
-  "• Industry Recognition:",
-  "  • Awarded Most Sustainable Steel Plant",
-  "  • Certified for 7 new quality benchmarks"
-]
-
-    },
-    {
-      year: "2024",
-      title: "Forging New Frontiers in Metal Manufacturing",
-      content: [
-  "• Diversification Breakthroughs:",
-  "  • Food-Grade Aluminium Foils (40,000 TPA):",
-  "    • Compliant with FDA & FSSAI standards",
-  "    • Serving FMCG and pharmaceutical giants",
-  "    • 30% more hygienic than imported alternatives",
-  "  • Cold Rolling Mill Expansion:",
-  "    • Producing premium color-coated/galvanized sheets",
-  "    • Applications:",
-  "      • Architectural cladding",
-  "      • Automotive components",
-  "      • Solar panel backing",
-  "  • Stainless Steel Wire Rods & Bright Bars:",
-  "    • Precision-engineered for aerospace and defense",
-  "    • 0.01mm tolerance – among India's finest",
-  "• Sustainable Growth:",
-  "  • New DRI Plant (1.5 Lakh TPA):",
-  "    • Direct Reduced Iron technology",
-  "    • 35% lower emissions than traditional methods",
-  "  • 20MW Captive Power Addition:",
-  "    • Solar-biomass hybrid system",
-  "    • Powers 8,000+ homes equivalent"
-]
-
-    }
-  ];
+  {
+    year: "2013",
+    title: "Igniting India's Steel Revolution",
+    content: [
+      "• Commissioned our first Integrated Steel company unit (Sambalpur)",
+      "• Achieved commercial production of 0.3 MTPA sponge iron",
+      "• Implemented eco-conscious manufacturing processes",
+      "• Strengthened auxiliary production capabilities (Jamuria)",
+      "• Established efficient raw material supply chains",
+      "• Created 500+ skilled jobs in West Bengal"
+    ]
+  },
+  {
+    year: "2014",
+    title: "Multiplying Excellence, Maximizing Impact",
+    content: [
+      "• Scaled up sponge iron production capacity to 0.3 MTPA",
+      "• Enhanced Integrated Steel Plant capabilities",
+      "• Implemented advanced quality control systems",
+      "• Optimized power generation for smoother operations",
+      "• Expanded raw material procurement networks",
+      "• Achieved 92% workforce localization"
+    ]
+  },
+  {
+    year: "2015",
+    title: "Powering Progress Through Innovation",
+    content: [
+      "• Commissioned a captive railway siding – boosting logistics efficiency by 40%",
+      "• Enhanced power reliability across Integrated Steel Plant operations",
+      "• Scaled sponge iron/billets capacity by 0.38 MTPA",
+      "• Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
+      "• Expanded Ferro Alloys production by 9 MTPA",
+      "• Implemented waste-heat recovery systems – cutting carbon emissions"
+    ]
+  },
+  {
+    year: "2016",
+    title: "Precision Growth & Strategic Scaling",
+    content: [
+      "• Boosted billets capacity by 0.27 MTPA - equivalent to steel needed for 135 km of highways",
+      "• Optimized Integrated Steel Plant workflows for maximum efficiency",
+      "• Upgraded quality control labs for premium-grade output",
+      "• Implemented AI-powered predictive maintenance for enhanced reliability"
+    ]
+  },
+  {
+    year: "2017",
+    title: "Breaking Capacity Barriers",
+    content: [
+      "• Added 0.96 MTPA across sponge iron and billets - enough to build 3 Howrah Bridges",
+      "• Achieved 2.90 MTPA total capacity - a 3x growth since 2013",
+      "• Became Eastern India's largest sponge iron producer",
+      "• Supplied critical materials for 12+ infrastructure projects"
+    ]
+  },
+  {
+    year: "2019",
+    title: "Engineering India's Steel Future",
+    content: [
+      "• Increased capacity by 1.81 MTPA across sponge iron, TMT/Wire Rods",
+      "• Became Odisha's most advanced Integrated Steel Plant",
+      "• Expanded capacity by 1.09 MTPA in long products and Ferro Alloys",
+      "• Added 94 MW power - enough to electrify 45,000 homes"
+    ]
+  },
+  {
+    year: "2020",
+    title: "Powering Through Challenges",
+    content: [
+      "• Added 1.2 MTPA pellet capacity - raw material for 600,000 EVs",
+      "• Expanded captive power to 212 MW",
+      "• Maintained zero production downtime during pandemic",
+      "• Boosted Jamuria plant by 2.64 MTPA",
+      "• Achieved 5.71 MTPA total capacity",
+      "• Enough steel to build 2 Howrah Bridges/month or 50,000 km rural roads/year"
+    ]
+  },
+  {
+    year: "2021",
+    title: "From Foundry to Fortune 500",
+    content: [
+      "• Scaled premium TMT/Wire Rod production by 1.8 MTPA",
+      "• Maintained 5.71 MTPA capacity during volatile markets",
+      "• Historic IPO launched on NSE/BSE",
+      "• Share price reflected confidence in vertical integration and visionary leadership"
+    ]
+  },
+  {
+    year: "2022",
+    title: "Scaling New Heights in Steel Innovation",
+    content: [
+      "• Achieved 8.12 MTPA capacity - 42% increase in one year",
+      "• Equivalent to 4 Mumbai Coastal Roads or 80,000 metro coaches",
+      "• Launched S-E-L Tiger TMT Re-Bars – 15% stronger, earthquake-resistant",
+      "• Introduced Tiger Grills N Steels – 30% faster installation, lightweight design"
+    ]
+  },
+  {
+    year: "2023",
+    title: "Redefining Excellence in Steel Manufacturing",
+    content: [
+      "• Surpassed 13 MTPA metal capacity",
+      "• Enough steel for 6 Bandra-Worli Sea Links annually",
+      "• Achieved 377 MW captive power and integrated 4 MW solar energy",
+      "• Introduced Coil TMT Technology – zero wastage, 20% cost savings",
+      "• Launched corrosion-resistant stainless steel re-bars for coastal projects",
+      "• Awarded Most Sustainable Steel Plant",
+      "• Certified for 7 new quality benchmarks"
+    ]
+  },
+  {
+    year: "2024",
+    title: "Forging New Frontiers in Metal Manufacturing",
+    content: [
+      "• Launched Food-Grade Aluminium Foils (40,000 TPA) – FDA & FSSAI compliant",
+      "• Expanded Cold Rolling Mill for color-coated/galvanized sheets",
+      "• Applications: architecture, automotive, solar",
+      "• Introduced Stainless Steel Wire Rods & Bright Bars – 0.01mm tolerance",
+      "• Commissioned new DRI Plant (1.5 Lakh TPA) – 35% lower emissions",
+      "• Added 20MW solar-biomass hybrid power – powers 8,000+ homes"
+    ]
+  }
+];
 
   // Handle timeline item click
   const handleTimelineClick = (index) => {
