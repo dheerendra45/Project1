@@ -519,12 +519,9 @@ const Navbar = () => {
               </span>
             ) : (
               <div className="flex items-center gap-2">
-                <span className="font-inter font-normal text-[12px] leading-[18px]">
-                  Current Price
-                </span>
-                <span className="font-inter font-semibold text-[12px] leading-[18px]">
-                  ₹{stockData.currentPrice.toFixed(2)}
-                </span>
+                  <button className="bg-orange-500 text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
+                Current Price ₹{stockData.currentPrice.toFixed(2)}
+              </button>
               </div>
             )}
           </div>
