@@ -95,15 +95,15 @@ export default function Hero() {
         animate={controls}
       >
         <motion.div className="max-w-2xl space-y-4 md:space-y-6">
-          <motion.h1
+          {/* <motion.h1
             className="text-4xl md:text-5xl font-bold"
             variants={itemVariants}
           >
             <span className="inline-block hover:scale-105 hover:text-orange-300 transition-all duration-500">
               SEL Tiger TMT Bars
             </span>
-          </motion.h1>
-          <motion.h1
+          </motion.h1> */}
+          {/* <motion.h1
             className="text-3xl md:text-4xl font-bold"
             variants={itemVariants}
           >
@@ -118,17 +118,14 @@ export default function Hero() {
             <span className="inline-block hover:scale-105 transition-all duration-500">
               S-E-L Tiger is a symbol of Strength, Elasticity, and Longevity
             </span>
-          </motion.p>
-          <motion.div
+          </motion.p> */}
+          {/* <motion.div
             variants={gradientVariants}
             className="h-1 rounded mb-4 sm:mb-6 bg-gradient-to-r from-orange-500 to-white"
           />
-          <motion.p
-            className="text-sm"
-            variants={itemVariants}
-          >
+          <motion.p className="text-sm" variants={itemVariants}>
             Home &gt; SEL
-          </motion.p>
+          </motion.p> */}
         </motion.div>
       </motion.div>
 
@@ -144,7 +141,8 @@ export default function Hero() {
       {/* Global Styles */}
       <style jsx global>{`
         @keyframes float {
-          0%, 100% {
+          0%,
+          100% {
             transform: translateY(0) translateX(0);
           }
           50% {
