@@ -39,7 +39,12 @@ const ScrollReveal = ({ children, delay = 0, direction = "up" }) => {
   };
 
   return (
-    <motion.div ref={ref} initial="hidden" animate={controls} variants={variants}>
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={variants}
+    >
       {children}
     </motion.div>
   );
@@ -52,7 +57,7 @@ export default function Approach() {
       <ScrollReveal>
         <div className="max-w-6xl mx-auto space-y-6">
           <motion.h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black"
+            className="text-3xl sm:text-4xl lg:text-5xl font-medium text-black"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -66,7 +71,7 @@ export default function Approach() {
           ].map((text, index) => (
             <ScrollReveal key={index} delay={index + 1}>
               <motion.p
-                className="text-base sm:text-lg text-black"
+                className="text-base sm:text-lg text-black text-justify"
                 whileHover={{ x: 5 }}
                 transition={{ type: "spring", stiffness: 200 }}
               >
@@ -104,7 +109,8 @@ export default function Approach() {
           {[
             {
               title: "1. Energy Management: Powering a Green Future",
-              description: "We are committed to reducing our energy consumption and transitioning to renewable energy sources wherever possible.",
+              description:
+                "We are committed to reducing our energy consumption and transitioning to renewable energy sources wherever possible.",
               subsections: [
                 {
                   title: "Renewable Energy Initiatives",
@@ -123,8 +129,10 @@ export default function Approach() {
               ],
             },
             {
-              title: "2. Greenhouse Gas (GHG) Emissions: Reducing Our Carbon Footprint",
-              description: "We are GreenPro certified, aligning our operations with global sustainability standards.",
+              title:
+                "2. Greenhouse Gas (GHG) Emissions: Reducing Our Carbon Footprint",
+              description:
+                "We are GreenPro certified, aligning our operations with global sustainability standards.",
               subsections: [
                 {
                   title: "Emission Reduction Initiatives",
@@ -143,7 +151,8 @@ export default function Approach() {
             },
             {
               title: "3. Waste Management: Creating a Circular Economy",
-              description: "We follow a zero-waste approach, maximizing reuse and recycling.",
+              description:
+                "We follow a zero-waste approach, maximizing reuse and recycling.",
               subsections: [
                 {
                   title: "Recycling & Repurposing",
@@ -177,19 +186,23 @@ export default function Approach() {
             <ScrollReveal key={sectionIndex} delay={sectionIndex + 2}>
               <motion.div className="p-4 rounded-lg bg-gray-50 shadow-sm">
                 <motion.h3
-                  className="text-xl font-semibold text-black mb-2"
+                  className="text-xl font-medium text-black mb-2"
                   whileHover={{ scale: 1.01 }}
                 >
                   {section.title}
                 </motion.h3>
-                <p className="mb-3">{section.description}</p>
+                <p className="mb-3 text-justify">{section.description}</p>
 
                 {section.subsections.map((sub, subIndex) => (
                   <div key={subIndex} className="mb-2">
-                    <h4 className="font-semibold underline mt-2">{sub.title}</h4>
-                    <ul className="ml-5 mt-1 list-disc space-y-1">
+                    <h4 className="font-medium mt-2 text-justify">
+                      {sub.title}
+                    </h4>
+                    <ul className="ml-5 mt-1 list-disc space-y-1 text-justify">
                       {sub.items.map((item, itemIndex) => (
-                        <li key={itemIndex}>{item}</li>
+                        <li key={itemIndex} className="text-justify">
+                          {item}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -225,16 +238,22 @@ export default function Approach() {
       <ScrollReveal delay={2}>
         <div className="w-full max-w-6xl mx-auto text-left space-y-6 text-black">
           <motion.h2
-            className="text-2xl sm:text-3xl font-medium leading-snug"
+            className="text-2xl sm:text-3xl leading-snug text-justify"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: false }}
             transition={{ duration: 1 }}
           >
-            “At Shyam Metalics, we invest in employee training, skill development, and green awareness programs to foster a culture of sustainability. Through workshops, certifications, and adoption of new technologies, we empower our workforce to lead eco-friendly operations. Our corporate environmental policies align with global standards while promoting resource efficiency, waste reduction, and community engagement for a sustainable future.”
+            "At Shyam Metalics, we invest in employee training, skill
+            development, and green awareness programs to foster a culture of
+            sustainability. Through workshops, certifications, and adoption of
+            new technologies, we empower our workforce to lead eco-friendly
+            operations. Our corporate environmental policies align with global
+            standards while promoting resource efficiency, waste reduction, and
+            community engagement for a sustainable future."
           </motion.h2>
           <div>
-            <p className="font-bold text-lg">Andre-Martin Bouchard</p>
+            <p className="font-medium text-lg">Andre-Martin Bouchard</p>
             <p className="text-black">Global Executive Director, Shyam</p>
           </div>
         </div>

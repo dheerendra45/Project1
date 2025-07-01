@@ -42,24 +42,28 @@ const PelletInfo = () => {
               <div className="w-3 h-3 bg-orange-500 ml-2"></div>
             </div>
 
-            <motion.p
-              className="text-gray-700 leading-relaxed space-y-6"
-              variants={fadeInUp}
-            >
-              <strong>What are Pellets?</strong> Pellets, also known as iron ore pellets,
-              are small, spherical balls of iron ore fines that have been processed
-              to improve efficiency and consistency in steelmaking.
-              <br /><br />
-              These high-grade pellets are formed by agglomerating iron ore concentrate
-              and heating them in rotary kilns or straight grate furnaces. This process
-              enhances their metallurgical properties, making them ideal for use in
-              DRI (Direct Reduced Iron) kilns and blast furnaces.
-              <br /><br />
-              At Shyam Metalics, we manufacture steel pellets that deliver superior strength,
-              reducibility, and thermal resistance. Whether utilized in-house or supplied
-              to our partners, our pellets support our vision of environmentally responsible,
-              high-performance steel production.
-            </motion.p>
+          <motion.p
+  className="text-gray-700 leading-relaxed space-y-6"
+  variants={fadeInUp}
+>
+  <strong>From Ore to Opportunity:</strong> In today’s sustainability-driven steel industry,
+  enhancing steelmaking with smarter and more durable raw materials has become the need of the hour.
+  Traditional iron ore forms often fall short in providing the uniform quality and metallurgical performance
+  required for modern applications. That’s where <strong>pellets</strong> emerge as a game-changing innovation.
+
+  <br /><br />
+
+  <strong>What are Pellets?</strong> Pellets are small, spherical balls made by agglomerating iron ore
+  fines and heating them in rotary kilns or straight grate furnaces. This thermal treatment improves their
+  strength, reducibility, and consistency — making them ideal for Direct Reduced Iron (DRI) kilns and blast furnaces.
+
+  <br /><br />
+
+  At <strong>Shyam Metalics</strong>, we leave no stone unturned in producing high-grade steel pellets engineered for
+  maximum performance. Whether used internally or by our trusted partners, our pellets reflect our commitment to
+  reliable, efficient, and environmentally responsible steel production — forging a stronger future, one sphere at a time.
+</motion.p>
+
 
             <motion.button
               variants={fadeInUp}

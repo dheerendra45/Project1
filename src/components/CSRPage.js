@@ -27,8 +27,8 @@ const CSRPage = () => {
 
         {/* Right side with content */}
         <div className="w-full md:w-1/2 bg-white p-10 pr-12">
-          <h3 className="text-2xl font-bold mb-4">Corporate Social Responsibility</h3>
-          <h2 className="text-4xl font-bold mb-12">Building Communities, Empowering Lives</h2>
+          <h3 className="text-4xl font-bold mb-4">Corporate Social Responsibility</h3>
+          <h2 className="text-2xl font-bold mb-12">Building Communities, Empowering Lives</h2>
 
           <div className="flex flex-wrap justify-between mb-16">
             <div className="mb-8 md:mb-0">

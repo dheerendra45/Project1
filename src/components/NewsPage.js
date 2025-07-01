@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import news1 from '../assets/news.png'
+import news2 from '../assets/news2.png'
 
 const NewsCard = ({
   date,
@@ -9,6 +11,7 @@ const NewsCard = ({
   title,
   excerpt,
   subtext,
+  image, // ✅ Added image prop
 }) => {
   const [showSubtext, setShowSubtext] = useState(false);
 
@@ -24,7 +27,7 @@ const NewsCard = ({
         {/* Image section */}
         <div className="h-48 bg-gray-300 relative flex-shrink-0">
           <img
-            src="/api/placeholder/400/250"
+            src={image || "/api/placeholder/400/250"} // ✅ Use the image prop instead of placeholder
             alt={title}
             className="w-full h-full object-cover"
           />
@@ -79,6 +82,7 @@ const NewsPage = () => {
   const newsItems = [
     {
       id: 1,
+      image: news1, // ✅ This will now be used
       date: "01 JUN 2025",
       category: "Philanthropy",
       admin: "Admin",
@@ -91,18 +95,20 @@ const NewsPage = () => {
     },
     {
       id: 2,
+      image: news2, // ✅ This will now be used
       date: "15 MAY 2025",
       category: "Export",
       admin: "Admin",
       comments: "2 Comments",
       title: "Shyam Metalics Secures Major Export Order to Southeast Asia",
       excerpt:
-        "50,000 MT shipment of TMT bars and wire rods to Vietnam & Indonesia boosts India’s steel export status and adds $25M in revenue.",
+        "50,000 MT shipment of TMT bars and wire rods to Vietnam & Indonesia boosts India's steel export status and adds $25M in revenue.",
       subtext:
         "Additional info: This shipment marks the company's entry into new markets, solidifying its position as a leading exporter in the steel industry.",
     },
     {
       id: 3,
+      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop", // Green technology/research image
       date: "01 MAY 2025",
       category: "Innovation",
       admin: "Admin",
@@ -115,13 +121,14 @@ const NewsPage = () => {
     },
     {
       id: 4,
+      image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=250&fit=crop", // Manufacturing/industrial image
       date: "20 APR 2025",
       category: "Manufacturing",
       admin: "Admin",
       comments: "4 Comments",
       title: "Aluminum Foil Division Gets FDA Approval",
       excerpt:
-        "New 40,000 TPA unit enters FMCG & pharma sectors with India’s first 100% recyclable packaging certification for food-grade foil.",
+        "New 40,000 TPA unit enters FMCG & pharma sectors with India's first 100% recyclable packaging certification for food-grade foil.",
       subtext:
         "More info: The FDA approval enables expansion into high-growth sectors, emphasizing eco-friendly and recyclable packaging solutions.",
     },

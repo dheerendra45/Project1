@@ -10,24 +10,23 @@ import WorkerImage from '../assets/worker.png';
 function MissionVisionValues() {
   const sections = [
     {
-  icon: VisionIcon,
-  title: "Our Vision",
-  description: 
-    "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth — empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
-  // image: SteelFactoryImage,
-  direction: "left"
-},
+      icon: VisionIcon,
+      title: 'Our Vision',
+      description: "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel, Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth, empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
+      // image: SteelFactoryImage,
+      direction: 'left'
+    },
     {
       icon: MissionIcon,
       title: 'Our Mission',
-      description: 'Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence, leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity, strengthen India’s industrial backbone, and create enduring value for all stakeholders.',
+      description: "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence, leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity, strengthen India’s industrial backbone, and create enduring value for all stakeholders.",
       // image: HardhatImage,
       direction: 'up'
     },
     {
       icon: ValuesIcon,
       title: 'Our Values',
-      description: 'Rooted in our values, we continue to grow with integrity and purpose.<br><br>Values<br>Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence',
+      description: 'Rooted in our values, we continue to grow with integrity and purpose.<br/><br/>Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence',
       // image: WorkerImage,
       direction: 'right'
     }
@@ -126,35 +125,6 @@ function MissionVisionValues() {
 
   return (
     <div className="relative py-16 px-4 bg-gray-50 overflow-hidden">
-      {/* Heading */}
-      <motion.div
-        className="text-center mb-16"
-        variants={headingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: false, amount: 0.3 }}
-      >
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{
-            type: "spring",
-            stiffness: 100,
-            damping: 10,
-            mass: 0.5
-          }}
-        >
-          <h1 className="text-orange-500 font-semibold uppercase mb-2 tracking-wider">
-            "BRAND SLOGAN"
-          </h1>
-          <h1 className="text-3xl md:text-4xl text-black font-bold leading-tight">
-            Transparent Trust, Unyielding Strength – For Quality That Never Bends
-          </h1>
-        </motion.div>
-      </motion.div>
-
-      {/* Cards Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8"
@@ -222,7 +192,6 @@ function MissionVisionValues() {
                   {section.title}
                 </motion.h3>
 
-                {/* FIXED DESCRIPTION */}
                 <motion.p
                   className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"
                   initial={{ opacity: 0, y: 10 }}
@@ -238,6 +207,7 @@ function MissionVisionValues() {
                 />
               </div>
 
+              {/* Optional image at the bottom if you want to re-enable */}
               {/* <motion.div
                 className="relative h-72 overflow-hidden"
                 initial={{ opacity: 0 }}
@@ -261,8 +231,8 @@ function MissionVisionValues() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                   whileHover={imageHover}
-                /> */}
-              {/* </motion.div> */}
+                />
+              </motion.div> */}
             </motion.div>
           ))}
         </motion.div>

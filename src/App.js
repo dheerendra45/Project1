@@ -33,6 +33,14 @@ import WireRods from './Pages/WireRods.jsx';
 import StainlessSteelBillets from './Pages/StainlessSteelBillets.jsx';
 import SSWireRod from './Pages/SSWireRod.jsx';
 import ColorCoatedSheets from './Pages/ColorCoatedSheets.jsx';
+import Billets from './Pages/billets.js';
+import PigIron from './Pages/pigiron.js';
+import Pipes from './Pages/pipes.js';
+import Blackround_bar from './Pages/blackround_bar.js';
+import Bright_bar from './Pages/Bright_bar.js';
+import Flats from './Pages/flats.js';
+import Financial_information from './Pages/finacial_information.js';
+import Policies from './Pages/policies.js';
 
 function App() {
   return (
@@ -71,6 +79,17 @@ function App() {
    <Route path="stainless_steel_billets" element={<StainlessSteelBillets />} />
    <Route path="SS_Wire_Rod" element={<SSWireRod />} />
    <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
+
+      <Route path="billets" element={<Billets />} />
+      <Route path="pig_iron" element={<PigIron />} />
+      <Route path="pipes_hollow_sections" element={<Pipes />} />
+      <Route path="blackround_bar" element={<Blackround_bar />} />
+       <Route path="bright_bar" element={<Bright_bar />} />
+
+  <Route path="flats" element={<Flats />} />
+<Route path="finacial_informations" element={<Financial_information />} />
+<Route path="policies" element={<Policies />} />
+
    
   </Route>
 

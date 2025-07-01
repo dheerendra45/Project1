@@ -36,7 +36,7 @@ const SpongeInfo = () => {
             variants={fadeInUp}
           >
             <div className="flex items-center mb-8">
-              <h2 className="text-4xl font-bold text-gray-900">  Sponge Iron Overview</h2>
+              <h2 className="text-4xl font-bold text-gray-900">Sponge Iron Overview</h2>
               <div className="w-3 h-3 bg-orange-500 ml-2"></div>
             </div>
 
@@ -44,13 +44,15 @@ const SpongeInfo = () => {
               className="text-gray-700 leading-relaxed space-y-6"
               variants={fadeInUp}
             >
-              India is the world’s largest producer of sponge iron produced through direct reduction of iron-ore / iron pellet in the solid state.
+              As the industry faces the imminent decline of high-grade lumpy ore, Shyam Metalics is pioneering the shift toward pelletisation technology. This innovative approach agglomerates iron ore fines into premium feedstock, future-proofing sponge iron production while maintaining cost efficiency and quality standards.
               <br /><br />
-              Since the higher grade domestic lumpy ore will be exhausted in the next 10 years, value additions to the Iron Ore Fines by processes like Pelletisation are becoming increasingly important. This agglomeration process converts fines into 8–20 mm balls using binders such as bentonite and lime.
+              Shyam Metalics leads India's sponge iron revolution, producing high-quality material through advanced rotary kilns that guarantee consistent metallic content and ultra-low impurities. Manufactured at our strategically located Sambalpur and Jamurai plants, our sponge iron sets the benchmark for efficiency in steelmaking, enabling seamless backward integration for premium billets, TMT bars, and wire rods.
               <br /><br />
-              Sponge iron is a spongy mass of metallic iron, produced in the solid state. It is used as a substitute for scrap in secondary steelmaking. The goal of sponge iron making is to remove oxygen from iron ore or pellets.
+              This manufacturing excellence positions us at the heart of India's dominance in sponge iron production — where we've perfected the direct reduction process to transform iron ore and pellets into this critical steelmaking ingredient.
               <br /><br />
-              We are the fourth largest Sponge Iron manufacturer in India. Our sponge iron is distributed across states like Assam, Bihar, Chhattisgarh, Gujarat, Jharkhand, Madhya Pradesh, Maharashtra, Meghalaya, Rajasthan, West Bengal, and Uttarakhand.
+              Sponge iron is a porous form of iron created through the solid-state direct reduction of iron ore or pellets. It serves as an effective substitute for scrap in secondary steelmaking processes. The primary objective is to eliminate oxygen from the ore, producing a purer iron product ideal for electric arc furnaces and induction furnaces.
+              <br /><br />
+              We proudly rank as the fourth-largest manufacturer of sponge iron in India, with a robust sponge iron plant network supplying across Assam, Bihar, Chhattisgarh, Gujarat, Jharkhand, Madhya Pradesh, Maharashtra, Meghalaya, Rajasthan, West Bengal, and Uttarakhand.
             </motion.p>
 
             <motion.button

@@ -12,7 +12,9 @@ export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0); // New state for continuous progress
   const pauseTimeoutRef = useRef(null);
+  const progressIntervalRef = useRef(null);
 
   const messages = [
     "Lighting the Spark",
@@ -31,16 +33,8 @@ export default function AboutUs() {
   const years = ["2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024"];
   const galleryImages = [a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5];
   const aboutImages = [abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
-  const aboutTexts = [
-    "Shyam Metalics is the 6th largest metal producing company based in India providing end-to-end solutions with integrated capabilities (Source: CRISIL Report) with a focus on long steel products and ferro alloys. Our state-of-the-art facilities and commitment to quality have made us a leader in the industry.",
-    "Founded in 1848, we've grown to become a leader in steel production with state-of-the-art facilities across multiple locations in India. Our early adoption of innovative production techniques set us apart from competitors.",
-    "Our 1902 expansion marked the beginning of our journey towards becoming an integrated steel producer with mining capabilities. This vertical integration allowed us to control quality from raw materials to finished products.",
-    "The 1964 revolution in our production techniques set new benchmarks for quality in the steel industry. We introduced advanced quality control measures that became industry standards.",
-    "In 1998, we pioneered several sustainable steel production methods that reduced our carbon footprint by 40%. Our environmental initiatives have been recognized with multiple awards.",
-    "Our 2023 vision focuses on digital transformation and AI-powered manufacturing processes. We're investing heavily in Industry 4.0 technologies to maintain our competitive edge."
-  ];
 
-  // Year-wise content data
+  // Year-wise content data (keeping your existing data)
   const yearContent = [
     {
       year: "2013",
@@ -74,15 +68,16 @@ export default function AboutUs() {
       year: "2015",
       title: "Powering Progress Through Innovation",
       content: [
-        "Sambalpur Plant Breakthroughs:",
-        "🚂 Commissioned a captive railway siding - boosting logistics efficiency by 40%",
-        "⚡ Enhanced power reliability across our Integrated Steel Plant operations",
-        "📈 Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
-        "Jamuria Plant Advancements:",
-        "🔋 Added a new 25MW Captive Power Plant - reducing energy costs by 30%",
-        "🔥 Expanded Ferro Alloys production by 9 MTPA - diversifying our product portfolio",
-        "🌱 Implemented waste-heat recovery systems - cutting carbon emissions"
-      ]
+  "• Sambalpur Plant Breakthroughs:",
+  "  • Commissioned a captive railway siding – boosting logistics efficiency by 40%",
+  "  • Enhanced power reliability across our Integrated Steel Plant operations",
+  "  • Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
+  "• Jamuria Plant Advancements:",
+  "  • Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
+  "  • Expanded Ferro Alloys production by 9 MTPA – diversifying our product portfolio",
+  "  • Implemented waste-heat recovery systems – cutting carbon emissions"
+]
+
     },
     {
       year: "2016",
@@ -110,7 +105,7 @@ export default function AboutUs() {
     },
     {
       year: "2019",
-      title: "Engineering India's Steel Future",
+      title: "Engineering India's Steel Future",  
       content: [
         "Sambalpur Plant Transformation:",
         "• Increased capacity by 1.81 MTPA across critical products",
@@ -161,72 +156,75 @@ export default function AboutUs() {
         "Record-Breaking Growth:",
         "• Achieved an 8.12 MTPA capacity post-IPO - making a 42% increase in just 1 year",
         "• Equivalent to producing steel for:",
-        "✓ 4 Mumbai Coastal Roads annually",
-        "✓ 80,000 metro rail coaches",
-        "Product Breakthroughs:",
-        "🔶 S-E-L Tiger TMT Re-Bars:",
-        "Earthquake-resistant reinforcement bars",
-        "IS 1786 certified, 15% stronger than industry standards",
-        "🔶 Tiger Grills N Steels:",
-        "Lightweight structural solutions for modern architecture",
-        "30% faster installation than conventional materials"
+        "• 4 Mumbai Coastal Roads annually",
+        "• 80,000 metro rail coaches",
+        "• Product Breakthroughs:",
+        "• S-E-L Tiger TMT Re-Bars:",
+        "• Earthquake-resistant reinforcement bars",
+        "• IS 1786 certified, 15% stronger than industry standards",
+        "• Tiger Grills N Steels:",
+        "• Lightweight structural solutions for modern architecture",
+        "• 30% faster installation than conventional materials"
       ]
     },
     {
       year: "2023",
       title: "Redefining Excellence in Steel Manufacturing",
       content: [
-        "Unprecedented Growth:",
-        "• Surpassed 13 MTPA metal capacity - now producing:",
-        "✓ Steel for 6 Bandra-Worli Sea Links annually",
-        "✓ Enough reinforcement bars for 25 smart cities",
-        "Sustainable Power Solutions:",
-        "⚡ 377 MW captive power capacity achieved",
-        "☀️ integrated 4 MW solar energy - reducing carbon footprint by 15,000 tons annually",
-        "Innovation Milestones:",
-        "🌀 Coil TMT Technology:",
-        "Revolutionizing construction with zero wastage solutions",
-        "20% cost savings for infrastructure developers",
-        "✨ Stainless Steel Re-Bars:",
-        "Corrosion-resistant reinforcement designed for coastal projects",
-        "First in Eastern India to introduce this premium product",
-        "Industry Recognition:",
-        "🏆Awarded Most Sustainable Steel Plant",
-        "📜 Certified for 7 new quality benchmarks"
-      ]
+  "• Unprecedented Growth:",
+  "  • Surpassed 13 MTPA metal capacity – now producing:",
+  "    • Steel for 6 Bandra-Worli Sea Links annually",
+  "    • Enough reinforcement bars for 25 smart cities",
+  "• Sustainable Power Solutions:",
+  "  • 377 MW captive power capacity achieved",
+  "  • Integrated 4 MW solar energy – reducing carbon footprint by 15,000 tons annually",
+  "• Innovation Milestones:",
+  "  • Coil TMT Technology:",
+  "    • Revolutionizing construction with zero wastage solutions",
+  "    • 20% cost savings for infrastructure developers",
+  "  • Stainless Steel Re-Bars:",
+  "    • Corrosion-resistant reinforcement designed for coastal projects",
+  "    • First in Eastern India to introduce this premium product",
+  "• Industry Recognition:",
+  "  • Awarded Most Sustainable Steel Plant",
+  "  • Certified for 7 new quality benchmarks"
+]
+
     },
     {
       year: "2024",
       title: "Forging New Frontiers in Metal Manufacturing",
       content: [
-        "Diversification Breakthroughs:",
-        "🍱 Food-Grade Aluminium Foils (40,000 TPA):",
-        "Compliant with FDA & FSSAI standards",
-        "Serving FMCG and pharmaceutical giants",
-        "30% more hygienic than imported alternatives",
-        "🏗️ Cold Rolling Mill Expansion:",
-        "Producing premium color-coated/galvanized sheets",
-        "Applications:",
-        "✓ Architectural cladding",
-        "✓ Automotive components",
-        "✓ Solar panel backing",
-        "🔩 Stainless Steel Wire Rods & Bright Bars:",
-        "Precision-engineered for aerospace and defense",
-        "0.01mm tolerance - among India's finest",
-        "Sustainable Growth:",
-        "• New DRI Plant (1.5 Lakh TPA):",
-        "Direct Reduced Iron technology",
-        "35% lower emissions than traditional methods",
-        "• 20MW Captive Power Addition:",
-        "Solar-biomass hybrid system",
-        "Powers 8,000+ homes equivalent"
-      ]
+  "• Diversification Breakthroughs:",
+  "  • Food-Grade Aluminium Foils (40,000 TPA):",
+  "    • Compliant with FDA & FSSAI standards",
+  "    • Serving FMCG and pharmaceutical giants",
+  "    • 30% more hygienic than imported alternatives",
+  "  • Cold Rolling Mill Expansion:",
+  "    • Producing premium color-coated/galvanized sheets",
+  "    • Applications:",
+  "      • Architectural cladding",
+  "      • Automotive components",
+  "      • Solar panel backing",
+  "  • Stainless Steel Wire Rods & Bright Bars:",
+  "    • Precision-engineered for aerospace and defense",
+  "    • 0.01mm tolerance – among India's finest",
+  "• Sustainable Growth:",
+  "  • New DRI Plant (1.5 Lakh TPA):",
+  "    • Direct Reduced Iron technology",
+  "    • 35% lower emissions than traditional methods",
+  "  • 20MW Captive Power Addition:",
+  "    • Solar-biomass hybrid system",
+  "    • Powers 8,000+ homes equivalent"
+]
+
     }
   ];
 
   // Handle timeline item click
   const handleTimelineClick = (index) => {
     setActiveIndex(index);
+    setProgress(index); // Set progress to match the clicked item
     setIsPaused(true);
     
     // Clear any existing timeout
@@ -240,45 +238,74 @@ export default function AboutUs() {
     }, 10000);
   };
 
-  // Auto-cycle through timeline items every 3 seconds when not hovering or paused
+  // Continuous progress animation effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isHovering && !isPaused) {
-        setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+    if (!isHovering && !isPaused) {
+      progressIntervalRef.current = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + (1 / 30); // Progress increment (10 seconds / 300 frames)
+          
+          // Check if we need to move to next item
+          if (newProgress >= galleryImages.length) {
+            setActiveIndex(0);
+            return 0;
+          } else if (Math.floor(newProgress) > Math.floor(prevProgress)) {
+            setActiveIndex(Math.floor(newProgress));
+          }
+          
+          return newProgress;
+        });
+      }, 100); // Update every 100ms for smooth animation
+    } else {
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
       }
-    }, 3000);
-    
+    }
+
     return () => {
-      clearInterval(interval);
-      if (pauseTimeoutRef.current) {
-        clearTimeout(pauseTimeoutRef.current);
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
       }
     };
   }, [galleryImages.length, isHovering, isPaused]);
 
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-6 lg:py-8">
+    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-16 lg:py-8 font-['Inter',sans-serif]">
       {/* ABOUT US Section */}
       <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
-        {/* Left Text Section */}
-        <motion.div 
-          key={activeIndex}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="lg:w-1/2 text-black space-y-4 lg:space-y-6"
-        >
+        {/* Left Text Section - Now Static */}
+        <div className="lg:w-1/2 text-black space-y-4 lg:space-y-6">
           <h1 className="text-orange-500 text-lg sm:text-xl font-semibold">ABOUT US</h1>
           <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-snug">
             A Steel Company With Integrated <br className="hidden sm:block" /> Operations.
           </h1>
-          <p className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed">
-            {aboutTexts[activeIndex]}
-          </p>
-          <button className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition text-sm sm:text-base">
-            Read More -&gt;
-          </button>
-        </motion.div>
+          <div className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed space-y-4">
+            <p>
+              Shyam Metalics and Energy Limited is an Indian integrated metal producing Company with a strong presence across the metal value chain. The Company is one of the largest integrated steel producers in India, currently ranked 6th, and is also among the country's leading ferro alloy manufacturers.
+            </p>
+            <p>
+              Shyam Metalics and Energy Limited operates an "ore-to-metal" integrated business model, with steel manufacturing facilities located strategically near mineral reserves in West Bengal, Odisha, Chhattisgarh and Madhya Pradesh. The Company has a combined installed production capacity of 13.2 million metric tonnes per annum (MTPA) as of March 2025 across various product lines.
+            </p>
+            <p>
+              Since FY2005, the company has demonstrated consistent operational profitability and has maintained a track record of positive EBITDA every year. Its distribution network spans both domestic and international markets, with a presence in over 28 countries.
+            </p>
+            <p>
+              Shyam Metalics and Energy credit facilities have been rated AA/Stable for long-term banking facilities and A1+ for short-term banking facilities by Crisil. The outlook for the long-term rating remains stable.
+            </p>
+          </div>
+        </div>
 
         {/* Year-wise Content and Gallery Section */}
         <motion.div 
@@ -340,17 +367,16 @@ export default function AboutUs() {
              style={{ 
                top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
              }}>
-          {/* Progressive line animation */}
+          {/* Progressive line animation - FIXED */}
           <div className="h-full bg-gray-300 w-full relative z-0">
             <motion.div
               className="h-full bg-orange-500 absolute left-0 top-0"
-              initial={{ width: '0%' }}
               animate={{ 
-                width: `${((activeIndex + 1) / galleryImages.length) * 100}%` 
+                width: `${(progress / galleryImages.length) * 100}%` 
               }}
               transition={{ 
-                duration: 0.8, 
-                ease: "easeInOut" 
+                duration: 0.1, 
+                ease: "linear" 
               }}
             />
           </div>
@@ -362,7 +388,7 @@ export default function AboutUs() {
           <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pt-[-10px] pb-4">
             {galleryImages.map((img, index) => {
               const isActive = index === activeIndex;
-              const isPassed = index <= activeIndex;
+              const isPassed = index < progress;
 
               return (
                 <motion.div
@@ -375,7 +401,7 @@ export default function AboutUs() {
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   {/* Fixed height container for message/year */}
-                  <div className="h-[40 px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
+                  <div className="h-[40px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
                     <AnimatePresence mode="wait">
                       {isActive ? (
                         <motion.div
@@ -450,7 +476,7 @@ export default function AboutUs() {
             <div className="flex justify-center items-center gap-3 overflow-x-auto pb-4">
               {galleryImages.map((img, index) => {
                 const isActive = index === activeIndex;
-                const isPassed = index <= activeIndex;
+                const isPassed = index < progress;
 
                 return (
                   <motion.div
@@ -495,7 +521,7 @@ export default function AboutUs() {
                   key={index}
                   onClick={() => handleTimelineClick(index)}
                   className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index <= activeIndex ? 'bg-orange-500' : 'bg-gray-300'
+                    index < progress ? 'bg-orange-500' : 'bg-gray-300'
                   }`}
                 />
               ))}

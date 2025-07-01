@@ -138,7 +138,7 @@ const Hero = () => {
           className="text-4xl sm:text-5xl md:text-6xl lg:text-[72px] leading-[1.1] font-space-grotesk font-bold mb-4 md:mb-6 tracking-tight"
           variants={itemVariants}
         >
-          Business
+          Businesses
         </motion.h1>
         
         

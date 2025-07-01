@@ -115,7 +115,6 @@ export default function Hero() {
           Committed to Environmental Stewardship, Social Impact, and Ethical
           Governance
         </motion.p>
-
         <motion.div
           variants={gradientVariants}
           className="h-1 rounded mb-6 sm:mb-8"

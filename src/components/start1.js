@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import companylogo from '../assets/products/image28.png'
-import bgImg from '../assets/image146.png'
+import companylogo from '../assets/products/image28.png';
+import bgImg from '../assets/image146.png';
 import { href } from "react-router-dom";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
   const [activeNestedSub, setActiveNestedSub] = useState(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   
   // Stock price state
   const [stockData, setStockData] = useState({
@@ -68,8 +70,8 @@ const Navbar = () => {
       ]
     },
     
-    { 
-      title: 'BUSINESSES', 
+    {
+      title: 'BUSINESSES',
       hasDropdown: true,
       dropdownItems: [
         {
@@ -77,7 +79,7 @@ const Navbar = () => {
           href: '/business',
         },
         {
-          name: 'Steel',
+          name: 'Iron and Steel',
           href: '#',
           subItems: [
             {
@@ -134,6 +136,7 @@ const Navbar = () => {
         }
       ]
     },
+
     { 
       title: '🐅seltiger', 
       hasDropdown: false,
@@ -147,19 +150,19 @@ const Navbar = () => {
           name: 'Financials & Disclosures',
           href: '#',
           subItems: [
-            { name: 'Financial Performance', href: '#' },
+            { name: 'Financial Information', href: '/finacial_informations' },
             { name: 'Financial Statements', href: '#' },
             { name: 'Stock Performance Data', href: '#' },
             { name: 'Regulatory Disclosures', href: '#' },
             { name: 'Company Disclosures (SEBI LODR)', href: '#' },
-            { name: 'Credit Ratin g', href: '#' }
+            { name: 'Credit Rating', href: '#' }
           ]
         },
         {
           name: 'Corporate Governance',
           href: '#',
           subItems: [
-            { name: 'Policies', href: '#' },
+            { name: 'Policies', href: '/policies' },
             { name: 'Corporate Governance', href: '#' },
             { name: 'Familiarization Program for Independent Directors', href: '#' }
           ]
@@ -306,6 +309,7 @@ const Navbar = () => {
   const handleNavigation = (href) => {
     if (href && href !== '#') {
       window.location.href = href;
+      setMobileMenuOpen(false); // Close mobile menu on navigation
     }
   };
 
@@ -321,8 +325,18 @@ const Navbar = () => {
     }
   };
 
+  // Toggle mobile menu
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
     document.addEventListener('click', handleClickOutside);
+    window.addEventListener('scroll', handleScroll);
     
     // Fetch stock data on component mount
     fetchStockData();
@@ -332,22 +346,176 @@ const Navbar = () => {
     
     return () => {
       document.removeEventListener('click', handleClickOutside);
+      window.removeEventListener('scroll', handleScroll);
       clearAllTimeouts();
       clearInterval(stockInterval);
     };
   }, []);
 
+  // Render mobile menu
+  const renderMobileMenu = () => {
+    return (
+      <div className={`fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-300 ${mobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}>
+        <div 
+          className={`fixed top-0 left-0 h-full w-4/5 max-w-md bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          ref={dropdownRef}
+        >
+          <div className="flex justify-between items-center p-4 border-b">
+            <div onClick={handleLogoClick} className="cursor-pointer">
+              <img 
+                src={companylogo} 
+                className="h-[50px] w-[100px] hover:opacity-80 transition-opacity duration-200"
+                alt="Company Logo"
+              />
+            </div>
+            <button 
+              onClick={toggleMobileMenu}
+              className="text-gray-600 hover:text-gray-900 focus:outline-none"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          
+          <div className="overflow-y-auto h-[calc(100%-60px)] p-4">
+            {navItems.map((item, index) => (
+              <div key={index} className="mb-2">
+                <div 
+                  className="flex justify-between items-center p-3 text-gray-700 hover:bg-orange-50 rounded cursor-pointer"
+                  onClick={() => {
+                    if (!item.hasDropdown) {
+                      handleDirectNavClick(item);
+                    } else {
+                      setActiveDropdown(activeDropdown === index ? null : index);
+                    }
+                  }}
+                >
+                  <span className="font-medium">{item.title}</span>
+                  {item.hasDropdown && (
+                    <svg 
+                      className={`w-4 h-4 transform transition-transform ${activeDropdown === index ? 'rotate-180' : ''}`} 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  )}
+                </div>
+                
+                {item.hasDropdown && activeDropdown === index && (
+                  <div className="ml-4 mt-1 space-y-1">
+                    {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                      <div key={dropdownIndex} className="mb-2">
+                        <div 
+                          className="flex justify-between items-center p-2 pl-4 text-gray-600 hover:bg-orange-50 rounded cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (dropdownItem.href && (!dropdownItem.subItems || dropdownItem.subItems.length === 0)) {
+                              handleNavigation(dropdownItem.href);
+                            } else if (dropdownItem.subItems) {
+                              setActiveBusinessSub(activeBusinessSub === dropdownIndex ? null : dropdownIndex);
+                            }
+                          }}
+                        >
+                          <span>{dropdownItem.name}</span>
+                          {dropdownItem.subItems && dropdownItem.subItems.length > 0 && (
+                            <svg 
+                              className={`w-4 h-4 transform transition-transform ${activeBusinessSub === dropdownIndex ? 'rotate-90' : ''}`} 
+                              fill="none" 
+                              stroke="currentColor" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          )}
+                        </div>
+                        
+                        {dropdownItem.subItems && activeBusinessSub === dropdownIndex && (
+                          <div className="ml-4 mt-1 space-y-1">
+                            {dropdownItem.subItems.map((subItem, subIndex) => (
+                              <div key={subIndex} className="mb-1">
+                                <div 
+                                  className="flex justify-between items-center p-2 pl-4 text-gray-500 hover:bg-orange-50 rounded cursor-pointer"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    if (subItem.href && (!subItem.items || subItem.items.length === 0)) {
+                                      handleNavigation(subItem.href);
+                                    } else if (subItem.items) {
+                                      setActiveNestedSub(activeNestedSub === subIndex ? null : subIndex);
+                                    }
+                                  }}
+                                >
+                                  <span>{subItem.name}</span>
+                                  {subItem.items && subItem.items.length > 0 && (
+                                    <svg 
+                                      className={`w-4 h-4 transform transition-transform ${activeNestedSub === subIndex ? 'rotate-90' : ''}`} 
+                                      fill="none" 
+                                      stroke="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                    </svg>
+                                  )}
+                                </div>
+                                
+                                {subItem.items && activeNestedSub === subIndex && (
+                                  <div className="ml-4 mt-1 space-y-1">
+                                    {subItem.items.map((nestedItem, nestedIndex) => (
+                                      <div 
+                                        key={nestedIndex}
+                                        className="p-2 pl-6 text-gray-500 hover:bg-orange-50 rounded cursor-pointer"
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          handleNavigation(nestedItem.href);
+                                        }}
+                                      >
+                                        {nestedItem.name}
+                                      </div>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            
+            <div className="mt-4 p-3">
+              <div className="relative">
+                <input
+                  type="text"
+                  placeholder="Search here..."
+                  className="w-full bg-gray-100 border border-gray-300 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+                />
+                <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
-    <div className="w-full">
+    <div className="w-full fixed top-0 left-0 z-50">
       {/* Top Navbar */}
-      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-[#f3f3f3]">
+      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
         {/* Black semi-transparent overlay */}
-        <div className="absolute inset-0 bg-black opacity-70 z-0"></div>
+       
 
         {/* Content on top */}
-        <div className="relative z-10 w-full h-full flex items-center justify-between px-6">
+        <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
           {/* Stock Price Display */}
-          <div className="flex items-center ml-7">
+          <div className="flex items-center ml-2 sm:ml-7">
             {stockLoading ? (
               <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
                 Loading...
@@ -357,13 +525,8 @@ const Navbar = () => {
                 Error loading price
               </span>
             ) : (
-              <div className="flex items-center gap-2">
-                <span className="font-inter font-normal text-[12px] leading-[18px]">
-                  Current Price
-                </span>
-                <span className="font-inter font-semibold text-[12px] leading-[18px]">
-                  ₹{stockData.currentPrice.toFixed(2)}
-                </span>
+              <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                   Current Price ₹{stockData.currentPrice.toFixed(2)}
               </div>
             )}
           </div>
@@ -372,19 +535,10 @@ const Navbar = () => {
             <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
             </span>
           </div>
-          <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-              Employee Login 
-              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
-            <span className="flex items-center gap-1 font-sans font-medium text-[14px] leading-[19px] tracking-normal">
-              🌐 Global(English) 
-              <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </span>
+          <div className="flex items-center mr-2 sm:mr-7">
+            <button className=" text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
+              Empolyee Login
+            </button>
           </div>
         </div>
       </div>
@@ -394,41 +548,45 @@ const Navbar = () => {
         {/* Middle Navbar */}
         <div 
           ref={dropdownRef}
-          className="w-full h-[90px] flex items-center justify-between px-8 relative z-30"
+          className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-6 xl:px-8 relative z-30 transition-all duration-300 ${
+  isScrolled ? 'shadow-md' : ''
+}`}
           style={{
-            background: 'linear-gradient(to bottom, rgba(255,255,255,0.9), rgba(230,230,230,0.9))',
-            backdropFilter: 'blur(5px)',
-            borderBottom: '1px solid rgba(255,255,255,0.2)'
-          }}
+  background: isScrolled 
+    ? 'rgba(30, 30, 47, 0.7)' // dark silver with 70% opacity
+    : 'rgba(42, 42, 61, 0.1)', // slightly lighter when not scrolled
+  backdropFilter: 'blur(12px)',
+  WebkitBackdropFilter: 'blur(12px)',
+  borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+
+  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)'
+}}
+
         >
-          {/* Logo - Now clickable */}
-          <div className="flex items-center relative">
-            <div 
-              className="text-white px-3 py-2 rounded text-sm font-bold cursor-pointer"
-              onClick={handleLogoClick}
-            >
+                    <div className="flex items-center">
+            <div onClick={handleLogoClick} className="cursor-pointer">
               <img 
                 src={companylogo} 
-                className="h-[80px] w-[145px] hover:opacity-80 transition-opacity duration-200"
+                className="h-[60px] md:h-[80px] w-[110px] md:w-[145px] hover:opacity-80 transition-opacity duration-200"
                 alt="Company Logo"
               />
             </div>
-            {/* Logo Reflection */}
-            <div className="absolute bottom-[-20px] left-3 w-[145px] h-[20px] overflow-hidden">
-              <img 
-                src={companylogo} 
-                className="h-[20px] w-[145px] opacity-30"
-                alt="Company Logo Reflection"
-                style={{
-                  transform: 'scaleY(-1)',
-                  filter: 'blur(1px)'
-                }}
-              />
-            </div>
           </div>
+
+          {/* Mobile menu button */}
+          <button 
+            onClick={toggleMobileMenu}
+            className="md:hidden text-gray-700 focus:outline-none"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
           
-          {/* Navigation Menu */}
-          <div className="flex gap-8 text-black text-sm font-medium">
+         
+          {/* Navigation Menu - hidden on mobile */}
+          <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-gray-300 text-sm font-medium">
+
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -437,7 +595,7 @@ const Navbar = () => {
                 onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
                 onClick={() => !item.hasDropdown ? handleDirectNavClick(item) : null}
               >
-                <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-black ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
+                <span className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-gray-300 ${!item.hasDropdown ? 'hover:scale-105' : ''}`}>
                   {item.title}
                   {item.hasDropdown && (
                     <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
@@ -445,23 +603,12 @@ const Navbar = () => {
                     </svg>
                   )}
                 </span>
-                {/* Nav Item Reflection */}
-                <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden flex justify-center">
-                  <span 
-                    className={`font-inter font-semibold text-[13.19px] leading-[19.79px] tracking-normal uppercase text-black opacity-30`}
-                    style={{
-                      transform: 'scaleY(-0.5)',
-                      filter: 'blur(0.5px)'
-                    }}
-                  >
-                    {item.title}
-                  </span>
-                </div>
+                
 
                 {/* Dropdown Menu */}
                 {item.hasDropdown && activeDropdown === index && (
                   <div 
-                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[220px] lg:min-w-[250px] mt-1"
                     onMouseEnter={handleDropdownEnter}
                     onMouseLeave={handleDropdownLeave}
                   >
@@ -501,7 +648,7 @@ const Navbar = () => {
                             {/* Sub-menu for each business/investor */}
                             {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                               <div 
-                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-1"
                                 onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                                 onMouseLeave={handleBusinessSubLeave}
                               >
@@ -543,7 +690,7 @@ const Navbar = () => {
                                     {/* Nested sub-menu for items */}
                                     {activeNestedSub === subIndex && subItem.items && subItem.items.length > 0 && (
                                       <div 
-                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
                                         onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                         onMouseLeave={handleNestedSubLeave}
                                       >
@@ -595,23 +742,23 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Search Bar */}
-          <div className="flex items-center gap-6 relative">
+          {/* Search Bar - hidden on mobile */}
+         <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-6 relative">
             <div className="relative">
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="bg-white/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2 text-black placeholder-black text-sm w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-              />
-              <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+             <input
+  type="text"
+  placeholder="Search here..."
+  className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-3 lg:px-4 py-2 text-black placeholder-gray-500 text-sm w-28 lg:w-36 xl:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+/>
+              <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
-            {/* Search Bar Reflection */}
-            <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden">
-              <div className="relative h-full w-[160px] mx-auto">
+            {/* Search Bar Reflection - hidden on mobile */}
+            <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden hidden md:block">
+              <div className="relative h-full w-[130px] lg:w-[160px] mx-auto">
                 <div 
-                  className="bg-white/20 border border-white/30 rounded-full h-[6px] w-[160px] opacity-30"
+                  className="bg-white/20 border border-white/30 rounded-full h-[6px] w-[130px] lg:w-[160px] opacity-30"
                   style={{
                     transform: 'scaleY(-0.5)',
                     filter: 'blur(0.5px)'
@@ -622,6 +769,9 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      
+      {/* Mobile Menu */}
+      {renderMobileMenu()}
     </div>
   );
 };

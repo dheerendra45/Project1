@@ -153,127 +153,128 @@ const TestimonialHomePage = () => {
   };
 
   return (
-    <>
+    <div className="w-full">
       {/* Desktop Version */}
       <div
-        className="hidden lg:block bg-gray-50 py-5 overflow-hidden relative"
-        style={{ height: "735px", margin: "0 auto" }}
+        className="hidden lg:block bg-gray-50 py-5 overflow-hidden relative w-full"
+        style={{ height: "735px" }}
       >
-        <div
-          className="relative h-full"
-          style={{
-            top: "20px",
-            left: "20px",
-            width: "1400px",
-            height: "695px",
-          }}
-        >
-          {/* Left Side Images */}
-          {renderImageSection(
-            leftMembers,
-            [
-              { top: 58, left: 0 },
-              { top: 233, left: 0 },
-              { top: 0, left: 143 },
-              { top: 171, left: 143 },
-              { top: 73, left: 287 },
-            ],
-            {
-              width: "419px",
-              height: "395px",
-              top: "50px",
-              left: "40px",
-            },
-            0
-          )}
+        <div className="flex justify-center w-full">
+          <div
+            className="relative"
+            style={{
+              width: "1400px",
+              height: "695px",
+              maxWidth: "100%",
+            }}
+          >
+            {/* Left Side Images */}
+            {renderImageSection(
+              leftMembers,
+              [
+                { top: 58, left: 0 },
+                { top: 233, left: 0 },
+                { top: 0, left: 143 },
+                { top: 171, left: 143 },
+                { top: 73, left: 287 },
+              ],
+              {
+                width: "419px",
+                height: "395px",
+                top: "50px",
+                left: "40px",
+              },
+              0
+            )}
 
-          {/* Center Images */}
-          {renderImageSection(
-            topMembers,
-            [
-              { top: 5, left: 0 },
-              { top: 42, left: 142 },
-              { top: 0, left: 285 },
-            ],
-            {
-              width: "418px",
-              height: "204px",
-              top: "50px",
-              left: "480px",
-            },
-            5
-          )}
+            {/* Center Images */}
+            {renderImageSection(
+              topMembers,
+              [
+                { top: 5, left: 0 },
+                { top: 42, left: 142 },
+                { top: 0, left: 285 },
+              ],
+              {
+                width: "418px",
+                height: "204px",
+                top: "50px",
+                left: "480px",
+              },
+              5
+            )}
 
-          {/* Right Side Images */}
-          {renderImageSection(
-            rightMembers,
-            [
-              { top: 73, left: 0 },
-              { top: 0, left: 144 },
-              { top: 192, left: 144 },
-              { top: 59, left: 287 },
-              { top: 235, left: 287 },
-            ],
-            {
-              width: "419px",
-              height: "396px",
-              top: "50px",
-              left: "900px",
-            },
-            8
-          )}
+            {/* Right Side Images */}
+            {renderImageSection(
+              rightMembers,
+              [
+                { top: 73, left: 0 },
+                { top: 0, left: 144 },
+                { top: 192, left: 144 },
+                { top: 59, left: 287 },
+                { top: 235, left: 287 },
+              ],
+              {
+                width: "419px",
+                height: "396px",
+                top: "50px",
+                left: "900px",
+              },
+              8
+            )}
 
-          {/* Center Content */}
-          <div className="flex flex-col justify-center items-center h-[640px] pt-60">
-            <div className="text-center space-y-8 relative z-10 max-w-4xl lg:-ml-[40px]">
-              {/* Static Header */}
-              <div className="space-y-4">
-                <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
-                  TESTIMONIALS
-                </p>
-
-                <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900">
-                  Voices of Trust in Shyam Metalics
-                </h2>
-              </div>
-
-              {/* Dynamic Description with Animation */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentTestimonial.author}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-gray-600 text-lg max-w-2xl mx-auto"
-                >
-                  <p>
-                    "{currentTestimonial.text}"
-                    <br />
-                    <span className="mt-4 block font-semibold">
-                      {currentTestimonial.author}
-                    </span>
+            {/* Center Content */}
+            <div className="flex flex-col justify-center items-center h-[640px] pt-60 absolute inset-0">
+              <div className="text-center space-y-8 relative z-10 max-w-4xl">
+                {/* Static Header */}
+                <div className="space-y-4">
+                  <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
+                    TESTIMONIALS
                   </p>
-                </motion.div>
-              </AnimatePresence>
 
-              {/* Read All Button - Desktop */}
-              <motion.button
-                onClick={handleReadAll}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Read All
-              </motion.button>
+                  <h2 className="text-4xl lg:text-6xl xl:text-6xl font-bold text-gray-900">
+                    Voices of Trust in Shyam Metalics
+                  </h2>
+                </div>
+
+                {/* Dynamic Description with Animation */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentTestimonial.author}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="text-gray-600 text-lg max-w-2xl mx-auto"
+                  >
+                    <p>
+                      "{currentTestimonial.text}"
+                      <br />
+                      <span className="mt-4 block font-semibold">
+                        {currentTestimonial.author}
+                      </span>
+                    </p>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Read All Button - Desktop */}
+                <motion.button
+                  onClick={handleReadAll}
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Read All
+                </motion.button>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Mobile Version */}
-      <div className="lg:hidden bg-gray-50 py-8 px-4 min-h-screen">
-        <div className="max-w-md mx-auto">
+      <div className="lg:hidden bg-gray-50 py-8 min-h-screen">
+        <div className="w-full max-w-md mx-auto px-4">
           {/* Header */}
           <div className="text-center space-y-4 mb-8">
             <p className="text-orange-500 font-semibold tracking-wide text-sm">
@@ -285,7 +286,25 @@ const TestimonialHomePage = () => {
           </div>
 
           {/* Mobile Image Grid */}
-          {renderMobileImageGrid()}
+          <div className="grid grid-cols-4 gap-3 mb-8">
+            {allMembers.map((src, index) => (
+              <motion.div
+                key={index}
+                className="overflow-hidden shadow-lg cursor-pointer rounded-lg aspect-[4/5]"
+                onTouchStart={() => handleImageHover(index)}
+                onMouseEnter={() => handleImageHover(index)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 1.05 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <img
+                  src={src}
+                  alt={`Team member ${index + 1}`}
+                  className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out hover:brightness-110"
+                />
+              </motion.div>
+            ))}
+          </div>
 
           {/* Dynamic Testimonial */}
           <div className="text-center mb-6">
@@ -303,41 +322,24 @@ const TestimonialHomePage = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* Read All Button for Mobile */}
+            {/* Auto Play Toggle Button */}
             <button
-              onClick={handleReadAllToggle}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-5 rounded-lg transition-colors duration-300 ease-in-out shadow-lg hover:shadow-xl"
+              onClick={() => {
+                handleReadAllToggle();
+                if (!isAutoPlaying) {
+                  handleReadAll(); // Call this when starting auto-play
+                }
+              }}
+              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
             >
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>
           </div>
 
           {/* Read All Button - Mobile */}
-          <div className="text-center">
-            <motion.button
-              onClick={handleReadAll}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Read All
-            </motion.button>
-          </div>
-
-          {/* Read All Button - Mobile */}
-          <div className="text-center">
-            <motion.button
-              onClick={handleReadAll}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Read All
-            </motion.button>
-          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

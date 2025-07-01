@@ -19,50 +19,75 @@ export default function ClientServices() {
         transition={{ duration: 0.8 }}
         className="w-full md:w-1/2 space-y-6"
       >
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl leading-tight">
+        {/* <h1 className="text-3xl sm:text-4xl lg:text-5xl leading-tight">
           Green Makes Sense Beyond Conscience
-        </h1>
+        </h1> */}
         <p className="text-lg text-gray-800">
           Reflecting Our Social and Environmental Responsibility
         </p>
 
-        <h3 className="text-xl font-semibold mt-4">
+        <h3 className="text-xl  mt-4">
           Empowering Communities Through Sustainable Practices
         </h3>
-        <ul className="list-disc ml-5 space-y-2 text-base">
+        <ul className="list-disc ml-5 space-y-4 text-base">
           <li>
-            <strong>Nutrition Gardens</strong> – Combat malnutrition by
-            providing families with access to fresh, organic produce.
+            <h4 className="font-semibold text-lg">Nutrition Gardens</h4>
+            <p>
+              Combat malnutrition by providing families with access to fresh,
+              organic produce.
+            </p>
           </li>
           <li>
-            <strong>Mobile Health Vans & Safe Drinking Water</strong> – Delivering
-            healthcare services and clean drinking water to remote areas.
+            <h4 className="font-semibold text-lg">
+              Mobile Health Vans & Safe Drinking Water
+            </h4>
+            <p>
+              Delivering healthcare services and clean drinking water to remote
+              areas.
+            </p>
           </li>
           <li>
-            <strong>Skill Development & Eco-Awareness Programs</strong> – Educate
-            communities on sustainable living and green practices.
+            <h4 className="font-semibold text-lg">
+              Skill Development & Eco-Awareness Programs
+            </h4>
+            <p>
+              Educate communities on sustainable living and green practices.
+            </p>
           </li>
           <li>
-            <strong>Plantation Drives</strong> – Engage local villagers in
-            tree-planting initiatives to enhance green cover.
+            <h4 className="font-semibold text-lg">Plantation Drives</h4>
+            <p>
+              Engage local villagers in tree-planting initiatives to enhance
+              green cover.
+            </p>
           </li>
         </ul>
 
-        <h3 className="text-xl font-semibold mt-6">
-          Building Self-Sufficient Communities
-        </h3>
-        <ul className="list-disc ml-5 space-y-2 text-base">
+        <h3 className="text-xl  mt-6">Building Self-Sufficient Communities</h3>
+        <ul className="list-disc ml-5 space-y-4 text-base">
           <li>
-            <strong>Rainwater Harvesting Projects</strong> – Promote water
-            conservation in rural areas.
+            <h4 className="font-semibold text-lg">
+              Rainwater Harvesting Projects
+            </h4>
+            <p>Promote water conservation in rural areas.</p>
           </li>
           <li>
-            <strong>Sustainable Agriculture Training</strong> – Supporting
-            farmers with eco-friendly and climate-resilient farming techniques.
+            <h4 className="font-semibold text-lg">
+              Sustainable Agriculture Training
+            </h4>
+            <p>
+              Supporting farmers with eco-friendly and climate-resilient farming
+              techniques.
+            </p>
           </li>
           <li>
-            <strong>Infrastructure Development</strong> – Building long-term
-            community assets like roads, schools, and sanitation facilities.
+            <h4 className="font-semibold text-lg">
+              Infrastructure Development
+            </h4>
+            <p>
+              Building long-term community assets like roads, schools, and
+              sanitation facilities.
+            </p>
           </li>
         </ul>
 

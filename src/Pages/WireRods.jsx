@@ -1,8 +1,8 @@
-
+import RelatedProducts from "../components/pigiron/Related";
 import Certificates from "../components/WireRods/certificates";
 import Hero from "../components/WireRods/hero";
 import Specification from "../components/WireRods/specification";
-import WireRodsInfo from '../components/WireRods/WireRodsInfo'
+import WireRodsInfo from "../components/WireRods/WireRodsInfo";
 
 export default function SpongeIron() {
   return (
@@ -11,7 +11,7 @@ export default function SpongeIron() {
       <WireRodsInfo />
       <Specification />
       <Certificates />
-     
+      <RelatedProducts />
     </>
   );
 }

@@ -8,22 +8,33 @@ const WhyChooseUs = () => {
   const [ref, inView] = useInView({ triggerOnce: false, threshold: 0.2 });
 
   const reasons = [
-    {
-      title: "Strength",
-      tag: "Exceptional Quality & Consistency",
-      description: `High Iron Content (65-72%): Increases yield and minimizes slag in blast furnaces and DRI facilities. <br>Uniform Dimensions (8-16mm): Promotes smooth operation in furnaces with optimal gas flow. <br>Low Contaminants (&lt;2% Al₂O₃/SiO₂): Reduces energy consumption and enhances the purity of steel.`
-    },
-    {
-      title: "Technique",
-      tag: "Outstanding Strength & Durability",
-      description: `Cold Crushing Strength (250-350 kg/pellet): Can endure handling and charging without breaking. <br>Minimized Dust Production: Limits material loss and improves safety in the workplace.`
-    },
-    {
-      title: "Supply Chain",
-      tag: "Improved Metallurgical Efficiency",
-      description: `With manufacturing facilities strategically located near raw material sources, we ensure faster production and timely delivery.`
-    },
-  ];
+  {
+    title: "Strength",
+    tag: "Exceptional Quality & Consistency",
+    description: `
+      High Iron Content (65-72%): Increases yield and minimizes slag in blast furnaces and DRI facilities. <br>
+      Uniform Dimensions (8-16mm): Promotes smooth operation in furnaces with optimal gas flow. <br>
+      Low Contaminants (&lt;2% Al₂O₃/SiO₂): Reduces energy consumption and enhances the purity of steel.
+    `
+  },
+  {
+    title: "Durability",
+    tag: "Outstanding Strength & Durability",
+    description: `
+      Cold Crushing Strength (250-350 kg/pellet): Endures handling and charging without breaking. <br>
+      Minimized Dust Production: Limits material loss and improves safety in the workplace.
+    `
+  },
+  {
+    title: "Efficiency",
+    tag: "Improved Metallurgical Efficiency",
+    description: `
+      High Reducibility (Porosity &gt;25%): Accelerated reaction rates lower fuel expenses in steel production. <br>
+      Thermal Resilience: Maintains integrity under extreme temperatures in furnaces.
+    `
+  },
+];
+
 
   useEffect(() => {
     if (inView) {

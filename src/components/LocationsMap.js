@@ -21,7 +21,7 @@ function LocationsMap() {
   ];
 
   return (
-    <div className="py-6 md:py-12 bg-white">
+    <div className="py-16  px-4  bg-white font-inter">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title & Description with Button Row */}
         <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">

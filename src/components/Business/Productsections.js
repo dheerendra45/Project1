@@ -18,8 +18,6 @@ const ProductsSection = () => {
   const [activeTabSteel, setActiveTabSteel] = useState('Carbon Steel');
   const [activeTabAluminium, setActiveTabAluminium] = useState('Aluminium Sheets');
   const [activeTabEnergy, setActiveTabEnergy] = useState('Solar Panels');
-  const [steelSubTab, setSteelSubTab] = useState('Finished');
-  const [aluminiumSubTab, setAluminiumSubTab] = useState('Finished');
   const [isVisible, setIsVisible] = useState({
     hero: false,
     steels: false,
@@ -36,38 +34,36 @@ const ProductsSection = () => {
   const aluminiumTabs = ['Aluminium Sheets', 'Aluminium Pipes', 'Aluminium Bars'];
   const energyTabs = ['Solar Panels', 'Wind Turbines', 'Energy Storage'];
 
-  const carbonsteelFinishedProducts = [
+  const carbonsteelProducts = [
     { title: 'Structural Steel', subtitle: 'VIEW PRODUCT', image: s1 },
     { title: 'TMT Bar', subtitle: 'VIEW PRODUCT', image: s2 },
     { title: 'Wire Rod', subtitle: 'VIEW PRODUCT', image: s3 },
-    { title: 'Pipes And Hollow Section', subtitle: 'VIEW PRODUCT', image: s4 }
-  ];
-  const carbonsteelIntermediateProducts = [
+    { title: 'Pipes And Hollow Section', subtitle: 'VIEW PRODUCT', image: s4 },
     { title: 'Pellet', subtitle: 'VIEW PRODUCT', image: s1 },
     { title: 'Sponge Iron', subtitle: 'VIEW PRODUCT', image: s2 },
     { title: 'Pig Iron', subtitle: 'VIEW PRODUCT', image: s3 },
     { title: 'Billet', subtitle: 'VIEW PRODUCT', image: s4 }
   ];
-  const stainlessSteelFinishedProducts = [
+
+  const stainlessSteelProducts = [
     { title: 'SS Wire Rod', subtitle: 'VIEW PRODUCT', image: s1 },
     { title: 'SS Wire', subtitle: 'VIEW PRODUCT', image: s2 },
     { title: 'Black Round Bar', subtitle: 'VIEW PRODUCT', image: s3 },
     { title: 'Bright Bar', subtitle: 'VIEW PRODUCT', image: s4 },
-    { title: 'Flats/Patta', subtitle: 'VIEW PRODUCT', image: s4 }
+    { title: 'Flats/Patta', subtitle: 'VIEW PRODUCT', image: s4 },
+    { title: 'Stainless Steel Billets', subtitle: 'VIEW PRODUCT', image: s1 }
   ];
-  const stainlessSteelIntermediateProducts = [
-    { title: 'Stainless Steel Billets', subtitle: 'VIEW PRODUCT', image: s1 },
-  ];
+
   const ColdRolledProducts = [
     { title: 'Color Coated Sheets', subtitle: 'VIEW PRODUCT', image: s1 }
   ];
-  const aluminiumFinishedProducts = [
+
+  const aluminiumProducts = [
     { title: 'Aluminium Foil', subtitle: 'VIEW PRODUCT', image: a1 },
     { title: 'Battery Foil', subtitle: 'VIEW PRODUCT', image: a2 },
+    { title: 'Flat Rolled Products', subtitle: 'VIEW PRODUCT', image: a3 }
   ];
-  const aluminiumIntermediateProducts = [
-    { title: 'Flat Rolled Products', subtitle: 'VIEW PRODUCT', image: a3 },
-  ];
+
   const energyProducts = [
     { title: 'Captive Power', subtitle: 'VIEW PRODUCT', image: e1 },
     { title: 'Renewable Power', subtitle: 'VIEW PRODUCT', image: e2 },
@@ -97,21 +93,17 @@ const ProductsSection = () => {
   }, []);
 
   const getSteelProducts = () => {
-    if (activeTabSteel === 'Carbon Steel') {
-      return steelSubTab === 'Finished' ? carbonsteelFinishedProducts : carbonsteelIntermediateProducts;
-    }
-    if (activeTabSteel === 'Stainless Steel') {
-      return steelSubTab === 'Finished' ? stainlessSteelFinishedProducts : stainlessSteelIntermediateProducts;
-    }
+    if (activeTabSteel === 'Carbon Steel') return carbonsteelProducts;
+    if (activeTabSteel === 'Stainless Steel') return stainlessSteelProducts;
     if (activeTabSteel === 'Cold Rolled') return ColdRolledProducts;
     return []; // default empty
   };
 
   const getAluminiumProducts = () => {
-    return aluminiumSubTab === 'Finished' ? aluminiumFinishedProducts : aluminiumIntermediateProducts;
+    return aluminiumProducts;
   };
 
-  const renderProductSection = (title, activeTab, setActiveTab, tabs, getProducts, icon, sectionRef, sectionKey, showSubmenu = false, subTab = '', setSubTab = () => {}) => {
+  const renderProductSection = (title, activeTab, setActiveTab, tabs, getProducts, icon, sectionRef, sectionKey) => {
     const products = getProducts();
 
     return (
@@ -146,11 +138,7 @@ const ProductsSection = () => {
               {tabs.map((tab) => (
                 <button
                   key={tab}
-                  onClick={() => {
-                    setActiveTab(tab);
-                    if (tab === 'Carbon Steel' || tab === 'Stainless Steel') setSteelSubTab('Finished');
-                    if (title === 'ALUMINIUM') setAluminiumSubTab('Finished');
-                  }}
+                  onClick={() => setActiveTab(tab)}
                   className={`pb-2 text-sm font-medium ${
                     activeTab === tab ? 'text-orange-500 border-b-2 border-orange-500' : 'text-gray-500'
                   }`}
@@ -160,25 +148,6 @@ const ProductsSection = () => {
               ))}
             </div>
           </div>
-
-          {/* Submenu if applicable */}
-          {showSubmenu && (
-            <div className="flex space-x-4 mb-4">
-              {['Finished', 'Intermediate'].map((option) => (
-                <button
-                  key={option}
-                  onClick={() => setSubTab(option)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium border ${
-                    subTab === option
-                      ? 'bg-orange-500 text-white border-orange-500'
-                      : 'bg-white text-gray-600 border-gray-300 hover:border-gray-400'
-                  }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          )}
 
           {/* Product Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -219,10 +188,7 @@ const ProductsSection = () => {
           getSteelProducts,
           steel,
           steelsRef,
-          'steels',
-          activeTabSteel === 'Carbon Steel' || activeTabSteel === 'Stainless Steel',
-          steelSubTab,
-          setSteelSubTab
+          'steels'
         )}
 
         {/* Aluminium */}
@@ -234,10 +200,7 @@ const ProductsSection = () => {
           getAluminiumProducts,
           aluminium,
           aluminiumRef,
-          'aluminium',
-          true,
-          aluminiumSubTab,
-          setAluminiumSubTab
+          'aluminium'
         )}
 
         {/* Energy */}
