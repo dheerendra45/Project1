@@ -28,14 +28,14 @@ const AnimatedSection = ({ children, delay = 0 }) => {
           transition: {
             duration: 0.8,
             delay: delay * 0.2,
-            ease: "easeOut"
-          }
+            ease: "easeOut",
+          },
         },
         hidden: {
           opacity: 0,
           y: 50,
-          transition: { duration: 0.5 }
-        }
+          transition: { duration: 0.5 },
+        },
       }}
     >
       {children}
@@ -65,18 +65,18 @@ const AnimatedCard = ({ children, delay = 0 }) => {
           transition: {
             duration: 0.8,
             delay: delay * 0.2,
-            ease: [0.17, 0.67, 0.83, 0.67]
-          }
+            ease: [0.17, 0.67, 0.83, 0.67],
+          },
         },
         hidden: {
           opacity: 0,
           scale: 0.9,
-          transition: { duration: 0.5 }
-        }
+          transition: { duration: 0.5 },
+        },
       }}
       whileHover={{
         y: -10,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.3 },
       }}
     >
       {children}
@@ -106,14 +106,14 @@ const AnimatedListItem = ({ children, index }) => {
           transition: {
             duration: 0.6,
             delay: index * 0.1,
-            ease: "easeOut"
-          }
+            ease: "easeOut",
+          },
         },
         hidden: {
           opacity: 0,
           x: -20,
-          transition: { duration: 0.3 }
-        }
+          transition: { duration: 0.3 },
+        },
       }}
     >
       {children}
@@ -124,7 +124,6 @@ const AnimatedListItem = ({ children, index }) => {
 export default function Projects() {
   return (
     <div className="font-inter px-4 sm:px-6 md:px-10 lg:px-20 xl:px-40 py-12 space-y-20 text-black">
-      
       {/* Featured Projects */}
       <AnimatedSection>
         <div>
@@ -142,31 +141,49 @@ export default function Projects() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            We help our clients make a difference in our communities by providing
-            strategic advice, technical expertise, and a passion for impactful
-            results, in line with the SDGs.
+            We help our clients make a difference in our communities by
+            providing strategic advice, technical expertise, and a passion for
+            impactful results, in line with the SDGs.
           </motion.p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[{ img: a1, label: "Rainwater Harvesting", title: "Recharge groundwater through rain capture.", desc: "Rainwater collected from rooftops and catchments is channeled into recharge pits and storage tanks at our plants and nearby communities to conserve groundwater." },
-              { img: a2, label: "Waste Reuse", title: "Transforming byproducts into building material", desc: "We reuse slag and fly ash to manufacture eco-friendly bricks and supply them to nearby construction projects, reducing landfill and raw material consumption." },
-              { img: a3, label: "Energy Efficiency", title: "Cutting energy use via Waste Heat Recovery.", desc: "Heat from industrial processes is captured and reused through Waste Heat Recovery (WHR) systems to generate power internally, reducing energy costs and emissions." }]
-              .map((card, i) => (
-                <AnimatedCard key={i} delay={i}>
-                  <div className="bg-gray-100 p-6 rounded shadow h-full flex flex-col">
-                    <motion.img
-                      src={card.img}
-                      alt={`Project ${i + 1}`}
-                      className="w-full h-auto mb-4 rounded"
-                      whileHover={{ scale: 1.03 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                    <p className="text-sm font-semibold text-gray-600">{card.label}</p>
-                    <h2 className="text-lg font-bold mt-2 mb-3">{card.title}</h2>
-                    <p className="text-gray-700 text-base">{card.desc}</p>
-                  </div>
-                </AnimatedCard>
-              ))}
+            {[
+              {
+                img: a1,
+                label: "Rainwater Harvesting",
+                title: "Recharge groundwater through rain capture.",
+                desc: "Rainwater collected from rooftops and catchments is channeled into recharge pits and storage tanks at our plants and nearby communities to conserve groundwater.",
+              },
+              {
+                img: a2,
+                label: "Waste Reuse",
+                title: "Transforming byproducts into building material.",
+                desc: "We reuse slag and fly ash to manufacture eco-friendly bricks and supply them to nearby construction projects, reducing landfill and raw material consumption.",
+              },
+              {
+                img: a3,
+                label: "Energy Efficiency",
+                title: "Cutting energy use via Waste Heat Recovery.",
+                desc: "Heat from industrial processes is captured and reused through Waste Heat Recovery (WHR) systems to generate power internally, reducing energy costs and emissions.",
+              },
+            ].map((card, i) => (
+              <AnimatedCard key={i} delay={i}>
+                <div className="bg-gray-100 p-6 rounded shadow h-full flex flex-col">
+                  <motion.img
+                    src={card.img}
+                    alt={`Project ${i + 1}`}
+                    className="w-full h-auto mb-4 rounded"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                  <p className="text-sm font-semibold text-gray-600">
+                    {card.label}
+                  </p>
+                  <h2 className="text-lg font-bold mt-2 mb-3">{card.title}</h2>
+                  <p className="text-gray-700 text-base">{card.desc}</p>
+                </div>
+              </AnimatedCard>
+            ))}
           </div>
         </div>
       </AnimatedSection>
@@ -185,11 +202,28 @@ export default function Projects() {
             </motion.h1>
             <ul className="space-y-6">
               {[
-                <><strong>Green Manufacturing</strong> – We prioritize clean and efficient production across our integrated steel plants and ferro alloy units. Our facilities are designed with advanced pollution control systems, energy recovery technologies, and waste recycling units.</>,
-                <><strong>Carbon Reduction</strong> – We're building a net-zero roadmap by increasing renewable energy through solar and WHR systems to cut carbon emissions.</>,
-                <><strong>Resource Efficiency</strong> – Closed-loop water systems, solid waste repurposing like slag for cement, and minimal freshwater withdrawal are part of our circular practices.</>
+                <>
+                  <strong>Green Manufacturing</strong> – We prioritize clean and
+                  efficient production across our integrated steel plants and
+                  ferro alloy units. Our facilities are designed with advanced
+                  pollution control systems, energy recovery technologies, and
+                  waste recycling units.
+                </>,
+                <>
+                  <strong>Carbon Reduction</strong> – We're building a net-zero
+                  roadmap by increasing renewable energy through solar and WHR
+                  systems to cut carbon emissions.
+                </>,
+                <>
+                  <strong>Resource Efficiency</strong> – Closed-loop water
+                  systems, solid waste repurposing like slag for cement, and
+                  minimal freshwater withdrawal are part of our circular
+                  practices.
+                </>,
               ].map((item, i) => (
-                <AnimatedListItem key={i} index={i}>{item}</AnimatedListItem>
+                <AnimatedListItem key={i} index={i}>
+                  {item}
+                </AnimatedListItem>
               ))}
             </ul>
           </div>
@@ -205,11 +239,11 @@ export default function Projects() {
                 duration: 0.8,
                 delay: 0.4,
                 type: "spring",
-                stiffness: 100
+                stiffness: 100,
               }}
               whileHover={{
                 scale: 1.03,
-                transition: { duration: 0.3 }
+                transition: { duration: 0.3 },
               }}
             />
           </div>
@@ -240,7 +274,7 @@ export default function Projects() {
               "Global ESG Statement",
               "Biodiversity Statement",
               "Health, Safety, Environmental and Quality Policy Statement",
-              "CDP 2023 Climate Change Questionaire Response"
+              "CDP 2023 Climate Change Questionaire Response",
             ].map((text, i) => (
               <motion.a
                 key={i}
@@ -250,11 +284,11 @@ export default function Projects() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{
                   duration: 0.5,
-                  delay: i * 0.1
+                  delay: i * 0.1,
                 }}
                 whileHover={{
                   x: 5,
-                  transition: { duration: 0.2 }
+                  transition: { duration: 0.2 },
                 }}
               >
                 <motion.svg
