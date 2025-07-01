@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useRef, useState } from "react";
-import a1 from "../../assets/leadership/a.png"; // replace with Mahabir's updated image if needed
+import a1 from "../../assets/leadership/l1.jpg"; // replace with Mahabir's updated image if needed
 
 export default function BoardOfDirectors() {
   const ref = useRef(null);

@@ -1,6 +1,17 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import a1 from "../../assets/leadership/a.png";
+import l1 from "../../assets/leadership/l1.jpg";
+import l2 from "../../assets/leadership/l2.jpg";
+import l3 from "../../assets/leadership/l3.jpg";
+import l4 from "../../assets/leadership/l4.jpg";
+import l5 from "../../assets/leadership/l5.jpg";
+import l6 from "../../assets/leadership/l6.jpg";
+import l7 from "../../assets/leadership/l7.png";
+import l8 from "../../assets/leadership/l8.jpg";
+import l9 from "../../assets/leadership/l9.png";
+import l10 from "../../assets/leadership/l10.jpg";
+import l11 from "../../assets/leadership/l11.png";
+import l12 from "../../assets/leadership/l12.png";
 
 const sidebarOptions = [
   "BOARD OF DIRECTORS",
@@ -9,6 +20,7 @@ const sidebarOptions = [
 
 const directors = [
   {
+    img:l1,
     name: "Mahabir Prasad Agarwal",
     role: "Chairman Emeritus",
     description: `Mahabir Prasad Agarwal is an accomplished business leader and a first generation entrepreneur having more than 50 Years of experience in steel & ferro alloys industries. He has the foresight to lead the company on a transformational journey and contributing significantly in growth path of the company. Mahabir Prasad Agarwal  stepped down from the position of Chairman during Board Meeting held on 9th May 2025 and was simultaneously conferred the title of Chairman Emeritus.\n
@@ -24,6 +36,7 @@ List of Directorship:\n
 7. Whispering Developers Pvt. Ltd. – Director`,
   },
   {
+    img:l2 ,
     name: "Brij Bhushan Agarwal",
     role: "Chairman & Managing Director",
     description: `Mr. Brij Bhushan Agarwal is a visionary leader and an industry stalwart in the metal and mining sector. As the Chairman & Managing Director of Shyam Metalics and Energy Ltd., he has been instrumental in driving the company’s strategic growth and establishing it as one of India’s foremost integrated metal producers.\n
@@ -56,6 +69,7 @@ List of Directorship:\n
 5. Indian Chamber of Commerce Calcutta – Director`,
   },
   {
+    img:l3 ,
     name: "Sanjay Kumar Agarwal",
     role: "Joint Managing Director",
     description: `Sanjay Kumar Agarwal is the Joint Managing Director of our Company. He has been a Director of our Company since its inception in December 2002. He holds a bachelor’s degree in commerce with honours from the University of Calcutta and brings over 25 years of experience in the steel and ferro alloys industry. He is primarily responsible for the operations at our manufacturing plants in Sambalpur, Jamuria and Mangalpur, with focus on cost control, production efficiency and the competitive procurement of raw materials.\n
@@ -71,6 +85,7 @@ List of Directorship:\n
 7. Kalpataru Housefin & Trading Private Limited – Director`,
   },
   {
+    img: l4 ,
     name: "Deepak Agarwal",
     role: "Whole-time Director",
     description: `Deepak Agarwal is a Whole-Time Director and the Chief Financial Officer of our company. He has a Director  since July 14, 2014. He holds a bachelor’s degree in commerce with honours from the University of Calcutta and is an associate member of the Institute of Company Secretaries of India. He has previously been associated with Shyam SEL and Power Limited since 2000 and has two decades of experience in the steel and ferro alloys industry. He is responsible for overseeing finance, risk management, and corporate affairs for our company and its subsidiaries.\n
@@ -82,6 +97,7 @@ List of Directorship:\n
 3. Shyam Energy Ltd. – Director`,
   },
   {
+    img: l5 ,
     name: "Sheetij Agarwal",
     role: "Whole-time Director",
     description: `Mr. Sheetij Agarwal is a  Director of our company. He has pursued a Bachelor of Science in Business Administration from the D'Amore Mckim School of Business at  Northeastern University. He is also a key person in developing a strategic roadmap to strengthen Shyam Metalics's position as a global trailblazer in the steel industry. He also offers his expertise on market intelligence, evaluative growth opportunities, capital investments, and brand alliances for Shyam Metalics. He is primarily responsible for the establishment of the company's footprint in the domestic market and over 40 international markets.\n
@@ -100,7 +116,8 @@ List of Directorship:\n
 10. Damodar Aluminium Pvt. Ltd. – Director\n
 11. SMEL Steel Structural Private Ltd. – Director`,
   },
-  {
+  { 
+    img : l6 ,
     name: "Dev Kumar Tiwari",
     role: "Whole-time Director",
     description: `Dev Kumar Tiwari is a Whole-Time Director of our Company. He has been a Director of our Company since April 10, 2009. He holds a bachelor’s degree in arts (honours) from Bihar University, Muzaffarpur. Prior to his appointment as Director, he was a mechanical engineer in our Subsidiary, SSPL for 7 years. He has over 23 years of experience in the steel and ferro alloys industry. He is responsible for project implementation and operations of our Sambalpur manufacturing plant.\n
@@ -115,6 +132,7 @@ List of Directorship:\n
 7. Natural Resources Energy Private Limited – Additional Director`,
   },
   {
+    img : l7 ,
     name: "Kishan Gopal Baldwa",
     role: "Independent Director",
     description: `Kishan Gopal Baldwa is an Independent Director of our company  and has served in this role since May 15, 2018.. He holds a bachelor’s degree in commerce from the University of Rajasthan. He has been a fellow member of the Institute of Chartered Accountants of India for 38 years. and has obtained a certificate of practice from the Institute of Chartered Accountants of India.\n
@@ -131,6 +149,7 @@ List of Directorship:\n
 9. Subham Capital Private Limited – Independent Director`,
   },
   {
+    img:l8 ,
     name: "Rajni Mishra",
     role: "Independent Woman Director",
     description: `Rajni Mishra is an Independent Director of our company. and has served in this role since February 12, 2021.She holds a bachelor's degree in Botany from Calcutta University and a master's degree in Business Administration from the West Bengal University of Technology.University of Technology. She is also an associate member of the Institute of Company Secretaries of India.\n
@@ -141,6 +160,7 @@ List of Directorship:\n
 3. Western Carriers (India) Ltd. – Independent Director`,
   },
   {
+    img: l9 ,
     name: "Nand Gopal Khaitan",
     role: "Independent Director",
     description: `Nand Gopal Khaitan is an Independent Director of our Company. He has been a Director of our Company since February 14, 2023. He has been registered as an advocate with the bar council of West Bengal since June 20 1974. He is currently a partner at Khaitan & Co.\n
@@ -159,6 +179,7 @@ List of Directorship:\n
 11. Bharat Chamber of Commerce – Director`,
   },
   {
+    img: l12 ,
     name: "Malay Kumar De",
     role: "Independent Director",
     description: `Malay Kumar De is an Independent Director of our company. He has been a Director of our Company since July 27, 2023. He holds a masters’ in science degree in organic chemistry from the University of North Bengal, Siliguri. A retired IAS officer, he served as Chief Secretary of West Bengal until his retirement on September 30, 2019.\n
@@ -169,6 +190,7 @@ List of Directorship:\n
 3. Ramsarup Industries Limited – Independent Director`,
   },
   {
+    img: l10 ,
     name: "Shashi Kumar",
     role: "Independent Director",
     description: `Shashi Kumar is an Independent Director of our company. He has been a Director of our Company since September 21, 2023. He holds a bachelor’s degree in Science from Patna University and also holds a bachelor’s degree in science (Honours) in Mining Engineering from the Indian School of Mines, Dhanbad, Ranchi University. Prior to joining our company, he was associated with Coal India Limited as chairman.\n
@@ -180,6 +202,7 @@ List of Directorship:\n
 4. Shyam SEL and Power Limited – Additional Director`,
   },
   {
+    img: l11 ,
     name: "Chandra Shekhar Verma",
     role: "Independent Director",
     description: `Mr. Chandra Shekhar Verma was appointed as an Independent Director of our company on July 4, 2024. He is a Fellow Member of the Institute of Company Secretaries of India, a of the Institute of Cost & Works Accountants of India. Additionally, he holds a Bachelor's degree in Law and Legislature as well as a master's degree in Commerce and Business Administration.\n
@@ -194,6 +217,7 @@ List of Directorship:\n
 7. Firstadvantage Consulting Group Limited – Director`,
   },
   {
+    img: l12 ,
     name: "Birendra Kumar Jain",
     role: "Company Secretary",
     description: "Birendra Kumar Jain is the Company Secretary and Compliance Officer of our Company and has been associated with  since April 6, 2018. He holds a bachelor’s degree in commerce from the University of Calcutta. He is also a member of the Institute of Company Secretaries of India. With over two decades of experience as a company secretary, he brings extensive expertise to the role.",
@@ -268,9 +292,9 @@ export default function LeadershipTeam() {
     >
       <div className="flex items-center gap-4">
         <img
-          src={a1}
+          src={person.img}
           alt={person.name}
-          className="w-16 h-16 md:w-20 md:h-20 object-cover flex-shrink-0"
+          className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full flex-shrink-0"
         />
         <div className="flex-1 min-w-0">
           <h2 className="text-base md:text-lg font-semibold text-gray-800 truncate">{person.name}</h2>
@@ -300,10 +324,11 @@ export default function LeadershipTeam() {
             <button
               key={item}
               onClick={() => setSelected(item)}
-              className={`px-4 py-2 md:px-0.5 md:py-3 rounded-full border transition-all font-medium text-xs md:text-sm whitespace-nowrap ${selected === item
+              className={`px-4 py-2 md:px-0.5 md:py-3 rounded-full border transition-all font-medium text-xs md:text-sm whitespace-nowrap ${
+                selected === item
                   ? "bg-orange-500 text-white border-orange-500"
                   : "bg-white text-black border-gray-300 hover:bg-gray-50"
-                }`}
+              }`}
             >
               {item}
             </button>
