@@ -17,6 +17,7 @@ export default function AboutUs() {
   const progressIntervalRef = useRef(null);
 
   const messages = [
+    "",
     "Lighting the Spark",
     "Doubling Down",
     "Powering Progress",
@@ -27,15 +28,21 @@ export default function AboutUs() {
     "IPO Milestone",
     "Product Innovation",
     "13 MTPA Benchmark",
-    "Multi-Metal Expansion"
+    "Multi-Metal Expansion",
+    "",
   ];
 
-  const years = ["2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024"];
-  const galleryImages = [a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5];
-  const aboutImages = [abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
+  const years = ["2005","2013", "2014", "2015", "2016", "2017","2019","2020","2021","2022","2023","2024","2025"];
+  const galleryImages = [a2,a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5,a2];
+  const aboutImages = [abt1img,abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
 
   // Year-wise content data (keeping your existing data)
   const yearContent = [
+    {
+    year: "2005",
+    title: "",
+    content: []
+  },
     {
       year: "2013",
       title: "Igniting India's Steel Revolution",
@@ -69,13 +76,13 @@ export default function AboutUs() {
       title: "Powering Progress Through Innovation",
       content: [
   "• Sambalpur Plant Breakthroughs:",
-  "  • Commissioned a captive railway siding – boosting logistics efficiency by 40%",
-  "  • Enhanced power reliability across our Integrated Steel Plant operations",
-  "  • Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
-  "• Jamuria Plant Advancements:",
-  "  • Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
-  "  • Expanded Ferro Alloys production by 9 MTPA – diversifying our product portfolio",
-  "  • Implemented waste-heat recovery systems – cutting carbon emissions"
+    "• Commissioned a captive railway siding – boosting logistics efficiency by 40%",
+    "• Enhanced power reliability across our Integrated Steel Plant operations",
+    "• Scaled sponge iron/billets capacity by 0.38 MTPA to meet growing demand",
+    "• Jamuria Plant Advancements:",
+    "• Added a new 25MW Captive Power Plant – reducing energy costs by 30%",
+    "• Expanded Ferro Alloys production by 9 MTPA – diversifying our product portfolio",
+    "• Implemented waste-heat recovery systems – cutting carbon emissions"
 ]
 
     },
@@ -218,7 +225,12 @@ export default function AboutUs() {
   "    • Powers 8,000+ homes equivalent"
 ]
 
-    }
+    },
+    {
+    year: "2025",
+    title: "",
+    content: []
+  }
   ];
 
   // Handle timeline item click
