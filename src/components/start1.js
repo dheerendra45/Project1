@@ -548,9 +548,9 @@ const Navbar = () => {
         {/* Middle Navbar */}
         <div 
           ref={dropdownRef}
-          className={`w-full h-[70px] flex items-center justify-between px-4 md:px-8 relative z-30 transition-all duration-300 ${
-            isScrolled ? 'shadow-md' : ''
-          }`}
+          className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-6 xl:px-8 relative z-30 transition-all duration-300 ${
+  isScrolled ? 'shadow-md' : ''
+}`}
           style={{
   background: isScrolled 
     ? 'rgba(30, 30, 47, 0.7)' // dark silver with 70% opacity
@@ -585,7 +585,8 @@ const Navbar = () => {
           
          
           {/* Navigation Menu - hidden on mobile */}
-          <div className="hidden md:flex gap-4 lg:gap-8 text-gray-300 text-sm font-medium">
+          <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-gray-300 text-sm font-medium">
+
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -607,7 +608,7 @@ const Navbar = () => {
                 {/* Dropdown Menu */}
                 {item.hasDropdown && activeDropdown === index && (
                   <div 
-                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[250px] mt-1"
+                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[220px] lg:min-w-[250px] mt-1"
                     onMouseEnter={handleDropdownEnter}
                     onMouseLeave={handleDropdownLeave}
                   >
@@ -647,7 +648,7 @@ const Navbar = () => {
                             {/* Sub-menu for each business/investor */}
                             {activeBusinessSub === businessIndex && business.subItems && business.subItems.length > 0 && (
                               <div 
-                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[300px] max-w-[500px] ml-1"
+                                className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-1"
                                 onMouseEnter={() => clearTimeout(businessSubTimeoutRef.current)}
                                 onMouseLeave={handleBusinessSubLeave}
                               >
@@ -689,7 +690,7 @@ const Navbar = () => {
                                     {/* Nested sub-menu for items */}
                                     {activeNestedSub === subIndex && subItem.items && subItem.items.length > 0 && (
                                       <div 
-                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[250px] ml-1"
+                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
                                         onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                         onMouseLeave={handleNestedSubLeave}
                                       >
@@ -742,13 +743,13 @@ const Navbar = () => {
           </div>
 
           {/* Search Bar - hidden on mobile */}
-          <div className="hidden md:flex items-center gap-6 relative">
+         <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-6 relative">
             <div className="relative">
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-              />
+             <input
+  type="text"
+  placeholder="Search here..."
+  className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-3 lg:px-4 py-2 text-black placeholder-gray-500 text-sm w-28 lg:w-36 xl:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+/>
               <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
