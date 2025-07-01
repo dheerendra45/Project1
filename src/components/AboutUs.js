@@ -8,12 +8,13 @@ import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
 
-
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [progress, setProgress] = useState(0); // New state for continuous progress
   const pauseTimeoutRef = useRef(null);
+  const progressIntervalRef = useRef(null);
 
   const messages = [
     "Lighting the Spark",
@@ -33,7 +34,7 @@ export default function AboutUs() {
   const galleryImages = [a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5];
   const aboutImages = [abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
 
-  // Year-wise content data
+  // Year-wise content data (keeping your existing data)
   const yearContent = [
     {
       year: "2013",
@@ -103,7 +104,7 @@ export default function AboutUs() {
     },
     {
       year: "2019",
-      title: "Engineering India's Steel Future",
+      title: "Engineering India's Steel Future",  
       content: [
         "Sambalpur Plant Transformation:",
         "• Increased capacity by 1.81 MTPA across critical products",
@@ -220,6 +221,7 @@ export default function AboutUs() {
   // Handle timeline item click
   const handleTimelineClick = (index) => {
     setActiveIndex(index);
+    setProgress(index); // Set progress to match the clicked item
     setIsPaused(true);
     
     // Clear any existing timeout
@@ -233,21 +235,48 @@ export default function AboutUs() {
     }, 10000);
   };
 
-  // Auto-cycle through timeline items every 3 seconds when not hovering or paused
+  // Continuous progress animation effect
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isHovering && !isPaused) {
-        setActiveIndex((prev) => (prev + 1) % galleryImages.length);
+    if (!isHovering && !isPaused) {
+      progressIntervalRef.current = setInterval(() => {
+        setProgress((prevProgress) => {
+          const newProgress = prevProgress + (1 / 30); // Progress increment (10 seconds / 300 frames)
+          
+          // Check if we need to move to next item
+          if (newProgress >= galleryImages.length) {
+            setActiveIndex(0);
+            return 0;
+          } else if (Math.floor(newProgress) > Math.floor(prevProgress)) {
+            setActiveIndex(Math.floor(newProgress));
+          }
+          
+          return newProgress;
+        });
+      }, 100); // Update every 100ms for smooth animation
+    } else {
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
       }
-    }, 3000);
-    
+    }
+
     return () => {
-      clearInterval(interval);
-      if (pauseTimeoutRef.current) {
-        clearTimeout(pauseTimeoutRef.current);
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
       }
     };
   }, [galleryImages.length, isHovering, isPaused]);
+
+  // Cleanup effect
+  useEffect(() => {
+    return () => {
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current);
+      }
+      if (progressIntervalRef.current) {
+        clearInterval(progressIntervalRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-16 lg:py-8 font-['Inter',sans-serif]">
@@ -335,17 +364,16 @@ export default function AboutUs() {
              style={{ 
                top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
              }}>
-          {/* Progressive line animation */}
+          {/* Progressive line animation - FIXED */}
           <div className="h-full bg-gray-300 w-full relative z-0">
             <motion.div
               className="h-full bg-orange-500 absolute left-0 top-0"
-              initial={{ width: '0%' }}
               animate={{ 
-                width: `${((activeIndex + 1) / galleryImages.length) * 100}%` 
+                width: `${(progress / galleryImages.length) * 100}%` 
               }}
               transition={{ 
-                duration: 0.8, 
-                ease: "easeInOut" 
+                duration: 0.1, 
+                ease: "linear" 
               }}
             />
           </div>
@@ -357,7 +385,7 @@ export default function AboutUs() {
           <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pt-[-10px] pb-4">
             {galleryImages.map((img, index) => {
               const isActive = index === activeIndex;
-              const isPassed = index <= activeIndex;
+              const isPassed = index < progress;
 
               return (
                 <motion.div
@@ -370,7 +398,7 @@ export default function AboutUs() {
                   transition={{ type: 'spring', stiffness: 300 }}
                 >
                   {/* Fixed height container for message/year */}
-                  <div className="h-[40 px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
+                  <div className="h-[40px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
                     <AnimatePresence mode="wait">
                       {isActive ? (
                         <motion.div
@@ -445,7 +473,7 @@ export default function AboutUs() {
             <div className="flex justify-center items-center gap-3 overflow-x-auto pb-4">
               {galleryImages.map((img, index) => {
                 const isActive = index === activeIndex;
-                const isPassed = index <= activeIndex;
+                const isPassed = index < progress;
 
                 return (
                   <motion.div
@@ -490,7 +518,7 @@ export default function AboutUs() {
                   key={index}
                   onClick={() => handleTimelineClick(index)}
                   className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index <= activeIndex ? 'bg-orange-500' : 'bg-gray-300'
+                    index < progress ? 'bg-orange-500' : 'bg-gray-300'
                   }`}
                 />
               ))}
