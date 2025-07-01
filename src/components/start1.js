@@ -79,7 +79,7 @@ const Navbar = () => {
           href: '/business',
         },
         {
-          name: 'Steel',
+          name: 'Iron and Steel',
           href: '#',
           subItems: [
             {
@@ -150,7 +150,7 @@ const Navbar = () => {
           name: 'Financials & Disclosures',
           href: '#',
           subItems: [
-            { name: 'Financial information', href: '/finacial_informations' },
+            { name: 'Financial Information', href: '/finacial_informations' },
             { name: 'Financial Statements', href: '#' },
             { name: 'Stock Performance Data', href: '#' },
             { name: 'Regulatory Disclosures', href: '#' },
@@ -536,7 +536,7 @@ const Navbar = () => {
             </span>
           </div>
           <div className="flex items-center mr-2 sm:mr-7">
-            <button className="bg-orange-500 text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
+            <button className=" text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
               Empolyee Login
             </button>
           </div>

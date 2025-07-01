@@ -28,7 +28,7 @@ const productImages = {
 };
 
 export default function BusinessAreas() {
-  const fallbackImages = [a2, a3, a4, a5];
+  const fallbackImages = [a2, a4, a5];
 
   const productData = [
     { name: "Pellet", desc: "High-quality iron ore pellets for steel production" },

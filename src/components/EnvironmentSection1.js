@@ -56,7 +56,7 @@ const EnvironmentSection1 = () => {
             variants={fadeUp}
           >
             <h1 className="text-3xl sm:text-4xl font-medium text-black mb-4 sm:mb-6 text-center lg:text-left" style={{ fontFamily: 'Helvetica, sans-serif', fontWeight: 500 }}>
-              Sustainable Environment
+            Environment
             </h1>
             
             <p className="text-black text-base leading-relaxed mb-6 sm:mb-8 text-center lg:text-left" style={{ fontFamily: 'Jost, sans-serif', fontSize: '22px' }}>
