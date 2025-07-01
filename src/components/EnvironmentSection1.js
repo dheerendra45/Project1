@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import envimg from '../assets/env1.jpg';
+import { ChevronRight } from 'lucide-react';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -38,10 +39,10 @@ const EnvironmentSection1 = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, type: 'spring' }}
           >
-            <div className="h-full w-full min-h-[300px] lg:min-h-[400px] overflow-hidden ">
+            <div className="h-full w-full min-h-[300px] lg:min-h-[400px] overflow-hidden">
               <img 
                 src={envimg} 
-                alt="Environment" 
+                alt="Sustainable Environment" 
                 className="w-full h-full object-cover"
               />
             </div>
@@ -55,41 +56,25 @@ const EnvironmentSection1 = () => {
             variants={fadeUp}
           >
             <h1 className="text-3xl sm:text-4xl font-medium text-black mb-4 sm:mb-6 text-center lg:text-left" style={{ fontFamily: 'Helvetica, sans-serif', fontWeight: 500 }}>
-              Environment
+              Sustainable Environment
             </h1>
             
             <p className="text-black text-base leading-relaxed mb-6 sm:mb-8 text-center lg:text-left" style={{ fontFamily: 'Jost, sans-serif', fontSize: '22px' }}>
-              Safety is one of the highest priorities within Steeler. It is imperative that 
-              everyone follows the policies and guidelines to ensure their own safety and the 
-              safety of others around them. We are providing different. Lorem Ipsum is simply 
-              dummy text of the printing and typesetting industry.
+              At Shyam Metalics, our manufacturing facilities embody sustainability through an integrated energy ecosystem. We generate 81% of our power needs through captive plants that optimize fuel efficiency, reduce emissions, and eliminate transmission losses, ensuring uninterrupted, eco-conscious operations. Complementing this, our strategically positioned solar panels harness renewable energy, significantly reducing fossil fuel dependence and lowering our carbon footprint.
             </p>
 
-            {/* Bullet Points */}
+          
+
+            {/* Read More Button */}
             <motion.div
-              className="space-y-4"
-              initial="hidden"
-              animate="visible"
-              variants={fadeUp}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mt-6 flex justify-center lg:justify-start"
             >
-              {[
-                'Industrial waste treatment up to international standards',
-                'Exhaust fumes on time and carbon content as regulated',
-                'Do not allow radioactive leakage to the environment'
-              ].map((text, idx) => (
-                <motion.div
-                  key={idx}
-                  className="flex items-start space-x-3"
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.2 }}
-                >
-                  <div className="w-5 h-5 rounded-full border-2 border-black flex items-center justify-center mt-1 flex-shrink-0">
-                    <div className="w-2 h-2 bg-black rounded-full"></div>
-                  </div>
-                  <p className="text-black text-base" style={{ fontFamily: 'Jost, sans-serif' }}>{text}</p>
-                </motion.div>
-              ))}
+              <button className="flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors">
+                Read More <ChevronRight className="ml-1 w-5 h-5" />
+              </button>
             </motion.div>
           </motion.div>
         </div>
