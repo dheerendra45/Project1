@@ -13,6 +13,7 @@ function MissionVisionValues() {
       icon: VisionIcon,
       title: 'Our Vision',
       description: "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel, Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth, empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
+      // image: SteelFactoryImage,
       direction: 'left'
     },
     {
@@ -125,10 +126,6 @@ function MissionVisionValues() {
 
   return (
     <div className="relative py-16 px-4 bg-gray-50 overflow-hidden">
-      {/* Heading */}
-      
-
-      {/* Cards Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8"
@@ -196,7 +193,6 @@ function MissionVisionValues() {
                   {section.title}
                 </motion.h3>
 
-                {/* FIXED DESCRIPTION */}
                 <motion.p
                   className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"
                   initial={{ opacity: 0, y: 10 }}
@@ -212,6 +208,7 @@ function MissionVisionValues() {
                 />
               </div>
 
+              {/* Optional image at the bottom if you want to re-enable */}
               {/* <motion.div
                 className="relative h-72 overflow-hidden"
                 initial={{ opacity: 0 }}
@@ -235,8 +232,8 @@ function MissionVisionValues() {
                     ease: [0.22, 1, 0.36, 1]
                   }}
                   whileHover={imageHover}
-                /> */}
-              {/* </motion.div> */}
+                />
+              </motion.div> */}
             </motion.div>
           ))}
         </motion.div>

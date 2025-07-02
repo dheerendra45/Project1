@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import s1 from "../../assets/Seltiger/s1.png";
 import s2 from "../../assets/Seltiger/s2.png";
 import s3 from "../../assets/Seltiger/s3.png";
 import s4 from "../../assets/Seltiger/s4.png";
@@ -13,23 +12,20 @@ export default function Products() {
 ] text-black px-6 py-12 lg:px-20 font-[Inter]">
       <h1 className="text-4xl font-semibold mb-8">What is SEL Tiger?</h1>
 
-      <div className="flex flex-wrap lg:flex-nowrap items-start gap-4">
-  {/* s1 */}
-  <img src={s1} alt="SEL Tiger Overview" className="w-[536px] h-full object-cover m-0 p-0" />
+      {/* s2, s3, s4 in same row */}
+      <div className="flex flex-wrap justify-center lg:flex-nowrap items-start gap-4">
+        {/* s2 with overlay text */}
+        <div className="relative w-full max-w-[536px] h-[522px]">
+          <img src={s2} alt="Feature" className="w-full h-full object-cover" />
+          <p className="absolute inset-0 flex items-center justify-center text-white font-extrabold text-[22px] leading-[31px] text-center px-4 mt-40">
+            Designed to withstand the harshest elements—resistant to earthquakes, fireproof, and immune to corrosion for vital infrastructure.
+          </p>
+        </div>
 
-  {/* s2 with overlay text */}
-  <div className="relative w-full h-[522px] m-0 p-0 -ml-4">
-    <img src={s2} alt="Feature" className="w-full h-full object-cover" />
-    <p className="absolute inset-0 flex items-center justify-center text-white font-extrabold text-[22px] leading-[31px] text-center px-4 mt-40">
-      Designed to withstand the harshest elements—resistant to earthquakes, fireproof, and immune to corrosion for vital infrastructure.
-    </p>
-  </div>
-
-  {/* s3 and s4 */}
-  <img src={s3} alt="Steel Rod 1" className="w-[131px] h-[522px] object-cover" />
-  <img src={s4} alt="Steel Rod 2" className="w-[131px] h-[522px] object-cover" />
-</div>
-
+        {/* s3 and s4 */}
+        <img src={s3} alt="Steel Rod 1" className="w-[131px] h-[522px] object-cover" />
+        <img src={s4} alt="Steel Rod 2" className="w-[131px] h-[522px] object-cover" />
+      </div>
 
       {/* Section Title */}
       <h2 className="text-4xl font-semibold mt-20">We don't just supply materials—</h2>

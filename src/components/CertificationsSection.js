@@ -1,12 +1,12 @@
 import React from "react";
-import logo1 from '../assets/logos/logo1.png';
-import logo2 from '../assets/logos/logo2.png';
-import logo3 from '../assets/logos/logo3.png';
-import logo4 from '../assets/logos/logo4.png';
-import logo5 from '../assets/logos/logo5.png';
-import logo6 from '../assets/logos/logo6.png';
-import logo7 from '../assets/logos/logo7.png';
-import logo8 from '../assets/logos/logo8.png';
+import logo1 from '../assets/logos/1.jpeg';
+import logo2 from '../assets/logos/1.jpeg';
+import logo3 from '../assets/logos/1.jpeg';
+import logo4 from '../assets/logos/1.jpeg';
+import logo5 from '../assets/logos/1.jpeg';
+import logo6 from '../assets/logos/1.jpeg';
+import logo7 from '../assets/logos/1.jpeg';
+import logo8 from '../assets/logos/1.jpeg';
 
 const CertificationsSection = () => {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
@@ -30,7 +30,7 @@ const CertificationsSection = () => {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-32 w-56 bg-white rounded-lg shadow-sm border border-gray-200 p-6 mx-3 flex-shrink-0"
+                className="flex items-center justify-center h-32 w-56 bg-white rounded-lg shadow-sm border border-gray-200 p-0 mx-3 flex-shrink-0"
               >
                 <img
                   src={logo}
