@@ -36,16 +36,6 @@ const TestimonialHomePage = () => {
   const topMembers = [a11, a12, a13];
   const allMembers = [...leftMembers, ...topMembers, ...rightMembers];
 
-  // State to track current testimonial
-  const [currentTestimonial, setCurrentTestimonial] = useState({
-    text: "Shyam Metalics' TMT bars have been the backbone of our infrastructure projects— their strength and reliability ensure long-lasting quality.",
-    author: "– Rajiv Mehta, Project Head, National Highway Authority",
-  });
-
-  // New state for Read All functionality
-  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
-
   // Random testimonials for each user
   const testimonials = [
     {
@@ -74,6 +64,13 @@ const TestimonialHomePage = () => {
     },
   ];
 
+  // State to track current testimonial - initialize with first testimonial
+  const [currentTestimonial, setCurrentTestimonial] = useState(testimonials[0]);
+
+  // New state for Read All functionality
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+
   // Auto-play functionality
   useEffect(() => {
     let interval;
@@ -90,9 +87,11 @@ const TestimonialHomePage = () => {
   }, [isAutoPlaying, testimonials]);
 
   const handleImageHover = (index) => {
-    setCurrentTestimonial(testimonials[index]);
-    setCurrentTestimonialIndex(index);
-    setIsAutoPlaying(false); // Stop auto-play when user hovers
+    if (index < testimonials.length) {
+      setCurrentTestimonial(testimonials[index]);
+      setCurrentTestimonialIndex(index);
+      setIsAutoPlaying(false); // Stop auto-play when user hovers
+    }
   };
 
   const handleReadAllToggle = () => {
@@ -166,6 +165,9 @@ const TestimonialHomePage = () => {
       </div>
     );
   };
+
+  // Safety check to ensure currentTestimonial is valid
+  const safeCurrentTestimonial = currentTestimonial || testimonials[0];
 
   return (
     <div className="w-full">
@@ -255,7 +257,7 @@ const TestimonialHomePage = () => {
                 {/* Dynamic Description with Animation */}
                 <AnimatePresence mode="wait">
                   <motion.div
-                    key={currentTestimonial.author}
+                    key={safeCurrentTestimonial.author}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
@@ -263,10 +265,10 @@ const TestimonialHomePage = () => {
                     className="text-gray-600 text-lg max-w-2xl mx-auto"
                   >
                     <p>
-                      "{currentTestimonial.text}"
+                      "{safeCurrentTestimonial.text}"
                       <br />
                       <span className="mt-4 block font-semibold">
-                        {currentTestimonial.author}
+                        {safeCurrentTestimonial.author}
                       </span>
                     </p>
                   </motion.div>
@@ -325,15 +327,15 @@ const TestimonialHomePage = () => {
           <div className="text-center mb-6">
             <AnimatePresence mode="wait">
               <motion.div
-                key={currentTestimonial.author}
+                key={safeCurrentTestimonial.author}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="text-gray-600 text-base mb-6"
               >
-                <p className="mb-4">"{currentTestimonial.text}"</p>
-                <p className="font-semibold">{currentTestimonial.author}</p>
+                <p className="mb-4">"{safeCurrentTestimonial.text}"</p>
+                <p className="font-semibold">{safeCurrentTestimonial.author}</p>
               </motion.div>
             </AnimatePresence>
 
