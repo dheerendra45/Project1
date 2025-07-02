@@ -2,27 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom font imports would go here */
-/* Since we don't have the actual font files, this is a placeholder */
+/* ✅ Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "leaflet/dist/leaflet.css";
+@import "keen-slider/keen-slider.min.css";
+
+/* ✅ Custom font face (LEMON MILK - commented out) */
 @layer base {
   @font-face {
     font-family: 'LEMON MILK';
+    /* Uncomment if you have the font file locally */
     /* src: url('../public/fonts/LEMONMILK-Regular.otf') format('opentype'); */
     font-weight: 400;
     font-style: normal;
   }
 }
 
-/* Global styles */
+/* ✅ Global styles */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradient classes */
+/* ✅ Gradient utility classes */
 .bg-tiger-gradient {
   background: linear-gradient(90deg, #EE741D 2.45%, #FCB040 100%);
 }
@@ -30,8 +35,3 @@ body {
 .bg-blue-gradient {
   background: linear-gradient(90deg, #4951FE 2.45%, #DE3AA8 100%);
 }
-
-@import "leaflet/dist/leaflet.css";
-@import "keen-slider/keen-slider.min.css";
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
-
