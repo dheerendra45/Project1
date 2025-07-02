@@ -12,7 +12,7 @@ export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [progress, setProgress] = useState(0); // New state for continuous progress
+  const [progress, setProgress] = useState(0);
   const pauseTimeoutRef = useRef(null);
   const progressIntervalRef = useRef(null);
 
@@ -36,9 +36,10 @@ export default function AboutUs() {
   const galleryImages = [a2,a2, a3, a4, a5, a6, a6,a6,a2,a3,a4,a5,a2];
   const aboutImages = [abt1img,abt1img, abt1img, abt1img, abt1img, abt1img, abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img,abt1img];
 
-  // Year-wise content data (keeping your existing data)
+  // Year-wise content data (keeping all your content)
   const yearContent = [
-    {
+    // ... (keep all your yearContent data exactly as before)
+     {
     year: "2005",
     title: "",
     content: []
@@ -233,31 +234,26 @@ export default function AboutUs() {
   }
   ];
 
-  // Handle timeline item click
   const handleTimelineClick = (index) => {
     setActiveIndex(index);
-    setProgress(index); // Set progress to match the clicked item
+    setProgress(index);
     setIsPaused(true);
     
-    // Clear any existing timeout
     if (pauseTimeoutRef.current) {
       clearTimeout(pauseTimeoutRef.current);
     }
     
-    // Set a new timeout to resume auto-scrolling after 10 seconds
     pauseTimeoutRef.current = setTimeout(() => {
       setIsPaused(false);
     }, 10000);
   };
 
-  // Continuous progress animation effect
   useEffect(() => {
     if (!isHovering && !isPaused) {
       progressIntervalRef.current = setInterval(() => {
         setProgress((prevProgress) => {
-          const newProgress = prevProgress + (1 / 30); // Progress increment (10 seconds / 300 frames)
+          const newProgress = prevProgress + (1 / 30);
           
-          // Check if we need to move to next item
           if (newProgress >= galleryImages.length) {
             setActiveIndex(0);
             return 0;
@@ -267,7 +263,7 @@ export default function AboutUs() {
           
           return newProgress;
         });
-      }, 100); // Update every 100ms for smooth animation
+      }, 100);
     } else {
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
@@ -281,7 +277,6 @@ export default function AboutUs() {
     };
   }, [galleryImages.length, isHovering, isPaused]);
 
-  // Cleanup effect
   useEffect(() => {
     return () => {
       if (pauseTimeoutRef.current) {
@@ -294,26 +289,26 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="px-8 sm:px-12 lg:px-16 xl:px-20 py-16 lg:py-8 font-['Inter',sans-serif]">
-      {/* ABOUT US Section */}
-      <div className="flex flex-col lg:flex-row items-start gap-6 lg:gap-8">
-        {/* Left Text Section - Now Static */}
-        <div className="lg:w-1/2 text-black space-y-4 lg:space-y-6">
-          <h1 className="text-orange-500 text-lg sm:text-xl font-semibold">ABOUT US</h1>
-          <h1 className="text-2xl sm:text-3xl lg:text-3xl font-bold leading-snug">
+    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-6 font-['Inter',sans-serif]">
+      {/* ABOUT US Section - Made more compact */}
+      <div className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6" style={{ height: '60%' }}>
+        {/* Left Text Section */}
+        <div className="lg:w-1/2 text-black space-y-2 lg:space-y-3 overflow-y-auto pr-2">
+          <h1 className="text-orange-500 text-md sm:text-lg font-semibold">ABOUT US</h1>
+          <h1 className="text-xl sm:text-2xl lg:text-2xl font-bold leading-snug">
             A Steel Company With Integrated <br className="hidden sm:block" /> Operations.
           </h1>
-          <div className="text-base sm:text-lg mb-4 lg:mb-6 leading-relaxed space-y-4">
-            <p>
+          <div className="text-sm sm:text-base leading-relaxed space-y-2">
+            <p className="line-clamp-4">
               Shyam Metalics and Energy Limited is an Indian integrated metal producing Company with a strong presence across the metal value chain. The Company is one of the largest integrated steel producers in India, currently ranked 6th, and is also among the country's leading ferro alloy manufacturers.
             </p>
-            <p>
+            <p className="line-clamp-4">
               Shyam Metalics and Energy Limited operates an "ore-to-metal" integrated business model, with steel manufacturing facilities located strategically near mineral reserves in West Bengal, Odisha, Chhattisgarh and Madhya Pradesh. The Company has a combined installed production capacity of 13.2 million metric tonnes per annum (MTPA) as of March 2025 across various product lines.
             </p>
-            <p>
+            <p className="line-clamp-3">
               Since FY2005, the company has demonstrated consistent operational profitability and has maintained a track record of positive EBITDA every year. Its distribution network spans both domestic and international markets, with a presence in over 28 countries.
             </p>
-            <p>
+            <p className="line-clamp-3">
               Shyam Metalics and Energy credit facilities have been rated AA/Stable for long-term banking facilities and A1+ for short-term banking facilities by Crisil. The outlook for the long-term rating remains stable.
             </p>
           </div>
@@ -321,7 +316,7 @@ export default function AboutUs() {
 
         {/* Year-wise Content and Gallery Section */}
         <motion.div 
-          className="lg:w-1/2 flex flex-col items-center w-full"
+          className="lg:w-1/2 flex flex-col items-center w-full h-full"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
@@ -330,7 +325,7 @@ export default function AboutUs() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`gallery-${activeIndex}`}
-              className="w-full mb-4"
+              className="w-full h-40 mb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -339,7 +334,7 @@ export default function AboutUs() {
               <motion.img
                 src={aboutImages[activeIndex]}
                 alt={`Gallery ${years[activeIndex]}`}
-                className="w-full h-auto max-h-64 sm:max-h-80 object-cover rounded-lg shadow-lg border border-orange-100"
+                className="w-full h-full object-cover rounded-lg shadow-lg border border-orange-100"
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5 }}
@@ -355,14 +350,14 @@ export default function AboutUs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="w-full bg-white p-4 sm:p-6 rounded-lg shadow-lg border border-orange-100"
+              className="w-full flex-grow bg-white p-3 sm:p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto"
             >
-              <h2 className="text-orange-500 text-xl sm:text-2xl font-bold mb-2">
+              <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-1">
                 {yearContent[activeIndex]?.year || years[activeIndex]}: {yearContent[activeIndex]?.title}
               </h2>
-              <div className="space-y-2 text-sm sm:text-base max-h-64 overflow-y-auto pr-2">
+              <div className="space-y-1 text-xs sm:text-sm">
                 {yearContent[activeIndex]?.content.map((item, i) => (
-                  <p key={i} className={item.startsWith('•') || item.startsWith('✓') ? 'pl-4' : ''}>
+                  <p key={i} className={item.startsWith('•') || item.startsWith('✓') ? 'pl-3' : ''}>
                     {item}
                   </p>
                 ))}
@@ -372,172 +367,94 @@ export default function AboutUs() {
         </motion.div>
       </div>
 
-      {/* Timeline Gallery with Horizontal Line */}
-      <div className="relative mt-12 sm:mt-16 lg:mt-20">
-        {/* Orange Horizontal Line - responsive positioning */}
-        <div className="absolute left-0 right-0 h-0.5 sm:h-1 z-0" 
-             style={{ 
-               top: window.innerWidth < 640 ? 'calc(50% + 8px)' : 'calc(50% + 12px)' 
-             }}>
-          {/* Progressive line animation - FIXED */}
-          <div className="h-full bg-gray-300 w-full relative z-0">
-            <motion.div
-              className="h-full bg-orange-500 absolute left-0 top-0"
-              animate={{ 
-                width: `${(progress / galleryImages.length) * 100}%` 
-              }}
-              transition={{ 
-                duration: 0.1, 
-                ease: "linear" 
-              }}
-            />
-          </div>
-        </div>
-
-        {/* Timeline Gallery - Responsive Layout */}
-        <div className="relative z-10 w-full">
-          {/* Desktop/Tablet Timeline */}
-          <div className="hidden sm:flex justify-between items-center gap-2 lg:gap-4 max-w-6xl mx-auto overflow-x-auto pt-[-10px] pb-4">
+      {/* Timeline Section */}
+      <div className="relative mt-4 h-[35%] min-h-[150px]">
+        {/* Timeline Line with Symbols */}
+        <div className="absolute left-0 right-0 h-1 bg-gray-300 top-1/2 transform -translate-y-1/2">
+          {/* Progress Indicator */}
+          <motion.div 
+            className="h-full bg-orange-500 absolute left-0 top-0"
+            animate={{ width: `${(progress / galleryImages.length) * 100}%` }}
+            transition={{ duration: 0.1 }}
+          />
+          
+          {/* Timeline Symbols */}
+          <div className="relative w-full h-full">
             {galleryImages.map((img, index) => {
               const isActive = index === activeIndex;
               const isPassed = index < progress;
+              const position = `${(index / (galleryImages.length - 1)) * 100}%`;
 
               return (
-                <motion.div
+                <div
                   key={index}
-                  onClick={() => handleTimelineClick(index)}
-                  onMouseEnter={() => setIsHovering(true)}
-                  onMouseLeave={() => setIsHovering(false)}
-                  className="flex flex-col items-center cursor-pointer flex-shrink-0"
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ type: 'spring', stiffness: 300 }}
+                  className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                  style={{ left: position, top: '50%' }}
                 >
-                  {/* Fixed height container for message/year */}
-                  <div className="h-[40px] sm:h-70 lg:h-[72px] flex flex-col items-center justify-end mb-1">
-                    <AnimatePresence mode="wait">
-                      {isActive ? (
-                        <motion.div
-                          key={`active-${index}`}
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className="flex flex-col items-center"
-                        >
-                          <div className="mb-1 bg-orange-500 text-white text-xs sm:text-sm font-semibold px-2 sm:px-3 py-1 sm:py-2 rounded-md shadow-lg whitespace-nowrap w-max border-2 border-orange-600 max-w-[180px] text-center">
-                            {messages[index]}
-                          </div>
-                          <div className="text-orange-600 font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg">
-                            {years[index]}
-                          </div>
-                        </motion.div>
-                      ) : (
-                        <motion.div
-                          key={`inactive-${index}`}
-                          initial={{ opacity: 0, y: -10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 10 }}
-                          transition={{ duration: 0.3 }}
-                          className={`font-semibold whitespace-nowrap text-sm sm:text-base lg:text-lg h-6 sm:h-8 lg:h-[36px] flex items-end ${
-                            isPassed ? 'text-orange-600' : 'text-gray-400'
-                          }`}
-                        >
-                          {years[index]}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  {/* Image container */}
                   <motion.div
-                    className={`w-6 h-6 sm:w-6 sm:h-6 lg:w-6 lg:h-6 rounded-full p-1 flex items-center justify-center transition-colors duration-300
-                      ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}
-                    layout
-                    transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                    onClick={() => handleTimelineClick(index)}
+                    onMouseEnter={() => setIsHovering(true)}
+                    onMouseLeave={() => setIsHovering(false)}
+                    className="flex flex-col items-center cursor-pointer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    <motion.img
-                      src={img}
-                      alt={`img-${index}`}
-                      className="object-contain w-full h-full filter-none"
-                      style={{ filter: 'none' }}
-                      animate={{
-                        y: isActive ? 0 : -6,
-                        scale: isActive ? 1.05 : 0.95
-                      }}
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    />
+                    {/* Year Label */}
+                    <div className={`text-xs font-medium mb-1 ${isPassed ? 'text-orange-600' : 'text-gray-500'}`}>
+                      {years[index]}
+                    </div>
+                    
+                    {/* Symbol */}
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center relative z-10 ${
+                      isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'
+                    }`}>
+                      <img src={img} alt="" className="w-4 h-4 object-contain" />
+                    </div>
+                    
+                    {/* Active Message */}
+                    {isActive && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute bottom-full mb-2 bg-orange-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                      >
+                        {messages[index]}
+                      </motion.div>
+                    )}
                   </motion.div>
-                </motion.div>
+                </div>
               );
             })}
           </div>
+        </div>
 
-          {/* Mobile Timeline - Vertical Layout */}
-          <div className="sm:hidden">
-            {/* Current Active Item Display */}
-            <div className="text-center mb-6">
-              <div className="bg-orange-500 text-white text-sm font-semibold px-4 py-2 rounded-md shadow-lg inline-block mb-2">
-                {messages[activeIndex]}
-              </div>
-              <div className="text-orange-600 font-semibold text-lg">
-                {years[activeIndex]}
-              </div>
+        {/* Mobile Timeline */}
+        <div className="sm:hidden flex flex-col h-full mt-8">
+          <div className="text-center mb-2">
+            <div className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded inline-block">
+              {messages[activeIndex]}
             </div>
-
-            {/* Mobile Timeline Navigation */}
-            <div className="flex justify-center items-center gap-3 overflow-x-auto pb-4">
-              {galleryImages.map((img, index) => {
-                const isActive = index === activeIndex;
-                const isPassed = index < progress;
-
-                return (
-                  <motion.div
-                    key={index}
-                    onClick={() => handleTimelineClick(index)}
-                    className="flex flex-col items-center cursor-pointer flex-shrink-0"
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                  >
-                    {/* Mobile Circle Container */}
-                    <motion.div
-                      className={`w-10 h-10 rounded-full p-1 flex items-center justify-center transition-colors duration-300
-                        ${isActive ? 'bg-orange-500' : isPassed ? 'bg-orange-300' : 'bg-gray-300'}`}
-                      layout
-                      transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                    >
-                      <motion.img
-                        src={img}
-                        alt={`img-${index}`}
-                        className="object-contain w-full h-full filter-none"
-                        style={{ filter: 'none' }}
-                        animate={{
-                          scale: isActive ? 1.05 : 0.95
-                        }}
-                        transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                      />
-                    </motion.div>
-                    <div className={`font-medium text-xs mt-1 ${
-                      isPassed ? 'text-orange-600' : 'text-gray-400'
-                    }`}>
-                      {years[index]}
-                    </div>
-                  </motion.div>
-                );
-              })}
+            <div className="text-orange-600 font-medium text-sm mt-1">
+              {years[activeIndex]}
             </div>
-
-            {/* Mobile Progress Indicators */}
-            <div className="flex justify-center gap-2 mt-4">
-              {galleryImages.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleTimelineClick(index)}
-                  className={`w-2 h-2 rounded-full transition-colors duration-300 ${
-                    index < progress ? 'bg-orange-500' : 'bg-gray-300'
-                  }`}
-                />
-              ))}
-            </div>
+          </div>
+          <div className="flex justify-between items-center px-2 flex-grow">
+            {galleryImages.map((img, index) => (
+              <motion.div
+                key={index}
+                onClick={() => handleTimelineClick(index)}
+                className="flex flex-col items-center"
+                whileTap={{ scale: 0.95 }}
+              >
+                <div className={`w-5 h-5 rounded-full mb-1 flex items-center justify-center ${index <= progress ? 'bg-orange-500' : 'bg-gray-300'}`}>
+                  <img src={img} alt="" className="w-3 h-3 object-contain" />
+                </div>
+                <div className={`text-xs ${index <= progress ? 'text-orange-600' : 'text-gray-400'}`}>
+                  {years[index]}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>

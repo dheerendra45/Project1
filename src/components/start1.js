@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import companylogo from '../assets/products/image28.png';
 import bgImg from '../assets/image146.png';
 import { href } from "react-router-dom";
+import great from "../assets/great place.png";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -486,19 +487,6 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-            
-            <div className="mt-4 p-3">
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search here..."
-                  className="w-full bg-gray-100 border border-gray-300 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                />
-                <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -509,9 +497,6 @@ const Navbar = () => {
     <div className="w-full fixed top-0 left-0 z-50">
       {/* Top Navbar */}
       <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
-        {/* Black semi-transparent overlay */}
-       
-
         {/* Content on top */}
         <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
           {/* Stock Price Display */}
@@ -526,18 +511,27 @@ const Navbar = () => {
               </span>
             ) : (
               <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                   Current Price ₹{stockData.currentPrice.toFixed(2)}
+                Current Price ₹{stockData.currentPrice.toFixed(2)}
               </div>
             )}
           </div>
 
-          <div className="flex items-center">
-            <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-            </span>
-          </div>
-          <div className="flex items-center mr-2 sm:mr-7">
-            <button className=" text-white px-4 sm:px-4 py-1 sm:py-2 rounded border border-white hover:bg-orange-600 transition w-full sm:w-auto">
-              Empolyee Login
+          <div className="flex items-center gap-4">
+            {/* Search Bar - visible on all screens now */}
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search here..."
+                className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-1.5 text-black placeholder-gray-500 text-sm w-40 lg:w-48 xl:w-56 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              />
+              <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+            
+            {/* Employee Login Button */}
+            <button className="text-white px-3 py-1 rounded border border-white hover:bg-orange-600 transition text-xs sm:text-sm sm:px-4 sm:py-1">
+              Employee Login
             </button>
           </div>
         </div>
@@ -549,20 +543,18 @@ const Navbar = () => {
         <div 
           ref={dropdownRef}
           className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-6 xl:px-8 relative z-30 transition-all duration-300 ${
-  isScrolled ? 'shadow-md' : ''
-}`}
+            isScrolled ? 'shadow-md' : ''
+          }`}
           style={{
-  background: isScrolled 
-    ? 'rgba(30, 30, 47, 0.7)' // dark silver with 70% opacity
-    : 'rgba(42, 42, 61, 0.1)', // slightly lighter when not scrolled
-  backdropFilter: 'blur(12px)',
-  WebkitBackdropFilter: 'blur(12px)',
-
-  boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)'
-}}
-
+            background: isScrolled 
+              ? 'rgba(30, 30, 47, 0.7)' // dark silver with 70% opacity
+              : 'rgba(42, 42, 61, 0.1)', // slightly lighter when not scrolled
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)'
+          }}
         >
-                    <div className="flex items-center">
+          <div className="flex items-center">
             <div onClick={handleLogoClick} className="cursor-pointer">
               <img 
                 src={companylogo} 
@@ -573,19 +565,28 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button 
-            onClick={toggleMobileMenu}
-            className="md:hidden text-gray-700 focus:outline-none"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-4">
+            {/* Great Place Image - visible on mobile */}
+            <div className="md:hidden flex items-center">
+              <img 
+                src={great} 
+                className="h-[40px] w-auto hover:opacity-80 transition-opacity duration-200"
+                alt="Great Place to Work"
+              />
+            </div>
+
+            <button 
+              onClick={toggleMobileMenu}
+              className="md:hidden text-gray-700 focus:outline-none"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+          </div>
           
-         
           {/* Navigation Menu - hidden on mobile */}
           <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-gray-300 text-sm font-medium">
-
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -603,7 +604,6 @@ const Navbar = () => {
                   )}
                 </span>
                 
-
                 {/* Dropdown Menu */}
                 {item.hasDropdown && activeDropdown === index && (
                   <div 
@@ -689,7 +689,7 @@ const Navbar = () => {
                                     {/* Nested sub-menu for items */}
                                     {activeNestedSub === subIndex && subItem.items && subItem.items.length > 0 && (
                                       <div 
-                                      className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
+                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
                                         onMouseEnter={() => clearTimeout(nestedSubTimeoutRef.current)}
                                         onMouseLeave={handleNestedSubLeave}
                                       >
@@ -741,30 +741,13 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Search Bar - hidden on mobile */}
-         <div className="hidden md:flex items-center gap-4 lg:gap-5 xl:gap-6 relative">
-            <div className="relative">
-             <input
-  type="text"
-  placeholder="Search here..."
-  className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-3 lg:px-4 py-2 text-black placeholder-gray-500 text-sm w-28 lg:w-36 xl:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-/>
-              <svg className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-            {/* Search Bar Reflection - hidden on mobile */}
-            <div className="absolute bottom-[-12px] left-0 w-full h-[12px] overflow-hidden hidden md:block">
-              <div className="relative h-full w-[130px] lg:w-[160px] mx-auto">
-                <div 
-                  className="bg-white/20 border border-white/30 rounded-full h-[6px] w-[130px] lg:w-[160px] opacity-30"
-                  style={{
-                    transform: 'scaleY(-0.5)',
-                    filter: 'blur(0.5px)'
-                  }}
-                ></div>
-              </div>
-            </div>
+          {/* Great Place Image - hidden on mobile */}
+          <div className="hidden md:flex items-center gap-4">
+            <img 
+              src={great} 
+              className="h-[50px] w-auto hover:opacity-80 transition-opacity duration-200"
+              alt="Great Place to Work"
+            />
           </div>
         </div>
       </div>
