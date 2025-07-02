@@ -11,14 +11,24 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   
   // Stock price state
-  const [stockData, setStockData] = useState({
-    symbol: "SHYAMMETL.NS",
-    shortName: "SHYAM METALICS AND ENGY L",
+ const [stockData, setStockData] = useState({
+  bse: {
+    symbol: "SHYAMMETL.BO",
+    shortName: "SHYAM METALICS AND ENGY LTD",
     currentPrice: 0,
     high: 0,
     low: 0,
     prevClose: 0
-  });
+  },
+  nse: {
+    symbol: "SHYAMMETL.NS",
+    shortName: "SHYAM METALICS AND ENGY LTD",
+    currentPrice: 0,
+    high: 0,
+    low: 0,
+    prevClose: 0
+  }
+});
   const [stockLoading, setStockLoading] = useState(true);
   const [stockError, setStockError] = useState(null);
   
@@ -30,26 +40,68 @@ const Navbar = () => {
 
   // Function to fetch stock data
   const fetchStockData = async () => {
-    try {
-      setStockLoading(true);
-      setStockError(null);
-      
-      // Replace with your actual backend API endpoint
-      const response = await fetch('https://project1-backend-1hja.onrender.com/api/stock/price/SHYAMMETL.NS');
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      setStockData(data);
-    } catch (error) {
-      console.error('Error fetching stock data:', error);
-      setStockError(error.message);
-    } finally {
-      setStockLoading(false);
+  try {
+    setStockLoading(true);
+    setStockError(null);
+    
+    // Fetch both BSE and NSE data
+    const [bseResponse, nseResponse] = await Promise.all([
+      fetch('https://project1-backend-1hja.onrender.com/api/stock/price/SHYAMMETL.BO'),
+      fetch('https://project1-backend-1hja.onrender.com/api/stock/price/SHYAMMETL.NS')
+    ]);
+
+    if (!bseResponse.ok || !nseResponse.ok) {
+      throw new Error(`HTTP error! BSE status: ${bseResponse.status}, NSE status: ${nseResponse.status}`);
     }
-  };
+
+    const bseData = await bseResponse.json();
+    const nseData = await nseResponse.json();
+
+    setStockData({
+      bse: {
+        symbol: bseData.symbol || "SHYAMMETL.BO",
+        shortName: bseData.shortName || "SHYAM METALICS AND ENGY LTD",
+        currentPrice: bseData.currentPrice || 0,
+        high: bseData.high || 0,
+        low: bseData.low || 0,
+        prevClose: bseData.prevClose || 0
+      },
+      nse: {
+        symbol: nseData.symbol || "SHYAMMETL.NS",
+        shortName: nseData.shortName || "SHYAM METALICS AND ENGY LTD",
+        currentPrice: nseData.currentPrice || 0,
+        high: nseData.high || 0,
+        low: nseData.low || 0,
+        prevClose: nseData.prevClose || 0
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching stock data:', error);
+    setStockError(error.message);
+    
+    // Set fallback data if one of the requests fails
+    setStockData(prev => ({
+      bse: prev.bse || {
+        symbol: "SHYAMMETL.BO",
+        shortName: "SHYAM METALICS AND ENGY LTD",
+        currentPrice: 0,
+        high: 0,
+        low: 0,
+        prevClose: 0
+      },
+      nse: prev.nse || {
+        symbol: "SHYAMMETL.NS",
+        shortName: "SHYAM METALICS AND ENGY LTD",
+        currentPrice: 0,
+        high: 0,
+        low: 0,
+        prevClose: 0
+      }
+    }));
+  } finally {
+    setStockLoading(false);
+  }
+};
 
   // Calculate price change and percentage
   const priceChange = stockData.currentPrice - stockData.prevClose;
@@ -515,22 +567,29 @@ const Navbar = () => {
         {/* Content on top */}
         <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
           {/* Stock Price Display */}
-          <div className="flex items-center ml-2 sm:ml-7">
-            {stockLoading ? (
-              <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
-                Loading...
-              </span>
-            ) : stockError ? (
-              <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
-                Error loading price
-              </span>
-            ) : (
-              <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                   Current Price ₹{stockData.currentPrice.toFixed(2)}
-              </div>
-            )}
-          </div>
-
+          <div className="flex items-center ml-2 sm:ml-7 space-x-4">
+  {stockLoading ? (
+    <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+      Loading...
+    </span>
+  ) : stockError ? (
+    <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+      Error loading price
+    </span>
+  ) : (
+    <>
+      <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+        BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
+       
+      </div>
+      <div className="h-4 w-px bg-white/50"></div>
+      <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+        NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
+        
+      </div>
+    </>
+  )}
+</div>
           <div className="flex items-center">
             <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
             </span>
