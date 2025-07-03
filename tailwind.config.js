@@ -17,14 +17,36 @@ module.exports = {
         mint: '#9bc4a7',
       },
       fontFamily: {
-        inter: ['Inter', 'sans-serif'], // ✅ Inter font
-        // 'lemon-milk': ['LEMON MILK', 'sans-serif'],
-        // 'helvetica': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
       },
       backgroundImage: {
         'tiger-gradient': 'linear-gradient(90deg, #EE741D 2.45%, #FCB040 100%)',
         'blue-gradient': 'linear-gradient(90deg, #4951FE 2.45%, #DE3AA8 100%)',
         'forest-gradient': 'linear-gradient(to bottom right, #2e5e45, #4b7d60, #9bc4a7)',
+      },
+      // Added animation extensions
+      animation: {
+        'slide-in-3d': 'slideIn3D 7s infinite ease-in-out',
+      },
+      keyframes: {
+        slideIn3D: {
+          '0%': {
+            opacity: '0',
+            transform: 'perspective(800px) rotateY(15deg) translateX(-80px)',
+          },
+          '15%': {
+            opacity: '1',
+            transform: 'perspective(800px) rotateY(0) translateX(0)',
+          },
+          '85%': {
+            opacity: '1',
+            transform: 'perspective(800px) rotateY(0) translateX(0)',
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'perspective(800px) rotateY(-15deg) translateX(-80px)',
+          },
+        },
       },
     },
   },

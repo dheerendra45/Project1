@@ -131,7 +131,7 @@ export default function BusinessAreas() {
           {currentImages.map((item, index) => (
             <div
               key={`image-${index}-${currentSetIndex}`}
-              className="relative overflow-hidden group cursor-pointer h-full shadow-lg"
+              className="relative overflow-hidden group cursor-pointer h-full shadow-lg rounded-lg"
               onMouseEnter={() => handleMouseEnter(index)}
               onMouseLeave={handleMouseLeave}
             >
@@ -141,21 +141,25 @@ export default function BusinessAreas() {
                 className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
               />
 
+              {/* Dark overlay for better text visibility */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+
+              {/* Hover overlay */}
               {hoveredImageIndex === index && (
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-transparent opacity-60 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/70 to-transparent z-15" />
               )}
 
-              <div className="absolute bottom-10 inset-0 flex flex-col justify-end p-4 z-20">
-                <h3 className="text-white font-bold text-2xl mb-1">
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-20 text-center">
+                <h3 className="text-white font-bold text-lg mb-2 drop-shadow-lg">
                   {item.name}
                 </h3>
-                <p className="text-white/90 text-sm">
+                <p className="text-white/90 text-sm drop-shadow-md leading-tight">
                   {item.description}
                 </p>
               </div>
 
               <button
-                className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300"
+                className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300 rounded z-20"
                 onClick={nextSlide}
               >
                 &gt;
