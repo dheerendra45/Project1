@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import WorldMapImage from '../assets/world-map.png';
+import worldExport from '../assets/worldExport.mp4';
+import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 
 function LocationsMap() {
   const mapRef = useRef(null);
@@ -8,7 +13,48 @@ function LocationsMap() {
   const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
+  const videoRef = useRef(null);
 
+  useEffect(() => {
+  const videoEl = videoRef.current;
+  const sectionEl = sectionRef.current;
+
+  if (!videoEl || !sectionEl) return;
+
+  const handleLoadedMetadata = () => {
+    const videoDuration = videoEl.duration;
+
+    gsap.to(videoEl, {
+      scrollTrigger: {
+        trigger: sectionEl,
+        start: "top 25%",
+        end: "bottom center",
+        scrub: 0.5,
+        // markers: true,
+        onUpdate: (self) => {
+          const scrollProgress = self.progress;
+          const speedMultiplier = 1.8; 
+          let newTime = scrollProgress * videoDuration * speedMultiplier;
+          newTime = Math.min(newTime, videoDuration); 
+          videoEl.currentTime = newTime;
+
+          gsap.to(videoEl, {
+            currentTime: newTime,
+            duration: 0.2,       
+            ease: "power1.out",
+          });
+        },
+      },
+    });
+  };
+
+  videoEl.addEventListener("loadedmetadata", handleLoadedMetadata);
+
+  return () => {
+    videoEl.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  };
+}, []);
   // Stats data with enhanced values (removed icons)
   const stats = [
     { 
@@ -446,11 +492,19 @@ function LocationsMap() {
                 transition: { delay: 0.5 }
               } : {}}
             >
-              <img 
+              {/* <img 
                 src={WorldMapImage} 
                 alt="World Map" 
                 className="w-full object-cover"
+              /> */}
+              <video
+                ref={videoRef}
+                src={worldExport}
+                className="w-full object-cover"
+                muted
+                playsInline
               />
+              
             </motion.div>
           </div>
 
