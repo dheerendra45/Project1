@@ -548,44 +548,64 @@ const Navbar = () => {
   return (
     <div className="w-full fixed top-0 left-0 z-50">
       {/* Top Navbar */}
-      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
-        {/* Content on top */}
-        <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
-          {/* Stock Price Display */}
-          <div className="flex items-center ml-2 sm:ml-7 space-x-4">
-  {stockLoading ? (
-    <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
-      Loading...
-    </span>
-  ) : stockError ? (
-    <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
-      Error loading price
-    </span>
-  ) : (
-    <>
-      <div className="flex items-center gap-2 text-emerald-700 font-inter font-bold h-7">
-        BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
-       
+     <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
+  {/* Content on top */}
+  <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
+    {/* Stock Price Display */}
+    <div className="flex items-center ml-2 sm:ml-7 space-x-4">
+      {stockLoading ? (
+        <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+          Loading...
+        </span>
+      ) : stockError ? (
+        <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+          Error loading price
+        </span>
+      ) : (
+        <>
+          <div className="flex items-center gap-2 text-emerald-700 font-inter font-bold h-7">
+            BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
+          </div>
+          <div className="h-4 w-px bg-white/50"></div>
+          <div className="flex items-center gap-2 text-emerald-700 font-inter font-bold h-7">
+            NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
+          </div>
+        </>
+      )}
+    </div>
+
+    {/* Search bar + Login button grouped together */}
+    <div className="flex items-center gap-2 mr-2 sm:mr-7">
+      {/* Custom styled search bar */}
+      <div className="relative">
+        <input
+          type="text"
+          placeholder="Search here..."
+          className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
+        />
+        <svg
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
       </div>
-      <div className="h-4 w-px bg-white/50"></div>
-      <div className="flex items-center gap-2 text-emerald-700 font-inter font-bold h-7">
-        NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
-        
-      </div>
-    </>
-  )}
+
+      {/* Employee Login Button right next to search */}
+      <button className="text-emerald-700 px-4 py-2 rounded border border-emerald-700 hover:bg-orange-600 transition text-sm">
+        Employee Login
+      </button>
+    </div>
+  </div>
 </div>
-          <div className="flex items-center">
-            <span className="font-roboto font-extrabold text-[14px] leading-[21px]">
-            </span>
-          </div>
-          <div className="flex items-center mr-2 sm:mr-7">
-            <button className=" text-emerald-700 px-4 sm:px-4 py-1 sm:py-2 rounded border border-emerald-700 hover:bg-orange-600 transition w-full sm:w-auto">
-              Employee Login
-            </button>
-          </div>
-        </div>
-      </div>
+
 
       {/* Main Navbar with Reflection */}
       <div className="relative">
@@ -620,7 +640,7 @@ const Navbar = () => {
             <div className="md:hidden flex items-center">
               <img 
                 src={great} 
-                className="h-[40px] w-auto hover:opacity-80 transition-opacity duration-200"
+                className="h-[50px] w-auto hover:opacity-80 transition-opacity duration-200"
                 alt="Great Place to Work"
               />
             </div>
@@ -792,10 +812,10 @@ const Navbar = () => {
           </div>
 
           {/* Great Place Image - hidden on mobile */}
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden mt-12 md:flex items-center gap-4">
             <img 
               src={great} 
-              className="h-[50px] w-auto hover:opacity-80 transition-opacity duration-200"
+              className="h-[120px] w-auto hover:opacity-80 transition-opacity duration-200"
               alt="Great Place to Work"
             />
           </div>

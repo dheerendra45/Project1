@@ -5,13 +5,91 @@ function LocationsMap() {
   const mapRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [animatedStats, setAnimatedStats] = useState({});
 
   const stats = [
-    { label: 'Clients Served', value: '25,000+ (Domestic & Global)' },
-    { label: 'Annual growth', value: '32% (Revenue: 12,500 Cr)' },
-    { label: 'Active projects', value: '1200+ (Incl. Govt. Infrastructure)' },
-    { label: 'Customer Satisfaction', value: '92% (Third-Party Survey)' }
+    { 
+      label: 'Clients Served', 
+      value: '25,000+ (Domestic & Global)', 
+      numericValue: 25000,
+      suffix: '+ (Domestic & Global)'
+    },
+    { 
+      label: 'Annual growth', 
+      value: '32% (Revenue: 12,500 Cr)', 
+      numericValue: 32,
+      suffix: '% (Revenue: 12,500 Cr)'
+    },
+    { 
+      label: 'Active projects', 
+      value: '1200+ (Incl. Govt. Infrastructure)', 
+      numericValue: 1200,
+      suffix: '+ (Incl. Govt. Infrastructure)'
+    },
+    { 
+      label: 'Customer Satisfaction', 
+      value: '92% (Third-Party Survey)', 
+      numericValue: 92,
+      suffix: '% (Third-Party Survey)'
+    }
   ];
+
+  // Animated counter hook
+  const useCountUp = (end, duration = 2000, delay = 0) => {
+    const [count, setCount] = useState(0);
+    const [hasStarted, setHasStarted] = useState(false);
+
+    useEffect(() => {
+      if (!hasStarted) {
+        const timer = setTimeout(() => {
+          setHasStarted(true);
+          
+          const startTime = Date.now();
+          const startValue = 0;
+          
+          const updateCount = () => {
+            const now = Date.now();
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Easing function for smooth animation
+            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+            const currentValue = Math.floor(startValue + (end - startValue) * easeOutQuart);
+            
+            setCount(currentValue);
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateCount);
+            } else {
+              setCount(end);
+            }
+          };
+          
+          requestAnimationFrame(updateCount);
+        }, delay);
+
+        return () => clearTimeout(timer);
+      }
+    }, [end, duration, delay, hasStarted]);
+
+    return count;
+  };
+
+  // Individual counter components
+  const StatCounter = ({ stat, index }) => {
+    const count = useCountUp(stat.numericValue, 2500, index * 200);
+    
+    return (
+      <div className="flex flex-col items-center text-center px-2 sm:px-4">
+        <p className="text-gray-700 text-xs sm:text-sm font-semibold mb-1">
+          {stat.label}
+        </p>
+        <p className="text-orange-600 text-sm sm:text-base font-extrabold">
+          {count.toLocaleString()}{stat.suffix}
+        </p>
+      </div>
+    );
+  };
 
   // Plant locations with coordinates and details
   const plantLocations = [
@@ -215,21 +293,11 @@ function LocationsMap() {
           </button>
         </div>
 
-        {/* Stats Row */}
+        {/* Animated Stats Row */}
         <div className="flex justify-center mb-10">
-          <div className="bg-gray-50 shadow-md rounded-xl grid grid-cols-2 sm:grid-cols-4 gap-y-4 px-4 sm:px-10 py-5 w-full max-w-[1160px]">
+          <div className="bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-xl grid grid-cols-2 sm:grid-cols-4 gap-y-4 px-4 sm:px-10 py-6 w-full max-w-[1160px] border border-gray-200">
             {stats.map((stat, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center text-center px-2 sm:px-4"
-              >
-                <p className="text-gray-700 text-xs sm:text-sm font-semibold mb-1">
-                  {stat.label}
-                </p>
-                <p className="text-orange-600 text-sm sm:text-base font-extrabold">
-                  {stat.value}
-                </p>
-              </div>
+              <StatCounter key={index} stat={stat} index={index} />
             ))}
           </div>
         </div>
@@ -242,7 +310,7 @@ function LocationsMap() {
           </div>
 
           {/* Dynamic India Map with Leaflet */}
-          <div className="lg:w-2/5 relative shadow-md rounded-xl overflow-hidden border border-gray-300">
+          <div className="lg:w-2/5 relative shadow-md rounded-xl overflow-hidden border border-gray-300 z-10">
             {!isLoaded ? (
               <div className="w-full h-96 bg-gray-100 flex items-center justify-center">
                 <div className="text-center">
