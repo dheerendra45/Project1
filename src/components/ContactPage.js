@@ -30,12 +30,7 @@ const ContactPage = () => {
 
   return (
     <div
-      style={{
-        backgroundImage: `linear-gradient(rgba(128, 128, 128, 0.7), rgba(128, 128, 128, 0.7)), url(${contactbg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
-      }}
+     
       className="w-full font-inter py-16 px-4 sm:px-6 md:px-10 lg:px-20 bg-gray-100"
     >
       <div className="max-w-7xl mx-auto">
@@ -69,8 +64,8 @@ const ContactPage = () => {
                   ),
                   title: 'Address',
                   lines: [
-                    'Trinity Tower, 83 Topsia Road, 7th floor',
-                    'Kolkata – 700046, West Bengal, India CIN: L40101WB2002PLC095491'
+                    'Shyam Metalics & Energy Ltd. (Corporate Office)',
+                    'P-19 (Plate No. D-403) Taratala Road, Kolkata-700088, West Bengal, India'
                   ]
                 },
                 {
@@ -78,7 +73,7 @@ const ContactPage = () => {
                     <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                   ),
                   title: 'Phone Number',
-                  lines: ['+91 33 4016 4001', '+91 33 4016 4025']
+                  lines: ['+91 33 4011 1000', '+91  33 4017 5000']
                 },
                 {
                   icon: (

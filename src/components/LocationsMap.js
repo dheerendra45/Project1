@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 import WorldMapImage from '../assets/world-map.png';
 
 function LocationsMap() {
   const mapRef = useRef(null);
+  const sectionRef = useRef(null);
   const [map, setMap] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [animatedStats, setAnimatedStats] = useState({});
+  const [isInView, setIsInView] = useState(false);
 
+  // Stats data with enhanced values (removed icons)
   const stats = [
     { 
       label: 'Clients Served', 
@@ -15,14 +18,14 @@ function LocationsMap() {
       suffix: '+ (Domestic & Global)'
     },
     { 
-      label: 'Annual growth', 
+      label: 'Annual Growth', 
       value: '32% (Revenue: 12,500 Cr)', 
       numericValue: 32,
       suffix: '% (Revenue: 12,500 Cr)'
     },
     { 
-      label: 'Active projects', 
-      value: '1200+ (Incl. Govt. Infrastructure)', 
+      label: 'Active Projects', 
+      value: '1,200+ (Incl. Govt. Infrastructure)', 
       numericValue: 1200,
       suffix: '+ (Incl. Govt. Infrastructure)'
     },
@@ -34,64 +37,7 @@ function LocationsMap() {
     }
   ];
 
-  // Animated counter hook
-  const useCountUp = (end, duration = 2000, delay = 0) => {
-    const [count, setCount] = useState(0);
-    const [hasStarted, setHasStarted] = useState(false);
-
-    useEffect(() => {
-      if (!hasStarted) {
-        const timer = setTimeout(() => {
-          setHasStarted(true);
-          
-          const startTime = Date.now();
-          const startValue = 0;
-          
-          const updateCount = () => {
-            const now = Date.now();
-            const elapsed = now - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            
-            // Easing function for smooth animation
-            const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-            const currentValue = Math.floor(startValue + (end - startValue) * easeOutQuart);
-            
-            setCount(currentValue);
-            
-            if (progress < 1) {
-              requestAnimationFrame(updateCount);
-            } else {
-              setCount(end);
-            }
-          };
-          
-          requestAnimationFrame(updateCount);
-        }, delay);
-
-        return () => clearTimeout(timer);
-      }
-    }, [end, duration, delay, hasStarted]);
-
-    return count;
-  };
-
-  // Individual counter components
-  const StatCounter = ({ stat, index }) => {
-    const count = useCountUp(stat.numericValue, 2500, index * 200);
-    
-    return (
-      <div className="flex flex-col items-center text-center px-2 sm:px-4">
-        <p className="text-gray-700 text-xs sm:text-sm font-semibold mb-1">
-          {stat.label}
-        </p>
-        <p className="text-orange-600 text-sm sm:text-base font-extrabold">
-          {count.toLocaleString()}{stat.suffix}
-        </p>
-      </div>
-    );
-  };
-
-  // Plant locations with coordinates and details
+  // Plant locations data
   const plantLocations = [
     {
       id: 1,
@@ -151,6 +97,94 @@ function LocationsMap() {
     }
   ];
 
+  // Enhanced count-up animation with spring effect that restarts every time
+  const useCountUp = (end, duration = 3000, delay = 0) => {
+    const [count, setCount] = useState(0);
+    const [animationId, setAnimationId] = useState(null);
+
+    useEffect(() => {
+      // Reset count and cancel any existing animation when coming into view
+      if (isInView) {
+        setCount(0);
+        
+        // Cancel any existing animation
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+        }
+        
+        const timer = setTimeout(() => {
+          const startTime = Date.now();
+          const startValue = 0;
+          
+          const updateCount = () => {
+            const now = Date.now();
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            
+            // Spring easing function
+            const spring = (progress) => {
+              return 1 - Math.pow(1 - progress, 4) * Math.cos(progress * Math.PI);
+            };
+            
+            const currentValue = Math.floor(startValue + (end - startValue) * spring(progress));
+            
+            setCount(currentValue);
+            
+            if (progress < 1) {
+              const id = requestAnimationFrame(updateCount);
+              setAnimationId(id);
+            } else {
+              setCount(end);
+              setAnimationId(null);
+            }
+          };
+          
+          const id = requestAnimationFrame(updateCount);
+          setAnimationId(id);
+        }, delay);
+
+        return () => {
+          clearTimeout(timer);
+          if (animationId) {
+            cancelAnimationFrame(animationId);
+          }
+        };
+      } else {
+        // Reset count when out of view
+        setCount(0);
+        if (animationId) {
+          cancelAnimationFrame(animationId);
+          setAnimationId(null);
+        }
+      }
+    }, [end, duration, delay, isInView]);
+
+    return count;
+  };
+
+  // Track when section comes into view with enhanced options
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { 
+        threshold: 0.2, // Trigger when 20% of the section is visible
+        rootMargin: '0px 0px -50px 0px' // Trigger a bit before the section is fully visible
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   // Load Leaflet CSS and JS
   useEffect(() => {
     const loadLeaflet = async () => {
@@ -179,19 +213,29 @@ function LocationsMap() {
   // Initialize map when Leaflet is loaded
   useEffect(() => {
     if (isLoaded && mapRef.current && !map && window.L) {
-      // Initialize the map
+      // Calculate bounds to fit all plant locations
+      const bounds = window.L.latLngBounds(
+        plantLocations.map(plant => [plant.lat, plant.lng])
+      );
+
+      // Initialize the map with bounds that show all plants
       const leafletMap = window.L.map(mapRef.current, {
         center: [23.5937, 78.9629], // Center of India
-        zoom: 6,
+        zoom: 5,
+        minZoom: 4, // Minimum zoom to keep focus on India
+        maxZoom: 12, // Maximum zoom for detailed view
         zoomControl: true,
         scrollWheelZoom: true
       });
 
-      // Add tile layer (OpenStreetMap - Free!)
+      // Add tile layer (OpenStreetMap)
       window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
         maxZoom: 18,
       }).addTo(leafletMap);
+
+      // Fit map to show all plant locations with padding
+      leafletMap.fitBounds(bounds, { padding: [30, 30] });
 
       setMap(leafletMap);
 
@@ -274,79 +318,227 @@ function LocationsMap() {
     }
   }, [isLoaded, map]);
 
+  // Stat counter component with enhanced animations (removed icons)
+  const StatCounter = ({ stat, index }) => {
+    const count = useCountUp(stat.numericValue, 3000, index * 500);
+    
+    return (
+      <motion.div 
+        className="flex flex-col items-center text-center px-2 sm:px-4"
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { 
+          opacity: 1, 
+          y: 0,
+          transition: { 
+            delay: index * 0.3,
+            type: "spring",
+            stiffness: 100,
+            damping: 10
+          }
+        } : {}}
+      >
+        <motion.p 
+          className="text-orange-600 text-lg sm:text-xl font-extrabold"
+          animate={isInView ? {
+            scale: [1, 1.1, 1],
+            transition: { 
+              delay: index * 0.3 + 0.5,
+              duration: 0.8,
+              repeat: 1,
+              repeatType: "reverse"
+            }
+          } : {}}
+        >
+          {count.toLocaleString()}{stat.suffix}
+        </motion.p>
+        <p className="text-gray-700 text-xs sm:text-sm font-semibold mt-1">
+          {stat.label}
+        </p>
+      </motion.div>
+    );
+  };
+
   return (
-    <div className="py-16 px-4 bg-white font-inter">
+    <div ref={sectionRef} className="py-16 px-4 bg-white font-inter" id="locations">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title & Description with Button Row */}
-        <div className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <motion.div 
+          className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { 
+            opacity: 1, 
+            y: 0,
+            transition: { duration: 0.8 }
+          } : {}}
+        >
           <div className="mb-4 sm:mb-0">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">Locations</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">Our Global Footprint</h2>
             <p className="text-gray-700 max-w-xl text-sm sm:text-base">
               Metric Verified Data (2023-24)
             </p>
           </div>
-          <button className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors self-start sm:self-auto">
+          <motion.button 
+            className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors self-start sm:self-auto"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             View Global Presence
-            <span className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-xl font-extrabold">
+            <motion.span 
+              className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-xl font-extrabold"
+              animate={{
+                x: [0, 5, 0],
+                transition: {
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut"
+                }
+              }}
+            >
               →
-            </span>
-          </button>
-        </div>
+            </motion.span>
+          </motion.button>
+        </motion.div>
 
         {/* Animated Stats Row */}
         <div className="flex justify-center mb-10">
-          <div className="bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-xl grid grid-cols-2 sm:grid-cols-4 gap-y-4 px-4 sm:px-10 py-6 w-full max-w-[1160px] border border-gray-200">
+          <motion.div 
+            className="bg-gradient-to-r from-gray-50 to-gray-100 shadow-lg rounded-xl grid grid-cols-2 sm:grid-cols-4 gap-y-4 px-4 sm:px-10 py-6 w-full max-w-[1160px] border border-gray-200"
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { 
+              opacity: 1, 
+              y: 0,
+              transition: { 
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 10
+              }
+            } : {}}
+          >
             {stats.map((stat, index) => (
               <StatCounter key={index} stat={stat} index={index} />
             ))}
-          </div>
+          </motion.div>
         </div>
 
         {/* Maps Section */}
         <div className="flex flex-col lg:flex-row gap-6 sm:gap-10">
-          {/* World Map */}
-          <div className="lg:w-3/5 shadow-md rounded-xl overflow-hidden border border-gray-300">
-            <img src={WorldMapImage} alt="World Map" className="w-full object-cover" />
+          {/* World Map with Heading */}
+          <div className="lg:w-3/5">
+            <motion.h3 
+              className="text-xl font-bold text-gray-800 mb-3 flex items-center"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { 
+                opacity: 1, 
+                x: 0,
+                transition: { delay: 0.4 }
+              } : {}}
+            >
+              <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+              Countries We Export To
+            </motion.h3>
+            <motion.div
+              className="shadow-md rounded-xl overflow-hidden border border-gray-300"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { 
+                opacity: 1, 
+                scale: 1,
+                transition: { delay: 0.5 }
+              } : {}}
+            >
+              <img 
+                src={WorldMapImage} 
+                alt="World Map" 
+                className="w-full object-cover"
+              />
+            </motion.div>
           </div>
 
-          {/* Dynamic India Map with Leaflet */}
-          <div className="lg:w-2/5 relative shadow-md rounded-xl overflow-hidden border border-gray-300 z-10">
-            {!isLoaded ? (
-              <div className="w-full h-96 bg-gray-100 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"></div>
-                  <p className="text-gray-600">Loading Interactive Map...</p>
-                  <p className="text-gray-500 text-sm mt-1">Free OpenStreetMap</p>
+          {/* India Map with Heading */}
+          <div className="lg:w-2/5">
+            <motion.h3 
+              className="text-xl font-bold text-gray-800 mb-3 flex items-center"
+              initial={{ opacity: 0, x: -20 }}
+              animate={isInView ? { 
+                opacity: 1, 
+                x: 0,
+                transition: { delay: 0.6 }
+              } : {}}
+            >
+              <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
+              Our Manufacturing Locations
+            </motion.h3>
+            <motion.div
+              className="relative shadow-md rounded-xl overflow-hidden border border-gray-300 z-10 h-96"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { 
+                opacity: 1, 
+                y: 0,
+                transition: { delay: 0.7 }
+              } : {}}
+            >
+              {!isLoaded ? (
+                <div className="w-full h-full bg-gray-100 flex items-center justify-center">
+                  <div className="text-center">
+                    <motion.div 
+                      className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto mb-4"
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+                    />
+                    <p className="text-gray-600">Loading Interactive Map...</p>
+                  </div>
                 </div>
-              </div>
-            ) : (
-              <div
-                ref={mapRef}
-                className="w-full h-96"
-                style={{ minHeight: '400px' }}
-              />
-            )}
-            
-            {/* Map Legend */}
-            <div className="absolute bottom-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg p-3 shadow-lg z-[1000]">
-              <h4 className="font-semibold text-sm text-gray-800 mb-2">Plant Locations</h4>
-              <div className="space-y-1 text-xs">
-                <div className="flex items-center">
-                  <div className="w-3 h-3 bg-orange-500 rounded-full mr-2 border border-white"></div>
-                  <span className="text-gray-700">Manufacturing Plants</span>
+              ) : (
+                <div
+                  ref={mapRef}
+                  className="w-full h-full"
+                />
+              )}
+              
+              {/* Map Legend */}
+              <motion.div 
+                className="absolute bottom-4 left-4 bg-white bg-opacity-95 backdrop-blur-sm rounded-lg p-3 shadow-lg z-[1000]"
+                initial={{ opacity: 0 }}
+                animate={isInView ? { 
+                  opacity: 1,
+                  transition: { delay: 1.2 }
+                } : {}}
+              >
+                <h4 className="font-semibold text-sm text-gray-800 mb-2">Plant Locations</h4>
+                <div className="space-y-1 text-xs">
+                  <div className="flex items-center">
+                    <div className="w-3 h-3 bg-orange-500 rounded-full mr-2 border border-white"></div>
+                    <span className="text-gray-700">Manufacturing Plants</span>
+                  </div>
+                  <p className="text-gray-600 text-xs mt-1">Hover/Click for details</p>
                 </div>
-                <p className="text-gray-600 text-xs mt-1">Hover/Click for details</p>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
 
         {/* Plant List for Mobile */}
-        <div className="mt-8 lg:hidden">
+        <motion.div 
+          className="mt-8 lg:hidden"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { 
+            opacity: 1,
+            transition: { delay: 0.8 }
+          } : {}}
+        >
           <h3 className="text-xl font-bold text-black mb-4">Our Plant Locations</h3>
           <div className="grid gap-4">
-            {plantLocations.map((plant) => (
-              <div key={plant.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+            {plantLocations.map((plant, index) => (
+              <motion.div 
+                key={plant.id}
+                className="bg-gray-50 rounded-lg p-4 border border-gray-200"
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: { delay: 0.9 + index * 0.1 }
+                } : {}}
+              >
                 <div className="flex items-start justify-between mb-2">
                   <h4 className="font-semibold text-orange-600">{plant.name}</h4>
                   <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
@@ -362,26 +554,26 @@ function LocationsMap() {
                 >
                   Get Directions →
                 </a>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
-
-        {/* Custom CSS for better popup styling */}
-        <style jsx>{`
-          .custom-popup .leaflet-popup-content-wrapper {
-            border-radius: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-          }
-          .custom-popup .leaflet-popup-tip {
-            background-color: white;
-          }
-          .custom-marker {
-            background: transparent !important;
-            border: none !important;
-          }
-        `}</style>
+        </motion.div>
       </div>
+
+      {/* Custom CSS for better popup styling */}
+      <style jsx global>{`
+        .custom-popup .leaflet-popup-content-wrapper {
+          border-radius: 8px;
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .custom-popup .leaflet-popup-tip {
+          background-color: white;
+        }
+        .custom-marker {
+          background: transparent !important;
+          border: none !important;
+        }
+      `}</style>
     </div>
   );
 }

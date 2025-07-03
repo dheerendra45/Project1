@@ -81,7 +81,7 @@ const TestimonialHomePage = () => {
           setCurrentTestimonial(testimonials[nextIndex]);
           return nextIndex;
         });
-      }, 3000); // Change testimonial every 3 seconds
+      }, 5000); // Change testimonial every 5 seconds
     }
     return () => clearInterval(interval);
   }, [isAutoPlaying, testimonials]);
@@ -176,7 +176,7 @@ const TestimonialHomePage = () => {
         className="hidden lg:block bg-gray-50 py-5 overflow-hidden relative w-full"
         style={{ height: "735px" }}
       >
-        <div className="flex justify-center w-full">
+        <div className="flex justify-center w-full px-4">
           <div
             className="relative"
             style={{
@@ -242,7 +242,7 @@ const TestimonialHomePage = () => {
 
             {/* Center Content */}
             <div className="flex flex-col justify-center items-center h-[640px] pt-60 absolute inset-0">
-              <div className="text-center space-y-8 relative z-10 max-w-4xl">
+              <div className="text-center space-y-8 relative z-10 max-w-4xl px-4">
                 {/* Static Header */}
                 <div className="space-y-4">
                   <p className="text-orange-500 font-semibold tracking-wide text-sm lg:text-base">
@@ -262,7 +262,7 @@ const TestimonialHomePage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, ease: "easeInOut" }}
-                    className="text-gray-600 text-lg max-w-2xl mx-auto"
+                    className="text-gray-600 text-lg max-w-2xl mx-auto text-center"
                   >
                     <p>
                       "{safeCurrentTestimonial.text}"
@@ -276,12 +276,17 @@ const TestimonialHomePage = () => {
 
                 {/* Read All Button - Desktop */}
                 <motion.button
-                  onClick={handleReadAll}
+                  onClick={() => {
+                    handleReadAllToggle();
+                    if (!isAutoPlaying) {
+                      handleReadAll();
+                    }
+                  }}
                   className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Read All
+                  {isAutoPlaying ? "Stop Reading" : "Read All"}
                 </motion.button>
               </div>
             </div>
@@ -332,7 +337,7 @@ const TestimonialHomePage = () => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="text-gray-600 text-base mb-6"
+                className="text-gray-600 text-base mb-6 text-center"
               >
                 <p className="mb-4">"{safeCurrentTestimonial.text}"</p>
                 <p className="font-semibold">{safeCurrentTestimonial.author}</p>
@@ -344,7 +349,7 @@ const TestimonialHomePage = () => {
               onClick={() => {
                 handleReadAllToggle();
                 if (!isAutoPlaying) {
-                  handleReadAll(); // Call this when starting auto-play
+                  handleReadAll();
                 }
               }}
               className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
@@ -352,8 +357,6 @@ const TestimonialHomePage = () => {
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>
           </div>
-
-          {/* Read All Button - Mobile */}
         </div>
       </div>
     </div>

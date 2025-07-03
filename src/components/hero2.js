@@ -6,18 +6,18 @@ import IndiaMapIcon from '../assets/india-map-icon.png';
 
 const banners = [
   {
-    heading: "Shyam Metalics - Pioneering Steel Excellence Since 1991",
-    subline: "Recognized among India's top steel manufacturers for quality and innovation.",
+    heading: "Shaping the Future of India's Infrastructure",
+    subline: "One of India's 6th largest  integrated steel producers driving nation-building projects.",
     image: herobg
   },
   {
-    heading: "Engineering India's Infrastructure Growth",
-    subline: "Preferred steel supplier for landmark projects nationwide.",
+    heading: "From Iron to Infrastructure – Building a Stronger India",
+    subline: "Empowering India with high-performance ferro alloys for industrial growth.",
     image: herobg
   },
   {
-    heading: "Steel Solutions for Tomorrow's Challenges",
-    subline: "Innovating tech infrastructure today to build a stronger future.",
+    heading: "Sustainable Steel for a Greener, Stronger Bharat",
+    subline: "Pioneering green steel technologies for low-carbon infrastructure.",
     image: herobg
   }
 ];

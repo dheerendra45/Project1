@@ -87,11 +87,11 @@ const NewsPage = () => {
       category: "Philanthropy",
       admin: "Admin",
       comments: "5 Comments",
-      title: "Tanishi Agarwal Recognised for Strategic Philanthropy",
+      title: "Tanishi Agarwal | Recognised for leadership in advancing strategic philanthropy | Shyam Metalics Cares.",
       excerpt:
-        "Tanishi Agarwal is celebrated for advancing inclusive nation-building through Shyam Metalics Cares. Her leadership inspires sustainable social impact across communities.",
+        "We’re proud to share that Tanishi Agarwal has been recognised for her exemplary leadership in advancing strategic philanthropy and inclusive nation-building through Shyam Metalics Cares.",
       subtext:
-        "Further details: Tanishi has led various initiatives in education, health, and environmental sustainability, making a notable impact across multiple regions.",
+        " From empowering communities to building an inclusive tomorrow, this award celebrates the very spirit of nation-building we strive for at Shyam Metalics. Congratulations on this well-deserved honour!.",
     },
     {
       id: 2,
@@ -102,9 +102,9 @@ const NewsPage = () => {
       comments: "2 Comments",
       title: "Shyam Metalics Secures Major Export Order to Southeast Asia",
       excerpt:
-        "50,000 MT shipment of TMT bars and wire rods to Vietnam & Indonesia boosts India's steel export status and adds $25M in revenue.",
+        "Expanding Global Footprint with 50,000 MT Steel Shipment to Vietnam & Indonesia.High-grade TMT bars and wire rods to support infrastructure project",
       subtext:
-        "Additional info: This shipment marks the company's entry into new markets, solidifying its position as a leading exporter in the steel industry.",
+        "Strengthens India’s position as a top steel exporter; $25M revenue boost expected."
     },
     {
       id: 3,
@@ -113,11 +113,11 @@ const NewsPage = () => {
       category: "Innovation",
       admin: "Admin",
       comments: "1 Comment",
-      title: "IIT Bombay Collaboration for Green Steel Research",
+      title: "Shyam Metalics Partners with IIT Bombay for Green Steel Research",
       excerpt:
-        "Shyam Metalics partners with IIT Bombay to explore hydrogen-based steel production and carbon capture with a ₹100Cr R&D investment.",
+        "Pioneering Sustainable Steel Solutions with Cutting-Edge Technology.Joint R&D focus: Hydrogen-based steel production & carbon capture.",
       subtext:
-        "Details: The collaboration aims to develop cutting-edge technology to reduce carbon footprint and promote sustainable manufacturing processes.",
+        "Aims to reduce emissions by 30% by 2030; ₹100Cr investment pledged.",
     },
     {
       id: 4,
@@ -125,12 +125,12 @@ const NewsPage = () => {
       date: "20 APR 2025",
       category: "Manufacturing",
       admin: "Admin",
-      comments: "4 Comments",
-      title: "Aluminum Foil Division Gets FDA Approval",
+      comments: "Comments",
+      title: " New Aluminum Foil Division Wins FDA Approval for Food-Grade Packaging.",
       excerpt:
-        "New 40,000 TPA unit enters FMCG & pharma sectors with India's first 100% recyclable packaging certification for food-grade foil.",
+        "Diversification Success: Enters FMCG Sector with 40,000 TPA Capacity. Supplies to top Indian snack brands and pharma companies.",
       subtext:
-        "More info: The FDA approval enables expansion into high-growth sectors, emphasizing eco-friendly and recyclable packaging solutions.",
+        "First Indian steel company to achieve 100% recyclable packaging certification.",
     },
   ];
 
