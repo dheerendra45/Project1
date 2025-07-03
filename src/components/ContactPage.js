@@ -119,8 +119,8 @@ const ContactPage = () => {
             className="md:w-2/5 w-full"
           >
             <div className="bg-gray-200 p-8 rounded-md shadow-md text-black">
-              <h2 className="text-3xl font-bold mb-2">Get in Touch</h2>
-              <p className="mb-6 text-sm text-gray-700">
+              <h2 className="text-3xl font-extrabold mb-3 text-center text-gray-900">Get in Touch</h2>
+              <p className="mb-8 text-sm text-gray-600 text-center">
                 Fill out the form and we'll get back to you soon
               </p>
 
@@ -137,7 +137,7 @@ const ContactPage = () => {
                     }
                     value={formData[field]}
                     onChange={handleInputChange}
-                    className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black text-sm"
+                    className="w-full p-3 bg-gray-100 border border-gray-300 rounded-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 text-sm transition"
                   />
                 ))}
 
@@ -147,13 +147,13 @@ const ContactPage = () => {
                   rows="4"
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="w-full p-3 bg-white border border-gray-400 rounded-md placeholder-black text-sm"
+                  className="w-full p-3  bg-gray-100 border border-gray-300 rounded-lg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-800 text-sm transition"
                 />
 
                 <button
                   type="button"
                   onClick={handleSubmit}
-                  className="bg-black text-white py-3 px-6 rounded-md hover:bg-gray-900 transition text-sm"
+                  className="bg-gray-800 text-white py-3 px-6 rounded-md hover:bg-gray-900 transition text-sm"
                 >
                   Submit
                 </button>
