@@ -25,7 +25,7 @@ const EnvironmentSection1 = () => {
         trigger: sectionRef.current,
         start: 'top 40%',
         end: 'bottom 30%',
-        markers:true,
+        markers:false,
         toggleActions: 'play none none reverse',
       },
     });
