@@ -1,11 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import worldExport from '../assets/worldExport.mp4';
-import gsap from 'gsap';
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
-
 
 function LocationsMap() {
   const mapRef = useRef(null);
@@ -15,46 +10,25 @@ function LocationsMap() {
   const [isInView, setIsInView] = useState(false);
   const videoRef = useRef(null);
 
-  useEffect(() => {
-  const videoEl = videoRef.current;
-  const sectionEl = sectionRef.current;
-
-  if (!videoEl || !sectionEl) return;
-
-  const handleLoadedMetadata = () => {
-    const videoDuration = videoEl.duration;
-
-    gsap.to(videoEl, {
-      scrollTrigger: {
-        trigger: sectionEl,
-        start: "top 25%",
-        end: "bottom center",
-        scrub: 0.5,
-        // markers: true,
-        onUpdate: (self) => {
-          const scrollProgress = self.progress;
-          const speedMultiplier = 1.8; 
-          let newTime = scrollProgress * videoDuration * speedMultiplier;
-          newTime = Math.min(newTime, videoDuration); 
-          videoEl.currentTime = newTime;
-
-          gsap.to(videoEl, {
-            currentTime: newTime,
-            duration: 0.2,       
-            ease: "power1.out",
-          });
-        },
-      },
-    });
+  // Handle component hover for video play
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0; // Reset to start
+      videoRef.current.play().catch(e => {
+        console.log('Video play failed:', e);
+      });
+    }
   };
 
-  videoEl.addEventListener("loadedmetadata", handleLoadedMetadata);
-
-  return () => {
-    videoEl.removeEventListener("loadedmetadata", handleLoadedMetadata);
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+  const handleMouseLeave = () => {
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0; // Reset to start
+    }
   };
-}, []);
+
+
+
   // Stats data with enhanced values (removed icons)
   const stats = [
     { 
@@ -405,7 +379,13 @@ function LocationsMap() {
   };
 
   return (
-    <div ref={sectionRef} className="py-16 px-4 bg-white font-inter" id="locations">
+    <div 
+      ref={sectionRef} 
+      className="py-16 px-4 bg-white font-inter" 
+      id="locations"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
         {/* Title & Description with Button Row */}
         <motion.div 
@@ -492,19 +472,14 @@ function LocationsMap() {
                 transition: { delay: 0.5 }
               } : {}}
             >
-              {/* <img 
-                src={WorldMapImage} 
-                alt="World Map" 
-                className="w-full object-cover"
-              /> */}
               <video
                 ref={videoRef}
                 src={worldExport}
                 className="w-full object-cover"
                 muted
                 playsInline
+                preload="metadata"
               />
-              
             </motion.div>
           </div>
 

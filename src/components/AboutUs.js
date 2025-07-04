@@ -329,7 +329,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-6 font-['Inter',sans-serif]">
+    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-8 py-6 font-['Inter',sans-serif]">
       {/* ABOUT US Section - Made more compact */}
       <div
         className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6"
