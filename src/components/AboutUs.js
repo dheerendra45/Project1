@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
+import WhatsAppButton from "./whatsappButton.jsx";
 import abt1img from "../assets/abt1.jpg";
 import a1 from "../assets/aboutUs.png";
 import a2 from "../assets/1.png";
@@ -8,63 +9,7 @@ import a3 from "../assets/2.png";
 import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
-// WhatsApp Button Component
-const WhatsAppButton = () => {
-  const [isWhatsAppPulse, setIsWhatsAppPulse] = useState(true);
-
-  const handleWhatsAppClick = () => {
-    // Initialize Gallabox widget with the token from your script
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0Ijoic2h5YW1tZXRhbGljcy5jb20iLCJpZCI6IjY4NTY2OTFkMDdhMDk1MjFkODUxYTQ2MSIsImFjY0lkIjoiNjJiNmQ5NjM4MTEwNjAwMDA0M2ExNDczIiwiaWF0IjoxNzUwNDkzNDY5fQ.cNlD7qg1BcKehMLP4LlfwSYHQkY4c-4wVlUW2HEchKE";
-
-    // Create and load the Gallabox widget
-    if (!window.Chatty) {
-      window.Chatty = function (c) {
-        window.Chatty._.push(c);
-      };
-      window.Chatty._ = [];
-      window.Chatty.url = "https://widget.gallabox.com";
-      window.Chatty.hash = token;
-
-      const script = document.createElement("script");
-      script.async = true;
-      script.src =
-        "https://widget.gallabox.com/chatty-widget.min.js?_=" + Math.random();
-      document.head.appendChild(script);
-    }
-
-    // Stop the pulse animation after first click
-    setIsWhatsAppPulse(false);
-  };
-
-  return (
-    <motion.button
-      onClick={handleWhatsAppClick}
-      className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-colors duration-200 relative overflow-hidden"
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      animate={
-        isWhatsAppPulse
-          ? {
-              scale: [1, 1.1, 1],
-              boxShadow: [
-                "0 0 0 0 rgba(34, 197, 94, 0.7)",
-                "0 0 0 20px rgba(34, 197, 94, 0)",
-                "0 0 0 0 rgba(34, 197, 94, 0)",
-              ],
-            }
-          : {}
-      }
-      transition={{
-        duration: 2,
-        repeat: isWhatsAppPulse ? Infinity : 0,
-        repeatType: "loop",
-      }}
-    >
-      <MessageCircle size={24} />
-    </motion.button>
-  );
-};
+// Mock images - replace with your actual imports
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -680,7 +625,7 @@ export default function AboutUs() {
         </AnimatePresence>
 
         {/* WhatsApp Button */}
-        <WhatsAppButton />
+        {/* <WhatsAppButton/> */}
       </motion.div>
     </div>
   );

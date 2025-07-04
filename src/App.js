@@ -21,7 +21,7 @@ import Manufacturing from './Pages/Manufacturing';
 import Lifeshyam from './Pages/Lifeshyam';
 import Currentopening from './Pages/Currentopening';
 import Jobopportunity from './Pages/Jobopportunity';
-import Environmentcompliance from'./Pages/Environmentcompliance';
+import Environmentcompliance from './Pages/Environmentcompliance';
 import Blogs from './Pages/blogs';
 import AwardsAndAchievements from './Pages/awards&achievements';
 
@@ -41,11 +41,14 @@ import Bright_bar from './Pages/Bright_bar.js';
 import Flats from './Pages/flats.js';
 import Financial_information from './Pages/finacial_information.js';
 import Policies from './Pages/policies.js';
+import WhatsAppButton from './components/whatsappButton.jsx';
 
 function App() {
   return (
     <div className="App">
+       <WhatsAppButton />
       <Routes>
+
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="newsandevents" element={<Awards />} />
@@ -57,51 +60,51 @@ function App() {
           <Route path="companyoverview" element={<Companyoverview />} />
           <Route path="ContactPage" element={<ContactPage />} />
           <Route path="csr" element={<Sustainability />} />
-          
- <Route path="currentopening" element={<Currentopening />} /> 
- <Route path="environmentcompliance" element={<Environmentcompliance />} />
- <Route path="esg_profile" element={<P1 />} />
-  <Route path="faq-Page" element={<Faq />} />
 
-  <Route path="jobopportunity" element={<Jobopportunity />} />
-   <Route path="leadership" element={<LeadershipPage />} />
-  <Route path="LocationPage" element={<LocationPage />} />
-   <Route path="testimonials" element={<Testimonial />} />
- <Route path="knowledgehub" element={<Knowledgehub />} />
+          <Route path="currentopening" element={<Currentopening />} />
+          <Route path="environmentcompliance" element={<Environmentcompliance />} />
+          <Route path="esg_profile" element={<P1 />} />
+          <Route path="faq-Page" element={<Faq />} />
 
-   <Route path="manufacturing" element={<Manufacturing />} />
-  <Route path="lifeshyam" element={<Lifeshyam />} />
-  <Route path="seltiger" element={<Seltiger />} />
-  <Route path="sponge_iron" element={<SpongeIron />} />
-  <Route path="structural_steel" element={<StructuralSteel />} />
-  <Route path="tmt_bars" element={<TMTBars />} />
-  <Route path="wire_rods" element={<WireRods />} />
-   <Route path="stainless_steel_billets" element={<StainlessSteelBillets />} />
-   <Route path="SS_Wire_Rod" element={<SSWireRod />} />
-   <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
+          <Route path="jobopportunity" element={<Jobopportunity />} />
+          <Route path="leadership" element={<LeadershipPage />} />
+          <Route path="LocationPage" element={<LocationPage />} />
+          <Route path="testimonials" element={<Testimonial />} />
+          <Route path="knowledgehub" element={<Knowledgehub />} />
 
-      <Route path="billets" element={<Billets />} />
-      <Route path="pig_iron" element={<PigIron />} />
-      <Route path="pipes_hollow_sections" element={<Pipes />} />
-      <Route path="blackround_bar" element={<Blackround_bar />} />
-       <Route path="bright_bar" element={<Bright_bar />} />
+          <Route path="manufacturing" element={<Manufacturing />} />
+          <Route path="lifeshyam" element={<Lifeshyam />} />
+          <Route path="seltiger" element={<Seltiger />} />
+          <Route path="sponge_iron" element={<SpongeIron />} />
+          <Route path="structural_steel" element={<StructuralSteel />} />
+          <Route path="tmt_bars" element={<TMTBars />} />
+          <Route path="wire_rods" element={<WireRods />} />
+          <Route path="stainless_steel_billets" element={<StainlessSteelBillets />} />
+          <Route path="SS_Wire_Rod" element={<SSWireRod />} />
+          <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
 
-  <Route path="flats" element={<Flats />} />
-<Route path="finacial_informations" element={<Financial_information />} />
-<Route path="policies" element={<Policies />} />
+          <Route path="billets" element={<Billets />} />
+          <Route path="pig_iron" element={<PigIron />} />
+          <Route path="pipes_hollow_sections" element={<Pipes />} />
+          <Route path="blackround_bar" element={<Blackround_bar />} />
+          <Route path="bright_bar" element={<Bright_bar />} />
 
-   
-  </Route>
+          <Route path="flats" element={<Flats />} />
+          <Route path="finacial_informations" element={<Financial_information />} />
+          <Route path="policies" element={<Policies />} />
 
 
+        </Route>
 
-   <Route index element={<HomePage />} />
-   
- 
-  
-    
-    
-</Routes>
+
+
+        <Route index element={<HomePage />} />
+
+
+
+
+
+      </Routes>
 
     </div>
   );
