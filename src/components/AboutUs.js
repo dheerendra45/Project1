@@ -390,7 +390,7 @@ export default function AboutUs() {
           <AnimatePresence mode="wait">
             <motion.div
               key={`gallery-${activeIndex}`}
-              className="w-full h-40 mb-3"
+              className="w-full h-60 mb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -415,23 +415,26 @@ export default function AboutUs() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
-              className="w-full flex-grow bg-white p-3 sm:p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto"
+              className="w-full bg-white rounded-lg shadow-lg border border-orange-100 flex flex-col"
+              style={{ height: "calc(100% - 240px - 12px + 60px)" }}
             >
-              <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-1">
-                {yearContent[activeIndex]?.year || years[activeIndex]}:{" "}
-                {yearContent[activeIndex]?.title}
-              </h2>
-              <div className="space-y-1 text-xs sm:text-sm">
-                {yearContent[activeIndex]?.content.map((item, i) => (
-                  <p
-                    key={i}
-                    className={
-                      item.startsWith("•") || item.startsWith("✓") ? "pl-3" : ""
-                    }
-                  >
-                    {item}
-                  </p>
-                ))}
+              <div className="p-3 sm:p-4 overflow-y-auto flex-1">
+                <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-1">
+                  {yearContent[activeIndex]?.year || years[activeIndex]}:{" "}
+                  {yearContent[activeIndex]?.title}
+                </h2>
+                <div className="space-y-1 text-xs sm:text-sm">
+                  {yearContent[activeIndex]?.content.map((item, i) => (
+                    <p
+                      key={i}
+                      className={
+                        item.startsWith("•") || item.startsWith("✓") ? "pl-3" : ""
+                      }
+                    >
+                      {item}
+                    </p>
+                  ))}
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -546,9 +549,6 @@ export default function AboutUs() {
     </div>
   </div>
 </div>
-
-
-
 
       </div>
     </div>
