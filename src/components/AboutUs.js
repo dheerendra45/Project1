@@ -442,7 +442,7 @@ export default function AboutUs() {
       </div>
 
       {/* Timeline Section */}
-      <div className="relative  h-[33%] min-h-[175px]">
+      <div className="relative  h-[30%] min-h-[175px]">
         {/* Timeline Line with Symbols */}
         <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-6">
           {/* Progress Indicator */}
