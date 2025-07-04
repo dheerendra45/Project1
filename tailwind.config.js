@@ -3,6 +3,10 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  safelist: [
+    'h-[33%]',
+    'min-h-[175px]',
+  ],
   theme: {
     extend: {
       colors: {
