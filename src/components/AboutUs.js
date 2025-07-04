@@ -1,24 +1,18 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
-import WhatsAppButton from "./whatsappButton";
-
-// Mock images - replace with your actual imports
-const abt1img = "https://via.placeholder.com/800x600/f97316/white?text=About+Us";
-const a1 = "https://via.placeholder.com/100x100/f97316/white?text=A1";
-const a2 = "https://via.placeholder.com/100x100/f97316/white?text=A2";
-const a3 = "https://via.placeholder.com/100x100/f97316/white?text=A3";
-const a4 = "https://via.placeholder.com/100x100/f97316/white?text=A4";
-const a5 = "https://via.placeholder.com/100x100/f97316/white?text=A5";
-const a6 = "https://via.placeholder.com/100x100/f97316/white?text=A6";
+import abt1img from "../assets/abt1.jpg";
+import a1 from "../assets/aboutUs.png";
+import a2 from "../assets/1.png";
+import a3 from "../assets/2.png";
+import a4 from "../assets/3.png";
+import a5 from "../assets/4.png";
+import a6 from "../assets/5.png";
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
-  const [isWhatsAppPulse, setIsWhatsAppPulse] = useState(true);
   const pauseTimeoutRef = useRef(null);
   const progressIntervalRef = useRef(null);
 
@@ -294,30 +288,6 @@ export default function AboutUs() {
     }, 10000);
   };
 
-  // WhatsApp functionality
-  const handleWhatsAppClick = () => {
-    // Initialize Gallabox widget with the token from your script
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0Ijoic2h5YW1tZXRhbGljcy5jb20iLCJpZCI6IjY4NTY2OTFkMDdhMDk1MjFkODUxYTQ2MSIsImFjY0lkIjoiNjJiNmQ5NjM4MTEwNjAwMDA0M2ExNDczIiwiaWF0IjoxNzUwNDkzNDY5fQ.cNlD7qg1BcKehMLP4LlfwSYHQkY4c-4wVlUW2HEchKE";
-    
-    // Create and load the Gallabox widget
-    if (!window.Chatty) {
-      window.Chatty = function(c) { 
-        window.Chatty._.push(c); 
-      };
-      window.Chatty._ = [];
-      window.Chatty.url = 'https://widget.gallabox.com';
-      window.Chatty.hash = token;
-      
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://widget.gallabox.com/chatty-widget.min.js?_=' + Math.random();
-      document.head.appendChild(script);
-    }
-    
-    // Stop the pulse animation after first click
-    setIsWhatsAppPulse(false);
-  };
-
   useEffect(() => {
     if (!isHovering && !isPaused) {
       progressIntervalRef.current = setInterval(() => {
@@ -359,7 +329,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-8 py-6 font-['Inter',sans-serif]">
+    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-6 font-['Inter',sans-serif]">
       {/* ABOUT US Section - Made more compact */}
       <div
         className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6"
@@ -472,9 +442,9 @@ export default function AboutUs() {
       </div>
 
       {/* Timeline Section */}
-      <div className="relative h-[30%]">
+      <div className="relative  h-[30%] min-h-[150px]">
         {/* Timeline Line with Symbols */}
-        <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-2">
+        <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-6">
           {/* Progress Indicator */}
           <motion.div
             className="h-full bg-orange-500 absolute left-0 top-0"
@@ -546,79 +516,41 @@ export default function AboutUs() {
         </div>
 
         {/* Mobile Timeline */}
-        <div className="sm:hidden flex flex-col mt-8 px-4">
-          {/* Message and Year */}
-          <div className="text-center mb-4">
-            <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
-              {messages[activeIndex]}
-            </div>
-            <div className="text-orange-600 font-medium text-sm mt-2">
-              {years[activeIndex]}
-            </div>
-          </div>
+<div className="sm:hidden flex flex-col mt-8 px-4">
+  {/* Message and Year */}
+  <div className="text-center mb-4">
+    <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
+      {messages[activeIndex]}
+    </div>
+    <div className="text-orange-600 font-medium text-sm mt-2">
+      {years[activeIndex]}
+    </div>
+  </div>
 
-          {/* Horizontal scrollable timeline */}
-          <div className="w-full overflow-x-auto">
-            <div className="flex gap-8 min-w-max px-2 py-3">
-              {galleryImages.map((img, index) => (
-                <motion.div
-                  key={index}
-                  className="flex flex-col items-center flex-shrink-0 min-w-[60px]"
-                >
-                  <div className={`
-                    w-8 h-8 rounded-full mb-2 flex items-center justify-center
-                    border-2 ${index <= progress ? 'border-orange-600 bg-orange-500' : 'border-gray-400 bg-gray-300'}
-                  `}>
-                    <img src={img} alt="" className="w-4 h-4 object-contain" />
-                  </div>
-                  <div className="text-xs text-center">
-                    {years[index]}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Floating WhatsApp Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ 
-          delay: 2,
-          duration: 0.5,
-          type: "spring",
-          stiffness: 260,
-          damping: 20
-        }}
-      >
+  {/* Horizontal scrollable timeline */}
+  <div className="w-full overflow-x-auto">
+    <div className="flex gap-8 min-w-max px-2 py-3">
+      {galleryImages.map((img, index) => (
         <motion.div
-          className="relative"
-          onMouseEnter={() => setShowWhatsAppTooltip(true)}
-          onMouseLeave={() => setShowWhatsAppTooltip(false)}
+          key={index}
+          className="flex flex-col items-center flex-shrink-0 min-w-[60px]"
         >
-          {/* Tooltip */}
-          <AnimatePresence>
-            {showWhatsAppTooltip && (
-              <motion.div
-                initial={{ opacity: 0, x: 20, scale: 0.8 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: 20, scale: 0.8 }}
-                transition={{ duration: 0.2 }}
-                className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
-              >
-                Chat with Shyam Metalics
-                <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          {/* WhatsApp Button */}
-          <WhatsAppButton/>
+          <div className={`
+            w-8 h-8 rounded-full mb-2 flex items-center justify-center
+            border-2 ${index <= progress ? 'border-orange-600 bg-orange-500' : 'border-gray-400 bg-gray-300'}
+          `}>
+            <img src={img} alt="" className="w-4 h-4 object-contain" />
+          </div>
+          <div className="text-xs text-center">
+            {years[index]}
+          </div>
         </motion.div>
-      </motion.div>
+      ))}
+    </div>
+  </div>
+</div>
+
+      </div>
     </div>
   );
 }
