@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X } from "lucide-react";
 import WhatsAppButton from "./whatsappButton";
-
+import abt1img from "../assets/abt1.jpg";
+import a1 from "../assets/aboutUs.png";
+import a2 from "../assets/1.png";
+import a3 from "../assets/2.png";
+import a4 from "../assets/3.png";
+import a5 from "../assets/4.png";
+import a6 from "../assets/5.png";
 // Mock images - replace with your actual imports
-const abt1img = "https://via.placeholder.com/800x600/f97316/white?text=About+Us";
-const a1 = "https://via.placeholder.com/100x100/f97316/white?text=A1";
-const a2 = "https://via.placeholder.com/100x100/f97316/white?text=A2";
-const a3 = "https://via.placeholder.com/100x100/f97316/white?text=A3";
-const a4 = "https://via.placeholder.com/100x100/f97316/white?text=A4";
-const a5 = "https://via.placeholder.com/100x100/f97316/white?text=A5";
-const a6 = "https://via.placeholder.com/100x100/f97316/white?text=A6";
+
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -616,7 +616,7 @@ export default function AboutUs() {
           </AnimatePresence>
 
           {/* WhatsApp Button */}
-          <WhatsAppButton/>
+          {/* <WhatsAppButton/> */}
         </motion.div>
       </motion.div>
     </div>
