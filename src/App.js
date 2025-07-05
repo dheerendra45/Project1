@@ -41,7 +41,9 @@ import Bright_bar from './Pages/Bright_bar.js';
 import Flats from './Pages/flats.js';
 import Financial_information from './Pages/finacial_information.js';
 import Policies from './Pages/policies.js';
+
 import WhatsAppButton from './components/whatsappButton.jsx';
+
 
 function App() {
   return (
@@ -60,6 +62,7 @@ function App() {
           <Route path="companyoverview" element={<Companyoverview />} />
           <Route path="ContactPage" element={<ContactPage />} />
           <Route path="csr" element={<Sustainability />} />
+
 
           <Route path="currentopening" element={<Currentopening />} />
           <Route path="environmentcompliance" element={<Environmentcompliance />} />
@@ -105,6 +108,7 @@ function App() {
 
 
       </Routes>
+
 
     </div>
   );
