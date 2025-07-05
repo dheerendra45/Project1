@@ -139,7 +139,7 @@ function MissionVisionValues() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % sections.length);
-    }, 3000); // 10 seconds
+    }, 3000); 
 
     return () => clearInterval(timer);
   }, []);
@@ -162,7 +162,7 @@ function MissionVisionValues() {
       </div>
 
       {/* Active Content */}
-      <div className="flex flex-col items-start space-y-4 text-left bg-white p-8 ">
+      <div className="flex flex-col items-start space-y-4 text-left bg-white px-8 ">
         <img src={sections[activeIndex].icon} alt={sections[activeIndex].title} className="h-16 w-16" />
         <h3 className="text-[24px] font-bold font-[Inter] text-black">{sections[activeIndex].title}</h3>
         <div className="text-gray-600 text-base font-normal leading-6 text-left font-[Inter] break-words">
