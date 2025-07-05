@@ -41,6 +41,7 @@ import Bright_bar from './Pages/Bright_bar.js';
 import Flats from './Pages/flats.js';
 import Financial_information from './Pages/finacial_information.js';
 import Policies from './Pages/policies.js';
+import SustainAbilityPage from './components/SustainAbilityPage.jsx';
 
 function App() {
   return (
@@ -96,7 +97,7 @@ function App() {
 
 
    <Route index element={<HomePage />} />
-   
+   {/* <Route path='gaurav' element={<SustainAbilityPage/>}/> */}
  
   
     
