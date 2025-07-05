@@ -13,10 +13,10 @@ function MissionVisionValues() {
       icon: VisionIcon,
       title: 'Our Vision',
       description: [
-      "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel,",
-      "Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth,",
-      "Empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world."
-    ],
+        "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel,",
+        "Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth,",
+        "Empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world."
+      ],
       // image: SteelFactoryImage,
       direction: 'left'
     },
@@ -24,22 +24,22 @@ function MissionVisionValues() {
       icon: MissionIcon,
       title: 'Our Mission',
       description: [
-      "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence,",
-      "Leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity,",
-      "Strengthen India’s industrial backbone, and create enduring value for all stakeholders."
-    ],
+        "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence,",
+        "Leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity,",
+        "Strengthen India’s industrial backbone, and create enduring value for all stakeholders."
+      ],
       // image: HardhatImage,
       direction: 'up'
     },
     {
-    icon: ValuesIcon,
-    title: 'Our Values',
-    description: ['Rooted in our values, we continue to grow with integrity and purpose.',
-    'Integrity – Transparency ,Collaboration – Synergy' ,
-    'Ownership – Accountability ,Commitment – Excellence'],
-    // image: WorkerImage,
-    direction: 'right'
-  }
+      icon: ValuesIcon,
+      title: 'Our Values',
+      description: ['Rooted in our values, we continue to grow with integrity and purpose.',
+        'Integrity – Transparency ,Collaboration – Synergy',
+        'Ownership – Accountability ,Commitment – Excellence'],
+      // image: WorkerImage,
+      direction: 'right'
+    }
 
   ];
 
@@ -49,7 +49,7 @@ function MissionVisionValues() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % sections.length);
-    }, 3000); 
+    }, 3000);
 
     return () => clearInterval(timer);
   }, []);
@@ -62,9 +62,8 @@ function MissionVisionValues() {
           <button
             key={index}
             onClick={() => setActiveIndex(index)}
-            className={`text-lg font-semibold ${
-              activeIndex === index ? "text-orange-600" : "text-gray-400"
-            }`}
+            className={`text-lg font-semibold ${activeIndex === index ? "text-orange-600" : "text-gray-400"
+              }`}
           >
             {item.title}
           </button>

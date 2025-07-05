@@ -14,31 +14,31 @@ import { motion } from "framer-motion";
 
 export default function SustainAbilityPage() {
     const cards = [
-    {
-      icon: tech2,
-      title: "Climate action",
-      description:
-        "We are transforming steel production with bold, tech-driven innovations to reduce our environmental footprint and lead low-carbon efforts.",
-    },
-    {
-      icon: tech2,
-      title: "Climate action governance",
-      description:
-        "Our robust governance framework ensures that every climate action is backed by accountability, transparency, and a focus on sustainability.",
-    },
-    {
-      icon: tech2,
-      title: "Climate scenario mapping",
-      description:
-        "By mapping climate risks and opportunities, we can anticipate challenges and forge a resilient, sustainable path forward.",
-    },
-    {
-      icon: tech2,
-      title: "Strategy ahead",
-      description:
-        "We are aiming for a 20% emissions reduction target by 2030 to 1.8tCO2/TCS 2021 as a baseline, taking meaningful steps towards a net-zero steel future.",
-    },
-  ];
+        {
+            icon: tech2,
+            title: "Climate action",
+            description:
+                "We are transforming steel production with bold, tech-driven innovations to reduce our environmental footprint and lead low-carbon efforts.",
+        },
+        {
+            icon: tech2,
+            title: "Climate action governance",
+            description:
+                "Our robust governance framework ensures that every climate action is backed by accountability, transparency, and a focus on sustainability.",
+        },
+        {
+            icon: tech2,
+            title: "Climate scenario mapping",
+            description:
+                "By mapping climate risks and opportunities, we can anticipate challenges and forge a resilient, sustainable path forward.",
+        },
+        {
+            icon: tech2,
+            title: "Strategy ahead",
+            description:
+                "We are aiming for a 20% emissions reduction target by 2030 to 1.8tCO2/TCS 2021 as a baseline, taking meaningful steps towards a net-zero steel future.",
+        },
+    ];
     return (
         <div className="w-full">
             <div >
@@ -170,7 +170,7 @@ export default function SustainAbilityPage() {
                                         </div>
                                         <div className="bg-white py-10 px-4">
                                             <button className="w-[40%] h-auto mt-6 p-3 text-white text-xl bg-black">
-                                                Download our Climate Action Report 
+                                                Download our Climate Action Report
                                             </button>
 
                                             <div className="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -202,44 +202,44 @@ export default function SustainAbilityPage() {
                                             </div>
 
                                             <div className="bg-white text-black  py-12 space-y-10">
-                                        {/* Section Heading */}
-                                        <h2 className="text-xl md:text-2xl font-semibold text-black">
-                                            Environmental Product Declarations (EPDs)
-                                        </h2>
+                                                {/* Section Heading */}
+                                                <h2 className="text-xl md:text-2xl font-semibold text-black">
+                                                    Environmental Product Declarations (EPDs)
+                                                </h2>
 
-                                        {/* 3 Columns Layout */}
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                                            {/* Card 1 */}
-                                            <div className="space-y-4 ">
-                                            <img src={img0}alt="Leaf" className="w-full h-64 object-cover" />
-                                            <p className="text-base leading-relaxed">
-                                                We conduct Life Cycle Assessments (LCA) to measure environmental
-                                                impact from production to disposal.
-                                            </p>
-                                            </div>
+                                                {/* 3 Columns Layout */}
+                                                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                                    {/* Card 1 */}
+                                                    <div className="space-y-4 ">
+                                                        <img src={img0} alt="Leaf" className="w-full h-64 object-cover" />
+                                                        <p className="text-base leading-relaxed">
+                                                            We conduct Life Cycle Assessments (LCA) to measure environmental
+                                                            impact from production to disposal.
+                                                        </p>
+                                                    </div>
 
-                                            {/* Card 2 */}
-                                            <div className="space-y-4">
-                                            <img src={img1} alt="Ship" className="w-full h-64 object-cover" />
-                                            <p className="text-base leading-relaxed">
-                                                Our Environmental Product Declarations (EPDs) provide data on
-                                                six key products, ensuring independent verified transparency.
-                                            </p>
-                                            </div>
+                                                    {/* Card 2 */}
+                                                    <div className="space-y-4">
+                                                        <img src={img1} alt="Ship" className="w-full h-64 object-cover" />
+                                                        <p className="text-base leading-relaxed">
+                                                            Our Environmental Product Declarations (EPDs) provide data on
+                                                            six key products, ensuring independent verified transparency.
+                                                        </p>
+                                                    </div>
 
-                                            {/* Card 3 */}
-                                            <div className="space-y-4">
-                                            <img src={img2} alt="ISO Certification" className="w-full h-64 object-cover" />
-                                            <p className="text-base leading-relaxed">
-                                                Each EPD adheres to ISO standards, reinforcing our dedication and
-                                                commitment to sustainable practices.
-                                            </p>
+                                                    {/* Card 3 */}
+                                                    <div className="space-y-4">
+                                                        <img src={img2} alt="ISO Certification" className="w-full h-64 object-cover" />
+                                                        <p className="text-base leading-relaxed">
+                                                            Each EPD adheres to ISO standards, reinforcing our dedication and
+                                                            commitment to sustainable practices.
+                                                        </p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        </div>
                                         </div>
                                     </div>
-                                    
+
                                 </motion.div>
                                 <motion.div
                                     initial={{ opacity: 0, y: 50 }}
@@ -264,7 +264,7 @@ export default function SustainAbilityPage() {
                                             <h2 className="text-2xl md:text-3xl font-bold">Building stronger, inclusive communities</h2>
                                             <p className="mt-2 text-sm md:text-base">
                                                 Business finds its true purpose when it transforms lives.
-                                                 We aim to uplift communities through responsible operations. By fostering collaboration and empowering local stakeholders, we ensure a long-term positive impact on society.
+                                                We aim to uplift communities through responsible operations. By fostering collaboration and empowering local stakeholders, we ensure a long-term positive impact on society.
                                             </p>
                                         </div>
                                     </div>
@@ -287,7 +287,7 @@ export default function SustainAbilityPage() {
                                     <div className="relative">
                                         <div>
                                             <h2 className="text-4xl font-bold text-gray-400">We are flagbearers of collaborative, inclusive, and sustainable development. Our efforts aim to responsibly realise
-                                                 human potential while using resources optimally to drive progress.</h2>
+                                                human potential while using resources optimally to drive progress.</h2>
                                         </div>
                                     </div>
                                 </motion.div>
