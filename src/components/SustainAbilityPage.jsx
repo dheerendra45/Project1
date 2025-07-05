@@ -300,7 +300,7 @@ export default function SustainAbilityPage() {
                                 >
                                     <div className="relative">
                                         <img
-                                            src={sec2iimg}
+                                            src={sec2iimg1}
                                             alt="Background"
                                             className="w-full h-[80vh] object-cover"
                                         />
