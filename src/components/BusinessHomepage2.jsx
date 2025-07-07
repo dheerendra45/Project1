@@ -185,7 +185,7 @@ const IndustrialCards = () => {
                         className="text-orange-500 font-medium hover:text-orange-600 transition-colors duration-200"
                         onClick={() => setExpandedCard(null)}
                       >
-                        Show Less
+                        {/* Show Less */}
                       </button>
                     </div>
                   </div>
