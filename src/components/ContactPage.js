@@ -44,14 +44,17 @@ const ContactPage = () => {
             animate={isLeftInView ? "visible" : "hidden"}
             className="md:w-3/5"
           >
-            <div className="flex items-center mb-4 text-orange-500 font-medium">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+            <div className="flex items-center mb-4 text-black-800 text-2xl ">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
-              CONTACT
+              <h2 className=" sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left">
+                 CONTACT
+              </h2>
+             
             </div>
 
-            <h1 className="text-3xl font-bold text-gray-800 mb-4">Drop us a line</h1>
+            <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-4">Drop us a line</h4>
             <p className="text-gray-700 mb-8">
               Get in touch with Shyam Metalics & Energy Limited for all your metallurgical and energy requirements.
             </p>

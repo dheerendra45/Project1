@@ -17,7 +17,7 @@ const CSRPage = () => {
             className="w-full h-full object-cover opacity-80"
           />
           <div className="absolute inset-0 flex items-center justify-center px-4 text-center">
-            <h2 className="text-white text-3xl md:text-5xl font-bold leading-tight">
+            <h2 className="text-white text-2xl md:text-5xl font-semibold leading-tight">
               Building <br className="block md:hidden" />
               Communities,<br />
               Empowering Lives
@@ -27,25 +27,34 @@ const CSRPage = () => {
 
         {/* Right side with content */}
         <div className="w-full md:w-1/2 bg-white p-10 pr-12">
-          <h3 className="text-4xl font-bold mb-4">Corporate Social Responsibility</h3>
-          <h2 className="text-2xl font-bold mb-12">Building Communities, Empowering Lives</h2>
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">Corporate Social Responsibility</h2>
+          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-6 ml-1">Building Communities, Empowering Lives</h4>
 
           <div className="flex flex-wrap justify-between mb-16">
-            <div className="mb-8 md:mb-0">
-              <h2 className="text-4xl font-bold text-orange-500">112 schools</h2>
-              <p className="text-xl font-semibold">Schools<br />Supported</p>
-              <p className="text-lg font-semibold">85% improved pass rates</p>
+            <div className="mb-4  md:mb-0">
+              <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">112 schools</h2>
+              <div className="mt-2">
+                 <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold  ">Schools<br />Supported</p>
+                <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold  ">85% improved pass rates</p>
+              </div>
+              
             </div>
             <div className="mb-8 md:mb-0">
-              <h2 className="text-4xl font-bold text-orange-500">23 institutions</h2>
-              <p className="text-xl font-semibold">Adopted<br />Schools</p>
-              <p className="text-lg font-semibold">100% electrification</p>
+              <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">23 institutions</h2>
+              <div className="mt-2">
+                 <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold ">Adopted<br />Schools</p>
+                <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold  ">100% electrification</p>
+              </div>
+             
             </div>
             <div>
-              <h2 className="text-4xl font-bold text-orange-500">12,500+ beneficiaries</h2>
-              <p className="text-xl font-semibold">Student<br />Upliftment</p>
-              <p className="text-lg font-semibold">2,000+ girls enrolled in STEM</p>
-            </div>
+              <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mt-4">12,500+ beneficiaries</h2>
+              <div className="mt-2">
+                <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold ">Student<br />Upliftment</p>
+                <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold ">2,000+ girls enrolled in STEM</p>
+              </div>
+               </div>
+              
           </div>
 
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-md">

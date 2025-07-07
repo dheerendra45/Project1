@@ -27,7 +27,7 @@ const productImages = {
   "Stainless Steel Billets": stainless
 };
 
-export default function BusinessAreas() {
+export default function BusinessAreas2() {
   const fallbackImages = [a2, a4, a5];
 
   const productData = [
@@ -121,9 +121,9 @@ export default function BusinessAreas() {
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <div className='pt-0 mb-12'>
-            <h2 className="text-black  text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
+            <h1 className="text-black text-4xl md:text-5xl font-bold">
               Our Products
-            </h2>
+            </h1>
           </div>
         </div>
 

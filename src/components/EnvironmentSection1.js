@@ -98,9 +98,9 @@ const EnvironmentSection1 = () => {
             ref={textRef}
             className="w-full md:w-1/2 min-h-[500px] bg-white bg-opacity-80 p-8 md:p-10 flex flex-col justify-center font-['Inter',sans-serif]"
           >
-            <h1 ref={headingRef} className="text-3xl sm:text-4xl font-bold text-black mb-6">
+            <h2 ref={headingRef} className="text-2xl sm:text-4xl font-semibold text-black-800 mb-6">
             Environment
-            </h1>
+            </h2>
             
             <p ref={paraRef} className="text-black text-base md:text-lg leading-relaxed mb-6">
               At Shyam Metalics, our manufacturing facilities embody sustainability through an integrated energy ecosystem. We generate 81% of our power needs through captive plants that optimize fuel efficiency, reduce emissions, and eliminate transmission losses, ensuring uninterrupted, eco-conscious operations. Complementing this, our strategically positioned solar panels harness renewable energy, significantly reducing fossil fuel dependence and lowering our carbon footprint.

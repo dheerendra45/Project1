@@ -1,13 +1,12 @@
 // pages/HomePage.js
 import React from "react";
-
-
 import Navbar from '../components/start1';
 import MainNavbar from '../components/MainNavbar'
 import BrandBanner from "../components/BrandBanner";
 import MissionVisionValues from "../components/MissionVisionValues";
 import AboutUs from "../components/AboutUs";
 import BusinessAreas from "../components/BusinessAreas";
+import BusinessAreas2 from "../components/BusinessAreas2";
 import LocationsMap from "../components/LocationsMap";
 import EnvironmentSection from '../components/Ourproducts' // ✅ Correct path
 import CSRPage from "../components/CSRPage";
@@ -22,7 +21,7 @@ import EnvironmentSection1 from "../components/EnvironmentSection1";
 import BusinessHomepage from "../components/BusinessHomepage";
 import Hero from "../components/hero2";
 
-const HomePage = () => {
+const HomePage2 = () => {
   return (
     <div>
       <Hero />
@@ -30,7 +29,7 @@ const HomePage = () => {
       <AboutUs />
       <BusinessHomepage />
       {/* <EnvironmentSection /> */}
-      <BusinessAreas />
+      <BusinessAreas2 />
       <LocationsMap />
       <EnvironmentSection1 />
       <CSRPage />
@@ -42,4 +41,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePage2;

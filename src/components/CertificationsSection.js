@@ -16,7 +16,7 @@ const CertificationsSection = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-orange-500 mb-4">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
             Our Certifications & Recognitions
           </h2>
           <p className="text-gray-700 text-lg max-w-3xl mx-auto">

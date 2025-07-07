@@ -178,8 +178,8 @@ function MissionVisionValues() {
                   />
                 </motion.div>
 
-                <motion.h3
-                  className="text-2xl font-bold text-center mb-6 text-gray-900"
+                <motion.h2
+                  className="text-2xl font-semibold text-center mb-6 text-black-800"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
@@ -191,7 +191,7 @@ function MissionVisionValues() {
                   }}
                 >
                   {section.title}
-                </motion.h3>
+                </motion.h2>
 
                 <motion.p
                   className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"

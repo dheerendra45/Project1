@@ -398,7 +398,7 @@ function LocationsMap() {
           } : {}}
         >
           <div className="mb-4 sm:mb-0">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">Our Global Footprint</h2>
+            <h2 className="text-2xl sm:text-3xl font-semibold text-black-800 mb-2">Our Global Footprint</h2>
             <p className="text-gray-700 max-w-xl text-sm sm:text-base">
               Metric Verified Data (2023-24)
             </p>

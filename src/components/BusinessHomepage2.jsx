@@ -68,7 +68,7 @@ const IndustrialCards = () => {
 
   return (
     <div className="bg-[#EDF1F4] py-8 sm:py-12 px-4 sm:px-5 md:px-6 lg:px-8 font-sans">
-      <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
+      <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
         Business Areas
       </h2>
 
@@ -160,9 +160,9 @@ const IndustrialCards = () => {
                 {/* Left Side - Text & Button */}
                 <div className="w-1/2 h-full flex flex-col justify-between p-4 lg:p-6">
                   <div className="flex-1">
-                    <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 mb-2 uppercase">
+                    <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 mb-2 uppercase">
                       {card.title}
-                    </h2>
+                    </h3>
                     <div className="overflow-hidden">
                       <p
                         className={`text-gray-700 text-xs sm:text-sm leading-relaxed transition-all duration-500 ease-in-out ${
