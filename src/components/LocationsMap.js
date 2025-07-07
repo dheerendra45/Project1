@@ -33,25 +33,29 @@ function LocationsMap() {
       label: " Clients Served",
       value: "25,000+ ",
       numericValue: 25000,
-      suffix: "+ (Domestic & Global)",
+      symbol: "+",
+      suffix: "(Domestic & Global)",
     },
     {
       label: "Annual Growth",
       value: "32% (Revenue: 12,500 Cr)",
       numericValue: 32,
-      suffix: "% (Revenue: 12,500 Cr)",
+      symbol: "%",
+      suffix: "(Revenue: 12,500 Cr)",
     },
     {
       label: "Active Projects",
       value: "1,200+ (Incl. Govt. Infrastructure)",
       numericValue: 1200,
-      suffix: "+ (Incl. Govt. Infrastructure)",
+      symbol: "+",
+      suffix: "(Incl. Govt. Infrastructure)",
     },
     {
       label: "Customer Satisfaction",
       value: "92% (Third-Party Survey)",
       numericValue: 92,
-      suffix: "% (Third-Party Survey)",
+      symbol: "%",
+      suffix: "(Third-Party Survey)",
     },
   ];
 
@@ -390,8 +394,13 @@ function LocationsMap() {
               : {}
           }
         >
-          <div>{count.toLocaleString()}</div>
-          <div className="text-sm font-medium">{stat.suffix}</div>
+          <div>
+            {count.toLocaleString()}
+            {stat.symbol}
+          </div>
+          <div className="text-xs font-medium text-gray-600 mt-1">
+            {stat.suffix}
+          </div>
         </motion.div>
         <p className="text-gray-700 text-xs sm:text-sm font-semibold mt-1">
           {stat.label}
@@ -399,7 +408,6 @@ function LocationsMap() {
       </motion.div>
     );
   };
-
   return (
     <div
       ref={sectionRef}
