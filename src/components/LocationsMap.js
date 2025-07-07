@@ -520,13 +520,17 @@ function LocationsMap() {
                   : {}
               }
             >
+              {/* <img 
+                src={WorldMapImage} 
+                alt="World Map" 
+                className="w-full object-cover"
+              /> */}
               <video
                 ref={videoRef}
                 src={worldExport}
                 className="w-full object-cover"
                 muted
                 playsInline
-                preload="metadata"
               />
             </motion.div>
           </div>

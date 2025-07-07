@@ -1,61 +1,62 @@
 // App.js
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import HomePage from './Pages/Homepage';
-import HomePage2 from './Pages/Homepage2';
-import Awards from './Pages/Awards';
-import Layout from './components/Layout';
-import LeadershipPage from './Pages/leadership';
-import Products from './Pages/carbonsteel';
-import Business from './Pages/Business';
-import Sustainability from './Pages/CSR';
-import OverviewPage from './Pages/overview';
-import P1 from './Pages/Esg_profile';
-import ContactPage from './Pages/ContactPage';
-import LocationPage from './Pages/location';
-import Faq from './Pages/faq';
-import Testimonial from './Pages/Testimonial';
-import Knowledgehub from './Pages/knowledgehub';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./Pages/Homepage";
+import HomePage2 from "./Pages/Homepage2";
+import Awards from "./Pages/Awards";
+import Layout from "./components/Layout";
+import LeadershipPage from "./Pages/leadership";
+import Products from "./Pages/carbonsteel";
+import Business from "./Pages/Business";
+import Sustainability from "./Pages/CSR";
+import OverviewPage from "./Pages/overview";
+import P1 from "./Pages/Esg_profile";
+import ContactPage from "./Pages/ContactPage";
+import LocationPage from "./Pages/location";
+import Faq from "./Pages/faq";
+import Testimonial from "./Pages/Testimonial";
+import Knowledgehub from "./Pages/knowledgehub";
 
-import Companyoverview from './Pages/Companyoverview';
-import Manufacturing from './Pages/Manufacturing';
-import Lifeshyam from './Pages/Lifeshyam';
-import Currentopening from './Pages/Currentopening';
-import Jobopportunity from './Pages/Jobopportunity';
-import Environmentcompliance from './Pages/Environmentcompliance';
-import Blogs from './Pages/blogs';
-import AwardsAndAchievements from './Pages/awards&achievements';
+import Companyoverview from "./Pages/Companyoverview";
+import Manufacturing from "./Pages/Manufacturing";
+import Lifeshyam from "./Pages/Lifeshyam";
+import Currentopening from "./Pages/Currentopening";
+import Jobopportunity from "./Pages/Jobopportunity";
+import Environmentcompliance from "./Pages/Environmentcompliance";
+import Blogs from "./Pages/blogs";
+import AwardsAndAchievements from "./Pages/awards&achievements";
 
-import Seltiger from './Pages/Seltiger';
-import SpongeIron from './Pages/Spongeiron';
-import StructuralSteel from './Pages/StructuralSteel.jsx';
-import TMTBars from './Pages/TMT_Bars.jsx';
-import WireRods from './Pages/WireRods.jsx';
-import StainlessSteelBillets from './Pages/StainlessSteelBillets.jsx';
-import SSWireRod from './Pages/SSWireRod.jsx';
-import ColorCoatedSheets from './Pages/ColorCoatedSheets.jsx';
-import Billets from './Pages/billets.js';
-import PigIron from './Pages/pigiron.js';
-import Pipes from './Pages/pipes.js';
-import Blackround_bar from './Pages/blackround_bar.js';
-import Bright_bar from './Pages/Bright_bar.js';
-import Flats from './Pages/flats.js';
-import Financial_information from './Pages/finacial_information.js';
-import Policies from './Pages/policies.js';
+import Seltiger from "./Pages/Seltiger";
+import SpongeIron from "./Pages/Spongeiron";
+import StructuralSteel from "./Pages/StructuralSteel.jsx";
+import TMTBars from "./Pages/TMT_Bars.jsx";
+import WireRods from "./Pages/WireRods.jsx";
+import StainlessSteelBillets from "./Pages/StainlessSteelBillets.jsx";
+import SSWireRod from "./Pages/SSWireRod.jsx";
+import ColorCoatedSheets from "./Pages/ColorCoatedSheets.jsx";
+import Billets from "./Pages/billets.js";
+import PigIron from "./Pages/pigiron.js";
+import Pipes from "./Pages/pipes.js";
+import Blackround_bar from "./Pages/blackround_bar.js";
+import Bright_bar from "./Pages/Bright_bar.js";
+import Flats from "./Pages/flats.js";
+import Financial_information from "./Pages/finacial_information.js";
+import Policies from "./Pages/policies.js";
 
-import WhatsAppButton from './components/whatsappButton.jsx';
-
+import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 function App() {
   return (
     <div className="App">
-       <WhatsAppButton />
+      <WhatsAppButton />
       <Routes>
-
-         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage/>} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
           <Route path="newsandevents" element={<Awards />} />
-          <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
+          <Route
+            path="awardsAndachievements"
+            element={<AwardsAndAchievements />}
+          />
           <Route path="blogs" element={<Blogs />} />
           <Route path="business" element={<Business />} />
           <Route path="pellet" element={<Products />} />
@@ -64,9 +65,11 @@ function App() {
           <Route path="ContactPage" element={<ContactPage />} />
           <Route path="csr" element={<Sustainability />} />
 
-
           <Route path="currentopening" element={<Currentopening />} />
-          <Route path="environmentcompliance" element={<Environmentcompliance />} />
+          <Route
+            path="environmentcompliance"
+            element={<Environmentcompliance />}
+          />
           <Route path="esg_profile" element={<P1 />} />
           <Route path="faq-Page" element={<Faq />} />
 
@@ -83,7 +86,10 @@ function App() {
           <Route path="structural_steel" element={<StructuralSteel />} />
           <Route path="tmt_bars" element={<TMTBars />} />
           <Route path="wire_rods" element={<WireRods />} />
-          <Route path="stainless_steel_billets" element={<StainlessSteelBillets />} />
+          <Route
+            path="stainless_steel_billets"
+            element={<StainlessSteelBillets />}
+          />
           <Route path="SS_Wire_Rod" element={<SSWireRod />} />
           <Route path="color_coated_sheets" element={<ColorCoatedSheets />} />
 
@@ -94,23 +100,15 @@ function App() {
           <Route path="bright_bar" element={<Bright_bar />} />
 
           <Route path="flats" element={<Flats />} />
-          <Route path="finacial_informations" element={<Financial_information />} />
+          <Route
+            path="finacial_informations"
+            element={<Financial_information />}
+          />
           <Route path="policies" element={<Policies />} />
-
-
         </Route>
 
-
-
         <Route index element={<HomePage />} />
-
-
-
-
-
       </Routes>
-
-
     </div>
   );
 }

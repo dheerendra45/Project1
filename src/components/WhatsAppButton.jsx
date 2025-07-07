@@ -9,7 +9,10 @@ const WhatsAppButton = () => {
     const whatsappNumber = "919876543210"; // Replace with actual number
     const message = "Hi, I would like to know more about your services!";
     const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, "_blank");
+    window.open(
+      `https://wa.me/${whatsappNumber}?text=${encodedMessage}`,
+      "_blank"
+    );
   };
 
   return (
