@@ -371,9 +371,9 @@ const TestimonialHomePage = () => {
         <div className="w-full max-w-md mx-auto px-4">
           {/* Header */}
           <div className="text-center space-y-4 mb-8">
-            <p className="text-orange-500 font-semibold tracking-wide text-sm">
+            <h2 className="text-black-800 font-semibold tracking-wide text-sm">
               TESTIMONIALS
-            </p>
+            </h2>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">
               Voices of Trust in Shyam Metalics
             </h2>

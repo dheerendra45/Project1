@@ -371,13 +371,13 @@ export default function AboutUs() {
           className="lg:w-1/2 text-black space-y-2 lg:space-y-3 overflow-y-auto pr-2 
                animate-slide-in-3d origin-left opacity-0 will-change-transform"
         >
-          <h1 className="text-orange-500 text-md sm:text-lg font-semibold">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
             ABOUT US
-          </h1>
-          <h1 className="text-xl sm:text-2xl lg:text-2xl font-bold leading-snug">
+          </h2>
+          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
             A Steel Company With Integrated <br className="hidden sm:block" />{" "}
             Operations.
-          </h1>
+          </h4>
           <div className="text-sm sm:text-base leading-relaxed space-y-2">
             <p className="line-clamp-4">
               Shyam Metalics and Energy Limited is an Indian integrated metal

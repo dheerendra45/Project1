@@ -2,6 +2,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './Pages/Homepage';
+import HomePage2 from './Pages/Homepage2';
 import Awards from './Pages/Awards';
 import Layout from './components/Layout';
 import LeadershipPage from './Pages/leadership';
@@ -51,8 +52,8 @@ function App() {
        <WhatsAppButton />
       <Routes>
 
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+         <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage/>} />
           <Route path="newsandevents" element={<Awards />} />
           <Route path="awardsAndachievements" element={<AwardsAndAchievements />} />
           <Route path="blogs" element={<Blogs />} />

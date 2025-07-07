@@ -139,10 +139,10 @@ const NewsPage = () => {
       <div className="w-full max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <p className="text-orange-500 font-medium mb-2">LATEST NEWS</p>
-          <h2 className="text-3xl md:text-4xl font-bold">
-            INSIGHTS, INNOVATIONS & IMPACT
-          </h2>
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">LATEST NEWS</h2>
+          <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
+            Insights, Innovations & Impact
+          </p>
         </div>
 
         {/* News Grid */}
