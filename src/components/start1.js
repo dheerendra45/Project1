@@ -3,6 +3,7 @@ import companylogo from "../assets/products/image28.png";
 import bgImg from "../assets/image146.png";
 import { href } from "react-router-dom";
 import great from "../assets/great place.png";
+import { Search } from "lucide-react";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -10,6 +11,7 @@ const Navbar = () => {
   const [activeNestedSub, setActiveNestedSub] = useState(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showInput, setShowInput] = useState(false);
 
   // Stock price state
   const [stockData, setStockData] = useState({
@@ -109,12 +111,6 @@ const Navbar = () => {
       setStockLoading(false);
     }
   };
-
-  // Calculate price change and percentage
-  const priceChange = stockData.currentPrice - stockData.prevClose;
-  const priceChangePercent =
-    stockData.prevClose > 0 ? (priceChange / stockData.prevClose) * 100 : 0;
-  const isPositive = priceChange >= 0;
 
   const navItems = [
     {
@@ -641,87 +637,82 @@ const Navbar = () => {
 
   return (
     <div className="w-full fixed top-0 left-0 z-50">
-      {/* Top Navbar */}
-      <div className="relative w-full h-[47px] text-white text-sm overflow-hidden bg-gray-400">
-        {/* Content on top */}
-        <div className="relative z-10 w-full h-full flex items-center justify-between px-4 sm:px-6">
-          {/* Stock Price Display */}
-          <div className="flex items-center ml-2 sm:ml-7 space-x-4">
-            {stockLoading ? (
-              <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
-                Loading...
-              </span>
-            ) : stockError ? (
-              <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
-                Error loading price
-              </span>
-            ) : (
-              <>
-                <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                  BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
-                </div>
-                <div className="h-4 w-px bg-white/50"></div>
-                <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                  NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
-                </div>
-              </>
-            )}
-          </div>
+      <div className="absolute inset-0 bg-black/20 z-0"></div>
+      {/* Top Navbar - only visible when not scrolled */}
+      {!isScrolled && (
+        <>
+          {/* Top Bar */}
+          <div className="w-full h-[47px] text-white text-sm overflow-hidden bg-gradient-to-r relative z-10">
+            <div className="relative z-10 w-full h-full flex items-center justify-between px-8 lg:px-12 xl:px-16">
+              <div className="flex items-center ml-[calc(310px+1rem)] space-x-4">
+                {stockLoading ? (
+                  <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+                    Loading...
+                  </span>
+                ) : stockError ? (
+                  <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+                    Error loading price
+                  </span>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                      BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
+                    </div>
+                    <div className="h-4 w-px bg-white/50"></div>
+                    <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                      NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
+                    </div>
+                  </>
+                )}
+              </div>
 
-          {/* Search bar + Login button grouped together */}
-          <div className="flex items-center gap-2 mr-2 sm:mr-7">
-            {/* Custom styled search bar */}
-            <div className="relative">
-              <input
-                type="text"
-                placeholder="Search here..."
-                className="bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400"
-              />
-              <svg
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+              <div className="flex items-center gap-3 mr-2 sm:mr-7">
+                {/* Toggle Search Input */}
+                <div className="relative flex items-center">
+                  <button
+                    onClick={() => setShowInput((prev) => !prev)}
+                    className="w-8 h-8 flex items-center justify-center text-white hover:text-white"
+                  >
+                    <Search className="w-5 h-5" />
+                  </button>
+
+                  {showInput && (
+                    <input
+                      type="text"
+                      placeholder="Search here..."
+                      autoFocus
+                      className="ml-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300"
+                    />
+                  )}
+                </div>
+
+                {/* Employee Login Button */}
+                {/* <button className="text-white px-3 py-2 rounded border border-white hover:bg-orange-400 transition text-sm">
+                  Employee Login
+                </button> */}
+              </div>
             </div>
-
-            {/* Employee Login Button right next to search */}
-            <button className="text-white px-4 py-2 rounded border border-white hover:bg-orange-400 transition text-sm">
-              Employee Login
-            </button>
           </div>
-        </div>
-      </div>
+
+          {/* White Line - only visible when not scrolled */}
+          <div className="absolute top-[51px] left-[calc(310px+1rem)] right-0 h-[1px] bg-white z-10"></div>
+        </>
+      )}
 
       {/* Main Navbar with Reflection */}
       <div className="relative">
         {/* Middle Navbar */}
         <div
           ref={dropdownRef}
-          className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-6 xl:px-8 relative z-30 transition-all duration-300 ${
-            isScrolled ? "shadow-md" : ""
+          className={`w-full h-[70px] flex items-center justify-between px-8 lg:px-12 xl:px-16 relative z-30 transition-all duration-300 ${
+            isScrolled ? "bg-white shadow-md" : "bg-transparent"
           }`}
-          style={{
-            background: isScrolled
-              ? "rgba(30, 30, 47, 0.7)" // dark silver with 70% opacity
-              : "rgba(42, 42, 61, 0.1)", // slightly lighter when not scrolled
-            backdropFilter: "blur(12px)",
-            WebkitBackdropFilter: "blur(12px)",
-            boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.2)",
-          }}
         >
           <div className="flex items-center">
             <div onClick={handleLogoClick} className="cursor-pointer">
               <img
                 src={companylogo}
-                className="h-[60px] md:h-[80px] w-[110px] md:w-[145px] hover:opacity-80 transition-opacity duration-200"
+                className=" mt[-40px] h-[80px] md:h-[80px] w-[110px] md:w-[145px] hover:opacity-80 transition-opacity duration-200 relative z-20"
                 alt="Company Logo"
               />
             </div>
@@ -759,7 +750,7 @@ const Navbar = () => {
           </div>
 
           {/* Navigation Menu - hidden on mobile */}
-          <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-gray-300 text-sm font-medium">
+          <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-sm font-medium">
             {navItems.map((item, index) => (
               <div
                 key={index}
@@ -773,9 +764,9 @@ const Navbar = () => {
                 }
               >
                 <span
-                  className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 text-gray-300 ${
-                    !item.hasDropdown ? "hover:scale-105" : ""
-                  }`}
+                  className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 ${
+                    isScrolled ? "text-gray-800" : "text-gray-300"
+                  } ${!item.hasDropdown ? "hover:scale-105" : ""}`}
                 >
                   {item.title}
                   {item.hasDropdown && (
@@ -994,15 +985,6 @@ const Navbar = () => {
                 )}
               </div>
             ))}
-          </div>
-
-          {/* Great Place Image - hidden on mobile */}
-          <div className="hidden mt-12 md:flex items-center gap-4">
-            <img
-              src={great}
-              className="h-[120px] w-auto hover:opacity-80 transition-opacity duration-200"
-              alt="Great Place to Work"
-            />
           </div>
         </div>
       </div>
