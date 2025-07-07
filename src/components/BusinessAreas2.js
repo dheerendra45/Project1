@@ -170,7 +170,7 @@ export default function BusinessAreas2() {
 
         <div className="text-center mt-8">
           <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg">
-            View More
+            {/* View More */}
           </button>
         </div>
       </div>
