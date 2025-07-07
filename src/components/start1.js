@@ -657,11 +657,11 @@ const Navbar = () => {
               </span>
             ) : (
               <>
-                <div className="flex items-center gap-2 text-orange-600 font-inter font-bold h-7">
+                <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
                   BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
                 </div>
                 <div className="h-4 w-px bg-white/50"></div>
-                <div className="flex items-center gap-2 text-orange-600 font-inter font-bold h-7">
+                <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
                   NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
                 </div>
               </>
@@ -693,7 +693,7 @@ const Navbar = () => {
             </div>
 
             {/* Employee Login Button right next to search */}
-            <button className="text-orange-600 px-4 py-2 rounded border border-orange-600 hover:bg-orange-400 transition text-sm">
+            <button className="text-white px-4 py-2 rounded border border-white hover:bg-orange-400 transition text-sm">
               Employee Login
             </button>
           </div>
