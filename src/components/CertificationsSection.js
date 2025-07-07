@@ -1,16 +1,16 @@
 import React from "react";
-import logo1 from '../assets/logos/1.jpeg';
-import logo2 from '../assets/logos/1.jpeg';
-import logo3 from '../assets/logos/1.jpeg';
-import logo4 from '../assets/logos/1.jpeg';
-import logo5 from '../assets/logos/1.jpeg';
-import logo6 from '../assets/logos/1.jpeg';
-import logo7 from '../assets/logos/1.jpeg';
-import logo8 from '../assets/logos/1.jpeg';
+import logo1 from "../assets/logos/1.jpeg";
+import logo2 from "../assets/logos/1.jpeg";
+import logo3 from "../assets/logos/1.jpeg";
+import logo4 from "../assets/logos/1.jpeg";
+import logo5 from "../assets/logos/1.jpeg";
+import logo6 from "../assets/logos/1.jpeg";
+import logo7 from "../assets/logos/1.jpeg";
+import logo8 from "../assets/logos/1.jpeg";
 
 const CertificationsSection = () => {
   const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
-  
+
   return (
     <div className="bg-gray-50 py-16 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -19,8 +19,9 @@ const CertificationsSection = () => {
           <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
             Our Certifications & Recognitions
           </h2>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-            Recognized for excellence in quality, workplace culture, and environmental responsibility.
+          <p className="text-orange-600 text-lg max-w-3xl mx-auto">
+            Recognized for excellence in quality, workplace culture, and
+            environmental responsibility.
           </p>
         </div>
 
@@ -41,14 +42,14 @@ const CertificationsSection = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="text-center mt-12">
           <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium">
             View All
           </button>
         </div>
       </div>
-      
+
       <style>{`
         @keyframes scroll {
           0% {

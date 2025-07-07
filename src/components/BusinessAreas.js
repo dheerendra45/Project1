@@ -164,7 +164,6 @@ export default function BusinessAreas() {
             <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
               Our Products
             </h2>
-            </h2>
           </div>
 
           {/* Tabs */}

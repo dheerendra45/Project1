@@ -121,70 +121,73 @@ function LocationsMap() {
     },
   ];
 
-  // Enhanced count-up animation with spring effect that restarts every time
+  // Enhanced count-up animation with smooth restart functionality
   const useCountUp = (end, duration = 3000, delay = 0) => {
     const [count, setCount] = useState(0);
-    const [animationId, setAnimationId] = useState(null);
+    const animationRef = useRef(null);
+    const timeoutRef = useRef(null);
 
     useEffect(() => {
-      // Reset count and cancel any existing animation when coming into view
+      // Clear any existing animations and timeouts
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+        animationRef.current = null;
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+
       if (isInView) {
+        // Reset count immediately when coming into view
         setCount(0);
 
-        // Cancel any existing animation
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-        }
-
-        const timer = setTimeout(() => {
-          const startTime = Date.now();
+        // Start the animation after delay
+        timeoutRef.current = setTimeout(() => {
+          const startTime = performance.now();
           const startValue = 0;
 
-          const updateCount = () => {
-            const now = Date.now();
-            const elapsed = now - startTime;
+          const animate = (currentTime) => {
+            const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
 
-            // Spring easing function
-            const spring = (progress) => {
-              return (
-                1 - Math.pow(1 - progress, 4) * Math.cos(progress * Math.PI)
-              );
+            // Smooth easing function (ease-out-cubic)
+            const easeOutCubic = (t) => {
+              return 1 - Math.pow(1 - t, 3);
             };
 
             const currentValue = Math.floor(
-              startValue + (end - startValue) * spring(progress)
+              startValue + (end - startValue) * easeOutCubic(progress)
             );
 
             setCount(currentValue);
 
             if (progress < 1) {
-              const id = requestAnimationFrame(updateCount);
-              setAnimationId(id);
+              animationRef.current = requestAnimationFrame(animate);
             } else {
               setCount(end);
-              setAnimationId(null);
+              animationRef.current = null;
             }
           };
 
-          const id = requestAnimationFrame(updateCount);
-          setAnimationId(id);
+          animationRef.current = requestAnimationFrame(animate);
         }, delay);
-
-        return () => {
-          clearTimeout(timer);
-          if (animationId) {
-            cancelAnimationFrame(animationId);
-          }
-        };
       } else {
         // Reset count when out of view
         setCount(0);
-        if (animationId) {
-          cancelAnimationFrame(animationId);
-          setAnimationId(null);
-        }
       }
+
+      // Cleanup function
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+          animationRef.current = null;
+        }
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current);
+          timeoutRef.current = null;
+        }
+      };
     }, [end, duration, delay, isInView]);
 
     return count;
@@ -350,7 +353,7 @@ function LocationsMap() {
 
   // Stat counter component with enhanced animations (removed icons)
   const StatCounter = ({ stat, index }) => {
-    const count = useCountUp(stat.numericValue, 3000, index * 500);
+    const count = useCountUp(stat.numericValue, 3000, index * 200);
 
     return (
       <motion.div
@@ -362,23 +365,23 @@ function LocationsMap() {
                 opacity: 1,
                 y: 0,
                 transition: {
-                  delay: index * 0.3,
+                  delay: index * 0.2,
                   type: "spring",
                   stiffness: 100,
                   damping: 10,
                 },
               }
-            : {}
+            : { opacity: 0, y: 20 }
         }
       >
-        <motion.p
+        <motion.div
           className="text-orange-600 text-lg sm:text-xl font-extrabold"
           animate={
             isInView
               ? {
                   scale: [1, 1.1, 1],
                   transition: {
-                    delay: index * 0.3 + 0.5,
+                    delay: index * 0.2 + 0.5,
                     duration: 0.8,
                     repeat: 1,
                     repeatType: "reverse",
@@ -387,9 +390,9 @@ function LocationsMap() {
               : {}
           }
         >
-          {count.toLocaleString()}
-          {stat.suffix}
-        </motion.p>
+          <div>{count.toLocaleString()}</div>
+          <div className="text-sm font-medium">{stat.suffix}</div>
+        </motion.div>
         <p className="text-gray-700 text-xs sm:text-sm font-semibold mt-1">
           {stat.label}
         </p>
@@ -421,9 +424,6 @@ function LocationsMap() {
           }
         >
           <div className="mb-4 sm:mb-0">
-            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-2">
-              Our Global Footprint
-            </h2>
             <h2 className="text-2xl sm:text-3xl font-semibold text-black-800 mb-2">
               Our Global Footprint
             </h2>
