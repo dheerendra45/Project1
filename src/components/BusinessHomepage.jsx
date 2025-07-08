@@ -67,9 +67,9 @@ const IndustrialCards = () => {
   };
 
   return (
-    <div className="bg-[#EDF1F4] py-8 sm:py-12 px-4 sm:px-5 md:px-6 lg:px-8 font-sans">
-      <div className="mb-10 lg:mb-12">
-        <h2 className="text-2xl sm:text-4xl lg:text-4xl font-semibold text-gray-900 mb-4">
+    <div className="bg-[#EDF1F4] max-w-7xl py-8 sm:py-12 px-4 sm:px-5 md:px-6 lg:px-8 font-sans">
+      <div className="mb-8 pt-0">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-900 mb-4">
           Our Portfolio
         </h2>
       </div>
