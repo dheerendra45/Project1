@@ -133,7 +133,7 @@ const Footer = () => {
         className="py-12 sm:py-16"
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {" "}
             {/* Useful Links Section */}
             <div className="">
@@ -248,26 +248,37 @@ const Footer = () => {
               </ul>
             </div>
             {/* Newsletter Section */}
-            {/* <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-6">Newsletter</h3>
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-6">
+                Newsletter
+              </h3>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/decarbonisation" className="text-gray-600 hover:text-orange-500 transition-colors">
-                    Decarbonisation
+                  <Link
+                    to="/decarbonisation"
+                    className="text-gray-600 hover:text-orange-500 transition-colors"
+                  >
+                    Seltiger
                   </Link>
                 </li>
                 <li>
-                  <Link to="/net-zero" className="text-gray-600 hover:text-orange-500 transition-colors">
-                    Net-Zero Carbon
+                  <Link
+                    to="/net-zero"
+                    className="text-gray-600 hover:text-orange-500 transition-colors"
+                  >
+                    CSR
                   </Link>
                 </li>
                 <li>
-                  <Link to="/health-safety" className="text-gray-600 hover:text-orange-500 transition-colors">
-                    Health, Safety & Environment
+                  <Link
+                    to="/health-safety"
+                    className="text-gray-600 hover:text-orange-500 transition-colors"
+                  >
+                    Life at shyam
                   </Link>
                 </li>
               </ul>
-            </div> */}
+            </div>
             {/* Quick Links Section */}
           </div>
         </div>
