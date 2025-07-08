@@ -232,7 +232,7 @@ export default function BusinessAreas() {
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="pt-0 mb-8">
-            <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold  mb-6 sm:mb-8">
+            <h2 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-semibold  mb-6 sm:mb-8">
               OUR RANGE OF PRODUCTS
             </h2>
           </div>
