@@ -446,7 +446,7 @@ function LocationsMap() {
           >
             View Global Presence
             <motion.span
-              className="ml-2 bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center text-xl font-extrabold"
+              className="ml-2 bg-white text-orange-500 rounded border-2 w-6 h-6 flex items-center justify-center text-xl font-extrabold"
               animate={{
                 x: [0, 5, 0],
                 transition: {
