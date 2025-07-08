@@ -30,7 +30,7 @@ const CertificationsSection = () => {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-32 w-56 bg-white rounded-lg shadow-sm border border-gray-200 p-0 mx-3 flex-shrink-0"
+                className="flex items-center justify-center h-40 w-60 bg-white rounded-lg shadow-sm border border-gray-200 p-0 mx-3 flex-shrink-0"
               >
                 <img
                   src={logo}

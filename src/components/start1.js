@@ -4,7 +4,7 @@ import bgImg from "../assets/image146.png";
 import { href } from "react-router-dom";
 import great from "../assets/great place.png";
 import { Search } from "lucide-react";
-import navbarbg from "../assets/navbar.png";
+import navbarbg from "../assets/navbarbg1.png";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -648,7 +648,7 @@ const Navbar = () => {
         {!isScrolled && (
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-            // style={{ backgroundImage: `url(${navbarbg})` }}
+            style={{ backgroundImage: `url(${navbarbg})` }}
           />
         )}
 
