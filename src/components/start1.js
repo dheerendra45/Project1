@@ -648,7 +648,7 @@ const Navbar = () => {
         {!isScrolled && (
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-            style={{ backgroundImage: `url(${navbarbg})` }}
+            // style={{ backgroundImage: `url(${navbarbg})` }}
           />
         )}
 
