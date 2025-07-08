@@ -440,7 +440,7 @@ function LocationsMap() {
             </p>
           </div>
           <motion.button
-            className="flex items-center bg-orange-500 text-white px-5 py-2 rounded hover:bg-orange-600 transition-colors self-start sm:self-auto"
+            className="flex items-center bg-orange-500 text-white px-5 py-2 rounded border-2 border-white transition-colors self-start sm:self-auto"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

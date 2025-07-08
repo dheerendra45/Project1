@@ -43,7 +43,7 @@ const CertificationsSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium">
+          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded border-2 border-white transition-colors duration-200 font-medium">
             View All
           </button>
         </div>

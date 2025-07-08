@@ -355,7 +355,7 @@ const TestimonialHomePage = () => {
               {/* Read All Button */}
               <motion.button
                 onClick={handleReadAllToggle}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded border-2 border-white transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -419,7 +419,7 @@ const TestimonialHomePage = () => {
             {/* Auto Play Toggle Button */}
             <button
               onClick={handleReadAllToggle}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              className="bg-orange-500 hover:bg-bg-600 text-white font-medium py-3 px-8 rounded border-2 border-white transition-colors duration-300 w-full sm:w-auto"
             >
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>
