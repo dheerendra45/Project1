@@ -63,7 +63,7 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 flex items-center justify-center h-full text-white w-full">
+      <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-8 py-8 flex items-center justify-center h-full text-white w-full">
         <div className="bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 sm:gap-6">
           {/* Heading and paragraph */}
           <div className="w-full lg:w-[70%]">
