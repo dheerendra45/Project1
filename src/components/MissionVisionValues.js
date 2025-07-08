@@ -5,7 +5,7 @@ import VisionIcon from "../assets/vision-icon.png";
 import ValuesIcon from "../assets/values-icon.png";
 import SteelFactoryImage from "../assets/steel-factory.png";
 import HardhatImage from "../assets/hardhat.png";
-import WorkerImage from "../assets/worker.png";
+// import WorkerImage from "../assets/worker.png";
 
 function MissionVisionValues() {
   const sections = [
@@ -13,24 +13,21 @@ function MissionVisionValues() {
       icon: VisionIcon,
       title: "Our Vision",
       description:
-        "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel, Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth, empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
-      // image: SteelFactoryImage,
+        "To transform Shyam Metalics into a next-gen steel producer by pioneering advanced steel grades, value-added alloys, green manufacturing, and redefining the role of steel in fueling infrastructure, mobility, and new technologies. Our vision is to write Bharat’s growth story with cleaner, smarter, and globally competitive steel solutions MADE IN INDIA, FOR THE WORLD.",
       direction: "left",
     },
     {
       icon: MissionIcon,
       title: "Our Mission",
       description:
-        "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence, leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity, strengthen India’s industrial backbone, and create enduring value for all stakeholders.",
-      // image: HardhatImage,
+        "To engineer high-performance metal solutions through integrated operations, consistent quality, and responsible practices. As a trusted and innovative steel producer, we aim to deliver superior products with efficiency, uphold the highest standards of customer satisfaction, and integrate sustainable practices into each process.",
       direction: "up",
     },
     {
       icon: ValuesIcon,
       title: "Our Values",
       description:
-        "Rooted in our values, we continue to grow with integrity and purpose.<br/><br/>Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence",
-      // image: WorkerImage,
+        "At Shyam Metalics, our growth is rooted in Operational Integrity, Manufacturing Excellence, Responsible Innovation, and Sustainable Impact. These drive each plant, product, and process—allowing us to supply high-performance steel, minimize environmental burden through captive power and ZLD, and play our part in Bharat's path towards industrial self-reliance.",
       direction: "right",
     },
   ];

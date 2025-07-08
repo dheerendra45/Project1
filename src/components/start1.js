@@ -637,354 +637,375 @@ const Navbar = () => {
 
   return (
     <div className="w-full fixed top-0 left-0 z-50">
-      <div className="absolute inset-0 bg-black/20 z-0"></div>
-      {/* Top Navbar - only visible when not scrolled */}
-      {!isScrolled && (
-        <>
-          {/* Top Bar */}
-          <div className="w-full h-[47px] text-white text-sm overflow-hidden bg-gradient-to-r relative z-10">
-            <div className="relative z-10 w-full h-full flex items-center justify-between px-8 lg:px-12 xl:px-16">
-              <div className="flex items-center ml-[calc(310px+1rem)] space-x-4">
-                {stockLoading ? (
-                  <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
-                    Loading...
-                  </span>
-                ) : stockError ? (
-                  <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
-                    Error loading price
-                  </span>
-                ) : (
-                  <>
-                    <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                      BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
-                    </div>
-                    <div className="h-4 w-px bg-white/50"></div>
-                    <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
-                      NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
-                    </div>
-                  </>
-                )}
-              </div>
+      {/* Background overlay - only visible when not scrolled */}
+      {!isScrolled && <div className="absolute inset-0 bg-black/20 z-0"></div>}
 
-              <div className="flex items-center gap-3 mr-2 sm:mr-7">
-                {/* Toggle Search Input */}
-                <div className="relative flex items-center">
-                  <button
-                    onClick={() => setShowInput((prev) => !prev)}
-                    className="w-8 h-8 flex items-center justify-center text-white hover:text-white"
-                  >
-                    <Search className="w-5 h-5" />
-                  </button>
+      {/* Main Navbar Container */}
+      <div
+        className={`relative z-30 transition-all duration-300 ${
+          isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        }`}
+      >
+        {/* Two-column layout */}
+        <div className="flex">
+          {/* Logo Column - fixed width */}
+          <div
+            className="flex-shrink-0 w-[310px] flex items-center justify-center"
+            onClick={handleLogoClick}
+          >
+            <img
+              src={companylogo}
+              className="h-[80px] w-[145px] hover:opacity-80 transition-opacity duration-200 cursor-pointer"
+              alt="Company Logo"
+            />
+          </div>
 
-                  {showInput && (
-                    <input
-                      type="text"
-                      placeholder="Search here..."
-                      autoFocus
-                      className="ml-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300"
-                    />
-                  )}
+          {/* Navigation Column - takes remaining space */}
+          <div className="flex-grow">
+            {/* Top Bar - only visible when not scrolled */}
+            {!isScrolled && (
+              <div className="w-full h-[47px] text-white text-sm overflow-hidden bg-gradient-to-r relative z-10">
+                <div className="relative z-10 w-full h-full flex items-center justify-between px-4 lg:px-8">
+                  {/* Stock prices - aligned with navigation items */}
+                  <div className="flex items-center space-x-4">
+                    {stockLoading ? (
+                      <span className="font-inter font-normal text-[12px] leading-[18px] animate-pulse">
+                        Loading...
+                      </span>
+                    ) : stockError ? (
+                      <span className="font-inter font-normal text-[12px] leading-[18px] text-red-400">
+                        Error loading price
+                      </span>
+                    ) : (
+                      <>
+                        <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                          BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
+                        </div>
+                        <div className="h-4 w-px bg-white/50"></div>
+                        <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                          NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
+                        </div>
+                      </>
+                    )}
+                    <div className="absolute bottom-0 left-[0px] right-0 h-px bg-white z-20"></div>
+                  </div>
+
+                  <div className="flex items-center gap-3">
+                    {/* Search Input */}
+                    <div className="relative flex items-center">
+                      <button
+                        onClick={() => setShowInput((prev) => !prev)}
+                        className="w-8 h-8 flex items-center justify-center text-white hover:text-white"
+                      >
+                        <Search className="w-5 h-5" />
+                      </button>
+
+                      {showInput && (
+                        <input
+                          type="text"
+                          placeholder="Search here..."
+                          autoFocus
+                          className="ml-2 bg-white/80 backdrop-blur-sm border border-gray-200 rounded-full px-4 py-2 text-black placeholder-gray-500 text-sm w-32 lg:w-40 focus:outline-none focus:ring-2 focus:ring-orange-400 transition-all duration-300"
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
-
-                {/* Employee Login Button */}
-                {/* <button className="text-white px-3 py-2 rounded border border-white hover:bg-orange-400 transition text-sm">
-                  Employee Login
-                </button> */}
               </div>
-            </div>
-          </div>
+            )}
 
-          {/* White Line - only visible when not scrolled */}
-          <div className="absolute top-[51px] left-[calc(310px+1rem)] right-0 h-[1px] bg-white z-10"></div>
-        </>
-      )}
-
-      {/* Main Navbar with Reflection */}
-      <div className="relative">
-        {/* Middle Navbar */}
-        <div
-          ref={dropdownRef}
-          className={`w-full h-[70px] flex items-center justify-between px-8 lg:px-12 xl:px-16 relative z-30 transition-all duration-300 ${
-            isScrolled ? "bg-white shadow-md" : "bg-transparent"
-          }`}
-        >
-          <div className="flex items-center">
-            <div onClick={handleLogoClick} className="cursor-pointer">
-              <img
-                src={companylogo}
-                className=" mt[-40px] h-[80px] md:h-[80px] w-[110px] md:w-[145px] hover:opacity-80 transition-opacity duration-200 relative z-20"
-                alt="Company Logo"
-              />
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="flex items-center gap-4">
-            {/* Great Place Image - visible on mobile */}
-            <div className="md:hidden flex items-center">
-              <img
-                src={great}
-                className="h-[50px] w-auto hover:opacity-80 transition-opacity duration-200"
-                alt="Great Place to Work"
-              />
-            </div>
-
-            <button
-              onClick={toggleMobileMenu}
-              className="md:hidden text-gray-700 focus:outline-none"
+            {/* Main Navigation Bar */}
+            <div
+              ref={dropdownRef}
+              className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-8 relative z-30`}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-
-          {/* Navigation Menu - hidden on mobile */}
-          <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-sm font-medium">
-            {navItems.map((item, index) => (
-              <div
-                key={index}
-                className="relative dropdown-container"
-                onMouseEnter={() =>
-                  item.hasDropdown ? handleMouseEnter(index) : null
-                }
-                onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
-                onClick={() =>
-                  !item.hasDropdown ? handleDirectNavClick(item) : null
-                }
-              >
-                <span
-                  className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 ${
-                    isScrolled ? "text-gray-800" : "text-gray-300"
-                  } ${!item.hasDropdown ? "hover:scale-105" : ""}`}
-                >
-                  {item.title}
-                  {item.hasDropdown && (
-                    <svg className="w-3 h-3 fill-current" viewBox="0 0 10 6">
-                      <path
-                        d="M1 1l4 4 4-4"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  )}
-                </span>
-
-                {/* Dropdown Menu */}
-                {item.hasDropdown && activeDropdown === index && (
+              {/* Navigation Menu - hidden on mobile */}
+              <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-sm font-medium">
+                {navItems.map((item, index) => (
                   <div
-                    className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[220px] lg:min-w-[250px] mt-1"
-                    onMouseEnter={handleDropdownEnter}
-                    onMouseLeave={handleDropdownLeave}
+                    key={index}
+                    className="relative dropdown-container"
+                    onMouseEnter={() =>
+                      item.hasDropdown ? handleMouseEnter(index) : null
+                    }
+                    onMouseLeave={item.hasDropdown ? handleMouseLeave : null}
+                    onClick={() =>
+                      !item.hasDropdown ? handleDirectNavClick(item) : null
+                    }
                   >
-                    {item.title === "BUSINESSES" ||
-                    item.title === "INVESTORS" ? (
-                      // Business dropdown with hover sub-menus
-                      <div className="space-y-1">
-                        {item.dropdownItems.map((business, businessIndex) => (
-                          <div
-                            key={businessIndex}
-                            className="relative"
-                            onMouseEnter={() =>
-                              handleBusinessSubEnter(businessIndex)
-                            }
-                            onMouseLeave={handleBusinessSubLeave}
-                          >
-                            {/* Check if it's Business Overview (which should be directly clickable) */}
-                            {business.name === "Business Overview" ? (
-                              <a
-                                href={business.href}
-                                className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
-                                onClick={(e) => {
-                                  e.preventDefault();
-                                  handleNavigation(business.href);
-                                }}
-                              >
-                                <span>{business.name}</span>
-                              </a>
-                            ) : (
-                              <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
-                                <span className="font-medium">
-                                  {business.name}
-                                </span>
-                                {business.subItems &&
-                                  business.subItems.length > 0 && (
-                                    <svg
-                                      className="w-4 h-4"
-                                      fill="none"
-                                      stroke="currentColor"
-                                      viewBox="0 0 24 24"
-                                    >
-                                      <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        strokeWidth={2}
-                                        d="M9 5l7 7-7 7"
-                                      />
-                                    </svg>
-                                  )}
-                              </div>
-                            )}
+                    <span
+                      className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 ${
+                        isScrolled ? "text-gray-800" : "text-gray-300"
+                      } ${!item.hasDropdown ? "hover:scale-105" : ""}`}
+                    >
+                      {item.title}
+                      {item.hasDropdown && (
+                        <svg
+                          className="w-3 h-3 fill-current"
+                          viewBox="0 0 10 6"
+                        >
+                          <path
+                            d="M1 1l4 4 4-4"
+                            stroke="currentColor"
+                            strokeWidth="1.5"
+                            fill="none"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
 
-                            {/* Sub-menu for each business/investor */}
-                            {activeBusinessSub === businessIndex &&
-                              business.subItems &&
-                              business.subItems.length > 0 && (
+                    {/* Dropdown Menu */}
+                    {item.hasDropdown && activeDropdown === index && (
+                      <div
+                        className="absolute top-full left-0 bg-white shadow-lg rounded-md py-2 z-[9999] min-w-[220px] lg:min-w-[250px] mt-1"
+                        onMouseEnter={handleDropdownEnter}
+                        onMouseLeave={handleDropdownLeave}
+                      >
+                        {item.title === "BUSINESSES" ||
+                        item.title === "INVESTORS" ? (
+                          // Business dropdown with hover sub-menus
+                          <div className="space-y-1">
+                            {item.dropdownItems.map(
+                              (business, businessIndex) => (
                                 <div
-                                  className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-1"
+                                  key={businessIndex}
+                                  className="relative"
                                   onMouseEnter={() =>
-                                    clearTimeout(businessSubTimeoutRef.current)
+                                    handleBusinessSubEnter(businessIndex)
                                   }
                                   onMouseLeave={handleBusinessSubLeave}
                                 >
-                                  {business.subItems.map(
-                                    (subItem, subIndex) => (
-                                      <div
-                                        key={subIndex}
-                                        className="relative"
-                                        onMouseEnter={() =>
-                                          handleNestedSubEnter(subIndex)
-                                        }
-                                        onMouseLeave={handleNestedSubLeave}
-                                      >
-                                        {/* Make this clickable for items with href */}
-                                        {subItem.href &&
-                                        subItem.href !== "#" ? (
-                                          <a
-                                            href={subItem.href}
-                                            className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
-                                            onClick={(e) => {
-                                              e.preventDefault();
-                                              handleNavigation(subItem.href);
-                                            }}
+                                  {/* Check if it's Business Overview (which should be directly clickable) */}
+                                  {business.name === "Business Overview" ? (
+                                    <a
+                                      href={business.href}
+                                      className="flex items-center px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium transition-colors duration-200 border-b border-gray-100 last:border-b-0"
+                                      onClick={(e) => {
+                                        e.preventDefault();
+                                        handleNavigation(business.href);
+                                      }}
+                                    >
+                                      <span>{business.name}</span>
+                                    </a>
+                                  ) : (
+                                    <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer transition-colors duration-200 border-b border-gray-100 last:border-b-0">
+                                      <span className="font-medium">
+                                        {business.name}
+                                      </span>
+                                      {business.subItems &&
+                                        business.subItems.length > 0 && (
+                                          <svg
+                                            className="w-4 h-4"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
                                           >
-                                            <span>{subItem.name}</span>
-                                            {subItem.items &&
-                                              subItem.items.length > 0 && (
-                                                <svg
-                                                  className="w-4 h-4"
-                                                  fill="none"
-                                                  stroke="currentColor"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={2}
-                                                    d="M9 5l7 7-7 7"
-                                                  />
-                                                </svg>
-                                              )}
-                                          </a>
-                                        ) : (
-                                          <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
-                                            <span>{subItem.name}</span>
-                                            {subItem.items &&
-                                              subItem.items.length > 0 && (
-                                                <svg
-                                                  className="w-4 h-4"
-                                                  fill="none"
-                                                  stroke="currentColor"
-                                                  viewBox="0 0 24 24"
-                                                >
-                                                  <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth={2}
-                                                    d="M9 5l7 7-7 7"
-                                                  />
-                                                </svg>
-                                              )}
-                                          </div>
+                                            <path
+                                              strokeLinecap="round"
+                                              strokeLinejoin="round"
+                                              strokeWidth={2}
+                                              d="M9 5l7 7-7 7"
+                                            />
+                                          </svg>
                                         )}
+                                    </div>
+                                  )}
 
-                                        {/* Nested sub-menu for items */}
-                                        {activeNestedSub === subIndex &&
-                                          subItem.items &&
-                                          subItem.items.length > 0 && (
+                                  {/* Sub-menu for each business/investor */}
+                                  {activeBusinessSub === businessIndex &&
+                                    business.subItems &&
+                                    business.subItems.length > 0 && (
+                                      <div
+                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-1"
+                                        onMouseEnter={() =>
+                                          clearTimeout(
+                                            businessSubTimeoutRef.current
+                                          )
+                                        }
+                                        onMouseLeave={handleBusinessSubLeave}
+                                      >
+                                        {business.subItems.map(
+                                          (subItem, subIndex) => (
                                             <div
-                                              className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
+                                              key={subIndex}
+                                              className="relative"
                                               onMouseEnter={() =>
-                                                clearTimeout(
-                                                  nestedSubTimeoutRef.current
-                                                )
+                                                handleNestedSubEnter(subIndex)
                                               }
                                               onMouseLeave={
                                                 handleNestedSubLeave
                                               }
                                             >
-                                              {subItem.items.map(
-                                                (productItem, prodIndex) => (
-                                                  <a
-                                                    key={prodIndex}
-                                                    href={
-                                                      productItem.href || "#"
-                                                    }
-                                                    className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
-                                                    onClick={(e) => {
-                                                      if (
-                                                        productItem.href &&
-                                                        productItem.href !== "#"
-                                                      ) {
-                                                        e.preventDefault();
-                                                        handleNavigation(
-                                                          productItem.href
-                                                        );
-                                                      }
-                                                    }}
-                                                  >
-                                                    {productItem.name ||
-                                                      productItem}
-                                                  </a>
-                                                )
+                                              {/* Make this clickable for items with href */}
+                                              {subItem.href &&
+                                              subItem.href !== "#" ? (
+                                                <a
+                                                  href={subItem.href}
+                                                  className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200"
+                                                  onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleNavigation(
+                                                      subItem.href
+                                                    );
+                                                  }}
+                                                >
+                                                  <span>{subItem.name}</span>
+                                                  {subItem.items &&
+                                                    subItem.items.length >
+                                                      0 && (
+                                                      <svg
+                                                        className="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                      >
+                                                        <path
+                                                          strokeLinecap="round"
+                                                          strokeLinejoin="round"
+                                                          strokeWidth={2}
+                                                          d="M9 5l7 7-7 7"
+                                                        />
+                                                      </svg>
+                                                    )}
+                                                </a>
+                                              ) : (
+                                                <div className="flex items-center justify-between px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm cursor-pointer font-medium border-b border-gray-100 last:border-b-0 transition-colors duration-200">
+                                                  <span>{subItem.name}</span>
+                                                  {subItem.items &&
+                                                    subItem.items.length >
+                                                      0 && (
+                                                      <svg
+                                                        className="w-4 h-4"
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        viewBox="0 0 24 24"
+                                                      >
+                                                        <path
+                                                          strokeLinecap="round"
+                                                          strokeLinejoin="round"
+                                                          strokeWidth={2}
+                                                          d="M9 5l7 7-7 7"
+                                                        />
+                                                      </svg>
+                                                    )}
+                                                </div>
                                               )}
+
+                                              {/* Nested sub-menu for items */}
+                                              {activeNestedSub === subIndex &&
+                                                subItem.items &&
+                                                subItem.items.length > 0 && (
+                                                  <div
+                                                    className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
+                                                    onMouseEnter={() =>
+                                                      clearTimeout(
+                                                        nestedSubTimeoutRef.current
+                                                      )
+                                                    }
+                                                    onMouseLeave={
+                                                      handleNestedSubLeave
+                                                    }
+                                                  >
+                                                    {subItem.items.map(
+                                                      (
+                                                        productItem,
+                                                        prodIndex
+                                                      ) => (
+                                                        <a
+                                                          key={prodIndex}
+                                                          href={
+                                                            productItem.href ||
+                                                            "#"
+                                                          }
+                                                          className="block px-6 py-2 text-sm text-gray-500 hover:text-orange-500 hover:bg-orange-50 transition-colors duration-200"
+                                                          onClick={(e) => {
+                                                            if (
+                                                              productItem.href &&
+                                                              productItem.href !==
+                                                                "#"
+                                                            ) {
+                                                              e.preventDefault();
+                                                              handleNavigation(
+                                                                productItem.href
+                                                              );
+                                                            }
+                                                          }}
+                                                        >
+                                                          {productItem.name ||
+                                                            productItem}
+                                                        </a>
+                                                      )
+                                                    )}
+                                                  </div>
+                                                )}
                                             </div>
-                                          )}
+                                          )
+                                        )}
                                       </div>
-                                    )
-                                  )}
+                                    )}
                                 </div>
-                              )}
+                              )
+                            )}
                           </div>
-                        ))}
-                      </div>
-                    ) : (
-                      // Regular dropdown layout for other menus
-                      <div className="space-y-1">
-                        {item.dropdownItems.map(
-                          (dropdownItem, dropdownIndex) => (
-                            <a
-                              key={dropdownIndex}
-                              href={dropdownItem.href}
-                              className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNavigation(dropdownItem.href);
-                              }}
-                            >
-                              {dropdownItem.name}
-                            </a>
-                          )
+                        ) : (
+                          // Regular dropdown layout for other menus
+                          <div className="space-y-1">
+                            {item.dropdownItems.map(
+                              (dropdownItem, dropdownIndex) => (
+                                <a
+                                  key={dropdownIndex}
+                                  href={dropdownItem.href}
+                                  className="block px-4 py-2 text-gray-700 hover:bg-orange-50 hover:text-orange-500 text-sm transition-colors duration-200"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    handleNavigation(dropdownItem.href);
+                                  }}
+                                >
+                                  {dropdownItem.name}
+                                </a>
+                              )
+                            )}
+                          </div>
                         )}
                       </div>
                     )}
                   </div>
-                )}
+                ))}
               </div>
-            ))}
+
+              {/* Mobile menu button */}
+              <div className="flex items-center gap-4 md:hidden">
+                {/* Great Place Image - visible on mobile */}
+                <div className="flex items-center">
+                  <img
+                    src={great}
+                    className="h-[50px] w-auto hover:opacity-80 transition-opacity duration-200"
+                    alt="Great Place to Work"
+                  />
+                </div>
+
+                <button
+                  onClick={toggleMobileMenu}
+                  className="text-gray-700 focus:outline-none"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

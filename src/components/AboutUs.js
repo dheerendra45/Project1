@@ -65,7 +65,7 @@ export default function AboutUs() {
     abt1img,
   ];
 
-  // Year-wise content data (keeping all your content)
+  // Year-wise content data
   const yearContent = [
     {
       year: "2005",
@@ -329,11 +329,11 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-6 font-['Inter',sans-serif]">
+    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-4 font-['Inter',sans-serif]">
       {/* ABOUT US Section - Made more compact */}
       <div
         className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6"
-        style={{ height: "60%" }}
+        style={{ height: "70%" }}
       >
         {/* Left Text Section */}
         <div
@@ -349,32 +349,28 @@ export default function AboutUs() {
           </h4>
           <div className="text-sm sm:text-base leading-relaxed space-y-2">
             <p className="line-clamp-4">
-              Shyam Metalics and Energy Limited is an Indian integrated metal
-              producing Company with a strong presence across the metal value
-              chain. The Company is one of the largest integrated steel
-              producers in India, currently ranked 6th, and is also among the
-              country's leading ferro alloy manufacturers.
+              Established in 1953, Shyam Metalics is one of India's leading
+              steel producers of high-performance steel and ferro alloys that
+              drive India's basic industries and infrastructure. Being the
+              nation's sixth largest steel maker, our integrated business covers
+              the entire steel value chain — from pellets and sponge iron to
+              long steel products and aluminium foil.
             </p>
             <p className="line-clamp-4">
-              Shyam Metalics and Energy Limited operates an "ore-to-metal"
-              integrated business model, with steel manufacturing facilities
-              located strategically near mineral reserves in West Bengal,
-              Odisha, Chhattisgarh and Madhya Pradesh. The Company has a
-              combined installed production capacity of 13.2 million metric
-              tonnes per annum (MTPA) as of March 2025 across various product
-              lines.
+              Our 15.13 MTPA of installed capacity, spread across seven
+              strategically located manufacturing facilities, positions us in
+              regional and national markets with scale, consistency, and speed.
+              With the support of 376 MW of captive power, we are able to ensure
+              consistent operations while minimizing external dependencies.
             </p>
             <p className="line-clamp-3">
-              Since FY2005, the company has demonstrated consistent operational
-              profitability and has maintained a track record of positive EBITDA
-              every year. Its distribution network spans both domestic and
-              international markets, with a presence in over 28 countries.
-            </p>
-            <p className="line-clamp-3">
-              Shyam Metalics and Energy credit facilities have been rated
-              AA/Stable for long-term banking facilities and A1+ for short-term
-              banking facilities by Crisil. The outlook for the long-term rating
-              remains stable.
+              A robust ESG foundation in place enables us to integrate
+              sustainability into all our processes: right from zero liquid
+              discharge systems to circular manufacturing practices. Our
+              stakeholders, innovation, and operational flexibility drive us to
+              become a future-proof organisation — one that expands responsibly,
+              performs predictably, and creates long-term value for industries,
+              communities, and the country.
             </p>
           </div>
         </div>
@@ -439,7 +435,7 @@ export default function AboutUs() {
       </div>
 
       {/* Timeline Section */}
-      <div className="relative mt-12 h-[38%] min-h-[175px]">
+      <div className="relative h-[30%] min-h-[120px]">
         {/* Timeline Line with Symbols */}
         <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-6">
           {/* Progress Indicator */}
@@ -461,31 +457,39 @@ export default function AboutUs() {
                   key={index}
                   className="absolute transform -translate-x-1/2 -translate-y-1/2"
                   style={{ left: position, top: "50%" }}
+                  onClick={() => handleTimelineClick(index)}
                 >
                   <motion.div
-                    onClick={() => handleTimelineClick(index)}
-                    onMouseEnter={() => setIsHovering(true)}
-                    onMouseLeave={() => setIsHovering(false)}
+                    onMouseEnter={() => {
+                      setIsHovering(true);
+                      setIsPaused(true);
+                    }}
+                    onMouseLeave={() => {
+                      setIsHovering(false);
+                      setIsPaused(false);
+                    }}
                     className="flex flex-col items-center cursor-pointer"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     {/* Year Label */}
                     <div
-                      className={`text-xs font-medium mb-1 ${isPassed ? "text-orange-600" : "text-gray-500"
-                        }`}
+                      className={`text-xs font-medium mb-1 ${
+                        isPassed ? "text-orange-600" : "text-gray-500"
+                      }`}
                     >
                       {years[index]}
                     </div>
 
                     {/* Symbol */}
                     <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center relative z-10 ${isActive
-                        ? "bg-orange-500"
-                        : isPassed
+                      className={`w-6 h-6 rounded-full flex items-center justify-center relative z-10 ${
+                        isActive
+                          ? "bg-orange-500"
+                          : isPassed
                           ? "bg-orange-300"
                           : "bg-gray-300"
-                        }`}
+                      }`}
                     >
                       <img
                         src={img}
@@ -513,43 +517,44 @@ export default function AboutUs() {
         </div>
 
         {/* Mobile Timeline */}
-<div className="sm:hidden flex flex-col mt-8 px-4">
-  {/* Message and Year */}
-  <div className="text-center mb-4">
-    <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
-      {messages[activeIndex]}
-    </div>
-    <div className="text-orange-600 font-medium text-sm mt-2">
-      {years[activeIndex]}
-    </div>
-  </div>
-
-  {/* Horizontal scrollable timeline */}
-  <div className="w-full overflow-x-auto">
-    <div className="flex gap-8 min-w-max px-2 py-3">
-      {galleryImages.map((img, index) => (
-        <motion.div
-          key={index}
-          className="flex flex-col items-center flex-shrink-0 min-w-[60px]"
-        >
-          <div className={`
-            w-8 h-8 rounded-full mb-2 flex items-center justify-center
-            border-2 ${index <= progress ? 'border-orange-600 bg-orange-500' : 'border-gray-400 bg-gray-300'}
-          `}>
-            <img src={img} alt="" className="w-4 h-4 object-contain" />
+        <div className="sm:hidden flex flex-col mt-4 px-4">
+          {/* Message and Year */}
+          <div className="text-center mb-2">
+            <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
+              {messages[activeIndex]}
+            </div>
+            <div className="text-orange-600 font-medium text-sm mt-1">
+              {years[activeIndex]}
+            </div>
           </div>
-          <div className="text-xs text-center">
-            {years[index]}
+
+          {/* Horizontal scrollable timeline */}
+          <div className="w-full overflow-x-auto">
+            <div className="flex gap-4 min-w-max px-2 py-2">
+              {galleryImages.map((img, index) => (
+                <motion.div
+                  key={index}
+                  className="flex flex-col items-center flex-shrink-0 min-w-[50px]"
+                  onClick={() => handleTimelineClick(index)}
+                >
+                  <div
+                    className={`
+                      w-6 h-6 rounded-full mb-1 flex items-center justify-center
+                      border-2 ${
+                        index <= progress
+                          ? "border-orange-600 bg-orange-500"
+                          : "border-gray-400 bg-gray-300"
+                      }
+                    `}
+                  >
+                    <img src={img} alt="" className="w-3 h-3 object-contain" />
+                  </div>
+                  <div className="text-xs text-center">{years[index]}</div>
+                </motion.div>
+              ))}
+            </div>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-
-
+        </div>
       </div>
     </div>
   );
