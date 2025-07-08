@@ -231,7 +231,7 @@ const IndustrialCards = () => {
         <div className="flex justify-center mt-8 sm:mt-12 mb-4">
           <a
             href="/business"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-2 font-medium flex items-center transition-all transform hover:scale-105"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded border-2 font-medium flex items-center transition-all transform hover:scale-105"
           >
             Explore All
             <FiArrowRight className="ml-2" />
