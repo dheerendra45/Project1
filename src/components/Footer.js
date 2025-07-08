@@ -165,14 +165,7 @@ const Footer = () => {
                     Privacy Policy
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    to="/pricing"
-                    className="text-gray-600 hover:text-orange-500 transition-colors"
-                  >
-                    Pricing
-                  </Link>
-                </li>
+                <li></li>
                 <li>
                   <Link
                     to="/products"
