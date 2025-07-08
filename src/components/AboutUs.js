@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
-import WhatsAppButton from "./whatsappButton.jsx";
 import abt1img from "../assets/abt1.jpg";
 import a1 from "../assets/aboutUs.png";
 import a2 from "../assets/1.png";
@@ -9,18 +7,16 @@ import a3 from "../assets/2.png";
 import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
-// Mock images - replace with your actual imports
 
 export default function AboutUs() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
-  const [showWhatsAppTooltip, setShowWhatsAppTooltip] = useState(false);
-  const [isWhatsAppPulse, setIsWhatsAppPulse] = useState(true);
   const pauseTimeoutRef = useRef(null);
   const progressIntervalRef = useRef(null);
 
+  // [All your data arrays remain exactly the same...]
   const messages = [
     "Breaking Barriers",
     "Lighting the Spark",
@@ -69,8 +65,6 @@ export default function AboutUs() {
     abt1img,
     abt1img,
   ];
-
-  // Year-wise content data (keeping all your content)
   const yearContent = [
     {
       year: "2005",
@@ -279,6 +273,8 @@ export default function AboutUs() {
     },
   ];
 
+  // [All your yearContent data remains exactly the same...]
+
   const handleTimelineClick = (index) => {
     setActiveIndex(index);
     setProgress(index);
@@ -291,32 +287,6 @@ export default function AboutUs() {
     pauseTimeoutRef.current = setTimeout(() => {
       setIsPaused(false);
     }, 10000);
-  };
-
-  // WhatsApp functionality
-  const handleWhatsAppClick = () => {
-    // Initialize Gallabox widget with the token from your script
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJob3N0Ijoic2h5YW1tZXRhbGljcy5jb20iLCJpZCI6IjY4NTY2OTFkMDdhMDk1MjFkODUxYTQ2MSIsImFjY0lkIjoiNjJiNmQ5NjM4MTEwNjAwMDA0M2ExNDczIiwiaWF0IjoxNzUwNDkzNDY5fQ.cNlD7qg1BcKehMLP4LlfwSYHQkY4c-4wVlUW2HEchKE";
-
-    // Create and load the Gallabox widget
-    if (!window.Chatty) {
-      window.Chatty = function (c) {
-        window.Chatty._.push(c);
-      };
-      window.Chatty._ = [];
-      window.Chatty.url = "https://widget.gallabox.com";
-      window.Chatty.hash = token;
-
-      const script = document.createElement("script");
-      script.async = true;
-      script.src =
-        "https://widget.gallabox.com/chatty-widget.min.js?_=" + Math.random();
-      document.head.appendChild(script);
-    }
-
-    // Stop the pulse animation after first click
-    setIsWhatsAppPulse(false);
   };
 
   useEffect(() => {
@@ -360,273 +330,210 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-6 font-['Inter',sans-serif] relative">
-      {/* ABOUT US Section - Made more compact */}
-      <div
-        className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6"
-        style={{ height: "60%" }}
-      >
-        {/* Left Text Section */}
-        <div
-          className="lg:w-1/2 text-black space-y-2 lg:space-y-3 overflow-y-auto pr-2 
-               animate-slide-in-3d origin-left opacity-0 will-change-transform"
-        >
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
-            ABOUT US
+    <div className="h-[94vh] flex flex-col overflow-hidden px-4 sm:px-6 lg:px-8 py-4 font-['Inter',sans-serif]">
+      {/* Main Content Area - Two Columns */}
+      <div className="flex flex-col lg:flex-row flex-grow gap-4 mb-2 overflow-hidden">
+        {/* Left Column - About Text */}
+        <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
+            Who We Are
           </h2>
-          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
-            A Steel Company With Integrated <br className="hidden sm:block" />{" "}
-            Operations.
+          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-3">
+            Engineering Bharat's Growth Since 1950s
           </h4>
-          <div className="text-sm sm:text-base leading-relaxed space-y-2">
-            <p className="line-clamp-4">
-              Shyam Metalics and Energy Limited is an Indian integrated metal
-              producing Company with a strong presence across the metal value
-              chain. The Company is one of the largest integrated steel
-              producers in India, currently ranked 6th, and is also among the
-              country's leading ferro alloy manufacturers.
+
+          <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3 text-justify">
+            <p>
+              Established in 1953, Shyam Metalics is one of India's leading
+              steel producers of high-performance steel and ferro alloys that
+              drive India's basic industries and infrastructure. Being the
+              nation's sixth largest steel maker, our integrated business covers
+              the entire steel value chain — from pellets and sponge iron to
+              long steel products and aluminium foil.
             </p>
-            <p className="line-clamp-4">
-              Shyam Metalics and Energy Limited operates an "ore-to-metal"
-              integrated business model, with steel manufacturing facilities
-              located strategically near mineral reserves in West Bengal,
-              Odisha, Chhattisgarh and Madhya Pradesh. The Company has a
-              combined installed production capacity of 13.2 million metric
-              tonnes per annum (MTPA) as of March 2025 across various product
-              lines.
+            <p>
+              Our 15.13 MTPA of installed capacity, spread across seven
+              strategically located manufacturing facilities, positions us in
+              regional and national markets with scale, consistency, and speed.
+              With the support of 376 MW of captive power, we are able to ensure
+              consistent operations while minimizing external dependencies.
             </p>
-            <p className="line-clamp-3">
-              Since FY2005, the company has demonstrated consistent operational
-              profitability and has maintained a track record of positive EBITDA
-              every year. Its distribution network spans both domestic and
-              international markets, with a presence in over 28 countries.
-            </p>
-            <p className="line-clamp-3">
-              Shyam Metalics and Energy credit facilities have been rated
-              AA/Stable for long-term banking facilities and A1+ for short-term
-              banking facilities by Crisil. The outlook for the long-term rating
-              remains stable.
+            <p>
+              A robust ESG foundation in place enables us to integrate
+              sustainability into all our processes: right from zero liquid
+              discharge systems to circular manufacturing practices. Our
+              stakeholders, innovation, and operational flexibility drive us to
+              become a future-proof organisation — one that expands responsibly,
+              performs predictably, and creates long-term value for industries,
+              communities, and the country.
             </p>
           </div>
         </div>
 
-        {/* Year-wise Content and Gallery Section */}
-        <motion.div
-          className="lg:w-1/2 flex flex-col items-center w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Gallery Image Block */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`gallery-${activeIndex}`}
-              className="w-full h-60 mb-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+        {/* Right Column - Year Content */}
+        <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
+          {/* Large Image */}
+          <div className="w-full h-40 sm:h-48 mb-3 rounded-lg overflow-hidden">
+            <AnimatePresence mode="wait">
               <motion.img
+                key={`gallery-${activeIndex}`}
                 src={aboutImages[activeIndex]}
                 alt={`Gallery ${years[activeIndex]}`}
-                className="w-full h-full object-cover rounded-lg shadow-lg border border-orange-100"
-                initial={{ scale: 0.95 }}
-                animate={{ scale: 1 }}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               />
-            </motion.div>
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
 
-          {/* Year Content Block */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`content-${activeIndex}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="w-full bg-white rounded-lg shadow-lg border border-orange-100 flex flex-col"
-              style={{ height: "calc(100% - 240px - 12px + 60px)" }}
-            >
-              <div className="p-3 sm:p-4 overflow-y-auto flex-1">
-                <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-1">
+          {/* Year Content */}
+          <div className="flex-grow bg-white p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`content-${activeIndex}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-2">
                   {yearContent[activeIndex]?.year || years[activeIndex]}:{" "}
                   {yearContent[activeIndex]?.title}
                 </h2>
-                <div className="space-y-1 text-xs sm:text-sm">
+                <div className="space-y-2 text-xs sm:text-sm">
                   {yearContent[activeIndex]?.content.map((item, i) => (
                     <p
                       key={i}
                       className={
                         item.startsWith("•") || item.startsWith("✓")
                           ? "pl-3"
-                          : ""
+                          : "font-medium"
                       }
                     >
                       {item}
                     </p>
                   ))}
                 </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
-      {/* Timeline Section */}
-      <div className="relative h-[30%]">
-        {/* Timeline Line with Symbols */}
-        <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-2">
-          {/* Progress Indicator */}
+      {/* Timeline Section - Fixed at bottom */}
+      <div className="relative h-20 sm:h-24 w-full mt-2">
+        {/* Progress Line */}
+        <div className="absolute left-0 right-0 h-1 bg-gray-300 top-1/2 transform -translate-y-1/2">
           <motion.div
             className="h-full bg-orange-500 absolute left-0 top-0"
             animate={{ width: `${(progress / galleryImages.length) * 100}%` }}
             transition={{ duration: 0.1 }}
           />
-
-          {/* Timeline Symbols */}
-          <div className="relative w-full h-full">
-            {galleryImages.map((img, index) => {
-              const isActive = index === activeIndex;
-              const isPassed = index < progress;
-              const position = `${(index / (galleryImages.length - 1)) * 100}%`;
-
-              return (
-                <div
-                  key={index}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2"
-                  style={{ left: position, top: "50%" }}
-                >
-                  <motion.div
-                    onClick={() => handleTimelineClick(index)}
-                    onMouseEnter={() => setIsHovering(true)}
-                    onMouseLeave={() => setIsHovering(false)}
-                    className="flex flex-col items-center cursor-pointer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {/* Year Label */}
-                    <div
-                      className={`text-xs font-medium mb-1 ${
-                        isPassed ? "text-orange-600" : "text-gray-500"
-                      }`}
-                    >
-                      {years[index]}
-                    </div>
-
-                    {/* Symbol */}
-                    <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center relative z-10 ${
-                        isActive
-                          ? "bg-orange-500"
-                          : isPassed
-                          ? "bg-orange-300"
-                          : "bg-gray-300"
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt=""
-                        className="w-4 h-4 object-contain"
-                      />
-                    </div>
-
-                    {/* Active Message */}
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute bottom-full mb-2 bg-orange-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
-                      >
-                        {messages[index]}
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Mobile Timeline */}
-        <div className="sm:hidden flex flex-col mt-8 px-4">
-          {/* Message and Year */}
-          <div className="text-center mb-4">
-            <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
-              {messages[activeIndex]}
-            </div>
-            <div className="text-orange-600 font-medium text-sm mt-2">
-              {years[activeIndex]}
-            </div>
-          </div>
+        {/* Timeline Dots */}
+        <div className="relative w-full h-full">
+          {galleryImages.map((img, index) => {
+            const isActive = index === activeIndex;
+            const isPassed = index < progress;
+            const position = `${(index / (galleryImages.length - 1)) * 100}%`;
 
-          {/* Horizontal scrollable timeline */}
-          <div className="w-full overflow-x-auto">
-            <div className="flex gap-8 min-w-max px-2 py-3">
-              {galleryImages.map((img, index) => (
+            return (
+              <div
+                key={index}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                style={{ left: position, top: "50%" }}
+                onClick={() => handleTimelineClick(index)}
+              >
                 <motion.div
-                  key={index}
-                  className="flex flex-col items-center flex-shrink-0 min-w-[60px]"
+                  className="flex flex-col items-center cursor-pointer"
+                  onMouseEnter={() => {
+                    setIsHovering(true);
+                    setIsPaused(true);
+                  }}
+                  onMouseLeave={() => {
+                    setIsHovering(false);
+                    setIsPaused(false);
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
+                  {/* Year Label */}
                   <div
-                    className={`
-                    w-8 h-8 rounded-full mb-2 flex items-center justify-center
-                    border-2 ${
-                      index <= progress
-                        ? "border-orange-600 bg-orange-500"
-                        : "border-gray-400 bg-gray-300"
-                    }
-                  `}
+                    className={`text-xs font-medium mb-1 ${
+                      isPassed ? "text-orange-600" : "text-gray-500"
+                    } ${isActive ? "font-bold" : ""}`}
                   >
-                    <img src={img} alt="" className="w-4 h-4 object-contain" />
+                    {years[index]}
                   </div>
-                  <div className="text-xs text-center">{years[index]}</div>
+
+                  {/* Dot */}
+                  <div
+                    className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center relative z-10 ${
+                      isActive
+                        ? "bg-orange-500 ring-2 ring-orange-300"
+                        : isPassed
+                        ? "bg-orange-300"
+                        : "bg-gray-300"
+                    }`}
+                  >
+                    <img src={img} alt="" className="w-3 h-3 object-contain" />
+                  </div>
+
+                  {/* Active Message */}
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      className="absolute bottom-full mb-1 bg-orange-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                    >
+                      {messages[index]}
+                    </motion.div>
+                  )}
                 </motion.div>
-              ))}
-            </div>
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      {/* Floating WhatsApp Button */}
-      <motion.div
-        className="fixed bottom-6 right-6 z-50"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{
-          delay: 2,
-          duration: 0.5,
-          type: "spring",
-          stiffness: 260,
-          damping: 20,
-        }}
-      ></motion.div>
-      <motion.div
-        className="relative"
-        onMouseEnter={() => setShowWhatsAppTooltip(true)}
-        onMouseLeave={() => setShowWhatsAppTooltip(false)}
-      >
-        {/* Tooltip */}
-        <AnimatePresence>
-          {showWhatsAppTooltip && (
-            <motion.div
-              initial={{ opacity: 0, x: 20, scale: 0.8 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              exit={{ opacity: 0, x: 20, scale: 0.8 }}
-              transition={{ duration: 0.2 }}
-              className="absolute right-full mr-3 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap shadow-lg"
-            >
-              Chat with Shyam Metalics
-              <div className="absolute right-0 top-1/2 transform translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-gray-800 rotate-45"></div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+      {/* Mobile Timeline */}
+      <div className="lg:hidden mt-2">
+        <div className="text-center mb-1">
+          <div className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full inline-block">
+            {messages[activeIndex]}
+          </div>
+          <div className="text-orange-600 font-medium text-sm mt-1">
+            {years[activeIndex]}
+          </div>
+        </div>
 
-        {/* WhatsApp Button */}
-        {/* <WhatsAppButton/> */}
-      </motion.div>
+        <div className="w-full overflow-x-auto pb-1">
+          <div className="flex gap-2 min-w-max px-2">
+            {galleryImages.map((img, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center flex-shrink-0 min-w-[36px]"
+                onClick={() => handleTimelineClick(index)}
+              >
+                <div
+                  className={`w-4 h-4 rounded-full mb-1 flex items-center justify-center ${
+                    index <= progress
+                      ? "bg-orange-500 border-2 border-orange-300"
+                      : "bg-gray-300 border border-gray-400"
+                  }`}
+                >
+                  <img src={img} alt="" className="w-2 h-2 object-contain" />
+                </div>
+                <div className="text-xs text-center">{years[index]}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

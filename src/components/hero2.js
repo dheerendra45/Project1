@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useRef } from "react";
-import herobg from '../assets/1.jpg';
-import FactoryIcon from '../assets/factory-icon.png';
-import RevenueIcon from '../assets/revenue-icon.png';
-import IndiaMapIcon from '../assets/india-map-icon.png';
+import herobg from "../assets/1.jpg";
+import FactoryIcon from "../assets/factory-icon.png";
+import RevenueIcon from "../assets/revenue-icon.png";
+import IndiaMapIcon from "../assets/india-map-icon.png";
 
 const banners = [
   {
-    heading: "Shaping the Future of India's Infrastructure",
-    subline: "One of India's 6th largest  integrated steel producers driving nation-building projects.",
-    image: herobg
+    heading: "Built to Lead, Designed to Deliver",
+    subline: "India’s top metal producer with 15.13 MTPA installed capacity",
+    image: herobg,
   },
   {
-    heading: "From Iron to Infrastructure – Building a Stronger India",
-    subline: "Empowering India with high-performance ferro alloys for industrial growth.",
-    image: herobg
+    heading: "Steel That Covers Every Step",
+    subline: "End-to-end metal solutions across the entire steel value chain",
+    image: herobg,
   },
   {
-    heading: "Sustainable Steel for a Greener, Stronger Bharat",
-    subline: "Pioneering green steel technologies for low-carbon infrastructure.",
-    image: herobg
-  }
+    heading: "Progress Powered by Responsibility",
+    subline: "Driven by a strong ESG framework for people, planet, and purpose",
+    image: herobg,
+  },
 ];
 
 const Hero = () => {
@@ -44,7 +44,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative font-inter">
+    <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative font-inter w-full">
       {/* Slides */}
       {banners.map((banner, index) => (
         <div
@@ -63,8 +63,8 @@ const Hero = () => {
       ))}
 
       {/* Content */}
-      <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 py-8 flex items-center justify-center h-full text-white">
-        <div className=" bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 sm:gap-6">
+      <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-8 py-8 flex items-center justify-center h-full text-white w-full">
+        <div className="bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 sm:gap-6">
           {/* Heading and paragraph */}
           <div className="w-full lg:w-[70%]">
             <h1 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight font-bold mb-2 sm:mb-4">
@@ -79,7 +79,15 @@ const Hero = () => {
           <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             {/* Button */}
             <div className="w-full sm:w-auto">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg">
+              <button
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg"
+                onClick={() => {
+                  const element = document.getElementById("business-areas");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
                 Explore More
               </button>
             </div>
@@ -104,8 +112,19 @@ const Hero = () => {
               className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
               aria-label="Previous slide"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
           </div>
@@ -115,8 +134,19 @@ const Hero = () => {
               className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
               aria-label="Next slide"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>

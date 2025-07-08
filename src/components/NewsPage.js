@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import news1 from '../assets/news.png'
-import news2 from '../assets/news2.png'
+import news1 from "../assets/news.png";
+import news2 from "../assets/news2.png";
 
 const NewsCard = ({
   date,
@@ -70,7 +70,11 @@ const NewsCard = ({
             strokeWidth="2"
             viewBox="0 0 24 24"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
       </div>
@@ -87,7 +91,8 @@ const NewsPage = () => {
       category: "Philanthropy",
       admin: "Admin",
       comments: "5 Comments",
-      title: "Tanishi Agarwal | Recognised for leadership in advancing strategic philanthropy | Shyam Metalics Cares.",
+      title:
+        "Tanishi Agarwal | Recognised for leadership in advancing strategic philanthropy | Shyam Metalics Cares.",
       excerpt:
         "We’re proud to share that Tanishi Agarwal has been recognised for her exemplary leadership in advancing strategic philanthropy and inclusive nation-building through Shyam Metalics Cares.",
       subtext:
@@ -104,11 +109,12 @@ const NewsPage = () => {
       excerpt:
         "Expanding Global Footprint with 50,000 MT Steel Shipment to Vietnam & Indonesia.High-grade TMT bars and wire rods to support infrastructure project",
       subtext:
-        "Strengthens India’s position as a top steel exporter; $25M revenue boost expected."
+        "Strengthens India’s position as a top steel exporter; $25M revenue boost expected.",
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop", // Green technology/research image
+      image:
+        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop", // Green technology/research image
       date: "01 MAY 2025",
       category: "Innovation",
       admin: "Admin",
@@ -121,12 +127,14 @@ const NewsPage = () => {
     },
     {
       id: 4,
-      image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=250&fit=crop", // Manufacturing/industrial image
+      image:
+        "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=250&fit=crop", // Manufacturing/industrial image
       date: "20 APR 2025",
       category: "Manufacturing",
       admin: "Admin",
       comments: "Comments",
-      title: " New Aluminum Foil Division Wins FDA Approval for Food-Grade Packaging.",
+      title:
+        " New Aluminum Foil Division Wins FDA Approval for Food-Grade Packaging.",
       excerpt:
         "Diversification Success: Enters FMCG Sector with 40,000 TPA Capacity. Supplies to top Indian snack brands and pharma companies.",
       subtext:
@@ -139,9 +147,11 @@ const NewsPage = () => {
       <div className="w-full max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">LATEST NEWS</h2>
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
+            LATEST NEWS
+          </h2>
           <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
-            Insights, Innovations & Impact
+            Innovating Today, Leading Tomorrow
           </p>
         </div>
 

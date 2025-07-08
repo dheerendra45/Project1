@@ -43,21 +43,21 @@ const IndustrialCards = () => {
       id: 1,
       title: "Iron and Steel",
       description:
-        "Shyam Metalics is one of the best integrated steel plants in India, with a strong focus on long steel products and ferro alloys. Our well-diversified product portfolio comprises ferro alloys, sponge iron, billet, TMT, structural, pipes, and pellets.",
+        "At the heart of Shyam Metalics is a strong steel business, founded on integrated production and scale. We manufacture a wide range of long steel products such as TMT bars, structural steel, billets, and pipes alongside sponge iron and pellets. Our ferro alloys portfolio enhances steel quality across industries, delivering performance that lasts.",
       image: steel,
     },
     {
       id: 2,
       title: "Aluminium",
       description:
-        "Shyam Metalics' Aluminium Foil Division is a leading force in India's advanced aluminium processing landscape. With dedicated manufacturing facilities in Pakuria (West Bengal) and Giridih (Jharkhand), we offer end-to-end aluminium foil solutions that serve critical sectors, including packaging, pharmaceuticals, energy, and industrial applications.",
+        "With our specialist aluminium foil business, we are developing sophisticated capabilities for high-precision industries. From manufacturing facilities at Pakuria and Giridih, we provide bespoke aluminium foil solutions to the pharmaceutical, energy, packaging, and industrial sectors.",
       image: aluminium,
     },
     {
       id: 3,
       title: "Energy & Others",
       description:
-        "Beyond steel and aluminum, we produce high-grade ferro alloys for stronger steel, ultra-pure silicon metal for the solar and technology industries, and durable ductile iron pipes for water infrastructure. Our eco-friendly cement, made from steel by products, supports construction, while captive renewable power our green manufacturing initiatives. As an integrated producer, we enable Aatmanirbhar Bharat across the energy, infrastructure and urban development sectors.",
+        "Our portfolio also comprises materials that support key industries. These include clean energy and electronics-grade high-purity silicon metal, water infrastructure pipes of ductile iron, and sustainable cement made from steel by-products. Captive power integration and circular manufacturing strategy propel these innovations enabling India's transition towards self-reliant, sustainable development.",
       image: power,
     },
   ];
@@ -68,9 +68,11 @@ const IndustrialCards = () => {
 
   return (
     <div className="bg-[#EDF1F4] py-8 sm:py-12 px-4 sm:px-5 md:px-6 lg:px-8 font-sans">
-      <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
-        Business Areas
-      </h2>
+      <div className="mb-10 lg:mb-12">
+        <h2 className="text-2xl sm:text-4xl lg:text-4xl font-semibold text-gray-900 mb-4">
+          Our Portfolio
+        </h2>
+      </div>
 
       <div className="max-w-7xl mx-auto" ref={containerRef}>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
@@ -225,10 +227,13 @@ const IndustrialCards = () => {
         </div>
 
         <div className="flex justify-center mt-8 sm:mt-12 mb-4">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border-2 border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg flex items-center justify-center transform hover:scale-105">
+          <a
+            href="/business" // <- Replace this with your actual link
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-2 font-medium flex items-center transition-all transform hover:scale-105"
+          >
             Explore All
-            <FiArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+            <FiArrowRight className="ml-2" />
+          </a>
         </div>
       </div>
 

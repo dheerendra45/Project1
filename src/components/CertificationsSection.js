@@ -1,16 +1,15 @@
 import React from "react";
-import logo1 from '../assets/logos/1.jpeg';
-import logo2 from '../assets/logos/1.jpeg';
-import logo3 from '../assets/logos/1.jpeg';
-import logo4 from '../assets/logos/1.jpeg';
-import logo5 from '../assets/logos/1.jpeg';
-import logo6 from '../assets/logos/1.jpeg';
-import logo7 from '../assets/logos/1.jpeg';
-import logo8 from '../assets/logos/1.jpeg';
-
+import logo1 from "../assets/logos/1.jpeg";
+import c1 from "../assets/cer/c1.jpg";
+import c2 from "../assets/cer/c2.jpg";
+import c3 from "../assets/cer/c3.jpg";
+import c4 from "../assets/cer/c4.jpg";
+import c5 from "../assets/cer/c5.jpeg";
+import c6 from "../assets/cer/c6.jpg";
+import c7 from "../assets/cer/c7.JPG";
 const CertificationsSection = () => {
-  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
-  
+  const logos = [c1, c2, c3, c4, c5, c6, c7];
+
   return (
     <div className="bg-gray-50 py-16 px-4 overflow-hidden">
       <div className="max-w-6xl mx-auto">
@@ -19,8 +18,9 @@ const CertificationsSection = () => {
           <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
             Our Certifications & Recognitions
           </h2>
-          <p className="text-gray-700 text-lg max-w-3xl mx-auto">
-            Recognized for excellence in quality, workplace culture, and environmental responsibility.
+          <p className="text-orange-600 text-lg max-w-3xl mx-auto">
+            Recognized for excellence in quality, workplace culture, and
+            environmental responsibility.
           </p>
         </div>
 
@@ -30,7 +30,7 @@ const CertificationsSection = () => {
             {[...logos, ...logos].map((logo, index) => (
               <div
                 key={index}
-                className="flex items-center justify-center h-32 w-56 bg-white rounded-lg shadow-sm border border-gray-200 p-0 mx-3 flex-shrink-0"
+                className="flex items-center justify-center h-40 w-60 bg-white rounded-lg shadow-sm border border-gray-200 p-0 mx-3 flex-shrink-0"
               >
                 <img
                   src={logo}
@@ -41,14 +41,17 @@ const CertificationsSection = () => {
             ))}
           </div>
         </div>
-        
+
         <div className="text-center mt-12">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg transition-colors duration-200 font-medium">
+          <a
+            href="/awardsAndachievements"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded border-2 border-white transition-colors duration-200 font-medium"
+          >
             View All
-          </button>
+          </a>
         </div>
       </div>
-      
+
       <style>{`
         @keyframes scroll {
           0% {
