@@ -52,7 +52,7 @@ const productImages = {
   "Renewable Power": e2,
 };
 
-export default function BusinessAreas() {
+export default function BusinessAreas({ id }) {
   const fallbackImages = [a2, a4, a5];
 
   const productData = {
@@ -226,7 +226,10 @@ export default function BusinessAreas() {
   const tabs = ["Steel and Iron", "Aluminium", "Energy and Others"];
 
   return (
-    <div className="relative bg-gray-200 text-white py-12 px-8 font-inter">
+    <div
+      id={id}
+      className="relative bg-gray-200 text-white py-12 px-8 font-inter"
+    >
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
