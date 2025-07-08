@@ -5,6 +5,7 @@ import { href } from "react-router-dom";
 import great from "../assets/great place.png";
 import { Search } from "lucide-react";
 import navbarbg from "../assets/navbar.png";
+
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
@@ -637,17 +638,22 @@ const Navbar = () => {
 
   return (
     <div className="w-full fixed top-0 left-0 z-50">
-      {/* Background overlay - only visible when not scrolled */}
-      {!isScrolled && <div className="absolute inset-0 bg-black/20 z-0"></div>}
-
       {/* Main Navbar Container */}
       <div
         className={`relative z-30 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
+          isScrolled ? "bg-white shadow-md" : ""
         }`}
       >
+        {/* Background overlay - only visible when not scrolled */}
+        {!isScrolled && (
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${navbarbg})` }}
+          />
+        )}
+
         {/* Two-column layout */}
-        <div className="flex">
+        <div className="flex relative z-10">
           {/* Logo Column - fixed width */}
           <div
             className="flex-shrink-0 w-[310px] flex items-center justify-center"
@@ -664,10 +670,7 @@ const Navbar = () => {
           <div className="flex-grow">
             {/* Top Bar - only visible when not scrolled */}
             {!isScrolled && (
-              <div
-                className="w-full h-[47px] text-white text-sm overflow-hidden bg-cover bg-center bg-no-repeat relative z-10"
-                style={{ backgroundImage: `url(${navbarbg})` }}
-              >
+              <div className="w-full h-[47px] text-white text-sm overflow-hidden relative z-10">
                 <div className="relative z-10 w-full h-full flex items-center justify-between px-4 lg:px-8">
                   {/* Stock prices - aligned with navigation items */}
                   <div className="flex items-center space-x-4">
@@ -720,7 +723,9 @@ const Navbar = () => {
             {/* Main Navigation Bar */}
             <div
               ref={dropdownRef}
-              className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-8 relative z-30`}
+              className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-8 relative z-30 ${
+                isScrolled ? "bg-white" : ""
+              }`}
             >
               {/* Navigation Menu - hidden on mobile */}
               <div className="hidden md:flex gap-3 lg:gap-4 xl:gap-6 text-sm font-medium">
@@ -738,7 +743,7 @@ const Navbar = () => {
                   >
                     <span
                       className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 ${
-                        isScrolled ? "text-gray-800" : "text-gray-300"
+                        isScrolled ? "text-gray-800" : "text-white"
                       } ${!item.hasDropdown ? "hover:scale-105" : ""}`}
                     >
                       {item.title}
@@ -991,7 +996,9 @@ const Navbar = () => {
 
                 <button
                   onClick={toggleMobileMenu}
-                  className="text-gray-700 focus:outline-none"
+                  className={`focus:outline-none ${
+                    isScrolled ? "text-gray-700" : "text-white"
+                  }`}
                 >
                   <svg
                     className="w-6 h-6"

@@ -46,6 +46,7 @@ const productImages = {
   "SEL TIGER FOIL – KITCHEN Foil": al1,
   "Aluminium Foil": al2,
   "Battery Foil": al3,
+  FinStocks: sswire,
   // Energy products
   "Captive Power": e1,
   "Renewable Power": e2,
@@ -118,12 +119,16 @@ export default function BusinessAreas() {
         desc: "Premium quality kitchen aluminum foil for domestic use",
       },
       {
-        name: "Aluminium Foil",
+        name: "Bare Aluminium Foil",
         desc: "Versatile aluminum foil for packaging and industrial applications",
       },
       {
         name: "Battery Foil",
         desc: "High-performance aluminum foil for battery manufacturing",
+      },
+      {
+        name: "FinStocks",
+        desc: "Durable aluminum foil for HVAC and heat exchanger applications",
       },
     ],
     "Energy and Others": [
