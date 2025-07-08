@@ -57,7 +57,7 @@ const Best = () => {
           animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h1 className="text-4xl font-bold">
+          <h1 className="text-4xl mt-10 font-bold">
             "Building Bharat’s Tomorrow, One Metal at a Time"
           </h1>
           <p>
@@ -82,9 +82,9 @@ const Best = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -50 }}
               transition={{ duration: 0.5 }}
-              className="bg-gray-100 p-6 rounded shadow space-y-4"
+              className="bg-gray-100 p-6 rounded shadow space-y-4 mt-10" 
             >
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 ">
                 <div className="bg-orange-500 rounded-full p-2 w-14 h-14 flex items-center justify-center">
                   <img
                     src={carouselData[carouselIndex].icon}

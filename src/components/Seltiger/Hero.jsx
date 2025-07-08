@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { ChevronDown } from "lucide-react";
-import herobg from "../../assets/Seltiger/herobanner.mp4";
+import Hero1 from "../../assets/Seltiger/Hero.png";
 
 export default function Hero() {
   const controls = useAnimation();
@@ -55,17 +55,14 @@ export default function Hero() {
     >
       {/* Background Video */}
       <div className="absolute inset-0 overflow-hidden">
-        <video
-          src={herobg}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          style={parallaxStyle}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
-      </div>
+  <img
+    src={Hero1}
+    alt="Hero background"
+    className="absolute inset-0 w-full h-full object-cover z-0"
+    style={parallaxStyle}
+  />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
+</div>
 
       {/* Floating Particles */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-10">
