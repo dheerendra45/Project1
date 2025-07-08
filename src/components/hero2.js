@@ -1,25 +1,25 @@
 import React, { useEffect, useState, useRef } from "react";
-import herobg from '../assets/1.jpg';
-import FactoryIcon from '../assets/factory-icon.png';
-import RevenueIcon from '../assets/revenue-icon.png';
-import IndiaMapIcon from '../assets/india-map-icon.png';
+import herobg from "../assets/1.jpg";
+import FactoryIcon from "../assets/factory-icon.png";
+import RevenueIcon from "../assets/revenue-icon.png";
+import IndiaMapIcon from "../assets/india-map-icon.png";
 
 const banners = [
   {
-    heading: "Shaping the Future of India's Infrastructure",
-    subline: "One of India's 6th largest  integrated steel producers driving nation-building projects.",
-    image: herobg
+    heading: "Built to Lead, Designed to Deliver",
+    subline: "India’s top metal producer with 15.13 MTPA installed capacity",
+    image: herobg,
   },
   {
-    heading: "From Iron to Infrastructure – Building a Stronger India",
-    subline: "Empowering India with high-performance ferro alloys for industrial growth.",
-    image: herobg
+    heading: "Steel That Covers Every Step",
+    subline: "End-to-end metal solutions across the entire steel value chain",
+    image: herobg,
   },
   {
-    heading: "Sustainable Steel for a Greener, Stronger Bharat",
-    subline: "Pioneering green steel technologies for low-carbon infrastructure.",
-    image: herobg
-  }
+    heading: "Progress Powered by Responsibility",
+    subline: "Driven by a strong ESG framework for people, planet, and purpose",
+    image: herobg,
+  },
 ];
 
 const Hero = () => {
@@ -104,8 +104,19 @@ const Hero = () => {
               className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
               aria-label="Previous slide"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 19l-7-7 7-7"
+                />
               </svg>
             </button>
           </div>
@@ -115,8 +126,19 @@ const Hero = () => {
               className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
               aria-label="Next slide"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 sm:h-6 sm:w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
               </svg>
             </button>
           </div>

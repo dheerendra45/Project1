@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import worldExport from "../assets/worldExport.mp4";
+import worldExport from "../assets/worldExport1.mp4";
 
 function LocationsMap() {
   const mapRef = useRef(null);

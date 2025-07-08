@@ -117,7 +117,7 @@ const EnvironmentSection1 = () => {
             ref={headingRef}
             className="text-2xl sm:text-4xl font-semibold text-black-800 mb-6"
           >
-            Environment
+            Our Green Promise
           </h2>
 
           <p

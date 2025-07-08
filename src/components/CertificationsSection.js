@@ -8,7 +8,7 @@ import c5 from "../assets/cer/c5.jpeg";
 import c6 from "../assets/cer/c6.jpg";
 import c7 from "../assets/cer/c7.JPG";
 const CertificationsSection = () => {
-  const logos = [logo1, c1, c2, c3, c4, c5, c6, c7];
+  const logos = [c1, c2, c3, c4, c5, c6, c7];
 
   return (
     <div className="bg-gray-50 py-16 px-4 overflow-hidden">

@@ -69,7 +69,7 @@ const IndustrialCards = () => {
   return (
     <div className="bg-[#EDF1F4] py-8 sm:py-12 px-4 sm:px-5 md:px-6 lg:px-8 font-sans">
       <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
-        Business Areas
+        Our Portfolio
       </h2>
 
       <div className="max-w-7xl mx-auto" ref={containerRef}>

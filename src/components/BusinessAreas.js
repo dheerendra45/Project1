@@ -12,6 +12,10 @@ import al3 from "../assets/al3.jpg";
 import e1 from "../assets/e1.jpg";
 import e2 from "../assets/e2.png";
 
+import sswire from "../assets/products/Wire.jpg";
+import brightbar from "../assets/products/brightbar.jpg";
+import sswirerod from "../assets/products/wirerod.jpg";
+import blackround from "../assets/products/blackrounbar.jpg";
 import pellets from "../assets/products/pellets.png";
 import spongeiron from "../assets/products/spongeiron.png";
 import billet from "../assets/products/billets.jpg";
@@ -20,7 +24,8 @@ import tmt from "../assets/products/tmt.png";
 import stainless from "../assets/products/stainless.png";
 import wirerod from "../assets/products/wirerod.png";
 import colorocated from "../assets/products/image.png";
-
+import flatpatta from "../assets/products/flat.png";
+import flats from "../assets/products/flats.jpg";
 // Map product names to specific images
 const productImages = {
   Pellet: pellets,
@@ -31,6 +36,12 @@ const productImages = {
   "Wire Rods": wirerod,
   "Color Coated Sheets": colorocated,
   "Stainless Steel Billets": stainless,
+  "SS Wire Rod": sswirerod,
+  "SS Wire": sswire,
+  "Bright Bar": brightbar,
+  "Black Round Bar": blackround,
+  "Flat Rolled Products": flatpatta,
+  "Flats/Patta": flats,
   // Aluminum products
   "SEL TIGER FOIL – KITCHEN Foil": al1,
   "Aluminium Foil": al2,
@@ -217,7 +228,7 @@ export default function BusinessAreas() {
         <div className="mb-12">
           <div className="pt-0 mb-8">
             <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
-              Our Products
+              OUR RANGE OF PRODUCTS
             </h2>
           </div>
 

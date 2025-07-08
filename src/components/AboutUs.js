@@ -335,10 +335,10 @@ export default function AboutUs() {
         {/* Left Column - About Text */}
         <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
           <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
-            ABOUT US
+            Who We Are
           </h2>
           <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-3">
-            A Steel Company With Integrated Operations.
+            Engineering Bharat’s Growth Since 1950s
           </h4>
 
           <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3">
