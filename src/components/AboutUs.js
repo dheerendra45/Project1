@@ -7,8 +7,8 @@ import a3 from "../assets/2.png";
 import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
+
 export default function AboutUs() {
-  // [Previous state and data declarations remain exactly the same...]
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -16,6 +16,7 @@ export default function AboutUs() {
   const pauseTimeoutRef = useRef(null);
   const progressIntervalRef = useRef(null);
 
+  // [All your data arrays remain exactly the same...]
   const messages = [
     "Breaking Barriers",
     "Lighting the Spark",
@@ -64,8 +65,6 @@ export default function AboutUs() {
     abt1img,
     abt1img,
   ];
-
-  // Year-wise content data
   const yearContent = [
     {
       year: "2005",
@@ -274,6 +273,8 @@ export default function AboutUs() {
     },
   ];
 
+  // [All your yearContent data remains exactly the same...]
+
   const handleTimelineClick = (index) => {
     setActiveIndex(index);
     setProgress(index);
@@ -329,7 +330,7 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-4 sm:px-6 lg:px-8 py-4 font-['Inter',sans-serif]">
+    <div className="h-[94vh] flex flex-col overflow-hidden px-4 sm:px-6 lg:px-8 py-4 font-['Inter',sans-serif]">
       {/* Main Content Area - Two Columns */}
       <div className="flex flex-col lg:flex-row flex-grow gap-4 mb-2 overflow-hidden">
         {/* Left Column - About Text */}
@@ -338,10 +339,10 @@ export default function AboutUs() {
             Who We Are
           </h2>
           <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-3">
-            Engineering Bharat’s Growth Since 1950s
+            Engineering Bharat's Growth Since 1950s
           </h4>
 
-          <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3">
+          <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3 text-justify">
             <p>
               Established in 1953, Shyam Metalics is one of India's leading
               steel producers of high-performance steel and ferro alloys that
@@ -372,7 +373,7 @@ export default function AboutUs() {
         {/* Right Column - Year Content */}
         <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
           {/* Large Image */}
-          <div className="w-full h-48 sm:h-56 mb-3 rounded-lg overflow-hidden">
+          <div className="w-full h-40 sm:h-48 mb-3 rounded-lg overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.img
                 key={`gallery-${activeIndex}`}
@@ -422,7 +423,7 @@ export default function AboutUs() {
       </div>
 
       {/* Timeline Section - Fixed at bottom */}
-      <div className="relative h-24 sm:h-28 w-full mt-2">
+      <div className="relative h-20 sm:h-24 w-full mt-2">
         {/* Progress Line */}
         <div className="absolute left-0 right-0 h-1 bg-gray-300 top-1/2 transform -translate-y-1/2">
           <motion.div
@@ -470,7 +471,7 @@ export default function AboutUs() {
 
                   {/* Dot */}
                   <div
-                    className={`w-5 h-5 rounded-full flex items-center justify-center relative z-10 ${
+                    className={`w-4 h-4 sm:w-5 sm:h-5 rounded-full flex items-center justify-center relative z-10 ${
                       isActive
                         ? "bg-orange-500 ring-2 ring-orange-300"
                         : isPassed
@@ -500,8 +501,8 @@ export default function AboutUs() {
       </div>
 
       {/* Mobile Timeline */}
-      <div className="lg:hidden mt-3">
-        <div className="text-center mb-2">
+      <div className="lg:hidden mt-2">
+        <div className="text-center mb-1">
           <div className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full inline-block">
             {messages[activeIndex]}
           </div>
@@ -510,22 +511,22 @@ export default function AboutUs() {
           </div>
         </div>
 
-        <div className="w-full overflow-x-auto pb-2">
-          <div className="flex gap-3 min-w-max px-2">
+        <div className="w-full overflow-x-auto pb-1">
+          <div className="flex gap-2 min-w-max px-2">
             {galleryImages.map((img, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center flex-shrink-0 min-w-[40px]"
+                className="flex flex-col items-center flex-shrink-0 min-w-[36px]"
                 onClick={() => handleTimelineClick(index)}
               >
                 <div
-                  className={`w-5 h-5 rounded-full mb-1 flex items-center justify-center ${
+                  className={`w-4 h-4 rounded-full mb-1 flex items-center justify-center ${
                     index <= progress
                       ? "bg-orange-500 border-2 border-orange-300"
                       : "bg-gray-300 border border-gray-400"
                   }`}
                 >
-                  <img src={img} alt="" className="w-3 h-3 object-contain" />
+                  <img src={img} alt="" className="w-2 h-2 object-contain" />
                 </div>
                 <div className="text-xs text-center">{years[index]}</div>
               </div>

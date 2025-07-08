@@ -146,9 +146,12 @@ const EnvironmentSection1 = () => {
             ref={buttonRef}
             className="mt-6 flex justify-center lg:justify-start"
           >
-            <button className="flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors">
+            <a
+              href="/esg_profile"
+              className="flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors"
+            >
               Read More <ChevronRight className="ml-1 w-5 h-5" />
-            </button>
+            </a>
           </div>
         </div>
         {/* Right - Full Height Image */}

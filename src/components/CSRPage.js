@@ -60,9 +60,12 @@ const CSRPage = () => {
             business.
           </p>
 
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded border-2 border-white">
+          <a
+            href="/csr"
+            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded border-2 border-white"
+          >
             Learn More About Our Impact
-          </button>
+          </a>
         </div>
       </div>
     </div>

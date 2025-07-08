@@ -300,9 +300,12 @@ export default function BusinessAreas() {
         </div>
 
         <div className="text-center mt-8">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300 shadow-lg">
+          <a
+            href="/business"
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded-2 transition-colors duration-300 shadow-lg"
+          >
             View More
-          </button>
+          </a>
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ import bgImg from "../assets/image146.png";
 import { href } from "react-router-dom";
 import great from "../assets/great place.png";
 import { Search } from "lucide-react";
-import navbarbg from "../assets/navbarbg1.png";
+import navbarbg from "../assets/navbarbg2.png";
 
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);

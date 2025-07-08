@@ -79,7 +79,15 @@ const Hero = () => {
           <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
             {/* Button */}
             <div className="w-full sm:w-auto">
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg">
+              <button
+                className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg"
+                onClick={() => {
+                  const element = document.getElementById("business-areas");
+                  if (element) {
+                    element.scrollIntoView({ behavior: "smooth" });
+                  }
+                }}
+              >
                 Explore More
               </button>
             </div>

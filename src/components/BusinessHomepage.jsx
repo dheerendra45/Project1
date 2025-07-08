@@ -227,10 +227,13 @@ const IndustrialCards = () => {
         </div>
 
         <div className="flex justify-center mt-8 sm:mt-12 mb-4">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border-2 border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg flex items-center justify-center transform hover:scale-105">
+          <a
+            href="/business" // <- Replace this with your actual link
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-2 font-medium flex items-center transition-all transform hover:scale-105"
+          >
             Explore All
-            <FiArrowRight className="ml-2 transition-transform duration-300 group-hover:translate-x-1" />
-          </button>
+            <FiArrowRight className="ml-2" />
+          </a>
         </div>
       </div>
 

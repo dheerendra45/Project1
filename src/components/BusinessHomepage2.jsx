@@ -171,10 +171,13 @@ const IndustrialCards = () => {
 
         {/* CTA Button */}
         <div className="flex justify-center mt-12">
-          <button className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium flex items-center transition-all transform hover:scale-105">
+          <a
+            href="/business" // <- Replace this with your actual link
+            className="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-lg font-medium flex items-center transition-all transform hover:scale-105"
+          >
             Explore All
             <FiArrowRight className="ml-2" />
-          </button>
+          </a>
         </div>
       </div>
     </div>
