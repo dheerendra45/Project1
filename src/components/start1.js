@@ -4,7 +4,7 @@ import bgImg from "../assets/image146.png";
 import { href } from "react-router-dom";
 import great from "../assets/great place.png";
 import { Search } from "lucide-react";
-
+import navbarbg from "../assets/navbar.png";
 const Navbar = () => {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeBusinessSub, setActiveBusinessSub] = useState(null);
@@ -664,7 +664,10 @@ const Navbar = () => {
           <div className="flex-grow">
             {/* Top Bar - only visible when not scrolled */}
             {!isScrolled && (
-              <div className="w-full h-[47px] text-white text-sm overflow-hidden bg-gradient-to-r relative z-10">
+              <div
+                className="w-full h-[47px] text-white text-sm overflow-hidden bg-cover bg-center bg-no-repeat relative z-10"
+                style={{ backgroundImage: `url(${navbarbg})` }}
+              >
                 <div className="relative z-10 w-full h-full flex items-center justify-between px-4 lg:px-8">
                   {/* Stock prices - aligned with navigation items */}
                   <div className="flex items-center space-x-4">
