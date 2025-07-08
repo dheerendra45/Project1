@@ -16,12 +16,12 @@ import sswire from "../assets/products/Wire.jpg";
 import brightbar from "../assets/products/brightbar.jpg";
 import sswirerod from "../assets/products/wirerod.jpg";
 import blackround from "../assets/products/blackrounbar.jpg";
-import pellets from "../assets/products/pellets.png";
-import spongeiron from "../assets/products/spongeiron.png";
+import pellets from "../assets/products/Pellets.jpg";
+import spongeiron from "../assets/products/spongeiron.jpg";
 import billet from "../assets/products/billets.jpg";
 import strucutal from "../assets/products/structure.png";
-import tmt from "../assets/products/tmt.png";
-import stainless from "../assets/products/stainless.png";
+import tmt from "../assets/products/tmt.jpg";
+import stainless from "../assets/products/stainless.jpg";
 import wirerod from "../assets/products/wirerod.png";
 import colorocated from "../assets/products/image.png";
 import flatpatta from "../assets/products/flat.png";
@@ -227,7 +227,7 @@ export default function BusinessAreas() {
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="pt-0 mb-8">
-            <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold text-center sm:text-left sm:ml-7 mb-6 sm:mb-8">
+            <h2 className="text-gray-800 text-2xl sm:text-3xl lg:text-4xl font-semibold  mb-6 sm:mb-8">
               OUR RANGE OF PRODUCTS
             </h2>
           </div>
