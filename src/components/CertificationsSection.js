@@ -1,15 +1,14 @@
 import React from "react";
 import logo1 from "../assets/logos/1.jpeg";
-import logo2 from "../assets/logos/1.jpeg";
-import logo3 from "../assets/logos/1.jpeg";
-import logo4 from "../assets/logos/1.jpeg";
-import logo5 from "../assets/logos/1.jpeg";
-import logo6 from "../assets/logos/1.jpeg";
-import logo7 from "../assets/logos/1.jpeg";
-import logo8 from "../assets/logos/1.jpeg";
-
+import c1 from "../assets/cer/c1.jpg";
+import c2 from "../assets/cer/c2.jpg";
+import c3 from "../assets/cer/c3.jpg";
+import c4 from "../assets/cer/c4.jpg";
+import c5 from "../assets/cer/c5.jpeg";
+import c6 from "../assets/cer/c6.jpg";
+import c7 from "../assets/cer/c7.JPG";
 const CertificationsSection = () => {
-  const logos = [logo1, logo2, logo3, logo4, logo5, logo6, logo7, logo8];
+  const logos = [logo1, c1, c2, c3, c4, c5, c6, c7];
 
   return (
     <div className="bg-gray-50 py-16 px-4 overflow-hidden">

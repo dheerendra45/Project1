@@ -7,8 +7,8 @@ import a3 from "../assets/2.png";
 import a4 from "../assets/3.png";
 import a5 from "../assets/4.png";
 import a6 from "../assets/5.png";
-
 export default function AboutUs() {
+  // [Previous state and data declarations remain exactly the same...]
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -329,26 +329,20 @@ export default function AboutUs() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden px-6 sm:px-10 lg:px-14 xl:px-18 py-4 font-['Inter',sans-serif]">
-      {/* ABOUT US Section - Made more compact */}
-      <div
-        className="flex flex-col lg:flex-row items-start gap-4 lg:gap-6"
-        style={{ height: "70%" }}
-      >
-        {/* Left Text Section */}
-        <div
-          className="lg:w-1/2 text-black space-y-2 lg:space-y-3 overflow-y-auto pr-2 
-               animate-slide-in-3d origin-left opacity-0 will-change-transform"
-        >
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
+    <div className="h-screen flex flex-col overflow-hidden px-4 sm:px-6 lg:px-8 py-4 font-['Inter',sans-serif]">
+      {/* Main Content Area - Two Columns */}
+      <div className="flex flex-col lg:flex-row flex-grow gap-4 mb-2 overflow-hidden">
+        {/* Left Column - About Text */}
+        <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
             ABOUT US
           </h2>
-          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
-            A Steel Company With Integrated <br className="hidden sm:block" />{" "}
-            Operations.
+          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-3">
+            A Steel Company With Integrated Operations.
           </h4>
-          <div className="text-sm sm:text-base leading-relaxed space-y-2">
-            <p className="line-clamp-4">
+
+          <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3">
+            <p>
               Established in 1953, Shyam Metalics is one of India's leading
               steel producers of high-performance steel and ferro alloys that
               drive India's basic industries and infrastructure. Being the
@@ -356,14 +350,14 @@ export default function AboutUs() {
               the entire steel value chain — from pellets and sponge iron to
               long steel products and aluminium foil.
             </p>
-            <p className="line-clamp-4">
+            <p>
               Our 15.13 MTPA of installed capacity, spread across seven
               strategically located manufacturing facilities, positions us in
               regional and national markets with scale, consistency, and speed.
               With the support of 376 MW of captive power, we are able to ensure
               consistent operations while minimizing external dependencies.
             </p>
-            <p className="line-clamp-3">
+            <p>
               A robust ESG foundation in place enables us to integrate
               sustainability into all our processes: right from zero liquid
               discharge systems to circular manufacturing practices. Our
@@ -375,184 +369,167 @@ export default function AboutUs() {
           </div>
         </div>
 
-        {/* Year-wise Content and Gallery Section */}
-        <motion.div
-          className="lg:w-1/2 flex flex-col items-center w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7 }}
-        >
-          {/* Gallery Image Block */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`gallery-${activeIndex}`}
-              className="w-full h-40 mb-3"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+        {/* Right Column - Year Content */}
+        <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
+          {/* Large Image */}
+          <div className="w-full h-48 sm:h-56 mb-3 rounded-lg overflow-hidden">
+            <AnimatePresence mode="wait">
               <motion.img
+                key={`gallery-${activeIndex}`}
                 src={aboutImages[activeIndex]}
                 alt={`Gallery ${years[activeIndex]}`}
-                className="w-full h-full object-cover rounded-lg shadow-lg border border-orange-100"
-                initial={{ scale: 0.95 }}
-                animate={{ scale: 1 }}
+                className="w-full h-full object-cover"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
               />
-            </motion.div>
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
 
-          {/* Year Content Block */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`content-${activeIndex}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="w-full flex-grow bg-white p-3 sm:p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto"
-            >
-              <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-1">
-                {yearContent[activeIndex]?.year || years[activeIndex]}:{" "}
-                {yearContent[activeIndex]?.title}
-              </h2>
-              <div className="space-y-1 text-xs sm:text-sm">
-                {yearContent[activeIndex]?.content.map((item, i) => (
-                  <p
-                    key={i}
-                    className={
-                      item.startsWith("•") || item.startsWith("✓") ? "pl-3" : ""
-                    }
-                  >
-                    {item}
-                  </p>
-                ))}
-              </div>
-            </motion.div>
-          </AnimatePresence>
-        </motion.div>
+          {/* Year Content */}
+          <div className="flex-grow bg-white p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`content-${activeIndex}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h2 className="text-orange-500 text-lg sm:text-xl font-bold mb-2">
+                  {yearContent[activeIndex]?.year || years[activeIndex]}:{" "}
+                  {yearContent[activeIndex]?.title}
+                </h2>
+                <div className="space-y-2 text-xs sm:text-sm">
+                  {yearContent[activeIndex]?.content.map((item, i) => (
+                    <p
+                      key={i}
+                      className={
+                        item.startsWith("•") || item.startsWith("✓")
+                          ? "pl-3"
+                          : "font-medium"
+                      }
+                    >
+                      {item}
+                    </p>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
-      {/* Timeline Section */}
-      <div className="relative h-[30%] min-h-[120px]">
-        {/* Timeline Line with Symbols */}
-        <div className="absolute left-0 right-0 h-1 bg-gray-300 bottom-6">
-          {/* Progress Indicator */}
+      {/* Timeline Section - Fixed at bottom */}
+      <div className="relative h-24 sm:h-28 w-full mt-2">
+        {/* Progress Line */}
+        <div className="absolute left-0 right-0 h-1 bg-gray-300 top-1/2 transform -translate-y-1/2">
           <motion.div
             className="h-full bg-orange-500 absolute left-0 top-0"
             animate={{ width: `${(progress / galleryImages.length) * 100}%` }}
             transition={{ duration: 0.1 }}
           />
-
-          {/* Timeline Symbols */}
-          <div className="relative w-full h-full">
-            {galleryImages.map((img, index) => {
-              const isActive = index === activeIndex;
-              const isPassed = index < progress;
-              const position = `${(index / (galleryImages.length - 1)) * 100}%`;
-
-              return (
-                <div
-                  key={index}
-                  className="absolute transform -translate-x-1/2 -translate-y-1/2"
-                  style={{ left: position, top: "50%" }}
-                  onClick={() => handleTimelineClick(index)}
-                >
-                  <motion.div
-                    onMouseEnter={() => {
-                      setIsHovering(true);
-                      setIsPaused(true);
-                    }}
-                    onMouseLeave={() => {
-                      setIsHovering(false);
-                      setIsPaused(false);
-                    }}
-                    className="flex flex-col items-center cursor-pointer"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {/* Year Label */}
-                    <div
-                      className={`text-xs font-medium mb-1 ${
-                        isPassed ? "text-orange-600" : "text-gray-500"
-                      }`}
-                    >
-                      {years[index]}
-                    </div>
-
-                    {/* Symbol */}
-                    <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center relative z-10 ${
-                        isActive
-                          ? "bg-orange-500"
-                          : isPassed
-                          ? "bg-orange-300"
-                          : "bg-gray-300"
-                      }`}
-                    >
-                      <img
-                        src={img}
-                        alt=""
-                        className="w-4 h-4 object-contain"
-                      />
-                    </div>
-
-                    {/* Active Message */}
-                    {isActive && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 10 }}
-                        className="absolute bottom-full mb-2 bg-orange-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
-                      >
-                        {messages[index]}
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </div>
-              );
-            })}
-          </div>
         </div>
 
-        {/* Mobile Timeline */}
-        <div className="sm:hidden flex flex-col mt-4 px-4">
-          {/* Message and Year */}
-          <div className="text-center mb-2">
-            <div className="bg-orange-500 text-white text-xs font-semibold px-4 py-1.5 rounded-full inline-block">
-              {messages[activeIndex]}
-            </div>
-            <div className="text-orange-600 font-medium text-sm mt-1">
-              {years[activeIndex]}
-            </div>
-          </div>
+        {/* Timeline Dots */}
+        <div className="relative w-full h-full">
+          {galleryImages.map((img, index) => {
+            const isActive = index === activeIndex;
+            const isPassed = index < progress;
+            const position = `${(index / (galleryImages.length - 1)) * 100}%`;
 
-          {/* Horizontal scrollable timeline */}
-          <div className="w-full overflow-x-auto">
-            <div className="flex gap-4 min-w-max px-2 py-2">
-              {galleryImages.map((img, index) => (
+            return (
+              <div
+                key={index}
+                className="absolute transform -translate-x-1/2 -translate-y-1/2"
+                style={{ left: position, top: "50%" }}
+                onClick={() => handleTimelineClick(index)}
+              >
                 <motion.div
-                  key={index}
-                  className="flex flex-col items-center flex-shrink-0 min-w-[50px]"
-                  onClick={() => handleTimelineClick(index)}
+                  className="flex flex-col items-center cursor-pointer"
+                  onMouseEnter={() => {
+                    setIsHovering(true);
+                    setIsPaused(true);
+                  }}
+                  onMouseLeave={() => {
+                    setIsHovering(false);
+                    setIsPaused(false);
+                  }}
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
                 >
+                  {/* Year Label */}
                   <div
-                    className={`
-                      w-6 h-6 rounded-full mb-1 flex items-center justify-center
-                      border-2 ${
-                        index <= progress
-                          ? "border-orange-600 bg-orange-500"
-                          : "border-gray-400 bg-gray-300"
-                      }
-                    `}
+                    className={`text-xs font-medium mb-1 ${
+                      isPassed ? "text-orange-600" : "text-gray-500"
+                    } ${isActive ? "font-bold" : ""}`}
+                  >
+                    {years[index]}
+                  </div>
+
+                  {/* Dot */}
+                  <div
+                    className={`w-5 h-5 rounded-full flex items-center justify-center relative z-10 ${
+                      isActive
+                        ? "bg-orange-500 ring-2 ring-orange-300"
+                        : isPassed
+                        ? "bg-orange-300"
+                        : "bg-gray-300"
+                    }`}
                   >
                     <img src={img} alt="" className="w-3 h-3 object-contain" />
                   </div>
-                  <div className="text-xs text-center">{years[index]}</div>
+
+                  {/* Active Message */}
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 5 }}
+                      className="absolute bottom-full mb-1 bg-orange-500 text-white text-xs px-2 py-1 rounded whitespace-nowrap"
+                    >
+                      {messages[index]}
+                    </motion.div>
+                  )}
                 </motion.div>
-              ))}
-            </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Mobile Timeline */}
+      <div className="lg:hidden mt-3">
+        <div className="text-center mb-2">
+          <div className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full inline-block">
+            {messages[activeIndex]}
+          </div>
+          <div className="text-orange-600 font-medium text-sm mt-1">
+            {years[activeIndex]}
+          </div>
+        </div>
+
+        <div className="w-full overflow-x-auto pb-2">
+          <div className="flex gap-3 min-w-max px-2">
+            {galleryImages.map((img, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center flex-shrink-0 min-w-[40px]"
+                onClick={() => handleTimelineClick(index)}
+              >
+                <div
+                  className={`w-5 h-5 rounded-full mb-1 flex items-center justify-center ${
+                    index <= progress
+                      ? "bg-orange-500 border-2 border-orange-300"
+                      : "bg-gray-300 border border-gray-400"
+                  }`}
+                >
+                  <img src={img} alt="" className="w-3 h-3 object-contain" />
+                </div>
+                <div className="text-xs text-center">{years[index]}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
