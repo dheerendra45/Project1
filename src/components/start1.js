@@ -13,6 +13,7 @@ const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showInput, setShowInput] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   // Stock price state
   const [stockData, setStockData] = useState({
@@ -407,7 +408,13 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 10);
+      
+      // Calculate scroll progress (0 to 1)
+      const maxScroll = 200; // Adjust this value to control how quickly the gradient fades
+      const progress = Math.min(scrollY / maxScroll, 1);
+      setScrollProgress(progress);
     };
 
     document.addEventListener("click", handleClickOutside);
@@ -644,6 +651,28 @@ const Navbar = () => {
           isScrolled ? "bg-white shadow-md" : ""
         }`}
       >
+        {/* Gradient overlay - only visible when not scrolled */}
+        {!isScrolled && (
+          <div
+            className="absolute inset-0 z-0"
+            style={{
+              background: `linear-gradient(to bottom, 
+                rgba(0, 0, 0, ${0.15 * (1 - scrollProgress)}), 
+                rgba(0, 0, 0, 0))`,
+            }}
+          />
+        )}
+
+        {/* Light overlay - only visible when not scrolled */}
+        {!isScrolled && (
+          <div
+            className="absolute inset-0 z-0 bg-black opacity-10"
+            style={{
+              opacity: `${0.05 * (1 - scrollProgress)}`,
+            }}
+          />
+        )}
+
         {/* Background overlay - only visible when not scrolled */}
         {!isScrolled && (
           <div
