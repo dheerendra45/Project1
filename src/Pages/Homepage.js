@@ -1,15 +1,14 @@
 // pages/HomePage.js
 import React from "react";
 
-
-import Navbar from '../components/start1';
-import MainNavbar from '../components/MainNavbar'
+import Navbar from "../components/start1";
+import MainNavbar from "../components/MainNavbar";
 import BrandBanner from "../components/BrandBanner";
 import MissionVisionValues from "../components/MissionVisionValues";
 import AboutUs from "../components/AboutUs";
 import BusinessAreas from "../components/BusinessAreas";
 import LocationsMap from "../components/LocationsMap";
-import EnvironmentSection from '../components/Ourproducts' // ✅ Correct path
+import EnvironmentSection from "../components/Ourproducts"; // ✅ Correct path
 import CSRPage from "../components/CSRPage";
 import CertificationsSection from "../components/CertificationsSection";
 import NewsPage from "../components/NewsPage";
@@ -30,7 +29,7 @@ const HomePage = () => {
       <AboutUs />
       <BusinessHomepage />
       {/* <EnvironmentSection /> */}
-      <BusinessAreas />
+      <BusinessAreas id="business-areas" />
       <LocationsMap />
       <EnvironmentSection1 />
       <CSRPage />

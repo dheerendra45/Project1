@@ -310,7 +310,7 @@ const TestimonialHomePage = () => {
               {/* Animated Header */}
               <div className="space-y-4">
                 <p
-                  className={`text-orange-500 font-semibold tracking-wide text-sm lg:text-base transition-all duration-1000 ${
+                  className={`text-2xl sm:text-4xl font-semibold text-black-800 transition-all duration-1000 ${
                     isVisible
                       ? "translate-y-0 opacity-100"
                       : "translate-y-8 opacity-0"
@@ -320,13 +320,13 @@ const TestimonialHomePage = () => {
                 </p>
 
                 <h2
-                  className={`text-2xl lg:text-4xl xl:text-4xl items-center font-bold transition-all duration-1000 delay-300 ${
+                  className={`text-2xl lg:text-2xl xl:text-2xl items-center font-bold transition-all duration-1000 delay-300 ${
                     isVisible
                       ? "translate-y-0 opacity-100"
                       : "translate-y-8 opacity-0"
                   }`}
                 >
-                  <span className="text-gray-900">
+                  <span className="text-orange-600">
                     {headerText.substring(0, headerTextIndex)}
                   </span>
                 </h2>
@@ -355,7 +355,7 @@ const TestimonialHomePage = () => {
               {/* Read All Button */}
               <motion.button
                 onClick={handleReadAllToggle}
-                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+                className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded border-2 border-white transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -419,7 +419,7 @@ const TestimonialHomePage = () => {
             {/* Auto Play Toggle Button */}
             <button
               onClick={handleReadAllToggle}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300 w-full sm:w-auto"
+              className="bg-orange-500 hover:bg-bg-600 text-white font-medium py-3 px-8 rounded border-2 border-white transition-colors duration-300 w-full sm:w-auto"
             >
               {isAutoPlaying ? "Stop Reading" : "Read All"}
             </button>

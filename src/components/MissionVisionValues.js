@@ -1,36 +1,35 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import MissionIcon from '../assets/mission-icon.png';
-import VisionIcon from '../assets/vision-icon.png';
-import ValuesIcon from '../assets/values-icon.png';
-import SteelFactoryImage from '../assets/steel-factory.png';
-import HardhatImage from '../assets/hardhat.png';
-import WorkerImage from '../assets/worker.png';
+import React from "react";
+import { motion } from "framer-motion";
+import MissionIcon from "../assets/mission-icon.png";
+import VisionIcon from "../assets/vision-icon.png";
+import ValuesIcon from "../assets/values-icon.png";
+import SteelFactoryImage from "../assets/steel-factory.png";
+import HardhatImage from "../assets/hardhat.png";
+// import WorkerImage from "../assets/worker.png";
 
 function MissionVisionValues() {
   const sections = [
     {
       icon: VisionIcon,
-      title: 'Our Vision',
-      description: "With a farsighted vision of strengthening India's infrastructure and redefining the future of steel, Shyam Metalics and Energy Limited strives to set new benchmarks in excellence by leading with innovation, championing sustainability, and driving inclusive growth, empowering India to emerge as a global industrial force while shaping a resilient, responsible, and progressive world.",
-      // image: SteelFactoryImage,
-      direction: 'left'
+      title: "Our Vision",
+      description:
+        "To transform Shyam Metalics into a next-gen steel producer by pioneering advanced steel grades, value-added alloys, green manufacturing, and redefining the role of steel in fueling infrastructure, mobility, and new technologies. Our vision is to write Bharat’s growth story with cleaner, smarter, and globally competitive steel solutions MADE IN INDIA, FOR THE WORLD.",
+      direction: "left",
     },
     {
       icon: MissionIcon,
-      title: 'Our Mission',
-      description: "Shyam Metalics and Energy Limited aims to lead the transformation of the steel industry through responsible manufacturing, digital innovation, and nation-building excellence, leveraging cost-efficiency and the optimal utilization of natural and human resources to drive high productivity, strengthen India’s industrial backbone, and create enduring value for all stakeholders.",
-      // image: HardhatImage,
-      direction: 'up'
+      title: "Our Mission",
+      description:
+        "To engineer high-performance metal solutions through integrated operations, consistent quality, and responsible practices. As a trusted and innovative steel producer, we aim to deliver superior products with efficiency, uphold the highest standards of customer satisfaction, and integrate sustainable practices into each process.",
+      direction: "up",
     },
     {
-  icon: ValuesIcon,
-  title: 'Our Values',
-  description: 'Rooted in our values, we continue to grow with integrity and purpose.<br/>Integrity – Transparency <br/>Collaboration – Synergy <br/>Ownership – Accountability<br/>Commitment – Excellence',
-  // image: WorkerImage,
-  direction: 'right'
-}
-
+      icon: ValuesIcon,
+      title: "Our Values",
+      description:
+        "At Shyam Metalics, our growth is rooted in Operational Integrity, Manufacturing Excellence, Responsible Innovation, and Sustainable Impact. These drive each plant, product, and process—allowing us to supply high-performance steel, minimize environmental burden through captive power and ZLD, and play our part in Bharat's path towards industrial self-reliance.",
+      direction: "right",
+    },
   ];
 
   const getAnimationVariants = (direction) => {
@@ -44,9 +43,9 @@ function MissionVisionValues() {
             type: "spring",
             stiffness: 100,
             damping: 15,
-            mass: 0.5
-          }
-        }
+            mass: 0.5,
+          },
+        },
       },
       right: {
         hidden: { opacity: 0, x: 40 },
@@ -57,9 +56,9 @@ function MissionVisionValues() {
             type: "spring",
             stiffness: 100,
             damping: 15,
-            mass: 0.5
-          }
-        }
+            mass: 0.5,
+          },
+        },
       },
       up: {
         hidden: { opacity: 0, y: 40 },
@@ -70,10 +69,10 @@ function MissionVisionValues() {
             type: "spring",
             stiffness: 100,
             damping: 15,
-            mass: 0.5
-          }
-        }
-      }
+            mass: 0.5,
+          },
+        },
+      },
     };
     return variants[direction];
   };
@@ -84,9 +83,9 @@ function MissionVisionValues() {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
+        delayChildren: 0.3,
+      },
+    },
   };
 
   const headingVariants = {
@@ -99,29 +98,30 @@ function MissionVisionValues() {
         stiffness: 100,
         damping: 10,
         mass: 0.5,
-        duration: 0.8
-      }
-    }
+        duration: 0.8,
+      },
+    },
   };
 
   const cardHover = {
     scale: 1.02,
     y: -5,
-    boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+    boxShadow:
+      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
     transition: {
       type: "spring",
       stiffness: 300,
       damping: 15,
-      mass: 0.5
-    }
+      mass: 0.5,
+    },
   };
 
   const imageHover = {
     scale: 1.03,
     transition: {
       duration: 0.4,
-      ease: "easeOut"
-    }
+      ease: "easeOut",
+    },
   };
 
   return (
@@ -152,10 +152,10 @@ function MissionVisionValues() {
                 viewport={{ once: false, amount: 0.3 }}
                 transition={{
                   duration: 0.8,
-                  delay: 0.3 + (index * 0.15),
-                  ease: [0.22, 1, 0.36, 1]
+                  delay: 0.3 + index * 0.15,
+                  ease: [0.22, 1, 0.36, 1],
                 }}
-                style={{ transformOrigin: 'left' }}
+                style={{ transformOrigin: "left" }}
               />
 
               <div className="p-8 pt-6 pb-6 flex-grow flex flex-col">
@@ -168,7 +168,7 @@ function MissionVisionValues() {
                     type: "spring",
                     stiffness: 300,
                     damping: 15,
-                    delay: 0.4 + (index * 0.15)
+                    delay: 0.4 + index * 0.15,
                   }}
                 >
                   <img
@@ -178,8 +178,8 @@ function MissionVisionValues() {
                   />
                 </motion.div>
 
-                <motion.h2
-                  className="text-2xl font-semibold text-center mb-6 text-black-800"
+                <motion.h3
+                  className="text-2xl font-bold text-center mb-6 text-gray-900"
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
@@ -187,11 +187,11 @@ function MissionVisionValues() {
                     type: "spring",
                     stiffness: 200,
                     damping: 10,
-                    delay: 0.5 + (index * 0.15)
+                    delay: 0.5 + index * 0.15,
                   }}
                 >
                   {section.title}
-                </motion.h2>
+                </motion.h3>
 
                 <motion.p
                   className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"
@@ -202,7 +202,7 @@ function MissionVisionValues() {
                     type: "spring",
                     stiffness: 200,
                     damping: 10,
-                    delay: 0.6 + (index * 0.15)
+                    delay: 0.6 + index * 0.15,
                   }}
                   dangerouslySetInnerHTML={{ __html: section.description }}
                 />
