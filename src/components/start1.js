@@ -410,7 +410,7 @@ const Navbar = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       setIsScrolled(scrollY > 10);
-      
+
       // Calculate scroll progress (0 to 1)
       const maxScroll = 200; // Adjust this value to control how quickly the gradient fades
       const progress = Math.min(scrollY / maxScroll, 1);
@@ -855,7 +855,7 @@ const Navbar = () => {
                                     business.subItems &&
                                     business.subItems.length > 0 && (
                                       <div
-                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-1"
+                                        className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10000] min-w-[280px] lg:min-w-[320px] max-w-[480px] ml-0"
                                         onMouseEnter={() =>
                                           clearTimeout(
                                             businessSubTimeoutRef.current
@@ -935,7 +935,7 @@ const Navbar = () => {
                                                 subItem.items &&
                                                 subItem.items.length > 0 && (
                                                   <div
-                                                    className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-1"
+                                                    className="absolute left-full top-0 bg-white shadow-lg rounded-md py-2 z-[10001] min-w-[220px] lg:min-w-[250px] ml-0"
                                                     onMouseEnter={() =>
                                                       clearTimeout(
                                                         nestedSubTimeoutRef.current
