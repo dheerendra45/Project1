@@ -42,7 +42,8 @@ import Bright_bar from "./Pages/Bright_bar.js";
 import Flats from "./Pages/flats.js";
 import Financial_information from "./Pages/finacial_information.js";
 import Policies from "./Pages/policies.js";
-
+import RenewablePower from "./Pages/renewable-power.js";
+import CapativePower from "./Pages/capative-power.js";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
       <WhatsAppButton />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
+          <Route index element={<HomePage/>} />
           <Route path="newsandevents" element={<Awards />} />
           <Route
             path="awardsAndachievements"
@@ -98,7 +99,8 @@ function App() {
           <Route path="pipes_hollow_sections" element={<Pipes />} />
           <Route path="blackround_bar" element={<Blackround_bar />} />
           <Route path="bright_bar" element={<Bright_bar />} />
-
+          <Route path="capatve-power" element={<CapativePower />} />
+          <Route path="renewable-power" element={<RenewablePower/>} />
           <Route path="flats" element={<Flats />} />
           <Route
             path="finacial_informations"

@@ -335,15 +335,15 @@ export default function AboutUs() {
       <div className="flex flex-col lg:flex-row flex-grow gap-4 mb-2 overflow-hidden">
         {/* Left Column - About Text */}
         <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-3 mt-1">
             Who We Are
           </h2>
-          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-3">
+          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-2 ">
             Engineering Bharat's Growth Since 1950s
           </h4>
 
           <div className="flex-grow overflow-y-auto pr-2 text-sm sm:text-base leading-relaxed space-y-3 text-justify">
-            <p>
+            <p >
               Established in 1953, Shyam Metalics is one of India's leading
               steel producers of high-performance steel and ferro alloys that
               drive India's basic industries and infrastructure. Being the
@@ -373,7 +373,7 @@ export default function AboutUs() {
         {/* Right Column - Year Content */}
         <div className="lg:w-1/2 flex flex-col h-full overflow-hidden">
           {/* Large Image */}
-          <div className="w-full h-40 sm:h-48 mb-3 rounded-lg overflow-hidden">
+          {/* <div className="w-full h-40 sm:h-48 mb-3 rounded-lg overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.img
                 key={`gallery-${activeIndex}`}
@@ -386,10 +386,14 @@ export default function AboutUs() {
                 transition={{ duration: 0.5 }}
               />
             </AnimatePresence>
-          </div>
+          </div> */}
 
           {/* Year Content */}
-          <div className="flex-grow bg-white p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold ">
+            OUR JOURNEY
+            </h2>
+          <div className="flex-grow bg-white p-4 rounded-lg shadow-lg border border-orange-100 overflow-y-auto mt-1">
+            
             <AnimatePresence mode="wait">
               <motion.div
                 key={`content-${activeIndex}`}
