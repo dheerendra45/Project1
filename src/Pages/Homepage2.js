@@ -1,14 +1,14 @@
 // pages/HomePage.js
 import React from "react";
-import Navbar from '../components/start1';
-import MainNavbar from '../components/MainNavbar'
+
+import Navbar from "../components/start1";
+import MainNavbar from "../components/MainNavbar";
 import BrandBanner from "../components/BrandBanner";
-import MissionVisionValues from "../components/MissionVisionValues";
+import StatsCard from "../components/StatsCard.jsx";
 import AboutUs from "../components/AboutUs";
 import BusinessAreas from "../components/BusinessAreas";
-import BusinessAreas2 from "../components/BusinessAreas2";
 import LocationsMap from "../components/LocationsMap";
-import EnvironmentSection from '../components/Ourproducts' // ✅ Correct path
+import EnvironmentSection from "../components/Ourproducts"; // ✅ Correct path
 import CSRPage from "../components/CSRPage";
 import CertificationsSection from "../components/CertificationsSection";
 import NewsPage from "../components/NewsPage";
@@ -21,15 +21,15 @@ import EnvironmentSection1 from "../components/EnvironmentSection1";
 import BusinessHomepage from "../components/BusinessHomepage";
 import Hero from "../components/hero2";
 
-const HomePage2 = () => {
+const HomePage = () => {
   return (
     <div>
       <Hero />
-      <MissionVisionValues />
+      <StatsCard/>
       <AboutUs />
       <BusinessHomepage />
       {/* <EnvironmentSection /> */}
-      <BusinessAreas2 />
+      <BusinessAreas id="business-areas" />
       <LocationsMap />
       <EnvironmentSection1 />
       <CSRPage />
@@ -41,4 +41,4 @@ const HomePage2 = () => {
   );
 };
 
-export default HomePage2;
+export default HomePage;

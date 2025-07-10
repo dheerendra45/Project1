@@ -184,8 +184,8 @@ const Navbar = () => {
           name: "Energy & Others",
           href: "#",
           subItems: [
-            { name: "Captive Power", href: "#" },
-            { name: "Renewable Power", href: "#" },
+            { name: "Captive Power", href: "/capatve-power" },
+            { name: "Renewable Power", href: "/renewable-power" },
           ],
         },
         {
