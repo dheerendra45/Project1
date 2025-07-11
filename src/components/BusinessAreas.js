@@ -9,26 +9,31 @@ import al1 from "../assets/al1.jpg";
 import al2 from "../assets/al2.jpg";
 import al3 from "../assets/al3.jpg";
 
+import sswirerod1 from "../assets/products/sswire.png";
+import ss from "../assets/products/ss.png";
 import e1 from "../assets/e1.jpg";
 import e2 from "../assets/e2.png";
-
+import pipes from "../assets/products/pipes.png";
+import pgiron from "../assets/products/pig.png";
 import sswire from "../assets/products/Wire.jpg";
-import brightbar from "../assets/products/brightbar.jpg";
-import sswirerod from "../assets/products/wirerod.jpg";
-import blackround from "../assets/products/blackrounbar.jpg";
-import pellets from "../assets/products/Pellets.jpg";
-import spongeiron from "../assets/products/spongeiron.jpg";
-import billet from "../assets/products/billets.jpg";
-import strucutal from "../assets/products/structure.png";
-import tmt from "../assets/products/tmt.jpg";
-import stainless from "../assets/products/stainless.jpg";
+import brightbar from "../assets/products/bbar.jpg";
+import sswirerod from "../assets/products/wr.jpg";
+import blackround from "../assets/products/bbbar.png";
+import pellets from "../assets/products/pellets2.png";
+import spongeiron from "../assets/products/spounge.png";
+import billet from "../assets/products/bill.png";
+import strucutal from "../assets/products/struct.png";
+import tmt from "../assets/products/tmt1.png";
+import stainless from "../assets/products/stainlesssteel.jpg";
 import wirerod from "../assets/products/wirerod.png";
-import colorocated from "../assets/products/image.png";
-import flatpatta from "../assets/products/flat.png";
-import flats from "../assets/products/flats.jpg";
+import colorocated from "../assets/products/colorcoated.png";
+import flatpatta from "../assets/products/flatsrolled.png";
+import flats from "../assets/products/flats.png";
 // Map product names to specific images
 const productImages = {
   Pellet: pellets,
+  "SS Wire": ss,
+  "SS Wire Rod": sswirerod1,
   "Sponge Iron": spongeiron,
   Billet: billet,
   "Structural Steel": strucutal,
@@ -36,12 +41,14 @@ const productImages = {
   "Wire Rods": wirerod,
   "Color Coated Sheets": colorocated,
   "Stainless Steel Billets": stainless,
-  "SS Wire Rod": sswirerod,
+  "Wire Rods": sswirerod,
   "SS Wire": sswire,
   "Bright Bar": brightbar,
   "Black Round Bar": blackround,
   "Flat Rolled Products": flatpatta,
   "Flats/Patta": flats,
+  "Pig Iron": pgiron,
+  "Pipes & Hollow Sections": pipes,
   // Aluminum products
   "SEL TIGER FOIL – KITCHEN Foil": al1,
   "Aluminium Foil": al2,
@@ -265,35 +272,28 @@ export default function BusinessAreas({ id }) {
           {currentImages.map((item, index) => (
             <div
               key={`image-${index}-${currentSetIndex}`}
-              className="relative overflow-hidden group cursor-pointer h-full shadow-lg rounded-lg"
-              onMouseEnter={() => handleMouseEnter(index)}
-              onMouseLeave={handleMouseLeave}
+              className="w-[308px] h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden"
             >
+              {/* Image */}
               <img
                 src={item.image}
                 alt={item.name}
-                className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
+                className="absolute top-[102px] left-[117.6px] w-[196px] h-[114px] object-cover"
               />
 
-              {/* Dark overlay for better text visibility */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10" />
+              {/* Header */}
+              <h3 className="absolute top-[31px] left-[20.6px] w-full h-[28px] text-black font-semibold text-[16px] leading-[28px]">
+                {item.name}
+              </h3>
 
-              {/* Hover overlay */}
-              {hoveredImageIndex === index && (
-                <div className="absolute inset-0 bg-gradient-to-r from-orange-500/70 to-transparent z-15" />
-              )}
+              {/* Subheader */}
+              <p className="absolute top-[60px] left-[20.6px] w-[140px] h-[53px] text-gray-700 text-[14px] leading-[18px]">
+                {item.description}
+              </p>
 
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-20 text-center">
-                <h3 className="text-white font-bold text-lg mb-2 drop-shadow-lg">
-                  {item.name}
-                </h3>
-                <p className="text-white/90 text-sm drop-shadow-md leading-tight">
-                  {item.description}
-                </p>
-              </div>
-
+              {/* Button */}
               <button
-                className="absolute bottom-3 right-3 w-10 h-10 bg-orange-500 group-hover:bg-gray-700 hover:bg-orange-600 text-white text-lg flex items-center justify-center shadow-lg transition-all duration-300 rounded z-20"
+                className="absolute top-[136px] left-[20.6px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center"
                 onClick={nextSlide}
               >
                 &gt;
