@@ -15,7 +15,7 @@ export default function Leadership() {
         className="w-full lg:w-1/2"
         initial={{ opacity: 0, x: -30 }}
         animate={isInView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 text-center lg:text-left leading-tight">
           Our Leadership
@@ -38,8 +38,8 @@ export default function Leadership() {
         </p>
         <p>
           Lorem ipsum dolor sit amet consectetur. Et ut nec quis morbi nullam mi
-          odio turpis. Ornare hendrerit pharetra aliquam amet nunc. Iaculis ut in
-          nunc dignissim mauris quis praesent pretium blandit. Mauris rutrum
+          odio turpis. Ornare hendrerit pharetra aliquam amet nunc. Iaculis ut
+          in nunc dignissim mauris quis praesent pretium blandit. Mauris rutrum
           neque et sollicitudin. Non posuere eu nisl eget integer. Proin lorem
           facilisi vel sit nunc.
         </p>

@@ -320,7 +320,7 @@ export default function LeadershipTeam() {
               className={`px-6 py-3 rounded-full border-2 transition-all font-medium text-sm whitespace-nowrap ${
                 selected === item
                   ? "bg-orange-600 text-white border-orange-600 shadow-lg"
-                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-blue-300"
+                  : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-orange-300"
               }`}
             >
               {item}
@@ -356,7 +356,7 @@ export default function LeadershipTeam() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white p-6 rounded-xl shadow-md mb-6 border border-gray-200"
                 >
-                  <h2 className="text-xl font-semibold text-blue-600 mb-4">
+                  <h2 className="text-xl font-semibold text-orange-600 mb-4">
                     {committee.name}
                   </h2>
                   <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm md:text-base">
@@ -401,7 +401,7 @@ export default function LeadershipTeam() {
                     <h2 className="text-xl font-bold text-gray-800">
                       {selectedDirector.name}
                     </h2>
-                    <h4 className="text-blue-600 font-medium">
+                    <h4 className="text-orange-600 font-medium">
                       {selectedDirector.role}
                     </h4>
                   </div>
