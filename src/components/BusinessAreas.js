@@ -272,28 +272,33 @@ export default function BusinessAreas({ id }) {
           {currentImages.map((item, index) => (
             <div
               key={`image-${index}-${currentSetIndex}`}
-              className="w-[308px] h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden"
+              className="w-[308px] h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden group"
             >
+              {/* Hover Orange Overlay */}
+              <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-r from-orange-300/70 to-transparent rounded-lg" />
+              </div>
+
               {/* Image */}
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute top-[102px] left-[117.6px] w-[196px] h-[114px] object-cover"
+                className="absolute top-[102px] left-[117.6px] w-[196px] h-[114px] object-cover z-0"
               />
 
               {/* Header */}
-              <h3 className="absolute top-[31px] left-[20.6px] w-full h-[28px] text-black font-semibold text-[16px] leading-[28px]">
+              <h3 className="absolute top-[31px] left-[20.6px] w-full h-[28px] text-black font-semibold text-[16px] leading-[28px] z-20">
                 {item.name}
               </h3>
 
               {/* Subheader */}
-              <p className="absolute top-[60px] left-[20.6px] w-[140px] h-[53px] text-gray-700 text-[14px] leading-[18px]">
+              <p className="absolute top-[60px] left-[20.6px] w-[140px] h-[53px] text-gray-700 text-[14px] leading-[18px] z-20">
                 {item.description}
               </p>
 
               {/* Button */}
               <button
-                className="absolute top-[136px] left-[20.6px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center"
+                className="absolute top-[136px] left-[20.6px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center z-20"
                 onClick={nextSlide}
               >
                 &gt;
