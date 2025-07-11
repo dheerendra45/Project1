@@ -14,10 +14,7 @@ import l10 from "../../assets/leadership/l10.jpg";
 import l11 from "../../assets/leadership/l11.png";
 import l12 from "../../assets/leadership/l12.png";
 
-const sidebarOptions = [
-  "BOARD OF DIRECTORS",
-  "BOARD COMMITTEES",
-];
+const sidebarOptions = ["BOARD OF DIRECTORS", "BOARD COMMITTEES"];
 
 const directors = [
   {
@@ -206,7 +203,8 @@ List of Directorship:
     img: "https://via.placeholder.com/150x150/4F46E5/FFFFFF?text=BJ",
     name: "Birendra Kumar Jain",
     role: "Company Secretary",
-    description: "Birendra Kumar Jain is the Company Secretary and Compliance Officer of our Company and has been associated with us since April 6, 2018. He holds a bachelor's degree in commerce from the University of Calcutta. He is also a member of the Institute of Company Secretaries of India. With over two decades of experience as a company secretary, he brings extensive expertise to the role.",
+    description:
+      "Birendra Kumar Jain is the Company Secretary and Compliance Officer of our Company and has been associated with us since April 6, 2018. He holds a bachelor's degree in commerce from the University of Calcutta. He is also a member of the Institute of Company Secretaries of India. With over two decades of experience as a company secretary, he brings extensive expertise to the role.",
   },
 ];
 
@@ -262,11 +260,6 @@ const boardCommittees = [
   },
 ];
 
-
-
-
-
-
 export default function LeadershipTeam() {
   const [selected, setSelected] = useState("BOARD OF DIRECTORS");
   const sectionRef = useRef(null);
@@ -290,21 +283,25 @@ export default function LeadershipTeam() {
           className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full flex-shrink-0"
         />
         <div className="flex-1 min-w-0">
-          <h2 className="text-base md:text-lg font-semibold text-gray-800 mb-1">{person.name}</h2>
-          <h4 className="text-blue-600 text-xs md:text-sm font-medium leading-tight">{person.role}</h4>
+          <h2 className="text-base md:text-lg font-semibold text-gray-800 mb-1">
+            {person.name}
+          </h2>
+          <h4 className="text-orange-600 text-xs md:text-sm font-medium leading-tight">
+            {person.role}
+          </h4>
         </div>
       </div>
-      
+
       <p className="text-sm text-gray-600 mb-3 whitespace-pre-line leading-relaxed">
         {person.description.substring(0, 120)}...
       </p>
-      
+
       <button
         onClick={(e) => {
           e.stopPropagation();
           setSelectedDirector(person);
         }}
-        className="self-start text-sm text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors"
+        className="self-start text-sm text-orange-600 hover:text-orange-700 font-medium hover:underline transition-colors"
       >
         Read More →
       </button>
@@ -322,7 +319,7 @@ export default function LeadershipTeam() {
               onClick={() => setSelected(item)}
               className={`px-6 py-3 rounded-full border-2 transition-all font-medium text-sm whitespace-nowrap ${
                 selected === item
-                  ? "bg-blue-600 text-white border-blue-600 shadow-lg"
+                  ? "bg-orange-600 text-white border-orange-600 shadow-lg"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-50 hover:border-blue-300"
               }`}
             >
@@ -336,7 +333,9 @@ export default function LeadershipTeam() {
       <div className="space-y-6 md:space-y-10" ref={sectionRef}>
         {selected === "BOARD OF DIRECTORS" && (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Board of Directors</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+              Board of Directors
+            </h1>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {directors.map((person, index) => renderCard(person, index))}
             </div>
@@ -345,7 +344,9 @@ export default function LeadershipTeam() {
 
         {selected === "BOARD COMMITTEES" && (
           <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">Board Committees</h1>
+            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+              Board Committees
+            </h1>
             <div className="max-w-4xl mx-auto">
               {boardCommittees.map((committee, index) => (
                 <motion.div
@@ -355,10 +356,14 @@ export default function LeadershipTeam() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="bg-white p-6 rounded-xl shadow-md mb-6 border border-gray-200"
                 >
-                  <h2 className="text-xl font-semibold text-blue-600 mb-4">{committee.name}</h2>
+                  <h2 className="text-xl font-semibold text-blue-600 mb-4">
+                    {committee.name}
+                  </h2>
                   <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm md:text-base">
                     {committee.members.map((member, idx) => (
-                      <li key={idx} className="leading-relaxed">{member}</li>
+                      <li key={idx} className="leading-relaxed">
+                        {member}
+                      </li>
                     ))}
                   </ul>
                 </motion.div>
@@ -393,15 +398,30 @@ export default function LeadershipTeam() {
                     className="w-24 h-24 object-cover rounded-full flex-shrink-0"
                   />
                   <div>
-                    <h2 className="text-xl font-bold text-gray-800">{selectedDirector.name}</h2>
-                    <h4 className="text-blue-600 font-medium">{selectedDirector.role}</h4>
+                    <h2 className="text-xl font-bold text-gray-800">
+                      {selectedDirector.name}
+                    </h2>
+                    <h4 className="text-blue-600 font-medium">
+                      {selectedDirector.role}
+                    </h4>
                   </div>
                   <button
                     onClick={() => setSelectedDirector(null)}
                     className="ml-auto text-gray-500 hover:text-gray-700"
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   </button>
                 </div>

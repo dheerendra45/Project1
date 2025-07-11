@@ -31,7 +31,7 @@ export default function BoardOfDirectors() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-blue-950">
+    <div className="min-h-screen bg-gradient-to-br from-orange-900 via-orange-800 to-orange-950">
       {/* Header Section */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,10 +42,9 @@ export default function BoardOfDirectors() {
             className="text-center"
           >
             <h1 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-4">
-              Board of{" "}
-              <span className="text-blue-800">Directors</span>
+              Board of <span className="text-orange-800">Directors</span>
             </h1>
-            <div className="w-24 h-1 bg-blue-800 mx-auto"></div>
+            <div className="w-24 h-1 bg-orange-800 mx-auto"></div>
           </motion.div>
         </div>
       </div>
@@ -67,7 +66,7 @@ export default function BoardOfDirectors() {
                   alt="Mahabir Prasad Agarwal"
                   className="w-80 h-80 rounded-full object-cover shadow-2xl"
                 />
-                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-blue-800 rounded-full flex items-center justify-center">
+                <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-orange-800 rounded-full flex items-center justify-center">
                   <div className="w-8 h-8 bg-white rounded-full"></div>
                 </div>
               </div>
@@ -86,11 +85,20 @@ export default function BoardOfDirectors() {
                   Mahabir Prasad Agarwal
                 </h2>
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-0.5 bg-blue-800"></div>
-                  <p className="text-blue-800 font-semibold text-lg">Chairman Emeritus</p>
+                  <div className="w-12 h-0.5 bg-orange-800"></div>
+                  <p className="text-orange-800 font-semibold text-lg">
+                    Chairman Emeritus
+                  </p>
                 </div>
                 <p className="text-gray-600 text-lg leading-relaxed">
-                  Mahabir Prasad Agarwal is an accomplished business leader and a first generation entrepreneur having more than 50 Years of experience in steel & ferro alloys industries. He has the foresight to lead the company on a transformational journey and contributing significantly in growth path of the company. Mahabir Prasad Agarwal stepped down from the position of Chairman during Board Meeting held on 9th May 2025 and was simultaneously conferred the title of Chairman Emeritus.
+                  Mahabir Prasad Agarwal is an accomplished business leader and
+                  a first generation entrepreneur having more than 50 Years of
+                  experience in steel & ferro alloys industries. He has the
+                  foresight to lead the company on a transformational journey
+                  and contributing significantly in growth path of the company.
+                  Mahabir Prasad Agarwal stepped down from the position of
+                  Chairman during Board Meeting held on 9th May 2025 and was
+                  simultaneously conferred the title of Chairman Emeritus.
                 </p>
               </div>
 
@@ -103,9 +111,9 @@ export default function BoardOfDirectors() {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     className={`w-12 h-12 rounded-full text-white flex items-center justify-center transition-all duration-300 ${
-                      selected === id 
-                        ? "bg-blue-800 shadow-lg" 
-                        : "bg-gray-400 hover:bg-blue-700"
+                      selected === id
+                        ? "bg-orange-800 shadow-lg"
+                        : "bg-gray-400 hover:bg-orange-700"
                     }`}
                   >
                     {icon}
@@ -115,11 +123,13 @@ export default function BoardOfDirectors() {
 
               {/* Key Highlights */}
               <div className="mb-8">
-                <h3 className="text-xl font-bold text-gray-900 mb-4">Key Highlights</h3>
+                <h3 className="text-xl font-bold text-gray-900 mb-4">
+                  Key Highlights
+                </h3>
                 <div className="grid gap-3">
                   {experiences.map((exp, i) => (
                     <div key={i} className="flex items-start gap-3">
-                      <div className="w-2 h-2 bg-blue-800 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-orange-800 rounded-full mt-2 flex-shrink-0"></div>
                       <p className="text-gray-600">{exp}</p>
                     </div>
                   ))}
@@ -149,11 +159,15 @@ export default function BoardOfDirectors() {
                   >
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900 mb-2">{d.company}</h4>
-                        <p className="text-blue-800 font-medium">{d.position}</p>
+                        <h4 className="font-semibold text-gray-900 mb-2">
+                          {d.company}
+                        </h4>
+                        <p className="text-orange-800 font-medium">
+                          {d.position}
+                        </p>
                       </div>
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                        <div className="w-4 h-4 bg-blue-800 rounded-full"></div>
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <div className="w-4 h-4 bg-orange-800 rounded-full"></div>
                       </div>
                     </div>
                   </motion.div>
