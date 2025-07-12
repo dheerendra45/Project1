@@ -164,11 +164,11 @@ export default function BusinessAreas({ id }) {
   };
 
   const allImageSets = {
-    "Steel and Iron": [
-      generateImageSet(productData["Steel and Iron"]),
-      generateImageSet(productData["Steel and Iron"]),
-      generateImageSet(productData["Steel and Iron"]),
-      generateImageSet(productData["Steel and Iron"]),
+    "Iron and Steel ": [
+      generateImageSet(productData["Iron and Steel"]),
+      generateImageSet(productData["Iron and Steel"]),
+      generateImageSet(productData["Iron and Steel"]),
+      generateImageSet(productData["Iron and Steel"]),
     ],
     Aluminium: [
       generateImageSet(productData["Aluminium"]),
