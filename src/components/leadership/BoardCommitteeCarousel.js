@@ -342,35 +342,35 @@ export default function LeadershipTeam() {
           </div>
         )}
 
-        {selected === "BOARD COMMITTEES" && (
-          <div>
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
-              Board Committees
-            </h1>
-            <div className="max-w-4xl mx-auto">
-              {boardCommittees.map((committee, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="bg-white p-6 rounded-xl shadow-md mb-6 border border-gray-200"
-                >
-                  <h2 className="text-xl font-semibold text-orange-500 mb-4">
-                    {committee.name}
-                  </h2>
-                  <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm md:text-base">
-                    {committee.members.map((member, idx) => (
-                      <li key={idx} className="leading-relaxed">
-                        {member}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        )}
+       {selected === "BOARD COMMITTEES" && (
+  <div>
+    <h1 className="text-2xl md:text-3xl font-bold text-gray-800 mb-6 text-center">
+      Board Committees
+    </h1>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
+      {boardCommittees.map((committee, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+          className="bg-white p-6 rounded-xl shadow-md border border-gray-200"
+        >
+          <h2 className="text-xl font-semibold text-orange-600 mb-4">
+            {committee.name}
+          </h2>
+          <ul className="list-disc pl-6 space-y-2 text-gray-700 text-sm md:text-base">
+            {committee.members.map((member, idx) => (
+              <li key={idx} className="leading-relaxed">
+                {member}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+)}
       </div>
 
       {/* Modal for Director Details */}
