@@ -63,7 +63,7 @@ export default function BusinessAreas({ id }) {
   const fallbackImages = [a2, a4, a5];
 
   const productData = {
-    "Steel and Iron": [
+    "Iron and Steel": [
       {
         name: "Pellet",
         desc: "High-quality iron ore pellets for steel production",
@@ -164,7 +164,7 @@ export default function BusinessAreas({ id }) {
   };
 
   const allImageSets = {
-    "Iron and Steel ": [
+    "Iron and Steel": [
       generateImageSet(productData["Iron and Steel"]),
       generateImageSet(productData["Iron and Steel"]),
       generateImageSet(productData["Iron and Steel"]),
@@ -183,7 +183,7 @@ export default function BusinessAreas({ id }) {
   };
 
   const [currentSetIndex, setCurrentSetIndex] = useState(0);
-  const [activeTab, setActiveTab] = useState("Steel and Iron");
+  const [activeTab, setActiveTab] = useState("Iron and Steel");
   const [isHovered, setIsHovered] = useState(false);
   const [hoveredImageIndex, setHoveredImageIndex] = useState(null);
   const intervalRef = useRef(null);
@@ -230,7 +230,7 @@ export default function BusinessAreas({ id }) {
 
   const currentImages = allImageSets[activeTab][currentSetIndex];
 
-  const tabs = ["Steel and Iron", "Aluminium", "Energy and Others"];
+  const tabs = ["Iron and Steel", "Aluminium", "Energy and Others"];
 
   return (
     <div

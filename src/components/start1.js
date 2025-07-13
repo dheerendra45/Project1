@@ -204,7 +204,7 @@ const Navbar = () => {
     {
       title: "🐅seltiger",
       hasDropdown: false,
-      href: "/seltiger",
+      href: "#",
     },
     {
       title: "INVESTORS",
