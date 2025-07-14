@@ -42,18 +42,18 @@ export default function Products() {
           {
             name: "Earthquake Safety",
             conventional: "Brittle, snaps under stress",
-            tiger: "Bends up to 18% without breaking"
+            tiger: "Bends up to 18% without breaking",
           },
           {
             name: "Corrosion",
             conventional: "Prone to rust in 5–7 years",
-            tiger: "Fe-550D grade resists over 50 years"
+            tiger: "Fe-550D grade resists over 50 years",
           },
           {
             name: "Thermal Safety",
             conventional: "Weakens at 300°C",
-            tiger: "Withstands up to 600°C"
-          }
+            tiger: "Withstands up to 600°C",
+          },
         ],
         applications: [
           "✅ Versatile Applications: Used in residential, commercial, industrial, and infrastructure projects.",
@@ -62,23 +62,23 @@ export default function Products() {
           "🔗 Superior Bonding: Special rib pattern ensures strong grip with concrete.",
           "🌊 Corrosion Resistance: Ideal for coastal and humid areas.",
           "🔥 Fire & Earthquake Resistant: Withstands heat and seismic events.",
-          "🛠 Preferred by Professionals: Trusted by engineers and builders across India."
+          "🛠 Preferred by Professionals: Trusted by engineers and builders across India.",
         ],
         certifications: {
           compliance: [
             "ISO 9001:2015 – Quality Management System",
             "ISO 14001:2015 – Environmental Management System",
-            "ISO 45001:2018 – Occupational Health & Safety Management"
+            "ISO 45001:2018 – Occupational Health & Safety Management",
           ],
           indianStandards: [
             "IS 1786:2008 – High Strength Deformed Steel Bars for Concrete Reinforcement",
             "IS 2062:2011 – Standards for Structural Steel",
-            "IS 2830:2012 – Standards for Carbon Steel Billets"
+            "IS 2830:2012 – Standards for Carbon Steel Billets",
           ],
           sustainability: [
             "GreenPro Certification (CII) – Environmentally sustainable product",
-            "NABL Accredited Labs (ISO/IEC 17025:2017) – Reliable material testing"
-          ]
+            "NABL Accredited Labs (ISO/IEC 17025:2017) – Reliable material testing",
+          ],
         },
         approvals: {
           publicWorks: [
@@ -88,42 +88,38 @@ export default function Products() {
             "PWD Manipur",
             "PWD Odisha",
             "PWD Uttar Pradesh",
-            "General PWD"
+            "General PWD",
           ],
           housing: [
             "Housing Board Rajasthan",
             "AP Housing",
             "PHED",
             "RWSS",
-            "OWSSB"
+            "OWSSB",
           ],
           infraAuthorities: [
             "NHAI (National Highways Authority of India)",
             "RDSO (Research Designs & Standards Org.)",
             "Bridge & Roof Ltd.",
-            "AAI (Airports Authority of India)"
+            "AAI (Airports Authority of India)",
           ],
-          waterBoards: [
-            "Jal Nigam Uttarakhand",
-            "Jal Nigam Madhya Pradesh"
-          ],
+          waterBoards: ["Jal Nigam Uttarakhand", "Jal Nigam Madhya Pradesh"],
           localBodies: [
             "BMC (Brihanmumbai Municipal Corporation)",
             "Zilla Parishad Angul",
             "BRDCUL",
-            "PTCU"
+            "PTCU",
           ],
-          privateFirms: [
-            "Toyo Engineering India Limited"
-          ]
+          privateFirms: ["Toyo Engineering India Limited"],
         },
         calculator: {
           heading: "TMT Bar Calculator",
           note: "How much steel does your 2BHK need?",
-          example: "Example: Plot Area: 1000 sq. ft → Recommended: 1.5 tons of Tiger Fe-500",
-          buttonLabel: "Calculate Your Requirement"
-        }
-      }
+          example:
+            "Example: Plot Area: 1000 sq. ft → Recommended: 1.5 tons of Tiger Fe-500",
+          buttonLabel: "Calculate Your Requirement",
+        },
+      },
     },
     {
       img: a2,
@@ -142,9 +138,9 @@ export default function Products() {
             applications: [
               "High-rise building frames",
               "Stadium roofs",
-              "Railway platforms"
+              "Railway platforms",
             ],
-            idealFor: "Projects needing balance of strength & cost efficiency"
+            idealFor: "Projects needing balance of strength & cost efficiency",
           },
           {
             grade: "TIG-SS-550",
@@ -153,9 +149,9 @@ export default function Products() {
             applications: [
               "Pre-engineered buildings (PEB)",
               "Airport hangars",
-              "Warehouse structures"
+              "Warehouse structures",
             ],
-            idealFor: "Rapid construction with pre-fabricated components"
+            idealFor: "Rapid construction with pre-fabricated components",
           },
           {
             grade: "TIG-SS-600",
@@ -164,9 +160,9 @@ export default function Products() {
             applications: [
               "Bridges & flyovers",
               "Industrial gantries",
-              "Offshore oil rigs"
+              "Offshore oil rigs",
             ],
-            idealFor: "Extreme load-bearing & seismic zones"
+            idealFor: "Extreme load-bearing & seismic zones",
           },
           {
             grade: "TIG-SS-450L",
@@ -175,12 +171,12 @@ export default function Products() {
             applications: [
               "Low-rise residential",
               "Shopping complexes",
-              "Solar farm mounts"
+              "Solar farm mounts",
             ],
-            idealFor: "Budget-friendly projects without compromising safety"
-          }
-        ]
-      }
+            idealFor: "Budget-friendly projects without compromising safety",
+          },
+        ],
+      },
     },
     {
       img: a3,
@@ -197,98 +193,104 @@ export default function Products() {
             areas: [
               {
                 name: "Pre-stressed Concrete",
-                description: "High-tensile wires for structural reinforcement in bridges, buildings, etc."
+                description:
+                  "High-tensile wires for structural reinforcement in bridges, buildings, etc.",
               },
               {
                 name: "Mesh Reinforcement",
-                description: "Used in welded wire mesh for concrete slabs and walls."
+                description:
+                  "Used in welded wire mesh for concrete slabs and walls.",
               },
               {
                 name: "Binding and Tying",
-                description: "Used as binding wire in construction joints and rebar placements."
-              }
-            ]
+                description:
+                  "Used as binding wire in construction joints and rebar placements.",
+              },
+            ],
           },
           {
             sector: "🔌 Utilities",
             areas: [
               {
                 name: "Electrical Wiring",
-                description: "Suitable for conductors after drawing into fine wire."
+                description:
+                  "Suitable for conductors after drawing into fine wire.",
               },
               {
                 name: "Fencing",
-                description: "Ideal for chain-link fencing and barbed wires."
+                description: "Ideal for chain-link fencing and barbed wires.",
               },
               {
                 name: "Fasteners & Wire Nails",
-                description: "Used in manufacturing bolts, nuts, nails, and general hardware."
-              }
-            ]
+                description:
+                  "Used in manufacturing bolts, nuts, nails, and general hardware.",
+              },
+            ],
           },
           {
             sector: "🚜 Agriculture",
             areas: [
               {
                 name: "Vineyard Trellises",
-                description: "Supports grapevines in vineyards."
+                description: "Supports grapevines in vineyards.",
               },
               {
                 name: "Greenhouse Structures",
-                description: "Structural support wires for polyhouse frames."
+                description: "Structural support wires for polyhouse frames.",
               },
               {
                 name: "Crop Support Systems",
-                description: "Used in vertical/horizontal crop support for better yield and stability."
-              }
-            ]
-          }
+                description:
+                  "Used in vertical/horizontal crop support for better yield and stability.",
+              },
+            ],
+          },
         ],
         skus: [
           {
             diameter: "5.5 mm",
             grade: "SAE 1006 / 1008",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Wire drawing, fasteners"
+            application: "Wire drawing, fasteners",
           },
           {
             diameter: "6 mm",
             grade: "SAE 1008 / 1010",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Construction, agriculture"
+            application: "Construction, agriculture",
           },
           {
             diameter: "6.5 mm",
             grade: "SAE 1008 / 1010",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Pre-stressed concrete"
+            application: "Pre-stressed concrete",
           },
           {
             diameter: "7 mm",
             grade: "SAE 1010 / 1012",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Wire mesh, fences"
+            application: "Wire mesh, fences",
           },
           {
             diameter: "8 mm",
             grade: "SAE 1012 / 1015",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Structural use, rebars"
+            application: "Structural use, rebars",
           },
           {
             diameter: "10 mm",
             grade: "SAE 1015 / 1020",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Heavy-duty applications"
+            application: "Heavy-duty applications",
           },
           {
             diameter: "12 mm",
             grade: "SAE 1020 / 1025",
             coilWeight: "1.8 – 2.2 MT",
-            application: "Machinery & industrial"
-          }
-        ]
-      }
+            application: "Machinery & industrial",
+          },
+        ],
+      },
     },
     {
       img: a4,
@@ -306,7 +308,7 @@ export default function Products() {
             benefit: "Hurricane-resistant, matte finish",
             sku: "TIG-RF-ALU70",
             thickness: "0.7 mm",
-            width: "900 mm / 1050 mm"
+            width: "900 mm / 1050 mm",
           },
           {
             variant: "ALU-100",
@@ -314,7 +316,7 @@ export default function Products() {
             benefit: "Extra-wide panels, heat-reflective",
             sku: "TIG-RF-ALU100",
             thickness: "1.0 mm",
-            width: "1000 mm / 1220 mm"
+            width: "1000 mm / 1220 mm",
           },
           {
             variant: "SOLAR-READY",
@@ -322,10 +324,10 @@ export default function Products() {
             benefit: "Pre-drilled for easy solar installation",
             sku: "TIG-RF-SOLAR",
             thickness: "0.9 mm",
-            width: "1000 mm"
-          }
-        ]
-      }
+            width: "1000 mm",
+          },
+        ],
+      },
     },
     {
       img: a5,
@@ -343,7 +345,7 @@ export default function Products() {
             benefit: "Non-toxic, food-safe coating",
             sku: "TIG-FL-FOOD",
             thickness: "9–12 microns",
-            width: "300 mm / 450 mm"
+            width: "300 mm / 450 mm",
           },
           {
             sector: "🏗 Construction",
@@ -351,7 +353,7 @@ export default function Products() {
             benefit: "High reflectivity, tear-resistant",
             sku: "TIG-FL-CONST",
             thickness: "15–25 microns",
-            width: "1000 mm / 1220 mm"
+            width: "1000 mm / 1220 mm",
           },
           {
             sector: "📦 Logistics",
@@ -359,11 +361,11 @@ export default function Products() {
             benefit: "Anti-oxidation, corrosion-resistant",
             sku: "TIG-FL-LOG",
             thickness: "12–18 microns",
-            width: "600 mm / 1000 mm"
-          }
-        ]
-      }
-    }
+            width: "600 mm / 1000 mm",
+          },
+        ],
+      },
+    },
   ];
 
   const handleProductClick = (product) => {
@@ -380,55 +382,93 @@ export default function Products() {
 
   const renderApplications = (applications) => {
     if (!applications) return null;
-    
+
     // Check if it's an array of strings (simple list)
-    if (applications.every(item => typeof item === 'string')) {
+    if (applications.every((item) => typeof item === "string")) {
       return (
         <ul className="space-y-2">
           {applications.map((app, i) => (
-            <li key={i} className="text-gray-700">{app}</li>
+            <li key={i} className="text-gray-700">
+              {app}
+            </li>
           ))}
         </ul>
       );
     }
-    
+
     // Handle array of objects with sector and areas (for wire rod card)
     return (
       <div className="mt-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {applications.map((sector, i) => (
-            <motion.div 
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 + 0.4 }}
-              className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow"
-            >
-              <div className="bg-gray-100 px-4 py-3 border-b border-gray-200">
-                <h4 className="font-bold text-lg text-gray-800 flex items-center gap-2">
-                  <span className="text-xl">{sector.sector.substring(0, 2)}</span>
-                  {sector.sector.substring(2)}
-                </h4>
-              </div>
-              <div className="p-4">
-                <ul className="space-y-4">
-                  {sector.areas.map((area, j) => (
-                    <li key={j} className="pb-3 border-b border-gray-100 last:border-0 last:pb-0">
-                      <h5 className="font-semibold text-gray-800 flex items-start gap-2">
-                        <span className="inline-block bg-orange-100 text-orange-600 rounded-full p-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                        </span>
-                        {area.name}
-                      </h5>
-                      <p className="text-gray-600 text-sm mt-1 pl-6">{area.description}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+        <div
+          ref={sectionRef}
+          className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+        >
+          <motion.p
+            className="text-orange-500 text-lg font-semibold text-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            OUR PRODUCTS
+          </motion.p>
+
+          <motion.h1
+            className="text-3xl sm:text-4xl font-bold text-black text-center mb-12"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
+            Explore Our Products
+          </motion.h1>
+
+          {/* Grid for all cards with exact dimensions from image */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
+            {products.map((product, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={cardVariants}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
+                className="w-[400px] h-[538px] bg-white rounded-tl-[16px] rounded-br-[16px] overflow-hidden flex flex-col cursor-pointer border border-gray-200"
+                onClick={() => handleProductClick(product)}
+                whileHover={{ y: -5 }}
+              >
+                {/* Image with exact dimensions */}
+                <div className="w-[400px] h-[344px] overflow-hidden">
+                  <img
+                    src={product.img}
+                    alt={product.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Text content */}
+                <div className="p-6 flex flex-col h-[194px]">
+                  <div className="flex-grow">
+                    <h2 className="text-2xl font-bold text-black mb-3">
+                      {product.title}
+                    </h2>
+                    <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                      {product.desc}
+                    </p>
+                  </div>
+
+                  {/* Read More button with exact dimensions */}
+                  <button
+                    className="w-[130px] h-[50px] flex items-center justify-center gap-3 bg-orange-500 text-white font-semibold rounded-[4px] px-4 py-3 mt-auto"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleProductClick(product);
+                    }}
+                  >
+                    <span>READ MORE</span>
+                    <ArrowRight size={20} />
+                  </button>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     );
@@ -437,7 +477,10 @@ export default function Products() {
   return (
     <div className="bg-white font-inter">
       {/* Products Grid Section */}
-      <div ref={sectionRef} className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div
+        ref={sectionRef}
+        className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
+      >
         <motion.p
           className="text-orange-500 text-lg font-semibold text-center"
           initial={{ opacity: 0, y: -20 }}
@@ -456,8 +499,8 @@ export default function Products() {
           Explore Our Products
         </motion.h1>
 
-        {/* Grid for first 3 cards with horizontal scroll on medium screens */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8">
+        {/* First row with 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5 justify-items-center">
           {products.slice(0, 3).map((product, i) => (
             <motion.div
               key={i}
@@ -465,37 +508,43 @@ export default function Products() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
-              onClick={() => handleProductClick(product)}
+              className="w-[400px] h-[538px] bg-white rounded-tl-[16px] rounded-br-[16px] overflow-hidden flex flex-col cursor-pointer border border-gray-200"
+              onClick={() => setSelectedProduct(product)}
               whileHover={{ y: -5 }}
             >
-              <img
-                src={product.img}
-                alt={product.title}
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6 flex flex-col justify-between h-full">
-                <div>
-                  <h2 className="text-xl font-bold text-black mb-2">{product.title}</h2>
-                  <p className="text-sm italic text-orange-600 mb-2">{product.tagline}</p>
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">{product.desc}</p>
+              <div className="w-full h-[344px] overflow-hidden">
+                <img
+                  src={product.img}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-bold text-black mb-3">
+                    {product.title}
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                    {product.desc}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-orange-500 font-semibold">
+                <button
+                  className="w-full h-[50px] flex items-center justify-start bg-transparent text-black font-semibold px-4 py-3 mt-auto"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProduct(product);
+                  }}
+                >
                   <span>READ MORE</span>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                  >
-                    <ArrowRight size={20} />
-                  </motion.div>
-                </div>
+                  <ArrowRight size={20} className="text-orange-500 ml-1" />
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Last 2 cards: centered with reduced gap */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mt-8 justify-center max-w-4xl mx-auto">
+        {/* Second row with 2 centered cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-items-center max-w-[850px] mx-auto">
           {products.slice(3).map((product, i) => (
             <motion.div
               key={i + 3}
@@ -503,42 +552,50 @@ export default function Products() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="bg-gray-100 rounded-xl overflow-hidden flex flex-col h-full cursor-pointer hover:shadow-lg transition-shadow"
-              onClick={() => handleProductClick(product)}
+              className="w-[400px] h-[538px] bg-white rounded-tl-[16px] rounded-br-[16px] overflow-hidden flex flex-col cursor-pointer border border-gray-200"
+              onClick={() => setSelectedProduct(product)}
               whileHover={{ y: -5 }}
             >
-              <img
-                src={product.img}
-                alt={product.title}
-                className="w-full h-56 object-cover"
-              />
-              <div className="p-6 flex flex-col justify-between h-full">
-                <div>
-                  <h2 className="text-xl font-bold text-black mb-2">{product.title}</h2>
-                  <p className="text-sm italic text-orange-600 mb-2">{product.tagline}</p>
-                  <p className="text-gray-700 text-sm mb-4 line-clamp-3">{product.desc}</p>
+              <div className="w-full h-[344px] overflow-hidden">
+                <img
+                  src={product.img}
+                  alt={product.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex-grow">
+                  <h2 className="text-2xl font-bold text-black mb-3">
+                    {product.title}
+                  </h2>
+                  <p className="text-sm text-gray-600 mb-4 line-clamp-3">
+                    {product.desc}
+                  </p>
                 </div>
-                <div className="flex items-center gap-2 text-orange-500 font-semibold">
+                <button
+                  className="w-full h-[50px] flex items-center justify-start bg-transparent text-black font-semibold px-4 py-3 mt-auto"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setSelectedProduct(product);
+                  }}
+                >
                   <span>READ MORE</span>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                  >
-                    <ArrowRight size={20} />
-                  </motion.div>
-                </div>
+                  <ArrowRight size={20} className="text-orange-500 ml-1" />
+                </button>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
       {/* Product Detail Section */}
       {selectedProduct && (
-        <div ref={detailRef} className="bg-white border-t border-gray-200 font-inter">
+        <div
+          ref={detailRef}
+          className="bg-white border-t border-gray-200 font-inter"
+        >
           {/* Close button */}
           <div className="flex justify-end p-4 sticky top-0 z-10 bg-white">
-            <button 
+            <button
               onClick={closeDetails}
               className="flex items-center gap-2 text-gray-600 hover:text-orange-500 transition-colors"
             >
@@ -546,7 +603,7 @@ export default function Products() {
               <span className="text-sm md:text-base">Close</span>
             </button>
           </div>
-          
+
           {/* Hero Section */}
           <div className="flex flex-col md:flex-row items-stretch">
             {/* Left Half - Image with Centered Text */}
@@ -624,17 +681,27 @@ export default function Products() {
                     >
                       <thead>
                         <tr className="bg-gray-100 text-gray-800">
-                          <th className="px-4 py-3 border-b border-gray-300">FEATURE</th>
-                          <th className="px-4 py-3 border-b border-gray-300">CONVENTIONAL</th>
-                          <th className="px-4 py-3 border-b border-gray-300">TIGER {selectedProduct.title.split(' ').pop()}</th>
+                          <th className="px-4 py-3 border-b border-gray-300">
+                            FEATURE
+                          </th>
+                          <th className="px-4 py-3 border-b border-gray-300">
+                            CONVENTIONAL
+                          </th>
+                          <th className="px-4 py-3 border-b border-gray-300">
+                            TIGER {selectedProduct.title.split(" ").pop()}
+                          </th>
                         </tr>
                       </thead>
                       <tbody className="text-sm text-gray-700">
                         {selectedProduct.details.features.map((feature, i) => (
                           <tr key={i} className="border-b border-gray-200">
                             <td className="px-4 py-3">{feature.name}</td>
-                            <td className="px-4 py-3">{feature.conventional}</td>
-                            <td className="px-4 py-3 font-semibold text-orange-600">{feature.tiger}</td>
+                            <td className="px-4 py-3">
+                              {feature.conventional}
+                            </td>
+                            <td className="px-4 py-3 font-semibold text-orange-600">
+                              {feature.tiger}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
@@ -649,32 +716,43 @@ export default function Products() {
           <div className="p-4 sm:p-6 md:p-8 bg-gray-50">
             {/* Applications */}
             {selectedProduct.details.applications && (
-              <motion.div 
+              <motion.div
                 className="mb-6 sm:mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="text-xl font-bold text-black mb-3 sm:mb-4">Applications</h3>
+                <h3 className="text-xl font-bold text-black mb-3 sm:mb-4">
+                  Applications
+                </h3>
                 {renderApplications(selectedProduct.details.applications)}
               </motion.div>
             )}
 
             {/* Variants/Grades/SKUs */}
-            {(selectedProduct.details.variants || selectedProduct.details.grades || selectedProduct.details.skus) && (
-              <motion.div 
+            {(selectedProduct.details.variants ||
+              selectedProduct.details.grades ||
+              selectedProduct.details.skus) && (
+              <motion.div
                 className="mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
                 <h3 className="text-xl font-bold text-black mb-4">
-                  {selectedProduct.details.variants ? 'Variants' : 
-                   selectedProduct.details.grades ? 'Grades' : 'Available SKUs'}
+                  {selectedProduct.details.variants
+                    ? "Variants"
+                    : selectedProduct.details.grades
+                    ? "Grades"
+                    : "Available SKUs"}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {(selectedProduct.details.variants || selectedProduct.details.grades || selectedProduct.details.skus).map((item, i) => (
-                    <motion.div 
+                  {(
+                    selectedProduct.details.variants ||
+                    selectedProduct.details.grades ||
+                    selectedProduct.details.skus
+                  ).map((item, i) => (
+                    <motion.div
                       key={i}
                       initial={{ opacity: 0, scale: 0.95 }}
                       animate={{ opacity: 1, scale: 1 }}
@@ -683,85 +761,169 @@ export default function Products() {
                     >
                       {item.variant && (
                         <div className="flex justify-between items-start">
-                          <h4 className="font-bold text-orange-600 text-lg">{item.variant}</h4>
-                          {item.sku && <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">{item.sku}</span>}
+                          <h4 className="font-bold text-orange-600 text-lg">
+                            {item.variant}
+                          </h4>
+                          {item.sku && (
+                            <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+                              {item.sku}
+                            </span>
+                          )}
                         </div>
                       )}
                       {item.grade && (
                         <div className="flex justify-between items-start">
-                          <h4 className="font-bold text-orange-600 text-lg">{item.grade}</h4>
-                          {item.sku && <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">{item.sku}</span>}
+                          <h4 className="font-bold text-orange-600 text-lg">
+                            {item.grade}
+                          </h4>
+                          {item.sku && (
+                            <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
+                              {item.sku}
+                            </span>
+                          )}
                         </div>
                       )}
                       {item.diameter && (
                         <div className="flex justify-between items-start">
-                          <h4 className="font-bold text-orange-600 text-lg">{item.diameter}</h4>
+                          <h4 className="font-bold text-orange-600 text-lg">
+                            {item.diameter}
+                          </h4>
                           <span className="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">
                             {item.grade}
                           </span>
                         </div>
                       )}
-                      
+
                       {item.bestFor && (
                         <div className="mt-3 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                            />
                           </svg>
                           <span>{item.bestFor}</span>
                         </div>
                       )}
-                      
+
                       {item.yieldStrength && (
                         <div className="mt-2 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                            />
                           </svg>
                           <span>Yield: {item.yieldStrength}</span>
                         </div>
                       )}
-                      
+
                       {item.thickness && (
                         <div className="mt-2 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                            />
                           </svg>
                           <span>Thickness: {item.thickness}</span>
                         </div>
                       )}
-                      
+
                       {item.width && (
                         <div className="mt-2 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                            />
                           </svg>
                           <span>Width: {item.width}</span>
                         </div>
                       )}
-                      
+
                       {item.coilWeight && (
                         <div className="mt-2 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
+                            />
                           </svg>
                           <span>Coil: {item.coilWeight}</span>
                         </div>
                       )}
-                      
+
                       {item.application && (
                         <div className="mt-2 flex items-start text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-gray-500 mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4 text-gray-500 mr-2 mt-0.5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                            />
                           </svg>
                           <span>Use: {item.application}</span>
                         </div>
                       )}
-                      
+
                       {item.applications && (
                         <div className="mt-3">
-                          <p className="font-semibold text-sm mb-1">Applications:</p>
+                          <p className="font-semibold text-sm mb-1">
+                            Applications:
+                          </p>
                           <ul className="list-disc list-inside text-xs space-y-1">
                             {item.applications.map((app, j) => (
-                              <li key={j} className="text-gray-600">{app}</li>
+                              <li key={j} className="text-gray-600">
+                                {app}
+                              </li>
                             ))}
                           </ul>
                         </div>
@@ -774,13 +936,15 @@ export default function Products() {
 
             {/* Specifications */}
             {selectedProduct.details.specifications && (
-              <motion.div 
+              <motion.div
                 className="mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.6 }}
               >
-                <h3 className="text-xl font-bold text-black mb-4">Specifications</h3>
+                <h3 className="text-xl font-bold text-black mb-4">
+                  Specifications
+                </h3>
                 <div className="overflow-x-auto">
                   <table className="min-w-full border-collapse">
                     <thead>
@@ -797,7 +961,9 @@ export default function Products() {
                       {selectedProduct.details.specifications.map((spec, i) => (
                         <tr key={i} className="border-b">
                           <td className="px-4 py-2 border">{spec.sector}</td>
-                          <td className="px-4 py-2 border">{spec.application}</td>
+                          <td className="px-4 py-2 border">
+                            {spec.application}
+                          </td>
                           <td className="px-4 py-2 border">{spec.benefit}</td>
                           <td className="px-4 py-2 border">{spec.sku}</td>
                           <td className="px-4 py-2 border">{spec.thickness}</td>
@@ -812,36 +978,56 @@ export default function Products() {
 
             {/* Certifications */}
             {selectedProduct.details.certifications && (
-              <motion.div 
+              <motion.div
                 className="mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.8 }}
               >
-                <h3 className="text-xl font-bold text-black mb-4">Certifications & Compliance</h3>
+                <h3 className="text-xl font-bold text-black mb-4">
+                  Certifications & Compliance
+                </h3>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                    <h4 className="font-bold text-orange-600 mb-2">Compliance</h4>
+                    <h4 className="font-bold text-orange-600 mb-2">
+                      Compliance
+                    </h4>
                     <ul className="space-y-2">
-                      {selectedProduct.details.certifications.compliance.map((item, i) => (
-                        <li key={i} className="text-gray-700">{item}</li>
-                      ))}
+                      {selectedProduct.details.certifications.compliance.map(
+                        (item, i) => (
+                          <li key={i} className="text-gray-700">
+                            {item}
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                    <h4 className="font-bold text-orange-600 mb-2">Indian Standards</h4>
+                    <h4 className="font-bold text-orange-600 mb-2">
+                      Indian Standards
+                    </h4>
                     <ul className="space-y-2">
-                      {selectedProduct.details.certifications.indianStandards.map((item, i) => (
-                        <li key={i} className="text-gray-700">{item}</li>
-                      ))}
+                      {selectedProduct.details.certifications.indianStandards.map(
+                        (item, i) => (
+                          <li key={i} className="text-gray-700">
+                            {item}
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                   <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                    <h4 className="font-bold text-orange-600 mb-2">Sustainability</h4>
+                    <h4 className="font-bold text-orange-600 mb-2">
+                      Sustainability
+                    </h4>
                     <ul className="space-y-2">
-                      {selectedProduct.details.certifications.sustainability.map((item, i) => (
-                        <li key={i} className="text-gray-700">{item}</li>
-                      ))}
+                      {selectedProduct.details.certifications.sustainability.map(
+                        (item, i) => (
+                          <li key={i} className="text-gray-700">
+                            {item}
+                          </li>
+                        )
+                      )}
                     </ul>
                   </div>
                 </div>
@@ -850,7 +1036,7 @@ export default function Products() {
 
             {/* Approvals */}
             {selectedProduct.details.approvals && (
-              <motion.div 
+              <motion.div
                 className="mb-8"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -858,81 +1044,134 @@ export default function Products() {
               >
                 <h3 className="text-xl font-bold text-black mb-4">Approvals</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {selectedProduct.details.approvals.publicWorks && selectedProduct.details.approvals.publicWorks.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Public Works Departments</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.publicWorks.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {selectedProduct.details.approvals.housing && selectedProduct.details.approvals.housing.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Housing Boards</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.housing.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {selectedProduct.details.approvals.infraAuthorities && selectedProduct.details.approvals.infraAuthorities.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Infrastructure Authorities</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.infraAuthorities.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {selectedProduct.details.approvals.waterBoards && selectedProduct.details.approvals.waterBoards.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Water Boards</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.waterBoards.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {selectedProduct.details.approvals.localBodies && selectedProduct.details.approvals.localBodies.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Local Bodies</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.localBodies.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                  {selectedProduct.details.approvals.privateFirms && selectedProduct.details.approvals.privateFirms.length > 0 && (
-                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                      <h4 className="font-bold text-orange-600 mb-2">Private Firms</h4>
-                      <ul className="space-y-2">
-                        {selectedProduct.details.approvals.privateFirms.map((item, i) => (
-                          <li key={i} className="text-gray-700">{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
+                  {selectedProduct.details.approvals.publicWorks &&
+                    selectedProduct.details.approvals.publicWorks.length >
+                      0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Public Works Departments
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.publicWorks.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  {selectedProduct.details.approvals.housing &&
+                    selectedProduct.details.approvals.housing.length > 0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Housing Boards
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.housing.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  {selectedProduct.details.approvals.infraAuthorities &&
+                    selectedProduct.details.approvals.infraAuthorities.length >
+                      0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Infrastructure Authorities
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.infraAuthorities.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  {selectedProduct.details.approvals.waterBoards &&
+                    selectedProduct.details.approvals.waterBoards.length >
+                      0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Water Boards
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.waterBoards.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  {selectedProduct.details.approvals.localBodies &&
+                    selectedProduct.details.approvals.localBodies.length >
+                      0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Local Bodies
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.localBodies.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
+                  {selectedProduct.details.approvals.privateFirms &&
+                    selectedProduct.details.approvals.privateFirms.length >
+                      0 && (
+                      <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        <h4 className="font-bold text-orange-600 mb-2">
+                          Private Firms
+                        </h4>
+                        <ul className="space-y-2">
+                          {selectedProduct.details.approvals.privateFirms.map(
+                            (item, i) => (
+                              <li key={i} className="text-gray-700">
+                                {item}
+                              </li>
+                            )
+                          )}
+                        </ul>
+                      </div>
+                    )}
                 </div>
               </motion.div>
             )}
 
             {/* Calculator */}
             {selectedProduct.details.calculator && (
-              <motion.div 
+              <motion.div
                 className="bg-orange-50 p-6 rounded-lg border border-orange-100"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
               >
-                <h3 className="text-xl font-bold text-black mb-2">{selectedProduct.details.calculator.heading}</h3>
-                <p className="text-gray-700 mb-2">{selectedProduct.details.calculator.note}</p>
-                <p className="text-sm text-gray-600 mb-4 italic">{selectedProduct.details.calculator.example}</p>
+                <h3 className="text-xl font-bold text-black mb-2">
+                  {selectedProduct.details.calculator.heading}
+                </h3>
+                <p className="text-gray-700 mb-2">
+                  {selectedProduct.details.calculator.note}
+                </p>
+                <p className="text-sm text-gray-600 mb-4 italic">
+                  {selectedProduct.details.calculator.example}
+                </p>
                 <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded transition-colors">
                   {selectedProduct.details.calculator.buttonLabel}
                 </button>

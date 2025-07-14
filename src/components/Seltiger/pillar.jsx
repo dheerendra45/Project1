@@ -1,60 +1,110 @@
+import React from "react";
 import { motion } from "framer-motion";
-import s2 from "../../assets/Seltiger/s2.png";
-import s3 from "../../assets/Seltiger/s3.png";
-import s4 from "../../assets/Seltiger/s4.png";
-import s5 from "../../assets/Seltiger/s5.png";
-import s6 from "../../assets/Seltiger/s6.png";
-import s7 from "../../assets/Seltiger/s7.png";
+
+// Replace these imports with your real images
+import i1 from "../../assets/Seltiger/i1.gif";
+import i3 from "../../assets/Seltiger/i3.gif";
+import rightimage from "../../assets/Seltiger/rimage.png";
 
 export default function Products() {
   return (
-    <motion.div className="bg-[ #161616;
-] text-black px-6 py-12 lg:px-20 font-[Inter]">
-      <h1 className="text-4xl font-semibold mb-8">What is SEL Tiger?</h1>
+    <motion.div className="bg-gray-100 text-black px-6 py-12 lg:px-20 font-sans">
+      {/* Introduction Section */}
+      <div className="mb-12">
+        <p className="text-black text-5xl font-bold mb-4">Introduction</p>
+        <h1 className="text-4xl text-orange-500 lg:text-lg font-bold mb-8">
+          What is <span className="text-orange-500">SEL</span> Tiger?
+        </h1>
+
+        <div className="flex flex-col lg:flex-row gap-12 items-start">
+          {/* Left Content */}
+          <div className="flex-1 max-w-2xl">
+            <p className="text-lg mb-8 leading-relaxed">
+              <strong>S-E-L Tiger</strong> is a symbol of Strength, Elasticity,
+              and Longevity. Three core pillars that define the quality and
+              trust behind every product the brand offers. As the flagship steel
+              brand from Shyam Metalics, S-E-L Tiger is engineered to build not
+              just structures, but lasting legacies.
+            </p>
+
+            {/* Features List */}
+            <div className="space-y-8">
+              {/* Strength */}
+              <div className="flex items-start gap-4">
+                <img
+                  src={i1}
+                  alt="strength-icon"
+                  className="w-12 h-12 rounded-full"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                    S – Strength
+                  </h3>
+                  <p className="text-gray-700">
+                    Designed to withstand the harshest elements—resistant to
+                    earthquakes, fireproof, and immune to corrosion for vital
+                    infrastructure.
+                  </p>
+                </div>
+              </div>
+
+              {/* Elasticity */}
+              <div className="flex items-start gap-4">
+                <img
+                  src={i3}
+                  alt="elasticity-icon"
+                  className="w-12 h-12 rounded-full"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                    E – Elasticity
+                  </h3>
+                  <p className="text-gray-700">
+                    Strength withstands load, Flexibility meets structural
+                    integrity.
+                  </p>
+                </div>
+              </div>
+
+              {/* Longevity */}
+              <div className="flex items-start gap-4">
+                <img
+                  src={i1}
+                  alt="longevity-icon"
+                  className="w-12 h-12 rounded-full"
+                />
+                <div>
+                  <h3 className="text-xl font-semibold text-orange-500 mb-2">
+                    L – Longevity
+                  </h3>
+                  <p className="text-gray-700">
+                    High-quality materials engineered to endure for decades,
+                    guaranteeing legacy-level strength for projects built to
+                    last.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Side - Construction Site Image */}
+          <div className="flex-1 max-w-2xl">
+            <div className="w-full h-96 rounded-lg overflow-hidden">
+              <img
+                src={rightimage}
+                alt="Construction site"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* s2, s3, s4 in same row */}
-      <div className="flex flex-wrap justify-center lg:flex-nowrap items-start gap-4">
-        {/* s2 with overlay text */}
-        <div className="relative w-full max-w-[536px] h-[522px]">
-          <img src={s2} alt="Feature" className="w-full h-full object-cover" />
-          <p className="absolute inset-0 flex items-center justify-center text-white font-extrabold text-[22px] leading-[31px] text-center px-4 mt-40">
-            Designed to withstand the harshest elements—resistant to earthquakes, fireproof, and immune to corrosion for vital infrastructure.
-          </p>
-        </div>
-
-        {/* s3 and s4 */}
-        <img src={s3} alt="Steel Rod 1" className="w-[131px] h-[522px] object-cover" />
-        <img src={s4} alt="Steel Rod 2" className="w-[131px] h-[522px] object-cover" />
-      </div>
 
       {/* Section Title */}
-      <h2 className="text-4xl font-semibold mt-20">We don't just supply materials—</h2>
-      <h3 className="text-4xl font-semibold text-orange-500">We engineer the SiFuturelearn.</h3>
-
-      <p className="max-w-[1036px] mt-6 font-medium text-lg leading-[33px]">
-        At Tiger, we don’t just supply materials—we engineer future-ready structures that endure. 
-        From homes to high-rises, from sea bridges to industrial sheds—our products are trusted to perform under pressure, always.
-      </p>
-
-      {/* Image Cards */}
-      <div className="flex flex-wrap justify-center gap-8 mt-12">
-        <div className="relative">
-          <img src={s5} alt="Use Case 1" className="w-[380px] h-[422px]" />
-          <p className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold text-center px-4 mt-40">
-            For the family who wants a safer home in earthquake zones
-          </p>
-        </div>
-
-        <img src={s6} alt="Use Case 2" className="w-[380px] h-[422px]" />
-        <img src={s7} alt="Use Case 3" className="w-[381px] h-[422px]" />
-      </div>
 
       {/* Final Headings */}
-      <div className="text-center mt-20 space-y-3">
-        <h2 className="text-black text-2xl md:text-3xl font-semibold">This isn't just construction.</h2>
-        <h2 className="text-2xl md:text-3xl font-semibold">It's a revolution in materials science.</h2>
-        <h2 className="text-orange-500 text-2xl md:text-3xl font-semibold">It's the Tiger promise.</h2>
-      </div>
     </motion.div>
   );
 }
