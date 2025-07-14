@@ -11,9 +11,9 @@ const Testimonial = () => {
     <div>
       <Hero />
       <TestimonialsComponent />
-      <Banner />
-      <PortfolioComponent />
-      <TestimonialCarousel />
+      {/* <Banner /> */}
+      {/* <PortfolioComponent /> */}
+      {/* <TestimonialCarousel /> */}
      
     </div>
   );
