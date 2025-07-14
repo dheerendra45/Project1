@@ -482,7 +482,7 @@ export default function Products() {
         className="py-12 md:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"
       >
         <motion.p
-          className="text-orange-500 text-lg font-semibold text-center"
+          className="text-black text-5xl font-bold text-center"
           initial={{ opacity: 0, y: -20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
           transition={{ duration: 0.5 }}
@@ -491,7 +491,7 @@ export default function Products() {
         </motion.p>
 
         <motion.h1
-          className="text-3xl sm:text-4xl font-bold text-black text-center mb-12"
+          className="text-lg sm:text-lg font-semibold text-orange-500 text-center mb-12"
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
