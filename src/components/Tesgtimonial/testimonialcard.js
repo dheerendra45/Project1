@@ -70,7 +70,7 @@ const TestimonialsComponent = () => {
  
     let animationFrame;
     let lastTimestamp = 0;
-    const speed = 250; // pixels per second
+    const speed = 200; // pixels per second
 
     const animate = (timestamp) => {
       if (!lastTimestamp) lastTimestamp = timestamp;
@@ -80,8 +80,8 @@ const TestimonialsComponent = () => {
       setScrollPosition(prev => {
         const newPos = prev + (speed * delta) / 1000;
         // Reset position before reaching the end for seamless looping
-        if (newPos > sliderRef.current.scrollWidth / 2) {
-          return newPos - sliderRef.current.scrollWidth / 2;
+        if (newPos > sliderRef.current.scrollWidth ) {
+          return newPos - sliderRef.current.scrollWidth ;
         }
         return newPos;
       });
@@ -117,6 +117,10 @@ const TestimonialsComponent = () => {
         {/* Testimonial Cards Container */}
         <div 
           className="relative h-[400px] overflow-hidden"
+           style={{
+            marginLeft: '-100px',
+            marginRight: '-100px'
+          }}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -126,7 +130,7 @@ const TestimonialsComponent = () => {
             className="absolute flex gap-8"
             style={{
               x: -scrollPosition,
-              left: `calc(50% - ${(350 * cardsToShow) / 2}px)`
+              left: `calc(50% - ${(350 * cardsToShow) / 2}px+100px)`
             }}
           >
             {duplicatedTestimonials.map((testimonial, index) => (
