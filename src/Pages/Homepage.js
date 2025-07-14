@@ -17,7 +17,7 @@ import Footer from "../components/Footer";
 import TestimonialHomePage from "../components/Testimonial-HomePage";
 import Environment from "../components/environment";
 import EnvironmentSection1 from "../components/EnvironmentSection1";
-
+import StatsCard from "../components/StatsCard.jsx";
 import BusinessHomepage from "../components/BusinessHomepage";
 import Hero from "../components/hero2";
 
@@ -25,6 +25,7 @@ const HomePage = () => {
   return (
     <div>
       <Hero />
+      <StatsCard/>
       <MissionVisionValues />
       <AboutUs />
       <BusinessHomepage />

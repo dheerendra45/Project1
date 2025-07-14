@@ -202,7 +202,7 @@ const Navbar = () => {
     },
 
     {
-      title: "🐅seltiger",
+      title: "seltiger",
       hasDropdown: false,
       href: "/seltiger",
     },
