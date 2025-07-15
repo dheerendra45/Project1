@@ -12,7 +12,7 @@ const StatsCard = () => {
     },
     {
       title: "Employees",
-      value: "17500+",
+      value: "17,500+",
       numericValue: 17500,
       suffix: "+"
     },
@@ -24,7 +24,7 @@ const StatsCard = () => {
     },
     {
       title: "Active Projects",
-      value: "1200+",
+      value: "1,200+",
       numericValue: 1200,
       suffix: "+"
     },
@@ -46,7 +46,6 @@ const StatsCard = () => {
 
   useEffect(() => {
     const animateValues = () => {
-      // Reset all values to their starting points
       setCurrentValues(prev => 
         prev.map((item, index) => ({
           ...item,
@@ -54,8 +53,7 @@ const StatsCard = () => {
         }))
       );
       
-      // Animate to target values
-      const animationDuration = 2000; // 2 seconds for animation
+      const animationDuration = 2000;
       const startTime = Date.now();
       
       const animate = () => {
@@ -86,40 +84,36 @@ const StatsCard = () => {
       requestAnimationFrame(animate);
     };
 
-    // Initial animation
     animateValues();
-    // Set up repeating animation every 8 seconds
     const interval = setInterval(animateValues, 10000);
-
     return () => clearInterval(interval);
   }, []);
 
   const formatValue = (value, stat) => {
     if (stat.isDecimal) {
-      // Ensure exactly 2 decimal places for decimal values
       return value.toLocaleString(undefined, {
         minimumFractionDigits: 2,
         maximumFractionDigits: 2
       });
     }
-    return value.toLocaleString(); // Format whole numbers
+    return value.toLocaleString();
   };
 
   return (
     <div className="bg-white p-8 shadow-lg rounded-lg mx-20 my-10">
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-stretch"> {/* Changed to items-stretch */}
         {stats.map((stat, index) => (
-          <div key={index} className="text-center flex-1 relative">
-            <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-4 whitespace-pre-line leading-5">
+          <div key={index} className="text-center flex-1 relative flex flex-col justify-between h-full"> {/* Added flex container */}
+            <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center">
               {stat.title}
             </div>
-            <div className="text-orange-500 font-lemon-milk font-bold text-[25px] leading-[1.4] tracking-normal">
+            <div className="text-orange-500 font-lemon-milk font-bold text-[25px] leading-[1.4] tracking-normal min-h-[40px] flex items-center justify-center">
               {stat.prefix || ''}
               {formatValue(currentValues[index].displayValue, stat)}
               {stat.suffix}
             </div>
             {index < stats.length - 1 && (
-              <div className="absolute top-0 right-0 h-full w-px bg-orange-200 opacity-30"></div>
+              <div className="absolute top-1/2 right-0 h-1/3 w-px bg-orange-500 transform -translate-y-1/2"></div>
             )}
           </div>
         ))}
