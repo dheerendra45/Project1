@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
-import MissionIcon from "../assets/mission(1).png";
-import VisionIcon from "../assets/vission(1).png";
-import ValuesIcon from "../assets/values(1).png";
+import MissionIcon from "../assets/mission(2).png";
+import VisionIcon from "../assets/vission(2).png";
+import ValuesIcon from "../assets/values(2).png";
 
 function MissionVisionValues() {
   const sections = [

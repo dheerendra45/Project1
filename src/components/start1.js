@@ -784,7 +784,7 @@ const Navbar = () => {
                             src={item.logo}
                             alt="seltiger logo"
                             className="h-[25px] w-auto object-contain inline-block align-middle "
-                            style={{ marginRight: "-25px" }}
+                            style={{ marginRight: "-37px" }}
                           />
                           <span className="inline-block align-middle">
                             {item.title}

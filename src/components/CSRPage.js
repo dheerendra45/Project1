@@ -8,6 +8,10 @@ import {
   Leaf,
   Users,
 } from "lucide-react";
+import csr1 from "../assets/csr1.png";
+import csr2 from "../assets/csr2.png";
+import csr3 from "../assets/csr3.png";
+import csr4 from "../assets/csr4.png";
 
 const CSRPage = () => {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -32,27 +36,27 @@ const CSRPage = () => {
   const videoImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=300&h=200&fit=crop",
+      src: csr1,
       alt: "Community children",
-      className: "w-80 h-48",
+      className: "w-[439px] h-[306px]",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=300&h=200&fit=crop",
+      src: csr2,
       alt: "Woman in traditional dress",
-      className: "w-80 h-48",
+      className: "w-[302px] h-[306px]",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop",
+      src: csr3,
       alt: "Traditional building",
-      className: "w-56 h-64",
+      className: "w-[302px] h-[306px]",
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300&h=200&fit=crop",
+      src: csr4,
       alt: "Children together",
-      className: "w-80 h-64",
+      className: "w-[439px] h-[306px]",
     },
   ];
 
@@ -65,15 +69,15 @@ const CSRPage = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
+      <div className="w-full px-0 py-8">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Left Side - Images Grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-2 gap-3 max-w-2xl h-[600px]">
+            <div className="grid grid-cols-2 gap-3 max-w-2xl h-[550px]">
               {videoImages.map((image, index) => (
                 <div
                   key={image.id}
-                  className={`relative overflow-hidden rounded-lg shadow-lg cursor-pointer group ${
+                  className={`relative overflow-hidden rounded-[2.9px] shadow-lg cursor-pointer group ${
                     index === 0
                       ? "col-span-1"
                       : index === 1
