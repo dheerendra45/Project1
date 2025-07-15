@@ -85,7 +85,7 @@ const StatsCard = () => {
     };
 
     animateValues();
-    const interval = setInterval(animateValues, 10000);
+    const interval = setInterval(animateValues, 8000);
     return () => clearInterval(interval);
   }, []);
 
@@ -100,18 +100,14 @@ const StatsCard = () => {
   };
 
   return (
-    <div className="bg-white p-8 shadow-lg rounded-lg mx-16 my-10">
-      <div className="flex justify-between items-stretch">
-        {" "}
-        {/* Changed to items-stretch */}
+    <div className="bg-white p-8 shadow-lg rounded-lg mx-[10%] my-[2%]">
+      <div className="flex flex-col md:flex-row justify-between items-stretch gap-4 md:gap-0">
         {stats.map((stat, index) => (
           <div
             key={index}
-            className="text-center flex-1 relative flex flex-col justify-between h-full"
+            className="text-center flex-1 relative flex flex-col justify-between h-full px-2 md:px-0"
           >
-            {" "}
-            {/* Added flex container */}
-            <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center">
+            <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center px-1">
               {stat.title}
             </div>
             <div className="text-orange-500 font-lemon-milk font-bold text-[25px] leading-[1.4] tracking-normal min-h-[40px] flex items-center justify-center">
@@ -120,7 +116,7 @@ const StatsCard = () => {
               {stat.suffix}
             </div>
             {index < stats.length - 1 && (
-              <div className="absolute top-1/2 right-0 h-1/3 w-px bg-orange-500 transform -translate-y-1/2"></div>
+              <div className="absolute top-1/2 right-0 h-1/3 w-px bg-orange-500 transform -translate-y-1/2 hidden md:block"></div>
             )}
           </div>
         ))}
