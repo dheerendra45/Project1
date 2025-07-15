@@ -236,10 +236,9 @@ export default function ShyamMetalicsProfile() {
         <img
           src={vector8}
           alt="arrow"
-          className="absolute top-1/2 left-0  h-[65px] transform -translate-y-1/2 object-cover z-0"
+          className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0 -ml-[60px]"
         />
 
-        {/* Vertical lines above the arrow */}
         <div
           className="absolute left-[-60px] w-full flex justify-around items-end px-2 z-10"
           style={{ bottom: "calc(50% + 10px)" }}

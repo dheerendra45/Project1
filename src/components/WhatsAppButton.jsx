@@ -90,7 +90,7 @@ const ContactBar = () => {
           <button
             key={button.id}
             onClick={button.onClick}
-            className="flex flex-col items-center text-black hover:text-gray-800 transition-colors gap-1 flex-1"
+            className="flex flex-col items-center text-orange-500 hover:text-gray-800 transition-colors gap-1 flex-1"
           >
             {button.icon}
             <span className="text-[11px]">{button.text}</span>

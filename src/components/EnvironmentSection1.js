@@ -1,176 +1,112 @@
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import envimg from "../assets/env1.jpg";
-import envbg from "../assets/env_bg.jpeg";
-import { ChevronRight } from "lucide-react";
+import React, { useRef, useEffect } from "react";
+import e1 from "../assets/e1.png";
+import video from "../assets/sus_home.mp4";
 
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+const VideoHoverSection = ({ videoSrc, overlayImage }) => {
+  const videoRef = useRef(null);
+  const containerRef = useRef(null);
 
-gsap.registerPlugin(ScrollTrigger);
-
-const EnvironmentSection1 = () => {
-  const sectionRef = useRef(null);
-  const textRef = useRef(null);
-  const imageRef = useRef(null);
-  const headingRef = useRef(null);
-  const paraRef = useRef(null);
-  const buttonRef = useRef(null);
-  const bgRef = useRef(null);
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 40%",
-          end: "bottom 30%",
-          markers: false,
-          toggleActions: "play none none reverse",
-        },
-      });
+    // Preload the video when component mounts
+    if (videoRef.current) {
+      videoRef.current.preload = "auto";
+    }
 
-      // tl.from(bgRef.current, {
-      //   opacity: 0,
-      //   scale: 1.1,
-      //   duration: 2,
-      //   ease: 'power2.out',
-      // }, 0);
-      tl.from(
-        imageRef.current,
-        {
-          x: 100,
-          opacity: 0,
-          duration: 1,
-          scale: 0.9,
-          ease: "power3.out",
-        },
-        0
-      );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (videoRef.current) {
+          if (entry.isIntersecting) {
+            videoRef.current
+              .play()
+              .catch((e) => console.log("Playback failed:", e));
+          } else {
+            videoRef.current.pause();
+          }
+        }
+      },
+      {
+        threshold: 0.1, // More sensitive trigger
+        rootMargin: "100px", // Load when 100px away from viewport
+      }
+    );
 
-      tl.from(
-        headingRef.current,
-        {
-          x: -50,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        0
-      );
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
-      tl.from(
-        paraRef.current,
-        {
-          x: -50,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        0.2
-      );
-
-      tl.from(
-        buttonRef.current,
-        {
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        },
-        0.2
-      );
-    }, sectionRef);
-
-    return () => ctx.revert(); // Cleanup
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
   }, []);
+
+  const handleMouseEnter = () => {
+    if (videoRef.current) {
+      videoRef.current.play().catch((e) => console.log("Playback failed:", e));
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (videoRef.current) videoRef.current.pause();
+  };
+
   return (
     <div
-      ref={sectionRef}
-      className="relative w-full min-h-[500px] bg-gray-300 overflow-hidden "
+      ref={containerRef}
+      className="relative w-full h-[600px] my-[2vh] overflow-hidden"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {/* Background Image with Overlay */}
-      <div
-        // ref={bgRef}
-        className="absolute inset-0"
-        style={{
-          backgroundImage: `url(${envbg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          filter: "blur(8px)",
-          transform: "scale(1.1)",
-        }}
-      >
-        <div className="absolute inset-0 bg-gray-100 bg-opacity-10"></div>
-      </div>
+      {/* Background Video - Optimized */}
+      <video
+        ref={videoRef}
+        src={video}
+        className="w-full h-full object-cover"
+        muted
+        loop
+        playsInline
+        preload="auto" // Preload the video
+      />
 
-      {/* Centered Container */}
-      <div className="relative z-10 min-h-[500px] flex flex-col  md:flex-row w-full h-full mx-auto ">
-        {/* <div className="flex flex-col lg:flex-row-reverse items-stretch justify-between gap-8 w-full max-w-7xl"> */}
+      {/* Semi-transparent Overlay Image */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        {/* Gradient overlay to enhance contrast */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent z-10" />
 
-        {/* Left Content */}
-        <div
-          ref={textRef}
-          className="w-full md:w-1/2 min-h-[500px] bg-white bg-opacity-80 p-8 md:p-10 flex flex-col justify-center font-['Inter',sans-serif]"
-        >
-          <h2
-            ref={headingRef}
-            className="text-2xl sm:text-4xl font-semibold text-black-800 mb-6"
-          >
-            Our Green Promise
-          </h2>
-
-          <p
-            ref={paraRef}
-            className="text-black text-base md:text-lg leading-relaxed mb-6"
-          >
-            At Shyam Metalics, sustainability is how we work, grow, and lead.
-            Our plants feature closed-loop water systems, minimized emissions
-            through non-recovery coke ovens, and power generation using 376 MW
-            energy-efficient captive power plants. We meet 81% of our energy
-            needs in-house—reducing transmission losses, optimizing fuel usage,
-            and integrating solar power to lower our carbon footprint.
-            <br />
-            <br />
-            Our cement division recycles steel by-products into building
-            materials, underscoring our commitment to a circular economy. As we
-            expand into aluminium and emerging material spaces, each step is
-            guided by our goal to reduce environmental impact and enhance
-            resource productivity. We’re building a model of responsible
-            growth—strengthening India’s future while preserving its ecological
-            balance.
-          </p>
-
-          {/* Read More Button */}
-          <div
-            ref={buttonRef}
-            className="mt-6 flex justify-center lg:justify-start"
-          >
-            <a
-              href="/esg_profile"
-              className="flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors"
-            >
-              Read More <ChevronRight className="ml-1 w-5 h-5" />
-            </a>
-          </div>
+        {/* Primary overlay image with enhanced blending */}
+        <div className="absolute bottom-0 left-0 w-full h-full flex items-end justify-center z-20">
+          <img
+            src={e1}
+            alt="Overlay"
+            className="w-full h-full object-contain pointer-events-none opacity-80"
+            style={{
+              mixBlendMode: "lighten",
+              filter: `
+          brightness(1.4) 
+          contrast(1.2) 
+          saturate(1.1)
+          drop-shadow(0 0 5px rgba(255,255,255,0.3))
+        `,
+            }}
+          />
         </div>
-        {/* Right - Full Height Image */}
+
+        {/* Secondary subtle overlay for extra highlights */}
         <div
-          ref={imageRef}
-          className="relative w-full md:w-1/2 min-h-[500px] md:h-auto flex items-center justify-center"
-        >
-          <div className="h-full w-full  overflow-hidden">
-            <img
-              src={envimg}
-              alt="Sustainable Environment"
-              className="w-full h-full object-cover  shadow-md"
-            />
-          </div>
-        </div>
-        {/* </div> */}
+          className="absolute inset-0 z-30 pointer-events-none"
+          style={{
+            background: `
+        radial-gradient(
+          circle at 75% 30%,
+          rgba(255,255,255,0.15) 0%,
+          transparent 40%
+        )
+      `,
+            mixBlendMode: "overlay",
+          }}
+        />
       </div>
     </div>
   );
 };
 
-export default EnvironmentSection1;
+export default VideoHoverSection;

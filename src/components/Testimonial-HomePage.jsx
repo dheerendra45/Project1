@@ -39,11 +39,11 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="bg-white py-4">
+    <div className="bg-white">
       <div
-        className="mx-auto"
+        className=""
         style={{
-          marginTop: "2vh",
+          marginTop: "2",
           marginBottom: "2vh",
           marginLeft: "10%",
           marginRight: "10%",

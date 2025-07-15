@@ -62,32 +62,27 @@ const CSRPage = () => {
 
   const handlePlayVideo = (videoId) => {
     setActiveVideo(videoId);
-    // Here you would typically open a video modal or navigate to video
     console.log(`Playing video ${videoId}`);
   };
 
   return (
-    <div className="bg-white pt-[2vh] pb-[2vh]">
+    <div className="bg-white my-[2%]">
       {/* Main Container */}
-      {/* Main Container */}
-      <div className="w-full px-0">
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+      <div className="max-full mx-auto">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-start">
           {/* Left Side - Images Grid */}
-          <div className="flex-1">
-            <div className="grid grid-cols-2 gap-3 max-w-2xl">
-              {videoImages.map((image, index) => (
+          <div className="w-full lg:w-1/2">
+            <div className="grid grid-cols-2 gap-3">
+              {videoImages.map((image) => (
                 <div
                   key={image.id}
-                  className="relative overflow-hidden rounded-[2.9px] shadow-lg cursor-pointer group"
+                  className="relative overflow-hidden rounded shadow-lg cursor-pointer group"
                   onClick={() => handlePlayVideo(image.id)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    style={{
-                      height: "266px",
-                    }}
+                    className="w-full h-[266px] object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -107,14 +102,14 @@ const CSRPage = () => {
           </div>
 
           {/* Right Side - Content */}
-          <div className="flex-1 max-w-2xl h-[550px] flex flex-col">
+          <div className="w-full lg:w-1/2 lg:pl-4">
             {/* Main Heading */}
-            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
               Corporate Social Responsibility
             </h1>
 
             {/* Subheading */}
-            <h2 className="text-xl font-semibold text-orange-500 mb-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-orange-500 mb-4">
               Building Communities, Empowering Lives
             </h2>
 
@@ -139,7 +134,7 @@ const CSRPage = () => {
             </div>
 
             {/* CSR Areas Icons */}
-            <div className="grid grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 mb-6">
               {csrAreas.map((area, index) => (
                 <div
                   key={index}

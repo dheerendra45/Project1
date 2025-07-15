@@ -23,6 +23,7 @@ import Hero from "../components/hero2";
 import BusinessVerticals from "../components/BusinessVerticals.js";
 import CustomerTestimonials from "../components/Testimonial-HomePage";
 import SharePriceSection from "../components/SharePriceSection.js";
+import AccreditationsComponent from "../components/AccreditationsComponent.js";
 // import BusinessVerticals from "../components/BusinessVerticals.js";
 
 const HomePage = () => {
@@ -39,6 +40,7 @@ const HomePage = () => {
       <LocationsMap />
       <EnvironmentSection1 />
       <CSRPage />
+      <AccreditationsComponent />
       <CustomerTestimonials />
       <CertificationsSection />
       <NewsPage />
