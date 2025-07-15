@@ -20,6 +20,8 @@ import EnvironmentSection1 from "../components/EnvironmentSection1";
 import StatsCard from "../components/StatsCard.jsx";
 import BusinessHomepage from "../components/BusinessHomepage";
 import Hero from "../components/hero2";
+import BusinessVerticals from "../components/BusinessVerticals.js";
+// import BusinessVerticals from "../components/BusinessVerticals.js";
 
 const HomePage = () => {
   return (
@@ -28,6 +30,7 @@ const HomePage = () => {
       <StatsCard/>
       <MissionVisionValues />
       <AboutUs />
+      <BusinessVerticals/>
       <BusinessHomepage />
       {/* <EnvironmentSection /> */}
       <BusinessAreas id="business-areas" />
