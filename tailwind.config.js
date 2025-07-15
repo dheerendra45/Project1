@@ -18,6 +18,9 @@ module.exports = {
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],
+         poppins: ["Poppins", "sans-serif"],
+        lemonMilk: ["LEMON MILK", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
       },
       backgroundImage: {
         'tiger-gradient': 'linear-gradient(90deg, #EE741D 2.45%, #FCB040 100%)',

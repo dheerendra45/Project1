@@ -1,11 +1,13 @@
-import React, { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Quote } from 'lucide-react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const TestimonialsComponent = () => {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.4 });
+  const containerRef = useRef(null);
+  const sliderRef = useRef(null);
+  const [isHovered, setIsHovered] = useState(false);
+  const [cardsToShow, setCardsToShow] = useState(3);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const isInView = useInView(containerRef, { once: false, amount: 0.4 });
 
   const testimonials = [
     {
@@ -45,20 +47,57 @@ const TestimonialsComponent = () => {
     }
   ];
 
-  const nextTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-  };
+  // Calculate cards to show based on container width
+  useEffect(() => {
+    const calculateCardsToShow = () => {
+      if (!containerRef.current) return 3;
+      const containerWidth = containerRef.current.offsetWidth;
+      return containerWidth > 1024 ? 3 : containerWidth > 768 ? 2 : 1;
+    };
 
-  const prevTestimonial = () => {
-    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-  };
+    const handleResize = () => {
+      setCardsToShow(calculateCardsToShow());
+    };
 
-  const goToTestimonial = (index) => {
-    setCurrentTestimonial(index);
-  };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Continuous scrolling animation
+  useEffect(() => {
+    if (isHovered || !sliderRef.current) return;
+ 
+    let animationFrame;
+    let lastTimestamp = 0;
+    const speed = 200; // pixels per second
+
+    const animate = (timestamp) => {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const delta = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+
+      setScrollPosition(prev => {
+        const newPos = prev + (speed * delta) / 1000;
+        // Reset position before reaching the end for seamless looping
+        if (newPos > sliderRef.current.scrollWidth ) {
+          return newPos - sliderRef.current.scrollWidth ;
+        }
+        return newPos;
+      });
+
+      animationFrame = requestAnimationFrame(animate);
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isHovered]);
+
+  // Duplicate testimonials for seamless looping
+  const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <div ref={ref} className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <div ref={containerRef} className="relative bg-white py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <motion.div
@@ -67,102 +106,67 @@ const TestimonialsComponent = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <p className="text-orange-500 font-semibold text-sm uppercase tracking-wider mb-3">
+          <p className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold uppercase tracking-wider mb-3">
             TESTIMONIALS
           </p>
-          <h2 className="text-orange-500 text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-4">
             Feedback from clients
           </h2>
         </motion.div>
 
-        {/* Testimonial Card with AnimatePresence */}
-        <div className="relative bg-white p-8 md:p-12 max-w-4xl mx-auto mb-8 shadow-xl rounded-xl min-h-[400px]">
-          <motion.button
-            onClick={prevTestimonial}
-            whileTap={{ scale: 0.9 }}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 shadow-lg"
-          >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
-          </motion.button>
-
-          <motion.button
-            onClick={nextTestimonial}
-            whileTap={{ scale: 0.9 }}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-100 hover:bg-gray-200 rounded-full p-3 transition-all duration-300 shadow-lg"
-          >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
-          </motion.button>
-
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={testimonials[currentTestimonial].id}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -40 }}
-              transition={{ duration: 0.5 }}
-              className="text-center px-8 md:px-16"
-            >
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.1 }}
-                className="mb-8"
-              >
-                <img
-                  src={testimonials[currentTestimonial].image}
-                  alt={testimonials[currentTestimonial].name}
-                  className="w-20 h-20 md:w-24 md:h-24 rounded-full mx-auto border-4 border-orange-100 shadow-lg"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-8"
-              >
-                <Quote className="w-8 h-8 text-[#0868D7] mx-auto mb-6" />
-                <p className="text-gray-700 text-lg md:text-xl leading-relaxed font-medium max-w-3xl mx-auto">
-                  {testimonials[currentTestimonial].text}
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="mb-2"
-              >
-                <h3 className="text-orange-500 font-bold text-xl md:text-2xl">
-                  {testimonials[currentTestimonial].name}
-                </h3>
-                <p className="text-gray-600 text-sm md:text-base font-medium">
-                  {testimonials[currentTestimonial].title}
-                </p>
-              </motion.div>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
-        {/* Pagination Dots */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.7 }}
-          className="flex justify-center space-x-3"
+        {/* Testimonial Cards Container */}
+        <div 
+          className="relative h-[400px] overflow-hidden"
+           style={{
+            marginLeft: '-100px',
+            marginRight: '-100px'
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentTestimonial
-                  ? 'bg-orange-500 scale-125'
-                  : 'bg-gray-300 hover:bg-gray-400'
-              }`}
-            />
-          ))}
-        </motion.div>
+          {/* Infinite scrolling cards */}
+          <motion.div
+            ref={sliderRef}
+            className="absolute flex gap-8"
+            style={{
+              x: -scrollPosition,
+              left: `calc(50% - ${(350 * cardsToShow) / 2}px+100px)`
+            }}
+          >
+            {duplicatedTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={`${testimonial.id}-${index}`}
+                className="bg-white p-6 rounded-3xl shadow-xl flex flex-col w-[500px] h-[320px] border-2 outline-white/30 z-10"
+                whileHover={{ 
+                  y: -20,
+                  transition: { duration: 0.3 }
+                }}
+              >
+                <div className="flex items-center mb-6">
+                  <img
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    className="w-16 h-16 rounded-full border-2 border-orange-200 shadow-sm mr-4"
+                  />
+                  <div className="text-left">
+                    <h3 className="text-black-800 font-semibold text-xl">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-orange-500 text-sm font-medium">
+                      {testimonial.title}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex-1 overflow-y-auto">
+                  <p className="text-gray-700 text-lg leading-relaxed font-medium text-center">
+                    {testimonial.text}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </div>
   );
