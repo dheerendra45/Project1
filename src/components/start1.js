@@ -3,6 +3,7 @@ import companylogo from "../assets/products/image28.png";
 import bgImg from "../assets/image146.png";
 import { href } from "react-router-dom";
 import great from "../assets/great place.png";
+import seltigerlogo from "../assets/seltiger.png";
 import { Search } from "lucide-react";
 import navbarbg from "../assets/navbarbg2.png";
 
@@ -202,9 +203,11 @@ const Navbar = () => {
     },
 
     {
-      title: "🐅seltiger",
+      title: "seltiger",
       hasDropdown: false,
       href: "/seltiger",
+      logo: seltigerlogo,
+      showLogo: true, // new flag
     },
     {
       title: "INVESTORS",
@@ -713,11 +716,11 @@ const Navbar = () => {
                       </span>
                     ) : (
                       <>
-                        <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                        <div className="flex items-center gap-2 text-orange-500 font-inter font-bold h-7">
                           BSE: ₹{stockData.bse.currentPrice.toFixed(2)}
                         </div>
                         <div className="h-4 w-px bg-white/50"></div>
-                        <div className="flex items-center gap-2 text-white font-inter font-bold h-7">
+                        <div className="flex items-center gap-2 text-orange-500 font-inter font-bold h-7">
                           NSE: ₹{stockData.nse.currentPrice.toFixed(2)}
                         </div>
                       </>
@@ -771,11 +774,26 @@ const Navbar = () => {
                     }
                   >
                     <span
-                      className={`cursor-pointer hover:text-orange-400 flex items-center gap-1 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal align-middle uppercase transition-colors duration-200 ${
+                      className={`cursor-pointer flex items-center gap-2 font-inter font-semibold text-[12px] lg:text-[13.19px] leading-[19.79px] tracking-normal uppercase transition-colors duration-200 ${
                         isScrolled ? "text-gray-800" : "text-white"
                       } ${!item.hasDropdown ? "hover:scale-105" : ""}`}
                     >
-                      {item.title}
+                      {item.showLogo ? (
+                        <div className="flex items-center">
+                          <img
+                            src={item.logo}
+                            alt="seltiger logo"
+                            className="h-[25px] w-auto object-contain inline-block align-middle "
+                            style={{ marginRight: "-25px" }}
+                          />
+                          <span className="inline-block align-middle">
+                            {item.title}
+                          </span>
+                        </div>
+                      ) : (
+                        item.title
+                      )}
+
                       {item.hasDropdown && (
                         <svg
                           className="w-3 h-3 fill-current"
