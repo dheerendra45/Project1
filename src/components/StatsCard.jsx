@@ -100,7 +100,7 @@ const StatsCard = () => {
   };
 
   return (
-    <div className="bg-white p-8 shadow-lg rounded-lg mx-20 my-10">
+    <div className="bg-white p-8 shadow-lg rounded-lg mx-24 my-10">
       <div className="flex justify-between items-stretch"> {/* Changed to items-stretch */}
         {stats.map((stat, index) => (
           <div key={index} className="text-center flex-1 relative flex flex-col justify-between h-full"> {/* Added flex container */}

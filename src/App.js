@@ -16,7 +16,7 @@ import LocationPage from "./Pages/location";
 import Faq from "./Pages/faq";
 import Testimonial from "./Pages/Testimonial";
 import Knowledgehub from "./Pages/knowledgehub";
-
+import  SettingButton  from "./components/SettingButton.js";
 import Companyoverview from "./Pages/Companyoverview";
 import Manufacturing from "./Pages/Manufacturing";
 import Lifeshyam from "./Pages/Lifeshyam";
@@ -49,6 +49,7 @@ import WhatsAppButton from "./components/WhatsAppButton.jsx";
 function App() {
   return (
     <div className="App">
+      <SettingButton />
       <WhatsAppButton />
       <Routes>
         <Route path="/" element={<Layout />}>

@@ -1,242 +1,67 @@
 import React from "react";
 import { motion } from "framer-motion";
-import MissionIcon from "../assets/mission-icon.png";
-import VisionIcon from "../assets/vision-icon.png";
-import ValuesIcon from "../assets/values-icon.png";
-import SteelFactoryImage from "../assets/steel-factory.png";
-import HardhatImage from "../assets/hardhat.png";
-// import WorkerImage from "../assets/worker.png";
+import MissionIcon from "../assets/mission(1).png";
+import VisionIcon from "../assets/vission(1).png";
+import ValuesIcon from "../assets/values(1).png";
 
 function MissionVisionValues() {
   const sections = [
     {
       icon: VisionIcon,
-      title: "Our Vision",
-      description:
-        "To transform Shyam Metalics into a next-gen steel producer by pioneering advanced steel grades, value-added alloys, green manufacturing, and redefining the role of steel in fueling infrastructure, mobility, and new technologies. Our vision is to write Bharat’s growth story with cleaner, smarter, and globally competitive steel solutions MADE IN INDIA, FOR THE WORLD.",
-      direction: "left",
+      title: "Vision",
+      description: "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat's growth with clean, smart, globally competitive 'Made in India' steel.",
     },
     {
       icon: MissionIcon,
-      title: "Our Mission",
-      description:
-        "To engineer high-performance metal solutions through integrated operations, consistent quality, and responsible practices. As a trusted and innovative steel producer, we aim to deliver superior products with efficiency, uphold the highest standards of customer satisfaction, and integrate sustainable practices into each process.",
-      direction: "up",
+      title: "Mission",
+      description: "Consistent with our vision, we strive to engineer stronger metal solutions through integrated operations, cost-efficiency, and responsible business practices. Our mission is to empower industries and drive sustainable growth by optimizing both natural and human resources, thereby strengthening India's industrial base.",
     },
     {
       icon: ValuesIcon,
-      title: "Our Values",
-      description:
-        "At Shyam Metalics, our growth is rooted in Operational Integrity, Manufacturing Excellence, Responsible Innovation, and Sustainable Impact. These drive each plant, product, and process—allowing us to supply high-performance steel, minimize environmental burden through captive power and ZLD, and play our part in Bharat's path towards industrial self-reliance.",
-      direction: "right",
+      title: "Values",
+      description: "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat's growth with clean, smart, globally competitive 'Made in India' steel.",
     },
   ];
 
-  const getAnimationVariants = (direction) => {
-    const variants = {
-      left: {
-        hidden: { opacity: 0, x: -40 },
-        visible: {
-          opacity: 1,
-          x: 0,
-          transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            mass: 0.5,
-          },
-        },
-      },
-      right: {
-        hidden: { opacity: 0, x: 40 },
-        visible: {
-          opacity: 1,
-          x: 0,
-          transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            mass: 0.5,
-          },
-        },
-      },
-      up: {
-        hidden: { opacity: 0, y: 40 },
-        visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-            type: "spring",
-            stiffness: 100,
-            damping: 15,
-            mass: 0.5,
-          },
-        },
-      },
-    };
-    return variants[direction];
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const headingVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
-        mass: 0.5,
-        duration: 0.8,
-      },
-    },
-  };
-
-  const cardHover = {
-    scale: 1.02,
-    y: -5,
-    boxShadow:
-      "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 15,
-      mass: 0.5,
-    },
-  };
-
-  const imageHover = {
-    scale: 1.03,
-    transition: {
-      duration: 0.4,
-      ease: "easeOut",
-    },
-  };
-
   return (
-    <div className="relative py-16 px-4 bg-gray-50 overflow-hidden">
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 lg:gap-8"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.3 }}
-        >
+    <div className="relative py-16 overflow-hidden mx-24 my-10">
+      <div className="relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6"> {/* Changed gap from 8 to 6 */}
           {sections.map((section, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl shadow-md overflow-hidden flex flex-col relative h-full"
-              variants={getAnimationVariants(section.direction)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.3 }}
-              whileHover={cardHover}
-              whileTap={{ scale: 0.98 }}
+              className="bg-white rounded-2xl shadow-lg border border-orange-300 flex flex-col relative p-8"
+              style={{ width: '415px', height: '410px' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileHover={{ y: -5, boxShadow: "0 20px 40px -5px rgba(0, 0, 0, 0.15)" }}
             >
-              <motion.div
-                className="absolute top-0 left-0 w-full h-1.5 bg-orange-500"
-                initial={{ scaleX: 0 }}
-                whileInView={{ scaleX: 1 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{
-                  duration: 0.8,
-                  delay: 0.3 + index * 0.15,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
-                style={{ transformOrigin: "left" }}
-              />
-
-              <div className="p-8 pt-6 pb-6 flex-grow flex flex-col">
-                <motion.div
-                  className="flex justify-center mb-6 mt-2"
-                  initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                  whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 300,
-                    damping: 15,
-                    delay: 0.4 + index * 0.15,
-                  }}
-                >
-                  <img
-                    src={section.icon}
-                    alt={section.title}
-                    className="h-14 w-14 object-contain"
-                  />
-                </motion.div>
-
-                <motion.h3
-                  className="text-2xl font-bold text-center mb-6 text-gray-900"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 10,
-                    delay: 0.5 + index * 0.15,
-                  }}
-                >
-                  {section.title}
-                </motion.h3>
-
-                <motion.p
-                  className="text-gray-600 text-base text-center leading-relaxed px-2 flex-grow"
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{
-                    type: "spring",
-                    stiffness: 200,
-                    damping: 10,
-                    delay: 0.6 + index * 0.15,
-                  }}
-                  dangerouslySetInnerHTML={{ __html: section.description }}
+              {/* Icon */}
+              <div className="flex justify-center mb-5">
+                <img
+                  src={section.icon}
+                  alt={section.title}
+                  className="h-16 w-16 object-contain"
                 />
               </div>
-
-              {/* Optional image at the bottom if you want to re-enable */}
-              {/* <motion.div
-                className="relative h-72 overflow-hidden"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: false, amount: 0.3 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.7 + (index * 0.15)
-                }}
-              >
-                <motion.img
-                  src={section.image}
-                  alt={section.title}
-                  className="w-full h-full object-cover"
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: false, amount: 0.3 }}
-                  transition={{
-                    duration: 1.2,
-                    delay: 0.8 + (index * 0.15),
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  whileHover={imageHover}
-                />
-              </motion.div> */}
+              
+              <h3 className="text-2xl font-semibold text-center mb-5 text-black-800">
+                {section.title}
+              </h3>
+              
+              <p className="text-black-400 text-md text-center leading-relaxed flex-grow" 
+                 style={{
+                   fontSize: '16px',
+                   lineHeight: '24px',
+                   letterSpacing: '-0.5px'
+                 }}>
+                {section.description}
+              </p>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
