@@ -3,171 +3,234 @@ import { motion } from "framer-motion";
 import news1 from "../assets/news.png";
 import news2 from "../assets/news2.png";
 
-const NewsCard = ({
-  date,
-  category,
-  admin,
-  comments,
-  title,
-  excerpt,
-  subtext,
-  image, // ✅ Added image prop
-}) => {
+const NewsPage = () => {
   const [showSubtext, setShowSubtext] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="w-full md:w-1/4 px-2 mb-8 flex"
-    >
-      <div className="bg-white rounded-md overflow-hidden shadow-md relative flex flex-col h-full w-full">
-        {/* Image section */}
-        <div className="h-48 bg-gray-300 relative flex-shrink-0">
-          <img
-            src={image || "/api/placeholder/400/250"} // ✅ Use the image prop instead of placeholder
-            alt={title}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute bottom-0 left-0 bg-orange-500 text-white py-1 px-3 text-sm font-semibold">
-            {date}
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="p-4 pb-16 flex-grow flex flex-col">
-          <div className="flex text-gray-500 text-sm mb-2">
-            <span className="uppercase mr-2">{category}</span>
-            <span className="uppercase mr-2">{admin}</span>
-            <span className="uppercase">{comments}</span>
-          </div>
-          <h3 className="font-bold text-xl mb-3">{title}</h3>
-          <p className="text-gray-700">{excerpt}</p>
-
-          {/* Subtext appears on toggle */}
-          {showSubtext && (
-            <p className="mt-4 text-gray-600 text-sm whitespace-pre-line">
-              {subtext}
-            </p>
-          )}
-        </div>
-
-        {/* Toggle button */}
-        <button
-          onClick={() => setShowSubtext(!showSubtext)}
-          className="absolute bottom-4 right-4 bg-orange-500 text-white rounded-full p-3 shadow-lg hover:bg-orange-600 transition"
-          aria-label="Toggle details"
-          type="button"
-        >
-          <svg
-            className={`w-5 h-5 transform transition-transform ${
-              showSubtext ? "rotate-180" : ""
-            }`}
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-      </div>
-    </motion.div>
-  );
-};
-
-const NewsPage = () => {
-  const newsItems = [
-    {
-      id: 1,
-      image: news1, // ✅ This will now be used
-      date: "01 JUN 2025",
-      category: "Philanthropy",
-      admin: "Admin",
-      comments: "5 Comments",
-      title:
-        "Tanishi Agarwal | Recognised for leadership in advancing strategic philanthropy | Shyam Metalics Cares.",
-      excerpt:
-        "We’re proud to share that Tanishi Agarwal has been recognised for her exemplary leadership in advancing strategic philanthropy and inclusive nation-building through Shyam Metalics Cares.",
-      subtext:
-        " From empowering communities to building an inclusive tomorrow, this award celebrates the very spirit of nation-building we strive for at Shyam Metalics. Congratulations on this well-deserved honour!.",
-    },
-    {
-      id: 2,
-      image: news2, // ✅ This will now be used
-      date: "15 MAY 2025",
-      category: "Export",
-      admin: "Admin",
-      comments: "2 Comments",
-      title: "Shyam Metalics Secures Major Export Order to Southeast Asia",
-      excerpt:
-        "Expanding Global Footprint with 50,000 MT Steel Shipment to Vietnam & Indonesia.High-grade TMT bars and wire rods to support infrastructure project",
-      subtext:
-        "Strengthens India’s position as a top steel exporter; $25M revenue boost expected.",
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop", // Green technology/research image
-      date: "01 MAY 2025",
-      category: "Innovation",
-      admin: "Admin",
-      comments: "1 Comment",
-      title: "Shyam Metalics Partners with IIT Bombay for Green Steel Research",
-      excerpt:
-        "Pioneering Sustainable Steel Solutions with Cutting-Edge Technology.Joint R&D focus: Hydrogen-based steel production & carbon capture.",
-      subtext:
-        "Aims to reduce emissions by 30% by 2030; ₹100Cr investment pledged.",
-    },
-    {
-      id: 4,
-      image:
-        "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=250&fit=crop", // Manufacturing/industrial image
-      date: "20 APR 2025",
-      category: "Manufacturing",
-      admin: "Admin",
-      comments: "Comments",
-      title:
-        " New Aluminum Foil Division Wins FDA Approval for Food-Grade Packaging.",
-      excerpt:
-        "Diversification Success: Enters FMCG Sector with 40,000 TPA Capacity. Supplies to top Indian snack brands and pharma companies.",
-      subtext:
-        "First Indian steel company to achieve 100% recyclable packaging certification.",
-    },
-  ];
-
-  return (
-    <div className="w-full bg-gray-100 py-12">
+    <div className="w-full bg-white py-12 ">
       <div className="w-full max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="mb-8">
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-2">
+        <div className="mb-0">
+          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
             LATEST NEWS
           </h2>
-          <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
-            Innovating Today, Leading Tomorrow
+          <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
+            Innovating Today, Leading Tomorrow
           </p>
         </div>
 
-        {/* News Grid */}
-        <div className="flex flex-wrap -mx-2 items-stretch">
-          {newsItems.map((item) => (
-            <NewsCard key={item.id} {...item} />
-          ))}
+        {/* Main News Container - 520px height */}
+        <div className="relative w-full h-[520px] bg-white overflow-hidden">
+          {/* Left Large Image Section */}
+
+          {/* Main Image */}
+          <div className="absolute left-0 top-0">
+            {/* Main Image */}
+            <div
+              className="absolute rounded-[2.9px] overflow-hidden"
+              style={{
+                width: "583.61px",
+                height: "416.53px",
+                top: "30px",
+                left: "0px",
+              }}
+            >
+              <img
+                src={news1}
+                alt="Main news"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Category Badge with Border */}
+              <div className="absolute left-[50px] top-5 bg-orange-500 text-white px-2 py-1 text-xs font-semibold rounded">
+                Finance
+              </div>
+              {/* '5 Comments' label aligned to right */}
+              <div className="absolute right-[32.49px] top-[370px] text-white px-2 py-1 text-sm font-medium">
+                5 Comments
+              </div>
+
+              {/* News Content */}
+              <div
+                className="absolute text-white p-4 rounded"
+                style={{
+                  width: "352.72px",
+                  height: "132.27px",
+                  top: "255.37px",
+                  left: "32.49px",
+                }}
+              >
+                <h3 className="font-bold text-lg mb-2 leading-tight">
+                  Tanishi Agarwal | Recognised for leadership in advancing
+                  strategic philanthropy | Shyam Metalics Cares.
+                </h3>
+                <div className="flex text-sm text-gray-300 mb-1">
+                  <span className="mr-4">01 JUN 2025</span>
+                  <span className="mr-4">Philanthropy</span>
+                  <span className="mr-4">Admin</span>
+                </div>
+              </div>
+            </div>
+
+            {/* View All Case Studies Button */}
+            <button
+              className="absolute text-black px-4 py-2 rounded hover:bg-gray-50 transition-colors flex items-center gap-2"
+              style={{
+                width: "200px",
+                height: "28px",
+                top: "470px",
+                left: "0px",
+              }}
+            >
+              <span className="text-sm">View All Case Studies</span>
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+
+            {/* Slide Arrow Button */}
+            <button
+              className="absolute top-[470px] left-[550px] bg-orange-600  text-white p-2 rounded-sm "
+              style={{ zIndex: 20 }}
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Right Section */}
+          <div className="absolute right-0 top-0" style={{ width: "650.61px" }}>
+            {/* First Column */}
+            <div
+              className="absolute left-0"
+              style={{ width: "310px", top: "30px" }}
+            >
+              {/* First Right Image */}
+              <div
+                className="rounded-[2.9px] overflow-hidden relative mb-3"
+                style={{
+                  width: "310px",
+                  height: "208.26px",
+                }}
+              >
+                <img
+                  src={news2}
+                  alt="Export news"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-5 left-2 bg-orange-500 text-white px-2 py-1 text-xs font-semibold rounded">
+                  News
+                </div>
+              </div>
+
+              {/* First News Content Box */}
+              <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.53px]">
+                <h4 className="font-bold text-sm mb-2">
+                  Shyam Metalics Secures Major Export Order to Southeast Asia
+                </h4>
+                <div className="flex text-sm text-gray-500 mb-2">
+                  <span className="mr-3">15 MAY 2025</span>
+
+                  <span className="mr-3">Admin</span>
+                  <span>2 Comments</span>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Expanding Global Footprint with 50,000 MT Steel Shipment to
+                  Vietnam & Indonesia. High-grade TMT bars and wire rods to
+                  support infrastructure project
+                </p>
+              </div>
+
+              {/* First Column Buttons */}
+              <div className="flex flex-col gap-2">
+                <button className="text-black px-4 py-2 rounded hover:bg-gray-50 transition-colors flex items-center gap-2 w-full justify-start">
+                  <span className="text-sm">View Full News</span>
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9 5l7 7-7 7"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Second Column */}
+            <div
+              className="absolute right-0"
+              style={{ width: "310px", top: "30px" }}
+            >
+              {/* Second Right Image */}
+              <div
+                className="rounded-[2.9px] overflow-hidden relative mb-3"
+                style={{
+                  width: "310px",
+                  height: "208.26px",
+                }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=250&fit=crop"
+                  alt="Innovation news"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute top-2 left-2 bg-orange-500 text-white px-2 py-1 text-xs font-semibold rounded">
+                  News
+                </div>
+              </div>
+
+              {/* Second News Content Box */}
+              <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.26px]">
+                <h4 className="font-bold text-sm mb-2">
+                  Shyam Metalics Partners with IIT Bombay for Green Steel
+                  Research
+                </h4>
+                <div className="flex text-sm text-gray-500 mb-2">
+                  <span className="mr-1">20 MAY 2025</span>
+                  <span className="mr-1">Research</span>
+
+                  <span>3 Comments</span>
+                </div>
+                <p className="text-gray-700 text-sm">
+                  Pioneering Sustainable Steel Solutions with Cutting-Edge
+                  Technology. Joint R&D focus: Hydrogen-based steel production &
+                  carbon capture.
+                </p>
+              </div>
+
+              {/* Second Column Buttons */}
+            </div>
+          </div>
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center mt-8">
-          <div className="w-3 h-3 bg-orange-500 rounded-full mx-1"></div>
-          <div className="w-3 h-3 bg-gray-300 rounded-full mx-1"></div>
-          <div className="w-3 h-3 bg-gray-300 rounded-full mx-1"></div>
-        </div>
       </div>
     </div>
   );

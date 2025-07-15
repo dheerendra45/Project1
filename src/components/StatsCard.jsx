@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const StatsCard = () => {
   const stats = [
@@ -8,79 +8,79 @@ const StatsCard = () => {
       numericValue: 15.13,
       suffix: " MTPA",
       isDecimal: true,
-      decimalPlaces: 2
+      decimalPlaces: 2,
     },
     {
       title: "Employees",
       value: "17,500+",
       numericValue: 17500,
-      suffix: "+"
+      suffix: "+",
     },
     {
       title: "Capative Power\nInfrastructure",
       value: "83%",
       numericValue: 83,
-      suffix: "%"
+      suffix: "%",
     },
     {
       title: "Active Projects",
       value: "1,200+",
       numericValue: 1200,
-      suffix: "+"
+      suffix: "+",
     },
     {
       title: "Turn Over",
       value: "₹20,000 CRORE",
       numericValue: 20000,
       suffix: " CRORE",
-      prefix: "₹"
-    }
+      prefix: "₹",
+    },
   ];
 
   const [currentValues, setCurrentValues] = useState(
-    stats.map(stat => ({
-      displayValue: stat.isDecimal ? 1.00 : 1,
-      target: stat.numericValue
+    stats.map((stat) => ({
+      displayValue: stat.isDecimal ? 1.0 : 1,
+      target: stat.numericValue,
     }))
   );
 
   useEffect(() => {
     const animateValues = () => {
-      setCurrentValues(prev => 
+      setCurrentValues((prev) =>
         prev.map((item, index) => ({
           ...item,
-          displayValue: stats[index].isDecimal ? 1.00 : 1
+          displayValue: stats[index].isDecimal ? 1.0 : 1,
         }))
       );
-      
+
       const animationDuration = 2000;
       const startTime = Date.now();
-      
+
       const animate = () => {
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / animationDuration, 1);
-        
-        setCurrentValues(prev => 
+
+        setCurrentValues((prev) =>
           prev.map((item, index) => {
             const stat = stats[index];
-            const value = stat.isDecimal 
+            const value = stat.isDecimal
               ? 1 + (stat.numericValue - 1) * progress
               : 1 + (stat.numericValue - 1) * progress;
-            
+
             return {
               ...item,
-              displayValue: stat.isDecimal 
+              displayValue: stat.isDecimal
                 ? parseFloat(value.toFixed(stat.decimalPlaces || 2))
-                : Math.floor(value)
+                : Math.floor(value),
             };
           })
         );
-        
+
         if (progress < 1) {
           requestAnimationFrame(animate);
         }
       };
-      
+
       requestAnimationFrame(animate);
     };
 
@@ -93,22 +93,29 @@ const StatsCard = () => {
     if (stat.isDecimal) {
       return value.toLocaleString(undefined, {
         minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        maximumFractionDigits: 2,
       });
     }
     return value.toLocaleString();
   };
 
   return (
-    <div className="bg-white p-8 shadow-lg rounded-lg mx-24 my-10">
-      <div className="flex justify-between items-stretch"> {/* Changed to items-stretch */}
+    <div className="bg-white p-8 shadow-lg rounded-lg mx-16 my-10">
+      <div className="flex justify-between items-stretch">
+        {" "}
+        {/* Changed to items-stretch */}
         {stats.map((stat, index) => (
-          <div key={index} className="text-center flex-1 relative flex flex-col justify-between h-full"> {/* Added flex container */}
+          <div
+            key={index}
+            className="text-center flex-1 relative flex flex-col justify-between h-full"
+          >
+            {" "}
+            {/* Added flex container */}
             <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center">
               {stat.title}
             </div>
             <div className="text-orange-500 font-lemon-milk font-bold text-[25px] leading-[1.4] tracking-normal min-h-[40px] flex items-center justify-center">
-              {stat.prefix || ''}
+              {stat.prefix || ""}
               {formatValue(currentValues[index].displayValue, stat)}
               {stat.suffix}
             </div>

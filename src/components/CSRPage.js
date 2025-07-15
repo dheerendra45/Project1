@@ -1,71 +1,174 @@
-import React from "react";
-import herobg from "../assets/school.mp4";
+import React, { useState } from "react";
+import {
+  Play,
+  GraduationCap,
+  Heart,
+  Droplets,
+  Lightbulb,
+  Leaf,
+  Users,
+} from "lucide-react";
 
 const CSRPage = () => {
+  const [activeVideo, setActiveVideo] = useState(null);
+
+  const csrAreas = [
+    { icon: GraduationCap, label: "Education", color: "text-orange-500" },
+    { icon: Heart, label: "Healthcare", color: "text-orange-500" },
+    { icon: Droplets, label: "Sanitation & Hygiene", color: "text-orange-500" },
+    {
+      icon: Lightbulb,
+      label: "Livelihood Empowerment",
+      color: "text-orange-500",
+    },
+    {
+      icon: Leaf,
+      label: "Environmental Sustainability",
+      color: "text-orange-500",
+    },
+    { icon: Users, label: "Community Development", color: "text-orange-500" },
+  ];
+
+  const videoImages = [
+    {
+      id: 1,
+      src: "https://images.unsplash.com/photo-1544717297-fa95b6ee9643?w=300&h=200&fit=crop",
+      alt: "Community children",
+      className: "w-80 h-48",
+    },
+    {
+      id: 2,
+      src: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=300&h=200&fit=crop",
+      alt: "Woman in traditional dress",
+      className: "w-80 h-48",
+    },
+    {
+      id: 3,
+      src: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop",
+      alt: "Traditional building",
+      className: "w-56 h-64",
+    },
+    {
+      id: 4,
+      src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300&h=200&fit=crop",
+      alt: "Children together",
+      className: "w-80 h-64",
+    },
+  ];
+
+  const handlePlayVideo = (videoId) => {
+    setActiveVideo(videoId);
+    // Here you would typically open a video modal or navigate to video
+    console.log(`Playing video ${videoId}`);
+  };
+
   return (
-    <div className="w-full">
-      {/* Hero Section */}
-      <div className="flex flex-col md:flex-row w-full border-b-2">
-        {/* Left side with video and overlay text */}
-        <div className="w-full md:w-1/2 bg-gray-800 relative h-96 md:h-auto">
-          <video
-            src={herobg}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover opacity-80"
-          />
-          <div className="absolute inset-0 flex items-center justify-center px-4 text-center">
-            <h2 className="text-white text-2xl md:text-5xl font-semibold leading-tight">
-              Building <br className="block md:hidden" />
-              Communities,
-              <br />
-              Empowering Lives
-            </h2>
+    <div className="bg-white min-h-screen">
+      {/* Main Container */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          {/* Left Side - Images Grid */}
+          <div className="flex-1">
+            <div className="grid grid-cols-2 gap-3 max-w-2xl h-[600px]">
+              {videoImages.map((image, index) => (
+                <div
+                  key={image.id}
+                  className={`relative overflow-hidden rounded-lg shadow-lg cursor-pointer group ${
+                    index === 0
+                      ? "col-span-1"
+                      : index === 1
+                      ? "col-span-1"
+                      : index === 2
+                      ? "col-span-1 row-span-2"
+                      : "col-span-1"
+                  }`}
+                  onClick={() => handlePlayVideo(image.id)}
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+
+                  {/* Play Button Overlay */}
+                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white bg-opacity-90 rounded-full p-3 shadow-lg">
+                      <Play className="w-6 h-6 text-gray-800 fill-current" />
+                    </div>
+                  </div>
+
+                  {/* Static Play Button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white bg-opacity-80 rounded-full p-2 shadow-lg">
+                      <Play className="w-5 h-5 text-gray-700 fill-current" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Right side with content */}
-        <div className="w-full md:w-1/2 bg-white p-10 pr-12">
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-4">
-            Corporate Social Responsibility
-          </h2>
-          <h4 className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug mb-6 ml-1">
-            Building Communities, Empowering Lives
-          </h4>
+          {/* Right Side - Content */}
+          <div className="flex-1 max-w-2xl h-[600px] flex flex-col">
+            {/* Main Heading */}
+            <h1 className="text-3xl font-bold text-gray-900 mb-3">
+              Corporate Social Responsibility
+            </h1>
 
-          <p className="text-gray-700 text-base sm:text-lg mb-6">
-            At Shyam Metalics, our responsibility is not limited to what we
-            construct, it also includes how we transform the communities we live
-            with. Through the Shyam Metalics Foundation, we’ve positively
-            impacted over{" "}
-            <span className="font-semibold text-black">25,000 lives</span>{" "}
-            across <span className="font-semibold text-black">43 villages</span>
-            , earning us recognition with the{" "}
-            <span className="font-semibold text-black">
-              2025 EdelGive–Hurun CSR Contribution Award
-            </span>
-            .
-          </p>
+            {/* Subheading */}
+            <h2 className="text-xl font-semibold text-orange-500 mb-4">
+              Building Communities, Empowering Lives
+            </h2>
 
-          <p className="text-gray-700 text-base sm:text-lg mb-6">
-            Our initiatives touch on healthcare, school building, access to
-            clean water, education assistance to more than{" "}
-            <span className="font-semibold text-black">1,600 children</span>,
-            women's livelihood training, livestock health, and youth empowerment
-            through our football academy. Every project is crafted for long-term
-            impact and local applicability. While we build our industrial
-            presence, we continue to create value that extends beyond our
-            business.
-          </p>
+            {/* Tagline */}
+            <p className="text-base text-gray-700 mb-5 font-medium">
+              Empowering Bharat with purpose beyond profits and progress beyond
+              steel.
+            </p>
 
-          <a
-            href="/csr"
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded border-2 border-white"
-          >
-            Learn More About Our Impact
-          </a>
+            {/* Main Description */}
+            <div className="mb-6">
+              <p className="text-gray-700 leading-relaxed text-sm">
+                Shyam Metalics has always stood tall for more than just steel,
+                because we believe that true strength lies not only in the steel
+                we forge, but in the lives we uplift. We go beyond
+                infrastructure to empathize with people, drive impact, and build
+                a more equitable, educated, and empowered Bharat. Our commitment
+                to Corporate Social Responsibility is not just an initiative,
+                it's a way of life, aimed at creating opportunity, dignity, and
+                sustainable growth for the communities we serve.
+              </p>
+            </div>
+
+            {/* CSR Areas Icons */}
+            <div className="grid grid-cols-3 gap-4 mb-6">
+              {csrAreas.map((area, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center text-center"
+                >
+                  <div className="bg-orange-100 rounded-full p-2 mb-2">
+                    <area.icon className={`w-5 h-5 ${area.color}`} />
+                  </div>
+                  <span className="text-xs font-medium text-gray-700 leading-tight">
+                    {area.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Description */}
+            <p className="text-gray-700 text-sm mb-6 leading-relaxed">
+              Our CSR efforts are rooted in empathy and driven by impact to
+              shape not just steel, but a future that's stronger, greener, and
+              more inclusive for all.
+            </p>
+
+            {/* CTA Button */}
+            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200 shadow-md text-sm mt-auto w-fit">
+              Learn More About Our Impact
+            </button>
+          </div>
         </div>
       </div>
     </div>

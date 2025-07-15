@@ -91,7 +91,43 @@ export default function ShyamMetalicsProfile() {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?industry",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
+    },
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
     },
     {
       year: "1991",
@@ -102,51 +138,19 @@ export default function ShyamMetalicsProfile() {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?metal",
+      image: ab2,
     },
     {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      image: ab2,
     },
     {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?steel",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?machinery",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?plant",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      image: "https://source.unsplash.com/126x77/?warehouse",
+      image: ab2,
     },
   ];
 
@@ -283,7 +287,7 @@ export default function ShyamMetalicsProfile() {
                     <div
                       className="absolute p-2"
                       style={{
-                        width: "200px",
+                        width: "180px",
                         height: "83.21px",
                         left: "0px",
                         top: "px",
@@ -379,7 +383,7 @@ export default function ShyamMetalicsProfile() {
 
         {/* Vertical lines below the arrow (5 lines between the spaces of above lines) */}
         <div
-          className="absolute left-[-120px] w-full flex justify-around items-start px-2 z-10"
+          className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-10"
           style={{
             top: "calc(50% + 10px)",
             transform: "translateX(calc(100% / 12))", // Offset to position between above lines
@@ -397,7 +401,7 @@ export default function ShyamMetalicsProfile() {
 
         {/* Milestone containers for bottom big lines (211px height) - positioned on the right side */}
         <div
-          className="absolute left-[-120px] w-full flex justify-around items-start px-2 z-20"
+          className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-20"
           style={{
             top: "calc(50% + 10px)",
             transform: "translateX(calc(100% / 12))", // Offset to position between above lines
@@ -431,7 +435,7 @@ export default function ShyamMetalicsProfile() {
                     <div
                       className="absolute p-2"
                       style={{
-                        width: "200px",
+                        width: "150px",
                         height: "83.21px",
                         left: "0px",
                         top: "0px",
