@@ -155,7 +155,7 @@ export default function ShyamMetalicsProfile() {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto p-6 bg-white">
+    <div className="max-w-7xl mx-[10%] my-[2%]  bg-white">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {/* Left Section */}
         <div className="space-y-6">
@@ -236,7 +236,7 @@ export default function ShyamMetalicsProfile() {
         <img
           src={vector8}
           alt="arrow"
-          className="absolute top-1/2 left-0 w-full h-[65px] transform -translate-y-1/2 object-cover z-0"
+          className="absolute top-1/2 left-0  h-[65px] transform -translate-y-1/2 object-cover z-0"
         />
 
         {/* Vertical lines above the arrow */}

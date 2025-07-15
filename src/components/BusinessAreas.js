@@ -5,10 +5,6 @@ import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
 import a5 from "../assets/business4.png";
 
-import al1 from "../assets/al1.jpg";
-import al2 from "../assets/al2.jpg";
-import al3 from "../assets/al3.jpg";
-
 import sswirerod1 from "../assets/products/sswire.png";
 import ss from "../assets/products/ss.png";
 import e1 from "../assets/e1.jpg";
@@ -29,6 +25,11 @@ import wirerod from "../assets/products/wirerod.png";
 import colorocated from "../assets/products/colorcoated.png";
 import flatpatta from "../assets/products/flatsrolled.png";
 import flats from "../assets/products/flats.png";
+
+import al from "../assets/products/al1.png";
+import al2 from "../assets/products/al2.png";
+import al3 from "../assets/products/al3.png";
+import al4 from "../assets/products/al4.png";
 // Map product names to specific images
 const productImages = {
   Pellet: pellets,
@@ -50,10 +51,10 @@ const productImages = {
   "Pig Iron": pgiron,
   "Pipes & Hollow Sections": pipes,
   // Aluminum products
-  "SEL TIGER FOIL – KITCHEN Foil": al1,
-  "Aluminium Foil": al2,
+  "SEL TIGER FOIL–KITCHEN Foil": al,
+  "Bare Aluminium Foil": al2,
   "Battery Foil": al3,
-  FinStocks: sswire,
+  FinStocks: al4,
   // Energy products
   "Captive Power": e1,
   "Renewable Power": e2,
@@ -122,7 +123,7 @@ export default function BusinessAreas({ id }) {
     ],
     Aluminium: [
       {
-        name: "SEL TIGER FOIL – KITCHEN Foil",
+        name: "SEL TIGER FOIL–KITCHEN Foil",
         desc: "Premium quality kitchen aluminum foil for domestic use",
       },
       {
@@ -235,14 +236,14 @@ export default function BusinessAreas({ id }) {
   return (
     <div
       id={id}
-      className="relative bg-gray-200 text-white py-12 px-8 font-inter"
+      className="relative bg-gray-200 text-white py-[2%] px-[10%] font-inter"
     >
       <div className="absolute inset-0 bg-white opacity-60 z-0"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="pt-0 mb-8">
-            <h2 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-semibold  mb-6 sm:mb-8">
+            <h2 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8">
               OUR RANGE OF PRODUCTS
             </h2>
           </div>
@@ -268,11 +269,12 @@ export default function BusinessAreas({ id }) {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* Modified grid container with responsive columns and gap */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2">
           {currentImages.map((item, index) => (
             <div
               key={`image-${index}-${currentSetIndex}`}
-              className="w-[308px] h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden group"
+              className="w-full h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden group"
             >
               {/* Hover Orange Overlay */}
               <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
@@ -283,22 +285,22 @@ export default function BusinessAreas({ id }) {
               <img
                 src={item.image}
                 alt={item.name}
-                className="absolute top-[102px] left-[117.6px] w-[196px] h-[114px] object-cover z-0"
+                className="absolute top-[102px] left-[60%] transform -translate-x-1/2 w-[196px] h-[114px] object-cover z-0"
               />
 
               {/* Header */}
-              <h3 className="absolute top-[31px] left-[20.6px] w-full h-[28px] text-black font-semibold text-[16px] leading-[28px] z-20">
+              <h3 className="absolute top-[31px] left-[20px] w-[calc(100%-40px)] h-[28px] text-black font-semibold text-[16px] leading-[28px] z-20">
                 {item.name}
               </h3>
 
               {/* Subheader */}
-              <p className="absolute top-[60px] left-[20.6px] w-[140px] h-[53px] text-gray-700 text-[14px] leading-[18px] z-20">
+              <p className="absolute top-[60px] left-[20px] w-[calc(100%-40px)] h-[53px] text-gray-700 text-[14px] leading-[18px] z-20">
                 {item.description}
               </p>
 
               {/* Button */}
               <button
-                className="absolute top-[136px] left-[20.6px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center z-20"
+                className="absolute top-[136px] left-[20px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center z-20"
                 onClick={nextSlide}
               >
                 &gt;
@@ -310,7 +312,7 @@ export default function BusinessAreas({ id }) {
         <div className="text-center mt-8">
           <a
             href="/business"
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded border-2  bortransition-colors duration-300 shadow-lg"
+            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded border-2 bortransition-colors duration-300 shadow-lg"
           >
             View More
           </a>

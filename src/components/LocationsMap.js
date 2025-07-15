@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import worldExport from "../assets/worldExport1.mp4";
+import worldExport from "../assets/worldExport3.mp4";
 import indiaMapVideo from "../assets/IndiaMap.mp4";
 
 function LocationsMap() {
@@ -8,26 +8,66 @@ function LocationsMap() {
   const [isInView, setIsInView] = useState(false);
   const worldVideoRef = useRef(null);
   const indiaVideoRef = useRef(null);
+  const [isWorldHovered, setIsWorldHovered] = useState(false);
+  const [isIndiaHovered, setIsIndiaHovered] = useState(false);
 
-  // Handle component hover for video play
-  const handleMouseEnter = () => {
-    [worldVideoRef, indiaVideoRef].forEach((videoRef) => {
-      if (videoRef.current) {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play().catch((e) => {
-          console.log("Video play failed:", e);
+  // Handle video play/pause based on viewport and hover
+  useEffect(() => {
+    if (isInView) {
+      if (!isWorldHovered && worldVideoRef.current) {
+        worldVideoRef.current.currentTime = 0;
+        worldVideoRef.current.play().catch((e) => {
+          console.log("World video play failed:", e);
         });
       }
-    });
+      if (!isIndiaHovered && indiaVideoRef.current) {
+        indiaVideoRef.current.currentTime = 0;
+        indiaVideoRef.current.play().catch((e) => {
+          console.log("India video play failed:", e);
+        });
+      }
+    } else {
+      if (worldVideoRef.current) {
+        worldVideoRef.current.pause();
+      }
+      if (indiaVideoRef.current) {
+        indiaVideoRef.current.pause();
+      }
+    }
+  }, [isInView, isWorldHovered, isIndiaHovered]);
+
+  // Handle hover for world video
+  const handleWorldMouseEnter = () => {
+    setIsWorldHovered(true);
+    if (worldVideoRef.current) {
+      worldVideoRef.current.pause();
+    }
   };
 
-  const handleMouseLeave = () => {
-    [worldVideoRef, indiaVideoRef].forEach((videoRef) => {
-      if (videoRef.current) {
-        videoRef.current.pause();
-        videoRef.current.currentTime = 0;
-      }
-    });
+  const handleWorldMouseLeave = () => {
+    setIsWorldHovered(false);
+    if (isInView && worldVideoRef.current) {
+      worldVideoRef.current.play().catch((e) => {
+        console.log("World video play failed:", e);
+      });
+    }
+  };
+
+  // Handle hover for india video
+  const handleIndiaMouseEnter = () => {
+    setIsIndiaHovered(true);
+    if (indiaVideoRef.current) {
+      indiaVideoRef.current.pause();
+    }
+  };
+
+  const handleIndiaMouseLeave = () => {
+    setIsIndiaHovered(false);
+    if (isInView && indiaVideoRef.current) {
+      indiaVideoRef.current.play().catch((e) => {
+        console.log("India video play failed:", e);
+      });
+    }
   };
 
   // Stats data
@@ -88,12 +128,10 @@ function LocationsMap() {
   return (
     <div
       ref={sectionRef}
-      className="py-16 px-4 bg-white font-inter"
+      className="py-[2%] px-[10%] bg-white font-inter"
       id="locations"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
     >
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="w-full max-w-7xl mx-auto">
         {/* Title & Description with Button Row */}
         <motion.div
           className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
@@ -184,7 +222,6 @@ function LocationsMap() {
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
               Countries We Export To
             </motion.h3>
-            {/* Changed height to 450px using h-[450px] */}
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -197,6 +234,8 @@ function LocationsMap() {
                     }
                   : {}
               }
+              onMouseEnter={handleWorldMouseEnter}
+              onMouseLeave={handleWorldMouseLeave}
             >
               <video
                 ref={worldVideoRef}
@@ -227,7 +266,6 @@ function LocationsMap() {
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
               Our Manufacturing Locations
             </motion.h3>
-            {/* Changed height to 450px using h-[450px] to match world map */}
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -240,6 +278,8 @@ function LocationsMap() {
                     }
                   : {}
               }
+              onMouseEnter={handleIndiaMouseEnter}
+              onMouseLeave={handleIndiaMouseLeave}
             >
               <video
                 ref={indiaVideoRef}

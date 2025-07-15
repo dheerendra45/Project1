@@ -67,40 +67,34 @@ const CSRPage = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white pt-[2vh] pb-[2vh]">
       {/* Main Container */}
-      <div className="w-full px-0 py-8">
+      {/* Main Container */}
+      <div className="w-full px-0">
         <div className="flex flex-col lg:flex-row gap-8 items-start">
           {/* Left Side - Images Grid */}
           <div className="flex-1">
-            <div className="grid grid-cols-2 gap-3 max-w-2xl h-[550px]">
+            <div className="grid grid-cols-2 gap-3 max-w-2xl">
               {videoImages.map((image, index) => (
                 <div
                   key={image.id}
-                  className={`relative overflow-hidden rounded-[2.9px] shadow-lg cursor-pointer group ${
-                    index === 0
-                      ? "col-span-1"
-                      : index === 1
-                      ? "col-span-1"
-                      : index === 2
-                      ? "col-span-1 row-span-2"
-                      : "col-span-1"
-                  }`}
+                  className="relative overflow-hidden rounded-[2.9px] shadow-lg cursor-pointer group"
                   onClick={() => handlePlayVideo(image.id)}
                 >
                   <img
                     src={image.src}
                     alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    style={{
+                      height: "266px",
+                    }}
                   />
-
                   {/* Play Button Overlay */}
                   <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white bg-opacity-90 rounded-full p-3 shadow-lg">
                       <Play className="w-6 h-6 text-gray-800 fill-current" />
                     </div>
                   </div>
-
                   {/* Static Play Button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="bg-white bg-opacity-80 rounded-full p-2 shadow-lg">
@@ -113,7 +107,7 @@ const CSRPage = () => {
           </div>
 
           {/* Right Side - Content */}
-          <div className="flex-1 max-w-2xl h-[600px] flex flex-col">
+          <div className="flex-1 max-w-2xl h-[550px] flex flex-col">
             {/* Main Heading */}
             <h1 className="text-3xl font-bold text-gray-900 mb-3">
               Corporate Social Responsibility
@@ -169,7 +163,7 @@ const CSRPage = () => {
             </p>
 
             {/* CTA Button */}
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200 shadow-md text-sm mt-auto w-fit">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200 shadow-md text-sm mt-2 w-fit">
               Learn More About Our Impact
             </button>
           </div>

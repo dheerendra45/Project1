@@ -21,26 +21,29 @@ import StatsCard from "../components/StatsCard.jsx";
 import BusinessHomepage from "../components/BusinessHomepage";
 import Hero from "../components/hero2";
 import BusinessVerticals from "../components/BusinessVerticals.js";
+import CustomerTestimonials from "../components/Testimonial-HomePage";
+import SharePriceSection from "../components/SharePriceSection.js";
 // import BusinessVerticals from "../components/BusinessVerticals.js";
 
 const HomePage = () => {
   return (
     <div>
       <Hero />
-      <StatsCard/>
+      <StatsCard />
       <MissionVisionValues />
       <AboutUs />
-      <BusinessVerticals/>
-      <BusinessHomepage />
+      <BusinessVerticals />
+      {/* <BusinessHomepage /> */}
       {/* <EnvironmentSection /> */}
       <BusinessAreas id="business-areas" />
       <LocationsMap />
       <EnvironmentSection1 />
       <CSRPage />
-      <TestimonialHomePage />
+      <CustomerTestimonials />
       <CertificationsSection />
       <NewsPage />
-      <ContactPage />
+      <SharePriceSection />
+      {/* <ContactPage /> */}
     </div>
   );
 };
