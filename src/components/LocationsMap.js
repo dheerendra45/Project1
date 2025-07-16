@@ -8,19 +8,17 @@ function LocationsMap() {
   const [isInView, setIsInView] = useState(false);
   const worldVideoRef = useRef(null);
   const indiaVideoRef = useRef(null);
-  const [isWorldHovered, setIsWorldHovered] = useState(false);
-  const [isIndiaHovered, setIsIndiaHovered] = useState(false);
 
-  // Handle video play/pause based on viewport and hover
+  // Handle video play/pause based on viewport only
   useEffect(() => {
     if (isInView) {
-      if (!isWorldHovered && worldVideoRef.current) {
+      if (worldVideoRef.current) {
         worldVideoRef.current.currentTime = 0;
         worldVideoRef.current.play().catch((e) => {
           console.log("World video play failed:", e);
         });
       }
-      if (!isIndiaHovered && indiaVideoRef.current) {
+      if (indiaVideoRef.current) {
         indiaVideoRef.current.currentTime = 0;
         indiaVideoRef.current.play().catch((e) => {
           console.log("India video play failed:", e);
@@ -34,41 +32,7 @@ function LocationsMap() {
         indiaVideoRef.current.pause();
       }
     }
-  }, [isInView, isWorldHovered, isIndiaHovered]);
-
-  // Handle hover for world video
-  const handleWorldMouseEnter = () => {
-    setIsWorldHovered(true);
-    if (worldVideoRef.current) {
-      worldVideoRef.current.pause();
-    }
-  };
-
-  const handleWorldMouseLeave = () => {
-    setIsWorldHovered(false);
-    if (isInView && worldVideoRef.current) {
-      worldVideoRef.current.play().catch((e) => {
-        console.log("World video play failed:", e);
-      });
-    }
-  };
-
-  // Handle hover for india video
-  const handleIndiaMouseEnter = () => {
-    setIsIndiaHovered(true);
-    if (indiaVideoRef.current) {
-      indiaVideoRef.current.pause();
-    }
-  };
-
-  const handleIndiaMouseLeave = () => {
-    setIsIndiaHovered(false);
-    if (isInView && indiaVideoRef.current) {
-      indiaVideoRef.current.play().catch((e) => {
-        console.log("India video play failed:", e);
-      });
-    }
-  };
+  }, [isInView]);
 
   // Stats data
   const stats = [
@@ -234,8 +198,6 @@ function LocationsMap() {
                     }
                   : {}
               }
-              onMouseEnter={handleWorldMouseEnter}
-              onMouseLeave={handleWorldMouseLeave}
             >
               <video
                 ref={worldVideoRef}
@@ -278,8 +240,6 @@ function LocationsMap() {
                     }
                   : {}
               }
-              onMouseEnter={handleIndiaMouseEnter}
-              onMouseLeave={handleIndiaMouseLeave}
             >
               <video
                 ref={indiaVideoRef}

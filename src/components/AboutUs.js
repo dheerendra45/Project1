@@ -155,6 +155,7 @@ export default function ShyamMetalicsProfile() {
       image: ab2,
     },
   ];
+
   const [visibleWords, setVisibleWords] = useState(0);
   const sectionRef = useRef(null);
 

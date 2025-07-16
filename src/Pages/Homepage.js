@@ -37,6 +37,7 @@ const HomePage = () => {
       <StatsCard />
       <MissionVisionValues />
       <AboutUs />
+
       <BusinessVerticals />
       {/* <BusinessHomepage /> */}
       {/* <EnvironmentSection /> */}
