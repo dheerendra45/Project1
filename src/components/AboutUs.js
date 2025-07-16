@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef, useEffect, useState } from "react";
 import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
@@ -60,12 +61,32 @@ export default function ShyamMetalicsProfile() {
   ];
 
   const capabilities = [
-    { icon: logo1, title: "Leading Sponge Iron & Pellet Producers" },
-    { icon: logo2, title: "Integrated Steel Powerhouse" },
-    { icon: logo3, title: "Leading Ferro Alloys Producer" },
-    { icon: logo4, title: "Major Aluminium Foil Exporter" },
-    { icon: logo5, title: "Future-Ready & Globally Aligned" },
-    { icon: logo6, title: "Driven by Sustainability & Governance" },
+    {
+      icon: Factory,
+      title: "Leading Sponge Iron & Pellet Producers",
+      color: "text-orange-600",
+    },
+    { icon: Zap, title: "Integrated Steel Powerhouse", color: "text-blue-600" },
+    {
+      icon: Users,
+      title: "Leading Ferro Alloys Producer",
+      color: "text-gray-700",
+    },
+    {
+      icon: Package,
+      title: "Major Aluminium Foil Exporter",
+      color: "text-orange-600",
+    },
+    {
+      icon: Globe,
+      title: "Future-Ready & Globally Aligned",
+      color: "text-orange-600",
+    },
+    {
+      icon: Leaf,
+      title: "Driven by Sustainability & Governance",
+      color: "text-orange-600",
+    },
   ];
   const milestones = [
     {
@@ -134,79 +155,125 @@ export default function ShyamMetalicsProfile() {
       image: ab2,
     },
   ];
+  const [visibleWords, setVisibleWords] = useState(0);
+  const sectionRef = useRef(null);
+
+  const paragraph1 =
+    "Shyam Metalics is one of India's fastest-growing and most trusted integrated metal producers, with a diversified portfolio spanning carbon steel, stainless steel, ferro alloys, aluminium foil, and long steel products. Headquartered in Kolkata and driven by the ethos of 'Made in India, Made for Bharat,' we are committed to shaping the nation's infrastructure and industrial future through sustainable and scalable growth.";
+  const paragraph2 =
+    "As a diversified metal conglomerate, Shyam Metalics operates with a fully integrated ore-to-metal manufacturing model, supported by 83% captive power generation and state-of-the-art facilities strategically located across India's key industrial hubs. Our operations are anchored in engineering excellence, operational efficiency, and robust forward and backward integration, ensuring unmatched product quality, consistency, and cost competitiveness.";
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          // Calculate total words when component is visible
+          const totalWords =
+            paragraph1.split(" ").length + paragraph2.split(" ").length;
+          let currentWord = 0;
+
+          const interval = setInterval(() => {
+            currentWord += 1;
+            setVisibleWords(currentWord);
+
+            if (currentWord >= totalWords) {
+              clearInterval(interval);
+            }
+          }, 50); // Faster animation (50ms per word)
+
+          return () => clearInterval(interval);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  const AnimatedParagraph = ({ text, startCount }) => {
+    const words = text.split(" ");
+
+    return (
+      <p className="mb-4 text-gray-700">
+        {words.map((word, index) => {
+          const globalIndex = startCount + index;
+          return (
+            <span
+              key={index}
+              className={`inline-block transition-opacity duration-100 ${
+                globalIndex < visibleWords ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              {word}{" "}
+            </span>
+          );
+        })}
+      </p>
+    );
+  };
 
   return (
-    <div className="max-w-7xl mx-[10%] my-[2%]  bg-white">
+    <div className="max-w-7xl  mx-[10%] py-[2%] bg-white" ref={sectionRef}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {/* Left Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+            <h1 className="text-gray-900 mb-2 text-3xl font-semibold">
               Who are <span className="text-orange-500">we?</span>
             </h1>
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-orange-500 mb-2">
+            <h2 className="text-orange-500 mb-2 text-2xl font-semibold">
               Shyam Metalics:{" "}
               <span className="text-gray-900">
                 India's Leading Integrated Metal Conglomerate
               </span>
             </h2>
-            <AnimatedText />
-            {/* <p className="text-gray-700 leading-relaxed mb-4">
-              Shyam Metalics is one of India's fastest-growing and most trusted integrated metal
-              producers, with a diversified portfolio spanning carbon steel, stainless steel, ferro
-              alloys, aluminium foil, and long steel products. Headquartered in Kolkata and driven
-              by the ethos of "Made in India, Made for Bharat," we are committed to  shaping the
-              nation's infrastructure and industrial future through sustainable and scalable growth.
-              
-            </p>
 
-            <p className="text-gray-700 leading-relaxed mb-6">
-              As a diversified metal conglomerate, Shyam Metalics operates with
-              a fully integrated ore-to-metal manufacturing model, supported by
-              83% captive power generation and state-of-the-art facilities
-              strategically located across India's key industrial hubs. Our
-              operations are anchored in engineering excellence, operational
-              efficiency, and robust forward and backward integration, ensuring
-              unmatched product quality, consistency, and cost competitiveness.
-            </p> */}
+            <AnimatedParagraph text={paragraph1} startCount={0} />
+            <AnimatedParagraph
+              text={paragraph2}
+              startCount={paragraph1.split(" ").length}
+            />
 
-            <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-              Read More →
-            </button>
+            <div className="mt-4">
+              <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                Read More →
+              </button>
+            </div>
           </div>
         </div>
 
         {/* Right Section - Industrial Image */}
-        <div className="relative">
-          {/* Background image from ab1 */}
+        <div className="relative h-full min-h-[386px]">
           <img
             src={ab1}
             alt="Industrial Background"
-            className="absolute inset-0 w-full h-full object-cover z-0 rounded-lg"
+            className="w-full h-full object-cover rounded-lg"
+            style={{ objectPosition: "center" }}
           />
-
-          {/* Black transparent overlay */}
-          <div className="absolute inset-0 bg-black bg-opacity-40 z-20 rounded-lg" />
-
-          {/* Center content */}
+          <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg" />
         </div>
       </div>
       {/* Capabilities Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
         {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="text-center p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
+            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
           >
             <div className="flex justify-center mb-3">
-              <img
-                src={capability.icon}
-                alt={capability.title}
-                className="w-16 h-16 object-contain filter-orange"
-              />
+              <capability.icon className={`w-8 h-8 ${capability.color}`} />
             </div>
             <h4 className="text-sm font-semibold text-gray-900 leading-tight">
               {capability.title}
@@ -215,14 +282,7 @@ export default function ShyamMetalicsProfile() {
         ))}
       </div>
 
-      <style jsx>{`
-        .filter-orange {
-          filter: brightness(0) sepia(1) hue-rotate(10deg) saturate(10)
-            brightness(0.8);
-        }
-      `}</style>
-
-      <div className="relative w-full h-[450px] mt-[100px]">
+      <div className="relative w-full h-[450px] mt-[50px]">
         {/* Vector arrow background (includes bar + head) */}
         <img
           src={vector8}
