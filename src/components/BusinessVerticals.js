@@ -13,35 +13,35 @@ function BusinessVerticals() {
       description:
         "At the heart of our operations is a fully integrated iron and steel value chain, covering the production of TMT bars, structural steel, wire rods, billets, and sponge iron. We are also among the largest producers of Ferro alloys in India, supplying high-grade iron and steel materials and driving innovation in advanced metallurgy.",
       cta: "Read More",
-      backgroundImage: ironSteel
+      backgroundImage: ironSteel,
     },
     {
       title: "Aluminium",
       description:
         "Our aluminium business is driven by precision engineering, advanced automation, and adherence to stringent global standards. Backed with cutting-edge manufacturing facilities, we produce a broader range of premium-quality aluminium foils tailored for sectors such as pharmaceuticals, energy storage, and FMCG, meeting the global benchmarks for performance.",
       cta: "Read More",
-      backgroundImage: aluminium
+      backgroundImage: aluminium,
     },
     {
       title: "Energy and Others",
       description:
         "Our integrated energy and allied businesses form the backbone of our operations, as nearly 83% of our total power requirement is met in-house through advanced captive power plants. In addition to energy, we are actively expanding into high-impact infrastructure segments, including railway wagon manufacturing, crash barriers, and other downstream innovations.",
       cta: "Read More",
-      backgroundImage: energy
-    }
+      backgroundImage: energy,
+    },
   ];
 
   return (
     <div className="relative py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
       <div className="mx-5 md:ml-[10%] md:mr-[10%]">
         <motion.h2
-          className="text-2xl md:text-4xl font-bold text-left mb-8 md:mb-12 text-gray-800"
+          className="text-2xl md:text-4xl text-header-style  font-bold text-left mb-8 md:mb-12 text-gray-800"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          Business <span className="text-orange-500">Verticals</span>
+          Business <span className="text-orange-500 ">Verticals</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -55,7 +55,7 @@ function BusinessVerticals() {
                 type: "spring",
                 stiffness: 60,
                 damping: 18,
-                duration: 0.8
+                duration: 0.8,
               }}
               viewport={{ once: false, amount: 0.3 }}
             >
@@ -64,25 +64,38 @@ function BusinessVerticals() {
                 style={{
                   backgroundImage: `url(${vertical.backgroundImage})`,
                   backgroundSize: "cover",
-                  backgroundPosition: "center"
+                  backgroundPosition: "center",
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70"></div>
 
                 <div className="relative z-10 px-4 py-4 md:px-6 md:py-6 flex flex-col h-full text-white text-center items-center">
                   <div className="mb-2 md:mb-4">
-                    <h3 className="text-xl md:text-2xl pt-[3%] font-bold">{vertical.title}</h3>
+                    <h3 className="text-xl md:text-2xl pt-[3%] font-bold">
+                      {vertical.title}
+                    </h3>
                   </div>
 
-                  <p className="text-gray-100 mb-4 md:mb-6 text-xs md:text-sm leading-relaxed">
+                  <p className="text-gray-100  text-paragraph-style mb-4 md:mb-6 text-xs md:text-sm leading-relaxed">
                     {vertical.description}
                   </p>
 
                   <div className="mt-auto">
                     <button className="inline-flex items-center mb-[4%] px-3 py-1 md:px-4 md:py-2 bg-orange-500 text-white text-sm md:text-base font-medium rounded hover:bg-orange-600 transition-colors shadow-lg">
                       {vertical.cta}
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-4 md:w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-3 w-3 md:h-4 md:w-4 ml-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -101,7 +114,7 @@ function BusinessVerticals() {
           transition={{
             delay: 0.3,
             duration: 0.6,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
           viewport={{ once: false, amount: 0.3 }}
         >

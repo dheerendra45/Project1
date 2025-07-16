@@ -3,22 +3,20 @@ import herobg from "../assets/1.jpg";
 import FactoryIcon from "../assets/factory-icon.png";
 import RevenueIcon from "../assets/revenue-icon.png";
 import IndiaMapIcon from "../assets/india-map-icon.png";
+import video from "../assets/WebsiteBanner.webm";
 
 const banners = [
   {
     heading: "Built to Lead, Designed to Deliver",
-    subline: "India’s top metal producer with 15.13 MTPA installed capacity",
-    image: herobg,
+    subline: "India's top metal producer with 15.13 MTPA installed capacity",
   },
   {
     heading: "Steel That Covers Every Step",
     subline: "End-to-end metal solutions across the entire steel value chain",
-    image: herobg,
   },
   {
     heading: "Progress Powered by Responsibility",
     subline: "Driven by a strong ESG framework for people, planet, and purpose",
-    image: herobg,
   },
 ];
 
@@ -45,22 +43,25 @@ const Hero = () => {
 
   return (
     <div className="h-[500px] sm:h-[600px] md:h-[700px] lg:h-[815px] bg-gray-300 mx-auto overflow-hidden relative font-inter w-full">
-      {/* Slides */}
-      {banners.map((banner, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-            index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
-          }`}
-        >
-          <img
-            src={banner.image}
-            alt="Hero Background"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-      ))}
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+      >
+        <source src={video} type="video/webm" />
+        {/* Fallback image in case video doesn't load */}
+        <img
+          src={herobg}
+          alt="Hero Background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      </video>
+
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/40 z-10" />
 
       {/* Content */}
       <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-8 py-8 flex items-center justify-center h-full text-white w-full">

@@ -7,7 +7,7 @@ const AchievementsSection = () => {
   return (
     <div className="bg-white px-4 py-16">
       {/* Heading */}
-      <h2 className="text-2xl font-semibold text-center mb-12">
+      <h2 className="text-2xl text-header-style  font-semibold text-center mb-12">
         Accreditations <span className="text-orange-500">&</span> Achievements
       </h2>
 
@@ -15,7 +15,7 @@ const AchievementsSection = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-12">
         {/* Left Text Block */}
         <div className="lg:w-[40%] text-center lg:text-left">
-          <p className="text-orange-500 text-sm leading-relaxed max-w-md mx-auto lg:mx-0 text-center mt-[9%] ml-[10%]">
+          <p className="text-orange-500 text-paragraph-style text-sm leading-relaxed max-w-md mx-auto lg:mx-0 text-center mt-[9%] ml-[10%]">
             Recognized by industry leaders, endorsed by global platforms — our
             journey is marked by trust, quality, and performance. At Shyam
             Metallics, excellence isn't just a pursuit — it's a consistent

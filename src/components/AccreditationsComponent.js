@@ -6,7 +6,7 @@ const AccreditationsComponent = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8">
-          <h2 className="text-4xl font-bold text-gray-900">
+          <h2 className="text-4xl text-header-style  font-bold text-gray-900">
             Accreditations <span className="text-orange-500">&</span>{" "}
             Achievements
           </h2>
@@ -16,7 +16,7 @@ const AccreditationsComponent = () => {
         <div className="flex flex-col lg:flex-row items-start justify-between gap-10">
           {/* Left Text Section */}
           <div className="lg:w-1/3">
-            <p className="text-orange-500 text-base leading-relaxed">
+            <p className="text-orange-500 text-paragraph-style text-base leading-relaxed">
               Recognized by industry leaders, endorsed by global platforms — our
               journey is marked by trust, quality, and performance. At{" "}
               <strong>Shyam Metalics</strong>, excellence isn't just a pursuit —
