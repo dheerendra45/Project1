@@ -203,18 +203,20 @@ export default function ShyamMetalicsProfile() {
     const words = text.split(" ");
 
     return (
-      <p className="mb-4 text-gray-700">
+      <p className="mb-4 text-gray-700 whitespace-normal">
         {words.map((word, index) => {
           const globalIndex = startCount + index;
           return (
-            <span
-              key={index}
-              className={`inline-block transition-opacity duration-100 ${
-                globalIndex < visibleWords ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {word}{" "}
-            </span>
+            <React.Fragment key={index}>
+              <span
+                className={`inline transition-opacity duration-100 ${
+                  globalIndex < visibleWords ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                {word}
+              </span>{" "}
+              {/* Explicit space between words */}
+            </React.Fragment>
           );
         })}
       </p>
