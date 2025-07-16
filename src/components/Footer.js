@@ -26,11 +26,18 @@ const Footer = () => {
       title: "",
       links: [],
       customContent: (
-        <div className="mt-4">
+        <div
+          className="relative"
+          style={{ marginTop: "-34px", marginLeft: "-25px" }}
+        >
           <img
             src={greatPlaceToWorkLogo}
             alt="Great Place to Work"
-            className="h-32 w-20 object-contain"
+            className="object-contain"
+            style={{
+              width: "206px",
+              height: "155px",
+            }}
           />
         </div>
       ),
@@ -127,7 +134,7 @@ const Footer = () => {
             </Link>
           </div>
           <div className="pt-2">
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded text-sm font-medium transition-colors">
               Employee Login
             </button>
           </div>
@@ -144,27 +151,33 @@ const Footer = () => {
         initial={{ opacity: 0, y: 30 }}
         animate={isNewsletterInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-gray-50 pt-8 pb-6"
+        className="bg-gray-50 border-b border-gray-200"
+        style={{ height: "146.4px" }}
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="text-center sm:text-left">
+        <div className="w-full h-full px-[2vw] flex items-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 w-full items-center gap-4">
+            {/* Left Column */}
+            <div className="text-left">
               <h2 className="font-bold text-[30px] leading-[36px] tracking-normal text-gray-900 font-['Inter']">
                 Subscribe to our news alerts
               </h2>
             </div>
-            <div className="flex flex-col sm:flex-row items-center gap-3">
+
+            {/* Right Column */}
+            <div className="flex flex-col sm:flex-row items-center justify-end gap-3">
+              {/* Email + Button */}
               <div className="flex items-center gap-2">
                 <input
                   type="email"
                   placeholder="Email Id"
                   className="px-3 py-2 w-56 text-base font-normal leading-[16px] tracking-normal text-gray-900 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500 font-['Inter']"
                 />
-
                 <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2 rounded-md font-medium transition-colors text-sm">
                   Subscribe
                 </button>
               </div>
+
+              {/* Social Icons */}
               <div className="flex items-center gap-2">
                 <a href="#" className="w-7 h-7">
                   <img
@@ -215,10 +228,17 @@ const Footer = () => {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="py-8"
       >
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 lg:gap-6">
+        <div className="container mx-auto px-[2vw]">
+          <div
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
+            style={{ gap: "17px" }}
+          >
             {footerSections.map((section, index) => (
-              <div key={index} className="flex flex-col">
+              <div
+                key={index}
+                className="flex flex-col"
+                style={{ marginTop: index === 0 ? "0" : "25px" }}
+              >
                 {section.title && (
                   <h3 className="font-bold text-[20px] leading-[28px] tracking-normal font-['Inter'] text-black mb-3 mt-2">
                     {section.title}
@@ -273,34 +293,33 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="bg-white border-t border-gray-200 py-4">
-        <div className="container mx-auto px-4 sm:px-6">
+        <div className="container mx-auto px-6 sm:px-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <img
-                src={companylogo}
-                alt="Company Logo"
-                className="h-[32px] w-[68px]"
-              />
-              <span className="font-normal text-sm leading-[20px] tracking-normal text-gray-600 font-['Inter']">
+              <img src={companylogo} alt="Company Logo" className="h-6" />
+              <span className="text-xs text-gray-600">
                 Copyright {currentYear} Shyam Theme by{" "}
-                <Link
-                  to="#"
-                  className="text-orange-500 hover:text-orange-600 font-normal text-sm leading-[20px] tracking-normal font-['Inter']"
-                >
+                <Link to="#" className="text-orange-500 hover:text-orange-600">
                   Shyam
                 </Link>{" "}
                 | All Rights Reserved
               </span>
             </div>
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 text-sm leading-[20px] font-normal tracking-normal font-['Inter'] text-gray-600">
-              <Link to="#" className="hover:text-orange-500 transition-colors">
+            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-3 text-xs">
+              <Link
+                to="#"
+                className="text-gray-600 hover:text-orange-500 transition-colors"
+              >
                 Privacy Policy
               </Link>
-              <Link to="#" className="hover:text-orange-500 transition-colors">
+              <Link
+                to="#"
+                className="text-gray-600 hover:text-orange-500 transition-colors"
+              >
                 Terms of use
               </Link>
-              <span>🌍 India</span>
-              <span>✉️ contact@shyamgroup.com</span>
+              <span className="text-gray-600">🌍 India</span>
+              <span className="text-gray-600">✉️ contact@shyamgroup.com</span>
             </div>
           </div>
         </div>
