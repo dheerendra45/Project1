@@ -3,12 +3,7 @@ import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
 import ab2 from "../assets/ab2.png";
-import logo1 from "../assets/aboutus/1.png";
-import logo2 from "../assets/aboutus/2.png";
-import logo3 from "../assets/aboutus/3.png";
-import logo4 from "../assets/aboutus/4.png";
-import logo5 from "../assets/aboutus/5.png";
-import logo6 from "../assets/aboutus/6.png";
+import AnimatedText from "./Styless";
 
 export default function ShyamMetalicsProfile() {
   const milestones1 = [
@@ -158,15 +153,14 @@ export default function ShyamMetalicsProfile() {
                 India's Leading Integrated Metal Conglomerate
               </span>
             </h2>
-
-            <p className="text-gray-700 leading-relaxed mb-4">
-              Shyam Metalics is one of India's fastest-growing and most trusted
-              integrated metal producers, with a diversified portfolio spanning
-              carbon steel, stainless steel, ferro alloys, aluminium foil, and
-              long steel products. Headquartered in Kolkata and driven by the
-              ethos of "Made in India, Made for Bharat," we are committed to
-              shaping the nation's infrastructure and industrial future through
-              sustainable and scalable growth.
+            <AnimatedText />
+            {/* <p className="text-gray-700 leading-relaxed mb-4">
+              Shyam Metalics is one of India's fastest-growing and most trusted integrated metal
+              producers, with a diversified portfolio spanning carbon steel, stainless steel, ferro
+              alloys, aluminium foil, and long steel products. Headquartered in Kolkata and driven
+              by the ethos of "Made in India, Made for Bharat," we are committed to  shaping the
+              nation's infrastructure and industrial future through sustainable and scalable growth.
+              
             </p>
 
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -177,7 +171,7 @@ export default function ShyamMetalicsProfile() {
               operations are anchored in engineering excellence, operational
               efficiency, and robust forward and backward integration, ensuring
               unmatched product quality, consistency, and cost competitiveness.
-            </p>
+            </p> */}
 
             <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
               Read More →
