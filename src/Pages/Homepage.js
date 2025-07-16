@@ -46,7 +46,7 @@ const HomePage = () => {
       <CSRPage />
       <AchievementSection />
       <TestimonialHomePage />
-      <CertificationsSection />
+      {/* /> <CertificationsSection */}
       <NewsPage />
       <SharePriceSection />
       {/* <ContactPage /> */}

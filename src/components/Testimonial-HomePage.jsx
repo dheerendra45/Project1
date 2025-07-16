@@ -39,14 +39,12 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <div className="bg-white">
+    <div className="bg-white my-[2%]">
       <div
-        className=""
+        className="mx-auto"
         style={{
-          marginTop: "2",
-          marginBottom: "2vh",
-          marginLeft: "10%",
-          marginRight: "10%",
+          width: "80%",
+          maxWidth: "1200px",
         }}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -86,13 +84,23 @@ const TestimonialsSection = () => {
                   testimonial.highlight ? "lg:-ml-8" : ""
                 }`}
               >
-                {/* Quote icon */}
+                {/* Quote icon with conditional positioning for middle card */}
                 <div
-                  className={`absolute -top-2 -right-2 text-3xl ${
+                  className={`absolute top-0 text-6xl font-serif ${
                     testimonial.highlight ? "text-orange-500" : "text-gray-400"
                   }`}
+                  style={{
+                    zIndex: 1,
+                    fontFamily: "Georgia, serif",
+                    lineHeight: 0,
+                    right: index === 1 ? "100px" : "0", // Middle card (index 1) gets 5px right position
+                    transform:
+                      index === 1
+                        ? "translate(0, -15px)" // Middle card transform
+                        : "translate(10px, -15px)", // Other cards transform
+                  }}
                 >
-                  "
+                  ”
                 </div>
 
                 {/* Orange accent line for highlighted testimonial */}
@@ -101,11 +109,16 @@ const TestimonialsSection = () => {
                 )}
 
                 <div
-                  className={`bg-white p-6 rounded-lg shadow-sm border-l-4 ${
+                  className={`bg-white p-6 rounded-lg border-l-4 ${
                     testimonial.highlight
                       ? "border-orange-500"
                       : "border-transparent"
                   }`}
+                  style={{
+                    minWidth: "300px",
+                    maxWidth: "400px",
+                    width: "100%",
+                  }}
                 >
                   <div className="flex items-start space-x-4">
                     <img
