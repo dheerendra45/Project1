@@ -3,6 +3,12 @@ import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
 import ab2 from "../assets/ab2.png";
+import logo1 from "../assets/aboutus/1.png";
+import logo2 from "../assets/aboutus/2.png";
+import logo3 from "../assets/aboutus/3.png";
+import logo4 from "../assets/aboutus/4.png";
+import logo5 from "../assets/aboutus/5.png";
+import logo6 from "../assets/aboutus/6.png";
 
 export default function ShyamMetalicsProfile() {
   const milestones1 = [
@@ -59,32 +65,12 @@ export default function ShyamMetalicsProfile() {
   ];
 
   const capabilities = [
-    {
-      icon: Factory,
-      title: "Leading Sponge Iron & Pellet Producers",
-      color: "text-orange-600",
-    },
-    { icon: Zap, title: "Integrated Steel Powerhouse", color: "text-blue-600" },
-    {
-      icon: Users,
-      title: "Leading Ferro Alloys Producer",
-      color: "text-gray-700",
-    },
-    {
-      icon: Package,
-      title: "Major Aluminium Foil Exporter",
-      color: "text-orange-600",
-    },
-    {
-      icon: Globe,
-      title: "Future-Ready & Globally Aligned",
-      color: "text-orange-600",
-    },
-    {
-      icon: Leaf,
-      title: "Driven by Sustainability & Governance",
-      color: "text-orange-600",
-    },
+    { icon: logo1, title: "Leading Sponge Iron & Pellet Producers" },
+    { icon: logo2, title: "Integrated Steel Powerhouse" },
+    { icon: logo3, title: "Leading Ferro Alloys Producer" },
+    { icon: logo4, title: "Major Aluminium Foil Exporter" },
+    { icon: logo5, title: "Future-Ready & Globally Aligned" },
+    { icon: logo6, title: "Driven by Sustainability & Governance" },
   ];
   const milestones = [
     {
@@ -215,14 +201,18 @@ export default function ShyamMetalicsProfile() {
         </div>
       </div>
       {/* Capabilities Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-6">
         {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            className="text-center p-2 bg-white rounded-lg hover:bg-gray-100 transition-colors"
           >
             <div className="flex justify-center mb-3">
-              <capability.icon className={`w-8 h-8 ${capability.color}`} />
+              <img
+                src={capability.icon}
+                alt={capability.title}
+                className="w-16 h-16 object-contain filter-orange"
+              />
             </div>
             <h4 className="text-sm font-semibold text-gray-900 leading-tight">
               {capability.title}
@@ -230,6 +220,13 @@ export default function ShyamMetalicsProfile() {
           </div>
         ))}
       </div>
+
+      <style jsx>{`
+        .filter-orange {
+          filter: brightness(0) sepia(1) hue-rotate(10deg) saturate(10)
+            brightness(0.8);
+        }
+      `}</style>
 
       <div className="relative w-full h-[450px] mt-[100px]">
         {/* Vector arrow background (includes bar + head) */}
