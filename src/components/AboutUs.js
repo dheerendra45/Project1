@@ -236,7 +236,7 @@ export default function ShyamMetalicsProfile() {
         <img
           src={vector8}
           alt="arrow"
-          className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0 -ml-[60px]"
+          className="absolute top-1/2 left-0  w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0 "
         />
 
         <div
@@ -353,9 +353,9 @@ export default function ShyamMetalicsProfile() {
                     className="absolute bg-white  p-2"
                     style={{
                       width: "124.82px",
-                      height: "83.21px",
+                      height: "90px",
                       left: "5px",
-                      top: "5px",
+                      bottom: "40px",
                       opacity: 1,
                     }}
                   >
