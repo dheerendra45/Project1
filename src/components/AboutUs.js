@@ -4,7 +4,13 @@ import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
 import ab2 from "../assets/ab2.png";
-import AnimatedText from "./Styless";
+// import AnimatedText from "./Styless";
+import icon1 from "../assets/icon1.png";
+import icon2 from "../assets/icon2.png";
+import icon3 from "../assets/icon3.png";
+import icon4 from "../assets/Icon 4.png";
+import icon5 from "../assets/Icon 5.png";
+import icon6 from "../assets/icon6.png";
 
 export default function ShyamMetalicsProfile() {
   const milestones1 = [
@@ -62,28 +68,28 @@ export default function ShyamMetalicsProfile() {
 
   const capabilities = [
     {
-      icon: Factory,
+      icon: icon1,
       title: "Leading Sponge Iron & Pellet Producers",
       color: "text-orange-600",
     },
-    { icon: Zap, title: "Integrated Steel Powerhouse", color: "text-blue-600" },
+    { icon: icon2, title: "Integrated Steel Powerhouse", color: "text-blue-600" },
     {
-      icon: Users,
+      icon: icon3,
       title: "Leading Ferro Alloys Producer",
       color: "text-gray-700",
     },
     {
-      icon: Package,
+      icon: icon4,
       title: "Major Aluminium Foil Exporter",
       color: "text-orange-600",
     },
     {
-      icon: Globe,
+      icon: icon5,
       title: "Future-Ready & Globally Aligned",
       color: "text-orange-600",
     },
     {
-      icon: Leaf,
+      icon: icon6,
       title: "Driven by Sustainability & Governance",
       color: "text-orange-600",
     },
@@ -208,7 +214,7 @@ export default function ShyamMetalicsProfile() {
         {words.map((word, index) => {
           const globalIndex = startCount + index;
           return (
-            <React.Fragment key={index}>
+            <React.Fragment key={index}>    
               <span
                 className={`inline transition-opacity duration-100 ${
                   globalIndex < visibleWords ? "opacity-100" : "opacity-0"
@@ -269,21 +275,28 @@ export default function ShyamMetalicsProfile() {
         </div>
       </div>
       {/* Capabilities Grid */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
-        {capabilities.map((capability, index) => (
-          <div
-            key={index}
-            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-          >
-            <div className="flex justify-center mb-3">
-              <capability.icon className={`w-8 h-8 ${capability.color}`} />
-            </div>
-            <h4 className="text-sm font-semibold text-gray-900 leading-tight">
-              {capability.title}
-            </h4>
-          </div>
-        ))}
+ 
+
+<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+  {capabilities.map((capability, index) => (
+    <div
+      key={index}
+      className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+    >
+      <div className="flex justify-center mb-3">
+        {/* Use img tag instead of component */}
+        <img 
+          src={capability.icon} 
+          alt={capability.title}
+          className="w-[42px] h-[43px]"
+        />
       </div>
+      <h4 className="text-sm font-semibold text-gray-900 leading-tight">
+        {capability.title}
+      </h4>
+    </div>
+  ))}
+</div>
 
       <div className="relative w-full h-[450px] mt-[50px]">
         {/* Vector arrow background (includes bar + head) */}
