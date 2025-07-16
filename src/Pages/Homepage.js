@@ -27,6 +27,7 @@ import BusinessVerticals from "../components/BusinessVerticals.js";
 import CustomerTestimonials from "../components/Testimonial-HomePage";
 import SharePriceSection from "../components/SharePriceSection.js";
 import AccreditationsComponent from "../components/AccreditationsComponent.js";
+import AnimatedLogoContainer from "../components/AnimatedLogoContainer.js";
 // import BusinessVerticals from "../components/BusinessVerticals.js";
 
 const HomePage = () => {
@@ -46,6 +47,7 @@ const HomePage = () => {
       <CSRPage />
       <AchievementSection />
       <TestimonialHomePage />
+      <AnimatedLogoContainer />
       {/* /> <CertificationsSection */}
       <NewsPage />
       <SharePriceSection />
