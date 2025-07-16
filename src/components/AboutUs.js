@@ -230,13 +230,13 @@ export default function ShyamMetalicsProfile() {
         {/* Left Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-gray-900 mb-2 text-3xl font-semibold">
+            <h1 className="text-gray-900  text-header-style mb-2 text-3xl font-semibold">
               Who are <span className="text-orange-500">we?</span>
             </h1>
           </div>
 
           <div>
-            <h2 className="text-orange-500 mb-2 text-2xl font-semibold">
+            <h2 className="text-orange-500 text-header-style   mb-2 text-2xl font-semibold">
               Shyam Metalics:{" "}
               <span className="text-gray-900">
                 India's Leading Integrated Metal Conglomerate

@@ -8,6 +8,9 @@ const TestimonialsSection = () => {
       rating: 4,
       image: "https://randomuser.me/api/portraits/women/1.jpg",
       highlight: false,
+      lineColor: "gray-300",
+      lineWidth: "w-2", // Added line width control
+      containerHeight: "h-[120px]", // Added container height control
     },
     {
       name: "Elizabeth Jeff",
@@ -15,6 +18,9 @@ const TestimonialsSection = () => {
       rating: 4,
       image: "https://randomuser.me/api/portraits/men/2.jpg",
       highlight: true,
+      lineColor: "orange-500",
+      lineWidth: "w-3", // Wider line for highlighted testimonial
+      containerHeight: "h-[140px]", // Taller container for highlighted testimonial
     },
     {
       name: "Elizabeth Jeff",
@@ -22,6 +28,9 @@ const TestimonialsSection = () => {
       rating: 4,
       image: "https://randomuser.me/api/portraits/women/3.jpg",
       highlight: false,
+      lineColor: "gray-300",
+      lineWidth: "w-2",
+      containerHeight: "h-[120px]",
     },
   ];
 
@@ -40,13 +49,7 @@ const TestimonialsSection = () => {
 
   return (
     <div className="bg-white my-[2%]">
-      <div
-        className="mx-auto"
-        style={{
-          width: "80%",
-          maxWidth: "1200px",
-        }}
-      >
+      <div className="mx-auto w-[80%] max-w-[1200px]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left side - Header and description */}
           <div className="space-y-6 lg:pr-8">
@@ -84,7 +87,7 @@ const TestimonialsSection = () => {
                   testimonial.highlight ? "lg:-ml-8" : ""
                 }`}
               >
-                {/* Quote icon with conditional positioning for middle card */}
+                {/* Quote icon */}
                 <div
                   className={`absolute top-0 text-6xl font-serif ${
                     testimonial.highlight ? "text-orange-500" : "text-gray-400"
@@ -93,34 +96,35 @@ const TestimonialsSection = () => {
                     zIndex: 1,
                     fontFamily: "Georgia, serif",
                     lineHeight: 0,
-                    right: index === 1 ? "100px" : "0", // Middle card (index 1) gets 5px right position
+                    right: index === 1 ? "100px" : "0",
                     transform:
                       index === 1
-                        ? "translate(0, -15px)" // Middle card transform
-                        : "translate(10px, -15px)", // Other cards transform
+                        ? "translate(0, -15px)"
+                        : "translate(10px, -15px)",
                   }}
                 >
                   ”
                 </div>
 
-                {/* Orange accent line for highlighted testimonial */}
-                {testimonial.highlight && (
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-orange-500 rounded-full"></div>
-                )}
+                {/* Accent line - now with adjustable width */}
+                <div
+                  className={`absolute left-0 top-0 bottom-0 ${testimonial.lineWidth} bg-${testimonial.lineColor} rounded-full`}
+                ></div>
 
+                {/* Testimonial container with adjustable height */}
                 <div
                   className={`bg-white p-6 rounded-lg border-l-4 ${
                     testimonial.highlight
                       ? "border-orange-500"
                       : "border-transparent"
-                  }`}
+                  } ${testimonial.containerHeight} flex items-center`} // Added flex and items-center
                   style={{
                     minWidth: "300px",
                     maxWidth: "400px",
                     width: "100%",
                   }}
                 >
-                  <div className="flex items-start space-x-4">
+                  <div className="flex items-start space-x-4 w-full">
                     <img
                       src={testimonial.image}
                       alt={testimonial.name}
@@ -130,7 +134,9 @@ const TestimonialsSection = () => {
                       <h4 className="font-semibold text-gray-900 mb-1">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-600 text-sm mb-3 leading-relaxed">
+                      <p className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2">
+                        {" "}
+                        {/* Added line-clamp */}
                         {testimonial.text}
                       </p>
                       <div className="flex items-center">

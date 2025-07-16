@@ -16,16 +16,26 @@
     font-weight: 400;
     font-style: normal;
   }
+
+  body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-/* ✅ Global styles */
-body {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-  font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ✅ Reusable text styles */
+@layer components {
+  .text-header-style {
+    @apply font-['Inter'] font-semibold text-[36px] leading-[40px] align-middle;
+  }
+
+  .text-paragraph-style {
+    @apply font-['Inter'] font-normal text-[18px] leading-[28px] align-middle;
+  }
 }
 
 /* ✅ Gradient utility classes */
