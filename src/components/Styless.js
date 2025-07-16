@@ -58,7 +58,7 @@ const AnimatedText = () => {
       {textLines.map((line, index) => (
         <p 
           key={index}
-          className={`text-black font-inter text-base leading-[24px] font-normal tracking-[-0.5px] ${line === "" ? "mb-3" : "mb-1"} transition-all duration-700 ease-out ${
+          className={` font-inter text-base leading-[24px] font-normal tracking-[-0.5px] ${line === "" ? "mb-3" : "mb-1"} transition-all duration-700 ease-out ${
             visibleLines > index 
               ? 'opacity-100 translate-y-0' 
               : 'opacity-0 translate-y-5'
