@@ -14,7 +14,7 @@ const NewsPage = () => {
           <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
             LATEST NEWS
           </h2>
-          <p className="text-orange-500 text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
+          <p className="text-orange-500 text-paragraph-style text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
             Innovating Today, Leading Tomorrow
           </p>
         </div>
@@ -57,7 +57,7 @@ const NewsPage = () => {
                   left: "20px",
                 }}
               >
-                <h3 className="font-bold text-lg mb-2 leading-tight">
+                <h3 className="font-bold text-lg mb-2 leading-tight text-header-style ">
                   Tanishi Agarwal | Recognised for leadership in advancing
                   strategic philanthropy | Shyam Metalics Cares.
                 </h3>
@@ -141,7 +141,7 @@ const NewsPage = () => {
 
             {/* First News Content Box */}
             <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.53px]">
-              <h4 className="font-bold text-sm mb-2">
+              <h4 className="font-bold text-sm mb-2 text-header-style ">
                 Shyam Metalics Secures Major Export Order to Southeast Asia
               </h4>
               <div className="flex text-sm text-gray-500 mb-2">
@@ -149,7 +149,7 @@ const NewsPage = () => {
                 <span className="mr-3">Admin</span>
                 <span>2 Comments</span>
               </div>
-              <p className="text-gray-700 text-sm">
+              <p className="text-gray-700 text-sm text-paragraph-style">
                 Expanding Global Footprint with 50,000 MT Steel Shipment to
                 Vietnam & Indonesia. High-grade TMT bars and wire rods to
                 support infrastructure project
@@ -202,7 +202,7 @@ const NewsPage = () => {
 
             {/* Second News Content Box */}
             <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.26px]">
-              <h4 className="font-bold text-sm mb-2">
+              <h4 className="font-bold text-sm mb-2 text-header-style ">
                 Shyam Metalics Partners with IIT Bombay for Green Steel Research
               </h4>
               <div className="flex text-sm text-gray-500 mb-2">
@@ -210,7 +210,7 @@ const NewsPage = () => {
                 <span className="mr-1">Research</span>
                 <span>3 Comments</span>
               </div>
-              <p className="text-gray-700 text-sm">
+              <p className="text-gray-700 text-paragraph-style text-sm">
                 Pioneering Sustainable Steel Solutions with Cutting-Edge
                 Technology. Joint R&D focus: Hydrogen-based steel production &
                 carbon capture.

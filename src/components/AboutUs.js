@@ -72,7 +72,11 @@ export default function ShyamMetalicsProfile() {
       title: "Leading Sponge Iron & Pellet Producers",
       color: "text-orange-600",
     },
-    { icon: icon2, title: "Integrated Steel Powerhouse", color: "text-blue-600" },
+    {
+      icon: icon2,
+      title: "Integrated Steel Powerhouse",
+      color: "text-blue-600",
+    },
     {
       icon: icon3,
       title: "Leading Ferro Alloys Producer",
@@ -99,65 +103,120 @@ export default function ShyamMetalicsProfile() {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      description:
+        "Started our journey with the incorporation of Shyam SEL and Power Ltd, marking the beginning of our industrial legacy.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "1995",
+      title: "Expansion Phase",
+      subtitle: "First Manufacturing Unit",
+      description:
+        "Established our first manufacturing unit with state-of-the-art technology and equipment.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2000",
+      title: "Technology Advancement",
+      subtitle: "Modernization Initiative",
+      description:
+        "Implemented cutting-edge technology to improve production efficiency and product quality.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2005",
+      title: "Market Leadership",
+      subtitle: "Industry Recognition",
+      description:
+        "Achieved significant market share and received multiple industry awards for excellence.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2010",
+      title: "Global Expansion",
+      subtitle: "International Markets",
+      description:
+        "Expanded operations to international markets and established global partnerships.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2015",
+      title: "Innovation Hub",
+      subtitle: "R&D Center Launch",
+      description:
+        "Launched our dedicated R&D center to foster innovation and develop new products.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2018",
+      title: "Sustainability Focus",
+      subtitle: "Green Initiative",
+      description:
+        "Implemented comprehensive sustainability programs and eco-friendly processes.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2020",
+      title: "Digital Transformation",
+      subtitle: "Industry 4.0 Adoption",
+      description:
+        "Embraced digital technologies and automated processes for enhanced efficiency.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2021",
+      title: "Strategic Partnerships",
+      subtitle: "Global Alliances",
+      description:
+        "Formed strategic partnerships with leading global companies to expand our reach.",
       image: ab2,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      year: "2022",
+      title: "Product Diversification",
+      subtitle: "New Product Lines",
+      description:
+        "Launched new product lines to meet evolving market demands and customer needs.",
+      image: ab2,
+    },
+    {
+      year: "2023",
+      title: "Market Excellence",
+      subtitle: "Industry Leadership",
+      description:
+        "Achieved market leadership position with record-breaking sales and customer satisfaction.",
+      image: ab2,
+    },
+    {
+      year: "2024",
+      title: "Future Vision",
+      subtitle: "Next Generation Solutions",
+      description:
+        "Developing next-generation solutions for future market requirements and challenges.",
+      image: ab2,
+    },
+    {
+      year: "2025",
+      title: "Innovation Drive",
+      subtitle: "Advanced Technologies",
+      description:
+        "Investing in advanced technologies like AI and IoT for smart manufacturing solutions.",
+      image: ab2,
+    },
+    {
+      year: "2026",
+      title: "Global Leader",
+      subtitle: "Market Domination",
+      description:
+        "Aspiring to become the global leader in our industry segment with innovative products.",
+      image: ab2,
+    },
+    {
+      year: "2027",
+      title: "Sustainable Future",
+      subtitle: "Carbon Neutral Goals",
+      description:
+        "Working towards achieving carbon neutrality and sustainable business practices.",
       image: ab2,
     },
   ];
@@ -214,7 +273,7 @@ export default function ShyamMetalicsProfile() {
         {words.map((word, index) => {
           const globalIndex = startCount + index;
           return (
-            <React.Fragment key={index}>    
+            <React.Fragment key={index}>
               <span
                 className={`inline transition-opacity duration-100 ${
                   globalIndex < visibleWords ? "opacity-100" : "opacity-0"
@@ -228,6 +287,95 @@ export default function ShyamMetalicsProfile() {
         })}
       </p>
     );
+  };
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [hoveredMilestone, setHoveredMilestone] = useState(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [animationOffset, setAnimationOffset] = useState(0);
+  const intervalRef = useRef(null);
+
+  // Auto-scroll functionality with smooth continuous animation
+  useEffect(() => {
+    if (!isPaused) {
+      intervalRef.current = setInterval(() => {
+        setAnimationOffset((prev) => prev - 0.5);
+
+        // Reset when we've moved enough
+        if (Math.abs(animationOffset) >= 100) {
+          setAnimationOffset(0);
+          setCurrentIndex((prev) => {
+            const maxIndex = milestones.length - 11;
+            return prev >= maxIndex ? 0 : prev + 1;
+          });
+        }
+      }, 30); // Smooth animation
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, animationOffset, milestones.length]);
+
+  // Get visible milestones (11 items)
+  const getVisibleMilestones = () => {
+    const visible = [];
+    for (let i = 0; i < 11; i++) {
+      const index = (currentIndex + i) % milestones.length;
+      visible.push({ ...milestones[index], originalIndex: index });
+    }
+    return visible;
+  };
+
+  const visibleMilestones = getVisibleMilestones();
+
+  // Handle hover events - IMPROVED
+  const handleMouseEnter = (milestone) => {
+    setHoveredMilestone(milestone);
+    setIsPaused(true);
+  };
+
+  const handleMouseLeave = () => {
+    setTimeout(() => {
+      if (!document.querySelector(".popup-container:hover")) {
+        setHoveredMilestone(null);
+        setIsPaused(false);
+      }
+    }, 100);
+  };
+
+  // Handle popup hover events
+  const handlePopupMouseEnter = () => {
+    setIsPaused(true);
+  };
+
+  const handlePopupMouseLeave = () => {
+    setHoveredMilestone(null);
+    setIsPaused(false);
+  };
+
+  // Close popup completely
+  const closePopup = () => {
+    setHoveredMilestone(null);
+    setIsPaused(false);
+  };
+
+  // Navigation functions
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => {
+      const maxIndex = milestones.length - 11;
+      return prev <= 0 ? maxIndex : prev - 1;
+    });
+    setAnimationOffset(0);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => {
+      const maxIndex = milestones.length - 11;
+      return prev >= maxIndex ? 0 : prev + 1;
+    });
+    setAnimationOffset(0);
   };
 
   return (
@@ -275,338 +423,259 @@ export default function ShyamMetalicsProfile() {
         </div>
       </div>
       {/* Capabilities Grid */}
- 
 
-<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
-  {capabilities.map((capability, index) => (
-    <div
-      key={index}
-      className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-    >
-      <div className="flex justify-center mb-3">
-        {/* Use img tag instead of component */}
-        <img 
-          src={capability.icon} 
-          alt={capability.title}
-          className="w-[42px] h-[43px]"
-        />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
+        {capabilities.map((capability, index) => (
+          <div
+            key={index}
+            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+          >
+            <div className="flex justify-center mb-3">
+              {/* Use img tag instead of component */}
+              <img
+                src={capability.icon}
+                alt={capability.title}
+                className="w-[42px] h-[43px]"
+              />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-900 leading-tight">
+              {capability.title}
+            </h4>
+          </div>
+        ))}
       </div>
-      <h4 className="text-sm font-semibold text-gray-900 leading-tight">
-        {capability.title}
-      </h4>
-    </div>
-  ))}
-</div>
 
-      <div className="relative w-full h-[450px] mt-[50px]">
-        {/* Vector arrow background (includes bar + head) */}
+      <div className="relative w-full h-[450px] overflow-hidden">
+        {/* Vector arrow background */}
         <img
           src={vector8}
           alt="arrow"
-          className="absolute top-1/2 left-0  w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0 "
+          className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0"
         />
 
+        {/* Top vertical lines and milestone containers */}
         <div
-          className="absolute left-[-60px] w-full flex justify-around items-end px-2 z-10"
-          style={{ bottom: "calc(50% + 10px)" }}
+          className="absolute inset-0 transition-transform duration-75 ease-linear"
+          style={{
+            transform: `translateX(${animationOffset}px)`,
+          }}
         >
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`${
-                i % 2 === 0 ? "h-[211px]" : "h-[111px]"
-              } w-[1.5px] bg-black opacity-100`}
-            />
-          ))}
-        </div>
+          {/* Top vertical lines and milestone containers - ORIGINAL LAYOUT */}
+          <div
+            className="absolute left-[-60px] w-full flex justify-around items-end px-2 z-10"
+            style={{ bottom: "calc(50% + 10px)" }}
+          >
+            {visibleMilestones.slice(0, 6).map((milestone, i) => (
+              <div
+                key={`top-${milestone.originalIndex}`}
+                className="relative transition-all duration-300 ease-in-out"
+                style={{
+                  width: "1.5px",
+                  height: i % 2 === 0 ? "211px" : "111px",
+                }}
+              >
+                {/* Vertical line */}
+                <div className="absolute bottom-0 w-full h-full bg-black"></div>
 
-        {/* Milestone containers for big lines (211px height) - positioned on the right side */}
-        <div
-          className="absolute left-[-60px] w-full flex justify-around items-end px-2 z-20"
-          style={{ bottom: "calc(50% + 10px)" }}
-        >
-          {[...Array(6)].map((_, i) => {
-            // Show containers for big lines (even indices) and text containers for small lines (odd indices)
-            if (i % 2 === 0) {
-              const milestoneIndex = Math.floor(i / 2); // Get milestone data index
-              const milestone = milestones[milestoneIndex];
-
-              return (
+                {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
-                  key={i}
                   className="relative"
-                  style={{ width: "1.5px", height: "211px" }}
+                  onMouseEnter={() => handleMouseEnter(milestone)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  {/* Milestone container positioned to the right of the line */}
                   <div
-                    className="absolute bg-white "
+                    className={`absolute bg-white transition-all duration-300 cursor-pointer ${
+                      hoveredMilestone?.originalIndex ===
+                      milestone.originalIndex
+                        ? "scale-110 border-orange-500 shadow-xl"
+                        : "border-gray-200 hover:border-orange-300"
+                    }`}
                     style={{
-                      width: "139.68px",
-                      height: "182.77px",
+                      width: i % 2 === 0 ? "139.68px" : "124.82px",
+                      height: i % 2 === 0 ? "182.77px" : "90px",
                       left: "5px",
-                      top: "0px",
+                      top: i % 2 === 0 ? "px" : "5px",
                       borderRadius: "3.71px",
-                      opacity: 1,
                     }}
                   >
-                    {/* Text layout container */}
-                    <div
-                      className="absolute p-2"
-                      style={{
-                        width: "180px",
-                        height: "83.21px",
-                        left: "0px",
-                        top: "px",
-                        opacity: 1,
-                      }}
-                    >
-                      {/* Year */}
+                    {/* Text content */}
+                    <div className="p-2">
                       <div className="text-orange-500 font-bold text-sm mb-1">
-                        {milestone?.year}
+                        {milestone.year}
                       </div>
-
-                      {/* Title */}
                       <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                        {milestone?.title}
+                        {milestone.title}
                       </div>
-
-                      {/* Subtitle */}
                       <div className="text-gray-600 text-xs leading-tight">
-                        {milestone?.subtitle}
+                        {milestone.subtitle}
                       </div>
                     </div>
 
-                    {/* Image container - positioned below text */}
-                    <div
-                      className="absolute overflow-hidden"
-                      style={{
-                        width: "126.31px",
-                        height: "77.27px",
-                        left: "5px",
-                        top: "110.5px",
-                        borderRadius: "3.71px",
-                        opacity: 1,
-                      }}
-                    >
-                      {/* Placeholder for image - you can import and use your images here */}
-                      {milestone?.image ? (
+                    {/* Image container (only for big containers) */}
+                    {i % 2 === 0 && (
+                      <div
+                        className="absolute overflow-hidden"
+                        style={{
+                          width: "126.31px",
+                          height: "77.27px",
+                          left: "5px",
+                          top: "105.5px",
+                          borderRadius: "3.71px",
+                        }}
+                      >
                         <img
-                          src={ab2} // Using the imported image directly
-                          alt={milestone?.title || "Milestone image"}
+                          src={milestone.image}
+                          alt={milestone.title}
                           className="w-full h-full object-cover"
                         />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                          <span className="text-gray-500 text-xs">Image</span>
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-              );
-            } else {
-              // Text containers for small lines (odd indices)
-              const milestoneIndex = Math.floor(i / 2) + 6; // Get milestone data index (offset to get different milestones)
-              const milestone = milestones[milestoneIndex] || milestones[0]; // Fallback to first milestone if index exceeds array
+              </div>
+            ))}
+          </div>
 
-              return (
+          {/* Bottom vertical lines and milestone containers - ORIGINAL LAYOUT */}
+          <div
+            className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-10"
+            style={{
+              top: "calc(50% + 10px)",
+              transform: "translateX(calc(100% / 12))",
+            }}
+          >
+            {visibleMilestones.slice(6, 11).map((milestone, i) => (
+              <div
+                key={`bottom-${milestone.originalIndex}`}
+                className="relative transition-all duration-300 ease-in-out"
+                style={{
+                  width: "1.5px",
+                  height: i % 2 === 0 ? "211px" : "111px",
+                }}
+              >
+                {/* Vertical line */}
+                <div className="absolute top-0 w-full h-full bg-black"></div>
+
+                {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
-                  key={i}
                   className="relative"
-                  style={{ width: "1.5px", height: "111px" }}
+                  onMouseEnter={() => handleMouseEnter(milestone)}
+                  onMouseLeave={handleMouseLeave}
                 >
-                  {/* Text-only container positioned to the right of small lines */}
                   <div
-                    className="absolute bg-white  p-2"
+                    className={`absolute bg-white  transition-all duration-300 cursor-pointer ${
+                      hoveredMilestone?.originalIndex ===
+                      milestone.originalIndex
+                        ? "scale-110 border-orange-500 shadow-xl"
+                        : "border-gray-200 hover:border-orange-300"
+                    }`}
                     style={{
-                      width: "124.82px",
-                      height: "90px",
-                      left: "5px",
-                      bottom: "40px",
-                      opacity: 1,
-                    }}
-                  >
-                    {/* Year */}
-                    <div className="text-orange-500 font-bold text-sm mb-1">
-                      {milestone?.year}
-                    </div>
-
-                    {/* Title */}
-                    <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                      {milestone?.title}
-                    </div>
-
-                    {/* Subtitle */}
-                    <div className="text-gray-600 text-xs leading-tight">
-                      {milestone?.subtitle}
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-          })}
-        </div>
-
-        {/* Vertical lines below the arrow (5 lines between the spaces of above lines) */}
-        <div
-          className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-10"
-          style={{
-            top: "calc(50% + 10px)",
-            transform: "translateX(calc(100% / 12))", // Offset to position between above lines
-          }}
-        >
-          {[...Array(5)].map((_, i) => (
-            <div
-              key={i}
-              className={`${
-                i % 2 === 0 ? "h-[211px]" : "h-[111px]"
-              } w-[1.5px] bg-black opacity-100`}
-            />
-          ))}
-        </div>
-
-        {/* Milestone containers for bottom big lines (211px height) - positioned on the right side */}
-        <div
-          className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-20"
-          style={{
-            top: "calc(50% + 10px)",
-            transform: "translateX(calc(100% / 12))", // Offset to position between above lines
-          }}
-        >
-          {[...Array(5)].map((_, i) => {
-            // Show containers for big lines (even indices) and text containers for small lines (odd indices)
-            if (i % 2 === 0) {
-              const milestoneIndex = Math.floor(i / 2) + 3; // Get milestone data index (offset by 3 to get different milestones)
-              const milestone = milestones[milestoneIndex];
-
-              return (
-                <div
-                  key={i}
-                  className="relative"
-                  style={{ width: "1.5px", height: "211px" }}
-                >
-                  {/* Milestone container positioned to the right of the line */}
-                  <div
-                    className="absolute bg-white "
-                    style={{
-                      width: "139.68px",
-                      height: "182.77px",
+                      width: i % 2 === 0 ? "139.68px" : "124.82px",
+                      height: i % 2 === 0 ? "182.77px" : "90px",
                       left: "5px",
                       top: "10px",
                       borderRadius: "3.71px",
-                      opacity: 1,
                     }}
                   >
-                    {/* Text layout container */}
-                    <div
-                      className="absolute p-2"
-                      style={{
-                        width: "150px",
-                        height: "83.21px",
-                        left: "0px",
-                        top: "0px",
-                        opacity: 1,
-                      }}
-                    >
-                      {/* Year */}
+                    {/* Text content */}
+                    <div className="p-2">
                       <div className="text-orange-500 font-bold text-sm mb-1">
-                        {milestone?.year}
+                        {milestone.year}
                       </div>
-
-                      {/* Title */}
                       <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                        {milestone?.title}
+                        {milestone.title}
                       </div>
-
-                      {/* Subtitle */}
                       <div className="text-gray-600 text-xs leading-tight">
-                        {milestone?.subtitle}
+                        {milestone.subtitle}
                       </div>
                     </div>
 
-                    {/* Image container - positioned below text */}
-                    <div
-                      className="absolute overflow-hidden"
-                      style={{
-                        width: "126.31px",
-                        height: "77.27px",
-                        left: "5px",
-                        top: "105.5px",
-                        borderRadius: "3.71px",
-                        opacity: 1,
-                      }}
-                    >
-                      {/* Placeholder for image - you can import and use your images here */}
-                      {milestone?.image ? (
+                    {/* Image container (only for big containers) */}
+                    {i % 2 === 0 && (
+                      <div
+                        className="absolute overflow-hidden"
+                        style={{
+                          width: "126.31px",
+                          height: "77.27px",
+                          left: "5px",
+                          top: "105.5px",
+                          borderRadius: "3.71px",
+                        }}
+                      >
                         <img
-                          src={ab2} // Using the imported image directly
-                          alt={milestone?.title || "Milestone image"}
+                          src={milestone.image}
+                          alt={milestone.title}
                           className="w-full h-full object-cover"
                         />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                          <span className="text-gray-500 text-xs">Image</span>
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </div>
-              );
-            } else {
-              // Text containers for small lines (odd indices)
-              const milestoneIndex = Math.floor(i / 2) + 8; // Get milestone data index (offset to get different milestones)
-              const milestone = milestones[milestoneIndex] || milestones[0]; // Fallback to first milestone if index exceeds array
-
-              return (
-                <div
-                  key={i}
-                  className="relative"
-                  style={{ width: "1.5px", height: "111px" }}
-                >
-                  {/* Text-only container positioned to the right of small lines */}
-                  <div
-                    className="absolute bg-white  p-2"
-                    style={{
-                      width: "124.82px",
-                      height: "83.21px",
-                      left: "5px",
-                      top: "10px",
-                      opacity: 1,
-                    }}
-                  >
-                    {/* Year */}
-                    <div className="text-orange-500 font-bold text-sm mb-1">
-                      {milestone?.year}
-                    </div>
-
-                    {/* Title */}
-                    <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                      {milestone?.title}
-                    </div>
-
-                    {/* Subtitle */}
-                    <div className="text-gray-600 text-xs leading-tight">
-                      {milestone?.subtitle}
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-          })}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Multiple white dots along the arrow */}
+        {/* Animated dots on the arrow */}
         <div className="absolute top-1/2 transform -translate-y-1/2 left-0 right-[180px] flex justify-between px-2 z-10">
           {[...Array(25)].map((_, i) => (
-            <div key={i} className="w-[10px] h-[1px] bg-white" />
+            <div
+              key={i}
+              className="w-[10px] h-[1px] bg-white animate-pulse"
+              style={{
+                animationDelay: `${i * 0.1}s`,
+                animationDuration: "2s",
+              }}
+            />
           ))}
         </div>
 
-        {/* 'Future' label after the dots */}
+        {/* Future label */}
         <span className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-white text-base font-bold z-10">
           Future
         </span>
+
+        {/* Navigation arrows */}
+
+        {/* Progress indicator */}
       </div>
+
+      {/* Fixed Popup - PROPER CLOSE FUNCTIONALITY */}
+      {hoveredMilestone && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div
+            className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-2xl popup-container"
+            onMouseEnter={handlePopupMouseEnter}
+            onMouseLeave={handlePopupMouseLeave}
+          >
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <h3 className="text-orange-500 font-bold text-lg mb-1">
+                  {hoveredMilestone.year}
+                </h3>
+                <h4 className="text-gray-900 font-semibold text-base mb-2">
+                  {hoveredMilestone.title}
+                </h4>
+                <p className="text-gray-600 text-sm mb-3">
+                  {hoveredMilestone.subtitle}
+                </p>
+              </div>
+            </div>
+
+            {hoveredMilestone.image && (
+              <img
+                src={hoveredMilestone.image}
+                alt={hoveredMilestone.title}
+                className="w-full h-32 object-cover rounded-lg mb-4"
+              />
+            )}
+
+            <p className="text-gray-700 text-sm leading-relaxed">
+              {hoveredMilestone.description}
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -213,7 +213,7 @@ function LocationsMap() {
           {/* India Map with Heading */}
           <div className="lg:w-2/5">
             <motion.h3
-              className="text-xl font-bold text-gray-800 mb-3 flex items-center"
+              className="text-xl font-bold text-gray-800 mb-3 flex items-center text-header-style "
               initial={{ opacity: 0, x: -20 }}
               animate={
                 isInView
