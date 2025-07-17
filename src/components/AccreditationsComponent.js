@@ -8,7 +8,7 @@ const AccreditationsComponent = () => {
         <div className="text-center mb-8">
           <h2 className="text-4xl text-header-style  font-bold text-gray-900">
             Accreditations <span className="text-orange-500">&</span>{" "}
-            Achievements
+            Achievementssss
           </h2>
         </div>
 

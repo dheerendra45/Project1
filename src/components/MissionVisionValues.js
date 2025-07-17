@@ -3,6 +3,19 @@ import { motion } from "framer-motion";
 import MissionIcon from "../assets/mission(2).svg";
 import VisionIcon from "../assets/vision(2).svg";
 import ValuesIcon from "../assets/values(2).svg";
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function MissionVisionValues() {
   const [isAnimating, setIsAnimating] = useState(true);
@@ -99,12 +112,20 @@ function MissionVisionValues() {
                 {section.title}
               </motion.h3>
 
-              <p
-                className="font-normal  text-paragraph-style text-sm md:text-base text-center leading-relaxed flex-grow px-2 md:px-0"
+              <motion.div
+                className="font-normal text-paragraph-style text-sm md:text-base text-center leading-relaxed flex-grow px-2 md:px-0 flex flex-wrap justify-center gap-x-[4px]"
                 style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
+                variants={wordContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
               >
-                {section.description}
-              </p>
+                {section.description.split(" ").map((word, idx) => (
+                  <motion.span key={idx} variants={wordItem}>
+                    {word}&nbsp;
+                  </motion.span>
+                ))}
+              </motion.div>
             </motion.div>
           ))}
         </div>
