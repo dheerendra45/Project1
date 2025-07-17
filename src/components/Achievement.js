@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
+
 import largeCard from "../assets/largeCard.png";
 import smallCard from "../assets/largeCard.png";
+import leftarrow from "../assets/left-arrow.png";
+import rightarrow from "../assets/right-arrow.png";
 
 const wordContainer = {
   hidden: {},
@@ -67,19 +70,13 @@ const AchievementsSection = () => {
               ))}
           </motion.div>
 
-          {/* Arrows */}
-          <div className="flex items-center justify-center lg:justify-start mt-8 gap-2 ml-[28%]">
-            <svg width="26" height="23" viewBox="0 0 24 24" fill="none">
-              <path
-                d="M18 12H6M6 12L12 6M6 12L12 18"
-                stroke="#333"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-            <div className="w-[87px] h-[3px] bg-orange-500" />
-            <ChevronRight className="text-orange-500 w-10 h-5 -ml-7" />
+          {/* Arrows - Simply use the images as they are */}
+          <div className="flex items-center justify-center lg:justify-start mt-8 ml-[28%]">
+            <div className="mr-[5%]">
+               <img src={leftarrow} alt="Left arrow" />
+            </div>
+            
+            <img src={rightarrow} alt="Right arrow" />
           </div>
         </div>
 
