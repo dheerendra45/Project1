@@ -130,13 +130,13 @@ const AchievementsSection = () => {
         {/* Left Text Block */}
         <div className="lg:w-[40%] text-center lg:text-left">
           <motion.div
-            className="text-orange-500 text-paragraph-style text-sm leading-relaxed max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
-            style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
-            variants={wordContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.3 }}
-          >
+  className="text-orange-500 text-paragraph-style text-base leading-relaxed max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
+  style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
+  variants={wordContainer}
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: false, amount: 0.3 }}
+>
             {"Recognized by industry leaders, endorsed by global platforms — our journey is marked by trust, quality, and performance. At Shyam Metallics, excellence isn't just a pursuit — it's a consistent outcome. Our dedication to sustainable growth, employee well-being, innovation, and industry leadership has been recognized by premier national and international forums. Each award, certification, and endorsement stands as a testament to the trust we've built and the impact we've created."
               .split(" ")
               .map((word, idx) => (
@@ -164,7 +164,6 @@ const AchievementsSection = () => {
               {[0, 1, 2, 3].map((i) => {
                 const cardIndex = (activeIndex + i) % certificates.length;
                 const isMain = i === 0;
-
                 return (
                   <motion.img
                     key={`${cardIndex}-${i}`}

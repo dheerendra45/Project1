@@ -105,7 +105,7 @@ const CSRPage = () => {
             </p>
 
             <div className="mb-6">
-              <p className="text-gray-700  text-paragraph-style leading-relaxed text-sm">
+              <p className="text-gray-700  text-paragraph-style leading-relaxed text-base ">
                 Shyam Metalics has always stood tall for more than just steel,
                 because we believe that true strength lies not only in the steel
                 we forge, but in the lives we uplift. We go beyond
@@ -131,14 +131,14 @@ const CSRPage = () => {
                       className="w-8 h-8 object-contain"
                     />
                   </div>
-                  <span className="text-xs font-medium text-gray-700 leading-tight">
+                  <span className="text-sm font-medium text-gray-700 leading-tight">
                     {area.label}
                   </span>
                 </div>
               ))}
             </div>
 
-            <p className="text-gray-700  text-paragraph-style text-sm mb-6 leading-relaxed">
+            <p className="text-gray-700  text-paragraph-style text-base mb-6 leading-relaxed">
               Our CSR efforts are rooted in empathy and driven by impact to
               shape not just steel, but a future that's stronger, greener, and
               more inclusive for all.
