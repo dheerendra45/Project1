@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import worldExport from "../assets/worldExport3.mp4";
+import worldExport from "../assets/asia map.mp4";
 import indiaMapVideo from "../assets/IndiaMap1.mp4";
 
 function LocationsMap() {
@@ -167,7 +167,7 @@ function LocationsMap() {
         </div>
 
         {/* Maps Section */}
-        <div className="flex flex-col lg:flex-row gap-6 sm:gap-10">
+        <div className="flex flex-col lg:flex-row gap-2 sm:gap-4">
           {/* World Map with Heading */}
           <div className="lg:w-3/5">
             <motion.h3
