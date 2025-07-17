@@ -41,7 +41,7 @@ import NationalHighwaysAuthorityofIndialogo from "../assets/achievements/NHAI.pn
 import ShyamMetalicsListing101 from "../assets/achievements/sml(101).JPG";
 import wagonrdsoapprovalservice from "../assets/achievements/wagon.jpg";
 
-// arrows 
+// arrows
 import leftarrow from "../assets/left-arrow.png";
 import rightarrow from "../assets/right-arrow.png";
 
@@ -68,7 +68,8 @@ const wordItem = {
 
 const AchievementsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  
+  const [isAutoRotating, setIsAutoRotating] = useState(true);
+
   // Array of all achievement images
   const certificates = [
     AAI2,
@@ -106,19 +107,29 @@ const AchievementsSection = () => {
     MAJORCLIENTS,
     NationalHighwaysAuthorityofIndialogo,
     ShyamMetalicsListing101,
-    wagonrdsoapprovalservice
+    wagonrdsoapprovalservice,
   ];
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % certificates.length);
-    }, 5000);
-
+    let interval;
+    if (isAutoRotating) {
+      interval = setInterval(() => {
+        setActiveIndex((prev) => (prev + 1) % certificates.length);
+      }, 5000);
+    }
     return () => clearInterval(interval);
-  }, [certificates.length]);
+  }, [certificates.length, isAutoRotating]);
+
+  const handleCertificateClick = (index) => {
+    setIsAutoRotating(false);
+    setActiveIndex(index);
+    // Optional: restart auto rotation after some time
+    setTimeout(() => {
+      setIsAutoRotating(true);
+    }, 10000);
+  };
 
   return (
-    // Added margins: left/right 10%, top/bottom 2%, increased min-height for better visibility
     <div className="bg-white px-4 py-16 mx-[10%] my-[2%] min-h-[600px]">
       {/* Heading */}
       <h2 className="text-2xl text-header-style  font-semibold text-center mb-12">
@@ -130,7 +141,7 @@ const AchievementsSection = () => {
         {/* Left Text Block */}
         <div className="lg:w-[40%] text-center lg:text-left">
           <motion.div
-            className="text-orange-500 text-paragraph-style text-sm leading-relaxed max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
+            className="text-orange-500 font-normal text-base leading-[16px] tracking-normal font-['Inter'] max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
             style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
             variants={wordContainer}
             initial="hidden"
@@ -149,9 +160,9 @@ const AchievementsSection = () => {
           {/* Arrows - Simply use the images as they are */}
           <div className="flex items-center justify-center lg:justify-start mt-8 ml-[28%]">
             <div className="mr-[5%]">
-               <img src={leftarrow} alt="Left arrow" />
+              <img src={leftarrow} alt="Left arrow" />
             </div>
-            
+
             <img src={rightarrow} alt="Right arrow" />
           </div>
         </div>
@@ -172,8 +183,8 @@ const AchievementsSection = () => {
                     alt={`Achievement ${cardIndex + 1}`}
                     className={
                       isMain
-                        ? "w-[253px] h-[335px] object-contain border border-gray-300 rounded-[8px] z-10 bg-white mt-[-10%]"
-                        : "w-[115px] h-[153px] object-contain border border-gray-300 rounded-[4px] opacity-80 bg-white mt-[-10%]"
+                        ? "w-[253px] h-[335px] object-contain border border-gray-300 rounded-[8px] z-10 bg-white mt-[-10%] cursor-pointer"
+                        : "w-[115px] h-[153px] object-contain border border-gray-300 rounded-[4px] opacity-80 bg-white mt-[-10%] cursor-pointer"
                     }
                     style={{
                       imageRendering: "auto",
@@ -186,6 +197,7 @@ const AchievementsSection = () => {
                       duration: 0.6,
                       ease: "easeInOut",
                     }}
+                    onClick={() => handleCertificateClick(cardIndex)}
                   />
                 );
               })}

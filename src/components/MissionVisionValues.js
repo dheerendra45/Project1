@@ -113,7 +113,7 @@ function MissionVisionValues() {
               </motion.h3>
 
               <motion.div
-                className="font-normal text-paragraph-style text-sm md:text-base text-center leading-relaxed flex-grow px-2 md:px-0 flex flex-wrap justify-center gap-x-[4px]"
+                className="font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex-grow px-2 md:px-0 flex flex-wrap justify-center gap-x-[4px]"
                 style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
                 variants={wordContainer}
                 initial="hidden"

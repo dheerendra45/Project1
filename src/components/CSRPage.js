@@ -158,7 +158,7 @@ const CSRPage = () => {
             </h2>
 
             <motion.div
-              className="text-base text-paragraph-style text-gray-700 mb-5 font-medium flex flex-wrap gap-x-[4px]"
+              className="font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-700 mb-5  flex flex-wrap gap-x-[4px]"
               style={{ lineHeight: "26px", letterSpacing: "-0.3px" }}
               variants={wordContainer}
               initial="hidden"
@@ -176,7 +176,7 @@ const CSRPage = () => {
 
             <div className="mb-6">
               <motion.div
-                className="text-gray-700 text-paragraph-style leading-relaxed text-sm flex flex-wrap gap-x-[4px]"
+                className="text-gray-700 font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-paragraph-style  flex flex-wrap gap-x-[4px]"
                 style={{ lineHeight: "24px", letterSpacing: "-0.3px" }}
                 variants={wordContainer}
                 initial="hidden"
@@ -215,7 +215,7 @@ const CSRPage = () => {
             </div>
 
             <motion.div
-              className="text-gray-700 text-paragraph-style text-sm mb-6 leading-relaxed flex flex-wrap gap-x-[4px]"
+              className="text-gray-700  mb-6 font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex flex-wrap gap-x-[4px]"
               style={{ lineHeight: "24px", letterSpacing: "-0.3px" }}
               variants={wordContainer}
               initial="hidden"
