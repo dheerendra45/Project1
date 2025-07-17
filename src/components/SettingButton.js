@@ -1,23 +1,23 @@
-import React from 'react';
-import { Settings } from 'lucide-react';
+import React from "react";
+import { Settings } from "lucide-react";
 
-const SettingButton = ({ onClick, className = '' }) => {
+const SettingButton = ({ onClick, className = "" }) => {
   return (
     <button
       onClick={onClick}
       className={`
-        fixed top-32 right-0
-        w-[52px] h-[52px] 
-        bg-[#EE741D] 
-        rounded-l-lg 
-        flex items-center justify-center 
-        hover:bg-[#d66617] 
-        active:bg-[#c55d15] 
-        transition-colors duration-200
-        focus:outline-none focus:ring-2 focus:ring-[#EE741D] focus:ring-offset-2
-        z-50
-        ${className}
-      `}
+  fixed top-1/2 -translate-y-1/2 right-0
+  w-[52px] h-[52px] 
+  bg-[#EE741D] 
+  rounded-l-lg 
+  flex items-center justify-center 
+  hover:bg-[#d66617] 
+  active:bg-[#c55d15] 
+  transition-colors duration-200
+  focus:outline-none focus:ring-2 focus:ring-[#EE741D] focus:ring-offset-2
+  z-50
+  ${className}
+`}
     >
       <svg
         width="34"

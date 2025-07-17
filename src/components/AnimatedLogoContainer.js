@@ -89,7 +89,7 @@ const AnimatedLogoContainer = () => {
                 key={item.uniqueId}
                 company={item.company}
                 image={item.image}
-                borderColor="border-2 border-orange-500"
+                borderColor="border-2"
               />
             ))}
           </div>
@@ -110,7 +110,7 @@ const AnimatedLogoContainer = () => {
               <LogoItem
                 key={item.uniqueId}
                 image={item.image}
-                borderColor="border-2 border-orange-500"
+                borderColor="border-2"
               />
             ))}
           </div>

@@ -107,67 +107,7 @@ const Hero = () => {
           </div>
 
           {/* Navigation Buttons */}
-          <div className="absolute top-1/2 left-2 sm:left-4 md:left-6 transform -translate-y-1/2 z-30">
-            <button
-              onClick={prevSlide}
-              className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
-              aria-label="Previous slide"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 sm:h-6 sm:w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="absolute top-1/2 right-2 sm:right-4 md:right-6 transform -translate-y-1/2 z-30">
-            <button
-              onClick={nextSlide}
-              className="bg-black/50 hover:bg-black/70 text-white rounded-full p-1 sm:p-2 transition-all duration-300"
-              aria-label="Next slide"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 sm:h-6 sm:w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
-      </div>
-
-      {/* Dot Indicators */}
-      <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
-        {banners.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentSlide(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-              index === currentSlide
-                ? "bg-white scale-125"
-                : "bg-white/40 hover:bg-white/70"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
       </div>
     </div>
   );

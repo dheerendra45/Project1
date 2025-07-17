@@ -26,17 +26,14 @@ const Footer = () => {
       title: "",
       links: [],
       customContent: (
-        <div
-          className="relative"
-          style={{ marginTop: "-34px", marginLeft: "-25px" }}
-        >
+        <div className="relative" style={{ marginTop: "-34px" }}>
           <img
             src={greatPlaceToWorkLogo}
             alt="Great Place to Work"
             className="object-contain"
             style={{
-              width: "206px",
-              height: "155px",
+              width: "190px",
+              height: "140px",
             }}
           />
         </div>
@@ -104,31 +101,31 @@ const Footer = () => {
           <div className="space-y-2">
             <Link
               to="#"
-              className="block font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+              className="block font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
             >
               Overview
             </Link>
             <Link
               to="#"
-              className="block font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+              className="block font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
             >
               SELTIGER TMT Bar
             </Link>
             <Link
               to="#"
-              className="block font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+              className="block font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
             >
               SELTIGER Structure Steel
             </Link>
             <Link
               to="#"
-              className="block font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+              className="block font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
             >
               SELTIGER Wire Rod
             </Link>
             <Link
               to="#"
-              className="block font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+              className="block font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
             >
               SELTIGER Roofing Sheet
             </Link>
@@ -228,19 +225,12 @@ const Footer = () => {
         transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
         className="py-8"
       >
-        <div className="container mx-auto px-[2vw]">
-          <div
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6"
-            style={{ gap: "17px" }}
-          >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
             {footerSections.map((section, index) => (
-              <div
-                key={index}
-                className="flex flex-col"
-                style={{ marginTop: index === 0 ? "0" : "25px" }}
-              >
+              <div key={index} className="flex flex-col">
                 {section.title && (
-                  <h3 className="font-bold text-[20px] leading-[28px] tracking-normal font-['Inter'] text-black mb-3 mt-2">
+                  <h3 className="font-bold text-[18px] leading-[25px] tracking-normal font-['Inter'] text-black mb-3 mt-2">
                     {section.title}
                   </h3>
                 )}
@@ -250,7 +240,7 @@ const Footer = () => {
                       <li key={linkIndex}>
                         <Link
                           to="#"
-                          className="font-normal text-base leading-[24px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
+                          className="font-normal text-base leading-[16px] tracking-normal font-['Inter'] text-gray-600 hover:text-orange-500 transition-colors"
                         >
                           {link}
                         </Link>
@@ -262,7 +252,7 @@ const Footer = () => {
                 {section.extraSections &&
                   section.extraSections.map((extraSection, extraIndex) => (
                     <div key={extraIndex} className="mt-6">
-                      <h3 className="font-bold text-[20px] leading-[28px] tracking-normal font-['Inter'] text-black mb-3">
+                      <h3 className="font-bold text-[18px] leading-[25px] tracking-normal font-['Inter'] text-black mb-3">
                         {extraSection.title}
                       </h3>
                       <ul className="space-y-2">
@@ -293,7 +283,7 @@ const Footer = () => {
 
       {/* Bottom Footer */}
       <div className="bg-white border-t border-gray-200 py-4">
-        <div className="container mx-auto px-6 sm:px-10">
+        <div className="w-full px-[2vw]">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <img src={companylogo} alt="Company Logo" className="h-6" />
