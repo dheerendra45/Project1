@@ -175,7 +175,6 @@ const AchievementsSection = () => {
               {[0, 1, 2, 3].map((i) => {
                 const cardIndex = (activeIndex + i) % certificates.length;
                 const isMain = i === 0;
-
                 return (
                   <motion.img
                     key={`${cardIndex}-${i}`}

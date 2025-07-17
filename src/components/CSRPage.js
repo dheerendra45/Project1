@@ -207,7 +207,7 @@ const CSRPage = () => {
                       className="w-8 h-8 object-contain"
                     />
                   </div>
-                  <span className="text-xs font-medium text-gray-700 leading-tight">
+                  <span className="text-sm font-medium text-gray-700 leading-tight">
                     {area.label}
                   </span>
                 </div>
