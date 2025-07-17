@@ -2,6 +2,26 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import news1 from "../assets/news.png";
 import news2 from "../assets/news2.png";
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.03,
+    },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
 
 const NewsPage = () => {
   const [showSubtext, setShowSubtext] = useState(false);
@@ -149,11 +169,22 @@ const NewsPage = () => {
                 <span className="mr-3">Admin</span>
                 <span>2 Comments</span>
               </div>
-              <p className="text-gray-700 text-sm text-paragraph-style">
-                Expanding Global Footprint with 50,000 MT Steel Shipment to
-                Vietnam & Indonesia. High-grade TMT bars and wire rods to
-                support infrastructure project
-              </p>
+              <motion.div
+                className="text-gray-700 text-sm text-paragraph-style flex flex-wrap gap-x-[4px]"
+                style={{ lineHeight: "22px", letterSpacing: "-0.5px" }}
+                variants={wordContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+              >
+                {"Expanding Global Footprint with 50,000 MT Steel Shipment to Vietnam & Indonesia. High-grade TMT bars and wire rods to support infrastructure project"
+                  .split(" ")
+                  .map((word, idx) => (
+                    <motion.span key={idx} variants={wordItem}>
+                      {word}&nbsp;
+                    </motion.span>
+                  ))}
+              </motion.div>
             </div>
 
             {/* First Column Buttons */}
@@ -210,11 +241,22 @@ const NewsPage = () => {
                 <span className="mr-1">Research</span>
                 <span>3 Comments</span>
               </div>
-              <p className="text-gray-700 text-paragraph-style text-sm">
-                Pioneering Sustainable Steel Solutions with Cutting-Edge
-                Technology. Joint R&D focus: Hydrogen-based steel production &
-                carbon capture.
-              </p>
+              <motion.div
+                className="text-gray-700 text-paragraph-style text-sm flex flex-wrap gap-x-[4px]"
+                style={{ lineHeight: "22px", letterSpacing: "-0.5px" }}
+                variants={wordContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+              >
+                {"Pioneering Sustainable Steel Solutions with Cutting-Edge Technology. Joint R&D focus: Hydrogen-based steel production & carbon capture."
+                  .split(" ")
+                  .map((word, idx) => (
+                    <motion.span key={idx} variants={wordItem}>
+                      {word}&nbsp;
+                    </motion.span>
+                  ))}
+              </motion.div>
             </div>
 
             {/* Second Column Buttons */}

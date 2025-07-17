@@ -1,4 +1,25 @@
 import React from "react";
+import { motion } from "framer-motion";
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
 
 const TestimonialsSection = () => {
   const testimonials = [
@@ -63,14 +84,35 @@ const TestimonialsSection = () => {
             </div>
 
             <div className="space-y-4">
-              <p className="text-gray-600 leading-relaxed">
-                Relation so in confined smallest children unpacked delicate.
-                <span className="text-orange-500 font-medium">
-                  {" "}
-                  Why sir end believe
-                </span>{" "}
-                uncivil respect. Always get adieus nature day course for common.
-              </p>
+              <motion.div
+                className="text-gray-600 leading-relaxed flex flex-wrap gap-x-[4px]"
+                style={{ letterSpacing: "-0.3px" }}
+                variants={wordContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+              >
+                {(
+                  "Relation so in confined smallest children unpacked delicate. " +
+                  "Why sir end believe uncivil respect. Always get adieus nature day course for common."
+                )
+                  .split(" ")
+                  .map((word, idx) => (
+                    <motion.span
+                      key={idx}
+                      variants={wordItem}
+                      className={
+                        word === "Why"
+                          ? "text-orange-500 font-medium"
+                          : word === "sir"
+                          ? "text-orange-500 font-medium"
+                          : ""
+                      }
+                    >
+                      {word}&nbsp;
+                    </motion.span>
+                  ))}
+              </motion.div>
 
               <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-medium transition-colors mt-8">
                 View More
@@ -134,11 +176,21 @@ const TestimonialsSection = () => {
                       <h4 className="font-semibold text-gray-900 mb-1">
                         {testimonial.name}
                       </h4>
-                      <p className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2">
-                        {" "}
-                        {/* Added line-clamp */}
-                        {testimonial.text}
-                      </p>
+                      <motion.div
+                        className="text-gray-600 text-sm mb-3 leading-relaxed flex flex-wrap gap-x-[4px]"
+                        style={{ letterSpacing: "-0.4px" }}
+                        variants={wordContainer}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: false, amount: 0.3 }}
+                      >
+                        {testimonial.text.split(" ").map((word, idx) => (
+                          <motion.span key={idx} variants={wordItem}>
+                            {word}&nbsp;
+                          </motion.span>
+                        ))}
+                      </motion.div>
+
                       <div className="flex items-center">
                         {renderStars(testimonial.rating)}
                       </div>

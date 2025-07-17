@@ -305,7 +305,7 @@ export default function ShyamMetalicsProfile() {
   const [isPaused, setIsPaused] = useState(false);
   const [animationOffset, setAnimationOffset] = useState(0);
   const intervalRef = useRef(null);
-
+  const [clickedMilestone, setClickedMilestone] = useState(null);
   // Auto-scroll functionality with smooth continuous animation
   useEffect(() => {
     if (!isPaused) {
@@ -339,9 +339,15 @@ export default function ShyamMetalicsProfile() {
   const visibleMilestones = getVisibleMilestones();
 
   // Handle hover events - IMPROVED
-  const handleMouseEnter = (milestone) => {
-    setHoveredMilestone(milestone);
+  const handleCardClick = (milestone) => {
+    setClickedMilestone(milestone);
     setIsPaused(true);
+  };
+
+  // 3. Update the popup close handler
+  const closePopup = () => {
+    setClickedMilestone(null);
+    setIsPaused(false);
   };
 
   // Navigation functions
@@ -462,9 +468,8 @@ export default function ShyamMetalicsProfile() {
 
                 {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
-                  key={`top-${milestone.originalIndex}`}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(milestone)}
+                  className="relative cursor-pointer"
+                  onClick={() => handleCardClick(milestone)}
                 >
                   <div
                     className={`absolute bg-white transition-all duration-300 cursor-pointer ${
@@ -541,9 +546,8 @@ export default function ShyamMetalicsProfile() {
 
                 {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
-                  key={`top-${milestone.originalIndex}`}
-                  className="relative"
-                  onMouseEnter={() => handleMouseEnter(milestone)}
+                  className="relative cursor-pointer"
+                  onClick={() => handleCardClick(milestone)}
                 >
                   <div
                     className={`absolute bg-white  transition-all duration-300 cursor-pointer ${
@@ -631,40 +635,37 @@ export default function ShyamMetalicsProfile() {
       </div>
 
       {/* Fixed Popup - PROPER CLOSE FUNCTIONALITY */}
-      {hoveredMilestone && (
+      {clickedMilestone && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-2xl">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-orange-500 font-bold text-lg mb-1">
-                  {hoveredMilestone.year}
+                  {clickedMilestone.year}
                 </h3>
                 <h4 className="text-gray-900 font-semibold text-base mb-2">
-                  {hoveredMilestone.title}
+                  {clickedMilestone.title}
                 </h4>
                 <p className="text-gray-600 text-sm mb-3">
-                  {hoveredMilestone.subtitle}
+                  {clickedMilestone.subtitle}
                 </p>
               </div>
               <button
-                onClick={() => {
-                  setHoveredMilestone(null);
-                  setIsPaused(false);
-                }}
+                onClick={closePopup}
                 className="text-gray-500 hover:text-gray-700 text-xl font-bold transition-colors duration-200 p-4"
               >
                 ×
               </button>
             </div>
-            {hoveredMilestone.image && (
+            {clickedMilestone.image && (
               <img
-                src={hoveredMilestone.image}
-                alt={hoveredMilestone.title}
+                src={clickedMilestone.image}
+                alt={clickedMilestone.title}
                 className="w-full h-32 object-cover rounded-lg mb-4"
               />
             )}
             <p className="text-gray-700 text-sm leading-relaxed">
-              {hoveredMilestone.description}
+              {clickedMilestone.description}
             </p>
           </div>
         </div>

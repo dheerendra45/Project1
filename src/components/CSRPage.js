@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+
 import csr1 from "../assets/csr1.png";
 import csr2 from "../assets/csr2.png";
 import csr3 from "../assets/csr3.png";
@@ -9,6 +11,26 @@ import logo3 from "../assets/csr/3.png";
 import logo4 from "../assets/csr/4.png";
 import logo5 from "../assets/csr/5.png";
 import logo6 from "../assets/csr/6.png";
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: 8 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.3,
+      ease: "easeOut",
+    },
+  },
+};
 
 const CSRPage = () => {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -99,22 +121,40 @@ const CSRPage = () => {
               Building Communities, Empowering Lives
             </h2>
 
-            <p className="text-base text-paragraph-style text-gray-700 mb-5 font-medium">
-              Empowering Bharat with purpose beyond profits and progress beyond
-              steel.
-            </p>
+            <motion.div
+              className="text-base text-paragraph-style text-gray-700 mb-5 font-medium flex flex-wrap gap-x-[4px]"
+              style={{ lineHeight: "26px", letterSpacing: "-0.3px" }}
+              variants={wordContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              {"Empowering Bharat with purpose beyond profits and progress beyond steel."
+                .split(" ")
+                .map((word, idx) => (
+                  <motion.span key={idx} variants={wordItem}>
+                    {word}&nbsp;
+                  </motion.span>
+                ))}
+            </motion.div>
 
             <div className="mb-6">
-              <p className="text-gray-700  text-paragraph-style leading-relaxed text-sm">
-                Shyam Metalics has always stood tall for more than just steel,
-                because we believe that true strength lies not only in the steel
-                we forge, but in the lives we uplift. We go beyond
-                infrastructure to empathize with people, drive impact, and build
-                a more equitable, educated, and empowered Bharat. Our commitment
-                to Corporate Social Responsibility is not just an initiative,
-                it's a way of life, aimed at creating opportunity, dignity, and
-                sustainable growth for the communities we serve.
-              </p>
+              <motion.div
+                className="text-gray-700 text-paragraph-style leading-relaxed text-sm flex flex-wrap gap-x-[4px]"
+                style={{ lineHeight: "24px", letterSpacing: "-0.3px" }}
+                variants={wordContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.3 }}
+              >
+                {"Shyam Metalics has always stood tall for more than just steel, because we believe that true strength lies not only in the steel we forge, but in the lives we uplift. We go beyond infrastructure to empathize with people, drive impact, and build a more equitable, educated, and empowered Bharat. Our commitment to Corporate Social Responsibility is not just an initiative, it's a way of life, aimed at creating opportunity, dignity, and sustainable growth for the communities we serve."
+                  .split(" ")
+                  .map((word, idx) => (
+                    <motion.span key={idx} variants={wordItem}>
+                      {word}&nbsp;
+                    </motion.span>
+                  ))}
+              </motion.div>
             </div>
 
             {/* CSR Areas with your logos */}
@@ -138,11 +178,22 @@ const CSRPage = () => {
               ))}
             </div>
 
-            <p className="text-gray-700  text-paragraph-style text-sm mb-6 leading-relaxed">
-              Our CSR efforts are rooted in empathy and driven by impact to
-              shape not just steel, but a future that's stronger, greener, and
-              more inclusive for all.
-            </p>
+            <motion.div
+              className="text-gray-700 text-paragraph-style text-sm mb-6 leading-relaxed flex flex-wrap gap-x-[4px]"
+              style={{ lineHeight: "24px", letterSpacing: "-0.3px" }}
+              variants={wordContainer}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, amount: 0.3 }}
+            >
+              {"Our CSR efforts are rooted in empathy and driven by impact to shape not just steel, but a future that's stronger, greener, and more inclusive for all."
+                .split(" ")
+                .map((word, idx) => (
+                  <motion.span key={idx} variants={wordItem}>
+                    {word}&nbsp;
+                  </motion.span>
+                ))}
+            </motion.div>
 
             <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200 shadow-md text-sm mt-2 w-fit">
               Learn More About Our Impact
