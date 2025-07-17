@@ -26,14 +26,17 @@ const Footer = () => {
       title: "",
       links: [],
       customContent: (
-        <div className="relative" style={{ marginTop: "-34px" }}>
+        <div
+          className="relative"
+          style={{ marginTop: "-34px", marginLeft: "-40px" }}
+        >
           <img
             src={greatPlaceToWorkLogo}
             alt="Great Place to Work"
             className="object-contain"
             style={{
-              width: "190px",
-              height: "140px",
+              width: "180px",
+              height: "120px",
             }}
           />
         </div>
