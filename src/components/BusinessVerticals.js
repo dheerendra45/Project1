@@ -5,6 +5,19 @@ import { motion } from "framer-motion";
 import energy from "../assets/energy.png";
 import aluminium from "../assets/aluminium.png";
 import ironSteel from "../assets/iron-steel.png";
+const wordContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const wordItem = {
+  hidden: { opacity: 0, y: 10 },
+  visible: { opacity: 1, y: 0 },
+};
 
 function BusinessVerticals() {
   const verticals = [
@@ -76,9 +89,19 @@ function BusinessVerticals() {
                     </h3>
                   </div>
 
-                  <p className="text-gray-100  text-paragraph-style mb-4 md:mb-6 text-xs md:text-sm leading-relaxed">
-                    {vertical.description}
-                  </p>
+                  <motion.div
+                    variants={wordContainer}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    className="text-gray-100 text-paragraph-style mb-4 md:mb-6 text-xs md:text-sm leading-relaxed text-left flex flex-wrap gap-x-1"
+                  >
+                    {vertical.description.split(" ").map((word, idx) => (
+                      <motion.span key={idx} variants={wordItem}>
+                        {word}&nbsp;
+                      </motion.span>
+                    ))}
+                  </motion.div>
 
                   <div className="mt-auto">
                     <button className="inline-flex items-center mb-[4%] px-3 py-1 md:px-4 md:py-2 bg-orange-500 text-white text-sm md:text-base font-medium rounded hover:bg-orange-600 transition-colors shadow-lg">
