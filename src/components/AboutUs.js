@@ -417,7 +417,7 @@ export default function ShyamMetalicsProfile() {
         {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 capability-item hover:scale-95 transition-transform duration-200 transition-colors"
           >
             <div className="flex justify-center mb-3">
               {/* Use img tag instead of component */}

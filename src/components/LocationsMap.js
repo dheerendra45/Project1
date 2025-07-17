@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import worldExport from "../assets/worldExport3.mp4";
-import indiaMapVideo from "../assets/IndiaMap.mp4";
+import indiaMapVideo from "../assets/IndiaMap1.mp4";
 
 function LocationsMap() {
   const sectionRef = useRef(null);
