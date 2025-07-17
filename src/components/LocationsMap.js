@@ -169,7 +169,7 @@ function LocationsMap() {
         {/* Maps Section */}
         <div className="flex flex-col lg:flex-row gap-2 sm:gap-4">
           {/* World Map with Heading */}
-          <div className="lg:w-3/5">
+          <div className="lg:w-2/3">
             <motion.h3
               className="text-xl font-bold text-gray-800 mb-3 flex items-center"
               initial={{ opacity: 0, x: -20 }}
@@ -211,7 +211,7 @@ function LocationsMap() {
           </div>
 
           {/* India Map with Heading */}
-          <div className="lg:w-2/5">
+          <div className="lg:w-1/3">
             <motion.h3
               className="text-xl font-bold text-gray-800 mb-3 flex items-center text-header-style "
               initial={{ opacity: 0, x: -20 }}
