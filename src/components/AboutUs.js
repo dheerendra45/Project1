@@ -1,5 +1,5 @@
 import React from "react";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
@@ -223,6 +223,18 @@ export default function ShyamMetalicsProfile() {
 
   const [visibleWords, setVisibleWords] = useState(0);
   const sectionRef = useRef(null);
+  const [showFutureTimeline, setShowFutureTimeline] = useState(false);
+  const filteredMilestones = showFutureTimeline
+    ? milestones.filter((m) => parseInt(m.year) >= 2023)
+    : milestones;
+  const getVisibleMilestones1 = () => {
+    const visible = [];
+    for (let i = 0; i < 11; i++) {
+      const index = (currentIndex + i) % filteredMilestones.length;
+      visible.push({ ...filteredMilestones[index], originalIndex: index });
+    }
+    return visible;
+  };
 
   const paragraph1 =
     "Shyam Metalics is one of India's fastest-growing and most trusted integrated metal producers, with a diversified portfolio spanning carbon steel, stainless steel, ferro alloys, aluminium foil, and long steel products. Headquartered in Kolkata and driven by the ethos of 'Made in India, Made for Bharat,' we are committed to shaping the nation's infrastructure and industrial future through sustainable and scalable growth.";
@@ -299,31 +311,27 @@ export default function ShyamMetalicsProfile() {
     if (!isPaused) {
       intervalRef.current = setInterval(() => {
         setAnimationOffset((prev) => prev - 0.5);
-
-        // Reset when we've moved enough
         if (Math.abs(animationOffset) >= 100) {
           setAnimationOffset(0);
           setCurrentIndex((prev) => {
-            const maxIndex = milestones.length - 11;
+            const maxIndex = filteredMilestones.length - 11;
             return prev >= maxIndex ? 0 : prev + 1;
           });
         }
-      }, 30); // Smooth animation
+      }, 30);
     }
-
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isPaused, animationOffset, milestones.length]);
-
+  }, [isPaused, animationOffset, filteredMilestones.length]);
   // Get visible milestones (11 items)
   const getVisibleMilestones = () => {
     const visible = [];
     for (let i = 0; i < 11; i++) {
-      const index = (currentIndex + i) % milestones.length;
-      visible.push({ ...milestones[index], originalIndex: index });
+      const index = (currentIndex + i) % filteredMilestones.length;
+      visible.push({ ...filteredMilestones[index], originalIndex: index });
     }
     return visible;
   };
@@ -334,31 +342,6 @@ export default function ShyamMetalicsProfile() {
   const handleMouseEnter = (milestone) => {
     setHoveredMilestone(milestone);
     setIsPaused(true);
-  };
-
-  const handleMouseLeave = () => {
-    setTimeout(() => {
-      if (!document.querySelector(".popup-container:hover")) {
-        setHoveredMilestone(null);
-        setIsPaused(false);
-      }
-    }, 100);
-  };
-
-  // Handle popup hover events
-  const handlePopupMouseEnter = () => {
-    setIsPaused(true);
-  };
-
-  const handlePopupMouseLeave = () => {
-    setHoveredMilestone(null);
-    setIsPaused(false);
-  };
-
-  // Close popup completely
-  const closePopup = () => {
-    setHoveredMilestone(null);
-    setIsPaused(false);
   };
 
   // Navigation functions
@@ -479,9 +462,9 @@ export default function ShyamMetalicsProfile() {
 
                 {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
+                  key={`top-${milestone.originalIndex}`}
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(milestone)}
-                  onMouseLeave={handleMouseLeave}
                 >
                   <div
                     className={`absolute bg-white transition-all duration-300 cursor-pointer ${
@@ -558,9 +541,9 @@ export default function ShyamMetalicsProfile() {
 
                 {/* Milestone container - Wrapped in a div that handles hover */}
                 <div
+                  key={`top-${milestone.originalIndex}`}
                   className="relative"
                   onMouseEnter={() => handleMouseEnter(milestone)}
-                  onMouseLeave={handleMouseLeave}
                 >
                   <div
                     className={`absolute bg-white  transition-all duration-300 cursor-pointer ${
@@ -631,8 +614,15 @@ export default function ShyamMetalicsProfile() {
         </div>
 
         {/* Future label */}
-        <span className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-white text-base font-bold z-10">
-          Future
+        <span
+          className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-white text-base font-bold z-10 cursor-pointer hover:text-orange-300 transition-colors"
+          onClick={() => {
+            setShowFutureTimeline(!showFutureTimeline);
+            setCurrentIndex(0); // Reset to first item
+            setAnimationOffset(0); // Reset animation
+          }}
+        >
+          {showFutureTimeline ? "Future" : "Future"}
         </span>
 
         {/* Navigation arrows */}
@@ -643,11 +633,7 @@ export default function ShyamMetalicsProfile() {
       {/* Fixed Popup - PROPER CLOSE FUNCTIONALITY */}
       {hoveredMilestone && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div
-            className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-2xl popup-container"
-            onMouseEnter={handlePopupMouseEnter}
-            onMouseLeave={handlePopupMouseLeave}
-          >
+          <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-2xl">
             <div className="flex justify-between items-start mb-4">
               <div>
                 <h3 className="text-orange-500 font-bold text-lg mb-1">
@@ -660,8 +646,16 @@ export default function ShyamMetalicsProfile() {
                   {hoveredMilestone.subtitle}
                 </p>
               </div>
+              <button
+                onClick={() => {
+                  setHoveredMilestone(null);
+                  setIsPaused(false);
+                }}
+                className="text-gray-500 hover:text-gray-700 text-xl font-bold transition-colors duration-200 p-4"
+              >
+                ×
+              </button>
             </div>
-
             {hoveredMilestone.image && (
               <img
                 src={hoveredMilestone.image}
@@ -669,7 +663,6 @@ export default function ShyamMetalicsProfile() {
                 className="w-full h-32 object-cover rounded-lg mb-4"
               />
             )}
-
             <p className="text-gray-700 text-sm leading-relaxed">
               {hoveredMilestone.description}
             </p>
