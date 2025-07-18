@@ -160,7 +160,7 @@ const NewsPage = () => {
             </div>
 
             {/* First News Content Box */}
-            <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.53px]">
+            <div className="bg-white p-4 mb-4 h-[198.53px]">
               <h4 className="font-bold text-sm mb-2 text-header-style ">
                 Shyam Metalics Secures Major Export Order to Southeast Asia
               </h4>
@@ -232,7 +232,7 @@ const NewsPage = () => {
             </div>
 
             {/* Second News Content Box */}
-            <div className="bg-white p-4 mb-4 rounded shadow-sm border border-gray-100 h-[198.26px]">
+            <div className="bg-white p-4 mb-4  h-[198.26px]">
               <h4 className="font-bold text-sm mb-2 text-header-style ">
                 Shyam Metalics Partners with IIT Bombay for Green Steel Research
               </h4>
