@@ -1,22 +1,13 @@
 import React, { useEffect, useState, useRef } from "react";
 import herobg from "../assets/1.jpg";
-import FactoryIcon from "../assets/factory-icon.png";
-import RevenueIcon from "../assets/revenue-icon.png";
-import IndiaMapIcon from "../assets/india-map-icon.png";
 import video from "../assets/WebsiteBanner.webm";
 
+// Banner data with corrected spelling
 const banners = [
   {
-    heading: "Built to Lead, Designed to Deliver",
-    subline: "India's top metal producer with 15.13 MTPA installed capacity",
-  },
-  {
-    heading: "Steel That Covers Every Step",
-    subline: "End-to-end metal solutions across the entire steel value chain",
-  },
-  {
-    heading: "Progress Powered by Responsibility",
-    subline: "Driven by a strong ESG framework for people, planet, and purpose",
+    heading: "From Roots to Rise, Building a Steel Empire for Bharat",
+    subline:
+      "With pure strength and a proven legacy, Shyam Metalics' steel meets the spirit of Bharat.",
   },
 ];
 
@@ -25,6 +16,7 @@ const Hero = () => {
   const slideCount = banners.length;
   const intervalRef = useRef(null);
 
+  // Next and previous slide (for future if multiple banners are added)
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % slideCount);
   };
@@ -39,6 +31,7 @@ const Hero = () => {
     }, 6000);
 
     return () => clearInterval(intervalRef.current);
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -50,14 +43,10 @@ const Hero = () => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
+        poster={herobg} // Fallback image as poster attribute
       >
         <source src={video} type="video/webm" />
-        {/* Fallback image in case video doesn't load */}
-        <img
-          src={herobg}
-          alt="Hero Background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+        {/* No <img> inside <video>! */}
       </video>
 
       {/* Dark overlay */}
@@ -68,10 +57,10 @@ const Hero = () => {
         <div className="bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 sm:gap-6">
           {/* Heading and paragraph */}
           <div className="w-full lg:w-[70%]">
-            <h1 className=" text-header-style text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight font-bold mb-2 sm:mb-4">
+            <h1 className="text-header-style text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight font-bold mb-2 sm:mb-4">
               {banners[currentSlide].heading}
             </h1>
-            <p className=" text-paragraph-style text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg mb-4 sm:mb-6">
+            <p className="text-paragraph-style text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg mb-4 sm:mb-6">
               {banners[currentSlide].subline}
             </p>
           </div>
@@ -92,21 +81,7 @@ const Hero = () => {
                 Explore More
               </button>
             </div>
-
-            {/* Stats Box - Optional */}
-            {/* <div className="flex gap-4 text-white">
-              <div className="flex items-center gap-2">
-                <img src={FactoryIcon} alt="Factories" className="w-6 h-6" />
-                <span>5+ Plants</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <img src={RevenueIcon} alt="Revenue" className="w-6 h-6" />
-                <span>₹10,000Cr+ Revenue</span>
-              </div>
-            </div> */}
           </div>
-
-          {/* Navigation Buttons */}
         </div>
       </div>
     </div>
