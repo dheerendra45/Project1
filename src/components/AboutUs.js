@@ -14,128 +14,162 @@ import icon4 from "../assets/Icon 4.png";
 import icon5 from "../assets/Icon 5.png";
 import icon6 from "../assets/icon6.png";
 
+// milestones image 
+import Img1991 from "../assets/aboutus/Picture 1, 1991-min.png";
+import Img2001 from "../assets/aboutus/Picture 2 2001 (Mangalpur Plant)-min.jpg";
+import Img2013 from "../assets/aboutus/Picture 3 2013 (Sambalpur)-min.jpeg";
+import Img2013New from "../assets/aboutus/Picture 4 2013 (Jamuria Plant)-min.jpg";
+
+import Img2014 from "../assets/aboutus/Picture 5 2014 (Ferro)-min.jpg";
+import Img2015 from "../assets/aboutus/Picture 6,  2015 (Sambalpur Plant)-min.jpg";
+import Img2019 from "../assets/aboutus/Picture 8, 2019 (TMT Bar)-min.jpg";
+import Img2021 from "../assets/aboutus/Picture 9,  2021 Wire Rod 2-min.jpg";
+import Img2024 from "../assets/aboutus/Picture 10,  CRM 2024-min.jpg";
+
+
 export default function ShyamMetalicsProfile() {
   const milestones = [
     {
       year: "1991",
       title: "The Beginning of a Legacy",
       subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      description:
-        "Started our journey with the incorporation of Shyam SEL and Power Ltd, marking the beginning of our industrial legacy.",
-      image: ab2,
+      description: "Incorporation of Shyam SEL and Power Ltd.",
+      image: Img1991,
     },
     {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam SEL and Power Ltd",
-      description:
-        "Started our journey with the incorporation of Shyam SEL and Power Ltd, marking the beginning of our industrial legacy.",
-      image: ab2,
+      year: "2002",
+      title: "The First Spark",
+      subtitle: "Mangalpur Plant",
+      description: "Commercial production started at the Sponge Iron plant (0.6 MTPA)",
+      image: Img2001,
     },
     {
-      year: "1995",
-      title: "Expansion Phase",
-      subtitle: "First Manufacturing Unit",
-      description:
-        "Established our first manufacturing unit with state-of-the-art technology and equipment.",
-      image: ab2,
+      year: "2013",
+      title: "Building the Foundation",
+      subtitle: "Sambalpur Plant",
+      description: "Commercial production started at the Sponge Iron plant (0.3 MTPA)",
+      image: Img2013,
     },
     {
-      year: "2000",
-      title: "Technology Advancement",
-      subtitle: "Modernization Initiative",
-      description:
-        "Implemented cutting-edge technology to improve production efficiency and product quality.",
-      image: ab2,
+      year: "2013",
+      title: "Building the Foundation",
+      subtitle: "Jamuria Plant",
+      description: "Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
+      image: Img2013New,
     },
     {
-      year: "2005",
-      title: "Market Leadership",
-      subtitle: "Industry Recognition",
-      description:
-        "Achieved significant market share and received multiple industry awards for excellence.",
-      image: ab2,
+      year: "2014",
+      title: "Integrating Strength",
+      subtitle: "Sambalpur Plant",
+      description: "Commissioned the first Ferro Alloy unit. Sponge Iron upgraded by 0.3 MTPA.",
+      image: Img2014,
     },
     {
-      year: "2010",
-      title: "Global Expansion",
-      subtitle: "International Markets",
-      description:
-        "Expanded operations to international markets and established global partnerships.",
-      image: ab2,
+      year: "2014",
+      title: "Integrating Strength",
+      subtitle: "Jamuria Plant",
+      description: "Captive Railway Siding established."
     },
     {
       year: "2015",
-      title: "Innovation Hub",
-      subtitle: "R&D Center Launch",
-      description:
-        "Launched our dedicated R&D center to foster innovation and develop new products.",
-      image: ab2,
+      title: "Infrastructure in Motion",
+      subtitle: "Sambalpur Plant",
+      description: "Railway siding operationalized.",
+      image: Img2015,
     },
     {
-      year: "2018",
-      title: "Sustainability Focus",
-      subtitle: "Green Initiative",
-      description:
-        "Implemented comprehensive sustainability programs and eco-friendly processes.",
-      image: ab2,
+      year: "2015",
+      title: "Infrastructure in Motion",
+      subtitle: "Jamuria Plant",
+      description: "Commissioned another Captive Power Plant. Complete integration of Sponge Iron, Billets, and Ferro Alloys. Capacity increased by 0.9 MTPA."
+    },
+    {
+      year: "2016",
+      title: "Scaling New Heights",
+      subtitle: "Sambalpur Plant",
+      description: "Billet capacity increased by 0.27 MTPA."
+    },
+    {
+      year: "2016",
+      title: "Scaling New Heights",
+      subtitle: "Jamuria Plant",
+      description: "Iron Pellets and Billets capacity enhanced by 0.60 MTPA."
+    },
+    {
+      year: "2017",
+      title: "Powering Progress",
+      subtitle: "Sambalpur Plant",
+      description: "Capacity expansion of Sponge Iron and Billets by 0.67 MTPA."
+    },
+    {
+      year: "2017",
+      title: "Crossing the 2.60 MTPA Milestone",
+      subtitle: "Total Metalics' capacity reached 2.60 MTPA",
+      description: "Total Metalics' capacity reached 2.60 MTPA."
+    },
+    {
+      year: "2019",
+      title: "Strengthening the Core",
+      subtitle: "Sambalpur Plant",
+      description: "Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA.",
+      image: Img2019,
+    },
+    {
+      year: "2019",
+      title: "Strengthening the Core",
+      subtitle: "Jamuria Plant",
+      description: "Upgraded key facilities and added 15 MW Captive Power."
     },
     {
       year: "2020",
-      title: "Digital Transformation",
-      subtitle: "Industry 4.0 Adoption",
-      description:
-        "Embraced digital technologies and automated processes for enhanced efficiency.",
-      image: ab2,
+      title: "Resilience and Renewal",
+      subtitle: "Sambalpur Plant",
+      description: "Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant."
+    },
+    {
+      year: "2020",
+      title: "Resilience and Renewal",
+      subtitle: "Jamuria Plant",
+      description: "WHRS & Power expansion. Total Metalics' capacity reached 5.71 MTPA."
     },
     {
       year: "2021",
-      title: "Strategic Partnerships",
-      subtitle: "Global Alliances",
-      description:
-        "Formed strategic partnerships with leading global companies to expand our reach.",
-      image: ab2,
+      title: "Emerging Stronger",
+      subtitle: "-",
+      description: "Expanded TMT & Wire Rod capacities. Launched Aluminium Foil line (4000 TPA). Listed on NSE and BSE, marking a new chapter of trust.",
+      image: Img2021,
     },
     {
       year: "2022",
-      title: "Product Diversification",
-      subtitle: "New Product Lines",
-      description:
-        "Launched new product lines to meet evolving market demands and customer needs.",
-      image: ab2,
+      title: "Diversifying the Future",
+      subtitle: "-",
+      description: "TMT Bar capacity touched 1.17 MTPA. Introduced Roofing Sheets and High Mast Poles. Expanded Aluminium Foil production. Broadened product offerings."
     },
     {
       year: "2023",
-      title: "Market Excellence",
-      subtitle: "Industry Leadership",
-      description:
-        "Achieved market leadership position with record-breaking sales and customer satisfaction.",
-      image: ab2,
+      title: "Innovating for Tomorrow",
+      subtitle: "-",
+      description: "Metal capacity increased to 6.37 MTPA. Launched Crash Barriers and Railway Wagons. Zero-Waste Aluminium Foil line commissioned. Exports expanded to 25+ countries. GreenPro certified, Great Place to Work, and National Export Award recipient."
     },
     {
       year: "2024",
-      title: "Future Vision",
-      subtitle: "Next Generation Solutions",
-      description:
-        "Developing next-generation solutions for future market requirements and challenges.",
-      image: ab2,
+      title: "Leading with Purpose",
+      subtitle: "-",
+      description: "Forayed into Food Grade Aluminium Foils. Commissioned Colour-Coated Roofing Sheet mill. Scaling Railway Wagons and High Mast Poles. First in Eastern India with an Integrated Wagon facility. Certified Clean & Green Manufacturer.",
+      image: Img2024,
     },
     {
       year: "2025",
-      title: "Innovation Drive",
-      subtitle: "Advanced Technologies",
-      description:
-        "Investing in advanced technologies like AI and IoT for smart manufacturing solutions.",
-      image: ab2,
+      title: "Scaling with Next-Gen Transformation",
+      subtitle: "Taratala Corporate HQ, Aluminium Division, Kharagpur Plant, Ductile Iron & Steel Production, Jamuria Plant, Brand Expansion",
+      description: "Established a new 3-acre Corporate Headquarters in Kolkata. Broadened product portfolio with the addition of battery foil and flat rolled aluminium products. Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year. 85% of the power requirement was met via captive generation. Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets. Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme. Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa."
     },
     {
-      year: "2026",
-      title: "Global Leader",
-      subtitle: "Market Domination",
-      description:
-        "Aspiring to become the global leader in our industry segment with innovative products.",
-      image: ab2,
-    },
+      year: "Upcoming",
+      title: "Plan for Upcoming Years…",
+      subtitle: "Product Diversification, Nation-Building Contribution, Market Expansion, Sustainability Commitment, Smart Operations",
+      description: "Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes. Commitment to national infrastructure development. Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up. Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems. Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity."
+    }
   ];
 
   const capabilities = [
@@ -301,10 +335,13 @@ export default function ShyamMetalicsProfile() {
     setClickedMilestone(null);
   };
 
+  // Only start drag if mousedown is on the Drag text
   const handleMouseDown = (e) => {
-    setIsDragging(true);
-    setDragStartX(e.clientX);
-    e.preventDefault();
+    if (dragTextRef.current && dragTextRef.current.contains(e.target)) {
+      setIsDragging(true);
+      setDragStartX(e.clientX);
+      e.preventDefault();
+    }
   };
 
   const handleMouseMove = useCallback(
@@ -352,18 +389,43 @@ export default function ShyamMetalicsProfile() {
     }
   }, [isDragging, handleMouseMove, handleMouseUp]);
 
+  // Orange circle with white 'Drag' text, only the text is draggable
+  const dragTextRef = useRef(null);
   const CarSVG = () => (
-    <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
-      <rect x="5" y="8" width="30" height="8" fill="#f97316" rx="2" />
-      <rect x="8" y="5" width="24" height="6" fill="#ea580c" rx="1" />
-      <circle cx="12" cy="16" r="3" fill="#1f2937" />
-      <circle cx="28" cy="16" r="3" fill="#1f2937" />
-      <circle cx="12" cy="16" r="1.5" fill="#6b7280" />
-      <circle cx="28" cy="16" r="1.5" fill="#6b7280" />
-      <rect x="10" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
-      <rect x="16" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
-      <rect x="22" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
-    </svg>
+    <div style={{ position: "relative", width: 48, height: 48 }}>
+      <div
+        style={{
+          width: 48,
+          height: 48,
+          borderRadius: "50%",
+          background: "orange",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+        }}
+      >
+        <span
+          ref={dragTextRef}
+          style={{
+            color: "#fff",
+            fontWeight: 700,
+            fontSize: 14,
+            textAlign: "center",
+            lineHeight: 1.2,
+            userSelect: "none",
+            cursor: "grab",
+            padding: "6px 16px",
+            borderRadius: "16px",
+            background: "rgba(0,0,0,0.08)",
+            display: "inline-block"
+          }}
+          onMouseDown={handleMouseDown}
+        >
+          Drag
+        </span>
+      </div>
+    </div>
   );
 
   return (
@@ -415,7 +477,7 @@ export default function ShyamMetalicsProfile() {
         {capabilities.map((capability, index) => (
           <div
             key={index}
-            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 capability-item hover:scale-95 transition-transform duration-200 transition-colors"
+            className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 capability-item hover:scale-95 transition-all duration-200"
           >
             <div className="flex justify-center mb-3">
               <img
@@ -442,14 +504,13 @@ export default function ShyamMetalicsProfile() {
           className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0"
         />
 
-        {/* Smooth draggable car */}
+        {/* Smooth draggable orange circle */}
         <div
-          className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20 cursor-grab active:cursor-grabbing"
+          className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20"
           style={{
             left: `${(smoothCarPosition / sliderWidth) * 98}%`,
             transition: isDragging ? "none" : "left 0.1s ease-out",
           }}
-          onMouseDown={handleMouseDown}
         >
           <CarSVG />
         </div>
@@ -470,8 +531,8 @@ export default function ShyamMetalicsProfile() {
             {visibleMilestones.slice(1, 7).map((milestone, i) => {
               const isSmallLine = i % 2 === 1;
               const lineHeight = isSmallLine ? "111px" : "211px";
-              const cardWidth = isSmallLine ? "124.82px" : "139.68px";
-              const cardHeight = isSmallLine ? "90px" : "182.77px";
+              const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+              const cardHeight = isSmallLine ? "90px" : "189.77px";
 
               return (
                 <div
@@ -528,7 +589,7 @@ export default function ShyamMetalicsProfile() {
                             <div
                               className="absolute overflow-hidden"
                               style={{
-                                width: "126.31px",
+                                width: "142.31px",
                                 height: "77.27px",
                                 left: "5px",
                                 top: "105.5px",
@@ -565,8 +626,8 @@ export default function ShyamMetalicsProfile() {
             {visibleMilestones.slice(7, 12).map((milestone, i) => {
               const isSmallLine = i % 2 === 1;
               const lineHeight = isSmallLine ? "111px" : "211px";
-              const cardWidth = isSmallLine ? "124.82px" : "139.68px";
-              const cardHeight = isSmallLine ? "90px" : "182.77px";
+              const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+              const cardHeight = isSmallLine ? "90px" : "189.77px";
 
               return (
                 <div
@@ -623,7 +684,7 @@ export default function ShyamMetalicsProfile() {
                             <div
                               className="absolute overflow-hidden"
                               style={{
-                                width: "126.31px",
+                                width: "142.31px",
                                 height: "77.27px",
                                 left: "5px",
                                 top: "105.5px",
@@ -661,13 +722,7 @@ export default function ShyamMetalicsProfile() {
           ))}
         </div>
 
-        {/* Future label */}
-        <span className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-orange-500 text-base font-bold z-10 cursor-pointer hover:text-orange-600 transition-colors">
-          {showFutureTimeline ? "Future" : "Future"}
-        </span>
-        <span className="absolute left-[70px] top-1/2 transform -translate-y-1/2 text-orange-500 text-base font-bold z-10 cursor-pointer hover:text-orange-600 transition-colors">
-          {showFutureTimeline ? "Early Years" : "Early Years"}
-        </span>
+        {/* Removed Early Years and Future labels */}
       </div>
 
       {/* Popup Modal */}
