@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
+
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
 import ab2 from "../assets/ab2.png";
@@ -13,92 +14,15 @@ import icon5 from "../assets/Icon 5.png";
 import icon6 from "../assets/icon6.png";
 
 export default function ShyamMetalicsProfile() {
-  const milestones1 = [
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-    {
-      year: "1991",
-      title: "The Beginning of a Legacy",
-      subtitle: "Incorporation of Shyam DI and Shyam Alloy",
-    },
-  ];
-
-  const capabilities = [
-    {
-      icon: icon1,
-      title: "Leading Sponge Iron & Pellet Producers",
-      color: "text-orange-600",
-    },
-    {
-      icon: icon2,
-      title: "Integrated Steel Powerhouse",
-      color: "text-blue-600",
-    },
-    {
-      icon: icon3,
-      title: "Leading Ferro Alloys Producer",
-      color: "text-gray-700",
-    },
-    {
-      icon: icon4,
-      title: "Major Aluminium Foil Exporter",
-      color: "text-orange-600",
-    },
-    {
-      icon: icon5,
-      title: "Future-Ready & Globally Aligned",
-      color: "text-orange-600",
-    },
-    {
-      icon: icon6,
-      title: "Driven by Sustainability & Governance",
-      color: "text-orange-600",
-    },
-  ];
   const milestones = [
+    {
+      year: "1991",
+      title: "The Beginning of a Legacy",
+      subtitle: "Incorporation of Shyam SEL and Power Ltd",
+      description:
+        "Started our journey with the incorporation of Shyam SEL and Power Ltd, marking the beginning of our industrial legacy.",
+      image: ab2,
+    },
     {
       year: "1991",
       title: "The Beginning of a Legacy",
@@ -211,30 +135,53 @@ export default function ShyamMetalicsProfile() {
         "Aspiring to become the global leader in our industry segment with innovative products.",
       image: ab2,
     },
+  ];
+
+  const capabilities = [
     {
-      year: "2027",
-      title: "Sustainable Future",
-      subtitle: "Carbon Neutral Goals",
-      description:
-        "Working towards achieving carbon neutrality and sustainable business practices.",
-      image: ab2,
+      icon: icon1,
+      title: "Leading Sponge Iron & Pellet Producers",
+      color: "text-orange-600",
+    },
+    {
+      icon: icon2,
+      title: "Integrated Steel Powerhouse",
+      color: "text-blue-600",
+    },
+    {
+      icon: icon3,
+      title: "Leading Ferro Alloys Producer",
+      color: "text-gray-700",
+    },
+    {
+      icon: icon4,
+      title: "Major Aluminium Foil Exporter",
+      color: "text-orange-600",
+    },
+    {
+      icon: icon5,
+      title: "Future-Ready & Globally Aligned",
+      color: "text-orange-600",
+    },
+    {
+      icon: icon6,
+      title: "Driven by Sustainability & Governance",
+      color: "text-orange-600",
     },
   ];
 
   const [visibleWords, setVisibleWords] = useState(0);
   const sectionRef = useRef(null);
   const [showFutureTimeline, setShowFutureTimeline] = useState(false);
-  const filteredMilestones = showFutureTimeline
-    ? milestones.filter((m) => parseInt(m.year) >= 2023)
-    : milestones;
-  const getVisibleMilestones1 = () => {
-    const visible = [];
-    for (let i = 0; i < 11; i++) {
-      const index = (currentIndex + i) % filteredMilestones.length;
-      visible.push({ ...filteredMilestones[index], originalIndex: index });
-    }
-    return visible;
-  };
+
+  // Updated state for smooth dragging
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [clickedMilestone, setClickedMilestone] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [carPosition, setCarPosition] = useState(0);
+  const [smoothCarPosition, setSmoothCarPosition] = useState(0);
+  const sliderRef = useRef(null);
 
   const paragraph1 =
     "Shyam Metalics is one of India's fastest-growing and most trusted integrated metal producers, with a diversified portfolio spanning carbon steel, stainless steel, ferro alloys, aluminium foil, and long steel products. Headquartered in Kolkata and driven by the ethos of 'Made in India, Made for Bharat,' we are committed to shaping the nation's infrastructure and industrial future through sustainable and scalable growth.";
@@ -246,7 +193,6 @@ export default function ShyamMetalicsProfile() {
       (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {
-          // Calculate total words when component is visible
           const totalWords =
             paragraph1.split(" ").length + paragraph2.split(" ").length;
           let currentWord = 0;
@@ -254,11 +200,10 @@ export default function ShyamMetalicsProfile() {
           const interval = setInterval(() => {
             currentWord += 1;
             setVisibleWords(currentWord);
-
             if (currentWord >= totalWords) {
               clearInterval(interval);
             }
-          }, 50); // Faster animation (50ms per word)
+          }, 50);
 
           return () => clearInterval(interval);
         }
@@ -279,7 +224,6 @@ export default function ShyamMetalicsProfile() {
 
   const AnimatedParagraph = ({ text, startCount }) => {
     const words = text.split(" ");
-
     return (
       <p className="mb-4 text-gray-700 whitespace-normal">
         {words.map((word, index) => {
@@ -293,93 +237,146 @@ export default function ShyamMetalicsProfile() {
               >
                 {word}
               </span>{" "}
-              {/* Explicit space between words */}
             </React.Fragment>
           );
         })}
       </p>
     );
   };
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredMilestone, setHoveredMilestone] = useState(null);
-  const [isPaused, setIsPaused] = useState(false);
-  const [animationOffset, setAnimationOffset] = useState(0);
-  const intervalRef = useRef(null);
-  const [clickedMilestone, setClickedMilestone] = useState(null);
-  // Auto-scroll functionality with smooth continuous animation
+
   useEffect(() => {
-    if (!isPaused) {
-      intervalRef.current = setInterval(() => {
-        setAnimationOffset((prev) => prev - 0.5);
-        if (Math.abs(animationOffset) >= 100) {
-          setAnimationOffset(0);
-          setCurrentIndex((prev) => {
-            const maxIndex = filteredMilestones.length - 11;
-            return prev >= maxIndex ? 0 : prev + 1;
-          });
-        }
-      }, 30);
-    }
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPaused, animationOffset, filteredMilestones.length]);
-  // Get visible milestones (11 items)
-  const getVisibleMilestones = () => {
+    setCurrentIndex(0);
+    setCarPosition(0);
+    setSmoothCarPosition(0);
+  }, [showFutureTimeline]);
+
+  const filteredMilestones = showFutureTimeline
+    ? milestones.filter((m) => parseInt(m.year) >= 2023)
+    : milestones;
+
+  const maxIndex = Math.max(0, filteredMilestones.length - 11);
+  const sliderWidth = 400;
+
+  const getSmoothVisibleMilestones = () => {
     const visible = [];
-    for (let i = 0; i < 11; i++) {
-      const index = (currentIndex + i) % filteredMilestones.length;
-      visible.push({ ...filteredMilestones[index], originalIndex: index });
+    const totalMilestones = filteredMilestones.length;
+    const exactPosition = (smoothCarPosition / sliderWidth) * totalMilestones;
+    const baseIndex = Math.floor(exactPosition);
+    const fraction = exactPosition - baseIndex;
+
+    // 14 cards (11 visible + buffer)
+    for (let i = -1; i < 13; i++) {
+      const index = (baseIndex + i + totalMilestones) % totalMilestones;
+      const milestone = { ...filteredMilestones[index], originalIndex: index };
+
+      milestone.opacity = 1;
+      milestone.scale = 1;
+      milestone.translateX = -fraction * (100 / 11);
+
+      if (i === -1) {
+        milestone.opacity = Math.max(0, 1 - fraction * 1.5);
+        milestone.scale = Math.max(0.7, 1 - fraction * 0.3);
+      } else if (i === 11) {
+        milestone.opacity = Math.max(0, fraction * 1.5);
+        milestone.scale = Math.max(0.7, 0.7 + fraction * 0.3);
+      } else if (i === 12) {
+        milestone.opacity = 0;
+        milestone.scale = 0.7;
+      }
+
+      visible.push(milestone);
     }
+
     return visible;
   };
 
-  const visibleMilestones = getVisibleMilestones();
+  const visibleMilestones = getSmoothVisibleMilestones();
 
-  // Handle hover events - IMPROVED
   const handleCardClick = (milestone) => {
     setClickedMilestone(milestone);
-    setIsPaused(true);
   };
 
-  // 3. Update the popup close handler
   const closePopup = () => {
     setClickedMilestone(null);
-    setIsPaused(false);
   };
 
-  // Navigation functions
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => {
-      const maxIndex = milestones.length - 11;
-      return prev <= 0 ? maxIndex : prev - 1;
-    });
-    setAnimationOffset(0);
+  const handleMouseDown = (e) => {
+    setIsDragging(true);
+    setDragStartX(e.clientX);
+    e.preventDefault();
   };
 
-  const goToNext = () => {
-    setCurrentIndex((prev) => {
-      const maxIndex = milestones.length - 11;
-      return prev >= maxIndex ? 0 : prev + 1;
-    });
-    setAnimationOffset(0);
-  };
+  const handleMouseMove = useCallback(
+    (e) => {
+      if (!isDragging) return;
+
+      const deltaX = e.clientX - dragStartX;
+      const newSmoothPosition = Math.max(
+        0,
+        Math.min(sliderWidth, smoothCarPosition + deltaX)
+      );
+
+      setSmoothCarPosition(newSmoothPosition);
+      setDragStartX(e.clientX);
+
+      const newIndex = Math.round((newSmoothPosition / sliderWidth) * maxIndex);
+      if (newIndex !== currentIndex && newIndex >= 0 && newIndex <= maxIndex) {
+        setCurrentIndex(newIndex);
+        setCarPosition(newSmoothPosition);
+      }
+    },
+    [
+      isDragging,
+      dragStartX,
+      smoothCarPosition,
+      sliderWidth,
+      maxIndex,
+      currentIndex,
+    ]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+    }
+  }, [isDragging, handleMouseMove, handleMouseUp]);
+
+  const CarSVG = () => (
+    <svg width="40" height="20" viewBox="0 0 40 20" fill="none">
+      <rect x="5" y="8" width="30" height="8" fill="#f97316" rx="2" />
+      <rect x="8" y="5" width="24" height="6" fill="#ea580c" rx="1" />
+      <circle cx="12" cy="16" r="3" fill="#1f2937" />
+      <circle cx="28" cy="16" r="3" fill="#1f2937" />
+      <circle cx="12" cy="16" r="1.5" fill="#6b7280" />
+      <circle cx="28" cy="16" r="1.5" fill="#6b7280" />
+      <rect x="10" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
+      <rect x="16" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
+      <rect x="22" y="6" width="4" height="3" fill="#60a5fa" rx="0.5" />
+    </svg>
+  );
 
   return (
-    <div className="max-w-7xl  mx-[10%] py-[2%] bg-white" ref={sectionRef}>
+    <div className="max-w-7xl mx-[10%] py-[2%] bg-white" ref={sectionRef}>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        {/* Left Section */}
         <div className="space-y-6">
           <div>
-            <h1 className="text-gray-900  text-header-style mb-2 text-3xl font-semibold">
+            <h1 className="text-gray-900 text-header-style mb-2 text-3xl font-semibold">
               Who are <span className="text-orange-500">we?</span>
             </h1>
           </div>
 
           <div>
-            <h2 className="text-orange-500 text-header-style   mb-2 text-2xl font-semibold">
+            <h2 className="text-orange-500 text-header-style mb-2 text-2xl font-semibold">
               Shyam Metalics:{" "}
               <span className="text-gray-900">
                 India's Leading Integrated Metal Conglomerate
@@ -400,7 +397,6 @@ export default function ShyamMetalicsProfile() {
           </div>
         </div>
 
-        {/* Right Section - Industrial Image */}
         <div className="relative h-full min-h-[386px]">
           <img
             src={ab1}
@@ -411,7 +407,6 @@ export default function ShyamMetalicsProfile() {
           <div className="absolute inset-0 bg-black bg-opacity-40 rounded-lg" />
         </div>
       </div>
-      {/* Capabilities Grid */}
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
         {capabilities.map((capability, index) => (
@@ -420,7 +415,6 @@ export default function ShyamMetalicsProfile() {
             className="text-center p-4 bg-gray-50 rounded-lg hover:bg-gray-100 capability-item hover:scale-95 transition-transform duration-200 transition-colors"
           >
             <div className="flex justify-center mb-3">
-              {/* Use img tag instead of component */}
               <img
                 src={capability.icon}
                 alt={capability.title}
@@ -434,7 +428,10 @@ export default function ShyamMetalicsProfile() {
         ))}
       </div>
 
-      <div className="relative w-full h-[450px] overflow-hidden">
+      <div
+        className="relative w-full h-[450px] overflow-hidden"
+        style={{ userSelect: "none" }}
+      >
         {/* Vector arrow background */}
         <img
           src={vector8}
@@ -442,164 +439,208 @@ export default function ShyamMetalicsProfile() {
           className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0"
         />
 
-        {/* Top vertical lines and milestone containers */}
+        {/* Smooth draggable car */}
         <div
-          className="absolute inset-0 transition-transform duration-75 ease-linear"
+          className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20 cursor-grab active:cursor-grabbing"
           style={{
-            transform: `translateX(${animationOffset}px)`,
+            left: `${(smoothCarPosition / sliderWidth) * 98}%`,
+            transition: isDragging ? "none" : "left 0.1s ease-out",
           }}
+          onMouseDown={handleMouseDown}
         >
-          {/* Top vertical lines and milestone containers - ORIGINAL LAYOUT */}
+          <CarSVG />
+        </div>
+
+        {/* Smooth milestone containers */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Top milestones */}
           <div
-            className="absolute left-[-60px] w-full flex justify-around items-end px-2 z-10"
-            style={{ bottom: "calc(50% + 10px)" }}
-          >
-            {visibleMilestones.slice(0, 6).map((milestone, i) => (
-              <div
-                key={`top-${milestone.originalIndex}`}
-                className="relative transition-all duration-300 ease-in-out"
-                style={{
-                  width: "1.5px",
-                  height: i % 2 === 0 ? "211px" : "111px",
-                }}
-              >
-                {/* Vertical line */}
-                <div className="absolute bottom-0 w-full h-full bg-black"></div>
-
-                {/* Milestone container - Wrapped in a div that handles hover */}
-                <div
-                  className="relative cursor-pointer"
-                  onClick={() => handleCardClick(milestone)}
-                >
-                  <div
-                    className={`absolute bg-white transition-all duration-300 cursor-pointer ${
-                      hoveredMilestone?.originalIndex ===
-                      milestone.originalIndex
-                        ? "scale-110 border-orange-500 shadow-xl"
-                        : "border-gray-200 hover:border-orange-300"
-                    }`}
-                    style={{
-                      width: i % 2 === 0 ? "139.68px" : "124.82px",
-                      height: i % 2 === 0 ? "182.77px" : "90px",
-                      left: "5px",
-                      top: i % 2 === 0 ? "px" : "5px",
-                      borderRadius: "3.71px",
-                    }}
-                  >
-                    {/* Text content */}
-                    <div className="p-2">
-                      <div className="text-orange-500 font-bold text-sm mb-1">
-                        {milestone.year}
-                      </div>
-                      <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                        {milestone.title}
-                      </div>
-                      <div className="text-gray-600 text-xs leading-tight">
-                        {milestone.subtitle}
-                      </div>
-                    </div>
-
-                    {/* Image container (only for big containers) */}
-                    {i % 2 === 0 && (
-                      <div
-                        className="absolute overflow-hidden"
-                        style={{
-                          width: "126.31px",
-                          height: "77.27px",
-                          left: "5px",
-                          top: "105.5px",
-                          borderRadius: "3.71px",
-                        }}
-                      >
-                        <img
-                          src={milestone.image}
-                          alt={milestone.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Bottom vertical lines and milestone containers - ORIGINAL LAYOUT */}
-          <div
-            className="absolute left-[-150px] w-full flex justify-around items-start px-2 z-10"
+            className="absolute left-[-60px] w-[calc(100%+120px)] flex items-end z-10"
             style={{
-              top: "calc(50% + 10px)",
-              transform: "translateX(calc(100% / 12))",
+              bottom: "calc(50% + 10px)",
+              transform: `translateX(${
+                visibleMilestones[0]?.translateX || 0
+              }%)`,
+              transition: isDragging ? "none" : "transform 0.15s ease-out",
             }}
           >
-            {visibleMilestones.slice(6, 11).map((milestone, i) => (
-              <div
-                key={`bottom-${milestone.originalIndex}`}
-                className="relative transition-all duration-300 ease-in-out"
-                style={{
-                  width: "1.5px",
-                  height: i % 2 === 0 ? "211px" : "111px",
-                }}
-              >
-                {/* Vertical line */}
-                <div className="absolute top-0 w-full h-full bg-black"></div>
+            {visibleMilestones.slice(1, 7).map((milestone, i) => {
+              const isSmallLine = i % 2 === 1;
+              const lineHeight = isSmallLine ? "111px" : "211px";
+              const cardWidth = isSmallLine ? "124.82px" : "139.68px";
+              const cardHeight = isSmallLine ? "90px" : "182.77px";
 
-                {/* Milestone container - Wrapped in a div that handles hover */}
+              return (
                 <div
-                  className="relative cursor-pointer"
-                  onClick={() => handleCardClick(milestone)}
+                  key={`top-${milestone.originalIndex}-${Math.floor(
+                    smoothCarPosition
+                  )}`}
+                  className="flex-shrink-0"
+                  style={{
+                    width: `${100 / 6}%`,
+                    display: "flex",
+                    justifyContent: "center",
+                    opacity: milestone.opacity,
+                    transform: `scale(${milestone.scale})`,
+                    transition: isDragging
+                      ? "none"
+                      : "opacity 0.3s ease-out, transform 0.3s ease-out",
+                  }}
                 >
-                  <div
-                    className={`absolute bg-white  transition-all duration-300 cursor-pointer ${
-                      hoveredMilestone?.originalIndex ===
-                      milestone.originalIndex
-                        ? "scale-110 border-orange-500 shadow-xl"
-                        : "border-gray-200 hover:border-orange-300"
-                    }`}
-                    style={{
-                      width: i % 2 === 0 ? "139.68px" : "124.82px",
-                      height: i % 2 === 0 ? "182.77px" : "90px",
-                      left: "5px",
-                      top: "10px",
-                      borderRadius: "3.71px",
-                    }}
-                  >
-                    {/* Text content */}
-                    <div className="p-2">
-                      <div className="text-orange-500 font-bold text-sm mb-1">
-                        {milestone.year}
-                      </div>
-                      <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
-                        {milestone.title}
-                      </div>
-                      <div className="text-gray-600 text-xs leading-tight">
-                        {milestone.subtitle}
+                  <div className="relative">
+                    <div
+                      className="relative"
+                      style={{
+                        width: "1.5px",
+                        height: lineHeight,
+                      }}
+                    >
+                      <div className="absolute bottom-0 w-full h-full bg-black"></div>
+                      <div
+                        className="relative cursor-pointer"
+                        onClick={() => handleCardClick(milestone)}
+                      >
+                        <div
+                          className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                          style={{
+                            width: cardWidth,
+                            height: cardHeight,
+                            left: "5px",
+                            top: isSmallLine ? "5px" : "0px",
+                            borderRadius: "3.71px",
+                          }}
+                        >
+                          <div className="p-2">
+                            <div className="text-orange-500 font-bold text-sm mb-1">
+                              {milestone.year}
+                            </div>
+                            <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                              {milestone.title}
+                            </div>
+                            <div className="text-gray-600 text-xs leading-tight">
+                              {milestone.subtitle}
+                            </div>
+                          </div>
+                          {!isSmallLine && (
+                            <div
+                              className="absolute overflow-hidden"
+                              style={{
+                                width: "126.31px",
+                                height: "77.27px",
+                                left: "5px",
+                                top: "105.5px",
+                                borderRadius: "3.71px",
+                              }}
+                            >
+                              <img
+                                src={milestone.image}
+                                alt={milestone.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
-
-                    {/* Image container (only for big containers) */}
-                    {i % 2 === 0 && (
-                      <div
-                        className="absolute overflow-hidden"
-                        style={{
-                          width: "126.31px",
-                          height: "77.27px",
-                          left: "5px",
-                          top: "105.5px",
-                          borderRadius: "3.71px",
-                        }}
-                      >
-                        <img
-                          src={milestone.image}
-                          alt={milestone.title}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Bottom milestones */}
+          <div
+            className="absolute left-[-60px] w-[calc(100%+120px)] flex items-start z-10"
+            style={{
+              top: "calc(50% + 10px)",
+              transform: `translateX(${
+                (visibleMilestones[0]?.translateX || 0) + 100 / 12
+              }%)`,
+              transition: isDragging ? "none" : "transform 0.15s ease-out",
+            }}
+          >
+            {visibleMilestones.slice(7, 12).map((milestone, i) => {
+              const isSmallLine = i % 2 === 1;
+              const lineHeight = isSmallLine ? "111px" : "211px";
+              const cardWidth = isSmallLine ? "124.82px" : "139.68px";
+              const cardHeight = isSmallLine ? "90px" : "182.77px";
+
+              return (
+                <div
+                  key={`bottom-${milestone.originalIndex}-${Math.floor(
+                    smoothCarPosition
+                  )}`}
+                  className="flex-shrink-0"
+                  style={{
+                    width: `${100 / 5}%`,
+                    display: "flex",
+                    justifyContent: "center",
+                    opacity: milestone.opacity,
+                    transform: `scale(${milestone.scale})`,
+                    transition: isDragging
+                      ? "none"
+                      : "opacity 0.3s ease-out, transform 0.3s ease-out",
+                  }}
+                >
+                  <div className="relative">
+                    <div
+                      className="relative"
+                      style={{
+                        width: "1.5px",
+                        height: lineHeight,
+                      }}
+                    >
+                      <div className="absolute top-0 w-full h-full bg-black"></div>
+                      <div
+                        className="relative cursor-pointer"
+                        onClick={() => handleCardClick(milestone)}
+                      >
+                        <div
+                          className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                          style={{
+                            width: cardWidth,
+                            height: cardHeight,
+                            left: "5px",
+                            top: "10px",
+                            borderRadius: "3.71px",
+                          }}
+                        >
+                          <div className="p-2">
+                            <div className="text-orange-500 font-bold text-sm mb-1">
+                              {milestone.year}
+                            </div>
+                            <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                              {milestone.title}
+                            </div>
+                            <div className="text-gray-600 text-xs leading-tight">
+                              {milestone.subtitle}
+                            </div>
+                          </div>
+                          {!isSmallLine && (
+                            <div
+                              className="absolute overflow-hidden"
+                              style={{
+                                width: "126.31px",
+                                height: "77.27px",
+                                left: "5px",
+                                top: "105.5px",
+                                borderRadius: "3.71px",
+                              }}
+                            >
+                              <img
+                                src={milestone.image}
+                                alt={milestone.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
 
@@ -618,23 +659,15 @@ export default function ShyamMetalicsProfile() {
         </div>
 
         {/* Future label */}
-        <span
-          className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-white text-base font-bold z-10 cursor-pointer hover:text-orange-300 transition-colors"
-          onClick={() => {
-            setShowFutureTimeline(!showFutureTimeline);
-            setCurrentIndex(0); // Reset to first item
-            setAnimationOffset(0); // Reset animation
-          }}
-        >
+        <span className="absolute right-[70px] top-1/2 transform -translate-y-1/2 text-orange-500 text-base font-bold z-10 cursor-pointer hover:text-orange-600 transition-colors">
           {showFutureTimeline ? "Future" : "Future"}
         </span>
-
-        {/* Navigation arrows */}
-
-        {/* Progress indicator */}
+        <span className="absolute left-[70px] top-1/2 transform -translate-y-1/2 text-orange-500 text-base font-bold z-10 cursor-pointer hover:text-orange-600 transition-colors">
+          {showFutureTimeline ? "Early Years" : "Early Years"}
+        </span>
       </div>
 
-      {/* Fixed Popup - PROPER CLOSE FUNCTIONALITY */}
+      {/* Popup Modal */}
       {clickedMilestone && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-2xl">
@@ -652,7 +685,7 @@ export default function ShyamMetalicsProfile() {
               </div>
               <button
                 onClick={closePopup}
-                className="text-gray-500 hover:text-gray-700 text-xl font-bold transition-colors duration-200 p-4"
+                className="text-gray-500 hover:text-gray-700 text-xl font-bold transition-colors duration-200 p-1"
               >
                 ×
               </button>
