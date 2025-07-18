@@ -107,7 +107,7 @@ const StatsCard = () => {
             key={index}
             className="text-center flex-1 relative flex flex-col justify-between h-full px-2 md:px-0"
           >
-            <div className="font-poppins text-black-600 text-[16.34px] text-sm font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center px-1">
+            <div className="font-inter text-black-600 text-base font-semibold mb-1.5 whitespace-pre-line leading-5 min-h-[40px] flex items-center justify-center px-1">
               {stat.title}
             </div>
             <div className="text-orange-500 font-lemon-milk font-bold text-[25px] leading-[1.4] tracking-normal min-h-[40px] flex items-center justify-center">

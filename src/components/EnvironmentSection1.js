@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import video from "../assets/sus_home.mp4";
 import cloud from "../assets/env/3.png";
 import green from "../assets/env/1.png";
@@ -7,7 +7,50 @@ import earth from "../assets/env/2.png";
 const VideoHoverSection = () => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
+  const [actualImpact, setActualImpact] = useState(0);
+  const [offsets, setOffsets] = useState(0);
+  const [netImpact, setNetImpact] = useState(0);
 
+  // Counter animation function
+  const animateCounter = (target, setter, duration = 2000) => {
+    let start = 0;
+    const increment = target / (duration / 16); // 60fps
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        setter(target);
+        clearInterval(timer);
+      } else {
+        setter(Math.ceil(start));
+      }
+    }, 16);
+  };
+
+  // Start and repeat counters every 8 seconds
+  useEffect(() => {
+    const targetValues = {
+      actual: 314519,
+      offsets: 219482,
+      net: 95037
+    };
+
+    const animateAll = () => {
+      animateCounter(targetValues.actual, setActualImpact);
+      animateCounter(targetValues.offsets, setOffsets);
+      animateCounter(targetValues.net, setNetImpact);
+    };
+
+    // Initial animation
+    animateAll();
+
+    // Repeat every 8 seconds
+    const interval = setInterval(animateAll, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Rest of your existing useEffect for video handling
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.preload = "auto";
@@ -79,7 +122,9 @@ const VideoHoverSection = () => {
             <p className="text-lg font-medium text-white mt-4">
               2021 ACTUAL IMPACT
             </p>
-            <p className="text-5xl font-bold text-white my-4">314,519</p>
+            <p className="text-5xl font-bold text-white my-4">
+              {actualImpact.toLocaleString()}
+            </p>
             <p className="text-lg text-white/80">MtCO₂e</p>
           </div>
 
@@ -90,7 +135,9 @@ const VideoHoverSection = () => {
           <div className="text-center min-w-[200px] flex flex-col items-center py-[50px]">
             <img src={green} alt="Green" className="w-[100px] h-18" />
             <p className="text-lg font-medium text-white mt-4">2021 OFFSETS</p>
-            <p className="text-5xl font-bold text-white my-4">219,482</p>
+            <p className="text-5xl font-bold text-white my-4">
+              {offsets.toLocaleString()}
+            </p>
             <p className="text-lg text-white/80">MtCO₂e</p>
           </div>
 
@@ -103,7 +150,9 @@ const VideoHoverSection = () => {
             <p className="text-lg font-medium text-white mt-4">
               2021 NET IMPACT
             </p>
-            <p className="text-5xl font-bold text-white my-4">95,037</p>
+            <p className="text-5xl font-bold text-white my-4">
+              {netImpact.toLocaleString()}
+            </p>
             <p className="text-lg text-white/80">MtCO₂e</p>
           </div>
 

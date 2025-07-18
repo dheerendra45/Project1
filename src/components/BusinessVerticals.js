@@ -94,7 +94,7 @@ function BusinessVerticals() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: false, amount: 0.3 }}
-                    className="text-gray-100 font-normal text-base leading-[16px] tracking-normal font-['Inter'] mb-4 md:mb-6  md:text-sm text-left flex flex-wrap gap-x-1"
+                    className="text-gray-100 font-normal text-base leading-[16px] tracking-normal font-['Inter'] mb-4 md:mb-6  md:text- text-center flex flex-wrap gap-x-1"
                   >
                     {vertical.description.split(" ").map((word, idx) => (
                       <motion.span key={idx} variants={wordItem}>
