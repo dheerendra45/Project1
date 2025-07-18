@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -205,9 +206,11 @@ const AchievementsSection = () => {
 
           {/* View All - Fixed position */}
           <div className="w-[125px] h-[48px] mt-8">
-            <button className="w-full h-full bg-orange-500 text-white rounded hover:bg-orange-600 transition">
-              View All
-            </button>
+            <Link to="/awardsAndachievements">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+                View All
+              </button>
+            </Link>
           </div>
         </div>
       </div>

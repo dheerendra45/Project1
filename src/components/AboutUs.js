@@ -1,6 +1,7 @@
 import React from "react";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
@@ -225,7 +226,7 @@ export default function ShyamMetalicsProfile() {
   const AnimatedParagraph = ({ text, startCount }) => {
     const words = text.split(" ");
     return (
-      <p className="mb-4 text-gray-700 whitespace-normal">
+      <p className="mb-4 text-gray-700 text-base whitespace-normal">
         {words.map((word, index) => {
           const globalIndex = startCount + index;
           return (
@@ -390,9 +391,11 @@ export default function ShyamMetalicsProfile() {
             />
 
             <div className="mt-4">
-              <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-                Read More →
-              </button>
+              <Link to="/leadership">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+                  Read More →
+                </button>
+              </Link>
             </div>
           </div>
         </div>

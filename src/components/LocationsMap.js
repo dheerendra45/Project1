@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import worldExport from "../assets/asia map.mp4";
 import indiaMapVideo from "../assets/IndiaMap1.mp4";
+import { Link } from "react-router-dom";
 
 function LocationsMap() {
   const sectionRef = useRef(null);
@@ -118,26 +119,28 @@ function LocationsMap() {
               Metric Verified Data (2023-24)
             </p>
           </div>
-          <motion.button
-            className="flex items-center bg-orange-500 text-white px-5 py-2 rounded border-2 border-white transition-colors self-start sm:self-auto"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View Global Presence
-            <motion.span
-              className="ml-2 bg-white text-orange-500 rounded border-2 w-6 h-6 flex items-center justify-center text-xl font-extrabold"
-              animate={{
-                x: [0, 5, 0],
-                transition: {
-                  repeat: Infinity,
-                  duration: 2,
-                  ease: "easeInOut",
-                },
-              }}
+          <Link to="/LocationPage">
+            <motion.button
+              className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base flex items-center"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              →
-            </motion.span>
-          </motion.button>
+              View Global Presence
+              <motion.span
+                className="ml-2 bg-white text-orange-500 rounded-full border-2 w-6 h-6 flex items-center justify-center text-xl font-extrabold"
+                animate={{
+                  x: [0, 5, 0],
+                  transition: {
+                    repeat: Infinity,
+                    duration: 2,
+                    ease: "easeInOut",
+                  },
+                }}
+              >
+                →
+              </motion.span>
+            </motion.button>
+          </Link>
         </motion.div>
 
         {/* Animated Stats Row */}

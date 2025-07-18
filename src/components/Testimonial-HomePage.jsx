@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 const wordContainer = {
   hidden: {},
   visible: {
@@ -114,9 +116,11 @@ const TestimonialsSection = () => {
                   ))}
               </motion.div>
 
-              <button className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded font-medium transition-colors mt-8">
-                View More
-              </button>
+              <Link to="/testimonials">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+                  View More
+                </button>
+              </Link>
             </div>
           </div>
 

@@ -4,7 +4,7 @@ import a2 from "../assets/products/herobg.png";
 import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
 import a5 from "../assets/business4.png";
-
+import { Link } from "react-router-dom";
 import sswirerod1 from "../assets/products/sswire.png";
 import ss from "../assets/products/ss.png";
 import e1 from "../assets/e1.jpg";
@@ -68,85 +68,116 @@ export default function BusinessAreas({ id }) {
       {
         name: "Pellet",
         desc: "High-quality iron ore pellets for steel production",
+        href: "/pellet",
       },
       {
         name: "Sponge Iron",
         desc: "Direct reduced iron used as raw material in steelmaking",
+        href: "/sponge_iron",
       },
-      { name: "Pig Iron", desc: "Crude iron obtained from smelting iron ore" },
+      {
+        name: "Pig Iron",
+        desc: "Crude iron obtained from smelting iron ore",
+        href: "/pig_iron",
+      },
       {
         name: "Billet",
         desc: "Semi-finished casting product for rolling mills",
+        href: "/billets",
       },
       {
         name: "Structural Steel",
         desc: "Versatile steel sections for construction projects",
+        href: "/structural_steel",
       },
       {
         name: "TMT Bars",
         desc: "Thermo-mechanically treated bars for reinforced concrete",
+        href: "/tmt_bars",
       },
-      { name: "Wire Rods", desc: "Long steel product used for wire drawing" },
+      {
+        name: "Wire Rods",
+        desc: "Long steel product used for wire drawing",
+        href: "/wire_rods",
+      },
       {
         name: "Pipes & Hollow Sections",
         desc: "Steel tubes for structural and mechanical applications",
+        href: "/pipes_hollow_sections",
       },
       {
         name: "Color Coated Sheets",
         desc: "Pre-painted steel sheets with decorative finishes",
+        href: "/color_coated_sheets",
       },
       {
         name: "Stainless Steel Billets",
         desc: "High-quality stainless steel intermediate product",
+        href: "/stainless_steel_billets",
       },
-      { name: "SS Wire Rod", desc: "Stainless steel rods for wire production" },
+      {
+        name: "SS Wire Rod",
+        desc: "Stainless steel rods for wire production",
+        href: "/SS_Wire_Rod",
+      },
       {
         name: "SS Wire",
         desc: "Fine stainless steel wires for various applications",
+        href: "#", // No specific href found in navItems
       },
       {
         name: "Black Round Bar",
         desc: "Unpolished steel bars for machining purposes",
+        href: "/blackround_bar",
       },
       {
         name: "Bright Bar",
         desc: "Precision-ground steel bars with smooth finish",
+        href: "/bright_bar",
       },
       {
         name: "Flats/Patta",
         desc: "Flat steel products for fabrication and construction",
+        href: "/flats",
       },
       {
         name: "Flat Rolled Products",
         desc: "Rolled steel sheets and plates for industrial use",
+        href: "#", // No specific href found in navItems
       },
     ],
     Aluminium: [
       {
         name: "SEL TIGER FOIL–KITCHEN Foil",
         desc: "Premium quality kitchen aluminum foil for domestic use",
+        href: "#", // From navItems subItems
       },
       {
         name: "Bare Aluminium Foil",
         desc: "Versatile aluminum foil for packaging and industrial applications",
+        href: "#", // From navItems subItems
       },
       {
         name: "Battery Foil",
         desc: "High-performance aluminum foil for battery manufacturing",
+        href: "#", // From navItems subItems
       },
       {
         name: "FinStocks",
         desc: "Durable aluminum foil for HVAC and heat exchanger applications",
+        href: "#", // From navItems subItems
       },
     ],
     "Energy and Others": [
       {
         name: "Captive Power",
         desc: "Dedicated power generation for industrial operations",
+        href: "/capatve-power",
       },
       {
         name: "Renewable Power",
         desc: "Sustainable energy solutions including solar and wind power",
+        href: "/renewable-power",
       },
     ],
   };
@@ -160,10 +191,10 @@ export default function BusinessAreas({ id }) {
         image,
         name: product.name,
         description: product.desc,
+        href: product.href, // Use the href from productData
       };
     });
   };
-
   const allImageSets = {
     "Iron and Steel": [
       generateImageSet(productData["Iron and Steel"]),
@@ -310,12 +341,11 @@ export default function BusinessAreas({ id }) {
         </div>
 
         <div className="text-center mt-8">
-          <a
-            href="/business"
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-8 rounded border-2 bortransition-colors duration-300 shadow-lg"
-          >
-            View More
-          </a>
+          <Link to="/business">
+            <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+              Explore All →
+            </button>
+          </Link>
         </div>
       </div>
     </div>

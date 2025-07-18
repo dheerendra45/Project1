@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 // Import your images
 import energy from "../assets/energy.png";
@@ -103,25 +104,23 @@ function BusinessVerticals() {
                     ))}
                   </motion.div>
 
-                  <div className="mt-auto">
-                    <button className="inline-flex items-center mb-[4%] px-3 py-1 md:px-4 md:py-2 bg-orange-500 text-white text-sm md:text-base font-medium rounded hover:bg-orange-600 transition-colors shadow-lg">
-                      {vertical.cta}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-3 w-3 md:h-4 md:w-4 ml-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  </div>
+                  <button className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-orange-500 text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-lg border border-white w-fit">
+                    {vertical.cta}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-4 w-4 ml-2"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
                 </div>
 
                 <div className="absolute inset-0 bg-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -141,9 +140,11 @@ function BusinessVerticals() {
           }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          <button className="inline-flex items-center px-4 py-2 md:px-6 md:py-3 border border-transparent text-sm md:text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 transition-colors shadow-lg">
-            Explore All →
-          </button>
+          <Link to="/business">
+            <button className="inline-flex items-center px-6 py-3 bg-orange-500 text-white text-base font-semibold rounded-lg hover:bg-orange-600 transition-colors shadow-lg w-fit">
+              Explore All →
+            </button>
+          </Link>
         </motion.div>
       </div>
     </div>

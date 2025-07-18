@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-
+import { Link } from "react-router-dom";
 // Import your assets
 import csr1 from "../assets/csr1.png";
 import csr2 from "../assets/csr2.png";
@@ -230,10 +230,11 @@ const CSRPage = () => {
                   </motion.span>
                 ))}
             </motion.div>
-
-            <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-md transition-colors duration-200 shadow-md text-sm mt-2 w-fit">
-              Learn More About Our Impact
-            </button>
+            <Link to="/csr">
+              <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+                Learn More About Our Impact
+              </button>
+            </Link>
           </div>
         </div>
       </div>
