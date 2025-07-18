@@ -307,6 +307,13 @@ export default function BusinessAreas({ id }) {
               key={`image-${index}-${currentSetIndex}`}
               className="w-full h-[208px] bg-white rounded-lg shadow-none relative overflow-hidden group"
             >
+              {/* Clickable Link overlay */}
+              <Link
+                to={item.href}
+                className="absolute inset-0 z-10"
+                aria-label={`View ${item.name}`}
+              />
+
               {/* Hover Orange Overlay */}
               <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-r from-orange-300/70 to-transparent rounded-lg" />
@@ -329,10 +336,15 @@ export default function BusinessAreas({ id }) {
                 {item.description}
               </p>
 
-              {/* Button */}
+              {/* Button - now properly handles click */}
               <button
                 className="absolute top-[136px] left-[20px] w-[40px] h-[40px] bg-orange-500 text-white text-lg rounded-[4px] flex items-center justify-center z-20"
-                onClick={nextSlide}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  nextSlide();
+                }}
+                aria-label="Next slide"
               >
                 &gt;
               </button>
