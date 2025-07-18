@@ -1,8 +1,6 @@
-// src/components/ContactBar.jsx
 import React, { useEffect, useState } from "react";
-import { Phone, MessageSquare, HelpCircle } from "lucide-react"; // Icons
+import { Phone, MessageSquare, HelpCircle } from "lucide-react";
 
-// WhatsApp SVG icon component
 const WhatsAppIcon = () => (
   <svg
     width="20"
@@ -18,7 +16,6 @@ const WhatsAppIcon = () => (
 const ContactBar = () => {
   const [showBar, setShowBar] = useState(false);
 
-  // Show bar only after scrolling down
   useEffect(() => {
     const handleScroll = () => {
       setShowBar(window.scrollY > 100);
@@ -28,7 +25,6 @@ const ContactBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handlers for each button
   const handleWhatsAppClick = () => {
     const whatsappNumber = "919876543210";
     const message = "Hi, I would like to know more about your services!";
@@ -52,7 +48,6 @@ const ContactBar = () => {
     console.log("Enquire clicked");
   };
 
-  // Buttons configuration
   const buttonConfig = [
     {
       id: "call",
@@ -80,17 +75,16 @@ const ContactBar = () => {
     },
   ];
 
-  // Don't show bar at the top of the page
   if (!showBar) return null;
 
   return (
-    <div className="fixed bottom-10 left-0 right-0 flex justify-center z-50">
-      <div className="bg-white rounded-lg border-t border-gray-200 shadow-md w-full max-w-[400px] px-2 py-2 flex justify-between gap-2">
+    <div className="fixed right-0 top-[calc(50%+10px)] transform -translate-y-1/2 z-50">
+      <div className="bg-white rounded-lg border border-gray-200 shadow-md px-2 py-4 flex flex-col gap-4">
         {buttonConfig.map((button) => (
           <button
             key={button.id}
             onClick={button.onClick}
-            className="flex flex-col items-center text-orange-500 hover:text-gray-800 transition-colors gap-1 flex-1"
+            className="flex flex-col items-center text-orange-500 hover:text-gray-800 transition-colors gap-1 py-[5%]"
           >
             {button.icon}
             <span className="text-[11px]">{button.text}</span>

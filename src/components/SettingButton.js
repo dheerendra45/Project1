@@ -6,7 +6,7 @@ const SettingButton = ({ onClick, className = "" }) => {
     <button
       onClick={onClick}
       className={`
-  fixed top-1/2 -translate-y-1/2 right-0
+  fixed top-[calc(18%+1px)] -translate-y-1/2 right-0
   w-[52px] h-[52px] 
   bg-[#EE741D] 
   rounded-l-lg 
