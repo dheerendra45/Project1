@@ -234,7 +234,7 @@ const SharePriceSection = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex gap-6 mt-6 text-orange-500 text-sm font-medium">
+      <div className="flex gap-6 mt-6 text-orange-500 text-base font-medium">
         <div className="flex items-center gap-2 cursor-pointer hover:text-orange-600 transition-colors duration-200">
           <LineChart className="w-4 h-4" />
           <span>Share monitor</span>

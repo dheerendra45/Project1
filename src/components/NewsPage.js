@@ -170,7 +170,7 @@ const NewsPage = () => {
                 <span>2 Comments</span>
               </div>
               <motion.div
-                className="text-gray-700 text-sm text-paragraph-style flex flex-wrap gap-x-[4px]"
+                className="text-gray-700  font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex flex-wrap gap-x-[4px]"
                 style={{ lineHeight: "22px", letterSpacing: "-0.5px" }}
                 variants={wordContainer}
                 initial="hidden"
@@ -242,7 +242,7 @@ const NewsPage = () => {
                 <span>3 Comments</span>
               </div>
               <motion.div
-                className="text-gray-700 text-paragraph-style text-sm flex flex-wrap gap-x-[4px]"
+                className="text-gray-700 font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex flex-wrap gap-x-[4px]"
                 style={{ lineHeight: "22px", letterSpacing: "-0.5px" }}
                 variants={wordContainer}
                 initial="hidden"

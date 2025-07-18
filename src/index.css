@@ -34,7 +34,7 @@
   }
 
   .text-paragraph-style {
-    @apply font-['Inter'] font-normal text-[18px] leading-[28px] align-middle;
+    @apply font-['Inter'] font-normal text-[16px] leading-[28px] align-middle;
   }
 }
 

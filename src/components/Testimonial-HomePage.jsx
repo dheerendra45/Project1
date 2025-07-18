@@ -85,7 +85,7 @@ const TestimonialsSection = () => {
 
             <div className="space-y-4">
               <motion.div
-                className="text-gray-600 leading-relaxed flex flex-wrap gap-x-[4px]"
+                className="text-gray-600 font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex flex-wrap gap-x-[4px]"
                 style={{ letterSpacing: "-0.3px" }}
                 variants={wordContainer}
                 initial="hidden"

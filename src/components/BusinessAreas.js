@@ -294,7 +294,7 @@ export default function BusinessAreas({ id }) {
               </h3>
 
               {/* Subheader */}
-              <p className="absolute top-[60px] left-[20px] w-[calc(100%-40px)] h-[53px] text-gray-700 text-[14px] leading-[18px] z-20">
+              <p className="absolute top-[60px] left-[20px] w-[calc(100%-40px)] h-[53px] text-gray-700 text-[16px] leading-[18px] z-20">
                 {item.description}
               </p>
 
