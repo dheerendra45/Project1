@@ -651,7 +651,7 @@ const Navbar = () => {
       {/* Main Navbar Container */}
       <div
         className={`relative z-30 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : ""
+          isScrolled ? "bg-gray-100 shadow-md" : ""
         }`}
       >
         {/* Gradient overlay - only visible when not scrolled */}
@@ -725,7 +725,7 @@ const Navbar = () => {
                         </div>
                       </>
                     )}
-                    <div className="absolute bottom-0 left-[0px] right-0 h-px bg-white z-20"></div>
+                    <div className="absolute bottom-0 left-[0px] right-0 h-px bg-gray-100 z-20"></div>
                   </div>
 
                   <div className="flex items-center gap-3">
@@ -756,7 +756,7 @@ const Navbar = () => {
             <div
               ref={dropdownRef}
               className={`w-full h-[70px] flex items-center justify-between px-4 lg:px-8 relative z-30 ${
-                isScrolled ? "bg-white" : ""
+                isScrolled ? "bg-gray-100" : ""
               }`}
             >
               {/* Navigation Menu - hidden on mobile */}

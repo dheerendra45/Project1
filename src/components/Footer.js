@@ -60,8 +60,8 @@ const Footer = () => {
       links: ["Iron and Steel", "Energy & Others", "Aluminum"],
       extraSections: [
         {
-          title: "Our Products",
-          links: ["Iron and Steel", "Energy & Others", "Aluminum"],
+          title: "Community",
+          links: ["CSR", "Knowledge Hub", "Blogs", "FAQ"],
         },
       ],
     },
@@ -76,8 +76,8 @@ const Footer = () => {
       ],
       extraSections: [
         {
-          title: "News & Media",
-          links: ["Iron and Steel", "Energy & Others", "Aluminum"],
+          title: "Contact US",
+          links: ["Contact Form", "Company Location"],
         },
       ],
     },
@@ -144,14 +144,14 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-gray-50 max-h-[604px] overflow-hidden">
+    <footer className="w-full bg-gray-100 max-h-[604px] overflow-hidden">
       {/* Newsletter Section */}
       <motion.div
         ref={newsletterRef}
         initial={{ opacity: 0, y: 30 }}
         animate={isNewsletterInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="bg-gray-50 border-b border-gray-200"
+        className="bg-gray-100 border-b border-gray-200"
         style={{ height: "146.4px" }}
       >
         <div className="w-full h-full px-[2vw] flex items-center">
