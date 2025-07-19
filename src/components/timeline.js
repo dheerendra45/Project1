@@ -227,7 +227,7 @@ const Timeline = () => {
 
   return (
     <div className="w-full py-[2%] bg-white">
-      <div className="mx-auto max-w-7xl ">
+      <div className="w-full">
         <h2 className="text-4xl font-bold text-center mb-2 text-gray-800">
           Our Journey
         </h2>
@@ -312,19 +312,20 @@ const Timeline = () => {
                     {/* Small Cards for Inactive Items */}
                     {!isActive && (
                       <div
-                        className={`bg-orange-500 text-white rounded-lg p-3 cursor-pointer hover:bg-orange-600 transition-all duration-300 w-24 opacity-80 hover:opacity-100 hover:scale-105 ${
+                        className={`bg-orange-500 text-white rounded-lg p-3 cursor-pointer hover:bg-orange-600 transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105 ${
                           isEven ? "mb-[110px]" : "mt-[110px]"
                         }`}
+                        style={{ width: "124.82px", height: "83.21px" }}
                         onClick={(e) => {
                           e.stopPropagation();
-                          setActiveCardIndex(index);
+                          openPopup(milestone);
                         }}
                       >
                         <h4 className="text-sm font-bold mb-1 line-clamp-2">
-                          {milestone.title}
-                        </h4>
-                        <p className="text-xs opacity-90 line-clamp-1">
                           {milestone.year}
+                        </h4>
+                        <p className="text-xs opacity-90 line-clamp-2">
+                          {milestone.title}
                         </p>
                       </div>
                     )}
@@ -352,7 +353,7 @@ const Timeline = () => {
       {/* Popup Modal */}
       {selectedMilestone && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+          <div className="bg-white rounded-xl w-full max-w-4xl max-h-[90vh] overflow-y-auto shadow-2xl">
             <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex justify-between items-center rounded-t-xl">
               <h2 className="text-3xl font-bold text-gray-800">
                 {selectedMilestone.year}
@@ -366,13 +367,15 @@ const Timeline = () => {
             </div>
 
             <div className="p-6">
-              <div className="w-full h-64 bg-gray-200 rounded-lg mb-6 overflow-hidden">
-                <img
-                  src={selectedMilestone.image}
-                  alt={selectedMilestone.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              {selectedMilestone.image && (
+                <div className="w-full h-80 bg-gray-200 rounded-lg mb-6 overflow-hidden">
+                  <img
+                    src={selectedMilestone.image}
+                    alt={selectedMilestone.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              )}
 
               <h3 className="text-2xl font-bold text-gray-800 mb-2">
                 {selectedMilestone.title}
