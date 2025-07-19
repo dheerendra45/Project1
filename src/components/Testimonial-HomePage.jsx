@@ -117,7 +117,7 @@ const TestimonialsSection = () => {
               </motion.div>
 
               <Link to="/testimonials">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 mt-6 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
+                <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
                   View More
                 </button>
               </Link>
@@ -181,7 +181,7 @@ const TestimonialsSection = () => {
                         {testimonial.name}
                       </h4>
                       <motion.div
-                        className="text-gray-600 text-base font-inter mb-3 leading-relaxed flex flex-wrap gap-x-[4px]"
+                        className="text-gray-600 text-base mb-3 leading-relaxed flex flex-wrap gap-x-[4px]"
                         style={{ letterSpacing: "-0.4px" }}
                         variants={wordContainer}
                         initial="hidden"

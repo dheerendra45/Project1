@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import herobg from "../assets/1.jpg";
+
 import video from "../assets/WebsiteBanner.webm";
 
 // Banner data with corrected spelling
@@ -43,7 +43,6 @@ const Hero = () => {
         muted
         playsInline
         className="absolute inset-0 w-full h-full object-cover"
-        poster={herobg} // Fallback image as poster attribute
       >
         <source src={video} type="video/webm" />
         {/* No <img> inside <video>! */}
