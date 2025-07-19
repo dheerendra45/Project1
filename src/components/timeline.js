@@ -231,9 +231,9 @@ const Timeline = () => {
   };
 
   return (
-    <div className="w-full py-[2%] px-8 bg-white">
+    <div className="w-full my-[2%] px-8 bg-white">
       <div className="w-full">
-        <h2 className="text-4xl font-bold text-center mb-2 text-gray-800">
+        <h2 className="text-4xl font-inter font-bold text-center mb-2 text-gray-800">
           Our Journey
         </h2>
 
@@ -294,10 +294,10 @@ const Timeline = () => {
                         <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
                           {milestone.title}
                         </h3>
-                        <p className="text-sm text-orange-600 mb-2 font-medium line-clamp-1">
+                        <p className="text-base text-orange-600 mb-2 font-medium line-clamp-1">
                           {milestone.subtitle}
                         </p>
-                        <p className="text-sm text-gray-600 line-clamp-3">
+                        <p className="text-base text-gray-600 line-clamp-3">
                           {milestone.description}
                         </p>
                         {milestone.description.length > 120 && (
@@ -326,10 +326,10 @@ const Timeline = () => {
                           openPopup(milestone);
                         }}
                       >
-                        <h4 className="text-sm font-bold mb-1 line-clamp-2">
+                        <h4 className="text-base font-bold  line-clamp-2">
                           {milestone.year}
                         </h4>
-                        <p className="text-xs opacity-90 line-clamp-2">
+                        <p className="text-base opacity-90 line-clamp-2">
                           {milestone.title}
                         </p>
                       </div>
@@ -388,7 +388,7 @@ const Timeline = () => {
               <h4 className="text-lg font-semibold text-orange-600 mb-4">
                 {selectedMilestone.subtitle}
               </h4>
-              <p className="text-gray-700 leading-relaxed text-lg">
+              <p className="text-gray-700 leading-relaxed font text-base">
                 {selectedMilestone.description}
               </p>
             </div>
