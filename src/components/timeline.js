@@ -231,7 +231,7 @@ const Timeline = () => {
   };
 
   return (
-    <div className="w-full my-[2%] px-8 bg-white">
+    <div className="w-full my-[2%] px-12 bg-white">
       <div className="w-full">
         <h2 className="text-4xl font-inter font-bold text-center mb-2 text-gray-800">
           Our Journey
