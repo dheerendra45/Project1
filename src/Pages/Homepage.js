@@ -28,6 +28,7 @@ import CustomerTestimonials from "../components/Testimonial-HomePage";
 import SharePriceSection from "../components/SharePriceSection.js";
 import AccreditationsComponent from "../components/AccreditationsComponent.js";
 import AnimatedLogoContainer from "../components/AnimatedLogoContainer.js";
+import Continents from "../components/Continents.js";
 import Timeline1 from "../components/timeline.js";
 // import BusinessVerticals from "../components/BusinessVerticals.js";
 
@@ -43,6 +44,7 @@ const HomePage = () => {
       {/* <BusinessHomepage /> */}
       {/* <EnvironmentSection /> */}
       <BusinessAreas id="business-areas" />
+      <Continents />
       <LocationsMap />
       <EnvironmentSection1 />
 

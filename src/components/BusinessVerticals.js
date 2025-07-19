@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import energy from "../assets/energy.png";
 import aluminium from "../assets/aluminium.png";
 import ironSteel from "../assets/iron-steel.png";
+
 const wordContainer = {
   hidden: {},
   visible: {
@@ -49,13 +50,13 @@ function BusinessVerticals() {
     <div className="relative py-8 md:py-16 bg-gradient-to-b from-gray-50 to-white overflow-x-hidden">
       <div className="mx-5 md:ml-[10%] md:mr-[10%]">
         <motion.h2
-          className="text-2xl md:text-4xl text-header-style  font-bold text-left mb-8 md:mb-12 text-gray-800"
+          className="text-2xl md:text-4xl font-bold text-left mb-8 md:mb-12 text-gray-800"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
           viewport={{ once: false, amount: 0.3 }}
         >
-          Business <span className="text-orange-500 ">Verticals</span>
+          Business <span className="text-orange-500">Verticals</span>
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
@@ -74,55 +75,59 @@ function BusinessVerticals() {
               viewport={{ once: false, amount: 0.3 }}
             >
               <div
-                className="relative rounded-xl overflow-hidden h-80 md:h-96 flex flex-col"
+                className="relative rounded-xl overflow-hidden w-full h-[450px] flex flex-col"
                 style={{
                   backgroundImage: `url(${vertical.backgroundImage})`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
+                  maxWidth: "378px",
+                  margin: "0 auto"
                 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/70"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/44"></div>
 
-                <div className="relative z-10 px-4 py-4 md:px-6 md:py-6 flex flex-col h-full text-white text-center items-center">
-                  <div className="mb-2 md:mb-4">
-                    <h3 className="text-xl md:text-2xl pt-[3%] font-bold">
+                <div className="relative z-10 p-6 flex flex-col h-full justify-between">
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-bold mb-3 text-white text-center pt-[10%]">
                       {vertical.title}
                     </h3>
+                    
+                    <motion.div
+                      variants={wordContainer}
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: false, amount: 0.3 }}
+                      className="text-gray-100 text-base md:text-md leading-6 md:leading-5 flex flex-wrap justify-center gap-x-1"
+                    >
+                      {vertical.description.split(" ").map((word, idx) => (
+                        <motion.span key={idx} variants={wordItem}>
+                          {word}&nbsp;
+                        </motion.span>
+                      ))}
+                    </motion.div>
                   </div>
 
-                  <motion.div
-                    variants={wordContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: false, amount: 0.3 }}
-                    className="text-gray-100 font-normal text-base leading-[16px] tracking-normal font-['Inter'] mb-4 md:mb-6  md:text- text-center flex flex-wrap gap-x-1"
-                  >
-                    {vertical.description.split(" ").map((word, idx) => (
-                      <motion.span key={idx} variants={wordItem}>
-                        {word}&nbsp;
-                      </motion.span>
-                    ))}
-                  </motion.div>
-
-                  <Link to="/business">
-                    <button className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 bg-orange-500 text-white text-sm sm:text-base font-semibold rounded-lg hover:bg-orange-600 transition-all duration-300 shadow-lg border border-white w-fit">
-                      {vertical.cta}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-4 w-4 ml-2"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 5l7 7-7 7"
-                        />
-                      </svg>
-                    </button>
-                  </Link>
+                  <div className="mt-4 text-center">
+                    <Link to="/business">
+                      <button className="inline-flex w-[104px] h-[35px] items-center px-4 py-2 bg-orange-500 text-white text-[11.3px] font-normal  hover:bg-orange-600 transition-all duration-300 shadow-lg border border-white justify-center mb-[4%]">
+                        {vertical.cta}
+                        {/* <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 ml-2"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        > */}
+                          {/* <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          /> */}
+                        {/* </svg> */}
+                      </button>
+                    </Link>
+                  </div>
                 </div>
 
                 <div className="absolute inset-0 bg-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -143,7 +148,7 @@ function BusinessVerticals() {
           viewport={{ once: false, amount: 0.3 }}
         >
           <Link to="/business">
-            <button className="inline-flex items-center px-6 py-3 bg-orange-500 text-white text-base font-semibold rounded-lg hover:bg-orange-600 transition-colors shadow-lg w-fit">
+            <button className="inline-flex items-center px-6 py-3 bg-orange-500 text-white text-base font-semibold rounded-lg hover:bg-orange-600 transition-colors shadow-lg">
               Explore All →
             </button>
           </Link>
