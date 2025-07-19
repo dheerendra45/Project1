@@ -192,7 +192,7 @@ function LocationsMap() {
               }
             >
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
-              Countries We Export To
+               Global Presence
             </motion.h3>
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"
@@ -234,7 +234,7 @@ function LocationsMap() {
               }
             >
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
-              Our Manufacturing Locations
+             Our Plants 
             </motion.h3>
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"

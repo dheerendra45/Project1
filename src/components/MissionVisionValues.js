@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import MissionIcon from "../assets/mission(2).svg";
-import VisionIcon from "../assets/vision(2).svg";
-import ValuesIcon from "../assets/values(2).svg";
+import Mission from "../assets/mission(2).jpg";
+import Vision from "../assets/vision(2).png";
+import Values from "../assets/values(3).png";
+
 const wordContainer = {
   hidden: {},
   visible: {
@@ -23,22 +24,22 @@ function MissionVisionValues() {
 
   const sections = [
     {
-      icon: VisionIcon,
+      backgroundImage: Vision,
       title: "Vision",
       description:
-        "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat’s growth with clean, smart, globally competitive ‘Made in India’ steel.",
+        "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat's growth with clean, smart, globally competitive 'Made in India' steel.",
     },
     {
-      icon: MissionIcon,
+      backgroundImage: Mission,
       title: "Mission",
       description:
-        "Consistent with our vision, we strive to engineer stronger metal solutions through integrated operations, cost-efficiency, and responsible business practices. Our mission is to empower industries and drive sustainable growth by optimizing both natural and human resources, thereby strengthening India’s industrial base.",
+        "Consistent with our vision, we strive to engineer stronger metal solutions through integrated operations, cost-efficiency, and responsible business practices. Our mission is to empower industries and drive sustainable growth by optimizing both natural and human resources, thereby strengthening India's industrial base.",
     },
     {
-      icon: ValuesIcon,
+      backgroundImage: Values,
       title: "Values",
       description:
-        "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat’s growth with clean, smart, globally competitive ‘Made in India’ steel.",
+        "We aspire to be the global benchmark in the metal industry by engineering high-performance solutions through value creation and process innovation. Our vision is to transform Shyam Metalics into a next-generation steel leader by pioneering advanced alloys and empowering Bharat's growth with clean, smart, globally competitive 'Made in India' steel.",
     },
   ];
 
@@ -59,8 +60,8 @@ function MissionVisionValues() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {sections.map((section, index) => (
             <motion.div
-              key={`${index}-${currentCycle}`} // Force re-animation on cycle change
-              className="bg-white rounded-2xl shadow-lg border border-orange-300 flex flex-col relative p-6 md:p-8"
+              key={`${index}-${currentCycle}`}
+              className="relative rounded-2xl shadow-lg border border-orange-300 overflow-hidden"
               style={{
                 width: "100%",
                 minHeight: "410px",
@@ -88,44 +89,58 @@ function MissionVisionValues() {
               onHoverStart={() => setIsAnimating(false)}
               onHoverEnd={() => setIsAnimating(true)}
             >
-              <div className="flex justify-center mb-4 md:mb-5">
-                <motion.img
-                  src={section.icon}
-                  alt={section.title}
-                  className="h-14 w-14 md:h-16 md:w-16 object-contain"
+              {/* Background Image */}
+              <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                  backgroundImage: `url("${section.backgroundImage}")`,
+                }}
+              />
+              
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70" />
+              
+              {/* Content */}
+              <div className="relative z-10 p-6 md:p-8 h-full flex flex-col justify-center">
+                <motion.h3
+                  className="text-2xl md:text-3xl font-bold text-center mb-6 text-white drop-shadow-lg"
                   whileHover={{
-                    scale: 1.2,
-                    rotate: 360,
+                    scale: 1.05,
+                    textShadow: "0 0 20px rgba(249, 115, 22, 0.8)",
                     transition: { duration: 0.3 },
                   }}
-                />
+                >
+                  {section.title}
+                </motion.h3>
+
+                <motion.div
+                  className="font-normal text-sm md:text-base leading-relaxed tracking-normal font-['Inter'] flex-grow px-2 md:px-0 flex flex-wrap justify-center gap-x-[4px] text-white text-center"
+                  style={{ lineHeight: "24px", letterSpacing: "-0.3px" }}
+                  variants={wordContainer}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.3 }}
+                >
+                  {section.description.split(" ").map((word, idx) => (
+                    <motion.span 
+                      key={idx} 
+                      variants={wordItem}
+                      className="drop-shadow-md"
+                    >
+                      {word}&nbsp;
+                    </motion.span>
+                  ))}
+                </motion.div>
               </div>
 
-              <motion.h3
-                className="text-xl text-header-style :text-2xl font-semibold text-center mb-4 md:mb-5 text-black-800"
+              {/* Hover Overlay Effect */}
+              <motion.div
+                className="absolute inset-0 bg-orange-500/20 opacity-0"
                 whileHover={{
-                  scale: 1.1,
-                  color: "#f97316",
+                  opacity: 1,
                   transition: { duration: 0.3 },
                 }}
-              >
-                {section.title}
-              </motion.h3>
-
-              <motion.div
-                className="font-normal text-base leading-[16px] tracking-normal font-['Inter'] flex-grow px-2 md:px-0 flex flex-wrap justify-center gap-x-[4px]"
-                style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
-                variants={wordContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, amount: 0.3 }}
-              >
-                {section.description.split(" ").map((word, idx) => (
-                  <motion.span key={idx} variants={wordItem}>
-                    {word}&nbsp;
-                  </motion.span>
-                ))}
-              </motion.div>
+              />
             </motion.div>
           ))}
         </div>
