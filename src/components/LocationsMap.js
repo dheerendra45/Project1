@@ -91,13 +91,16 @@ function LocationsMap() {
   }, []);
 
   return (
+
     <div
       ref={sectionRef}
       className="py-[2%] px-[10%] bg-white font-inter"
       id="locations"
     >
+        
       <div className="w-full max-w-7xl mx-auto">
         {/* Title & Description with Button Row */}
+        
         <motion.div
           className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -111,8 +114,10 @@ function LocationsMap() {
               : {}
           }
         >
+          
           <div className="mb-4 sm:mb-0">
-            <h2 className="text-2xl sm:text-3xl font-semibold text-black-800 mb-2">
+
+            <h2 className="text-2xl sm:text-3xl font-semibold text-black-800 mb-2 pt-[20%]">
               Our Global Footprint
             </h2>
             <p className="text-gray-700 max-w-xl text-sm sm:text-base">
@@ -121,7 +126,7 @@ function LocationsMap() {
           </div>
           <Link to="/LocationPage">
             <motion.button
-              className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base flex items-center"
+              className="bg-orange-500 hover:bg-orange-600 text-white mt-[20%] px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base flex items-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
