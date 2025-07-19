@@ -91,7 +91,7 @@ const ContactBar = () => {
             className={`flex flex-col items-center transition-colors gap-1 py-[5%] ${button.colorClass}`}
           >
             {button.icon}
-            <span className="text-[11px]">{button.text}</span>
+            <span className="text-[11px] text-black">{button.text}</span>
           </button>
         ))}
       </div>

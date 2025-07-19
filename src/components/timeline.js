@@ -67,7 +67,12 @@ const Timeline = () => {
       subtitle: "Sambalpur Plant",
       description: "Billet capacity increased by 0.27 MTPA.",
     },
-
+    {
+      year: "2016",
+      title: "Scaling New Heights",
+      subtitle: "Jamuria Plant",
+      description: "Iron Pellets and Billets capacity enhanced by 0.60 MTPA.",
+    },
     {
       year: "2017",
       title: "Powering Progress",
