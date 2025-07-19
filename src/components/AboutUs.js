@@ -14,7 +14,7 @@ import icon4 from "../assets/Icon 4.png";
 import icon5 from "../assets/Icon 5.png";
 import icon6 from "../assets/icon6.png";
 
-// milestones image 
+// milestones image
 import Img1991 from "../assets/aboutus/Picture 1, 1991-min.png";
 import Img2001 from "../assets/aboutus/Picture 2 2001 (Mangalpur Plant)-min.jpg";
 import Img2013 from "../assets/aboutus/Picture 3 2013 (Sambalpur)-min.jpeg";
@@ -25,7 +25,6 @@ import Img2015 from "../assets/aboutus/Picture 6,  2015 (Sambalpur Plant)-min.jp
 import Img2019 from "../assets/aboutus/Picture 8, 2019 (TMT Bar)-min.jpg";
 import Img2021 from "../assets/aboutus/Picture 9,  2021 Wire Rod 2-min.jpg";
 import Img2024 from "../assets/aboutus/Picture 10,  CRM 2024-min.jpg";
-
 
 export default function ShyamMetalicsProfile() {
   const milestones = [
@@ -40,36 +39,28 @@ export default function ShyamMetalicsProfile() {
       year: "2002",
       title: "The First Spark",
       subtitle: "Mangalpur Plant",
-      description: "Commercial production started at the Sponge Iron plant (0.6 MTPA)",
+      description:
+        "Commercial production started at the Sponge Iron plant (0.6 MTPA)",
       image: Img2001,
     },
     {
       year: "2013",
       title: "Building the Foundation",
       subtitle: "Sambalpur Plant",
-      description: "Commercial production started at the Sponge Iron plant (0.3 MTPA)",
+      description:
+        "Commercial production started at the Sponge Iron plant (0.3 MTPA)",
       image: Img2013,
     },
-    {
-      year: "2013",
-      title: "Building the Foundation",
-      subtitle: "Jamuria Plant",
-      description: "Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
-      image: Img2013New,
-    },
+
     {
       year: "2014",
       title: "Integrating Strength",
       subtitle: "Sambalpur Plant",
-      description: "Commissioned the first Ferro Alloy unit. Sponge Iron upgraded by 0.3 MTPA.",
+      description:
+        "Commissioned the first Ferro Alloy unit. Sponge Iron upgraded by 0.3 MTPA.",
       image: Img2014,
     },
-    {
-      year: "2014",
-      title: "Integrating Strength",
-      subtitle: "Jamuria Plant",
-      description: "Captive Railway Siding established."
-    },
+
     {
       year: "2015",
       title: "Infrastructure in Motion",
@@ -77,36 +68,27 @@ export default function ShyamMetalicsProfile() {
       description: "Railway siding operationalized.",
       image: Img2015,
     },
-    {
-      year: "2015",
-      title: "Infrastructure in Motion",
-      subtitle: "Jamuria Plant",
-      description: "Commissioned another Captive Power Plant. Complete integration of Sponge Iron, Billets, and Ferro Alloys. Capacity increased by 0.9 MTPA."
-    },
+
     {
       year: "2016",
       title: "Scaling New Heights",
       subtitle: "Sambalpur Plant",
-      description: "Billet capacity increased by 0.27 MTPA."
+      description: "Billet capacity increased by 0.27 MTPA.",
     },
     {
       year: "2016",
       title: "Scaling New Heights",
       subtitle: "Jamuria Plant",
-      description: "Iron Pellets and Billets capacity enhanced by 0.60 MTPA."
+      description: "Iron Pellets and Billets capacity enhanced by 0.60 MTPA.",
     },
     {
       year: "2017",
       title: "Powering Progress",
       subtitle: "Sambalpur Plant",
-      description: "Capacity expansion of Sponge Iron and Billets by 0.67 MTPA."
+      description:
+        "Capacity expansion of Sponge Iron and Billets by 0.67 MTPA.",
     },
-    {
-      year: "2017",
-      title: "Crossing the 2.60 MTPA Milestone",
-      subtitle: "Total Metalics' capacity reached 2.60 MTPA",
-      description: "Total Metalics' capacity reached 2.60 MTPA."
-    },
+
     {
       year: "2019",
       title: "Strengthening the Core",
@@ -114,62 +96,61 @@ export default function ShyamMetalicsProfile() {
       description: "Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA.",
       image: Img2019,
     },
-    {
-      year: "2019",
-      title: "Strengthening the Core",
-      subtitle: "Jamuria Plant",
-      description: "Upgraded key facilities and added 15 MW Captive Power."
-    },
+
     {
       year: "2020",
       title: "Resilience and Renewal",
       subtitle: "Sambalpur Plant",
-      description: "Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant."
+      description:
+        "Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant.",
     },
-    {
-      year: "2020",
-      title: "Resilience and Renewal",
-      subtitle: "Jamuria Plant",
-      description: "WHRS & Power expansion. Total Metalics' capacity reached 5.71 MTPA."
-    },
+
     {
       year: "2021",
       title: "Emerging Stronger",
       subtitle: "-",
-      description: "Expanded TMT & Wire Rod capacities. Launched Aluminium Foil line (4000 TPA). Listed on NSE and BSE, marking a new chapter of trust.",
+      description:
+        "Expanded TMT & Wire Rod capacities. Launched Aluminium Foil line (4000 TPA). Listed on NSE and BSE, marking a new chapter of trust.",
       image: Img2021,
     },
     {
       year: "2022",
       title: "Diversifying the Future",
       subtitle: "-",
-      description: "TMT Bar capacity touched 1.17 MTPA. Introduced Roofing Sheets and High Mast Poles. Expanded Aluminium Foil production. Broadened product offerings."
+      description:
+        "TMT Bar capacity touched 1.17 MTPA. Introduced Roofing Sheets and High Mast Poles. Expanded Aluminium Foil production. Broadened product offerings.",
     },
     {
       year: "2023",
       title: "Innovating for Tomorrow",
       subtitle: "-",
-      description: "Metal capacity increased to 6.37 MTPA. Launched Crash Barriers and Railway Wagons. Zero-Waste Aluminium Foil line commissioned. Exports expanded to 25+ countries. GreenPro certified, Great Place to Work, and National Export Award recipient."
+      description:
+        "Metal capacity increased to 6.37 MTPA. Launched Crash Barriers and Railway Wagons. Zero-Waste Aluminium Foil line commissioned. Exports expanded to 25+ countries. GreenPro certified, Great Place to Work, and National Export Award recipient.",
     },
     {
       year: "2024",
       title: "Leading with Purpose",
       subtitle: "-",
-      description: "Forayed into Food Grade Aluminium Foils. Commissioned Colour-Coated Roofing Sheet mill. Scaling Railway Wagons and High Mast Poles. First in Eastern India with an Integrated Wagon facility. Certified Clean & Green Manufacturer.",
+      description:
+        "Forayed into Food Grade Aluminium Foils. Commissioned Colour-Coated Roofing Sheet mill. Scaling Railway Wagons and High Mast Poles. First in Eastern India with an Integrated Wagon facility. Certified Clean & Green Manufacturer.",
       image: Img2024,
     },
     {
       year: "2025",
       title: "Scaling with Next-Gen Transformation",
-      subtitle: "Taratala Corporate HQ, Aluminium Division, Kharagpur Plant, Ductile Iron & Steel Production, Jamuria Plant, Brand Expansion",
-      description: "Established a new 3-acre Corporate Headquarters in Kolkata. Broadened product portfolio with the addition of battery foil and flat rolled aluminium products. Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year. 85% of the power requirement was met via captive generation. Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets. Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme. Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa."
+      subtitle:
+        "Taratala Corporate HQ, Aluminium Division, Kharagpur Plant, Ductile Iron & Steel Production, Jamuria Plant, Brand Expansion",
+      description:
+        "Established a new 3-acre Corporate Headquarters in Kolkata. Broadened product portfolio with the addition of battery foil and flat rolled aluminium products. Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year. 85% of the power requirement was met via captive generation. Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets. Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme. Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa.",
     },
     {
       year: "Upcoming",
       title: "Plan for Upcoming Years…",
-      subtitle: "Product Diversification, Nation-Building Contribution, Market Expansion, Sustainability Commitment, Smart Operations",
-      description: "Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes. Commitment to national infrastructure development. Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up. Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems. Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity."
-    }
+      subtitle:
+        "Product Diversification, Nation-Building Contribution, Market Expansion, Sustainability Commitment, Smart Operations",
+      description:
+        "Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes. Commitment to national infrastructure development. Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up. Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems. Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity.",
+    },
   ];
 
   const capabilities = [
@@ -418,7 +399,7 @@ export default function ShyamMetalicsProfile() {
             padding: "6px 16px",
             borderRadius: "16px",
             background: "rgba(0,0,0,0.08)",
-            display: "inline-block"
+            display: "inline-block",
           }}
           onMouseDown={handleMouseDown}
         >
