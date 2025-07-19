@@ -93,7 +93,7 @@ const VideoHoverSection = () => {
   return (
     <div>
       {/* Heading */}
-      <h2 className="text-4xl font-bold mb-8 ml-[10%]">
+      <h2 className="text-green-600 text-4xl font-bold mb-8 ml-[10%]">
         Green <span className="text-orange-500">Vision</span>
       </h2>
 
@@ -115,7 +115,7 @@ const VideoHoverSection = () => {
         />
 
         {/* Horizontal Glassy Statistics Panel - Increased transparency */}
-        <div className="relative z-10 p-8 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 shadow-lg flex gap-12 items-center justify-between transform transition-all duration-300 group-hover:scale-[1.02]">
+        <div className="relative z-10 p-8 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg flex gap-12 items-center justify-between transform transition-all duration-300 group-hover:scale-[1.02]">
           {/* ACTUAL IMPACT */}
           <div className="text-center min-w-[200px] flex flex-col items-center py-[50px]">
             <img src={cloud} alt="Cloud" className="w-[100px] h-18" />
@@ -158,7 +158,7 @@ const VideoHoverSection = () => {
 
           {/* Glass reflection effect - made more subtle */}
           <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 transform rotate-45 translate-x-16 -translate-y-16"></div>
+            <div className="absolute top-0 right-0 w-40 h-40 bg-white/4 transform rotate-45 translate-x-16 -translate-y-16"></div>
           </div>
         </div>
 

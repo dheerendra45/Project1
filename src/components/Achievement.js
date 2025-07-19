@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
-
 // achievements images
 import AAI2 from "../assets/achievements/AAI 2.png";
 import ach2 from "../assets/achievements/ach2.jpg";
@@ -111,29 +109,50 @@ const AchievementsSection = () => {
     wagonrdsoapprovalservice,
   ];
 
+  // Auto rotation effect
   useEffect(() => {
     let interval;
     if (isAutoRotating) {
       interval = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % certificates.length);
+        goToNext();
       }, 5000);
     }
     return () => clearInterval(interval);
-  }, [certificates.length, isAutoRotating]);
+  }, [isAutoRotating]);
+
+  // Navigation functions
+  const goToPrevious = () => {
+    setIsAutoRotating(false);
+    setActiveIndex((prev) => (prev - 1 + certificates.length) % certificates.length);
+    setTimeout(() => setIsAutoRotating(true), 10000);
+  };
+
+  const goToNext = () => {
+    setIsAutoRotating(false);
+    setActiveIndex((prev) => (prev + 1) % certificates.length);
+    setTimeout(() => setIsAutoRotating(true), 10000);
+  };
 
   const handleCertificateClick = (index) => {
     setIsAutoRotating(false);
     setActiveIndex(index);
-    // Optional: restart auto rotation after some time
-    setTimeout(() => {
-      setIsAutoRotating(true);
-    }, 10000);
+    setTimeout(() => setIsAutoRotating(true), 10000);
   };
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'ArrowLeft') goToPrevious();
+      if (e.key === 'ArrowRight') goToNext();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <div className="bg-white px-4 py-16 mx-[10%] my-[2%] min-h-[600px]">
       {/* Heading */}
-      <h2 className="text-2xl text-header-style  font-semibold text-center mb-12">
+      <h2 className="text-2xl text-header-style font-semibold text-center mb-12">
         Accreditations <span className="text-orange-500">&</span> Achievements
       </h2>
 
@@ -142,7 +161,7 @@ const AchievementsSection = () => {
         {/* Left Text Block */}
         <div className="lg:w-[40%] text-center lg:text-left">
           <motion.div
-            className="text-orange-500 font-normal text-base leading-[16px] tracking-normal font-['Inter'] max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
+            className="text-gray-700 font-normal text-base leading-[24px] tracking-[-0.5px] font-['Inter'] max-w-md mx-auto lg:mx-0 text-center mt-[20%] ml-[10%] flex flex-wrap justify-center lg:justify-start gap-x-[4px]"
             style={{ lineHeight: "24px", letterSpacing: "-0.5px" }}
             variants={wordContainer}
             initial="hidden"
@@ -158,19 +177,29 @@ const AchievementsSection = () => {
               ))}
           </motion.div>
 
-          {/* Arrows - Simply use the images as they are */}
+          {/* Functional Arrows */}
           <div className="flex items-center justify-center lg:justify-start mt-8 ml-[28%]">
-            <div className="mr-[5%]">
+            <button 
+              onClick={goToPrevious}
+              className="mr-[5%] focus:outline-none hover:opacity-80 transition-opacity"
+              aria-label="Previous achievement"
+            >
               <img src={leftarrow} alt="Left arrow" />
-            </div>
+            </button>
 
-            <img src={rightarrow} alt="Right arrow" />
+            <button 
+              onClick={goToNext}
+              className="focus:outline-none hover:opacity-80 transition-opacity"
+              aria-label="Next achievement"
+            >
+              <img src={rightarrow} alt="Right arrow" />
+            </button>
           </div>
         </div>
 
-        {/* Right Card Block - Increased height to ensure View All button is visible */}
+        {/* Right Card Block */}
         <div className="flex flex-col items-start lg:w-[60%] overflow-hidden">
-          {/* Card container with increased height */}
+          {/* Card container */}
           <div className="flex items-center justify-start gap-4 relative w-full h-[400px] pl-8 pt-12">
             <AnimatePresence mode="popLayout">
               {[0, 1, 2, 3].map((i) => {
@@ -183,15 +212,15 @@ const AchievementsSection = () => {
                     alt={`Achievement ${cardIndex + 1}`}
                     className={
                       isMain
-                        ? "w-[253px] h-[335px] object-contain border border-gray-300 rounded-[8px] z-10 bg-white mt-[-10%] cursor-pointer"
-                        : "w-[115px] h-[153px] object-contain border border-gray-300 rounded-[4px] opacity-80 bg-white mt-[-10%] cursor-pointer"
+                        ? "w-[253px] h-[335px] object-contain border border-gray-300 rounded-[8px] z-10 bg-white mt-[-10%] cursor-pointer hover:shadow-lg transition-shadow"
+                        : "w-[115px] h-[153px] object-contain border border-gray-300 rounded-[4px] opacity-80 bg-white mt-[-10%] cursor-pointer hover:opacity-100 transition-opacity"
                     }
                     style={{
                       imageRendering: "auto",
                       filter: "drop-shadow(0px 4px 8px rgba(255, 165, 0, 0.3))",
                     }}
                     initial={{ x: 100, opacity: 0, scale: 0.9 }}
-                    animate={{ x: 0, opacity: 1, scale: 1 }}
+                    animate={{ x: 0, opacity: isMain ? 1 : 0.8, scale: 1 }}
                     exit={{ x: -100, opacity: 0, scale: 0.9 }}
                     transition={{
                       duration: 0.6,
@@ -204,7 +233,7 @@ const AchievementsSection = () => {
             </AnimatePresence>
           </div>
 
-          {/* View All - Fixed position */}
+          {/* View All button */}
           <div className="w-[125px] h-[48px] mt-8">
             <Link to="/awardsAndachievements">
               <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
