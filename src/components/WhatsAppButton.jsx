@@ -54,24 +54,28 @@ const ContactBar = () => {
       icon: <Phone size={20} />,
       onClick: handleCallClick,
       text: "Call",
+      colorClass: "text-blue-500 hover:text-blue-700",
     },
     {
       id: "whatsapp",
       icon: <WhatsAppIcon />,
       onClick: handleWhatsAppClick,
       text: "WhatsApp",
+      colorClass: "text-green-500 hover:text-green-700",
     },
     {
       id: "chat",
       icon: <MessageSquare size={20} />,
       onClick: handleChatClick,
       text: "Chat",
+      colorClass: "text-orange-500 hover:text-orange-700",
     },
     {
       id: "enquire",
       icon: <HelpCircle size={20} />,
       onClick: handleEnquireClick,
       text: "Enquire",
+      colorClass: "text-black hover:text-gray-700",
     },
   ];
 
@@ -84,7 +88,7 @@ const ContactBar = () => {
           <button
             key={button.id}
             onClick={button.onClick}
-            className="flex flex-col items-center text-orange-500 hover:text-gray-800 transition-colors gap-1 py-[5%]"
+            className={`flex flex-col items-center transition-colors gap-1 py-[5%] ${button.colorClass}`}
           >
             {button.icon}
             <span className="text-[11px]">{button.text}</span>
