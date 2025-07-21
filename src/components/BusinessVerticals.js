@@ -81,7 +81,7 @@ function BusinessVerticals() {
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                   maxWidth: "378px",
-                  margin: "0 auto"
+                  margin: "0 auto",
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/15 to-black/44"></div>
@@ -91,7 +91,7 @@ function BusinessVerticals() {
                     <h3 className="text-xl md:text-2xl font-bold mb-3 text-white text-center pt-[10%]">
                       {vertical.title}
                     </h3>
-                    
+
                     <motion.div
                       variants={wordContainer}
                       initial="hidden"
@@ -109,7 +109,7 @@ function BusinessVerticals() {
 
                   <div className="mt-4 text-center">
                     <Link to="/business">
-                      <button className="inline-flex w-[104px] h-[35px] items-center px-4 py-2 bg-orange-500 text-white text-[11.3px] font-normal  hover:bg-orange-600 transition-all duration-300 shadow-lg border border-white justify-center mb-[4%]">
+                      <button className="inline-flex w-[104px] h-[35px] rounded-lg items-center px-4 py-2 bg-orange-500 text-white text-[11.3px] font-normal  hover:bg-orange-600 transition-all duration-300 shadow-lg border justify-center mb-[4%]">
                         {vertical.cta}
                         {/* <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +118,7 @@ function BusinessVerticals() {
                           viewBox="0 0 24 24"
                           stroke="currentColor"
                         > */}
-                          {/* <path
+                        {/* <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
