@@ -32,7 +32,7 @@ const Timeline = () => {
       title: "The First Spark",
       subtitle: "Mangalpur Plant",
       description:
-        "Commercial production started at the Sponge Iron plant (0.6 MTPA)",
+        "• Mangalpur Plant:\n  • Commercial production started at the Sponge Iron plant (0.6 MTPA)",
       image: Img2001,
     },
     {
@@ -40,7 +40,7 @@ const Timeline = () => {
       title: "Building the Foundation",
       subtitle: "Sambalpur Plant",
       description:
-        "Commercial production started at the Sponge Iron plant (0.3 MTPA)",
+        "• Sambalpur Plant:\n  • Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
       image: Img2013,
     },
 
@@ -49,7 +49,7 @@ const Timeline = () => {
       title: "Integrating Strength",
       subtitle: "Sambalpur Plant",
       description:
-        "Commissioned the first Ferro Alloy unit. Sponge Iron upgraded by 0.3 MTPA.",
+        "• Sambalpur Plant:\n  • Commissioned the first Ferro Alloy unit\n  • Sponge Iron upgraded by 0.3 MTPA\n• Jamuria Plant:\n  • Captive Railway Siding established",
       image: Img2014,
     },
 
@@ -57,7 +57,8 @@ const Timeline = () => {
       year: "2015",
       title: "Infrastructure in Motion",
       subtitle: "Sambalpur Plant",
-      description: "Railway siding operationalized.",
+      description:
+        "• Sambalpur Plant:\n  • Railway siding operationalized\n• Jamuria Plant:\n  • Commissioned another Captive Power Plant\n  • Complete integration of Sponge Iron, Billets, and Ferro Alloys\n  • Capacity increased by 0.9 MTPA",
       image: Img2015,
     },
 
@@ -65,27 +66,24 @@ const Timeline = () => {
       year: "2016",
       title: "Scaling New Heights",
       subtitle: "Sambalpur Plant",
-      description: "Billet capacity increased by 0.27 MTPA.",
+      description:
+        "• Sambalpur Plant:\n  • Billet capacity increased by 0.27 MTPA\n• Jamuria Plant:\n  • Iron Pellets and Billets capacity enhanced by 0.60 MTPA",
     },
-    {
-      year: "2016",
-      title: "Scaling New Heights",
-      subtitle: "Jamuria Plant",
-      description: "Iron Pellets and Billets capacity enhanced by 0.60 MTPA.",
-    },
+
     {
       year: "2017",
       title: "Powering Progress",
       subtitle: "Sambalpur Plant",
       description:
-        "Capacity expansion of Sponge Iron and Billets by 0.67 MTPA.",
+        "• Sambalpur Plant:\n  • Capacity expansion of Sponge Iron and Billets by 0.67 MTPA\n• Crossing the 2.60 MTPA Milestone:\n  • Total Metalics' capacity reached 2.60 MTPA",
     },
 
     {
       year: "2019",
       title: "Strengthening the Core",
       subtitle: "Sambalpur Plant",
-      description: "Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA.",
+      description:
+        "• Sambalpur Plant:\n  • Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA\n• Jamuria Plant:\n  • Upgraded key facilities and added 15 MW Captive Power",
       image: Img2019,
     },
 
@@ -94,7 +92,7 @@ const Timeline = () => {
       title: "Resilience and Renewal",
       subtitle: "Sambalpur Plant",
       description:
-        "Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant.",
+        "• Sambalpur Plant:\n  • Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant\n• Jamuria Plant:\n  • WHRS & Power expansion\n  • Total Metalics' capacity reached 5.71 MTPA",
     },
 
     {
@@ -102,7 +100,7 @@ const Timeline = () => {
       title: "Emerging Stronger",
       subtitle: "-",
       description:
-        "Expanded TMT & Wire Rod capacities. Launched Aluminium Foil line (4000 TPA). Listed on NSE and BSE, marking a new chapter of trust.",
+        "• Expanded TMT & Wire Rod capacities\n• Launched Aluminium Foil line (4000 TPA)\n• Listed on NSE and BSE, marking a new chapter of trust",
       image: Img2021,
     },
     {
@@ -110,21 +108,21 @@ const Timeline = () => {
       title: "Diversifying the Future",
       subtitle: "-",
       description:
-        "TMT Bar capacity touched 1.17 MTPA. Introduced Roofing Sheets and High Mast Poles. Expanded Aluminium Foil production. Broadened product offerings.",
+        "• TMT Bar capacity touched 1.17 MTPA\n• Introduced Roofing Sheets and High Mast Poles\n• Expanded Aluminium Foil production\n• Broadened product offerings",
     },
     {
       year: "2023",
       title: "Innovating for Tomorrow",
       subtitle: "-",
       description:
-        "Metal capacity increased to 6.37 MTPA. Launched Crash Barriers and Railway Wagons. Zero-Waste Aluminium Foil line commissioned. Exports expanded to 25+ countries. GreenPro certified, Great Place to Work, and National Export Award recipient.",
+        "• Metal capacity increased to 6.37 MTPA\n• Launched Crash Barriers and Railway Wagons\n• Zero-Waste Aluminium Foil line commissioned\n• Exports expanded to 25+ countries\n• GreenPro certified, Great Place to Work, and National Export Award recipient",
     },
     {
       year: "2024",
       title: "Leading with Purpose",
       subtitle: "-",
       description:
-        "Forayed into Food Grade Aluminium Foils. Commissioned Colour-Coated Roofing Sheet mill. Scaling Railway Wagons and High Mast Poles. First in Eastern India with an Integrated Wagon facility. Certified Clean & Green Manufacturer.",
+        "• Forayed into Food Grade Aluminium Foils\n• Commissioned Colour-Coated Roofing Sheet mill\n• Scaling Railway Wagons and High Mast Poles\n• First in Eastern India with an Integrated Wagon facility\n• Certified Clean & Green Manufacturer",
       image: Img2024,
     },
     {
@@ -133,7 +131,7 @@ const Timeline = () => {
       subtitle:
         "Taratala Corporate HQ, Aluminium Division, Kharagpur Plant, Ductile Iron & Steel Production, Jamuria Plant, Brand Expansion",
       description:
-        "Established a new 3-acre Corporate Headquarters in Kolkata. Broadened product portfolio with the addition of battery foil and flat rolled aluminium products. Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year. 85% of the power requirement was met via captive generation. Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets. Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme. Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa.",
+        "• Taratala Corporate HQ:\n  • Established a new 3-acre Corporate Headquarters in Kolkata\n• Aluminium Division:\n  • Broadened product portfolio with the addition of battery foil and flat rolled aluminium products\n• Kharagpur Plant (Greenfield Project):\n  • Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year\n  • 85% of the power requirement was met via captive generation\n• Ductile Iron & Steel Production:\n  • Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets\n• Jamuria Plant:\n  • Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme\n• Brand Expansion:\n  • Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa",
     },
     {
       year: "Upcoming",
@@ -141,7 +139,7 @@ const Timeline = () => {
       subtitle:
         "Product Diversification, Nation-Building Contribution, Market Expansion, Sustainability Commitment, Smart Operations",
       description:
-        "Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes. Commitment to national infrastructure development. Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up. Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems. Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity.",
+        "• Product Diversification:\n  • Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes\n• Nation-Building Contribution:\n  • Commitment to national infrastructure development\n• Market Expansion:\n  • Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up\n• Sustainability Commitment:\n  • Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems\n• Smart Operations:\n  • Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity",
     },
   ];
   const cardWidth = 100 / milestones.length; // Percentage width per card
