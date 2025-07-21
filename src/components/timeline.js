@@ -280,8 +280,8 @@ const Timeline = () => {
                     {/* Large Card for Active Item */}
                     {isActive && (
                       <div
-                        className={`bg-white rounded-lg shadow-xl cursor-pointer p-4 w-40 border-2 border-orange-200 z-20 transition-all duration-500 transform ${
-                          isEven ? "mb-[310px] " : "mt-[310px] "
+                        className={`bg-white rounded-lg shadow-xl cursor-pointer p-4 w-40 border-2 border-orange-200 z-20 duration-500 transform ${
+                          isEven ? "mb-[320px] " : "mt-[320px] "
                         } hover:shadow-2xl`}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -324,12 +324,12 @@ const Timeline = () => {
                         className={`bg-orange-500 text-white rounded-lg p-3 cursor-pointer hover:bg-orange-600 transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105 ${
                           isEven ? "mb-[110px]" : "mt-[110px]"
                         }`}
-                        style={{ width: "124.82px", height: "83.21px" }}
+                        style={{ width: "135.82px", height: "83.21px" }}
                       >
-                        <h4 className="text-base font-bold  line-clamp-2">
+                        <h4 className="text-[12px] font-bold  line-clamp-2">
                           {milestone.year}
                         </h4>
-                        <p className="text-base opacity-90 line-clamp-2">
+                        <p className="text-[12px] opacity-90 line-clamp-2">
                           {milestone.title}
                         </p>
                       </div>
