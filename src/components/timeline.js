@@ -280,9 +280,13 @@ const Timeline = () => {
                     {/* Large Card for Active Item */}
                     {isActive && (
                       <div
-                        className={`bg-white rounded-lg shadow-xl p-4 w-40 border-2 border-orange-200 z-20 transition-all duration-500 transform ${
+                        className={`bg-white rounded-lg shadow-xl cursor-pointer p-4 w-40 border-2 border-orange-200 z-20 transition-all duration-500 transform ${
                           isEven ? "mb-[310px] " : "mt-[310px] "
                         } hover:shadow-2xl`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openPopup(milestone);
+                        }}
                       >
                         <div className="w-full h-20 bg-gray-200 rounded-lg mb-3 overflow-hidden">
                           <img
@@ -321,10 +325,6 @@ const Timeline = () => {
                           isEven ? "mb-[110px]" : "mt-[110px]"
                         }`}
                         style={{ width: "124.82px", height: "83.21px" }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openPopup(milestone);
-                        }}
                       >
                         <h4 className="text-base font-bold  line-clamp-2">
                           {milestone.year}
