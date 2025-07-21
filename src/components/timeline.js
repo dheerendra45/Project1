@@ -40,7 +40,7 @@ const Timeline = () => {
       title: "Building the Foundation",
       subtitle: "Sambalpur Plant",
       description:
-        "• Sambalpur Plant:\n  • Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
+        "• Sambalpur Plant:• Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
       image: Img2013,
     },
 
@@ -279,7 +279,7 @@ const Timeline = () => {
                     {isActive && (
                       <div
                         className={`bg-white rounded-lg shadow-xl cursor-pointer p-4 w-40 border-2 border-orange-200 z-20 duration-500 transform ${
-                          isEven ? "mb-[320px] " : "mt-[320px] "
+                          isEven ? "mb-[350px] " : "mt-[350px] "
                         } hover:shadow-2xl`}
                         onClick={(e) => {
                           e.stopPropagation();
@@ -386,7 +386,7 @@ const Timeline = () => {
               <h4 className="text-lg font-semibold text-orange-600 mb-4">
                 {selectedMilestone.subtitle}
               </h4>
-              <p className="text-gray-700 leading-relaxed font text-base">
+              <p className="text-gray-700 leading-relaxed font text-base whitespace-pre-line">
                 {selectedMilestone.description}
               </p>
             </div>
