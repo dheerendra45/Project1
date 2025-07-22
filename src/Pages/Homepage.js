@@ -39,7 +39,7 @@ const HomePage = () => {
       <StatsCard />
       <MissionVisionValues />
       <AboutUs />
-      <Timeline1 />
+      {/* <Timeline1 /> */}
       <BusinessVerticals />
       {/* <BusinessHomepage /> */}
       {/* <EnvironmentSection /> */}

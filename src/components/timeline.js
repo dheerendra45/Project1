@@ -1,23 +1,33 @@
-import React, { useState, useRef, useEffect } from "react";
-import { X, GripHorizontal } from "lucide-react";
+import React, { useState, useRef } from "react";
+import { X } from "lucide-react";
+
 // milestones image
 import Img1991 from "../assets/aboutus/Picture 1, 1991-min.png";
 import Img2001 from "../assets/aboutus/Picture 2 2001 (Mangalpur Plant)-min.jpg";
 import Img2013 from "../assets/aboutus/Picture 3 2013 (Sambalpur)-min.jpeg";
 import Img2013New from "../assets/aboutus/Picture 4 2013 (Jamuria Plant)-min.jpg";
-
 import Img2014 from "../assets/aboutus/Picture 5 2014 (Ferro)-min.jpg";
 import Img2015 from "../assets/aboutus/Picture 6,  2015 (Sambalpur Plant)-min.jpg";
 import Img2019 from "../assets/aboutus/Picture 8, 2019 (TMT Bar)-min.jpg";
 import Img2021 from "../assets/aboutus/Picture 9,  2021 Wire Rod 2-min.jpg";
 import Img2024 from "../assets/aboutus/Picture 10,  CRM 2024-min.jpg";
+
+// Placeholder for vector8 import - replace with your actual vector image
+import vector8 from "../assets/Vector8.png";
+
+// CarSVG Component
+const CarSVG = () => (
+  <div className="w-8 h-8 bg-orange-500 rounded-full border-2 border-white shadow-lg flex items-center justify-center">
+    <div className="w-2 h-2 bg-white rounded-full"></div>
+  </div>
+);
+
 const Timeline = () => {
   const [selectedMilestone, setSelectedMilestone] = useState(null);
-  const [activeCardIndex, setActiveCardIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
-  const [dragButtonPosition, setDragButtonPosition] = useState(0);
+  const [dragPosition, setDragPosition] = useState(0); // 0 to 100 percentage
+  const [isMouseOverTimeline, setIsMouseOverTimeline] = useState(false);
   const timelineRef = useRef(null);
-  const dragButtonRef = useRef(null);
 
   const milestones = [
     {
@@ -43,7 +53,14 @@ const Timeline = () => {
         "• Sambalpur Plant:\n • Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
       image: Img2013,
     },
-
+    {
+      year: "2013",
+      title: "Jamuria Plant Expansion",
+      subtitle: "Jamuria Plant",
+      description:
+        "• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
+      image: Img2013New,
+    },
     {
       year: "2014",
       title: "Integrating Strength",
@@ -52,7 +69,6 @@ const Timeline = () => {
         "• Sambalpur Plant:\n  • Commissioned the first Ferro Alloy unit\n  • Sponge Iron upgraded by 0.3 MTPA\n• Jamuria Plant:\n  • Captive Railway Siding established",
       image: Img2014,
     },
-
     {
       year: "2015",
       title: "Infrastructure in Motion",
@@ -61,7 +77,6 @@ const Timeline = () => {
         "• Sambalpur Plant:\n  • Railway siding operationalized\n• Jamuria Plant:\n  • Commissioned another Captive Power Plant\n  • Complete integration of Sponge Iron, Billets, and Ferro Alloys\n  • Capacity increased by 0.9 MTPA",
       image: Img2015,
     },
-
     {
       year: "2016",
       title: "Scaling New Heights",
@@ -69,7 +84,6 @@ const Timeline = () => {
       description:
         "• Sambalpur Plant:\n  • Billet capacity increased by 0.27 MTPA\n• Jamuria Plant:\n  • Iron Pellets and Billets capacity enhanced by 0.60 MTPA",
     },
-
     {
       year: "2017",
       title: "Powering Progress",
@@ -77,7 +91,6 @@ const Timeline = () => {
       description:
         "• Sambalpur Plant:\n  • Capacity expansion of Sponge Iron and Billets by 0.67 MTPA\n• Crossing the 2.60 MTPA Milestone:\n  • Total Metalics' capacity reached 2.60 MTPA",
     },
-
     {
       year: "2019",
       title: "Strengthening the Core",
@@ -86,7 +99,6 @@ const Timeline = () => {
         "• Sambalpur Plant:\n  • Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA\n• Jamuria Plant:\n  • Upgraded key facilities and added 15 MW Captive Power",
       image: Img2019,
     },
-
     {
       year: "2020",
       title: "Resilience and Renewal",
@@ -94,7 +106,6 @@ const Timeline = () => {
       description:
         "• Sambalpur Plant:\n  • Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant\n• Jamuria Plant:\n  • WHRS & Power expansion\n  • Total Metalics' capacity reached 5.71 MTPA",
     },
-
     {
       year: "2021",
       title: "Emerging Stronger",
@@ -142,62 +153,45 @@ const Timeline = () => {
         "• Product Diversification:\n  • Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes\n• Nation-Building Contribution:\n  • Commitment to national infrastructure development\n• Market Expansion:\n  • Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up\n• Sustainability Commitment:\n  • Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems\n• Smart Operations:\n  • Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity",
     },
   ];
-  const cardWidth = 100 / milestones.length; // Percentage width per card
 
-  // Update drag button position when active card changes
-  useEffect(() => {
-    setDragButtonPosition(activeCardIndex * cardWidth);
-  }, [activeCardIndex, cardWidth]);
+  // Calculate visible milestones based on drag position
+  const getVisibleMilestones = () => {
+    const totalMilestones = milestones.length;
+    const cardsToShow = 11; // Fixed number of cards to show
+    const maxScroll = Math.max(0, totalMilestones - cardsToShow);
+    const scrollIndex = Math.floor((dragPosition / 100) * maxScroll);
 
-  const handleDragButtonMouseDown = (e) => {
+    return milestones.slice(scrollIndex, scrollIndex + cardsToShow);
+  };
+
+  const visibleMilestones = getVisibleMilestones();
+
+  // Smooth dragging handlers
+  const handleMouseDown = (e) => {
+    if (!timelineRef.current) return;
+
     e.preventDefault();
-    e.stopPropagation();
     setIsDragging(true);
 
+    const rect = timelineRef.current.getBoundingClientRect();
     const startX = e.clientX;
-    const startPosition = dragButtonPosition;
-    const containerWidth = timelineRef.current?.offsetWidth || 1;
+    const startPosition = dragPosition;
 
     const handleMouseMove = (e) => {
+      if (!isDragging || !timelineRef.current) return;
+
       const deltaX = e.clientX - startX;
+      const containerWidth = rect.width;
       const deltaPercent = (deltaX / containerWidth) * 100;
-      const newPosition = Math.max(
-        0,
-        Math.min(
-          startPosition + deltaPercent,
-          (milestones.length - 1) * cardWidth
-        )
-      );
 
-      setDragButtonPosition(newPosition);
+      let newPosition = startPosition + deltaPercent;
+      newPosition = Math.max(0, Math.min(100, newPosition));
 
-      // Update active card based on drag position
-      const nearestIndex = Math.round(newPosition / cardWidth);
-      if (
-        nearestIndex !== activeCardIndex &&
-        nearestIndex >= 0 &&
-        nearestIndex < milestones.length
-      ) {
-        setActiveCardIndex(nearestIndex);
-      }
+      setDragPosition(newPosition);
     };
 
     const handleMouseUp = () => {
       setIsDragging(false);
-
-      // Snap to nearest card position
-      const nearestIndex = Math.max(
-        0,
-        Math.min(
-          Math.round(dragButtonPosition / cardWidth),
-          milestones.length - 1
-        )
-      );
-      const snapPosition = nearestIndex * cardWidth;
-
-      setActiveCardIndex(nearestIndex);
-      setDragButtonPosition(snapPosition);
-
       document.removeEventListener("mousemove", handleMouseMove);
       document.removeEventListener("mouseup", handleMouseUp);
     };
@@ -212,15 +206,11 @@ const Timeline = () => {
     const rect = timelineRef.current.getBoundingClientRect();
     const clickX = e.clientX - rect.left;
     const clickPercent = (clickX / rect.width) * 100;
-    const clickedIndex = Math.max(
-      0,
-      Math.min(Math.floor(clickPercent / cardWidth), milestones.length - 1)
-    );
 
-    setActiveCardIndex(clickedIndex);
+    setDragPosition(clickPercent);
   };
 
-  const openPopup = (milestone) => {
+  const handleCardClick = (milestone) => {
     setSelectedMilestone(milestone);
   };
 
@@ -238,117 +228,239 @@ const Timeline = () => {
         {/* Timeline Container */}
         <div
           ref={timelineRef}
-          className="relative w-full pb-8 select-none"
+          className="relative w-full h-[450px] overflow-hidden"
+          style={{
+            userSelect: "none",
+            cursor: isMouseOverTimeline
+              ? isDragging
+                ? "grabbing"
+                : "grab"
+              : "default",
+          }}
           onClick={handleTimelineClick}
+          onMouseDown={handleMouseDown}
+          onMouseEnter={() => setIsMouseOverTimeline(true)}
+          onMouseLeave={() => setIsMouseOverTimeline(false)}
         >
-          <div className="relative w-full">
-            {/* Main Orange Timeline Line */}
-            <div className="absolute top-1/2 left-0 w-full h-1 bg-orange-500 transform -translate-y-1/2 z-10"></div>
+          {/* Vector arrow background */}
+          <div
+            className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 z-0 bg-center bg-no-repeat bg-cover"
+            style={{
+              backgroundImage: `url(${vector8})`,
+              clipPath:
+                "polygon(0% 20%, 90% 20%, 95% 0%, 100% 50%, 95% 100%, 90% 80%, 0% 80%)",
+            }}
+          />
 
-            {/* Draggable Button */}
-            <div
-              ref={dragButtonRef}
-              className={`absolute top-1/2 w-6 h-6 bg-black rounded-full transform -translate-y-1/2 -translate-x-1/2 z-30 ${
-                isDragging
-                  ? "cursor-grabbing scale-110 shadow-xl"
-                  : "cursor-grab hover:scale-105"
-              } transition-all duration-200 border-3 border-white shadow-lg`}
-              style={{ left: `${dragButtonPosition + cardWidth / 2}%` }}
-              onMouseDown={handleDragButtonMouseDown}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
-              </div>
-            </div>
+          {/* Smooth draggable orange circle */}
+          <div
+            className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20"
+            style={{
+              left: `${dragPosition}%`,
+              transition: isDragging
+                ? "none"
+                : "left 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            <CarSVG />
+          </div>
 
-            {/* Timeline Items */}
-            <div className="flex items-center w-full">
-              {milestones.map((milestone, index) => {
-                const isEven = index % 2 === 0;
-                const isActive = index === activeCardIndex;
+          {/* Top milestones - showing exactly 11 cards */}
+          <div
+            className="absolute left-0 w-full flex items-end z-10"
+            style={{
+              bottom: "calc(50% + 10px)",
+              transition: isDragging
+                ? "none"
+                : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            {visibleMilestones
+              .filter((_, index) => index % 2 === 1)
+              .map((milestone, i) => {
+                const isSmallLine = i % 2 === 1;
+                const lineHeight = isSmallLine ? "111px" : "211px";
+                const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+                const cardHeight = isSmallLine ? "90px" : "189.77px";
 
                 return (
                   <div
-                    key={milestone.year}
-                    className={`relative flex flex-col items-center ${
-                      isEven ? "" : "flex-col-reverse"
-                    }`}
-                    style={{ width: `${cardWidth}%` }}
+                    key={`top-${milestone.year}-${i}`}
+                    className="flex-shrink-0"
+                    style={{
+                      width: `${100 / 11}%`,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
                   >
-                    {/* Large Card for Active Item */}
-                    {isActive && (
+                    <div className="relative">
                       <div
-                        className={`bg-white rounded-lg shadow-xl cursor-pointer p-4 w-40 border-2 border-orange-200 z-20 duration-500 transform ${
-                          isEven ? "mb-[350px] " : "mt-[350px] "
-                        } hover:shadow-2xl`}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          openPopup(milestone);
+                        className="relative"
+                        style={{
+                          width: "1.5px",
+                          height: lineHeight,
                         }}
                       >
-                        <div className="w-full h-20 bg-gray-200 rounded-lg mb-3 overflow-hidden">
-                          <img
-                            src={milestone.image}
-                            alt={milestone.title}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        <h3 className="text-lg font-bold text-gray-800 mb-2 line-clamp-2">
-                          {milestone.title}
-                        </h3>
-                        <p className="text-base text-orange-600 mb-2 font-medium line-clamp-1">
-                          {milestone.subtitle}
-                        </p>
-                        <p className="text-base text-gray-600 line-clamp-3">
-                          {milestone.description}
-                        </p>
-                        {milestone.description.length > 120 && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              openPopup(milestone);
+                        <div className="absolute bottom-0 w-full h-full bg-black"></div>
+                        <div
+                          className="relative cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleCardClick(milestone);
+                          }}
+                        >
+                          <div
+                            className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                            style={{
+                              width: cardWidth,
+                              height: cardHeight,
+                              left: "5px",
+                              top: isSmallLine ? "5px" : "0px",
+                              borderRadius: "3.71px",
                             }}
-                            className="text-orange-500 text-sm mt-2 hover:underline font-medium"
                           >
-                            Read more...
-                          </button>
-                        )}
+                            <div className="p-2">
+                              <div className="text-orange-500 font-bold text-sm mb-1">
+                                {milestone.year}
+                              </div>
+                              <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                                {milestone.title}
+                              </div>
+                              <div className="text-gray-600 text-xs leading-tight">
+                                {milestone.subtitle}
+                              </div>
+                            </div>
+                            {!isSmallLine && milestone.image && (
+                              <div
+                                className="absolute overflow-hidden"
+                                style={{
+                                  width: "142.31px",
+                                  height: "77.27px",
+                                  left: "5px",
+                                  top: "105.5px",
+                                  borderRadius: "3.71px",
+                                }}
+                              >
+                                <img
+                                  src={milestone.image}
+                                  alt={milestone.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </div>
-                    )}
-
-                    {/* Small Cards for Inactive Items */}
-                    {!isActive && (
-                      <div
-                        className={`bg-orange-500 text-white rounded-lg p-3 cursor-pointer hover:bg-orange-600 transition-all duration-300 opacity-80 hover:opacity-100 hover:scale-105 ${
-                          isEven ? "mb-[110px]" : "mt-[110px]"
-                        }`}
-                        style={{ width: "135.82px", height: "83.21px" }}
-                      >
-                        <h4 className="text-[12px] font-bold  line-clamp-2">
-                          {milestone.year}
-                        </h4>
-                        <p className="text-[12px] opacity-90 line-clamp-2">
-                          {milestone.title}
-                        </p>
-                      </div>
-                    )}
-
-                    {/* Orange Dot on Timeline */}
-                    <div
-                      className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full border-2 border-orange-500 z-15 transition-all duration-300 ${
-                        isActive
-                          ? "w-5 h-5 bg-orange-400 scale-110"
-                          : "w-3 h-3 bg-orange-200 hover:bg-orange-300"
-                      }`}
-                    ></div>
-
-                    {/* Year Label */}
+                    </div>
                   </div>
                 );
               })}
-            </div>
+          </div>
 
-            {/* Instructions */}
+          {/* Bottom milestones - showing exactly 11 cards */}
+          <div
+            className="absolute left-0 w-full flex items-start z-10"
+            style={{
+              top: "calc(50% + 10px)",
+              transition: isDragging
+                ? "none"
+                : "transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            {visibleMilestones
+              .filter((_, index) => index % 2 === 0)
+              .map((milestone, i) => {
+                const isSmallLine = i % 2 === 1;
+                const lineHeight = isSmallLine ? "111px" : "211px";
+                const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+                const cardHeight = isSmallLine ? "90px" : "189.77px";
+
+                return (
+                  <div
+                    key={`bottom-${milestone.year}-${i}`}
+                    className="flex-shrink-0"
+                    style={{
+                      width: `${100 / 10}%`,
+                      display: "flex",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <div className="relative">
+                      <div
+                        className="relative"
+                        style={{
+                          width: "1.5px",
+                          height: lineHeight,
+                        }}
+                      >
+                        <div className="absolute top-0 w-full h-full bg-black"></div>
+                        <div
+                          className="relative cursor-pointer"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleCardClick(milestone);
+                          }}
+                        >
+                          <div
+                            className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                            style={{
+                              width: cardWidth,
+                              height: cardHeight,
+                              left: "5px",
+                              top: "10px",
+                              borderRadius: "3.71px",
+                            }}
+                          >
+                            <div className="p-2">
+                              <div className="text-orange-500 font-bold text-sm mb-1">
+                                {milestone.year}
+                              </div>
+                              <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                                {milestone.title}
+                              </div>
+                              <div className="text-gray-600 text-xs leading-tight">
+                                {milestone.subtitle}
+                              </div>
+                            </div>
+                            {!isSmallLine && milestone.image && (
+                              <div
+                                className="absolute overflow-hidden"
+                                style={{
+                                  width: "142.31px",
+                                  height: "77.27px",
+                                  left: "50px",
+                                  top: "105.5px",
+                                  borderRadius: "3.71px",
+                                }}
+                              >
+                                <img
+                                  src={milestone.image}
+                                  alt={milestone.title}
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* Animated dots on the arrow */}
+          <div className="absolute top-1/2 transform -translate-y-1/2 left-0 right-[180px] flex justify-between px-2 z-10">
+            {[...Array(25)].map((_, i) => (
+              <div
+                key={i}
+                className="w-[10px] h-[1px] bg-white animate-pulse"
+                style={{
+                  animationDelay: `${i * 0.1}s`,
+                  animationDuration: "2s",
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>

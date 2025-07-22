@@ -1,7 +1,6 @@
 import React from "react";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { Factory, Zap, Users, Package, Globe, Leaf } from "lucide-react";
-import { Link } from "react-router-dom";
 
 import vector8 from "../assets/Vector8.png";
 import ab1 from "../assets/ab1.jpg";
@@ -51,7 +50,14 @@ export default function ShyamMetalicsProfile() {
         "Commercial production started at the Sponge Iron plant (0.3 MTPA)",
       image: Img2013,
     },
-
+    {
+      year: "2013",
+      title: "Building the Foundation",
+      subtitle: "Jamuria Plant",
+      description:
+        "Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
+      image: Img2013New,
+    },
     {
       year: "2014",
       title: "Integrating Strength",
@@ -60,7 +66,12 @@ export default function ShyamMetalicsProfile() {
         "Commissioned the first Ferro Alloy unit. Sponge Iron upgraded by 0.3 MTPA.",
       image: Img2014,
     },
-
+    {
+      year: "2014",
+      title: "Integrating Strength",
+      subtitle: "Jamuria Plant",
+      description: "Captive Railway Siding established.",
+    },
     {
       year: "2015",
       title: "Infrastructure in Motion",
@@ -68,7 +79,13 @@ export default function ShyamMetalicsProfile() {
       description: "Railway siding operationalized.",
       image: Img2015,
     },
-
+    {
+      year: "2015",
+      title: "Infrastructure in Motion",
+      subtitle: "Jamuria Plant",
+      description:
+        "Commissioned another Captive Power Plant. Complete integration of Sponge Iron, Billets, and Ferro Alloys. Capacity increased by 0.9 MTPA.",
+    },
     {
       year: "2016",
       title: "Scaling New Heights",
@@ -88,7 +105,12 @@ export default function ShyamMetalicsProfile() {
       description:
         "Capacity expansion of Sponge Iron and Billets by 0.67 MTPA.",
     },
-
+    {
+      year: "2017",
+      title: "Crossing the 2.60 MTPA Milestone",
+      subtitle: "Total Metalics' capacity reached 2.60 MTPA",
+      description: "Total Metalics' capacity reached 2.60 MTPA.",
+    },
     {
       year: "2019",
       title: "Strengthening the Core",
@@ -96,7 +118,12 @@ export default function ShyamMetalicsProfile() {
       description: "Expansion in Sponge Iron, TMT, and Wire Rods by 1.81 MTPA.",
       image: Img2019,
     },
-
+    {
+      year: "2019",
+      title: "Strengthening the Core",
+      subtitle: "Jamuria Plant",
+      description: "Upgraded key facilities and added 15 MW Captive Power.",
+    },
     {
       year: "2020",
       title: "Resilience and Renewal",
@@ -104,7 +131,13 @@ export default function ShyamMetalicsProfile() {
       description:
         "Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant.",
     },
-
+    {
+      year: "2020",
+      title: "Resilience and Renewal",
+      subtitle: "Jamuria Plant",
+      description:
+        "WHRS & Power expansion. Total Metalics' capacity reached 5.71 MTPA.",
+    },
     {
       year: "2021",
       title: "Emerging Stronger",
@@ -241,7 +274,7 @@ export default function ShyamMetalicsProfile() {
   const AnimatedParagraph = ({ text, startCount }) => {
     const words = text.split(" ");
     return (
-      <p className="mb-4 text-gray-700 text-base whitespace-normal">
+      <p className="mb-4 text-gray-700 whitespace-normal">
         {words.map((word, index) => {
           const globalIndex = startCount + index;
           return (
@@ -434,11 +467,9 @@ export default function ShyamMetalicsProfile() {
             />
 
             <div className="mt-4">
-              <Link to="/leadership">
-                <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold border border-white transition-all duration-300 shadow-lg w-fit text-sm sm:text-base">
-                  Read More →
-                </button>
-              </Link>
+              <button className="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                Read More →
+              </button>
             </div>
           </div>
         </div>
@@ -472,6 +503,238 @@ export default function ShyamMetalicsProfile() {
             </h4>
           </div>
         ))}
+      </div>
+
+      <div
+        className="relative w-full h-[450px] overflow-hidden"
+        style={{ userSelect: "none" }}
+      >
+        {/* Vector arrow background */}
+        <img
+          src={vector8}
+          alt="arrow"
+          className="absolute top-1/2 left-0 w-[calc(100%+120px)] h-[65px] transform -translate-y-1/2 object-cover z-0"
+        />
+
+        {/* Smooth draggable orange circle */}
+        <div
+          className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20"
+          style={{
+            left: `${(smoothCarPosition / sliderWidth) * 98}%`,
+            transition: isDragging ? "none" : "left 0.1s ease-out",
+          }}
+        >
+          <CarSVG />
+        </div>
+
+        {/* Smooth milestone containers */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Top milestones */}
+          <div
+            className="absolute left-[-60px] w-[calc(100%+120px)] flex items-end z-10"
+            style={{
+              bottom: "calc(50% + 10px)",
+              transform: `translateX(${
+                visibleMilestones[0]?.translateX || 0
+              }%)`,
+              transition: isDragging ? "none" : "transform 0.15s ease-out",
+            }}
+          >
+            {visibleMilestones.slice(1, 7).map((milestone, i) => {
+              const isSmallLine = i % 2 === 1;
+              const lineHeight = isSmallLine ? "111px" : "211px";
+              const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+              const cardHeight = isSmallLine ? "90px" : "189.77px";
+
+              return (
+                <div
+                  key={`top-${milestone.originalIndex}-${Math.floor(
+                    smoothCarPosition
+                  )}`}
+                  className="flex-shrink-0"
+                  style={{
+                    width: `${100 / 6}%`,
+                    display: "flex",
+                    justifyContent: "center",
+                    opacity: milestone.opacity,
+                    transform: `scale(${milestone.scale})`,
+                    transition: isDragging
+                      ? "none"
+                      : "opacity 0.3s ease-out, transform 0.3s ease-out",
+                  }}
+                >
+                  <div className="relative">
+                    <div
+                      className="relative"
+                      style={{
+                        width: "1.5px",
+                        height: lineHeight,
+                      }}
+                    >
+                      <div className="absolute bottom-0 w-full h-full bg-black"></div>
+                      <div
+                        className="relative cursor-pointer"
+                        onClick={() => handleCardClick(milestone)}
+                      >
+                        <div
+                          className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                          style={{
+                            width: cardWidth,
+                            height: cardHeight,
+                            left: "5px",
+                            top: isSmallLine ? "5px" : "0px",
+                            borderRadius: "3.71px",
+                          }}
+                        >
+                          <div className="p-2">
+                            <div className="text-orange-500 font-bold text-sm mb-1">
+                              {milestone.year}
+                            </div>
+                            <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                              {milestone.title}
+                            </div>
+                            <div className="text-gray-600 text-xs leading-tight">
+                              {milestone.subtitle}
+                            </div>
+                          </div>
+                          {!isSmallLine && (
+                            <div
+                              className="absolute overflow-hidden"
+                              style={{
+                                width: "142.31px",
+                                height: "77.27px",
+                                left: "5px",
+                                top: "105.5px",
+                                borderRadius: "3.71px",
+                              }}
+                            >
+                              <img
+                                src={milestone.image}
+                                alt={milestone.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom milestones */}
+          <div
+            className="absolute left-[-60px] w-[calc(100%+120px)] flex items-start z-10"
+            style={{
+              top: "calc(50% + 10px)",
+              transform: `translateX(${
+                (visibleMilestones[0]?.translateX || 0) + 100 / 12
+              }%)`,
+              transition: isDragging ? "none" : "transform 0.15s ease-out",
+            }}
+          >
+            {visibleMilestones.slice(7, 12).map((milestone, i) => {
+              const isSmallLine = i % 2 === 1;
+              const lineHeight = isSmallLine ? "111px" : "211px";
+              const cardWidth = isSmallLine ? "130.82px" : "156.68px";
+              const cardHeight = isSmallLine ? "90px" : "189.77px";
+
+              return (
+                <div
+                  key={`bottom-${milestone.originalIndex}-${Math.floor(
+                    smoothCarPosition
+                  )}`}
+                  className="flex-shrink-0"
+                  style={{
+                    width: `${100 / 5}%`,
+                    display: "flex",
+                    justifyContent: "center",
+                    opacity: milestone.opacity,
+                    transform: `scale(${milestone.scale})`,
+                    transition: isDragging
+                      ? "none"
+                      : "opacity 0.3s ease-out, transform 0.3s ease-out",
+                  }}
+                >
+                  <div className="relative">
+                    <div
+                      className="relative"
+                      style={{
+                        width: "1.5px",
+                        height: lineHeight,
+                      }}
+                    >
+                      <div className="absolute top-0 w-full h-full bg-black"></div>
+                      <div
+                        className="relative cursor-pointer"
+                        onClick={() => handleCardClick(milestone)}
+                      >
+                        <div
+                          className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                          style={{
+                            width: cardWidth,
+                            height: cardHeight,
+                            left: "5px",
+                            top: "10px",
+                            borderRadius: "3.71px",
+                          }}
+                        >
+                          <div className="p-2">
+                            <div className="text-orange-500 font-bold text-sm mb-1">
+                              {milestone.year}
+                            </div>
+                            <div className="text-gray-900 font-semibold text-xs mb-1 leading-tight">
+                              {milestone.title}
+                            </div>
+                            <div className="text-gray-600 text-xs leading-tight">
+                              {milestone.subtitle}
+                            </div>
+                          </div>
+                          {!isSmallLine && (
+                            <div
+                              className="absolute overflow-hidden"
+                              style={{
+                                width: "142.31px",
+                                height: "77.27px",
+                                left: "5px",
+                                top: "105.5px",
+                                borderRadius: "3.71px",
+                              }}
+                            >
+                              <img
+                                src={milestone.image}
+                                alt={milestone.title}
+                                className="w-full h-full object-cover"
+                              />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Animated dots on the arrow */}
+        <div className="absolute top-1/2 transform -translate-y-1/2 left-0 right-[180px] flex justify-between px-2 z-10">
+          {[...Array(25)].map((_, i) => (
+            <div
+              key={i}
+              className="w-[10px] h-[1px] bg-white animate-pulse"
+              style={{
+                animationDelay: `${i * 0.1}s`,
+                animationDuration: "2s",
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Removed Early Years and Future labels */}
       </div>
 
       {/* Popup Modal */}

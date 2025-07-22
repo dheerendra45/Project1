@@ -96,9 +96,44 @@ export default function BusinessAreas({ id }) {
         href: "/tmt_bars",
       },
       {
+        name: "Coil TMT",
+        desc: "TMT bars in coil form for easy transportation and storage",
+        href: "#",
+      },
+      {
         name: "Wire Rods",
         desc: "Long steel product used for wire drawing",
         href: "/wire_rods",
+      },
+      {
+        name: "Hot Rolled (HR) Coils",
+        desc: "Steel coils formed through hot rolling process",
+        href: "#",
+      },
+      {
+        name: "Cold Rolled (CR) Coils",
+        desc: "Precision steel coils processed through cold rolling",
+        href: "#",
+      },
+      {
+        name: "Galvanized Sheets",
+        desc: "Zinc-coated steel sheets for corrosion resistance",
+        href: "#",
+      },
+      {
+        name: "Galvalume Sheets",
+        desc: "Aluminum-zinc alloy coated steel sheets",
+        href: "#",
+      },
+      {
+        name: "Pre-Painted Galvanized Sheets (PPGI)",
+        desc: "Color-coated galvanized steel sheets",
+        href: "#",
+      },
+      {
+        name: "Pre-Painted Galvalume Sheets (PPGL)",
+        desc: "Color-coated galvalume steel sheets",
+        href: "#",
       },
       {
         name: "Pipes & Hollow Sections",
@@ -116,6 +151,11 @@ export default function BusinessAreas({ id }) {
         href: "/stainless_steel_billets",
       },
       {
+        name: "Stainless Steel Rebar",
+        desc: "Corrosion-resistant reinforcement bars",
+        href: "#",
+      },
+      {
         name: "SS Wire Rod",
         desc: "Stainless steel rods for wire production",
         href: "/SS_Wire_Rod",
@@ -123,7 +163,17 @@ export default function BusinessAreas({ id }) {
       {
         name: "SS Wire",
         desc: "Fine stainless steel wires for various applications",
-        href: "#", // No specific href found in navItems
+        href: "#",
+      },
+      {
+        name: "Stainless Steel Bright Bar",
+        desc: "Precision-ground stainless bars with smooth finish",
+        href: "#",
+      },
+      {
+        name: "Stainless Steel Hot Rolled Bar",
+        desc: "Hot-formed stainless steel bars",
+        href: "#",
       },
       {
         name: "Black Round Bar",
@@ -143,41 +193,61 @@ export default function BusinessAreas({ id }) {
       {
         name: "Flat Rolled Products",
         desc: "Rolled steel sheets and plates for industrial use",
-        href: "#", // No specific href found in navItems
+        href: "#",
+      },
+      {
+        name: "Crash Barrier",
+        desc: "Safety steel barriers for road and highway protection",
+        href: "#",
+      },
+      {
+        name: "Ferro Alloys",
+        desc: "Iron alloys used as additives in steel production",
+        href: "#",
       },
     ],
     Aluminium: [
       {
         name: "SEL TIGER FOIL–KITCHEN Foil",
         desc: "Premium quality kitchen aluminum foil for domestic use",
-        href: "#", // From navItems subItems
+        href: "#",
       },
       {
         name: "Bare Aluminium Foil",
         desc: "Versatile aluminum foil for packaging and industrial applications",
-        href: "#", // From navItems subItems
+        href: "#",
       },
       {
         name: "Battery Foil",
         desc: "High-performance aluminum foil for battery manufacturing",
-        href: "#", // From navItems subItems
+        href: "#",
+      },
+      {
+        name: "Food Grade Foil",
+        desc: "Aluminum foil meeting safety standards for food contact",
+        href: "#",
       },
       {
         name: "FinStocks",
         desc: "Durable aluminum foil for HVAC and heat exchanger applications",
-        href: "#", // From navItems subItems
+        href: "#",
       },
     ],
     "Energy and Others": [
       {
-        name: "Captive Power",
+        name: "Captive Power Generation",
         desc: "Dedicated power generation for industrial operations",
         href: "/capatve-power",
       },
       {
-        name: "Renewable Power",
+        name: "Renewable Power Generation",
         desc: "Sustainable energy solutions including solar and wind power",
         href: "/renewable-power",
+      },
+      {
+        name: "Wagon Manufacturing",
+        desc: "Production of railway wagons for freight transportation",
+        href: "#",
       },
     ],
   };
