@@ -2,7 +2,10 @@ import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import worldExport from "../assets/asia map.mp4";
 import indiaMapVideo from "../assets/IndiaMap1.mp4";
+import indianMap from "../assets/updated-indian-map (1).mp4";
+import worldMap from "../assets/updated-world-map (1).mp4";
 import { Link } from "react-router-dom";
+import { map } from "leaflet";
 
 function LocationsMap() {
   const sectionRef = useRef(null);
@@ -209,7 +212,7 @@ function LocationsMap() {
             >
               <video
                 ref={worldVideoRef}
-                src={worldExport}
+                src={worldMap}
                 className="w-full h-full object-cover"
                 muted
                 playsInline
@@ -251,7 +254,7 @@ function LocationsMap() {
             >
               <video
                 ref={indiaVideoRef}
-                src={indiaMapVideo}
+                src={indianMap}
                 className="w-full h-full object-cover"
                 muted
                 playsInline
