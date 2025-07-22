@@ -114,51 +114,51 @@ const VideoHoverSection = () => {
           preload="auto"
         />
 
-        {/* Horizontal Glassy Statistics Panel - Increased transparency */}
-        <div className="relative z-10 p-8 rounded-2xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg flex gap-12 items-center justify-between transform transition-all duration-300 group-hover:scale-[1.02]">
+        {/* Statistics Panel - Now positioned at bottom with smaller text */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10 p-4 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 shadow-lg flex gap-8 items-center justify-between transition-all duration-300 group-hover:scale-[1.02]">
           {/* ACTUAL IMPACT */}
-          <div className="text-center min-w-[200px] flex flex-col items-center py-[50px]">
-            <img src={cloud} alt="Cloud" className="w-[100px] h-18" />
-            <p className="text-lg font-medium text-white mt-4">
+          <div className="text-center min-w-[140px] flex flex-col items-center py-4">
+            <img src={cloud} alt="Cloud" className="w-12 h-12" />
+            <p className="text-xs font-medium text-white mt-2">
               2021 ACTUAL IMPACT
             </p>
-            <p className="text-5xl font-bold text-white my-4">
+            <p className="text-2xl font-bold text-white my-1">
               {actualImpact.toLocaleString()}
             </p>
-            <p className="text-lg text-white/80">MtCO₂e</p>
+            <p className="text-xs text-white/80">MtCO₂e</p>
           </div>
 
           {/* Divider */}
-          <div className="h-24 w-px bg-white/20"></div>
+          <div className="h-16 w-px bg-white/30"></div>
 
           {/* OFFSETS */}
-          <div className="text-center min-w-[200px] flex flex-col items-center py-[50px]">
-            <img src={green} alt="Green" className="w-[100px] h-18" />
-            <p className="text-lg font-medium text-white mt-4">2021 OFFSETS</p>
-            <p className="text-5xl font-bold text-white my-4">
+          <div className="text-center min-w-[140px] flex flex-col items-center py-4">
+            <img src={green} alt="Green" className="w-12 h-12" />
+            <p className="text-xs font-medium text-white mt-2">2021 OFFSETS</p>
+            <p className="text-2xl font-bold text-white my-1">
               {offsets.toLocaleString()}
             </p>
-            <p className="text-lg text-white/80">MtCO₂e</p>
+            <p className="text-xs text-white/80">MtCO₂e</p>
           </div>
 
           {/* Divider */}
-          <div className="h-24 w-px bg-white/20"></div>
+          <div className="h-16 w-px bg-white/30"></div>
 
           {/* NET IMPACT */}
-          <div className="text-center min-w-[200px] flex flex-col items-center py-[50px]">
-            <img src={earth} alt="Earth" className="w-[100px] h-18" />
-            <p className="text-lg font-medium text-white mt-4">
+          <div className="text-center min-w-[140px] flex flex-col items-center py-4">
+            <img src={earth} alt="Earth" className="w-12 h-12" />
+            <p className="text-xs font-medium text-white mt-2">
               2021 NET IMPACT
             </p>
-            <p className="text-5xl font-bold text-white my-4">
+            <p className="text-2xl font-bold text-white my-1">
               {netImpact.toLocaleString()}
             </p>
-            <p className="text-lg text-white/80">MtCO₂e</p>
+            <p className="text-xs text-white/80">MtCO₂e</p>
           </div>
 
           {/* Glass reflection effect - made more subtle */}
-          <div className="absolute inset-0 rounded-2xl pointer-events-none overflow-hidden">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/4 transform rotate-45 translate-x-16 -translate-y-16"></div>
+          <div className="absolute inset-0 rounded-xl pointer-events-none overflow-hidden">
+            <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 transform rotate-45 translate-x-8 -translate-y-8"></div>
           </div>
         </div>
 
