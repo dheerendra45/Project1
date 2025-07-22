@@ -22,19 +22,19 @@ const StatsCard = () => {
       numericValue: 83,
       suffix: "%",
     },
-    {
-      title: "Active Projects",
-      value: "1,200+",
-      numericValue: 1200,
-      suffix: "+",
-    },
-    {
-      title: "Turn Over",
-      value: "₹20,000 CRORE",
-      numericValue: 20000,
-      suffix: " CRORE",
-      prefix: "₹",
-    },
+    // {
+    //   title: "Active Projects",
+    //   value: "1,200+",
+    //   numericValue: 1200,
+    //   suffix: "+",
+    // },
+    // {
+    //   title: "Turn Over",
+    //   value: "₹20,000 CRORE",
+    //   numericValue: 20000,
+    //   suffix: " CRORE",
+    //   prefix: "₹",
+    // },
   ];
 
   const [currentValues, setCurrentValues] = useState(
