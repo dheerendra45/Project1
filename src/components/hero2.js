@@ -47,42 +47,6 @@ const Hero = () => {
         <source src={video} type="video/webm" />
         {/* No <img> inside <video>! */}
       </video>
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40 z-10" />
-
-      {/* Content */}
-      <div className="relative z-20 px-4 sm:px-6 md:px-8 lg:px-10 xl:px-8 py-8 flex items-center justify-center h-full text-white w-full">
-        <div className="bg-opacity-40 w-full max-w-7xl mx-auto rounded-xl p-4 sm:p-6 md:p-8 lg:p-10 flex flex-col gap-4 sm:gap-6">
-          {/* Heading and paragraph */}
-          <div className="w-full lg:w-[70%]">
-            <h1 className="text-header-style text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-tight font-bold mb-2 sm:mb-4">
-              {banners[currentSlide].heading}
-            </h1>
-            <p className="text-paragraph-style text-sm xs:text-base sm:text-lg md:text-xl lg:text-lg mb-4 sm:mb-6">
-              {banners[currentSlide].subline}
-            </p>
-          </div>
-
-          {/* Button + Stats in same row */}
-          <div className="w-full flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6">
-            {/* Button */}
-            <div className="w-full sm:w-auto">
-              <button
-                className="bg-orange-500 hover:bg-orange-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded border border-white transition-all duration-300 w-full sm:w-auto text-sm sm:text-base md:text-lg"
-                onClick={() => {
-                  const element = document.getElementById("business-areas");
-                  if (element) {
-                    element.scrollIntoView({ behavior: "smooth" });
-                  }
-                }}
-              >
-                Explore More
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

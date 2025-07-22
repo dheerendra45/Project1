@@ -40,7 +40,7 @@ const Timeline = () => {
       title: "Building the Foundation",
       subtitle: "Sambalpur Plant",
       description:
-        "• Sambalpur Plant:• Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
+        "• Sambalpur Plant:\n • Commercial production started at the Sponge Iron plant (0.3 MTPA)\n• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
       image: Img2013,
     },
 
