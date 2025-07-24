@@ -38,14 +38,6 @@ const milestones = [
     image: Img2013,
   },
   {
-    year: "2013",
-    title: "Jamuria Plant Expansion",
-    subtitle: "Jamuria Plant",
-    description:
-      "• Jamuria Plant:\n  • Started production of Sponge Iron, Iron Pellets, and Billets (0.6 MTPA)",
-    image: Img2013New,
-  },
-  {
     year: "2014",
     title: "Integrating Strength",
     subtitle: "Sambalpur Plant",
@@ -123,16 +115,14 @@ const milestones = [
   {
     year: "2025",
     title: "Scaling with Next-Gen Transformation",
-    subtitle:
-      "Taratala Corporate HQ, Aluminium Division, Kharagpur Plant, Ductile Iron & Steel Production, Jamuria Plant, Brand Expansion",
+    subtitle: "Taratala Corporate HQ",
     description:
       "• Taratala Corporate HQ:\n  • Established a new 3-acre Corporate Headquarters in Kolkata\n• Aluminium Division:\n  • Broadened product portfolio with the addition of battery foil and flat rolled aluminium products\n• Kharagpur Plant (Greenfield Project):\n  • Started construction of Wagon Manufacturing Plant with a capacity of 4,800 wagons per year\n  • 85% of the power requirement was met via captive generation\n• Ductile Iron & Steel Production:\n  • Commissioned new lines for DI Pipes, Sponge Iron, Billets, and Color-Coated Sheets\n• Jamuria Plant:\n  • Introduced the Cold Rolling Mill project (0.25 MTPA) under the PLI scheme\n• Brand Expansion:\n  • Introduced 4 new SEL Tiger roofing sheet brands such as Royale, Elite, Azure, and Alfa",
   },
   {
     year: "Upcoming",
     title: "Plan for Upcoming Years…",
-    subtitle:
-      "Product Diversification, Nation-Building Contribution, Market Expansion, Sustainability Commitment, Smart Operations",
+    subtitle: "Product Diversification",
     description:
       "• Product Diversification:\n  • Focus on high-margin, value-added products such as stainless steel flats, aluminium battery foil, CR coils, and DI pipes\n• Nation-Building Contribution:\n  • Commitment to national infrastructure development\n• Market Expansion:\n  • Outreach into newer Indian states with a focus on retail penetration, branding, and distribution scale-up\n• Sustainability Commitment:\n  • Advance the 100 MW solar plant expansion and enhanced use of waste heat recovery systems\n• Smart Operations:\n  • Incorporate smart technologies in operations and supply chain to boost cost-efficiency and productivity",
   },
@@ -148,81 +138,17 @@ const VectorArrow = () => (
 );
 
 export default function Timeline({ showFutureTimeline = false }) {
-  // DRAG SENSITIVITY CONTROL - Adjust these values to make dragging smoother or faster
-  const DRAG_SENSITIVITY = 0.8; // Lower = slower/smoother, Higher = faster/more sensitive (0.1 to 2.0)
-  const ANIMATION_SPEED = 150; // Transition duration in ms (50-300ms recommended)
-
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [clickedMilestone, setClickedMilestone] = useState(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [dragStartX, setDragStartX] = useState(0);
-  const [carPosition, setCarPosition] = useState(0);
-  const [smoothCarPosition, setSmoothCarPosition] = useState(0);
-  const sliderRef = useRef(null);
-  const dragTextRef = useRef(null);
-
-  useEffect(() => {
-    setCurrentIndex(0);
-    setCarPosition(0);
-    setSmoothCarPosition(0);
-  }, [showFutureTimeline]);
+  const [hoveredMilestone, setHoveredMilestone] = useState(null);
 
   const filteredMilestones = showFutureTimeline
     ? milestones.filter((m) => parseInt(m.year) >= 2023)
     : milestones;
 
-  const maxIndex = Math.max(0, filteredMilestones.length - 11);
-  const sliderWidth = 400;
-
-  const getSmoothVisibleMilestones = () => {
-    const visible = [];
-    const totalMilestones = filteredMilestones.length;
-
-    if (totalMilestones <= 11) {
-      return filteredMilestones.map((milestone, index) => ({
-        ...milestone,
-        originalIndex: index,
-        opacity: 1,
-        scale: 1,
-        translateX: 0,
-        isSmall:
-          (index < 6 && index % 2 === 1) || (index >= 6 && index % 2 === 0),
-      }));
-    }
-
-    const progress = smoothCarPosition / sliderWidth;
-    const totalSlots = Math.max(0, totalMilestones - 11);
-    const currentPosition = progress * totalSlots;
-    const startIndex = Math.floor(currentPosition);
-    const scrollFraction = currentPosition - startIndex;
-
-    for (let i = 0; i < 11; i++) {
-      const milestoneIndex = startIndex + i;
-
-      if (milestoneIndex >= totalMilestones) break;
-
-      const isSmall =
-        (milestoneIndex < 6 && milestoneIndex % 2 === 1) ||
-        (milestoneIndex >= 6 && milestoneIndex % 2 === 0);
-
-      const milestone = {
-        ...filteredMilestones[milestoneIndex],
-        originalIndex: milestoneIndex,
-        isSmall,
-        translateX: -scrollFraction * (100 / 11),
-        opacity: 1,
-        scale: 1,
-      };
-
-      visible.push(milestone);
-    }
-
-    return visible;
-  };
-
-  const visibleMilestones = getSmoothVisibleMilestones();
-  const topMilestones = visibleMilestones.slice(0, 6);
-  const bottomMilestones = visibleMilestones.slice(6, 11);
+  // Show only first 16 milestones
+  const visibleMilestones = filteredMilestones.slice(0, 16);
+  const topMilestones = visibleMilestones.slice(0, 8);
+  const bottomMilestones = visibleMilestones.slice(8, 16);
 
   const handleCardClick = (milestone) => {
     setClickedMilestone(milestone);
@@ -232,96 +158,13 @@ export default function Timeline({ showFutureTimeline = false }) {
     setClickedMilestone(null);
   };
 
-  const handleMouseDown = (e) => {
-    if (dragTextRef.current && dragTextRef.current.contains(e.target)) {
-      setIsDragging(true);
-      setDragStartX(e.clientX);
-      e.preventDefault();
-    }
+  const handleMouseEnter = (milestone) => {
+    setHoveredMilestone(milestone);
   };
 
-  const handleMouseMove = useCallback(
-    (e) => {
-      if (!isDragging) return;
-
-      const deltaX = (e.clientX - dragStartX) * DRAG_SENSITIVITY;
-      const newSmoothPosition = Math.max(
-        0,
-        Math.min(sliderWidth, smoothCarPosition + deltaX)
-      );
-
-      setSmoothCarPosition(newSmoothPosition);
-      setDragStartX(e.clientX);
-
-      const newIndex = Math.round((newSmoothPosition / sliderWidth) * maxIndex);
-      if (newIndex !== currentIndex && newIndex >= 0 && newIndex <= maxIndex) {
-        setCurrentIndex(newIndex);
-        setCarPosition(newSmoothPosition);
-      }
-    },
-    [
-      isDragging,
-      dragStartX,
-      smoothCarPosition,
-      sliderWidth,
-      maxIndex,
-      currentIndex,
-      DRAG_SENSITIVITY,
-    ]
-  );
-
-  const handleMouseUp = useCallback(() => {
-    setIsDragging(false);
-  }, []);
-
-  useEffect(() => {
-    if (isDragging) {
-      document.addEventListener("mousemove", handleMouseMove);
-      document.addEventListener("mouseup", handleMouseUp);
-
-      return () => {
-        document.removeEventListener("mousemove", handleMouseMove);
-        document.removeEventListener("mouseup", handleMouseUp);
-      };
-    }
-  }, [isDragging, handleMouseMove, handleMouseUp]);
-
-  const CarSVG = () => (
-    <div style={{ position: "relative", width: 48, height: 48 }}>
-      <div
-        style={{
-          width: 48,
-          height: 48,
-          borderRadius: "50%",
-          background: "orange",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-        }}
-      >
-        <span
-          ref={dragTextRef}
-          style={{
-            color: "#fff",
-            fontWeight: 700,
-            fontSize: 14,
-            textAlign: "center",
-            lineHeight: 1.2,
-            userSelect: "none",
-            cursor: isDragging ? "grabbing" : "grab",
-            padding: "6px 16px",
-            borderRadius: "16px",
-            background: "rgba(0,0,0,0.08)",
-            display: "inline-block",
-          }}
-          onMouseDown={handleMouseDown}
-        >
-          Drag
-        </span>
-      </div>
-    </div>
-  );
+  const handleMouseLeave = () => {
+    setHoveredMilestone(null);
+  };
 
   return (
     <div className="w-full">
@@ -331,47 +174,27 @@ export default function Timeline({ showFutureTimeline = false }) {
       >
         <VectorArrow />
 
-        <div
-          className="absolute left-[90px] top-1/2 transform -translate-y-1/2 z-20"
-          style={{
-            left: `${(smoothCarPosition / sliderWidth) * 98}%`,
-            transition: isDragging
-              ? "none"
-              : `left ${ANIMATION_SPEED}ms ease-out`,
-          }}
-        >
-          <CarSVG />
-        </div>
-
         {/* Top milestones */}
         <div
           className="absolute left-[-60px] w-[calc(100%+120px)] flex items-end z-10"
           style={{
             bottom: "calc(50% + 10px)",
-            transform: `translateX(${visibleMilestones[0]?.translateX || 0}%)`,
-            transition: isDragging
-              ? "none"
-              : `transform ${ANIMATION_SPEED}ms ease-out`,
           }}
         >
-          {topMilestones.map((milestone) => {
-            const lineHeight = milestone.isSmall ? "111px" : "211px";
-            const cardWidth = milestone.isSmall ? "130.82px" : "156.68px";
-            const cardHeight = milestone.isSmall ? "90px" : "189.77px";
+          {topMilestones.map((milestone, index) => {
+            const lineHeight = "111px";
+            const isHovered = hoveredMilestone?.year === milestone.year;
+            const cardWidth = isHovered ? "150px" : "130.82px";
+            const cardHeight = isHovered ? "180px" : "110px";
 
             return (
               <div
-                key={`top-${milestone.originalIndex}`}
+                key={`top-${index}`}
                 className="flex-shrink-0"
                 style={{
-                  width: `${100 / 6}%`,
+                  width: `${100 / 9}%`,
                   display: "flex",
                   justifyContent: "center",
-                  opacity: milestone.opacity,
-                  transform: `scale(${milestone.scale})`,
-                  transition: isDragging
-                    ? "none"
-                    : `opacity ${ANIMATION_SPEED}ms ease-out, transform ${ANIMATION_SPEED}ms ease-out`,
                 }}
               >
                 <div className="relative">
@@ -383,18 +206,40 @@ export default function Timeline({ showFutureTimeline = false }) {
                     <div
                       className="relative cursor-pointer"
                       onClick={() => handleCardClick(milestone)}
+                      onMouseEnter={() => handleMouseEnter(milestone)}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <div
-                        className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                        className="absolute bg-white border border-gray-200 hover:border-orange-300 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
                         style={{
                           width: cardWidth,
                           height: cardHeight,
                           left: "5px",
-                          top: milestone.isSmall ? "5px" : "0px",
+                          top: isHovered ? "-95px" : "-30px", // Grow upwards for top cards
                           borderRadius: "3.71px",
+                          display: "flex",
+                          flexDirection: "column",
+                          zIndex: isHovered ? 20 : 10,
                         }}
                       >
-                        <div className="p-2">
+                        {isHovered && milestone.image && (
+                          <div
+                            className="overflow-hidden"
+                            style={{
+                              width: "120px",
+                              height: "60px",
+                              margin: "5px auto 0",
+                              borderRadius: "3.71px",
+                            }}
+                          >
+                            <img
+                              src={milestone.image}
+                              alt={milestone.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <div className="p-2 flex-grow">
                           <div className="text-orange-500 font-bold text-sm mb-1">
                             {milestone.year}
                           </div>
@@ -405,28 +250,6 @@ export default function Timeline({ showFutureTimeline = false }) {
                             {milestone.subtitle}
                           </div>
                         </div>
-                        {!milestone.isSmall && (
-                          <div
-                            className="absolute overflow-hidden"
-                            style={{
-                              width: "142.31px",
-                              height: "77.27px",
-                              left: "5px",
-                              top: "105.5px",
-                              borderRadius: "3.71px",
-                            }}
-                          >
-                            {milestone.image ? (
-                              <img
-                                src={milestone.image}
-                                alt={milestone.title}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-gray-100"></div>
-                            )}
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -438,35 +261,26 @@ export default function Timeline({ showFutureTimeline = false }) {
 
         {/* Bottom milestones */}
         <div
-          className="absolute left-[-60px] w-[calc(100%+120px)] flex items-start z-10"
+          className="absolute left-[-130px] w-[calc(100%+120px)] flex items-start z-10"
           style={{
             top: "calc(50% + 10px)",
-            transform: `translateX(${
-              (visibleMilestones[0]?.translateX || 0) + 100 / 12
-            }%)`,
-            transition: isDragging
-              ? "none"
-              : `transform ${ANIMATION_SPEED}ms ease-out`,
+            transform: `translateX(${100 / 16}%)`,
           }}
         >
-          {bottomMilestones.map((milestone) => {
-            const lineHeight = milestone.isSmall ? "111px" : "211px";
-            const cardWidth = milestone.isSmall ? "130.82px" : "156.68px";
-            const cardHeight = milestone.isSmall ? "90px" : "189.77px";
+          {bottomMilestones.map((milestone, index) => {
+            const lineHeight = "111px";
+            const isHovered = hoveredMilestone?.year === milestone.year;
+            const cardWidth = isHovered ? "150px" : "130.82px";
+            const cardHeight = isHovered ? "180px" : "110px";
 
             return (
               <div
-                key={`bottom-${milestone.originalIndex}`}
+                key={`bottom-${index}`}
                 className="flex-shrink-0"
                 style={{
-                  width: `${100 / 5}%`,
+                  width: `${100 / 8}%`,
                   display: "flex",
                   justifyContent: "center",
-                  opacity: milestone.opacity,
-                  transform: `scale(${milestone.scale})`,
-                  transition: isDragging
-                    ? "none"
-                    : `opacity ${ANIMATION_SPEED}ms ease-out, transform ${ANIMATION_SPEED}ms ease-out`,
                 }}
               >
                 <div className="relative">
@@ -478,18 +292,40 @@ export default function Timeline({ showFutureTimeline = false }) {
                     <div
                       className="relative cursor-pointer"
                       onClick={() => handleCardClick(milestone)}
+                      onMouseEnter={() => handleMouseEnter(milestone)}
+                      onMouseLeave={handleMouseLeave}
                     >
                       <div
-                        className="absolute bg-white border border-gray-200 hover:border-orange-300 hover:scale-105 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
+                        className="absolute bg-white border border-gray-200 hover:border-orange-300 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg"
                         style={{
                           width: cardWidth,
                           height: cardHeight,
                           left: "5px",
-                          top: "10px",
+                          top: isHovered ? "10px" : "30px", // Grow downwards for bottom cards
                           borderRadius: "3.71px",
+                          display: "flex",
+                          flexDirection: "column",
+                          zIndex: isHovered ? 20 : 10,
                         }}
                       >
-                        <div className="p-2">
+                        {isHovered && milestone.image && (
+                          <div
+                            className="overflow-hidden"
+                            style={{
+                              width: "120px",
+                              height: "60px",
+                              margin: "5px auto 0",
+                              borderRadius: "3.71px",
+                            }}
+                          >
+                            <img
+                              src={milestone.image}
+                              alt={milestone.title}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        )}
+                        <div className="p-2 flex-grow">
                           <div className="text-orange-500 font-bold text-sm mb-1">
                             {milestone.year}
                           </div>
@@ -500,28 +336,6 @@ export default function Timeline({ showFutureTimeline = false }) {
                             {milestone.subtitle}
                           </div>
                         </div>
-                        {!milestone.isSmall && (
-                          <div
-                            className="absolute overflow-hidden"
-                            style={{
-                              width: "142.31px",
-                              height: "77.27px",
-                              left: "5px",
-                              top: "105.5px",
-                              borderRadius: "3.71px",
-                            }}
-                          >
-                            {milestone.image ? (
-                              <img
-                                src={milestone.image}
-                                alt={milestone.title}
-                                className="w-full h-full object-cover"
-                              />
-                            ) : (
-                              <div className="w-full h-full bg-gray-100"></div>
-                            )}
-                          </div>
-                        )}
                       </div>
                     </div>
                   </div>
@@ -585,4 +399,3 @@ export default function Timeline({ showFutureTimeline = false }) {
     </div>
   );
 }
-...
