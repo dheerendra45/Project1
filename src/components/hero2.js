@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useRef } from "react";
-
 import video from "../assets/WebsiteBanner.webm";
 
 // Banner data with corrected spelling
@@ -45,8 +44,17 @@ const Hero = () => {
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src={video} type="video/webm" />
-        {/* No <img> inside <video>! */}
       </video>
+
+      {/* Banner Text - Bottom Left */}
+      <div className="absolute bottom-[10%] left-[10%] text-white max-w-2xl z-10">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+          {banners[currentSlide].heading}
+        </h1>
+        <p className="text-lg sm:text-xl">
+          {banners[currentSlide].subline}
+        </p>
+      </div>
     </div>
   );
 };
