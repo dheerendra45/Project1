@@ -80,7 +80,7 @@ const milestones = [
     title: "Resilience and Renewal",
     subtitle: "Sambalpur Plant",
     description:
-      "• Sambalpur Plant:\n  • Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant\n• Jamuria Plant:\n  • WHRS & Power expansion\n  • Total Metalics' capacity reached 5.71 MTPA",
+      "• Sambalpur Plant:\n  • Pellet production capacity increased by 1.2 MTPA; commissioned a new 14 MW captive power plant\n• Jamuria Plant:\n  • WHRS & Power expansion\n  • Total Metalicos' capacity reached 5.71 MTPA",
   },
   {
     year: "2021",
@@ -140,6 +140,12 @@ const VectorArrow = () => (
 export default function Timeline({ showFutureTimeline = false }) {
   const [clickedMilestone, setClickedMilestone] = useState(null);
   const [hoveredMilestone, setHoveredMilestone] = useState(null);
+  const [dragButtonPosition, setDragButtonPosition] = useState(50); // Percentage position
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragHoveredMilestone, setDragHoveredMilestone] = useState(null);
+  const [persistentHoveredMilestone, setPersistentHoveredMilestone] =
+    useState(null); // This will stay until user moves to another milestone
+  const timelineRef = useRef(null);
 
   const filteredMilestones = showFutureTimeline
     ? milestones.filter((m) => parseInt(m.year) >= 2023)
@@ -159,20 +165,136 @@ export default function Timeline({ showFutureTimeline = false }) {
   };
 
   const handleMouseEnter = (milestone) => {
-    setHoveredMilestone(milestone);
+    if (!isDragging) {
+      setHoveredMilestone(milestone);
+      // Clear persistent hover when user manually hovers over a different milestone
+      if (
+        persistentHoveredMilestone &&
+        persistentHoveredMilestone.year !== milestone.year
+      ) {
+        setPersistentHoveredMilestone(null);
+      }
+    }
   };
 
   const handleMouseLeave = () => {
-    setHoveredMilestone(null);
+    if (!isDragging) {
+      setHoveredMilestone(null);
+    }
   };
+
+  // Calculate which milestone is closest to the drag button
+  const calculateNearestMilestone = useCallback(
+    (position) => {
+      const totalMilestones = visibleMilestones.length;
+      const topMilestonesCount = topMilestones.length;
+      const bottomMilestonesCount = bottomMilestones.length;
+
+      // Calculate positions for top milestones (first 8)
+      for (let i = 0; i < topMilestonesCount; i++) {
+        const segmentSize = 100 / (topMilestonesCount + 1); // +1 for proper spacing
+        const milestonePosition = (i + 1) * segmentSize;
+        const threshold = 3; // Much smaller threshold for precise positioning
+
+        if (Math.abs(position - milestonePosition) <= threshold) {
+          return topMilestones[i];
+        }
+      }
+
+      // Calculate positions for bottom milestones (remaining 8, offset by half segment)
+      for (let i = 0; i < bottomMilestonesCount; i++) {
+        const segmentSize = 100 / (bottomMilestonesCount + 1);
+        const offset = segmentSize / 2; // Offset for bottom milestones
+        const milestonePosition = offset + i * segmentSize + segmentSize / 2;
+        const threshold = 3; // Much smaller threshold for precise positioning
+
+        if (Math.abs(position - milestonePosition) <= threshold) {
+          return bottomMilestones[i];
+        }
+      }
+
+      return null;
+    },
+    [visibleMilestones, topMilestones, bottomMilestones]
+  );
+
+  // Handle drag button mouse down
+  const handleDragStart = (e) => {
+    setIsDragging(true);
+    setHoveredMilestone(null); // Clear regular hover when dragging starts
+
+    const handleMouseMove = (moveEvent) => {
+      if (timelineRef.current) {
+        const rect = timelineRef.current.getBoundingClientRect();
+        const newPosition =
+          ((moveEvent.clientX - rect.left) / rect.width) * 100;
+        const clampedPosition = Math.max(2, Math.min(98, newPosition));
+        setDragButtonPosition(clampedPosition);
+
+        // Check for nearby milestones with more precise positioning
+        const nearestMilestone = calculateNearestMilestone(clampedPosition);
+        setDragHoveredMilestone(nearestMilestone);
+
+        // Update persistent hover if we're on a different milestone
+        if (
+          nearestMilestone &&
+          (!persistentHoveredMilestone ||
+            persistentHoveredMilestone.year !== nearestMilestone.year)
+        ) {
+          setPersistentHoveredMilestone(nearestMilestone);
+        }
+      }
+    };
+
+    const handleMouseUp = () => {
+      setIsDragging(false);
+      // Keep the current drag hovered milestone as persistent
+      if (dragHoveredMilestone) {
+        setPersistentHoveredMilestone(dragHoveredMilestone);
+      }
+      setDragHoveredMilestone(null);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+
+  // Determine which milestone should be highlighted
+  // Priority: dragHoveredMilestone > hoveredMilestone > persistentHoveredMilestone
+  const activeHoveredMilestone =
+    dragHoveredMilestone || hoveredMilestone || persistentHoveredMilestone;
 
   return (
     <div className="w-full">
       <div
+        ref={timelineRef}
         className="relative w-full h-[450px] overflow-hidden"
         style={{ userSelect: "none" }}
       >
         <VectorArrow />
+
+        {/* Draggable button on the arrow */}
+        <div
+          className="absolute top-1/2 transform -translate-y-1/2 z-30 cursor-grab active:cursor-grabbing"
+          style={{
+            left: `${dragButtonPosition}%`,
+            transform: "translate(-50%, -50%)",
+          }}
+          onMouseDown={handleDragStart}
+        >
+          <div className="bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 rounded-full shadow-lg transition-all duration-200 select-none">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-white rounded-full"></div>
+              {!isDragging && (
+                <span className="text-xs font-medium whitespace-nowrap">
+                  Drag Here
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
 
         {/* Top milestones */}
         <div
@@ -183,7 +305,7 @@ export default function Timeline({ showFutureTimeline = false }) {
         >
           {topMilestones.map((milestone, index) => {
             const lineHeight = "111px";
-            const isHovered = hoveredMilestone?.year === milestone.year;
+            const isHovered = activeHoveredMilestone?.year === milestone.year;
             const cardWidth = isHovered ? "150px" : "130.82px";
             const cardHeight = isHovered ? "180px" : "110px";
 
@@ -269,7 +391,7 @@ export default function Timeline({ showFutureTimeline = false }) {
         >
           {bottomMilestones.map((milestone, index) => {
             const lineHeight = "111px";
-            const isHovered = hoveredMilestone?.year === milestone.year;
+            const isHovered = activeHoveredMilestone?.year === milestone.year;
             const cardWidth = isHovered ? "150px" : "130.82px";
             const cardHeight = isHovered ? "180px" : "110px";
 
