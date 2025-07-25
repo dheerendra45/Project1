@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
+import ferroalloy from "../assets/products/1.jpg";
 import a2 from "../assets/products/herobg.png";
 import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
@@ -10,16 +11,17 @@ import ss from "../assets/products/ss.png";
 import e1 from "../assets/e1.jpg";
 import e2 from "../assets/e2.png";
 import pipes from "../assets/products/pipes.png";
-import pgiron from "../assets/products/pig.png";
+import pgiron from "../assets/products/4.jpg";
 import sswire from "../assets/products/Wire.jpg";
 import brightbar from "../assets/products/bbar.jpg";
 import sswirerod from "../assets/products/wr.jpg";
 import blackround from "../assets/products/bbbar.png";
-import pellets from "../assets/products/pellets2.png";
-import spongeiron from "../assets/products/spounge.png";
-import billet from "../assets/products/bill.png";
+import pellets from "../assets/products/2.jpg";
+import spongeiron from "../assets/products/3.jpg";
+import billet from "../assets/products/5.jpg";
 import strucutal from "../assets/products/struct.png";
-import tmt from "../assets/products/tmt1.png";
+import tmt from "../assets/products/6.jpg";
+import coiltmt from "../assets/products/7.jpg";
 import stainless from "../assets/products/stainlesssteel.jpg";
 import wirerod from "../assets/products/wirerod.png";
 import colorocated from "../assets/products/colorcoated.png";
@@ -36,6 +38,7 @@ const productImages = {
   "SS Wire": ss,
   "SS Wire Rod": sswirerod1,
   "Sponge Iron": spongeiron,
+  "Coil TMT": coiltmt,
   Billet: billet,
   "Structural Steel": strucutal,
   "TMT Bars": tmt,
@@ -50,6 +53,7 @@ const productImages = {
   "Flats/Patta": flats,
   "Pig Iron": pgiron,
   "Pipes & Hollow Sections": pipes,
+  "Ferro Alloys": ferroalloy,
   // Aluminum products
   "SEL TIGER FOIL–KITCHEN Foil": al,
   "Bare Aluminium Foil": al2,

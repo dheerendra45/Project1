@@ -42,7 +42,7 @@ import wagonrdsoapprovalservice from "../assets/achievements/wagon.jpg";
 
 // arrows
 import leftarrow from "../assets/left-arrow.png";
-import rightarrow from "../assets/right-arrow.png";
+import rightarrow from "../assets/achievements/arrow[1].png";
 
 const wordContainer = {
   hidden: {},

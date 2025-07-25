@@ -783,7 +783,9 @@ const Navbar = () => {
                           <img
                             src={item.logo}
                             alt="seltiger logo"
-                            className="h-[25px] w-auto object-contain inline-block align-middle "
+                            className={`h-[25px] w-auto object-contain inline-block align-middle ${
+                              isScrolled ? "filter brightness-0" : ""
+                            }`}
                             style={{ marginRight: "-37px" }}
                           />
                           <span className="inline-block align-middle">
