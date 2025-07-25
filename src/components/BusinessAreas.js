@@ -6,7 +6,7 @@ import a3 from "../assets/business2.png";
 import a4 from "../assets/business3.png";
 import a5 from "../assets/business4.png";
 import { Link } from "react-router-dom";
-import sswirerod1 from "../assets/products/sswire.png";
+import sswirerod1 from "../assets/products/18.jpg";
 import ss from "../assets/products/ss.png";
 import e1 from "../assets/e1.jpg";
 import e2 from "../assets/e2.png";
@@ -36,6 +36,15 @@ import coldrolled from "../assets/products/11.jpg";
 import galvanized from "../assets/products/12.jpg";
 import img2 from "../assets/products/13.jpg";
 import img3 from "../assets/products/14.jpg";
+import img4 from "../assets/products/15.jpg";
+import img5 from "../assets/products/16.jpg";
+import img6 from "../assets/products/17.jpg";
+import img7 from "../assets/products/20.jpg";
+import img8 from "../assets/products/21.jpg";
+import img9 from "../assets/products/22.jpg";
+import img110 from "../assets/products/24.jpg";
+import img11 from "../assets/products/25.jpg";
+import img12 from "../assets/products/26.jpg";
 // Map product names to specific images
 const productImages = {
   Pellet: pellets,
@@ -50,7 +59,7 @@ const productImages = {
   "Wire Rods": wirerod,
   "Color Coated Sheets": colorocated,
   "Stainless Steel Billets": stainless,
-  "Wire Rods": sswirerod,
+  "Wire Rods": wirerod,
   "SS Wire": sswire,
   "Bright Bar": brightbar,
   "Black Round Bar": blackround,
@@ -59,14 +68,21 @@ const productImages = {
   "Hot Rolled (HR) Coils": img10,
   "Galvanized Sheets": galvanized,
   "Pig Iron": pgiron,
+  "Pre-Painted Galvalume Sheets": img4,
   "Pipes & Hollow Sections": pipes,
   "Ferro Alloys": ferroalloy,
   "Galvalume Sheets": img2,
   "Pre-Painted Galvanized Sheets": img3,
+  "Stainless Steel Billets": img5,
+  "Stainless Steel Rebar": img6,
+  "Stainless Steel Bright Bar": img7,
+  "Stainless Steel Hot Rolled Bar": img8,
+  "Crash Barrier": img9,
   // Aluminum products
-  "SEL TIGER FOIL–KITCHEN Foil": al,
+  "SEL TIGER FOIL–KITCHEN Foil": img110,
   "Bare Aluminium Foil": al2,
-  "Battery Foil": al3,
+  "Battery Foil": img11,
+  "Food Grade Foil": img12,
   FinStocks: al4,
   // Energy products
   "Captive Power": e1,
@@ -139,12 +155,12 @@ export default function BusinessAreas({ id }) {
         href: "#",
       },
       {
-        name: "Pre-Painted Galvanized Sheets ",
+        name: "Pre-Painted Galvanized Sheets",
         desc: "Color-coated galvanized steel sheets",
         href: "#",
       },
       {
-        name: "Pre-Painted Galvalume Sheets ",
+        name: "Pre-Painted Galvalume Sheets",
         desc: "Color-coated galvalume steel sheets",
         href: "#",
       },

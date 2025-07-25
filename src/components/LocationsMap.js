@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import worldExport from "../assets/asia map.mp4";
 import indiaMapVideo from "../assets/IndiaMap1.mp4";
 import indianMap from "../assets/indianmap(3).mp4";
-import worldMap from "../assets/updated-world-map (1).mp4";
+import worldMap from "../assets/Asia Map_2.mp4";
 import { Link } from "react-router-dom";
 import { map } from "leaflet";
 
@@ -94,16 +94,14 @@ function LocationsMap() {
   }, []);
 
   return (
-
     <div
       ref={sectionRef}
       className="py-[2%] px-[10%] bg-white font-inter"
       id="locations"
     >
-        
       <div className="w-full max-w-7xl mx-auto">
         {/* Title & Description with Button Row */}
-        
+
         <motion.div
           className="mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -117,9 +115,7 @@ function LocationsMap() {
               : {}
           }
         >
-          
           <div className="mb-4 sm:mb-0">
-
             <h2 className="text-2xl sm:text-3xl font-semibold text-black-800 mb-2 pt-[20%]">
               Our Global Footprint
             </h2>
@@ -195,7 +191,7 @@ function LocationsMap() {
               }
             >
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
-               Global Presence
+              Global Presence
             </motion.h3>
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"
@@ -237,7 +233,7 @@ function LocationsMap() {
               }
             >
               <span className="w-3 h-3 bg-orange-500 rounded-full mr-2"></span>
-             Our Plants 
+              Our Plants
             </motion.h3>
             <motion.div
               className="shadow-md rounded-xl overflow-hidden border border-gray-300 h-[450px]"
