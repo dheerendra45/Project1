@@ -154,9 +154,9 @@ const AchievementsSection = () => {
   return (
     <div className="bg-white px-4 py-16 mx-[10%] my-[2%] min-h-[600px]">
       {/* Heading */}
-      <h2 className="text-2xl text-header-style font-semibold text-center mb-12">
+      <h1 className="text-gray-900 text-header-style text-center mb-12 text-3xl font-semibold">
         Accreditations <span className="text-orange-500">&</span> Achievements
-      </h2>
+      </h1>
 
       {/* Layout */}
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-12">
