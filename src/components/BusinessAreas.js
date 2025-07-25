@@ -345,7 +345,8 @@ export default function BusinessAreas({ id }) {
         <div className="mb-12">
           <div className="pt-0 mb-8">
             <h2 className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-semibold mb-6 sm:mb-8">
-              Integrated Steel Solutions
+              Integrated{" "}
+              <span class="text-orange-600 font-bold">Steel Solutions</span>
             </h2>
           </div>
 

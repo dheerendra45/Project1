@@ -87,7 +87,7 @@ const AchievementsSection = () => {
     AAILOGO,
     ach6,
     BIS,
-    CRM,
+
     GREENPRO2,
     ISO1,
     ISO4,
@@ -123,7 +123,9 @@ const AchievementsSection = () => {
   // Navigation functions
   const goToPrevious = () => {
     setIsAutoRotating(false);
-    setActiveIndex((prev) => (prev - 1 + certificates.length) % certificates.length);
+    setActiveIndex(
+      (prev) => (prev - 1 + certificates.length) % certificates.length
+    );
     setTimeout(() => setIsAutoRotating(true), 10000);
   };
 
@@ -142,11 +144,11 @@ const AchievementsSection = () => {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'ArrowLeft') goToPrevious();
-      if (e.key === 'ArrowRight') goToNext();
+      if (e.key === "ArrowLeft") goToPrevious();
+      if (e.key === "ArrowRight") goToNext();
     };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   return (
@@ -179,7 +181,7 @@ const AchievementsSection = () => {
 
           {/* Functional Arrows */}
           <div className="flex items-center justify-center lg:justify-start mt-8 ml-[28%]">
-            <button 
+            <button
               onClick={goToPrevious}
               className="mr-[5%] focus:outline-none hover:opacity-80 transition-opacity"
               aria-label="Previous achievement"
@@ -187,7 +189,7 @@ const AchievementsSection = () => {
               <img src={leftarrow} alt="Left arrow" />
             </button>
 
-            <button 
+            <button
               onClick={goToNext}
               className="focus:outline-none hover:opacity-80 transition-opacity"
               aria-label="Next achievement"
