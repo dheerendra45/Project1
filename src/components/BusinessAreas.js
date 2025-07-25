@@ -19,23 +19,28 @@ import blackround from "../assets/products/bbbar.png";
 import pellets from "../assets/products/2.jpg";
 import spongeiron from "../assets/products/3.jpg";
 import billet from "../assets/products/5.jpg";
-import strucutal from "../assets/products/struct.png";
+import strucutal from "../assets/products/8.jpg";
 import tmt from "../assets/products/6.jpg";
 import coiltmt from "../assets/products/7.jpg";
 import stainless from "../assets/products/stainlesssteel.jpg";
-import wirerod from "../assets/products/wirerod.png";
+import wirerod from "../assets/products/9.jpg";
 import colorocated from "../assets/products/colorcoated.png";
 import flatpatta from "../assets/products/flatsrolled.png";
 import flats from "../assets/products/flats.png";
-
+import img10 from "../assets/products/10.jpg";
 import al from "../assets/products/al1.png";
 import al2 from "../assets/products/al2.png";
 import al3 from "../assets/products/al3.png";
 import al4 from "../assets/products/al4.png";
+import coldrolled from "../assets/products/11.jpg";
+import galvanized from "../assets/products/12.jpg";
+import img2 from "../assets/products/13.jpg";
+import img3 from "../assets/products/14.jpg";
 // Map product names to specific images
 const productImages = {
   Pellet: pellets,
   "SS Wire": ss,
+  "Cold Rolled (CR) Coils": coldrolled,
   "SS Wire Rod": sswirerod1,
   "Sponge Iron": spongeiron,
   "Coil TMT": coiltmt,
@@ -51,9 +56,13 @@ const productImages = {
   "Black Round Bar": blackround,
   "Flat Rolled Products": flatpatta,
   "Flats/Patta": flats,
+  "Hot Rolled (HR) Coils": img10,
+  "Galvanized Sheets": galvanized,
   "Pig Iron": pgiron,
   "Pipes & Hollow Sections": pipes,
   "Ferro Alloys": ferroalloy,
+  "Galvalume Sheets": img2,
+  "Pre-Painted Galvanized Sheets": img3,
   // Aluminum products
   "SEL TIGER FOIL–KITCHEN Foil": al,
   "Bare Aluminium Foil": al2,
@@ -130,12 +139,12 @@ export default function BusinessAreas({ id }) {
         href: "#",
       },
       {
-        name: "Pre-Painted Galvanized Sheets (PPGI)",
+        name: "Pre-Painted Galvanized Sheets ",
         desc: "Color-coated galvanized steel sheets",
         href: "#",
       },
       {
-        name: "Pre-Painted Galvalume Sheets (PPGL)",
+        name: "Pre-Painted Galvalume Sheets ",
         desc: "Color-coated galvalume steel sheets",
         href: "#",
       },
