@@ -786,7 +786,7 @@ const Navbar = () => {
                             className={`h-[25px] w-auto object-contain inline-block align-middle ${
                               isScrolled ? "filter brightness-0" : ""
                             }`}
-                            style={{ marginRight: "-37px" }}
+                            style={{ marginRight: "-40px" }}
                           />
                           <span className="inline-block align-middle">
                             {item.title}

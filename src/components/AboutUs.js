@@ -412,7 +412,7 @@ export default function ShyamMetalicsProfile() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         <div className="space-y-6">
           <div>
-            <h1 className="text-gray-900 text-header-style mb-2 text-3xl font-semibold">
+            <h1 className="text-gray-900 text-header-style mb-2 text-4xl font-semibold">
               Who are <span className="text-orange-500">we?</span>
             </h1>
           </div>

@@ -154,7 +154,7 @@ const AchievementsSection = () => {
   return (
     <div className="bg-white px-4 py-16 mx-[10%] my-[2%] min-h-[600px]">
       {/* Heading */}
-      <h1 className="text-gray-900 text-header-style text-center mb-12 text-3xl font-semibold">
+      <h1 className="text-gray-900 text-header-style text-center mb-12 text-4xl font-bold">
         Accreditations <span className="text-orange-500">&</span> Achievements
       </h1>
 

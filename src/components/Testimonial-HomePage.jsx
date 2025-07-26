@@ -104,7 +104,7 @@ const TestimonialsSection = () => {
             {/* Left side - Header and description */}
             <div className="space-y-4 lg:pr-8 mt-[-2%]">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                <h2 className="text-4xl font-bold text-gray-900 mb-2">
                   What Our
                 </h2>
                 <h2 className="text-3xl font-bold text-orange-500 mb-6">

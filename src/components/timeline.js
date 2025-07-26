@@ -269,7 +269,7 @@ export default function Timeline({ showFutureTimeline = false }) {
   return (
     <div className="w-full">
       <div class="pt-[2%] pb-[2%] pl-[10%] font-inter">
-        <h1 className="text-gray-900 text-header-style mb-2 text-3xl font-semibold">
+        <h1 className="text-gray-900 text-header-style mb-2 text-4xl font-bold">
           The Shyam <span class="text-orange-600 font-bold">Journey </span>
         </h1>
       </div>
