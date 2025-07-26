@@ -149,7 +149,7 @@ const CSRPage = () => {
 
           {/* Right Side - Content */}
           <div className="w-full lg:w-1/2 lg:pl-4">
-            <h1 className="text-2xl text-header-style sm:text-3xl font-bold text-gray-900 mb-3">
+            <h1 className="text-4xl text-header-style sm:text-3xl font-bold text-gray-900 mb-3">
               Corporate Social Responsibility
             </h1>
 

@@ -31,9 +31,9 @@ const NewsPage = () => {
       <div className="w-full mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-0">
-          <h2 className="text-black-800 text-2xl sm:text-3xl lg:text-4xl font-semibold">
+          <h1 className="text-black-800 text-4xl sm:text-3xl lg:text-4xl font-bold">
             LATEST NEWS
-          </h2>
+          </h1>
           <p className="text-orange-500 text-paragraph-style text-xl sm:text-2xl lg:text-2xl font-semibold leading-snug">
             Innovating Today, Leading Tomorrow
           </p>
